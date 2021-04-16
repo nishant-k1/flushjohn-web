@@ -7,6 +7,7 @@ import {useContext} from 'react'
 
 const Nav = () => {
   const [active, setActive] = useContext(SidebarContext);
+
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
