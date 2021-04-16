@@ -1,0 +1,113 @@
+.section{
+  min-width: 100vw;
+  background-color:#002B4C;
+  padding: 0;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.nav{
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.menuIcon{
+  color: white;
+  height: 2rem;
+  width: 2rem;
+  display: grid;
+  justify-content: right;
+  align-items: center;
+}
+
+.nav img{
+  padding: 0;
+  margin: .5rem 0;
+}
+
+.navMenu{
+  display: none;
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 769px) {
+  .nav{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 0;
+    margin: 0;
+  }
+  
+  .menuIcon{
+    display: none;
+  }
+
+  .nav img{
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, max-content) ;
+    column-gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    color: white;
+  }
+  
+  .nav ul li a:hover{
+    color: yellow;
+    transition: .3s;
+  }
+  
+  .quote a{
+    color: white;
+    border: solid 1px rgb(49, 98, 170);
+    border-radius: 4px;
+    padding: 1rem;
+    font-weight: 500;
+  }
+
+  .quote a:hover{
+    background-color: rgb(49, 98, 170);
+  }
+  .nav ul .quote a:hover{
+    color: white;
+  }
+
+  .phone div{
+    background-color: rgb(49, 98, 170);
+    color: white;
+    border: solid 1px rgb(49, 98, 170);
+    border-radius: 4px;
+    padding: 1rem;
+    font-weight: 500;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: .5rem;
+  }
+
+  .phone div:hover{
+    background-color: rgb(23, 82, 170);
+  }
+  
+  .nav ul .phone div:hover{
+    color: white;
+  }
+
+}
+
