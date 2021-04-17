@@ -3,4 +3,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+  background-color: white;
+}
+
+.active{
+  transform: translateX(60%);
+  transition: .5s;
+}
+
+.inactive{
+  transition: .5s;
 }

@@ -29,6 +29,7 @@
 .nav img{
   padding: 0;
   margin: .5rem 0;
+  z-index: 2;
 }
 
 .navMenu{

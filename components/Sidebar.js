@@ -2,26 +2,16 @@ import sidebarStyles from '../styles/Sidebar.module.css'
 import Link from 'next/link'
 import {FaPhoneAlt} from 'react-icons/fa'
 import {SidebarContext} from '../components/SidebarContext'
-import {useContext, useEffect, useRef} from 'react'
+import {useContext} from 'react'
 
 const Sidebar = () => {
   const [active, setActive] = useContext(SidebarContext);
-  const sidebarRef=useRef();
-
   const handleClick = () => {
     setActive(false)
-  }
-
-  useEffect(()=>{
-    document.addEventListener('mousedown', (event)=>{
-        if(!sidebarRef.current.contains(event.target)){
-          setActive(()=>false);
-        }
-    });
-  });
+  }  
 
   return (
-    <div ref={sidebarRef} className=
+    <div className=
       { 
         `${sidebarStyles.section} ${active ? sidebarStyles.active : sidebarStyles.inactive}`
       }

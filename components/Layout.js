@@ -1,8 +1,12 @@
 import styles from '../styles/Layout.module.css'
+import {SidebarContext} from '../components/SidebarContext'
+import {useContext} from 'react'
 
 const Layout = ({children}) => {
+  const [active, setActive] = useContext(SidebarContext);
+  const handleClick = () => active ? setActive(false) : null
   return (
-    <div className={styles.main}>
+    <div onClick={handleClick} className={`${styles.main} ${active ? styles.active : styles.inactive}`}>
       {children}
     </div>
   )

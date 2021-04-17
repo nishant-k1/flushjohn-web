@@ -7,14 +7,16 @@ import {SidebarContextProvider} from '../components/SidebarContext'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-        <SidebarContextProvider>
+    <>
+    <SidebarContextProvider>
+      <Sidebar />
+      <Layout>
         <Nav />
-        <Sidebar />
         <Component {...pageProps} />
         <Footer />
-      </SidebarContextProvider>
-    </Layout>
+      </Layout>
+    </SidebarContextProvider>
+    </>
   )
 }
 
