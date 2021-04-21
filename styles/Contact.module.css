@@ -98,6 +98,8 @@
   margin: 0;
   background-color: #2a4358;
   display: grid;
+  justify-content: center;
+  align-items: center;
   row-gap: 2rem;
   grid-template-columns: 1fr;
   grid-template-areas: 
@@ -163,6 +165,8 @@
     padding: 64px 0;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
+    justify-content: space-between;
+    align-items: center;
     grid-template-areas: 
     "fName message" 
     "lName message"

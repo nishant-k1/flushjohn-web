@@ -133,7 +133,7 @@ const contact = () => {
                 placeholder="Message"
               />
           </div>
-          <button className={contactStyles.button} type="submit">Submit</button>
+          <button className={contactStyles.button} type="submit">SUBMIT</button>
         </Form>
         </div>
       </div>
