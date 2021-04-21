@@ -1,15 +1,26 @@
-
+import QuoteStep1 from '../components/quoteStep1'
+import QuoteStep2 from '../components/quoteStep2'
+import QuoteStep3 from '../components/quoteStep3'
+import quoteProgressStyles from '../styles/QuoteProgress.module.css'
+import {useContext} from 'react'
+import {QuoteContext} from '../contexts/QuoteContext'
 
 const quote = () => {
+  const [step, setStep]  = useContext(QuoteContext)
   return (
-    <div>
-      <h1>Welcome to Quote</h1>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
+    <div className={quoteProgressStyles.section}>
+      <div className={quoteProgressStyles.container}>
+        <div className={quoteProgressStyles.progressBar}>
+          <div className={`${quoteProgressStyles.step} ${step === 1 || step === 2 || step === 3 ? `${quoteProgressStyles.active}` : null}`} >Step1: Requirement Information</div>
+          <div className={`${quoteProgressStyles.step} ${step === 2 || step === 3 ? `${quoteProgressStyles.active}` : null}`} >Step2: Personal Information</div>
+          <div className={`${quoteProgressStyles.step} ${step === 3 ? `${quoteProgressStyles.active}` : null}`} >Step3: Delivery Information</div>
+        </div>
+        <div>
+          {step === 1 ? <QuoteStep1 /> : null}
+          {step === 2 ? <QuoteStep2 /> : null}
+          {step === 3 ? <QuoteStep3 /> : null}
+        </div>
+      </div>
     </div>
   )
 }

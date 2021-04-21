@@ -4,17 +4,20 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import {SidebarContextProvider} from '../components/SidebarContext'
+import { QuoteContextProvider } from '../contexts/QuoteContext'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
     <SidebarContextProvider>
-      <Sidebar />
-      <Layout>
-        <Nav />
-        <Component {...pageProps} />
-        <Footer />
-      </Layout>
+      <QuoteContextProvider>
+        <Sidebar />
+        <Layout>
+          <Nav />
+          <Component {...pageProps} />
+          <Footer />
+        </Layout>
+      </QuoteContextProvider>
     </SidebarContextProvider>
     </>
   )

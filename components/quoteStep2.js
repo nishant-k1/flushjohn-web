@@ -1,57 +1,60 @@
+import quoteStylesStep2 from '../styles/QuoteStep2.module.css'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
 import MaskedInput from 'react-input-mask';
-import contactStyles from '../styles/Contact.module.css'
+import {useContext} from 'react'
+import {QuoteContext} from '../contexts/QuoteContext'
 
-const contact = () => {  
+const contact = () => {
+  const [step, setStep] = useContext(QuoteContext)
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <input className={contactStyles.input} {...field} {...props} />
+      <div className={`quoteStylesStep2.${props.name}`}>
+        <label htmlFor={props.id || props.name}>{label}</label>
+        <input {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
+          <div className={quoteStylesStep2.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
   
   const MyMaskedTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={contactStyles.input} {...field} {...props} />
+      <div className={`quoteStylesStep2.${props.name}`}>
+        <label htmlFor={props.id || props.name}>{label}</label>
+        <MaskedInput className={quoteStylesStep2.input} {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
+          <div className={quoteStylesStep2.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
 
   const MyTextArea = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <textarea className={contactStyles.textarea} {...field} {...props} />
+      <div className={quoteStylesStep2.message}>
+        <label htmlFor={props.id || props.name}>{label}</label>
+        <textarea {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
+          <div className={quoteStylesStep2.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
   
   return (
     <div>
       <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
+        initialValues={{    
+          fName: '',
+          lName: '',
+          cName: '',
           email: '',
-          phone: '',
-          message: ''
+          phone: ''
         }}
 
         validationSchema={Yup.object({
@@ -65,8 +68,6 @@ const contact = () => {
             .email('Invalid email address')
             .required('Required'),
           phone: Yup.string()
-            .min(10, 'Invalid phone number')
-            .max(14, 'Invalid phone number')
             .required('Required'),
           message: Yup.string()
             .min(1, 'Message cannot be empty')
@@ -77,12 +78,12 @@ const contact = () => {
             alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
           }, 400)
+          setStep(3)
         }}
       >
-      <div className={contactStyles.section}>
-        <div className={contactStyles.container}>
-          <Form className={contactStyles.form}>
-            <div className={contactStyles.firstName}>
+        <div className={quoteStylesStep2.section}>
+          <div className={quoteStylesStep2.container}>
+            <Form className={quoteStylesStep2.form}>
               <MyTextInput
                 label="First Name"
                 name="firstName"
@@ -91,10 +92,8 @@ const contact = () => {
                 autoComplete="given-name"
                 placeholder="Jane"
               />
-            </div>
 
-          <div className={contactStyles.lastName}>
-            <MyTextInput
+              <MyTextInput
                 label="Last Name"
                 name="lastName"
                 type="text"
@@ -102,20 +101,34 @@ const contact = () => {
                 autoComplete="family-name"
                 placeholder="Doe"
               />
-          </div>
 
-          <div className={contactStyles.email}>
-            <MyTextInput
+              <MyTextInput
+                label="Last Name"
+                name="lastName"
+                type="text"
+                maxLength='20'
+                autoComplete="family-name"
+                placeholder="Doe"
+              />
+
+              <MyTextInput
+                label="Company Name"
+                name="cName"
+                type="text"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
+              />
+
+              <MyTextInput
                 label="Email Address"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="jane@email.com"
+                placeholder="jane@formik.com"
               />
-          </div>
 
-          <div className={contactStyles.phone}>
-            <MyMaskedTextInput
+              <MyMaskedTextInput
                 label="Phone"
                 name="phone"
                 mask="(999) 999-9999"
@@ -123,20 +136,12 @@ const contact = () => {
                 autoComplete="tel-national"
                 placeholder="(000) 000-0000"
               />
-          </div>
 
-          <div className={contactStyles.message}>
-            <MyTextArea
-                label="Message"
-                name="message"
-                type="textarea"
-                placeholder="Message"
-              />
+              <button onClick={() => {setStep(3)}} type="submit">CONTINUE</button>
+              <button onClick={() => {setStep(1)}} type="submit">BACK</button>
+            </Form>
           </div>
-          <button className={contactStyles.button} type="submit">Submit</button>
-        </Form>
         </div>
-      </div>
       </Formik>
     </div>
   )
