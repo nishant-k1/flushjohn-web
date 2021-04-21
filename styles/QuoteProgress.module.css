@@ -1,0 +1,31 @@
+.section{
+  min-width: 100vw;
+  background-color: #2A4358;
+}
+
+.container{
+  max-width: 1100px;
+  padding: 32px;
+  margin: 0 auto;
+}
+
+.progressBar{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.808);
+  margin-bottom: 2.5rem;
+}
+
+.step{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+  font-weight: 400;
+}
+
+.step.active{
+  background-color: yellow;
+}
