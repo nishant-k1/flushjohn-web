@@ -72,11 +72,13 @@ const contact = () => {
             .min(1, 'Message cannot be empty')
             .required('Required'),
         })}
-        onSubmit={(values, { setSubmitting }) => {
+
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
           }, 400)
+          resetForm()
         }}
       >
       <div className={contactStyles.section}>

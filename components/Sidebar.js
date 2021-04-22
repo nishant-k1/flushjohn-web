@@ -1,7 +1,7 @@
 import sidebarStyles from '../styles/Sidebar.module.css'
 import Link from 'next/link'
 import {FaPhoneAlt} from 'react-icons/fa'
-import {SidebarContext} from '../components/SidebarContext'
+import {SidebarContext} from '../contexts/SidebarContext'
 import {useContext} from 'react'
 
 const Sidebar = () => {

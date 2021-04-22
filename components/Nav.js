@@ -2,7 +2,7 @@ import navStyles from '../styles/Nav.module.css'
 import Link from 'next/link'
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {FaPhoneAlt} from 'react-icons/fa'
-import {SidebarContext} from '../components/SidebarContext'
+import {SidebarContext} from '../contexts/SidebarContext'
 import {useContext} from 'react'
 
 const Nav = () => {

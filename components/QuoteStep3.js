@@ -5,7 +5,7 @@ import MaskedInput from 'react-input-mask'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-const contact = () => {
+const QuoteStep3 = () => {
   const [step, setStep] = useContext(QuoteContext)
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
@@ -167,4 +167,4 @@ const contact = () => {
   )
 }
 
-export default contact
+export default QuoteStep3

@@ -1,5 +1,5 @@
 import styles from '../styles/Layout.module.css'
-import {SidebarContext} from '../components/SidebarContext'
+import {SidebarContext} from '../contexts/SidebarContext'
 import {useContext} from 'react'
 
 const Layout = ({children}) => {

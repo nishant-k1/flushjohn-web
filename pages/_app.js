@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
-import {SidebarContextProvider} from '../components/SidebarContext'
+import {SidebarContextProvider} from '../contexts/SidebarContext'
 import { QuoteContextProvider } from '../contexts/QuoteContext'
 
 function MyApp({ Component, pageProps }) {
