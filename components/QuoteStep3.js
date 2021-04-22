@@ -1,155 +1,169 @@
-import quoteStylesStep3 from '../styles/QuoteStep3.module.css'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
-import MaskedInput from 'react-input-mask'
+import MaskedInput from 'react-input-mask';
+import QuoteStep3Styles from '../styles/QuoteStep3.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-const QuoteStep3 = () => {
-  const [step, setStep] = useContext(QuoteContext)
+
+const QuoteStep3 = () => {  
+  const {render, data} = useContext(QuoteContext)
+  const [step, setStep] = render
+  const [formValues, setFormValues] = data
+
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <div className={`quoteStylesStep3.${props.name}`}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <input {...field} {...props} />
+      <>
+        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
+        <input className={QuoteStep3Styles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={quoteStylesStep3.error}>{meta.error}</div>
+          <div className={QuoteStep3Styles.error}>{meta.error}</div>
         ) : null}
-      </div>
+      </>
     )
   }
   
   const MyMaskedTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <div className={`quoteStylesStep3.${props.name}`}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={quoteStylesStep3.input} {...field} {...props} />
+      <>
+        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
+        <MaskedInput className={QuoteStep3Styles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={quoteStylesStep3.error}>{meta.error}</div>
+          <div className={QuoteStep3Styles.error}>{meta.error}</div>
         ) : null}
-      </div>
+      </>
     )
   }
 
-  const MyTextArea = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={quoteStylesStep3.message}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <textarea {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={quoteStylesStep3.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-  
   return (
     <div>
       <Formik
-        initialValues={{
-          deliveryDate: '',
-          pickupDate: '',
-          street: '',
-          city: '',
-          state: '',
-          zip: '',
-          hint: '',
-          onsite: '',
-          onsitePhone: ''
-        }}
+        initialValues={formValues}
+
         validationSchema={Yup.object({
-          firstName: Yup.string()
-            .max(15, 'Must be 15 characters or less')
+          deliveryDate: Yup.date()
             .required('Required'),
-          lastName: Yup.string()
-            .max(20, 'Must be 20 characters or less')
+          pickupDate: Yup.date()
             .required('Required'),
-          email: Yup.string()
-            .email('Invalid email address')
+          street: Yup.string()
             .required('Required'),
-          phone: Yup.string()
+          city: Yup.string()
             .required('Required'),
-          message: Yup.string()
-            .min(1, 'Message cannot be empty')
+          state: Yup.string()
+            .required('Required'),
+          zip: Yup.number()
+            // .min(5, 'Invalid zip code')
+            // .max(5, 'Invalid zip code')
+            .required('Required'),
+          hint: Yup.string(),
+          onsite: Yup.string()
+            .required('Required'),
+          onsitePhone: Yup.string()
+            .min(10, 'Invalid phone number')
+            .max(14, 'Invalid phone number')
             .required('Required'),
         })}
+
         onSubmit={(values, { setSubmitting }) => {
-          console.log(initialValues)
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
           }, 400)
         }}
       >
-      <div className={quoteStylesStep3.section}>
-        <div className={quoteStylesStep3.container}>
-          <Form className={quoteStylesStep3.form}>
+      <div className={QuoteStep3Styles.section}>
+        <div className={QuoteStep3Styles.container}>
+          <Form className={QuoteStep3Styles.form}>
+            <div className={QuoteStep3Styles.firstName}>
               <MyTextInput
                 label="Delivery Date"
                 name="deliveryDate"
                 type="date"
+                maxLength='15'
+                autoComplete="given-name"
+                placeholder="Jane"
               />
+            </div>
 
-              <MyTextInput
+          <div className={QuoteStep3Styles.lastName}>
+            <MyTextInput
                 label="Pickup Date"
                 name="pickupDate"
                 type="date"
+                maxLength='20'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
-                label="Street Address"
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
+                label="Street"
                 name="street"
                 type="text"
-                autoComplete="address-line1"
-                placeholder="Street Address"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
                 label="City"
                 name="city"
                 type="text"
-                autoComplete="address-line2"
-                placeholder="City"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
-                label="City"
-                name="State"
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
+                label="State"
+                name="state"
                 type="text"
-                autoComplete="address-line3"
-                placeholder="State"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
                 label="Zip Code"
                 name="zip"
-                type="tel"
-                autoComplete="address-line4"
-                maxLength='5'
+                type="text"
                 minLength='5'
-                placeholder="00000"
+                maxLength='5'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
-
-              <MyTextArea
-                label="Placement Location Hint"
+          </div>
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
+                label="Placement Location Hints"
                 name="hint"
-                type="textarea"
-                placeholder="Any landmark, backyard, frontyard etc"
+                type="text"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
-
-              <MyTextInput
+          </div>
+          <div className={QuoteStep3Styles.companyName}>
+            <MyTextInput
                 label="Onsite Person Name"
                 name="onsite"
                 type="text"
-                maxLength='35'
-                autoComplete="name"
-                placeholder="Jane Wilson"
+                maxLength='50'
+                autoComplete="family-name"
+                placeholder="Doe"
               />
-
-              <MyMaskedTextInput
+          </div>
+          <div className={QuoteStep3Styles.phone}>
+            <MyMaskedTextInput
                 label="Onsite Person Phone"
                 name="onsitePhone"
                 mask="(999) 999-9999"
@@ -157,9 +171,11 @@ const QuoteStep3 = () => {
                 autoComplete="tel-national"
                 placeholder="(000) 000-0000"
               />
-            <button type="submit">SUBMIT</button>
-            <button onClick={() => {setStep(2)}} type="submit">BACK</button>
-          </Form>
+          </div>
+          <button className={QuoteStep3Styles.button} type="submit">SUBMIT</button>
+          <button onClick={() =>{setStep(2)}} className={QuoteStep3Styles.button}>BACK</button>
+
+        </Form>
         </div>
       </div>
       </Formik>

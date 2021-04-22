@@ -1,63 +1,94 @@
-import quoteStylesStep1 from '../styles/QuoteStep1.module.css'
+import { Formik, Form, useField } from 'formik'
+import * as Yup from 'yup'
+import QuoteStep1Styles from '../styles/QuoteStep1.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-const QuoteStep1 = () => {
+const QuoteStep1 = () => {  
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
   const [formValues, setFormValues] = data
-
-  const handleChange = (event) => {
-    setFormValues({...formValues, [event.target.name]: event.target.value })
+  
+  const MyTextInput = ({ label, ...props }) => {
+    const [field, meta] = useField(props)
+    return (
+      <>
+        <label className={QuoteStep1Styles.label} htmlFor={props.id || props.name}>{label}</label>
+        <input className={QuoteStep1Styles.input} {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className={QuoteStep1Styles.error}>{meta.error}</div>
+        ) : null}
+      </>
+    )
   }
+  
+  return (
+    <div>
+      <Formik
+        initialValues={formValues}
 
-  const validateStep1 = () => {
-    const errors = {}
-    if(!formValues.SPR){
-      errors.SPR="Required"
-    }
-    if(!formValues.SPR){
-      errors.DFR="Required"
-    }
-    if(!formValues.SPR){
-      errors.ACR="Required"
-    }
-    if(!formValues.SPR){
-      errors.HWS="Required"
-    }
-  }
+        validationSchema={Yup.object({
+          SPR: Yup.number()
+            .max(15, 'Must be 15 characters or less'),
+          DFR: Yup.number()
+            .max(15, 'Must be 15 characters or less'),
+          ACR: Yup.number()
+            .max(15, 'Must be 15 characters or less'),
+          HWS: Yup.number()
+            .max(15, 'Must be 15 characters or less'),
+        })}
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    alert(JSON.stringify(formValues))
-  }
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2))
+            setSubmitting(false)
+          }, 400)
+          setStep(2)
+        }}
+      >
+      <div className={QuoteStep1Styles.section}>
+        <div className={QuoteStep1Styles.container}>
+          <Form className={QuoteStep1Styles.form}>
+            <div className={QuoteStep1Styles.SPR}>
+              <MyTextInput
+                label="Standard Portable Restroom"
+                name="SPR"
+                type="number"
+                maxLength='15'
+              />
+            </div>
+            <div className={QuoteStep1Styles.DFR}>
+              <MyTextInput
+                label="Deluxe Flushable Restroom"
+                name="DFR"
+                type="number"
+                maxLength='15'
+              />
+            </div>
+            <div className={QuoteStep1Styles.ACR}>
+              <MyTextInput
+                label="ADA Compliant Portable Restroom"
+                name="ACR"
+                type="number"
+                maxLength='15'
+              />
+            </div>
+            <div className={QuoteStep1Styles.HWS}>
+              <MyTextInput
+                label="Hand Wash Sink Station"
+                name="HWS"
+                type="number"
+                maxLength='15'
+              />
+            </div>
 
-
-
-  return(
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="SPR">Standard Portable Restroom</label>
-        <input onChange={handleChange} type="number" name='SPR' />
+          <button className={QuoteStep1Styles.button} type="submit">CONTINUE</button>
+        </Form>
+        </div>
       </div>
-      <div>
-        <label htmlFor="DFR">Standard Portable Restroom</label>
-        <input onChange={handleChange} type="number" name='DFR' />
-      </div>
-      <div>
-        <label htmlFor="ACR">Standard Portable Restroom</label>
-        <input onChange={handleChange} type="number" name='ACR' />
-      </div>
-      <div>
-        <label htmlFor="HWS">Standard Portable Restroom</label>
-        <input onChange={handleChange} type="number" name='HWS' />
-      </div>
-      <button type='submit'>
-        SUBMIT
-      </button>
-    </form>
+      </Formik>
+    </div>
   )
 }
-
 
 export default QuoteStep1

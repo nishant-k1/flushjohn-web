@@ -1,78 +1,66 @@
-import quoteStylesStep2 from '../styles/QuoteStep2.module.css'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
 import MaskedInput from 'react-input-mask';
+import QuoteStep2Styles from '../styles/QuoteStep2.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-const contact = () => {
-  const [step, setStep] = useContext(QuoteContext)
+
+const QuoteStep2 = () => {  
+  const {render, data} = useContext(QuoteContext)
+  const [step, setStep] = render
+  const [formValues, setFormValues] = data
+
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <div className={`quoteStylesStep2.${props.name}`}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <input {...field} {...props} />
+      <>
+        <label className={QuoteStep2Styles.label} htmlFor={props.id || props.name}>{label}</label>
+        <input className={QuoteStep2Styles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={quoteStylesStep2.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>{meta.error}</div>
         ) : null}
-      </div>
+      </>
     )
   }
   
   const MyMaskedTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <div className={`quoteStylesStep2.${props.name}`}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={quoteStylesStep2.input} {...field} {...props} />
+      <>
+        <label className={QuoteStep2Styles.label} htmlFor={props.id || props.name}>{label}</label>
+        <MaskedInput className={QuoteStep2Styles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={quoteStylesStep2.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>{meta.error}</div>
         ) : null}
-      </div>
+      </>
     )
   }
 
-  const MyTextArea = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={quoteStylesStep2.message}>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <textarea {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={quoteStylesStep2.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-  
   return (
     <div>
       <Formik
-        initialValues={{    
-          fName: '',
-          lName: '',
-          cName: '',
-          email: '',
-          phone: ''
-        }}
+        initialValues={formValues}
 
         validationSchema={Yup.object({
-          firstName: Yup.string()
+          fName: Yup.string()
             .max(15, 'Must be 15 characters or less')
             .required('Required'),
-          lastName: Yup.string()
+          lName: Yup.string()
             .max(20, 'Must be 20 characters or less')
+            .required('Required'),
+          cName: Yup.string()
+            .max(20, 'Must be 50 characters or less')
             .required('Required'),
           email: Yup.string()
             .email('Invalid email address')
             .required('Required'),
           phone: Yup.string()
-            .required('Required'),
-          message: Yup.string()
-            .min(1, 'Message cannot be empty')
-            .required('Required'),
+            .min(10, 'Invalid phone number')
+            .max(14, 'Invalid phone number')
+            .required('Required')
         })}
+
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2))
@@ -81,37 +69,33 @@ const contact = () => {
           setStep(3)
         }}
       >
-        <div className={quoteStylesStep2.section}>
-          <div className={quoteStylesStep2.container}>
-            <Form className={quoteStylesStep2.form}>
+      <div className={QuoteStep2Styles.section}>
+        <div className={QuoteStep2Styles.container}>
+          <Form className={QuoteStep2Styles.form}>
+            <div className={QuoteStep2Styles.firstName}>
               <MyTextInput
                 label="First Name"
-                name="firstName"
+                name="fName"
                 type="text"
                 maxLength='15'
                 autoComplete="given-name"
                 placeholder="Jane"
               />
+            </div>
 
-              <MyTextInput
+          <div className={QuoteStep2Styles.lastName}>
+            <MyTextInput
                 label="Last Name"
-                name="lastName"
+                name="lName"
                 type="text"
                 maxLength='20'
                 autoComplete="family-name"
                 placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
-                label="Last Name"
-                name="lastName"
-                type="text"
-                maxLength='20'
-                autoComplete="family-name"
-                placeholder="Doe"
-              />
-
-              <MyTextInput
+          <div className={QuoteStep2Styles.companyName}>
+            <MyTextInput
                 label="Company Name"
                 name="cName"
                 type="text"
@@ -119,16 +103,20 @@ const contact = () => {
                 autoComplete="family-name"
                 placeholder="Doe"
               />
+          </div>
 
-              <MyTextInput
+          <div className={QuoteStep2Styles.email}>
+            <MyTextInput
                 label="Email Address"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="jane@formik.com"
+                placeholder="jane@xmail.com"
               />
+          </div>
 
-              <MyMaskedTextInput
+          <div className={QuoteStep2Styles.phone}>
+            <MyMaskedTextInput
                 label="Phone"
                 name="phone"
                 mask="(999) 999-9999"
@@ -136,15 +124,16 @@ const contact = () => {
                 autoComplete="tel-national"
                 placeholder="(000) 000-0000"
               />
-
-              <button onClick={() => {setStep(3)}} type="submit">CONTINUE</button>
-              <button onClick={() => {setStep(1)}} type="submit">BACK</button>
-            </Form>
           </div>
+          <button className={QuoteStep2Styles.button} type="submit">CONTINUE</button>
+          <button onClick={() =>{setStep(1)}} className={QuoteStep2Styles.button}>BACK</button>
+
+        </Form>
         </div>
+      </div>
       </Formik>
     </div>
   )
 }
 
-export default contact
+export default QuoteStep2
