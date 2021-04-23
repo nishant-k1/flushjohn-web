@@ -20,7 +20,7 @@
   font-weight: 200;
 }
 
-.input {
+.form input {
   padding: 0;
   margin: 0;
   color: white;
@@ -35,8 +35,15 @@
   font-size: large;
   font-weight: 300;
 }
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover, 
+.form input:-webkit-autofill:focus, 
+.form input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
+  -webkit-text-fill-color: white !important;
+}
 
-.input:focus{
+.form input:focus{
   padding: 0;
   margin: 0;
   color: white;
