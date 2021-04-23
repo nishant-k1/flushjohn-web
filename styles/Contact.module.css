@@ -111,34 +111,30 @@
     "button";
 }
 
-.firstName{
-  grid-area: fName;
+.form div{
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.firstName{
+  grid-area: fName;
+
 }
 
 .lastName{
   grid-area: lName;
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .email{
   grid-area: email;
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .phone{
   grid-area: phone;
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .message{
   grid-area: message;
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .button{

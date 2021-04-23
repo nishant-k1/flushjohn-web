@@ -1,0 +1,151 @@
+.form{
+  padding: 0;
+  margin: 0;
+  display: grid;
+  row-gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-areas: 
+                        "deliveryDate"
+                        "pickupDate"
+                        "street" 
+                        "city"
+                        "state"
+                        "zip"
+                        "hint"
+                        "onsite"
+                        "onsitePhone"
+                        "buttons";
+}
+
+.outerBox{
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.innerBox{
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.form label{
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: large;
+  font-weight: 200;
+}
+
+.form input, .form select, .form textarea {
+  padding: 0;
+  margin: 0;
+  color: white;
+  background-color: #2a4358;
+  outline: none;
+  border:none;
+  border-bottom: solid 2px white;
+  height: 2rem;
+  font-size: large;
+  font-weight: 400;
+}
+
+.form input:focus{
+  padding: 0;
+  margin: 0;
+  color: white;
+  border: none;
+  outline: none;
+  border-bottom: solid 2px white;
+  background-color: #2a4358;
+  height: 2rem;
+  font-size: large;
+  font-weight: 400;
+}
+
+.form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.error{
+  padding: 0;
+  margin: 0;
+  color: yellow;
+}
+.deliveryDate{
+  grid-area: deliveryDate;
+}
+
+.pickupDate{
+  grid-area: pickupDate;
+}
+.street{
+  grid-area: street;
+}
+.city{
+  grid-area: city;
+}
+
+.state{
+  grid-area: state;
+}
+.zip{
+  grid-area: zip;
+}
+
+.hint{
+  grid-area: hint;
+}
+.onsite{
+  grid-area: onsite;
+}
+.onsitePhone{
+  grid-area: onsitePhone;
+}
+
+.buttons{
+  grid-area: buttons;
+  display: grid;
+  column-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.buttons button{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.808);
+  font-size: large;
+  font-weight: 500;
+  border: solid 1px rgba(255, 255, 255, 0.808);
+  border-radius: 2px;
+
+}
+.buttons button:hover{
+  background-color: rgba(255, 255, 255, 0.603);
+  transition: .3s;
+}
+
+
+@media screen and (min-width: 769px) {
+  .form .outerBox{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    column-gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

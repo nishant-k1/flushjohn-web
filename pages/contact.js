@@ -7,39 +7,39 @@ const contact = () => {
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
+      <div>
         <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
         <input className={contactStyles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
           <div className={contactStyles.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
   
   const MyMaskedTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
+      <div>
         <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
         <MaskedInput className={contactStyles.input} {...field} {...props} />
         {meta.touched && meta.error ? (
           <div className={contactStyles.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
 
   const MyTextArea = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
+      <div>
         <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
         <textarea className={contactStyles.textarea} {...field} {...props} />
         {meta.touched && meta.error ? (
           <div className={contactStyles.error}>{meta.error}</div>
         ) : null}
-      </>
+      </div>
     )
   }
   

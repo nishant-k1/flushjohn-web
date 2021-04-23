@@ -10,12 +10,7 @@
 }
 
 .progressBar{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.808);
-  margin-bottom: 2.5rem;
+  display: none;
 }
 
 .step{
@@ -28,4 +23,16 @@
 
 .step.active{
   background-color: yellow;
+}
+
+
+@media screen and (min-width: 769px) {
+  .progressBar{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.808);
+    margin-bottom: 2.5rem;
+  }
 }

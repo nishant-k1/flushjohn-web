@@ -14,26 +14,30 @@ const QuoteStep2 = () => {
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
+      <div className={QuoteStep2Styles.outerBox}>
         <label className={QuoteStep2Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <input className={QuoteStep2Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
-        ) : null}
-      </>
+        <div className={QuoteStep2Styles.innerBox}>
+          <input className={QuoteStep2Styles.input} {...field} {...props} />
+          {meta.touched && meta.error ? (
+            <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          ) : null}
+        </div>
+      </div>
     )
   }
   
   const MyMaskedTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
+      <div className={QuoteStep2Styles.outerBox}>
         <label className={QuoteStep2Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={QuoteStep2Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
-        ) : null}
-      </>
+        <div className={QuoteStep2Styles.innerBox}>
+          <MaskedInput className={QuoteStep2Styles.input} {...field} {...props} />
+          {meta.touched && meta.error ? (
+            <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          ) : null}
+        </div>
+      </div>
     )
   }
 
@@ -41,7 +45,6 @@ const QuoteStep2 = () => {
     <div>
       <Formik
         initialValues={formValues}
-
         validationSchema={Yup.object({
           fName: Yup.string()
             .max(15, 'Must be 15 characters or less')
@@ -125,8 +128,10 @@ const QuoteStep2 = () => {
                 placeholder="(000) 000-0000"
               />
           </div>
-          <button className={QuoteStep2Styles.button} type="submit">CONTINUE</button>
-          <button onClick={() =>{setStep(1)}} className={QuoteStep2Styles.button}>BACK</button>
+        <div className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}>
+          <button type="submit">CONTINUE</button>
+          <button onClick={() =>{setStep(1)}}>BACK</button>
+        </div>
 
         </Form>
         </div>

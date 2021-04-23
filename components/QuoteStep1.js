@@ -12,13 +12,13 @@ const QuoteStep1 = () => {
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props)
     return (
-      <>
-        <label className={QuoteStep1Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <input className={QuoteStep1Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep1Styles.error}>{meta.error}</div>
-        ) : null}
-      </>
+      <div className={QuoteStep1Styles.outerBox}>
+        <label htmlFor={props.id || props.name}>{label}</label>
+        <div className={QuoteStep1Styles.innerBox}>
+          <input {...field} {...props} />
+          <label htmlFor={props.id || props.name}>Units</label>
+        </div>
+      </div>
     )
   }
   
@@ -26,16 +26,11 @@ const QuoteStep1 = () => {
     <div>
       <Formik
         initialValues={formValues}
-
         validationSchema={Yup.object({
-          SPR: Yup.number()
-            .max(15, 'Must be 15 characters or less'),
-          DFR: Yup.number()
-            .max(15, 'Must be 15 characters or less'),
-          ACR: Yup.number()
-            .max(15, 'Must be 15 characters or less'),
-          HWS: Yup.number()
-            .max(15, 'Must be 15 characters or less'),
+          SPR: Yup.number(),
+          DFR: Yup.number(),
+          ACR: Yup.number(),
+          HWS: Yup.number(),
         })}
 
         onSubmit={(values, { setSubmitting }) => {
@@ -46,8 +41,6 @@ const QuoteStep1 = () => {
           setStep(2)
         }}
       >
-      <div className={QuoteStep1Styles.section}>
-        <div className={QuoteStep1Styles.container}>
           <Form className={QuoteStep1Styles.form}>
             <div className={QuoteStep1Styles.SPR}>
               <MyTextInput
@@ -55,6 +48,7 @@ const QuoteStep1 = () => {
                 name="SPR"
                 type="number"
                 maxLength='15'
+                min="0"
               />
             </div>
             <div className={QuoteStep1Styles.DFR}>
@@ -63,6 +57,7 @@ const QuoteStep1 = () => {
                 name="DFR"
                 type="number"
                 maxLength='15'
+                min="0"
               />
             </div>
             <div className={QuoteStep1Styles.ACR}>
@@ -71,6 +66,7 @@ const QuoteStep1 = () => {
                 name="ACR"
                 type="number"
                 maxLength='15'
+                min="0"
               />
             </div>
             <div className={QuoteStep1Styles.HWS}>
@@ -79,13 +75,12 @@ const QuoteStep1 = () => {
                 name="HWS"
                 type="number"
                 maxLength='15'
+                min="0"
               />
             </div>
 
           <button className={QuoteStep1Styles.button} type="submit">CONTINUE</button>
         </Form>
-        </div>
-      </div>
       </Formik>
     </div>
   )
