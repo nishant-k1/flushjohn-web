@@ -27,7 +27,7 @@
   display: grid;
   justify-content: space-between;
   align-items: center;
-  grid-template-columns: 1fr max-content;
+  grid-template-columns: max-content max-content;
 }
 
 .form label{
@@ -49,6 +49,7 @@
   height: 2rem;
   font-size: large;
   font-weight: 400;
+  text-align: center;
 }
 
 .form input:focus{
@@ -62,11 +63,20 @@
   height: 2rem;
   font-size: large;
   font-weight: 400;
+  text-align: center;
 }
 
 .form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover, 
+.form input:-webkit-autofill:focus, 
+.form input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
+  -webkit-text-fill-color: white !important;
 }
 
 .form input[type=number] {
@@ -110,6 +120,7 @@
 
 @media screen and (min-width: 769px) {
   .form{
+    grid-template-columns: 2fr 1fr;
     border: 1px solid rgba(255, 255, 255, 0.253);
     padding: 2rem;
   }
@@ -119,12 +130,16 @@
     margin: 0;
     display: grid;
     column-gap: 4rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr .5fr;
     justify-content: space-between;
     align-items: center;
   }
 
-  .button{
-    width: fit-content;
+  .form button{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    padding: 0 2rem;
   }
 }

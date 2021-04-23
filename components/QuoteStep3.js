@@ -5,7 +5,6 @@ import QuoteStep3Styles from '../styles/QuoteStep3.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-
 const QuoteStep3 = () => {  
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
@@ -77,16 +76,14 @@ const QuoteStep3 = () => {
             .required('Required'),
           state: Yup.string()
             .required('Required'),
-          zip: Yup.number()
-            .min(5, 'Invalid zip code')
+          zip: Yup.string()
             .required('Required'),
           hint: Yup.string(),
           onsite: Yup.string()
             .required('Required'),
           onsitePhone: Yup.string()
-            .min(10, 'Invalid phone number')
-            .max(14, 'Invalid phone number')
-            .required('Required'),
+            .required('Required')
+
         })}
 
         onSubmit={(values, { setSubmitting }) => {
@@ -118,8 +115,8 @@ const QuoteStep3 = () => {
                 label="Street"
                 name="street"
                 type="text"
-                autoComplete="family-name"
-                placeholder="Street Address"
+                autoComplete="street-address"
+                placeholder="Street-address"
               />
           </div>
 
@@ -128,7 +125,7 @@ const QuoteStep3 = () => {
                 label="City"
                 name="city"
                 type="text"
-                autoComplete="family-name"
+                autoComplete="city"
                 placeholder="City"
               />
           </div>
@@ -138,7 +135,7 @@ const QuoteStep3 = () => {
               label="State"
               name="state"
               type="text"
-              autoComplete="family-name"
+              autoComplete="state"
             >
                 <option value="SS">Select State</option>
                 <option value="AL">Alabama</option>
@@ -201,23 +198,21 @@ const QuoteStep3 = () => {
           </div>
 
           <div className={QuoteStep3Styles.zip}>
-            <MyTextInput
+            <MyMaskedTextInput
                 label="Zip Code"
                 name="zip"
-                type="number"
-                minLength="5"
-                maxLength="5"
-                autoComplete="family-name"
+                mask="99999"
+                maskChar=" "
+                autoComplete="postal-code"
                 placeholder="00000"
               />
           </div>
           <div className={QuoteStep3Styles.hint}>
             <MyTextArea
-                label="Placement Location Hints"
+                label="Placement Instructions"
                 name="hint"
                 type="textarea"
-                autoComplete="family-name"
-                placeholder="Placement location hints, backyard, park, frontyard etc"
+                placeholder="Placement guidelines, backyard, frontyard, park etc"
               />
           </div>
           <div className={QuoteStep3Styles.onsite}>
@@ -234,6 +229,7 @@ const QuoteStep3 = () => {
                 label="Onsite Person Phone"
                 name="onsitePhone"
                 mask="(999) 999-9999"
+                maskChar=" "
                 type="tel"
                 autoComplete="tel-national"
                 placeholder="(000) 000-0000"

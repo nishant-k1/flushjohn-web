@@ -55,11 +55,14 @@
   font-size: large;
   font-weight: 400;
 }
-
-.form textarea{
-  height: 50px;
-  border-right: 1px solid rgba(255, 255, 255, 0.267);
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover, 
+.form input:-webkit-autofill:focus, 
+.form input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
+  -webkit-text-fill-color: white !important;
 }
+
 .form input:focus{
   padding: 0;
   margin: 0;
@@ -81,6 +84,23 @@
 .form input[type=number] {
   -moz-appearance: textfield;
 }
+.form textarea{
+  height: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.267);
+}
+.form textarea:focus{
+  height: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.267);
+}
+
+.form textarea:-webkit-autofill,
+.form textarea:-webkit-autofill:hover, 
+.form textarea:-webkit-autofill:focus, 
+.form textarea:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
 
 .form select{
   width: 100%;
@@ -162,5 +182,13 @@
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .form button{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    padding: 0 2rem;
   }
 }

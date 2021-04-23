@@ -5,7 +5,6 @@ import QuoteStep2Styles from '../styles/QuoteStep2.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 
-
 const QuoteStep2 = () => {  
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
@@ -47,14 +46,13 @@ const QuoteStep2 = () => {
         initialValues={formValues}
         validationSchema={Yup.object({
           fName: Yup.string()
-            .max(15, 'Must be 15 characters or less')
+            .max(50, 'Must be 50 characters or less')
             .required('Required'),
           lName: Yup.string()
-            .max(20, 'Must be 20 characters or less')
+            .max(50, 'Must be 50 characters or less')
             .required('Required'),
           cName: Yup.string()
-            .max(20, 'Must be 50 characters or less')
-            .required('Required'),
+            .max(120, 'Must be 120 characters or less'),
           email: Yup.string()
             .email('Invalid email address')
             .required('Required'),
@@ -80,54 +78,55 @@ const QuoteStep2 = () => {
                 label="First Name"
                 name="fName"
                 type="text"
-                maxLength='15'
+                maxLength='50'
                 autoComplete="given-name"
                 placeholder="Jane"
               />
             </div>
 
-          <div className={QuoteStep2Styles.lName}>
-            <MyTextInput
-                label="Last Name"
-                name="lName"
-                type="text"
-                maxLength='20'
-                autoComplete="family-name"
-                placeholder="Doe"
-              />
-          </div>
+            <div className={QuoteStep2Styles.lName}>
+              <MyTextInput
+                  label="Last Name"
+                  name="lName"
+                  type="text"
+                  maxLength='50'
+                  autoComplete="family-name"
+                  placeholder="Doe"
+                />
+            </div>
 
-          <div className={QuoteStep2Styles.cName}>
-            <MyTextInput
-                label="Company Name"
-                name="cName"
-                type="text"
-                maxLength='50'
-                autoComplete="family-name"
-                placeholder="Doe"
-              />
-          </div>
+            <div className={QuoteStep2Styles.cName}>
+              <MyTextInput
+                  label="Company Name"
+                  name="cName"
+                  type="text"
+                  maxLength='120'
+                  autoComplete="organization"
+                  placeholder="Acme Widget, Inc"
+                />
+            </div>
 
-          <div className={QuoteStep2Styles.email}>
-            <MyTextInput
-                label="Email Address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="jane@xmail.com"
-              />
-          </div>
+            <div className={QuoteStep2Styles.email}>
+              <MyTextInput
+                  label="Email Address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="jane@email.com"
+                />
+            </div>
 
-          <div className={QuoteStep2Styles.phone}>
-            <MyMaskedTextInput
-                label="Phone"
-                name="phone"
-                mask="(999) 999-9999"
-                type="tel"
-                autoComplete="tel-national"
-                placeholder="(000) 000-0000"
-              />
-          </div>
+            <div className={QuoteStep2Styles.phone}>
+              <MyMaskedTextInput
+                  label="Phone"
+                  name="phone"
+                  mask="(999) 999-9999"
+                  maskChar=" "
+                  type="tel"
+                  autoComplete="tel-national"
+                  placeholder="(000) 000-0000"
+                />
+            </div>
         <div className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}>
           <button type="submit">CONTINUE</button>
           <button onClick={() =>{setStep(1)}}>BACK</button>
