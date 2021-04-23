@@ -75,7 +75,7 @@ const QuoteStep2 = () => {
       <div className={QuoteStep2Styles.section}>
         <div className={QuoteStep2Styles.container}>
           <Form className={QuoteStep2Styles.form}>
-            <div className={QuoteStep2Styles.firstName}>
+            <div className={QuoteStep2Styles.fName}>
               <MyTextInput
                 label="First Name"
                 name="fName"
@@ -86,7 +86,7 @@ const QuoteStep2 = () => {
               />
             </div>
 
-          <div className={QuoteStep2Styles.lastName}>
+          <div className={QuoteStep2Styles.lName}>
             <MyTextInput
                 label="Last Name"
                 name="lName"
@@ -97,7 +97,7 @@ const QuoteStep2 = () => {
               />
           </div>
 
-          <div className={QuoteStep2Styles.companyName}>
+          <div className={QuoteStep2Styles.cName}>
             <MyTextInput
                 label="Company Name"
                 name="cName"

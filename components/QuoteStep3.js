@@ -102,9 +102,6 @@ const QuoteStep3 = () => {
                 label="Delivery Date"
                 name="deliveryDate"
                 type="date"
-                maxLength='15'
-                autoComplete="given-name"
-                placeholder="Jane"
               />
             </div>
 
@@ -113,9 +110,6 @@ const QuoteStep3 = () => {
                 label="Pickup Date"
                 name="pickupDate"
                 type="date"
-                maxLength='20'
-                autoComplete="family-name"
-                placeholder="Doe"
               />
           </div>
 
@@ -124,9 +118,8 @@ const QuoteStep3 = () => {
                 label="Street"
                 name="street"
                 type="text"
-                maxLength='50'
                 autoComplete="family-name"
-                placeholder="Doe"
+                placeholder="Street Address"
               />
           </div>
 
@@ -135,96 +128,75 @@ const QuoteStep3 = () => {
                 label="City"
                 name="city"
                 type="text"
-                maxLength='50'
                 autoComplete="family-name"
-                placeholder="Doe"
+                placeholder="City"
               />
           </div>
 
           <div className={QuoteStep3Styles.state}>
             <MySelect
-                label="State"
-                name="state"
-                type="text"
-                maxLength='50'
-                autoComplete="family-name"
-                placeholder="Doe"
-              >
-                  <option value="SS">Select State</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AL">Alabama</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DC">Washington D.C.</option>
-                  <option value="DE">Delaware</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="IA">Iowa</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MD">Maryland</option>
-                  <option value="ME">Maine</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NY">New York</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="TX">Texas</option>
-                  <option value="UT">Utah</option>
-                  <option value="VA">Virginia</option>
-                  <option value="VT">Vermont</option>
-                  <option value="WA">Washington</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WY">Wyoming</option>
-                  <option value="AA">Armed Forces Americas(except Canada)</option>
-                  <option value="AE">Armed Forces Europe/Canada</option>
-                  <option value="AP">Armed Forces Pacific</option>
-                  <option value="AS">American Samoa</option>
-                  <option value="FM">Federated States of Micronesia</option>
-                  <option value="GU">Guam</option>
-                  <option value="MH">Marshall Islands</option>
-                  <option value="MP">Northern Mariana Islands</option>
-                  <option value="PR">Puerto Rico</option>
-                  <option value="PW">Palau</option>
-                  <option value="VI">U.S.Virgin Islands</option>
-                  <option value="AB">Alberta</option>
-                  <option value="BC">British Columbia</option>
-                  <option value="MB">Manitoba</option>
-                  <option value="NB">New Brunswick</option>
-                  <option value="NF">Newfoundland</option>
-                  <option value="NS">Novia Scotia</option>
-                  <option value="NT">Northwest Territories</option>
-                  <option value="ON">Ontario</option>
-                  <option value="PE">Prince Edward Island</option>
-                  <option value="PQ">Quebec</option>
-                  <option value="SA">Saskatchewan</option>
-                  <option value="YK">Yukon Territory</option>
+              label="State"
+              name="state"
+              type="text"
+              autoComplete="family-name"
+            >
+                <option value="SS">Select State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AS">American Samoa</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="Gu">Guam</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="MP">Northern Mariana Is</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VI">Virgin Islands</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
             </MySelect>
           </div>
 
@@ -232,11 +204,11 @@ const QuoteStep3 = () => {
             <MyTextInput
                 label="Zip Code"
                 name="zip"
-                type="text"
-                minLength='5'
-                maxLength='5'
+                type="number"
+                minLength="5"
+                maxLength="5"
                 autoComplete="family-name"
-                placeholder="Doe"
+                placeholder="00000"
               />
           </div>
           <div className={QuoteStep3Styles.hint}>
@@ -244,9 +216,8 @@ const QuoteStep3 = () => {
                 label="Placement Location Hints"
                 name="hint"
                 type="textarea"
-                maxLength='50'
                 autoComplete="family-name"
-                placeholder="Doe"
+                placeholder="Placement location hints, backyard, park, frontyard etc"
               />
           </div>
           <div className={QuoteStep3Styles.onsite}>
@@ -254,9 +225,8 @@ const QuoteStep3 = () => {
                 label="Onsite Person Name"
                 name="onsite"
                 type="text"
-                maxLength='50'
                 autoComplete="family-name"
-                placeholder="Doe"
+                placeholder="Onsite Person Name"
               />
           </div>
           <div className={QuoteStep3Styles.onsitePhone}>
