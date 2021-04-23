@@ -57,8 +57,6 @@ const QuoteStep2 = () => {
             .email('Invalid email address')
             .required('Required'),
           phone: Yup.string()
-            .min(10, 'Invalid phone number')
-            .max(14, 'Invalid phone number')
             .required('Required')
         })}
 
@@ -121,8 +119,6 @@ const QuoteStep2 = () => {
                   label="Phone"
                   name="phone"
                   mask="(999) 999-9999"
-                  maskChar=" "
-                  type="tel"
                   autoComplete="tel-national"
                   placeholder="(000) 000-0000"
                 />

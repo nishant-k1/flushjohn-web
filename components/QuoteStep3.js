@@ -83,7 +83,6 @@ const QuoteStep3 = () => {
             .required('Required'),
           onsitePhone: Yup.string()
             .required('Required')
-
         })}
 
         onSubmit={(values, { setSubmitting }) => {
@@ -229,8 +228,6 @@ const QuoteStep3 = () => {
                 label="Onsite Person Phone"
                 name="onsitePhone"
                 mask="(999) 999-9999"
-                maskChar=" "
-                type="tel"
                 autoComplete="tel-national"
                 placeholder="(000) 000-0000"
               />
