@@ -1,0 +1,98 @@
+.form{
+  background-color: white;
+  border: transparent 2px solid;
+  border-radius: 4px;
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  row-gap: .2rem;
+  position: relative;
+  top: 6rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.form h2{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: .5rem;
+}
+
+.error{
+  color: red;
+  font-size: smaller;
+}
+.label{
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-size: small;
+  font-weight: 200;
+}
+.form input{
+  background-color: transparent;
+  margin: 0;
+  outline: none;
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.5);
+  height: 1.5rem;
+  font-size: small;
+  font-weight: 400;
+  display: grid;
+  width: 100%;
+}
+
+.textarea{
+  padding: 4px;
+  background-color: transparent;
+  margin: 0;
+  outline: none;
+  border: solid 1px rgba(0, 0, 0, 0.37);
+  border-radius: 4px;
+  height: 2.5rem;
+  font-size: small;
+  font-weight: 400;
+  display: grid;
+  width: 100%;
+}
+
+.dates{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: .5rem;
+  margin-bottom: .5rem;
+}
+
+.deliveryDate{
+  text-align: center;
+}
+
+.pickupDate{
+  text-align: center;
+}
+
+.button{
+  width: fit-content;
+  align-self: center;
+  padding: .5rem 1rem;
+  border: none;
+  font-size: smaller;
+  font-weight: 900;
+  color: white;
+  background-color: rgba(31, 85, 233, 0.726);
+}
+
+.button:hover{
+  background-color: rgba(31, 85, 233, 0.87);
+  transition: .3s;
+}
+
+@media screen and (min-width: 769px) {
+  .form{
+    height: 450px;
+    width: 310px;
+  }
+}

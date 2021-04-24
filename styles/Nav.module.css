@@ -1,6 +1,6 @@
 .section{
   min-width: 100vw;
-  background-color:#002B4C;
+  background-color:#001a2e;
   padding: 0;
 }
 
@@ -44,7 +44,7 @@
     grid-template-columns: repeat(2, max-content);
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 0;
+    padding: 0;
     margin: 0;
   }
   
@@ -55,6 +55,8 @@
   .nav img{
     padding: 0;
     margin: 0;
+    height: 5rem;
+    width: auto
   }
 
   .nav ul{
@@ -67,6 +69,7 @@
     padding: 0;
     margin: 0;
     color: white;
+    /* color:black; */
   }
   
   .nav ul li a:hover{
@@ -78,15 +81,17 @@
     color: white;
     border: solid 1px rgb(49, 98, 170);
     border-radius: 4px;
-    padding: 1rem;
+    padding: 1rem 2rem;
     font-weight: 500;
   }
 
   .quote a:hover{
     background-color: rgb(49, 98, 170);
+    transition: .3s;
   }
   .nav ul .quote a:hover{
     color: white;
+    transition: .3s;
   }
 
   .phone div{
@@ -98,16 +103,19 @@
     font-weight: 500;
     display: grid;
     align-items: center;
+    justify-content: center;
     grid-template-columns: repeat(2, max-content);
     column-gap: .5rem;
   }
 
   .phone div:hover{
     background-color: rgb(23, 82, 170);
+    transition: .3s;
   }
   
   .nav ul .phone div:hover{
     color: white;
+    transition: .3s;
   }
 
 }
