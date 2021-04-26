@@ -3,15 +3,17 @@
   border: transparent 2px solid;
   border-radius: 4px;
   padding: 1rem;
+  margin: 0;
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr;
   row-gap: .2rem;
   position: relative;
-  top: 6rem;
+  top: 4rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .form h2{
   text-align: center;
   margin: 0;
@@ -94,5 +96,6 @@
   .form{
     height: 450px;
     width: 310px;
+    top: 4rem;
   }
 }

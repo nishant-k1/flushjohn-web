@@ -2,6 +2,7 @@
   min-width: 100vw;
   background-color:#001a2e;
   padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.425);
 }
 
 .container{
@@ -12,8 +13,8 @@
 
 .nav{
   display: grid;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -21,24 +22,25 @@
   color: white;
   height: 2rem;
   width: 2rem;
-  display: grid;
-  justify-content: right;
-  align-items: center;
+  justify-self: left;
 }
 
 .nav img{
   padding: 0;
   margin: .5rem 0;
-  z-index: 2;
+  height: 3.2rem;
+  justify-self: center;
 }
 
 .navMenu{
   display: none;
 }
 
-
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 769px) {
+  .section{
+    border-bottom: none;
+  }
   .nav{
     display: grid;
     grid-template-columns: repeat(2, max-content);
@@ -89,7 +91,8 @@
     background-color: rgb(49, 98, 170);
     transition: .3s;
   }
-  .nav ul .quote a:hover{
+
+  .quote a:hover{
     color: white;
     transition: .3s;
   }
@@ -111,12 +114,8 @@
   .phone div:hover{
     background-color: rgb(23, 82, 170);
     transition: .3s;
-  }
-  
-  .nav ul .phone div:hover{
     color: white;
     transition: .3s;
   }
-
 }
 
