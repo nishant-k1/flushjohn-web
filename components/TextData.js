@@ -36,4 +36,20 @@ const homeData = {
   }
 }
 
-export default homeData 
+export const productData=
+{
+  h1:"Standard Portable Restroom/Event Unit", 
+  h2:"Standard Portable Restroom/Jobsite Unit ", 
+  h3:"Ada-Compliant Portable Restroom",
+  h4:"Flushable Restroom-Sink inside/Event",
+  h5:"Hand Washing Sink Station",
+  h6:"Flushable Restroom-Sink inside/Jobsite",
+  p1:"This is the most basic porta potty. It has toilet papers inside.",
+  p2:"This is the most basic porta potty. It has toilet papers inside.",
+  p3:"The ada porta potties are larges in size than the standard one is wheel chair accessible.",
+  p4:"The flushable porta potty has a flush and also a sink attached to it from inside.",
+  p5:"The sink station comes with soap and paper towels",
+  p6:"The flushable porta potty has a flush and also a sink attached to it from inside."
+}
+
+export default homeData

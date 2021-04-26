@@ -1,0 +1,44 @@
+/* utilities */
+.section{
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+}
+
+.container{
+  padding: 0 32px;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.section4{
+  margin: 0;
+  padding: 64px 0;
+  text-align: center;
+  display: grid;
+  row-gap: 2rem;
+}
+
+.section4 div{
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  background-color: rgb(236, 236, 236);
+}
+
+.section4 div img{
+  max-height: 700px;
+  max-width: 200px;
+}
+.section4 div h5{
+  font-size: medium;
+}
+/* desktop */
+@media screen and (min-width: 769px) {
+  .section4{
+    padding: 8rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+  }
+}

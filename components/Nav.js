@@ -17,8 +17,8 @@ const Nav = () => {
           <ul className={navStyles.navMenu}>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/products">Products & Services</Link></li>
-            <li className={navStyles.quote}><Link href="/quote">GET A QUOTE</Link></li>
-            <li className={navStyles.phone}><Link href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link></li>
+            <li className={navStyles.quote}><Link type="button" href="/quote"><h3>GET A QUOTE</h3></Link></li>
+            <li className={navStyles.phone}><Link type="button" href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link></li>
           </ul>
         </div>
       </div>

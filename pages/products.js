@@ -1,15 +1,43 @@
-
+import {productData} from '../components/TextData'
+import productStyles from '../styles/Products.module.css'
 
 const products = () => {
   return (
-    <div>
-      <h1>Welcome to Products</h1>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
-      <p>Excepteur proident magna eu qui aliqua ad. Ullamco exercitation irure tempor in ipsum id. Aliquip sunt elit consectetur incididunt ut incididunt quis mollit. Eu dolore culpa aliquip Lorem aute magna irure aute dolor excepteur nostrud reprehenderit cillum. Proident labore commodo ipsum voluptate ipsum labore do esse quis.</p>
+    <div className={`${productStyles.section} ${productStyles.section4Section}`}>
+    <div className={productStyles.container}>
+      <div className={productStyles.section4}>
+          <div>
+            <img src="/assets/sps_yellow.svg" alt="product_pic" />
+            <h5>{productData.h1}</h5>
+            <p>{productData.p1}</p>
+          </div>
+          <div>
+            <img src="/assets/sps_blue.svg" alt="product_pic" />
+            <h5>{productData.h2}</h5>
+            <p>{productData.p2}</p>
+          </div>
+          <div>
+            <img src="/assets/ada_blue.svg" alt="product_pic" />
+            <h5>{productData.h3}</h5>
+            <p>{productData.p3}</p>
+          </div>
+          <div>
+            <img src="/assets/flushable.svg" alt="product_pic" />
+            <h5>{productData.h4}</h5>
+            <p>{productData.p4}</p>
+          </div>
+          <div>
+            <img src="/assets/sink.svg" alt="product_pic" />
+            <h5>{productData.h5}</h5>
+            <p>{productData.p5}</p>
+          </div>
+          <div>
+            <img src="/assets/VIP-Flush-1.svg" alt="product_pic" />
+            <h5>{productData.h6}</h5>
+            <p>{productData.p6}</p>
+          </div>
+      </div>
+      </div>
     </div>
   )
 }

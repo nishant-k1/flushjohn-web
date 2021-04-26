@@ -14,6 +14,7 @@
   padding: 0 32px;
 }
 
+
 .ul{
   padding: 32px 0;
   margin: 0;
@@ -64,10 +65,11 @@
   }
 
   .social ul{
-    list-style: none;
     padding:0;
     margin: 0;
+    list-style: none;
     display: grid;
+    grid-template-columns: 1fr;
     row-gap: .5rem;
   }
 
@@ -87,9 +89,12 @@
 
 /* nav */
   .nav{
+    padding:0;
+    margin: 0;
+    grid-area: nav;
     display: grid;
-    justify-content: right;
-    align-items: left;
+    justify-content: left;
+    align-items: start;
     color: white;
   }
 
@@ -98,8 +103,10 @@
     padding:0;
     margin: 0;
     display: grid;
+    grid-template-columns: 1fr;
     row-gap: .5rem;
   }
+
   .nav ul li a{
     color: rgb(204, 204, 204);
   }
@@ -124,7 +131,7 @@
     padding:0;
     margin: 0;
     display: grid;
-    grid-template-columns: max-content;
+    grid-template-columns: 1fr;
     row-gap: .5rem;
   }
 

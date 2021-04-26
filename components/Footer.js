@@ -68,17 +68,18 @@ const Footer = () => {
                 <li><Link href="/products">Products & Services</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
                 <li><Link href="/quote">Get a Quote</Link></li>
-                <li><Link href="/privacy">Privacy Policy</Link></li>
-                <li><Link href="/terms">Terms & Conditions</Link></li>
               </ul>
             </li>
 
             {/* contact */}
             <li className={footerStyles.contact}>
-              <ul >
+              <ul>
                 <li><h2>Rent A Porta</h2></li>
                 <li><Link href="tel:(855) 780-3061">(855) 780-3061</Link></li>
                 <li><Link href="/contact">Contact Us</Link></li>
+                <li><Link href="/privacy">Privacy Policy</Link></li>
+                <li><Link href="/terms">Terms & Conditions</Link></li>
+                <li><Link href="/disclaimer">Disclaimer</Link></li>
               </ul>
             </li>
           </ul>

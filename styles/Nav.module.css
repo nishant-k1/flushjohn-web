@@ -62,38 +62,34 @@
   }
 
   .nav ul{
+    padding: 0;
+    margin: 0;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, max-content) ;
     column-gap: 2rem;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
-    margin: 0;
     color: white;
-    /* color:black; */
   }
-  
+
   .nav ul li a:hover{
     color: yellow;
     transition: .3s;
   }
-  
-  .quote a{
+
+  .quote h3{
     color: white;
     border: solid 1px rgb(49, 98, 170);
     border-radius: 4px;
     padding: 1rem 2rem;
     font-weight: 500;
+    font-size: medium;
   }
 
-  .quote a:hover{
-    background-color: rgb(49, 98, 170);
-    transition: .3s;
-  }
-
-  .quote a:hover{
+  .quote h3:hover{
     color: white;
+    background-color: rgb(49, 98, 170);
     transition: .3s;
   }
 
@@ -113,8 +109,6 @@
 
   .phone div:hover{
     background-color: rgb(23, 82, 170);
-    transition: .3s;
-    color: white;
     transition: .3s;
   }
 }
