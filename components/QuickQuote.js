@@ -1,17 +1,10 @@
-import { Formik, useFormikContext, Form, useField } from 'formik'
+import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
 import MaskedInput from 'react-input-mask'
 import Select from 'react-select'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from '../styles/QuickQuote.module.css'
-
-const options = [
-  { value: 'SPR', label: 'Standard Portable Restroom' },
-  { value: 'DFR', label: 'Deluxe Flushable Restroom' },
-  { value: 'ACR', label: 'ADA Portable Restroom' },
-  { value: 'HWS', label: 'Hand Wash Sink Station' }
-]
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -39,8 +32,16 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   )
 }
 
+const options = [
+  { value: 'SPR', label: 'Standard Portable Restroom' },
+  { value: 'DFR', label: 'Deluxe Flushable Restroom' },
+  { value: 'ACR', label: 'ADA Portable Restroom' },
+  { value: 'HWS', label: 'Hand Wash Sink Station' }
+]
+
 const MySelect = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
+  console.log(field)
   const {setValue} = helpers
   return (
     <div>
@@ -60,7 +61,7 @@ const MyDateInput = ({ label, ...props }) => {
   return (
     <div>
       <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-      <DatePicker className={quickQuoteStyles.input} {...field} {...props} onChange={value => setValue(value)}/>
+      <DatePicker className={quickQuoteStyles.input} {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={quickQuoteStyles.error}>{meta.error}</div>
       ) : null}
@@ -90,13 +91,9 @@ const QuickQuote = () => {
           fullName: '',
           email: '',
           phone: '',
+          products: '',
           zip:'',
-          products: {
-            SPR: '',
-            DFR: '',
-            ACR: '',
-            HWS: '',},
-          deliveryDate: {day:'', month: '', year:'', time:''},
+          deliveryDate: '',
           pickupDate: '',
           message: ''
         }}
@@ -142,62 +139,61 @@ const QuickQuote = () => {
           </div>
           <div className={quickQuoteStyles.email}>
             <MyTextInput
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="Email"
-              />
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Email"
+            />
           </div>
           <div className={quickQuoteStyles.phone}>
             <MyMaskedTextInput
-                name="phone"
-                mask="(999) 999-9999"
-                autoComplete="tel-national"
-                placeholder="Phone"
-              />
+              name="phone"
+              mask="(999) 999-9999"
+              autoComplete="tel-national"
+              placeholder="Phone"
+            />
           </div>
           <div className={quickQuoteStyles.products}>
             <MySelect
-                name="products"
-                placeholder="Select Products"
-                name="products"
-                isMulti
-                options={options}
-              />
+              name="products"
+              placeholder="Select Products"
+              name="products"
+              isMulti
+              options={options}
+            />
           </div>
           <div className={quickQuoteStyles.zip}>
             <MyMaskedTextInput
-                name="zip"
-                mask="99999"
-                maskChar=" "
-                autoComplete="postal-code"
-                placeholder="Zip Code"
-              />
+              name="zip"
+              mask="99999"
+              maskChar=" "
+              autoComplete="postal-code"
+              placeholder="Zip Code"
+            />
           </div>
           <div className={quickQuoteStyles.dates}>
             <div className={quickQuoteStyles.deliveryDate}>
-                <MyDateInput
-                  label="Delivery Date"
-                  id="deliveryDate"
-                  name="deliveryDate"
-                  dateFormat="MMMM d, yyyy"
-                />
-              </div>
-            <div className={quickQuoteStyles.pickupDate}>
               <MyDateInput
-                  label="Pick-up Date"
-                  name="pickupDate"
-                  label="Pickup Date"
-                  dateFormat="MMMM d, yyyy"
-                />
+                id="deliveryDate"
+                name="deliveryDate"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Delivery Date" 
+              />
             </div>
+          <div className={quickQuoteStyles.pickupDate}>
+            <MyDateInput
+              name="pickupDate"
+              dateFormat="MMMM d, yyyy"
+              placeholderText="Pick-up Date" 
+            />
+          </div>
           </div>
           <div className={quickQuoteStyles.message}>
             <MyTextArea
-                name="message"
-                type="textarea"
-                placeholder="Instructions"
-              />
+              name="message"
+              type="textarea"
+              placeholder="Instructions"
+            />
           </div>
           <button className={quickQuoteStyles.button} type="submit">SUBMIT</button>
         </Form> 
