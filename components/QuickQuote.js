@@ -13,22 +13,6 @@ const options = [
   { value: 'HWS', label: 'Hand Wash Sink Station' }
 ]
 
-const MyDateInput = ({ label, ...props }) => {
-  const [field, meta, helpers] = useField(props);
-  const {setValue} = helpers
-  return (
-    <div>
-      <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-
-      <DatePicker className={quickQuoteStyles.input}  {...field} {...props} value={field.value} onChange={value => setValue(value)}/>
-
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-
-    </div>
-  )
-}
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
   return (
@@ -56,11 +40,12 @@ const MyMaskedTextInput = ({ label, ...props }) => {
 }
 
 const MySelect = ({ label, ...props }) => {
-  const [field, meta] = useField({...props, type: 'select'})
+  const [field, meta, helpers] = useField(props);
+  const {setValue} = helpers
   return (
     <div>
       <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-      <Select className={quickQuoteStyles.input} {...field} {...props} />
+      <Select className={quickQuoteStyles.input} {...field} {...props} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={quickQuoteStyles.error}>{meta.error}</div>
       ) : null}
@@ -69,6 +54,20 @@ const MySelect = ({ label, ...props }) => {
 }
 
 
+const MyDateInput = ({ label, ...props }) => {
+  const [field, meta, helpers] = useField(props);
+  const {setValue} = helpers
+  return (
+    <div>
+      <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
+      <DatePicker className={quickQuoteStyles.input} {...field} {...props} onChange={value => setValue(value)}/>
+      {meta.touched && meta.error ? (
+        <div className={quickQuoteStyles.error}>{meta.error}</div>
+      ) : null}
+
+    </div>
+  )
+}
 
 const MyTextArea = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -102,25 +101,25 @@ const QuickQuote = () => {
           message: ''
         }}
 
-        // validationSchema={Yup.object({
-        //   fullName: Yup.string()
-        //     .max(60, 'Must be 60 characters or less')
-        //     .required('Required'),
-        //   email: Yup.string()
-        //     .email('Invalid email address')
-        //     .required('Required'),
-        //   phone: Yup.string()
-        //     .required('Required'),
-        //   zip: Yup.string()
-        //     .required('Required'),
-        //   products: Yup.string(),
-        //     // .required(),
-        //   deliveryDate: Yup.date()
-        //     .required('Required'),
-        //   pickupDate: Yup.date()
-        //     .required('Required'),
-        //   message: Yup.string()
-        // })}
+        validationSchema={Yup.object({
+          fullName: Yup.string()
+            .max(60, 'Must be 60 characters or less')
+            .required('Required'),
+          email: Yup.string()
+            .email('Invalid email address')
+            .required('Required'),
+          phone: Yup.string()
+            .required('Required'),
+          zip: Yup.string()
+            .required('Required'),
+          // products: Yup.string()
+          //   .required(),
+          deliveryDate: Yup.date()
+            .required('Required'),
+          pickupDate: Yup.date()
+            .required('Required'),
+          message: Yup.string()
+        })}
 
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
@@ -130,17 +129,17 @@ const QuickQuote = () => {
           resetForm()
         }}
       >
-          <Form className={quickQuoteStyles.form}>
-            <h2>Prompt Quote</h2>
-            <div className={quickQuoteStyles.firstName}>
-              <MyTextInput
-                name="fullName"
-                type="text"
-                maxLength='60'
-                autoComplete="given-name"
-                placeholder="Full Name"
-              />
-            </div>
+        <Form className={quickQuoteStyles.form}>
+          <h2>Prompt Quote</h2>
+          <div className={quickQuoteStyles.firstName}>
+            <MyTextInput
+              name="fullName"
+              type="text"
+              maxLength='60'
+              autoComplete="given-name"
+              placeholder="Full Name"
+            />
+          </div>
           <div className={quickQuoteStyles.email}>
             <MyTextInput
                 name="email"
@@ -178,15 +177,18 @@ const QuickQuote = () => {
           <div className={quickQuoteStyles.dates}>
             <div className={quickQuoteStyles.deliveryDate}>
                 <MyDateInput
+                  label="Delivery Date"
                   id="deliveryDate"
                   name="deliveryDate"
+                  dateFormat="MMMM d, yyyy"
                 />
               </div>
             <div className={quickQuoteStyles.pickupDate}>
               <MyDateInput
+                  label="Pick-up Date"
                   name="pickupDate"
                   label="Pickup Date"
-                  type="date"
+                  dateFormat="MMMM d, yyyy"
                 />
             </div>
           </div>
