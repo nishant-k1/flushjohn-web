@@ -25,6 +25,7 @@
   color: red;
   font-size: smaller;
 }
+
 .label{
   padding: 0;
   margin: 0;
@@ -68,13 +69,13 @@
   margin-bottom: .5rem;
 }
 
-.deliveryDate{
+/* .deliveryDate{
   text-align: center;
 }
 
 .pickupDate{
   text-align: center;
-}
+} */
 
 .button{
   width: fit-content;

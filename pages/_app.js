@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import {SidebarContextProvider} from '../contexts/SidebarContext'
 import { QuoteContextProvider } from '../contexts/QuoteContext'
+import Testimonial from '../components/Testimonial'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }) {
         <Layout>
           <Nav />
           <Component {...pageProps} />
+          <Testimonial />
           <Footer />
         </Layout>
       </QuoteContextProvider>
