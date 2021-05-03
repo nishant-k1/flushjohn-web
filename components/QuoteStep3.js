@@ -4,63 +4,85 @@ import MaskedInput from 'react-input-mask';
 import QuoteStep3Styles from '../styles/QuoteStep3.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {server} from '../config/index'
+import axios from 'axios';
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const MyDateInput = ({ label, ...props }) => {
+  const [field, meta, helpers] = useField(props);
+  const {setValue} = helpers
+  return (
+    <div className={QuoteStep3Styles.outerBox}>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <DatePicker {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
+      {meta.touched && meta.error ? (
+        <div className={QuoteStep3Styles.error}>{meta.error}</div>
+      ) : null}
+
+    </div>
+  )
+}
+
+const MyTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className={QuoteStep3Styles.outerBox}>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <input {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={QuoteStep3Styles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+const MyTextArea = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className={QuoteStep3Styles.outerBox}>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <textarea {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={QuoteStep3Styles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+const MySelect = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className={QuoteStep3Styles.outerBox}>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <select {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={QuoteStep3Styles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+const MyMaskedTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div className={QuoteStep3Styles.outerBox}>
+      <label htmlFor={props.id || props.name}>{label}</label>
+      <MaskedInput {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={QuoteStep3Styles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
 
 const QuoteStep3 = () => {  
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
   const [formValues, setFormValues] = data
-
-  const MyTextInput = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={QuoteStep3Styles.outerBox}>
-        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <input className={QuoteStep3Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep3Styles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-  const MyTextArea = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={QuoteStep3Styles.outerBox}>
-        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <textarea className={QuoteStep3Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep3Styles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-
-  const MySelect = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={QuoteStep3Styles.outerBox}>
-        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <select className={QuoteStep3Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep3Styles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-
-  const MyMaskedTextInput = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div className={QuoteStep3Styles.outerBox}>
-        <label className={QuoteStep3Styles.label} htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={QuoteStep3Styles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={QuoteStep3Styles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-
   return (
     <div>
       <Formik
@@ -85,39 +107,49 @@ const QuoteStep3 = () => {
             .required('Required')
         })}
 
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          await sleep(500);
+          try{
+            await setFormValues((prevValues) => {
+              return {...prevValues, ...values}
+            })
+            const res = await axios.post(`${server}/api/quote`, values)
+            resetForm()
+            alert(res.data.user)
+          } catch(err){
+            alert(err)
+          }
         }}
       >
           <Form className={QuoteStep3Styles.form}>
             <div className={QuoteStep3Styles.deliveryDate}>
-              <MyTextInput
+              <MyDateInput
                 label="Delivery Date"
+                id="deliveryDate"
                 name="deliveryDate"
-                type="date"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Select Delivery Date" 
               />
             </div>
 
-          <div className={QuoteStep3Styles.pickupDate}>
-            <MyTextInput
+            <div className={QuoteStep3Styles.pickupDate}>
+              <MyDateInput
                 label="Pickup Date"
                 name="pickupDate"
-                type="date"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Select Pick-up Date" 
               />
-          </div>
+            </div>
 
-          <div className={QuoteStep3Styles.street}>
-            <MyTextInput
-                label="Street"
-                name="street"
-                type="text"
-                autoComplete="street-address"
-                placeholder="Street-address"
-              />
-          </div>
+            <div className={QuoteStep3Styles.street}>
+              <MyTextInput
+                  label="Street"
+                  name="street"
+                  type="text"
+                  autoComplete="street-address"
+                  placeholder="Street-address"
+                />
+            </div>
 
           <div className={QuoteStep3Styles.city}>
             <MyTextInput

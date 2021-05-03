@@ -2,47 +2,51 @@ import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
 import MaskedInput from 'react-input-mask';
 import contactStyles from '../styles/Contact.module.css'
+import {server} from '../config/index'
+import axios from 'axios';
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const MyTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+      <div>
+      <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
+      <input className={contactStyles.input} {...field} {...props} />
+      {meta.touched && meta.error ? (
+          <div className={contactStyles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+const MyMaskedTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div>
+      <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
+      <MaskedInput className={contactStyles.input} {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={contactStyles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+const MyTextArea = ({ label, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <div>
+      <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
+      <textarea className={contactStyles.textarea} {...field} {...props} />
+      {meta.touched && meta.error ? (
+        <div className={contactStyles.error}>{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
 
 const contact = () => {  
-  const MyTextInput = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <input className={contactStyles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-  
-  const MyMaskedTextInput = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <MaskedInput className={contactStyles.input} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-
-  const MyTextArea = ({ label, ...props }) => {
-    const [field, meta] = useField(props)
-    return (
-      <div>
-        <label className={contactStyles.label} htmlFor={props.id || props.name}>{label}</label>
-        <textarea className={contactStyles.textarea} {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className={contactStyles.error}>{meta.error}</div>
-        ) : null}
-      </div>
-    )
-  }
-  
   return (
     <div>
       <Formik
@@ -71,11 +75,16 @@ const contact = () => {
             .required('Required'),
         })}
 
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          await sleep(500);
+          try{
+            const res = await axios.post(`${server}/api/contact`, values)
+            if(res.status === 200){
+              alert(`Your message has been sent successfully`)
+            }
+          } catch(err){
+            alert(err)
+          }
           resetForm()
         }}
       >

@@ -5,6 +5,10 @@ import Select from 'react-select'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from '../styles/QuickQuote.module.css'
+import {server} from '../config/index'
+import axios from 'axios';
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -41,7 +45,6 @@ const options = [
 
 const MySelect = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
-  console.log(field)
   const {setValue} = helpers
   return (
     <div>
@@ -95,7 +98,7 @@ const QuickQuote = () => {
           zip:'',
           deliveryDate: '',
           pickupDate: '',
-          message: ''
+          instructions: ''
         }}
 
         validationSchema={Yup.object({
@@ -115,14 +118,17 @@ const QuickQuote = () => {
             .required('Required'),
           pickupDate: Yup.date()
             .required('Required'),
-          message: Yup.string()
+          instructions: Yup.string()
         })}
 
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          await sleep(500);
+          try{
+            const res = await axios.post(`${server}/api/quickQuote`, values)
+            alert(res.data.status)
+          } catch(err){
+            alert(err)
+          }
           resetForm()
         }}
       >
@@ -156,6 +162,7 @@ const QuickQuote = () => {
           <div className={quickQuoteStyles.products}>
             <MySelect
               name="products"
+              id="products"
               placeholder="Select Products"
               name="products"
               isMulti
@@ -177,20 +184,20 @@ const QuickQuote = () => {
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
-                placeholderText="Delivery Date" 
+                placeholderText="Select Delivery Date" 
               />
             </div>
           <div className={quickQuoteStyles.pickupDate}>
             <MyDateInput
               name="pickupDate"
               dateFormat="MMMM d, yyyy"
-              placeholderText="Pick-up Date" 
+              placeholderText="Select Pick-up Date" 
             />
           </div>
           </div>
-          <div className={quickQuoteStyles.message}>
+          <div className={quickQuoteStyles.instructions}>
             <MyTextArea
-              name="message"
+              name="instructions"
               type="textarea"
               placeholder="Instructions"
             />

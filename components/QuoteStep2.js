@@ -4,6 +4,10 @@ import MaskedInput from 'react-input-mask';
 import QuoteStep2Styles from '../styles/QuoteStep2.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
+import {server} from '../config/index'
+import axios from 'axios';
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const QuoteStep2 = () => {  
   const {render, data} = useContext(QuoteContext)
@@ -60,12 +64,19 @@ const QuoteStep2 = () => {
             .required('Required')
         })}
 
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
-          setStep(3)
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          await sleep(500);
+          try{
+            setFormValues((prevValues) => {
+              return {...prevValues, ...values}
+            })
+            resetForm()
+            setStep(3)
+            resetForm()
+          } catch(err){
+            alert(err)
+          }
+
         }}
       >
       <div className={QuoteStep2Styles.section}>

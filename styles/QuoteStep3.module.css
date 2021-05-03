@@ -7,17 +7,17 @@
   align-items: center;
   grid-template-columns: 1fr;
   grid-template-areas: 
-                        "deliveryDate"
-                        "pickupDate"
-                        "street" 
-                        "city"
-                        "state"
-                        "zip"
-                        "hint"
-                        "onsite"
-                        "onsitePhone"
-                        "buttons";
-}
+                "deliveryDate"
+                "pickupDate"
+                "street" 
+                "city"
+                "state"
+                "zip"
+                "hint"
+                "onsite"
+                "onsitePhone"
+                "buttons";
+  }
 
 .outerBox{
   padding: 0;
@@ -28,13 +28,6 @@
   align-items: center;
 }
 
-.innerBox{
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  grid-template-columns: 1fr;
-}
-
 .form label{
   padding: 0;
   margin: 0;
@@ -43,7 +36,7 @@
   font-weight: 200;
 }
 
-.form input, .form select, .form textarea {
+.form input, .form select, .form textarea{
   padding: 0;
   margin: 0;
   color: white;
@@ -54,7 +47,9 @@
   height: 2rem;
   font-size: large;
   font-weight: 400;
+  width:100%;
 }
+
 .form input:-webkit-autofill,
 .form input:-webkit-autofill:hover, 
 .form input:-webkit-autofill:focus, 
@@ -112,6 +107,7 @@
   margin: 0;
   color: yellow;
 }
+
 .deliveryDate{
   grid-area: deliveryDate;
 }
@@ -167,7 +163,7 @@
   transition: .3s;
 }
 
-
+/* desktop */
 @media screen and (min-width: 769px) {
   .form{
     grid-template-columns: 2fr .5fr;
@@ -179,7 +175,7 @@
     margin: 0;
     display: grid;
     column-gap: 4rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
   }

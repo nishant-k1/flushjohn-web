@@ -27,7 +27,7 @@ export const QuoteContextProvider = ({children}) => {
 
 
   return (
-    <QuoteContext.Provider value={{render: [step, setStep],  data: [formValues, setFormValues]}}>
+    <QuoteContext.Provider value={{render: [step, setStep], data: [formValues, setFormValues]}}>
       {children}
     </QuoteContext.Provider>
   )

@@ -17,7 +17,7 @@ const quote = () => {
           <div className={`${quoteProgressStyles.step} ${step === 2 || step === 3 ? `${quoteProgressStyles.active}` : null}`} ><b>Step2</b>Personal Information</div>
           <div className={`${quoteProgressStyles.step} ${step === 3 ? `${quoteProgressStyles.active}` : null}`} ><b>Step3</b>Delivery Information</div>
         </div>
-        <div>
+        <div className={quoteProgressStyles.innerSection}>
           {step === 1 ? <QuoteStep1 /> : null}
           {step === 2 ? <QuoteStep2 /> : null}
           {step === 3 ? <QuoteStep3 /> : null}
