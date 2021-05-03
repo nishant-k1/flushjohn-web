@@ -6,6 +6,7 @@ import {FaTruckLoading} from 'react-icons/fa'
 import {RiTimeFill} from 'react-icons/ri'
 import {FaPhoneAlt} from 'react-icons/fa'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Section1 = () => {
   return (
@@ -118,10 +119,12 @@ const Section4 = () => {
 const Home = () => {
   return (
     <>
+      <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+      </Head>
       <Section1 />
       <Section2 />
       <Section3 />
-      {/* <Section4 /> */}
     </>
   )
 }

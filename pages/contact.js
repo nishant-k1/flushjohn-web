@@ -4,6 +4,11 @@ import MaskedInput from 'react-input-mask';
 import contactStyles from '../styles/Contact.module.css'
 import {server} from '../config/index'
 import axios from 'axios';
+import {NextSeo} from 'next-seo'
+
+const SEO = {
+  title: 'Rent A Porta - Contact | Portable Restroom Rental'
+}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -48,6 +53,8 @@ const MyTextArea = ({ label, ...props }) => {
 
 const contact = () => {  
   return (
+    <>
+    <NextSeo {...SEO} />
     <div>
       <Formik
         initialValues={{
@@ -147,6 +154,7 @@ const contact = () => {
       </div>
       </Formik>
     </div>
+  </>
   )
 }
 

@@ -1,3 +1,5 @@
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 import '../styles/globals.css'
 import Layout from '../components/Layout'
 import Nav from '../components/Nav'
@@ -6,21 +8,30 @@ import Sidebar from '../components/Sidebar'
 import {SidebarContextProvider} from '../contexts/SidebarContext'
 import { QuoteContextProvider } from '../contexts/QuoteContext'
 import Testimonial from '../components/Testimonial'
+import Head from 'next/head'
+import ReactGA from 'react-ga';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  useEffect(()=>{
+    ReactGA.initialize('UA-181579330-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
+
   return (
     <>
-    <SidebarContextProvider>
-      <QuoteContextProvider>
-        <Sidebar />
-        <Layout>
-          <Nav />
-          <Component {...pageProps} />
-          <Testimonial />
-          <Footer />
-        </Layout>
-      </QuoteContextProvider>
-    </SidebarContextProvider>
+      <DefaultSeo {...SEO}/>
+      <SidebarContextProvider>
+        <QuoteContextProvider>
+          <Sidebar />
+          <Layout>
+            <Nav />
+            <Component {...pageProps} />
+            <Testimonial />
+            <Footer />
+          </Layout>
+        </QuoteContextProvider>
+      </SidebarContextProvider>
     </>
   )
 }

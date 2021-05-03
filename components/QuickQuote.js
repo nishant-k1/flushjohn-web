@@ -42,14 +42,20 @@ const options = [
   { value: 'ACR', label: 'ADA Portable Restroom' },
   { value: 'HWS', label: 'Hand Wash Sink Station' }
 ]
-
+const customStyles = {
+  control: base => ({
+    ...base,
+    border: 'solid 1px rgba(0, 0, 0, 0.37)',
+    boxShadow: 'none'
+  })
+}
 const MySelect = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers
   return (
     <div>
       <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-      <Select className={quickQuoteStyles.input} {...field} {...props} onChange={value => setValue(value)}/>
+      <Select styles={customStyles} {...field} {...props} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={quickQuoteStyles.error}>{meta.error}</div>
       ) : null}
@@ -184,14 +190,14 @@ const QuickQuote = () => {
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
-                placeholderText="Select Delivery Date" 
+                placeholderText="Delivery Date" 
               />
             </div>
           <div className={quickQuoteStyles.pickupDate}>
             <MyDateInput
               name="pickupDate"
               dateFormat="MMMM d, yyyy"
-              placeholderText="Select Pick-up Date" 
+              placeholderText="Pickup Date" 
             />
           </div>
           </div>

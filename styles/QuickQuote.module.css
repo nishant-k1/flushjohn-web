@@ -11,6 +11,9 @@
   row-gap: .2rem;
   position: relative;
   top: 4rem;
+  height: 450px;
+  width: 250px;
+  /* background-color: rgb(248, 246, 246); */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -34,7 +37,7 @@
   font-weight: 200;
 }
 .form input{
-  background-color: transparent;
+  background-color: white;
   margin: 0;
   outline: none;
   border: none;
@@ -44,6 +47,13 @@
   font-weight: 400;
   display: grid;
   width: 100%;
+}
+.form input:focus{
+  border-color: #2684FF;
+}
+.form input::placeholder{
+  font-size: 14px;
+  color: rgb(131, 131, 131);
 }
 
 .textarea{
@@ -60,6 +70,9 @@
   width: 100%;
 }
 
+.textarea:focus{
+  border-color: #2684FF;
+}
 .dates{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -93,10 +106,9 @@
   transition: .3s;
 }
 
+/* desktop */
 @media screen and (min-width: 769px) {
   .form{
-    height: 450px;
-    width: 310px;
     top: 4rem;
   }
 }

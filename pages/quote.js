@@ -4,13 +4,20 @@ import QuoteStep3 from '../components/QuoteStep3'
 import quoteProgressStyles from '../styles/QuoteProgress.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
+import {NextSeo} from 'next-seo'
+
+const SEO = {
+  title: 'Rent A Porta - Quote | Get Instant Quote & Bookings'
+}
 
 const quote = () => {
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
   const [formValues, setFormValues] = data
   return (
-    <div className={quoteProgressStyles.section}>
+    <>
+      <NextSeo {...SEO} />
+      <div className={quoteProgressStyles.section}>
       <div className={quoteProgressStyles.container}>
         <div className={quoteProgressStyles.progressBar}>
           <div className={`${quoteProgressStyles.step} ${step === 1 || step === 2 || step === 3 ? `${quoteProgressStyles.active}` : null}`} ><b>Step1</b>Requirement Information</div>
@@ -24,6 +31,7 @@ const quote = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
