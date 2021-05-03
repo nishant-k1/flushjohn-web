@@ -5,6 +5,7 @@
   align-items: center;
   position: relative;
   background-color: white;
+  overflow-x: hidden;
 }
 
 .active{
@@ -14,4 +15,4 @@
 
 .inactive{
   transition: .5s;
-}
+} 

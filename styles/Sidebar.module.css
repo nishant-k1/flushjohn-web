@@ -5,7 +5,6 @@
   padding: 0;
   position: fixed;
   border-right: solid 1px yellow;
-  /* z-index: -1; */
   top:0;
   left: 0;
   overflow-x: hidden;

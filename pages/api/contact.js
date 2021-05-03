@@ -5,8 +5,7 @@ const {
     query: { id, name },
     method,
 } = req
-    switch (method) {
-        case 'POST':
+    if (method == 'POST') {
             try{
                 const emailData = req.body
                 const transporter = await nodemailer.createTransport({
@@ -37,9 +36,5 @@ const {
             catch(err){
                 res.send(err)
             }  
-        break;
-            
-        default:
-        break;
     }
 }

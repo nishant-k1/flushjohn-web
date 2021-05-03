@@ -115,7 +115,9 @@ const QuoteStep3 = () => {
             })
             const res = await axios.post(`${server}/api/quote`, values)
             resetForm()
-            alert(res.data.user)
+            if(res.status === 200){
+              alert(`Your request has been received successfully`)
+            }
           } catch(err){
             alert(err)
           }
@@ -266,8 +268,8 @@ const QuoteStep3 = () => {
           </div>
 
           <div className={`${QuoteStep3Styles.outerBox} ${QuoteStep3Styles.buttons}`}>
+            <button onClick={() => {setStep(2)}}>BACK</button>
             <button type="submit">SUBMIT</button>
-            <button onClick={() =>{setStep(2)}}>BACK</button>
           </div>
 
         </Form>

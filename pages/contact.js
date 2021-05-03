@@ -55,7 +55,7 @@ const contact = () => {
   return (
     <>
     <NextSeo {...SEO} />
-    <div>
+    <div className={contactStyles.section}>
       <Formik
         initialValues={{
           firstName: '',
@@ -95,7 +95,6 @@ const contact = () => {
           resetForm()
         }}
       >
-      <div className={contactStyles.section}>
         <div className={contactStyles.container}>
           <Form className={contactStyles.form}>
             <div className={contactStyles.firstName}>
@@ -151,7 +150,6 @@ const contact = () => {
           <button className={contactStyles.button} type="submit">SUBMIT</button>
         </Form>
         </div>
-      </div>
       </Formik>
     </div>
   </>

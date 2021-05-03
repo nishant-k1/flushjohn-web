@@ -49,6 +49,7 @@ const QuoteStep1 = () => {
                 name="SPR"
                 mask="9999"
                 maskChar=" "
+                type="tel"
               />
             </div>
             <div className={QuoteStep1Styles.DFR}>
@@ -57,6 +58,7 @@ const QuoteStep1 = () => {
                 name="DFR"
                 mask="9999"
                 maskChar=" "
+                type="tel"
               />
             </div>
             <div className={QuoteStep1Styles.ACR}>
@@ -65,6 +67,7 @@ const QuoteStep1 = () => {
                 name="ACR"
                 mask="9999"
                 maskChar=" "
+                type="tel"
               />
             </div>
             <div className={QuoteStep1Styles.HWS}>
@@ -73,6 +76,7 @@ const QuoteStep1 = () => {
                 name="HWS"
                 mask="9999"
                 maskChar=" "
+                type="tel"
               />
             </div>
           <button className={QuoteStep1Styles.button} type="submit">CONTINUE</button>

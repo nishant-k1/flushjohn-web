@@ -8,7 +8,6 @@ import Sidebar from '../components/Sidebar'
 import {SidebarContextProvider} from '../contexts/SidebarContext'
 import { QuoteContextProvider } from '../contexts/QuoteContext'
 import Testimonial from '../components/Testimonial'
-import Head from 'next/head'
 import ReactGA from 'react-ga';
 import { useEffect } from 'react';
 

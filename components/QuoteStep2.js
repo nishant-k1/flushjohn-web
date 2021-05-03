@@ -135,8 +135,8 @@ const QuoteStep2 = () => {
                 />
             </div>
         <div className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}>
-          <button type="submit">CONTINUE</button>
           <button onClick={() =>{setStep(1)}}>BACK</button>
+          <button type="submit">CONTINUE</button>
         </div>
 
         </Form>
