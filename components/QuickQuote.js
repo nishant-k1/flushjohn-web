@@ -120,7 +120,7 @@ const QuickQuote = () => {
           zip: Yup.string()
             .required('Required'),
           products: Yup.mixed()
-            .required(),
+            .required('Required'),
           deliveryDate: Yup.date()
             .required('Required'),
           pickupDate: Yup.date()

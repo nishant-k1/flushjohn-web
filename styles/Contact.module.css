@@ -36,6 +36,7 @@
   font-weight: 300;
   width: 100%;
 }
+
 .form input:-webkit-autofill,
 .form input:-webkit-autofill:hover, 
 .form input:-webkit-autofill:focus, 
@@ -77,7 +78,6 @@
   font-size: large;
   font-weight: 300;
   width: 100%;
-
 }
 
 .textarea:focus{
@@ -96,7 +96,6 @@
   font-size: large;
   font-weight: 300;
   width: 100%;
-
 }
 
 .error{
