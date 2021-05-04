@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from '../styles/QuickQuote.module.css'
 import {server} from '../config/index'
 import axios from 'axios';
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+import {useState} from 'react'
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props)
@@ -93,6 +93,7 @@ const MyTextArea = ({ label, ...props }) => {
 }
 
 const QuickQuote = () => {
+  const [state, setState] = useState(false)
   return (
     <div>
       <Formik
@@ -118,8 +119,8 @@ const QuickQuote = () => {
             .required('Required'),
           zip: Yup.string()
             .required('Required'),
-          // products: Yup.string()
-          //   .required(),
+          products: Yup.mixed()
+            .required(),
           deliveryDate: Yup.date()
             .required('Required'),
           pickupDate: Yup.date()
@@ -131,7 +132,7 @@ const QuickQuote = () => {
           await sleep(500);
           try{
             const res = await axios.post(`${server}/api/quickQuote`, values)
-            alert(res.data.status)
+            res.status === 200 ? setState(true) : setState(false)
           } catch(err){
             alert(err)
           }
@@ -161,8 +162,9 @@ const QuickQuote = () => {
             <MyMaskedTextInput
               name="phone"
               mask="(999) 999-9999"
-              autoComplete="tel-national"
+              autoComplete="off"
               placeholder="Phone"
+              type='tel'
             />
           </div>
           <div className={quickQuoteStyles.products}>
@@ -182,6 +184,7 @@ const QuickQuote = () => {
               maskChar=" "
               autoComplete="postal-code"
               placeholder="Zip Code"
+              type='tel'
             />
           </div>
           <div className={quickQuoteStyles.dates}>
@@ -191,13 +194,15 @@ const QuickQuote = () => {
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
                 placeholderText="Delivery Date" 
+                autoComplete="off"
               />
             </div>
           <div className={quickQuoteStyles.pickupDate}>
             <MyDateInput
               name="pickupDate"
               dateFormat="MMMM d, yyyy"
-              placeholderText="Pickup Date" 
+              placeholderText="Pickup Date"
+              autoComplete="off"
             />
           </div>
           </div>
@@ -208,7 +213,9 @@ const QuickQuote = () => {
               placeholder="Instructions"
             />
           </div>
-          <button className={quickQuoteStyles.button} type="submit">SUBMIT</button>
+          <button className={ `${quickQuoteStyles.button} ${state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted}`} type="submit">
+            {state ? <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="" /></div>: `SUBMIT`}
+          </button>
         </Form> 
       </Formik>
     </div>

@@ -2,7 +2,7 @@ import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
 import MaskedInput from 'react-input-mask';
 import QuoteStep3Styles from '../styles/QuoteStep3.module.css'
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -80,6 +80,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
 
 
 const QuoteStep3 = () => {  
+  const [state, setState] = useState(false)
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
   const [formValues, setFormValues] = data
@@ -115,9 +116,8 @@ const QuoteStep3 = () => {
             })
             const res = await axios.post(`${server}/api/quote`, values)
             resetForm()
-            if(res.status === 200){
-              alert(`Your request has been received successfully`)
-            }
+            res.status === 200 ? setState(true) : setState(false)
+            setStep(4)
           } catch(err){
             alert(err)
           }
@@ -130,7 +130,8 @@ const QuoteStep3 = () => {
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
-                placeholderText="Select Delivery Date" 
+                placeholderText="Delivery Date" 
+                autoComplete='off'
               />
             </div>
 
@@ -139,7 +140,8 @@ const QuoteStep3 = () => {
                 label="Pickup Date"
                 name="pickupDate"
                 dateFormat="MMMM d, yyyy"
-                placeholderText="Select Pick-up Date" 
+                placeholderText="Pick-up Date" 
+                autoComplete='off'
               />
             </div>
 
@@ -238,6 +240,7 @@ const QuoteStep3 = () => {
                 maskChar=" "
                 autoComplete="postal-code"
                 placeholder="00000"
+                type='tel'
               />
           </div>
           <div className={QuoteStep3Styles.hint}>
@@ -262,8 +265,9 @@ const QuoteStep3 = () => {
                 label="Onsite Person Phone"
                 name="onsitePhone"
                 mask="(999) 999-9999"
-                autoComplete="tel-national"
+                autoComplete="off"
                 placeholder="(000) 000-0000"
+                type='tel'
               />
           </div>
 

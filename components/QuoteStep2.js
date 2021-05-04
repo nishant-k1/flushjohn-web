@@ -4,8 +4,6 @@ import MaskedInput from 'react-input-mask';
 import QuoteStep2Styles from '../styles/QuoteStep2.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
-import {server} from '../config/index'
-import axios from 'axios';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -121,7 +119,7 @@ const QuoteStep2 = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="jane@email.com"
+                  placeholder="your@email.com"
                 />
             </div>
 
@@ -130,8 +128,9 @@ const QuoteStep2 = () => {
                   label="Phone"
                   name="phone"
                   mask="(999) 999-9999"
-                  autoComplete="tel-national"
+                  autoComplete="off"
                   placeholder="(000) 000-0000"
+                  type='tel'
                 />
             </div>
         <div className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}>

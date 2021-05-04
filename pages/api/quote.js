@@ -55,11 +55,10 @@ export default async function quoteHandler (req, res){
             </div>
           `
       })
-      res.status(200).json({ status: 'Success' })
+      await res.status(200).json({ status: 'Success' })
     }
     catch(err){
       res.send(err)
     }  
-
   }
 }

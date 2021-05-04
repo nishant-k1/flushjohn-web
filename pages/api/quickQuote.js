@@ -40,13 +40,11 @@ export default async function quickQuoteHandler (req, res){
             <div><h4>Instructions:</h4> <p>${promptQuoteData.instructions}</p></div>
           `, // html body
           })
-
-        await res.status(200).json({ status: 'Success' })
-      }
-
-        catch(err){
-          res.send(err)
-        }  
+      await res.status(200).json({ status: 'Success' })
+    }
+    catch(err){
+      res.send(err)
+    }  
 
   }
 }

@@ -34,6 +34,7 @@
   height: 2rem;
   font-size: large;
   font-weight: 300;
+  width: 100%;
 }
 .form input:-webkit-autofill,
 .form input:-webkit-autofill:hover, 
@@ -57,6 +58,7 @@
   height: 2rem;
   font-size: large;
   font-weight: 300;
+  width: 100%;
 }
 
 .textarea {
@@ -74,6 +76,8 @@
   padding-top: .5rem;
   font-size: large;
   font-weight: 300;
+  width: 100%;
+
 }
 
 .textarea:focus{
@@ -91,6 +95,8 @@
   padding-top: .5rem;
   font-size: large;
   font-weight: 300;
+  width: 100%;
+
 }
 
 .error{
@@ -118,30 +124,34 @@
     "button";
 }
 
-.form div{
+.firstName{
+  grid-area: fName;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.firstName{
-  grid-area: fName;
-
-}
-
 .lastName{
   grid-area: lName;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .email{
   grid-area: email;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .phone{
   grid-area: phone;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .message{
   grid-area: message;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .button{
@@ -151,8 +161,6 @@
   justify-content: center;
   height: 2.5rem;
   background-color: rgba(255, 255, 255, 0.808);
-  font-size: large;
-  font-weight: 500;
   border: solid 1px rgba(255, 255, 255, 0.808);
   border-radius: 2px;
 }
@@ -162,6 +170,41 @@
   transition: .3s;
 }
 
+.notSubmitted{
+  padding: .5rem 1rem;
+  font-size: large;
+  font-weight: 500;
+}
+
+.submitted{
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.button.submitted:hover{
+  background-color: transparent;
+}
+
+.acknowledge{
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: .5rem;
+}
+
+.acknowledge img{
+  height: 48px;
+  width: 48px;
+}
+
+.acknowledge h2{
+  padding: 0;
+  margin: 0;
+  color: white;
+}
 
 @media screen and (min-width:769px) {
   .form{

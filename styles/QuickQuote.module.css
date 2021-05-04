@@ -82,18 +82,9 @@
   margin-bottom: .5rem;
 }
 
-/* .deliveryDate{
-  text-align: center;
-}
-
-.pickupDate{
-  text-align: center;
-} */
-
 .button{
   width: fit-content;
   align-self: center;
-  padding: .5rem 1rem;
   border: none;
   font-size: smaller;
   font-weight: 900;
@@ -102,8 +93,36 @@
 }
 
 .button:hover{
-  background-color: rgba(31, 85, 233, 0.87);
   transition: .3s;
+}
+
+.notSubmitted{
+  padding: .5rem 1rem;
+}
+
+.submitted{
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.acknowledge{
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 2fr 1fr;
+  column-gap: .5rem;
+}
+
+.acknowledge img{
+  height: 48px;
+  width: 48px;
+}
+
+.acknowledge h2{
+  padding: 0;
+  margin: 0;
+  color: rgba(7, 7, 7, 0.801);
 }
 
 /* desktop */

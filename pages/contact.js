@@ -5,6 +5,7 @@ import contactStyles from '../styles/Contact.module.css'
 import {server} from '../config/index'
 import axios from 'axios';
 import {NextSeo} from 'next-seo'
+import {useState} from 'react'
 
 const SEO = {
   title: 'Rent A Porta - Contact | Portable Restroom Rental'
@@ -52,6 +53,7 @@ const MyTextArea = ({ label, ...props }) => {
 }
 
 const contact = () => {  
+  const [state, setState] = useState(false)
   return (
     <>
     <NextSeo {...SEO} />
@@ -86,9 +88,7 @@ const contact = () => {
           await sleep(500);
           try{
             const res = await axios.post(`${server}/api/contact`, values)
-            if(res.status === 200){
-              alert(`Your message has been sent successfully`)
-            }
+            res.status === 200 ? setState(true) : setState(false)
           } catch(err){
             alert(err)
           }
@@ -147,7 +147,14 @@ const contact = () => {
                 placeholder="Message"
               />
           </div>
-          <button className={contactStyles.button} type="submit">SUBMIT</button>
+          <button className={ `${contactStyles.button} ${state ? contactStyles.submitted : contactStyles.notSubmitted}`} type="submit">
+            {state ? 
+              <div className={contactStyles.acknowledge}>
+                <h2>Message sent successfully</h2>
+                <img src="/assets/tick.svg" alt="tick-img" />
+              </div>
+              : `SUBMIT`}
+          </button>
         </Form>
         </div>
       </Formik>
