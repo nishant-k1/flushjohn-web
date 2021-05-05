@@ -92,7 +92,6 @@ const contact = () => {
           try{
             const res = await axios.post(`${server}/api/contact`, values)
             res.status === 200 ? setState(true) : setState(false)
-            // setState(true)
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
@@ -154,7 +153,7 @@ const contact = () => {
           <button className={ `${contactStyles.button} ${state ? contactStyles.submitted : contactStyles.notSubmitted}`} type="submit">
             {
               state ? 
-                <div className={contactStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
+                <div className={contactStyles.acknowledge}><h2>Message sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
                   : 
                     spinner ? <div className={contactStyles.processing}><RiRefreshLine className={contactStyles.spinner} /><h3>SUBMIT</h3></div>
                       : 
