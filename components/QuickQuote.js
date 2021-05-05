@@ -8,6 +8,7 @@ import quickQuoteStyles from '../styles/QuickQuote.module.css'
 import {server} from '../config/index'
 import axios from 'axios';
 import {useState} from 'react'
+import {RiRefreshLine} from 'react-icons/ri'
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const MyTextInput = ({ label, ...props }) => {
@@ -93,6 +94,7 @@ const MyTextArea = ({ label, ...props }) => {
 
 const QuickQuote = () => {
   const [state, setState] = useState(false)
+  const [spinner, setSpinner] = useState(false)
   return (
     <div>
       <Formik
@@ -128,11 +130,12 @@ const QuickQuote = () => {
         })}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          setSpinner(true)
           await sleep(500);
           try{
             const res = await axios.post(`${server}/api/quickQuote`, values)
-            // res.status === 200 ? setState(true) : setState(false)
-            setState(true)
+            res.status === 200 ? setState(true) : setState(false)
+            // setState(true)
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
@@ -214,7 +217,14 @@ const QuickQuote = () => {
             />
           </div>
           <button className={ `${quickQuoteStyles.button} ${state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted}`} type="submit">
-            {state ? <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="" /></div>: `SUBMIT`}
+            {
+              state ? 
+                <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
+                  : 
+                    spinner ? <div className={quickQuoteStyles.processing}><RiRefreshLine className={quickQuoteStyles.spinner} /><h3>SUBMIT</h3></div>
+                    : 
+                      `SUBMIT`
+            }
           </button>
         </Form> 
       </Formik>

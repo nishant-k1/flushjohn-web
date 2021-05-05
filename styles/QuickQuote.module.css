@@ -13,7 +13,6 @@
   top: 4rem;
   height: 450px;
   width: 250px;
-  /* background-color: rgb(248, 246, 246); */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -97,6 +96,7 @@
 .textarea:focus{
   border-color: #2684FF;
 }
+
 .dates{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,7 +107,12 @@
 }
 
 .button{
-  width: fit-content;
+  margin: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 6rem;
   align-self: center;
   border: none;
   font-size: smaller;
@@ -121,19 +126,51 @@
   transition: .3s;
 }
 
-.notSubmitted{
-  padding: .5rem 1rem;
+.processing{
+  padding: 0;
+  margin: 0;
+  height: 2.5rem;
+  width: 6rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: max-content max-content;
+  column-gap: .2rem;
+}
+
+.processing h3{
+  padding: 0;
+  margin: 0;
+  font-size: smaller;
+  font-weight: 900;
 }
 
 .submitted{
   padding: 0;
   margin: 0;
   background: transparent;
+  height: auto;
+  width: auto;
 }
 
 .submitted:hover{
   background: transparent;
   transition: .3s;
+}
+
+
+@keyframes spinner {
+  from {transform:rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.spinner{
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: spinner .9s linear infinite;
 }
 
 .acknowledge{

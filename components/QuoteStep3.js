@@ -4,7 +4,7 @@ import MaskedInput from 'react-input-mask';
 import QuoteStep3Styles from '../styles/QuoteStep3.module.css'
 import {useContext, useState} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
-import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import {server} from '../config/index'
 import axios from 'axios';
@@ -116,8 +116,7 @@ const QuoteStep3 = () => {
             })
             const res = await axios.post(`${server}/api/quote`, values)
             resetForm()
-            // res.status === 200 ? setState(true) : setState(false)
-            setState(true)
+            res.status === 200 ? setState(true) : setState(false)
             setStep(4)
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)

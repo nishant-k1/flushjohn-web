@@ -11,17 +11,6 @@
   overflow-y: scroll;
 }
 
-.active{
-  /* transition: .5s; */
-  /* transform: translateX(0); */
-}
-
-.inactive{
-  /* transition: .5s; */
-  /* transform: translateX(-60vw); */
-}
-
-
 .container{
   margin: 32px auto;
   padding: 32px;
@@ -40,6 +29,8 @@
 .sidebar img{
   padding: 0;
   margin: 0;
+  height: 5rem;
+  width: 8rem
 }
 
 .sidebar ul{
