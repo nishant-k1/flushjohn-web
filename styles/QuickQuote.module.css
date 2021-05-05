@@ -66,7 +66,8 @@
 
 .date{
   background-image: url(/assets/calendar.svg);
-  background-position: right;
+  background-position-x: right;
+  background-position-y: 6px;
   background-size: 1rem;
   background-repeat: no-repeat;
 }

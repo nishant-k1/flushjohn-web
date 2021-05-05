@@ -27,12 +27,20 @@
 }
 
 .section4 div img{
-  max-height: 700px;
-  max-width: 200px;
+  height: 300px;
+  width: 200px;
+}
+
+@media screen and (max-width: 250) {
+  .section4 div img{
+    height: 250px;
+    width: 150px;
+  }
 }
 .section4 div h5{
   font-size: medium;
 }
+
 /* desktop */
 @media screen and (min-width: 769px) {
   .section4{
