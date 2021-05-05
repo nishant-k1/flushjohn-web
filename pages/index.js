@@ -62,17 +62,17 @@ const Section3 = () => {
           <p>{homeData.section3.p1}</p>
         </div>
         <div>
-          <img src="/assets/construction.svg" alt="even_pic" />
+          <img src="/assets/construction.svg" alt="event_pic" />
           <h5>{homeData.section3.h2}</h5>
           <p>{homeData.section3.p2}</p>
         </div>
         <div>
-          <img src="/assets/renovation.jpg" alt="even_pic" />
+          <img src="/assets/renovation.svg" alt="event_pic" />
           <h5>{homeData.section3.h3}</h5>
           <p>{homeData.section3.p3}</p>
         </div>
         <div>
-          <img src="/assets/relief.jpg" alt="even_pic" />
+          <img src="/assets/relief.svg" alt="even_pic" />
           <h5>{homeData.section3.h4}</h5>
           <p>{homeData.section3.p4}</p>
         </div>

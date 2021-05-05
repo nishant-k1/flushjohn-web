@@ -131,9 +131,10 @@ const QuickQuote = () => {
           await sleep(500);
           try{
             const res = await axios.post(`${server}/api/quickQuote`, values)
-            res.status === 200 ? setState(true) : setState(false)
+            // res.status === 200 ? setState(true) : setState(false)
+            setState(true)
           } catch(err){
-            alert(err)
+            alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
           resetForm()
         }}

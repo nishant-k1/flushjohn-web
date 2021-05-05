@@ -116,10 +116,11 @@ const QuoteStep3 = () => {
             })
             const res = await axios.post(`${server}/api/quote`, values)
             resetForm()
-            res.status === 200 ? setState(true) : setState(false)
+            // res.status === 200 ? setState(true) : setState(false)
+            setState(true)
             setStep(4)
           } catch(err){
-            alert(err)
+            alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
         }}
       >
