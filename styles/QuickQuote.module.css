@@ -51,9 +51,24 @@
 .form input:focus{
   border-color: #2684FF;
 }
+
 .form input::placeholder{
   font-size: 14px;
   color: rgb(131, 131, 131);
+}
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover, 
+.form input:-webkit-autofill:focus, 
+.form input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black !important;
+}
+
+.date{
+  background-image: url(/assets/calendar.svg);
+  background-position: right;
+  background-size: 1rem;
+  background-repeat: no-repeat;
 }
 
 .textarea{
@@ -68,6 +83,14 @@
   font-weight: 400;
   display: grid;
   width: 100%;
+}
+
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover, 
+.textarea:-webkit-autofill:focus, 
+.textarea:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black !important;
 }
 
 .textarea:focus{
@@ -89,10 +112,11 @@
   font-size: smaller;
   font-weight: 900;
   color: white;
-  background-color: rgba(31, 85, 233, 0.726);
+  background-color: #41A5FF;
 }
 
 .button:hover{
+  background: rgb(44, 149, 241);
   transition: .3s;
 }
 
@@ -104,6 +128,11 @@
   padding: 0;
   margin: 0;
   background: transparent;
+}
+
+.submitted:hover{
+  background: transparent;
+  transition: .3s;
 }
 
 .acknowledge{

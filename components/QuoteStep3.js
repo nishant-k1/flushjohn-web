@@ -17,7 +17,7 @@ const MyDateInput = ({ label, ...props }) => {
   return (
     <div className={QuoteStep3Styles.outerBox}>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <DatePicker {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
+      <DatePicker className={`${QuoteStep3Styles.input} ${QuoteStep3Styles.date}`} {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={QuoteStep3Styles.error}>{meta.error}</div>
       ) : null}

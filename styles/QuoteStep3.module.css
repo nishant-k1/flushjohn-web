@@ -96,7 +96,6 @@
   -webkit-text-fill-color: white !important;
 }
 
-
 .form select{
   width: 100%;
   font-size: large;
@@ -106,6 +105,13 @@
   padding: 0;
   margin: 0;
   color: yellow;
+}
+
+.date{
+  background-image: url(/assets/calendar.svg);
+  background-position: right;
+  background-size: 1rem;
+  background-repeat: no-repeat;
 }
 
 .deliveryDate{

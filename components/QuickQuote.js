@@ -63,14 +63,13 @@ const MySelect = ({ label, ...props }) => {
   )
 }
 
-
 const MyDateInput = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers
   return (
     <div>
       <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-      <DatePicker className={quickQuoteStyles.input} {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
+      <DatePicker className={`${quickQuoteStyles.input} ${quickQuoteStyles.date}`} {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={quickQuoteStyles.error}>{meta.error}</div>
       ) : null}
