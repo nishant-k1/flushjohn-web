@@ -17,7 +17,7 @@ const homeData = {
     h2:"Job Sites", 
     h3:"Renovations",
     h4:"Disaster Relief",
-    p1:"Our porta toilets are a great fit for the events like birthday parties, family reunions, weddings, and other short term uses.",
+    p1:"Our porta toilets are highly suitable for all your events like birthday parties, family reunions, weddings, etc.",
     p2:"We offer porta potty rental near you for all your job site needs, whether be a construction or any other long term use.",
     p3:"If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of portable johns and other portable equipments.",
     p4:"We are always ready to supply portable equipments like portable potties and handwash stations in the areas those affected by the disasters."
