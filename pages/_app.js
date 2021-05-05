@@ -10,6 +10,7 @@ import { QuoteContextProvider } from '../contexts/QuoteContext'
 import Testimonial from '../components/Testimonial'
 import ReactGA from 'react-ga';
 import { useEffect } from 'react';
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   useEffect(()=>{
@@ -19,6 +20,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.svg" />
+      </Head>
       <DefaultSeo {...SEO}/>
       <SidebarContextProvider>
         <QuoteContextProvider>
