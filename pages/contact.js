@@ -6,6 +6,7 @@ import {server} from '../config/index'
 import axios from 'axios';
 import {NextSeo} from 'next-seo'
 import {useState} from 'react'
+import {RiRefreshLine} from 'react-icons/ri'
 
 const SEO = {
   title: 'Rent A Porta - Contact | Portable Restroom Rental'
@@ -54,6 +55,7 @@ const MyTextArea = ({ label, ...props }) => {
 
 const contact = () => {  
   const [state, setState] = useState(false)
+  const [spinner, setSpinner] = useState(false)
   return (
     <>
     <NextSeo {...SEO} />
@@ -85,7 +87,8 @@ const contact = () => {
         })}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
-          await sleep(500);
+          setSpinner(true)
+          await sleep(500)
           try{
             const res = await axios.post(`${server}/api/contact`, values)
             res.status === 200 ? setState(true) : setState(false)
@@ -149,12 +152,14 @@ const contact = () => {
               />
           </div>
           <button className={ `${contactStyles.button} ${state ? contactStyles.submitted : contactStyles.notSubmitted}`} type="submit">
-            {state ? 
-              <div className={contactStyles.acknowledge}>
-                <h2>Message sent successfully</h2>
-                <img src="/assets/tick.svg" alt="tick-img" />
-              </div>
-              : `SUBMIT`}
+            {
+              state ? 
+                <div className={contactStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
+                  : 
+                    spinner ? <div className={contactStyles.processing}><RiRefreshLine className={contactStyles.spinner} /><h3>SUBMIT</h3></div>
+                      : 
+                        `SUBMIT`
+            }
           </button>
         </Form>
         </div>

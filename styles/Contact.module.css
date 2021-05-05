@@ -154,6 +154,8 @@
 }
 
 .button{
+  padding: 0;
+  margin: 0;
   grid-area: button;
   display: grid;
   align-items: center;
@@ -169,6 +171,23 @@
   transition: .3s;
 }
 
+.processing{
+  padding: 0;
+  margin: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: max-content max-content;
+  column-gap: .2rem;
+}
+
+.processing h3{
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+  font-weight: 900;
+}
+
 .notSubmitted{
   padding: .5rem 1rem;
   font-size: large;
@@ -182,8 +201,23 @@
   background-color: transparent;
 }
 
+
 .button.submitted:hover{
   background-color: transparent;
+}
+
+@keyframes spinner {
+  from {transform:rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.spinner{
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  animation: spinner .9s linear infinite;
 }
 
 .acknowledge{

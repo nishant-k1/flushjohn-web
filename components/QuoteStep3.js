@@ -7,6 +7,7 @@ import {QuoteContext} from '../contexts/QuoteContext'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import {server} from '../config/index'
+import {RiRefreshLine} from 'react-icons/ri'
 import axios from 'axios';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -81,6 +82,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
 
 const QuoteStep3 = () => {  
   const [state, setState] = useState(false)
+  const [spinner, setSpinner] = useState(false)
   const {render, data} = useContext(QuoteContext)
   const [step, setStep] = render
   const [formValues, setFormValues] = data
@@ -109,6 +111,7 @@ const QuoteStep3 = () => {
         })}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          setSpinner(true)
           await sleep(500);
           try{
             await setFormValues((prevValues) => {
@@ -273,7 +276,14 @@ const QuoteStep3 = () => {
 
           <div className={`${QuoteStep3Styles.outerBox} ${QuoteStep3Styles.buttons}`}>
             <button onClick={() => {setStep(2)}}>BACK</button>
-            <button type="submit">SUBMIT</button>
+            <button type="submit">
+            { 
+              spinner ? <div className={QuoteStep3Styles.processing}><RiRefreshLine className={QuoteStep3Styles.spinner} /><h3>SUBMIT</h3></div>
+                      : 
+                        `SUBMIT`
+            }
+            </button>
+
           </div>
 
         </Form>

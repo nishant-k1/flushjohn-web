@@ -170,6 +170,36 @@
   transition: .3s;
 }
 
+.processing{
+  padding: 0;
+  margin: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: max-content max-content;
+  column-gap: .2rem;
+}
+
+.processing h3{
+  padding: 0;
+  margin: 0;
+  font-size: smaller;
+  font-weight: 900;
+}
+@keyframes spinner {
+  from {transform:rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.spinner{
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  animation: spinner .9s linear infinite;
+}
+
 /* desktop */
 @media screen and (min-width: 769px) {
   .form{

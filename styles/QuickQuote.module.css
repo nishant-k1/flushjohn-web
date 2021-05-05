@@ -129,8 +129,6 @@
 .processing{
   padding: 0;
   margin: 0;
-  height: 2.5rem;
-  width: 6rem;
   display: grid;
   align-items: center;
   justify-content: center;

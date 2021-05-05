@@ -222,8 +222,8 @@ const QuickQuote = () => {
                 <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
                   : 
                     spinner ? <div className={quickQuoteStyles.processing}><RiRefreshLine className={quickQuoteStyles.spinner} /><h3>SUBMIT</h3></div>
-                    : 
-                      `SUBMIT`
+                      : 
+                        `SUBMIT`
             }
           </button>
         </Form> 
