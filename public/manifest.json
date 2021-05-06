@@ -5,7 +5,7 @@
     "scope": "/",
     "start_url": "/",
     "name": "Rent A Porta",
-    "short_name": "RAP",
+    "short_name": "Rent A Porta",
     "icons": [
         {
             "src": "chrome/chrome-extensionmanagementpage-48-48.png",

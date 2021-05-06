@@ -70,7 +70,7 @@ const MyDateInput = ({ label, ...props }) => {
   return (
     <div>
       <label className={quickQuoteStyles.label} htmlFor={props.id || props.name}>{label}</label>
-      <DatePicker className={`${quickQuoteStyles.input} ${quickQuoteStyles.date}`} {...field} {...props} selected={field.value} onChange={value => setValue(value)}/>
+      <DatePicker className={`${quickQuoteStyles.input} ${quickQuoteStyles.date}`} {...field} {...props} minDate={new Date()} selected={field.value} onChange={value => setValue(value)}/>
       {meta.touched && meta.error ? (
         <div className={quickQuoteStyles.error}>{meta.error}</div>
       ) : null}
