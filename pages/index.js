@@ -35,15 +35,15 @@ const Section2 = () => {
       <div className={homeStyles.section2}>
         <div>
           <AiFillDollarCircle className={homeStyles.section2Icons}/>
-          <h5>{homeData.section2.h3}</h5>
+          <h3>{homeData.section2.h3}</h3>
         </div>
         <div>
           <RiTimeFill className={homeStyles.section2Icons}/>
-          <h5>{homeData.section2.h1}</h5>
+          <h3>{homeData.section2.h1}</h3>
         </div>
         <div>
           <FaTruckLoading className={homeStyles.section2Icons}/>
-          <h5>{homeData.section2.h2}</h5>
+          <h3>{homeData.section2.h2}</h3>
         </div>
       </div>
     </div>
@@ -58,58 +58,24 @@ const Section3 = () => {
       <div className={homeStyles.section3}>
         <div>
           <img src="/assets/event.svg" alt="even_pic" />
-          <h5>{homeData.section3.h1}</h5>
+          <h3>{homeData.section3.h1}</h3>
           <p>{homeData.section3.p1}</p>
         </div>
         <div>
           <img src="/assets/construction.svg" alt="event_pic" />
-          <h5>{homeData.section3.h2}</h5>
+          <h3>{homeData.section3.h2}</h3>
           <p>{homeData.section3.p2}</p>
         </div>
         <div>
           <img src="/assets/renovation.svg" alt="event_pic" />
-          <h5>{homeData.section3.h3}</h5>
+          <h3>{homeData.section3.h3}</h3>
           <p>{homeData.section3.p3}</p>
         </div>
         <div>
           <img src="/assets/relief.svg" alt="even_pic" />
-          <h5>{homeData.section3.h4}</h5>
+          <h3>{homeData.section3.h4}</h3>
           <p>{homeData.section3.p4}</p>
         </div>
-      </div>
-    </div>
-  </div>
-  )
-}
-
-const Section4 = () => {
-  return (
-    <div className={`${homeStyles.section} ${homeStyles.section4Section}`}>
-    <div className={homeStyles.container}>
-      <div className={homeStyles.section4}>
-          <h2>What do our customers say</h2>
-          <div className={homeStyles.testimonials}>
-            <div>
-              <img src="/assets/testimony2.svg" alt="even_pic" />
-              <h5>{homeData.section4.h1}</h5>
-              <p>{homeData.section4.p1}</p>
-            </div>
-            <div>
-              <img src="/assets/testimony1.svg" alt="even_pic" />
-              <h5>{homeData.section4.h2}</h5>
-              <p>{homeData.section4.p2}</p>
-            </div>
-            <div>
-              <img src="/assets/testimony2.svg" alt="even_pic" />
-              <h5>{homeData.section4.h3}</h5>
-              <p>{homeData.section4.p3}</p>
-            </div>
-            <div>
-              <img src="/assets/testimony2.svg" alt="even_pic" />
-              <h5>{homeData.section4.h4}</h5>
-              <p>{homeData.section4.p4}</p>
-            </div>
-          </div>
       </div>
     </div>
   </div>

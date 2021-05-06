@@ -1,5 +1,7 @@
 import footerStyles from '../styles/Footer.module.css'
 import {AiFillFacebook, AiFillTwitterSquare, AiFillInstagram, AiFillLinkedin} from 'react-icons/ai'
+import {FaPinterestSquare} from 'react-icons/fa'
+
 import Link from 'next/link'
 
 var date=new Date;
@@ -26,7 +28,7 @@ const Footer = () => {
                   <h2>Social</h2>
                 </li>
                 <li>
-                  <Link href='https://www.facebook.com/'>
+                  <Link href='https://www.facebook.com/portarental'>
                     <div>
                       <AiFillFacebook className={footerStyles.icon} />
                       Facebook
@@ -34,7 +36,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href='https://twitter.com/?lang=en'>
+                  <Link href='https://twitter.com/rentaporta'>
                     <div>
                       <AiFillTwitterSquare className={footerStyles.icon} />
                       Twitter
@@ -42,7 +44,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href='https://www.instagram.com/ '>
+                  <Link href='https://www.instagram.com/rent_a_porta/'>
                   <div>
                     <AiFillInstagram className={footerStyles.icon} />
                     Instagram
@@ -50,10 +52,18 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href='https://www.linkedin.com/'>
+                  <Link href='linkedin.com/company/rent-a-porta'>
                     <div>
                       <AiFillLinkedin className={footerStyles.icon} />
                       Linkedin 
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='https://www.pinterest.com/renta_porta'>
+                    <div>
+                      <FaPinterestSquare className={footerStyles.icon} />
+                      Pinterest 
                     </div>
                   </Link>
                 </li>
