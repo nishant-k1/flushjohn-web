@@ -22,15 +22,13 @@ function MyApp({ Component, pageProps }) {
     <>
       <html lang="en" />
       <Head>
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="manifest.webmanifest" />
         <link rel="icon" href="logo-black.svg" />
-        <link rel="apple-touch-icon" href="apple-touch-icons/apple-touch-icon-180x180.png" />
-        <link rel="maskable_icons" href="maskable_icons/maskable_icon_x512.png" />
+        <link rel="apple-touch-icon" href="icon-192x192.png" />
         <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
-        <meta name="theme-color" content="#fff" />
         <meta name = "apple-mobile-web-app-capable" content="yes" />
-        <meta name = "apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name = "apple-mobile-web-app-title" content="Next PWA demo" />
+        <meta name = "apple-mobile-web-app-status-bar-style" content="#001A2E" />
+        <meta name = "apple-mobile-web-app-title" content="Rent A Porta" />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
       <DefaultSeo {...SEO}/>

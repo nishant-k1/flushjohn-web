@@ -81,7 +81,7 @@
 
   .quote h3{
     color: white;
-    border: solid 1px rgb(49, 98, 170);
+    border: solid 1px rgb(44, 149, 241);
     border-radius: 4px;
     padding: 1rem 2rem;
     font-weight: 500;
@@ -90,14 +90,14 @@
 
   .quote h3:hover{
     color: white;
-    background-color: rgb(49, 98, 170);
+    background-color: rgb(44, 149, 241);
     transition: .3s;
   }
 
   .phone div{
-    background-color: rgb(49, 98, 170);
+    background-color: rgb(44, 149, 241);
     color: white;
-    border: solid 1px rgb(49, 98, 170);
+    border: solid 1px rgb(44, 149, 241);
     border-radius: 4px;
     padding: 1rem;
     font-weight: 500;
@@ -109,7 +109,7 @@
   }
 
   .phone div:hover{
-    background-color: rgb(23, 82, 170);
+    background-color: rgb(44, 149, 241);
     transition: .3s;
   }
 }
