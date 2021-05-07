@@ -135,7 +135,6 @@ const QuickQuote = () => {
           try{
             const res = await axios.post(`${server}/api/quickQuote`, values)
             res.status === 200 ? setState(true) : setState(false)
-            // setState(true)
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
@@ -219,7 +218,7 @@ const QuickQuote = () => {
           <button className={ `${quickQuoteStyles.button} ${state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted}`} type="submit">
             {
               state ? 
-                <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="tick_img" /></div>
+                <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="https://rentaporta.com" /></div>
                   : 
                     spinner ? <div className={quickQuoteStyles.processing}><RiRefreshLine className={quickQuoteStyles.spinner} /><h3>SUBMIT</h3></div>
                       : 

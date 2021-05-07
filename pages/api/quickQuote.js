@@ -9,6 +9,12 @@ export default async function quickQuoteHandler (req, res){
 
   if (method == 'POST') {
     try{
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const deliveryDate = new Date(`${req.body.deliveryDate}`)
+        const longDeliveryDate = `${months[deliveryDate.getMonth()]} ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`
+        const pickupDate = new Date(`${req.body.pickupDate}`)
+        const longPickupDate = `${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
+
         const promptQuoteData = req.body
         const productsArray = promptQuoteData.products
         const products = productsArray.map(element => element.label)
@@ -35,8 +41,8 @@ export default async function quickQuoteHandler (req, res){
             <div><h4>Phone:</h4> <p>${promptQuoteData.phone}</p></div>
             <div><h4>Zip Code:</h4> <p>${promptQuoteData.zip}</p></div>
             <div><h4>Products:</h4> <p>${products}</p></div>
-            <div><h4>Delivery Date:</h4> <p>${promptQuoteData.deliveryDate}</p></div>
-            <div><h4>Pickup Date:</h4> <p>${promptQuoteData.pickupDate}</p></div>
+            <div><h4>Delivery Date:</h4> <p>${longDeliveryDate}</p></div>
+            <div><h4>Pickup Date:</h4> <p>${longPickupDate}</p></div>
             <div><h4>Instructions:</h4> <p>${promptQuoteData.instructions}</p></div>
           `, // html body
           })
