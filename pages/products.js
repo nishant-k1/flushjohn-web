@@ -1,6 +1,7 @@
 import {productData} from '../components/TextData'
 import productStyles from '../styles/Products.module.css'
 import {NextSeo} from 'next-seo'
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Products | Portable Toilet Rental Near Me | Rent Hand Washing Stations'
@@ -9,6 +10,9 @@ const SEO = {
 const products = () => {
   return (
     <>
+      <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+      </Head>
       <NextSeo {...SEO}/>
       <div className={`${productStyles.section} ${productStyles.section4Section}`}>
       <div className={productStyles.container}>

@@ -1,14 +1,20 @@
 const homeData = {
   section1:
   {
-    title:"We rent a wide range of portable restrooms and standalone portable sink stations.",
+    title:"We offer a wide range of porta potty and standalone portable sink station rentals for all your events and jobsite requirements.",
   },
 
   section2:
   {    
+    heading: "Our unique benefits and offerings.",
     h1:"Prompt Quote & Bookings", 
-    h2:"Quick Delivery", 
-    h3:"Low Price Range",
+    h2:"Free & Quick Delivery", 
+    h3:"$15 Discount on 1st Order.",
+    h4:"Free Servicing",
+    p1:"Our porta potty rentals are budget friendly and we provide a 15% discount on your 1st order",
+    p2:"We respect your time. Our professional customer support ensures instant quote and bookings.",
+    p3:"Our experienced yard manager and driver facilitates seamless delivery and pickup service with no any extra cost.",
+    p4:"We provide weekly once cleaning service at no any extra cost. Also, we restock the unit with toilet papers."
   },
 
   section3:
@@ -23,7 +29,7 @@ const homeData = {
     p4:"We are always ready to supply portable equipments like portable potties and handwash stations in the areas those affected by the disasters."
   },
 
-  section4:
+  testimonialSection:
   {
     h1:"Terry Miles", 
     h2:"Dean Lacey", 
@@ -33,6 +39,15 @@ const homeData = {
     p2:"I had to rent a hand wash for my house renovation going on and the only company on which I could rely on was rent a porta. They are very quick in responding to your requirements and relatively cheaper in price",
     p3:"Ordered an event unit for a family reunion. The porta john arrived the next day of my order.",
     p4:"Unit was pretty and nice. I had it ordered for a weeding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday"
+  },
+
+  sectionLocation:{
+    title: 'Our service locations',
+    list1:['Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida'],
+    list2:['Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine'],
+    list3:['Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey'],
+    list4:['New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina'],
+    list5:['South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
   }
 }
 

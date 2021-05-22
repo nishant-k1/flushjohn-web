@@ -1,5 +1,6 @@
 import termsStyles from '../styles/Terms.module.css'
 import {NextSeo} from 'next-seo'
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Terms & Conditions | Porta John Rental Near Me'
@@ -8,6 +9,9 @@ const SEO = {
 const terms = () => {
   return (
     <>
+      <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+      </Head>
       <NextSeo {...SEO} />
       <div className={termsStyles.section}>
         <div className={termsStyles.container}>

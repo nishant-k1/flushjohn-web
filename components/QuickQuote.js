@@ -143,6 +143,52 @@ const QuickQuote = () => {
       >
         <Form className={quickQuoteStyles.form}>
           <h2>Prompt Quote</h2>
+          <div className={quickQuoteStyles.products}>
+            <MySelect
+              name="products"
+              id="products"
+              placeholder="Select Products"
+              name="products"
+              isMulti
+              options={options}
+            />
+          </div>
+          <div className={quickQuoteStyles.dates}>
+            <div className={quickQuoteStyles.deliveryDate}>
+              <MyDateInput
+                id="deliveryDate"
+                name="deliveryDate"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Delivery Date" 
+                autoComplete="off"
+              />
+            </div>
+          <div className={quickQuoteStyles.pickupDate}>
+            <MyDateInput
+              name="pickupDate"
+              dateFormat="MMMM d, yyyy"
+              placeholderText="Pickup Date"
+              autoComplete="off"
+            />
+          </div>
+          </div>
+          <div className={quickQuoteStyles.zip}>
+            <MyMaskedTextInput
+              name="zip"
+              mask="99999"
+              maskChar=" "
+              autoComplete="postal-code"
+              placeholder="Zip Code"
+              type='tel'
+            />
+          </div>
+          <div className={quickQuoteStyles.instructions}>
+            <MyTextArea
+              name="instructions"
+              type="textarea"
+              placeholder="Instructions"
+            />
+          </div>
           <div className={quickQuoteStyles.firstName}>
             <MyTextInput
               name="fullName"
@@ -169,52 +215,6 @@ const QuickQuote = () => {
               type='tel'
             />
           </div>
-          <div className={quickQuoteStyles.products}>
-            <MySelect
-              name="products"
-              id="products"
-              placeholder="Select Products"
-              name="products"
-              isMulti
-              options={options}
-            />
-          </div>
-          <div className={quickQuoteStyles.zip}>
-            <MyMaskedTextInput
-              name="zip"
-              mask="99999"
-              maskChar=" "
-              autoComplete="postal-code"
-              placeholder="Zip Code"
-              type='tel'
-            />
-          </div>
-          <div className={quickQuoteStyles.dates}>
-            <div className={quickQuoteStyles.deliveryDate}>
-              <MyDateInput
-                id="deliveryDate"
-                name="deliveryDate"
-                dateFormat="MMMM d, yyyy"
-                placeholderText="Delivery Date" 
-                autoComplete="off"
-              />
-            </div>
-          <div className={quickQuoteStyles.pickupDate}>
-            <MyDateInput
-              name="pickupDate"
-              dateFormat="MMMM d, yyyy"
-              placeholderText="Pickup Date"
-              autoComplete="off"
-            />
-          </div>
-          </div>
-          <div className={quickQuoteStyles.instructions}>
-            <MyTextArea
-              name="instructions"
-              type="textarea"
-              placeholder="Instructions"
-            />
-          </div>
           <button className={ `${quickQuoteStyles.button} ${state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted}`} type="submit">
             {
               state ? 
@@ -222,7 +222,7 @@ const QuickQuote = () => {
                   : 
                     spinner ? <div className={quickQuoteStyles.processing}><RiRefreshLine className={quickQuoteStyles.spinner} /><h3>SUBMIT</h3></div>
                       : 
-                        `SUBMIT`
+                        `SEND`
             }
           </button>
         </Form> 

@@ -9,12 +9,12 @@ import {SidebarContextProvider} from '../contexts/SidebarContext'
 import { QuoteContextProvider } from '../contexts/QuoteContext'
 import Testimonial from '../components/Testimonial'
 import ReactGA from 'react-ga';
-import { useEffect } from 'react';
-import Head from "next/head";
+import { useEffect } from 'react'
+import Head from "next/head"
 
 function MyApp({ Component, pageProps }) {
   useEffect(()=>{
-    ReactGA.initialize('UA-181579330-1')
+    ReactGA.initialize(process.env.NEXT_PUBLIC_GA_ID)
     ReactGA.pageview(window.location.pathname + window.location.search)
   });
 

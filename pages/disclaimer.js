@@ -1,5 +1,6 @@
 import disclaimerStyles from '../styles/Disclaimer.module.css'
 import {NextSeo} from 'next-seo'
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Disclaimer | Portable Toilet Rental Near Me | Rent A John'
@@ -8,6 +9,9 @@ const SEO = {
 const disclaimer = () => {
   return (
     <>
+    <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+    </Head>
       <NextSeo {...SEO} />
       <div className={disclaimerStyles.section}>
         <div className={disclaimerStyles.container}>

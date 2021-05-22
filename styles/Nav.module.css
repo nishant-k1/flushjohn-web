@@ -2,7 +2,7 @@
   min-width: 100%;
   background-color:#001a2e;
   padding: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.425);
+  border-bottom: 1px solid rgba(255, 255, 0, 0.575);
 }
 
 .container{
@@ -40,7 +40,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 769px) {
   .section{
-    border-bottom: none;
+    border-bottom: 1px solid white;
   }
   .nav{
     display: grid;
@@ -81,7 +81,6 @@
 
   .quote h3{
     color: white;
-    border: solid 1px rgb(44, 149, 241);
     border-radius: 4px;
     padding: 1rem 2rem;
     font-weight: 500;
@@ -89,15 +88,13 @@
   }
 
   .quote h3:hover{
-    color: white;
-    background-color: rgb(44, 149, 241);
+    color: yellow;
     transition: .3s;
   }
 
   .phone div{
-    background-color: rgb(44, 149, 241);
+    background-color: transparent;
     color: white;
-    border: solid 1px rgb(44, 149, 241);
     border-radius: 4px;
     padding: 1rem;
     font-weight: 500;
@@ -109,7 +106,6 @@
   }
 
   .phone div:hover{
-    background-color: rgb(44, 149, 241);
     transition: .3s;
   }
 }

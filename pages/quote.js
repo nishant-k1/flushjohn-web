@@ -6,6 +6,8 @@ import quoteProgressStyles from '../styles/QuoteProgress.module.css'
 import {useContext} from 'react'
 import {QuoteContext} from '../contexts/QuoteContext'
 import {NextSeo} from 'next-seo'
+import Head from "next/head"
+
 const SEO = {
   title: 'Rent A Porta - Quote | Get Instant Quote & Bookings'
 }
@@ -16,6 +18,9 @@ const quote = () => {
   const [formValues, setFormValues] = data
   return (
     <>
+      <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+      </Head>
       <NextSeo {...SEO} />
       <div className={quoteProgressStyles.section}>
       <div className={quoteProgressStyles.container}>

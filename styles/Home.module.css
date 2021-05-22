@@ -5,19 +5,28 @@
   min-width: 100%;
 }
 
+
+
 .container{
   padding: 0 32px;
   margin: 0 auto;
   max-width: 1100px;
 }
 
-/* section1 */
-.section.section1Section{
-  background:url(/assets/section1Bg.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
+.section h2{
+  text-align: center;
 }
 
+/* section1 */
+.section.section1Section{
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url(/assets/hero.svg);
+  background-position: bottom;
+  background-size: cover;
+  height: 600px;
+}
 
 .section1{
   padding: 0;
@@ -26,17 +35,11 @@
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr;
-  background-image: url(/assets/sps_yellow.svg), url(/assets/sps_blue.svg);
-  background-position-y: 10rem, 10rem;
-  background-position-x: 0, 40vw;
-  background-size: 150px, 150px;
-  background-repeat: no-repeat,no-repeat;
 }
 
 .section1Left{
   padding: 0;
   margin: 0;
-  /* background-color: red; */
   height: 100%;
 }
 
@@ -55,6 +58,16 @@
 .section ul li{
   justify-self: center;
   align-self: center;
+}
+.section1Left ul li{
+  text-align: center;
+}
+
+.discount{
+  height: 4.5rem;
+  width: 4.5rem;
+  margin: 1rem;
+  text-align: center;
 }
 
 .phone div{
@@ -88,23 +101,32 @@
   align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+  .section1Right img{
+    display: none;
+  }
+}
 /* section2 */
 
 .section2{
-  padding: 32px;
-  padding-top: 8rem;
+  margin: 4rem 0;
+  padding: 6rem 0;
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr;
-  row-gap: 2rem;
+  row-gap: 2.5rem;
 }
 
-.section2 div{
+
+.benefitsDiv div{
   display: grid;
   justify-content: center;
   align-items: center;
   justify-self: center;
+  grid-template-rows: repeat(3, min-content);
+  padding: 0;
+  margin: 0;
 }
 
 .section2 div h3{
@@ -112,21 +134,30 @@
   margin: 0;
   font-size: large;
   justify-self: center;
+  align-self: start;
+}
+
+.section2 div p{
+  padding: 1rem 0;
+  margin: 0;
+  font-size: medium;
+  justify-self: center;
+  text-align: center;
+  max-width: 12rem;
 }
 
 .section2Icons{
   color: #2364A0;
+  margin: 1rem 0;
   height: 100px;
   width: 100px;
   justify-self: center;
+  align-self: start;
 }
 
 /* section-3 */
 .section.section3Section{
   background-color: rgb(228, 223, 223);
-  /* background:url(/assets/section3Bg.svg);
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 
 .section3{
@@ -160,10 +191,9 @@
   align-self: top;
 }
 
-.section3 div h3{
-  padding: 0 32px;
+.section3h2{
+  padding: 4rem 0 0 0;
   margin: 0;
-  font-size: large;
 }
 
 .section3 div p{
@@ -171,13 +201,42 @@
   margin: 0;
 }
 
-/* section 4 */
+/* section-4 */
 
-.section.section4Section{
+  .section.section4Section{
+    padding: 4rem 0;
+  }
+
+  .section4{
+    max-width: 1200px;
+    display: grid;
+    justify-content: space-between;
+    column-gap: 1rem;
+    align-items: start;
+    grid-template-columns: repeat(2, max-content);
+  }
+  
+  .list{
+    display: grid;
+    justify-content: start;
+    align-items: center;
+    grid-template-columns: max-content;
+  }
+
+  .section4h2{
+    padding-bottom: 4rem;
+  }
+
+  .list p{
+    font-size: smaller;
+  }
+/* testimonial section */
+
+.section.testimonialSectionSection{
   background-color: #001a2e34;
 }
 
-.section4{
+.testimonialSection{
   padding: 32px 0;
   margin: 0;
   display: grid;
@@ -187,8 +246,8 @@
   row-gap: 2rem;
 }
 
-.section4 h2{
-  padding: 0;
+.testimonialSection h2{
+  padding: 4rem 0;
   margin: 0;
 }
 
@@ -216,21 +275,22 @@
 
 /* desktop */
 @media screen and (min-width: 769px) {
-  /* section1  */
   .section.section1Section{
-    background-color: #001A2E;
+    background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url(/assets/hero.svg);
+    background-position: bottom;
+    background-size: cover;
+    height: 600px;
   }
   
   .section1{
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: center;
-    background-position-y: 12rem, 12rem;
-    background-position-x: 0, 20rem;
-    background-size: 220px, 220px;
-    background-repeat: no-repeat,no-repeat;
-    height: 450px;
-    z-index: -2;
+    margin: 0;
+    padding: 0;
   }
 
   .section1Left{
@@ -238,7 +298,6 @@
     padding-top: 4rem;
     margin: 0;
   }
-  
   .section1 ul{
     padding: 0;
     margin: 0;
@@ -246,7 +305,8 @@
   }
   
   .section1Left h1{
-    font-size: 32px;
+    font-size: 40px;
+    font-weight: 900;
     text-align: left;
     grid-area: text;
   }
@@ -257,21 +317,28 @@
 
   .section1Right{
     display: grid;
-    justify-content: end;
+    grid-template-rows: min-content min-content;
     align-items: center;
+    justify-content: end;
+    padding-top: 2.5rem;
   }
 
+  .section1Right img{
+    height: 8rem;
+    width: 8rem;
+  }
   /* section 2 */
   .section2{
-    padding: 8rem 0;
-    align-self: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(3, max-content);
+    padding: 6rem 0;
+    margin: 0;
   }
 
-  /* section 3 */
-  .section.section3Section{
-    /* background-color: #001a2e71; */
+  .benefitsDiv{
+    display: grid;
+    padding: 0;
+    align-self: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, max-content);
   }
 
   .section3{
@@ -281,15 +348,16 @@
     grid-gap: 1rem;
   }
   
-  /* section-4 */
-  .section4{
-    padding: 1rem 0;
+  /* testimonial Section */
+  .testimonialSection{
+    padding: 4rem 0;
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
   }
-  .section4 h2{
+
+  .testimonialSection h2{
     justify-self: center;
     align-self: top;
   }
@@ -298,7 +366,12 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: 2rem;
   }
-  
+
+  /* section-4 */
+  .section4{
+    grid-template-columns: repeat(4, max-content);
+  }
+  .list p{
+    font-size: medium;
+  }
 }
-
-

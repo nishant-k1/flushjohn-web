@@ -7,6 +7,7 @@ import axios from 'axios';
 import {NextSeo} from 'next-seo'
 import {useState} from 'react'
 import {RiRefreshLine} from 'react-icons/ri'
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Contact | Portable Restroom Rental'
@@ -58,6 +59,9 @@ const contact = () => {
   const [spinner, setSpinner] = useState(false)
   return (
     <>
+    <Head>
+        <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+    </Head>
     <NextSeo {...SEO} />
     <div className={contactStyles.section}>
       <Formik

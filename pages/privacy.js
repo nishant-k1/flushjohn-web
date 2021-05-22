@@ -1,5 +1,6 @@
 import privacyStyles from '../styles/Privacy.module.css'
 import {NextSeo} from 'next-seo'
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Privacy | Porta Potty Rental Cost'
@@ -8,6 +9,9 @@ const SEO = {
 const privacy = () => {
   return (
     <>
+    <Head>
+      <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+    </Head>
     <NextSeo {...SEO} />
     <div className={privacyStyles.section}>
       <div className={privacyStyles.container}>
