@@ -23,7 +23,8 @@
   padding: 1rem;
   margin: 0;
   text-align: center;
-  background-color: rgb(236, 236, 236);
+  background: url(/assets/textureProduct.png);
+  color: rgba(0, 0, 0, 0.815);
 }
 
 .section4 div img{

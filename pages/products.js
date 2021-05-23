@@ -2,6 +2,7 @@ import {productData} from '../components/TextData'
 import productStyles from '../styles/Products.module.css'
 import {NextSeo} from 'next-seo'
 import Head from "next/head"
+// import ImageSlideShow from '../components/ImageSlideshow'
 
 const SEO = {
   title: 'Rent A Porta - Products | Portable Toilet Rental Near Me | Rent Hand Washing Stations'

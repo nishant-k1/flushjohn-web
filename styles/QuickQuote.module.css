@@ -123,6 +123,7 @@
 
 .button:hover{
   background: rgb(44, 149, 241);
+  transform: scale(.9);
   transition: .3s;
 }
 

@@ -2,6 +2,7 @@ import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import '../styles/globals.css'
 import Layout from '../components/Layout'
+import Header from '../components/Header'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps }) {
         <QuoteContextProvider>
           <Sidebar />
           <Layout>
+            <Header />
             <Nav />
             <Component {...pageProps} />
             <Testimonial />

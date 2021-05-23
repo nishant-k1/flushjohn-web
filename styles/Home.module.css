@@ -22,7 +22,7 @@
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
-  ), url(/assets/hero.svg);
+  ), url(/assets/hero.jpg);
   background-position: bottom;
   background-size: cover;
   height: 600px;
@@ -88,7 +88,7 @@
   padding: 0;
   margin: 0;
   color: rgb(255, 255, 255);
-  font-weight: 500;
+  font-weight: 900;
   font-size: 20px;
   width: 100%;
   list-style-type: none;
@@ -229,6 +229,8 @@
 
   .list p{
     font-size: smaller;
+    margin: 0;
+    padding: .3rem;
   }
 /* testimonial section */
 
@@ -275,8 +277,8 @@
 
 /* desktop */
 @media screen and (min-width: 769px) {
-  .section.section1Section{
-    background-image:     linear-gradient(
+  .section .section1Section{
+    background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), url(/assets/hero.svg);
