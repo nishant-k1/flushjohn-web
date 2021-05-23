@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
         <meta name = "apple-mobile-web-app-capable" content="yes" />
         <meta name = "apple-mobile-web-app-status-bar-style" content="#001A2E" />
         <meta name = "apple-mobile-web-app-title" content="Rent A Porta" />
-        <link rel="shortcut icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <DefaultSeo {...SEO}/>
       <SidebarContextProvider>
