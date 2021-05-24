@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   min-width: 100%;
+  background-color: #2a43589d;
 }
 
 .container{
@@ -16,38 +17,52 @@
   padding: 64px 0;
   text-align: center;
   display: grid;
-  row-gap: 2rem;
+  grid-gap: 2rem;
+  height: 100%;
+  width: 100%;
 }
 
-.section4 div{
+.wrapper{
   padding: 1rem;
   margin: 0;
   text-align: center;
-  background: url(/assets/textureProduct.png);
+  border-radius: 1px;
+  /* background: url(/assets/textureProduct.png); */
+  background-color: rgba(255, 255, 255, 0.945);
   color: rgba(0, 0, 0, 0.815);
+  height: 100%;
+  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.section4 div img{
-  height: 300px;
-  width: 200px;
+.wrapper img{
+  height: 250px;
+  width: 150px;
+}
+
+.wrapper h5{
+  font-size: medium;
 }
 
 @media screen and (max-width: 250) {
-  .section4 div img{
+  .wrapper img{
     height: 250px;
     width: 150px;
   }
-}
-.section4 div h5{
-  font-size: medium;
 }
 
 /* desktop */
 @media screen and (min-width: 769px) {
   .section4{
-    padding: 8rem 0;
-    display: grid;
+    padding: 6rem 0;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 4rem;
+    height: 100%;
+    width: 100%;
   }
+  .wrapper img{
+    height: 225px;
+    width: 175px;
+  }
+
 }

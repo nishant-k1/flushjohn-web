@@ -12,15 +12,13 @@ const Section1 = () => {
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
     <div className={homeStyles.container}>
       <div className={homeStyles.section1}>
-        <div className={homeStyles.section1Left}>
-          <ul>
-            <li><h1>{homeData.section1.title}</h1></li>
-            <li className={homeStyles.phone}>
-              <Link href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link>          
-              <img className={homeStyles.discount} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
-            </li>
-          </ul>
-        </div>
+        <ul className={homeStyles.section1Left}>
+          <li><h1>{homeData.section1.title}</h1></li>
+          <li className={homeStyles.phone}>
+            <Link href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link>          
+            <img className={homeStyles.discount} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
+          </li>
+        </ul>
         <div className={homeStyles.section1Right}>
           <img src="assets/discount.gif" alt="https://www.rentaporta.com/" />
           <QuickQuote />
@@ -38,22 +36,22 @@ const Section2 = () => {
       <div className={homeStyles.section2}>
         <h2>{homeData.section2.heading}</h2>
         <div className={homeStyles.benefitsDiv}>
-          <div>
+          <div className={homeStyles.wrapper}>
             <AiFillDollarCircle className={homeStyles.section2Icons}/>
             <h3>{homeData.section2.h3}</h3>
             <p>{homeData.section2.p1}</p>
           </div>
-          <div>
+          <div className={homeStyles.wrapper}>
             <RiTimeFill className={homeStyles.section2Icons}/>
             <h3>{homeData.section2.h1}</h3>
             <p>{homeData.section2.p2}</p>
           </div>
-          <div>
+          <div className={homeStyles.wrapper}>
             <FaTruckLoading className={homeStyles.section2Icons}/>
             <h3>{homeData.section2.h2}</h3>
             <p>{homeData.section2.p3}</p>
           </div>
-          <div>
+          <div className={homeStyles.wrapper}>
             <GiVacuumCleaner className={homeStyles.section2Icons}/>
             <h3>{homeData.section2.h4}</h3>
             <p>{homeData.section2.p4}</p>

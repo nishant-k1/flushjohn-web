@@ -1,7 +1,7 @@
 const homeData = {
   section1:
   {
-    title:"We offer a wide range of porta potty and standalone portable sink station rentals for all your events and jobsite requirements.",
+    title:"We offer a wide range of portable toilets and sink stations rental for all your events and jobsite needs.",
   },
 
   section2:
@@ -43,9 +43,9 @@ const homeData = {
 
   sectionLocation:{
     title: 'Our service locations',
-    list1:['Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida'],
-    list2:['Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine'],
-    list3:['Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey'],
+    list1:['Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia'],
+    list2:['Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland'],
+    list3:['Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey'],
     list4:['New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina'],
     list5:['South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
   }
@@ -53,18 +53,30 @@ const homeData = {
 
 export const productData=
 {
-  h1:"Standard Portable Restroom/Event Unit", 
-  h2:"Standard Portable Restroom/Jobsite Unit ", 
+  h1:"Standard Portable Restroom", 
+  h2:"Standard Portable Restroom", 
   h3:"ADA-Compliant Portable Restroom",
-  h4:"Flushable Restroom-Sink inside/Event",
+  h4:"Flushable Restroom-Sink inside",
   h5:"Hand Washing Sink Station",
-  h6:"Flushable Restroom-Sink inside/Jobsite",
+  h6:"Flushable Restroom-Sink inside",
   p1:"This is the most basic porta potty suited for events. It has a porta potty, urinal and toilet papers inside.",
   p2:"This a regular porta potty for job sites. It comes with toilet papers and a urinal inside.",
   p3:"The ADA toilets are larger in size than the regular restrooms and has wheel chair accessibility.",
   p4:"The flushable portable toilets for events has a flush and a sink. It is self-contained unit.",
   p5:"The standalone sink stations are self-contained and comes with soap and paper towels.",
   p6:"The flushable porta potties are self contained. It has a flush and a sink attached to it from inside."
+}
+
+export const slideShowData=
+{
+  ESPR: "sps_yellow.svg",
+  EDFR: "flushable.svg",
+  EACR: "ada_blue.svg",
+  EHWS: "sink.svg",
+  CSPR: "sps_blue.svg",
+  CDFR: "VIP-Flush-1.svg",
+  CACR: "ada_blue.svg",
+  CHWS: "sink.svg",
 }
 
 export default homeData

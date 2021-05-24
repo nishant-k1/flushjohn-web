@@ -22,7 +22,7 @@
 }
 
 .container img:hover{
-  transform: scale(.9);
+  transform: scale(.98);
   transition: .3s;
 }
 

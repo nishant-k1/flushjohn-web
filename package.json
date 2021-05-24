@@ -23,7 +23,9 @@
     "react-ga": "^3.3.0",
     "react-icons": "^4.2.0",
     "react-input-mask": "^2.0.4",
+    "react-responsive-carousel": "^3.2.18",
     "react-select": "^4.3.0",
+    "react-simple-image-slider": "^2.1.0",
     "react-slideshow-image": "^3.4.6",
     "webpack": "^5.36.2",
     "yup": "^0.32.9"

@@ -109,8 +109,7 @@
 
 .date{
   background-image: url(/assets/calendar.svg);
-  background-position-x: right;
-  background-position-y: center;
+  background-position: center right;
   background-size: 1.5rem;
   background-repeat: no-repeat;
 }
