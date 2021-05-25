@@ -46,10 +46,22 @@ const options = [
 const customStyles = {
   control: base => ({
     ...base,
-    border: 'solid 1px rgba(0, 0, 0, 0.37)',
-    boxShadow: 'none'
-  })
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: 'none',
+    background: `#F7F7F7`,
+    boxShadow: 'none',
+  }),
+  placeholder: (defaultStyles) => {
+    return {
+        ...defaultStyles,
+        color: 'black',
+        fontSize: `medium`,
+        fontWeight: `300`
+    }
+  }
 }
+
+
 const MySelect = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers
@@ -136,7 +148,7 @@ const QuickQuote = () => {
             const res = await axios.post(`${server}/api/quickQuote`, values)
             res.status === 200 ? setState(true) : setState(false)
           } catch(err){
-            alert(`The server has some issues, please make a phone call instead submitting the form :( `)
+            alert(`The server has some issues, please try again or just make a phone call :( `)
           }
           resetForm()
         }}
@@ -176,7 +188,7 @@ const QuickQuote = () => {
             <MyMaskedTextInput
               name="zip"
               mask="99999"
-              maskChar=" "
+              maskChar=""
               autoComplete="postal-code"
               placeholder="Zip Code"
               type='tel'
@@ -218,11 +230,13 @@ const QuickQuote = () => {
           <button className={ `${quickQuoteStyles.button} ${state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted}`} type="submit">
             {
               state ? 
-                <div className={quickQuoteStyles.acknowledge}><h2>Request sent successfully</h2><img src="/assets/tick.svg" alt="https://rentaporta.com" /></div>
-                  : 
-                    spinner ? <div className={quickQuoteStyles.processing}><RiRefreshLine className={quickQuoteStyles.spinner} /><h3>SUBMIT</h3></div>
-                      : 
-                        `SEND`
+                <div className={quickQuoteStyles.acknowledge}>
+                  <p>Request sent</p>
+                  <img className={quickQuoteStyles.tick} src="/assets/tick.svg" alt="https://rentaporta.com" />
+                </div>
+                  : spinner ? <div className={quickQuoteStyles.processing}>
+                      <RiRefreshLine className={quickQuoteStyles.spinner} /><p>SENDING...</p></div>
+                      : `SEND`
             }
           </button>
         </Form> 

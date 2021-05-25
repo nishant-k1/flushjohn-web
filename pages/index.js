@@ -20,7 +20,7 @@ const Section1 = () => {
           </li>
         </ul>
         <div className={homeStyles.section1Right}>
-          <img src="assets/discount.gif" alt="https://www.rentaporta.com/" />
+          <img className={homeStyles.gifImg} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
           <QuickQuote />
         </div>
       </div>

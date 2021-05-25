@@ -107,7 +107,7 @@
 
 
 @media screen and (max-width: 768px) {
-  .section1Right img{
+  .gifImg{
     display: none;
   }
 }
@@ -345,7 +345,7 @@
     padding-top: 2.5rem;
   }
 
-  .section1Right img{
+  .gifImg{
     height: 8rem;
     width: 8rem;
   }
