@@ -127,9 +127,10 @@
   padding: 0;
   margin: 0;
   display: grid;
-  align-items: center;
+  align-items: start;
   justify-content: start;
 }
+
 .wrapper{
   display: grid;
   align-items: center;

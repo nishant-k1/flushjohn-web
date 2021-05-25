@@ -76,7 +76,7 @@
     align-items: center;
   }
 
-  .nav ul li{
+  .nav ul li a{
     display: grid;
     justify-content: center;
     align-items: center;
@@ -84,10 +84,11 @@
     padding: .5rem;
     border-radius: 1px;
   }
-  .nav ul li:hover{
+  .nav ul li a:hover{
     color: rgba(0, 0, 0, 0.897);
     background-color: rgb(189, 189, 189);
     transition: .3s;
+    padding: .5rem;
   }
 
   .phone:hover{
