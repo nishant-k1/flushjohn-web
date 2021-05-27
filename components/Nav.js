@@ -4,6 +4,8 @@ import {GiHamburgerMenu} from 'react-icons/gi';
 import {FaPhoneAlt} from 'react-icons/fa'
 import {SidebarContext} from '../contexts/SidebarContext'
 import {useContext} from 'react'
+import {Event} from '../lib/analytics'
+
 
 const Nav = () => {
   const [active, setActive] = useContext(SidebarContext);
@@ -18,7 +20,14 @@ const Nav = () => {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/products">Products & Services</Link></li>
             <li className={navStyles.quote}><Link type="button" href="/quote">GET A QUOTE</Link></li>
-            <li className={navStyles.phone}><Link type="button" href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link></li>
+            <li className={navStyles.phone}>
+              <a href='tel:(855) 780-3061' type="button" onClick={ (e) => { Event("Phone Lead | Desktop", "Made a phone call")}}>
+                <div>
+                  <FaPhoneAlt />
+                  (855) 780-3061
+                </div>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

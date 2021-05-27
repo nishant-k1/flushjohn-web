@@ -5,7 +5,7 @@ import {AiFillDollarCircle} from 'react-icons/ai'
 import {FaTruckLoading, FaPhoneAlt} from 'react-icons/fa'
 import {GiVacuumCleaner} from 'react-icons/gi'
 import {RiTimeFill} from 'react-icons/ri'
-import Link from 'next/link'
+import { Event } from "../lib/analytics";
 
 const Section1 = () => {
   return (
@@ -15,7 +15,12 @@ const Section1 = () => {
         <ul className={homeStyles.section1Left}>
           <li><h1>{homeData.section1.title}</h1></li>
           <li className={homeStyles.phone}>
-            <Link href='tel:(855) 780-3061'><div><FaPhoneAlt />(855) 780-3061</div></Link>          
+            <a href='tel:(855) 780-3061' onClick={ (e) => { Event("Phone Lead | Mobile", "Made a phone call")}}>
+              <div>
+                <FaPhoneAlt />
+                (855) 780-3061
+              </div>
+            </a>    
             <img className={homeStyles.discount} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
           </li>
         </ul>

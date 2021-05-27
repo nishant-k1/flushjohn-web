@@ -9,6 +9,8 @@ import {server} from '../config/index'
 import axios from 'axios';
 import {useState} from 'react'
 import {RiRefreshLine} from 'react-icons/ri'
+import {Event} from '../lib/analytics'
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const MyTextInput = ({ label, ...props }) => {
@@ -142,8 +144,9 @@ const QuickQuote = () => {
         })}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
+          Event("Prompt Lead", "Submitted Prompt Form on Home Page")
           setSpinner(true)
-          await sleep(500);
+          await sleep(500)
           try{
             const res = await axios.post(`${server}/api/quickQuote`, values)
             res.status === 200 ? setState(true) : setState(false)

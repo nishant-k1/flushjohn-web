@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {server} from '../config/index'
 import {RiRefreshLine} from 'react-icons/ri'
 import axios from 'axios';
+import {Event} from '../lib/analytics'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -121,6 +122,7 @@ const QuoteStep3 = () => {
             resetForm()
             res.status === 200 ? setState(true) : setState(false)
             setStep(4)
+            Event("Quote Lead", "Submitted Quote Form on Quote Page")
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }

@@ -11,6 +11,7 @@
     "child_process": false
   },
   "dependencies": {
+    "@types/gtag.js": "^0.0.4",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
     "next": "10.1.3",
