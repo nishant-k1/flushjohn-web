@@ -238,7 +238,7 @@ const QuickQuote = () => {
                   <img className={quickQuoteStyles.tick} src="/assets/tick.svg" alt="https://rentaporta.com" />
                 </div>
                   : spinner ? <div className={quickQuoteStyles.processing}>
-                      <RiRefreshLine className={quickQuoteStyles.spinner} /><p>SENDING...</p></div>
+                      <RiRefreshLine className={quickQuoteStyles.spinner} /><p>SENDING REQUEST</p></div>
                       : `SEND`
             }
           </button>

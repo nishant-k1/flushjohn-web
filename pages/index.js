@@ -15,7 +15,7 @@ const Section1 = () => {
         <ul className={homeStyles.section1Left}>
           <li><h1>{homeData.section1.title}</h1></li>
           <li className={homeStyles.phone}>
-            <a href='tel:(855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}}>
+            <a href='tel:(855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
               <div>
                 <FaPhoneAlt />
                 (855) 780-3061
