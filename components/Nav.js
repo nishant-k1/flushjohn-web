@@ -21,7 +21,7 @@ const Nav = () => {
             <li><Link href="/products">Products & Services</Link></li>
             <li className={navStyles.quote}><Link type="button" href="/quote">GET A QUOTE</Link></li>
             <li className={navStyles.phone}>
-              <a href='tel:(855) 780-3061' type="button" onClick={ (e) => { Event("Phone Lead | Desktop", "Made a phone call")}}>
+              <a href='tel:(855) 780-3061' type="button" onClick={ (e) => { Event("Request quote", "Desktop Phone Call", "DPC")}}>
                 <div>
                   <FaPhoneAlt />
                   (855) 780-3061

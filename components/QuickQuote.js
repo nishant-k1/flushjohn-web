@@ -144,7 +144,7 @@ const QuickQuote = () => {
         })}
 
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
-          Event("Prompt Lead", "Submitted Prompt Form on Home Page")
+          Event("Request quote", "Prompt Form Submit", "PFS")
           setSpinner(true)
           await sleep(500)
           try{

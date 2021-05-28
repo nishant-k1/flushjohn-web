@@ -122,7 +122,7 @@ const QuoteStep3 = () => {
             resetForm()
             res.status === 200 ? setState(true) : setState(false)
             setStep(4)
-            Event("Quote Lead", "Submitted Quote Form on Quote Page")
+            Event("Request quote", "Quote Form Submit", "QFS")
           } catch(err){
             alert(`The server has some issues, please make a phone call instead submitting the form :( `)
           }
