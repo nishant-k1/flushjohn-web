@@ -19,7 +19,7 @@ const disclaimer = () => {
             <h2>DISCLAIMER</h2>
             <div>
               <h3>WEBSITE DISCLAIMER</h3>
-              <p>The information provided by Quengenesis LLC (“Company”, “we”, “our”, “us”) on rentaporta.com (the “Site”) is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.</p>
+              <p>The information provided by Rent A Porta (“Company”, “we”, “our”, “us”) on rentaporta.com (the “Site”) is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.</p>
               <p>UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.</p>
             </div>
 
@@ -41,7 +41,7 @@ const disclaimer = () => {
 
             <div>
               <h3>LOGOS AND TRADEMARKS DISCLAIMER</h3>
-              <p>All logos and trademarks of third parties referenced on rentaporta.com are the trademarks and logos of their respective owners. Any inclusion of such trademarks or logos does not imply or constitute any approval, endorsement or sponsorship of Rent A Porta or Quengenesis LLC by such owners.</p>
+              <p>All logos and trademarks of third parties referenced on rentaporta.com are the trademarks and logos of their respective owners. Any inclusion of such trademarks or logos does not imply or constitute any approval, endorsement or sponsorship of Rent A Porta or Rent A Porta by such owners.</p>
             </div>
             
             <div>

@@ -19,8 +19,8 @@ const terms = () => {
         <h2>TERMS AND CONDITIONS</h2>
         <div>
           <h3>Introduction</h3>
-          <p>Welcome to Rent A Porta. Quengenesis LLC (“us”, “we”, or “our”) operates rentaporta.com (hereinafter referred to as “Service”).</p>
-          <p>These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at rentaporta.com (together or individually “Service”) operated by Quengenesis LLC.</p>
+          <p>Welcome to Rent A Porta. Hereinafter referred to as “Service”.</p>
+          <p>These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at rentaporta.com (together or individually “Service”).</p>
           <p>Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.</p>
           <p>Your agreement with us includes these Terms and our Privacy Policy (“Agreements”). You acknowledge that you have read and understood Agreements, and agree to be bound of them.</p>
           <p>If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing us via the contact page on our website so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.</p>
@@ -114,7 +114,7 @@ const terms = () => {
         
         <div>
           <h3>Intellectual Property</h3>
-          <p>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Quengenesis LLC and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Quengenesis LLC.</p>
+          <p>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Rent A Porta LLC and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Rent A Porta LLC.</p>
         </div>
         
           <div>
@@ -145,7 +145,7 @@ const terms = () => {
         
         <div>
           <h3>Links To Other Web Sites</h3>
-          <p>Our Service may contain links to third party web sites or services that are not owned or controlled by Quengenesis LLC.</p>
+          <p>Our Service may contain links to third party web sites or services that are not owned or controlled by Rent A Porta LLC.</p>
           <p>We have no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
         </div>
 
