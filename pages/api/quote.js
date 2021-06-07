@@ -9,6 +9,12 @@ export default async function quoteHandler (req, res){
 
   if (method == 'POST') {
     try{
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const deliveryDate = new Date(`${req.body.deliveryDate}`)
+      const longDeliveryDate = `${months[deliveryDate.getMonth()]} ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`
+      const pickupDate = new Date(`${req.body.pickupDate}`)
+      const longPickupDate = `${months[pickupDate.getMonth()]} ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`
+
         const quoteData = req.body
         const transporter = await nodemailer.createTransport({
           host: "smtp.zoho.in",
@@ -24,7 +30,7 @@ export default async function quoteHandler (req, res){
       const info = await transporter.sendMail({
           from: `Rent A Porta<${process.env.EMAIL_ID}>`, // sender address
           to: `Rent A Porta<${process.env.EMAIL_ID}>`, // list of receivers
-          subject: "Rent A Porta: Quick Quote", // Subject line
+          subject: "Rent A Porta: Quote", // Subject line
           text: ``, // plain text body
           html: 
           ` <div>
@@ -41,17 +47,10 @@ export default async function quoteHandler (req, res){
               <h4>Phone:</h4><p>${quoteData.phone}</p>
             </div>
             <div>
-              <h4>Delivery Date:</h4><p>${quoteData.deliveryDate}</p>
-              <h4>Pickup Date:</h4><p>${quoteData.pickupDate}</p>
-              <h4>Street Address:</h4><p>${quoteData.city}</p>
-              <h4>City:</h4> <p>${quoteData.zip}</p>
-              <h4>State:</h4> <p>${quoteData.state}</p>
+              <h4>Delivery Date:</h4><p>${longDeliveryDate}</p>
+              <h4>Pickup Date:</h4><p>${longPickupDate}</p>
               <h4>Zip Code:</h4> <p>${quoteData.zip}</p>
-            </div>
-            <div>
               <h4>Instructions:</h4><p>${quoteData.hint}</p>
-              <h4>Onsite Person Name:</h4><p>${quoteData.onsite}</p>
-              <h4>Onsite Person Phone:</h4><p>${quoteData.onsitePhone}</p>
             </div>
           `
       })
