@@ -56,9 +56,10 @@
 
 .refreshLink{
   padding: 4px;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
+  grid-template-columns: max-content;
   color: white;
   background: rgba(0, 0, 0, 0);
   border-radius: 4px;

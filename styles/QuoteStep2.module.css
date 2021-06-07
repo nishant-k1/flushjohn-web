@@ -7,12 +7,11 @@
   align-items: center;
   grid-template-columns: 1fr;
   grid-template-areas: 
-                        "fName"
-                        "lName"
-                        "cName" 
-                        "email"
-                        "phone"
-                        "button";
+                "deliveryDate"
+                "pickupDate"
+                "zip"
+                "hint"
+                "buttons";
 }
 
 .outerBox{
@@ -22,13 +21,7 @@
   grid-template-columns: 1fr;
   justify-content: space-between;
   align-items: center;
-}
-
-.innerBox{
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  grid-template-columns: 1fr;
+  row-gap: .5rem;
 }
 
 .form label{
@@ -36,42 +29,25 @@
   margin: 0;
   color: white;
   font-size: large;
-  font-weight: 200;
+  font-weight: 300;
 }
 
-.form input {
-  padding: 0;
+.form input, .form select, .form textarea{
+  padding: 0 .5rem;
+  display: grid;
+  align-items: center;
   margin: 0;
-  color: white;
-  background-color: #2a4358;
+  color: black;
+  background-color: white;
   outline: none;
-  border:none;
-  border-bottom: solid 2px white;
-  height: 2rem;
-  font-size: large;
-  font-weight: 400;
-}
-
-.form input:-webkit-autofill,
-.form input:-webkit-autofill:hover, 
-.form input:-webkit-autofill:focus, 
-.form input:-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
-  -webkit-text-fill-color: white !important;
-}
-
-.form input:focus{
-  padding: 0;
-  margin: 0;
-  color: white;
   border: none;
-  outline: none;
   border-bottom: solid 2px white;
-  background-color: #2a4358;
   height: 2rem;
   font-size: large;
   font-weight: 400;
+  width: 100%;
 }
+
 
 .form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -81,32 +57,71 @@
 .form input[type=number] {
   -moz-appearance: textfield;
 }
+.form textarea{
+  padding: .5rem;
+  margin: 0;
+  height: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.267);
+}
+.form textarea:focus{
+  height: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.267);
+}
+
+
+.form select{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: large;
+}
 
 .error{
   padding: 0;
   margin: 0;
   color: yellow;
 }
-.fName{
-  grid-area: fName;
+
+.date{
+  background-image: url(/assets/calendar.svg);
+  background-position: center right;
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
 }
 
-.lName{
-  grid-area: lName;
-}
-.cName{
-  grid-area: cName;
-}
-.email{
-  grid-area: email;
+.deliveryDate{
+  grid-area: deliveryDate;
 }
 
-.phone{
-  grid-area: phone;
+.pickupDate{
+  grid-area: pickupDate;
+}
+.street{
+  grid-area: street;
+}
+.city{
+  grid-area: city;
+}
+
+.state{
+  grid-area: state;
+}
+.zip{
+  grid-area: zip;
+}
+
+.hint{
+  grid-area: hint;
+}
+.onsite{
+  grid-area: onsite;
+}
+.onsitePhone{
+  grid-area: onsitePhone;
 }
 
 .buttons{
-  grid-area: button;
+  grid-area: buttons;
   display: grid;
   column-gap: 2rem;
   grid-template-columns: 1fr 1fr;
@@ -124,12 +139,14 @@
   border-radius: 2px;
 
 }
+
 .buttons button:hover{
   background-color: rgba(255, 255, 255, 0.603);
   transition: .3s;
 }
 
 
+/* desktop */
 @media screen and (min-width: 769px) {
   .form{
     grid-template-columns: 2fr .5fr;
@@ -141,7 +158,7 @@
     margin: 0;
     display: grid;
     column-gap: 4rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
   }

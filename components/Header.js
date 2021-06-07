@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={headerStyles.section}>
       <div className={headerStyles.container}>
-        <Link href='/'><img src="logo-black.svg" alt="brand-logo" /></Link>
+        <Link href='/'><img src="brand-logo-transparent.svg" alt="brand-logo" /></Link>
         <ul className={headerStyles.nav}>
           <li>
             <Link href='https://www.facebook.com/portarental'>

@@ -13,11 +13,10 @@ const SEO = {
 }
 
 const quote = () => {
-  const {render, data} = useContext(QuoteContext)
-  const [step, setStep] = render
-  const [formValues, setFormValues] = data
+  const {render} = useContext(QuoteContext)
+  const [step] = render
   return (
-    <>
+    <> 
       <Head>
         <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
       </Head>

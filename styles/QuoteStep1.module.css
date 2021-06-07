@@ -19,14 +19,16 @@
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  row-gap: .5rem;
 }
 
 .innerBox{
   display: grid;
   justify-content: space-between;
   align-items: center;
+  column-gap: .5rem;
   grid-template-columns: max-content max-content;
 }
 
@@ -35,14 +37,14 @@
   margin: 0;
   color: white;
   font-size: large;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .form input {
   padding: 0;
   margin: 0;
-  color: white;
-  background-color: #2a4358;
+  color: black;
+  background-color: #ffffff;
   outline: none;
   border:none;
   border-bottom: solid 2px white;
@@ -52,31 +54,10 @@
   text-align: center;
 }
 
-.form input:focus{
-  padding: 0;
-  margin: 0;
-  color: white;
-  border: none;
-  outline: none;
-  border-bottom: solid 2px white;
-  background-color: #2a4358;
-  height: 2rem;
-  font-size: large;
-  font-weight: 400;
-  text-align: center;
-}
 
 .form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.form input:-webkit-autofill,
-.form input:-webkit-autofill:hover, 
-.form input:-webkit-autofill:focus, 
-.form input:-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
-  -webkit-text-fill-color: white !important;
 }
 
 .form input[type=number] {
