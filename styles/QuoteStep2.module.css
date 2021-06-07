@@ -5,7 +5,7 @@
   row-gap: 2rem;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr;
+  grid-template-columns: max-content;
   grid-template-areas: 
                 "deliveryDate"
                 "pickupDate"
@@ -143,8 +143,8 @@
 .buttons button:hover{
   background-color: rgba(255, 255, 255, 0.603);
   transition: .3s;
+  transform: scale(.98);
 }
-
 
 /* desktop */
 @media screen and (min-width: 769px) {
@@ -153,6 +153,13 @@
     border: 1px solid rgba(255, 255, 255, 0.253);
     padding: 2rem;
   }
+  .form input {
+    width: 16rem;
+  }
+  .form textarea{
+    width: 16rem;
+  }
+
   .form .outerBox{
     padding: 0;
     margin: 0;
@@ -167,7 +174,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    width: 12rem;
+    width: 16rem;
     padding: 0 2rem;
   }
 }
