@@ -76,7 +76,6 @@ const QuoteStep2 = () => {
               return {...prevValues, ...values}
             })
             const res = await axios.post(`${server}/api/quote`, values)
-            resetForm()
             res.status === 200 ? setState(true) : setState(false)
             setStep(4)
             Event("Request quote", "Quote Form Submit", "QFS")

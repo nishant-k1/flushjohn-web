@@ -1,10 +1,9 @@
 import { Formik, Form, useField } from 'formik'
 import QuoteStep1Styles from '../styles/QuoteStep1.module.css'
-import {useContext} from 'react'
-import {QuoteContext} from '../contexts/QuoteContext'
+import { useContext } from 'react'
+import { QuoteContext } from '../contexts/QuoteContext'
 import MaskedInput from 'react-input-mask';
-import {server} from '../config/index'
-import axios from 'axios';
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const MyMaskedTextInput = ({ label, ...props }) => {
@@ -29,14 +28,12 @@ const QuoteStep1 = () => {
       <Formik
         initialValues={formValues}
         onSubmit={ async (values, { setSubmitting, resetForm }) => {
-          await sleep(500);
+          await sleep(500)
           try{
             setFormValues((prevValues) => {
               return  {...prevValues, ...values}
             })
-            resetForm()
             setStep(2)
-            resetForm()
           } catch(err){
             alert(err)
           }

@@ -16,15 +16,9 @@ export const QuoteContextProvider = ({children}) => {
     phone: '',
     deliveryDate: '',
     pickupDate: '',
-    street: '',
-    city: '',
-    state: '',
     zip: '',
     hint: '',
-    onsite: '',
-    onsitePhone: ''
   })
-
 
   return (
     <QuoteContext.Provider value={{render: [step, setStep], data: [formValues, setFormValues]}}>
