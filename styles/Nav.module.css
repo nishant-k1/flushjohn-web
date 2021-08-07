@@ -19,6 +19,19 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.phoneMobile div{
+  color: black;
+  border-radius: 1px;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: .2rem;
+}
+
 .menuIcon{
   color: black;
   height: 2rem;
@@ -54,6 +67,9 @@
     margin: 0;
   }
   
+  .phoneMobile{
+    display: none;
+  }
   .menuIcon{
     display: none;
   }
@@ -108,6 +124,5 @@
     grid-template-columns: repeat(2, max-content);
     column-gap: .2rem;
   }
-
 }
 

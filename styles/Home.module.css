@@ -42,7 +42,7 @@
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
-  ), url(/assets/hero.jpg);
+  ), url(/assets/hero1.jpg);
   background-position: bottom;
   background-size: cover;
   height: 600px;
@@ -55,6 +55,7 @@
   justify-content: start;
   align-items: center;
   grid-template-columns: 1fr;
+  row-gap: 1rem;
 }
 
 .section1Left{
@@ -104,12 +105,6 @@
   align-items: center;
 }
 
-
-@media screen and (max-width: 768px) {
-  .gifImg{
-    display: none;
-  }
-}
 
 /********************** section2 *****************/
 .section2{

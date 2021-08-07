@@ -22,18 +22,8 @@ const Section1 = () => {
       <div className={homeStyles.section1}>
         <ul className={homeStyles.section1Left}>
           <li><h1>{homeData.section1.title}</h1></li>
-          <li className={homeStyles.phone}>
-            <a href='tel: +1 (855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
-              <div>
-                <FaPhoneAlt />
-                (855) 780-3061
-              </div>
-            </a>    
-            <img className={homeStyles.discount} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
-          </li>
         </ul>
         <div className={homeStyles.section1Right}>
-          <img className={homeStyles.gifImg} src="assets/discount.gif" alt="https://www.rentaporta.com/" />
           <QuickQuote />
         </div>
       </div>

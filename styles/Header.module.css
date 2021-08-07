@@ -2,8 +2,8 @@
   padding: 0;
   margin: 0;
   min-width: 100%;
-  background-color: #002B4C;
-  /* background: url(/assets/texture.png) repeat; */
+  background-color: #473f28e1;
+  /* background: url(/assets/header.png) repeat; */
 }
 
 .container{
@@ -39,8 +39,9 @@
 }
 
 .icon{
-  height: 2.5rem;
-  width: 2.5rem;  
+  height: 2rem;
+  width: 2rem;  
+  background-color: white;
 }
 
 .icon:hover{

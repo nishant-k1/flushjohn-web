@@ -15,6 +15,14 @@ const Nav = () => {
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
           <GiHamburgerMenu className={navStyles.menuIcon} onClick={()=>setActive(!active)}/>
+          <p className={navStyles.phoneMobile}>
+            <a href='tel: +1 (855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
+              <div>
+                <FaPhoneAlt />
+                (855) 780-3061
+              </div>
+            </a>    
+          </p>
           <Link href='/'><img src="brand-logo-transparent.svg" alt="brand-logo" /></Link>
           <ul className={navStyles.navMenu}>
             <li><Link href="/">Home</Link></li>
