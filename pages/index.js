@@ -7,7 +7,7 @@ import {GiVacuumCleaner} from 'react-icons/gi'
 import {RiTimeFill} from 'react-icons/ri'
 import { Event } from "../lib/analytics";
 import {NextSeo} from 'next-seo'
-
+import Head from "next/head"
 
 const SEO = {
   title: 'Rent A Porta - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet',
@@ -145,7 +145,7 @@ const Home = () => {
     <>
       <NextSeo {...SEO}/>
       <Head>
-        <meta name="description" content="Book porta potty anywhere in united states for your events, job sites and residence. Cheapest porta potty rental in your area." />
+        <meta name="description" content="Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area." />
         <meta name='keywords' content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`} />
       </Head>
       <Section1 />

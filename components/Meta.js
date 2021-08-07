@@ -3,38 +3,33 @@ import { NextSeo } from 'next-seo';
 const Home = () => (
   <>
     <NextSeo
-      title="Using More of Config"
-      description="This example uses more of the available config options."
-      canonical="https://www.canonical.ie/"
+      title="Rent A Porta - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet"
+      description="Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area."
+      canonical="https://www.rentaporta.com/"
       openGraph={{
-        url: 'https://www.url.ie/a',
+        url: 'https://www.rentaporta.com/',
         title: 'Open Graph Title',
         description: 'Open Graph Description',
         images: [
           {
-            url: 'https://www.example.ie/og-image-01.jpg',
+            url: 'icon.png',
             width: 800,
             height: 600,
             alt: 'Og Image Alt',
           },
           {
-            url: 'https://www.example.ie/og-image-02.jpg',
+            url: 'icon.png',
             width: 900,
             height: 800,
             alt: 'Og Image Alt Second',
           },
-          { url: 'https://www.example.ie/og-image-03.jpg' },
-          { url: 'https://www.example.ie/og-image-04.jpg' },
+          { url: 'icon.png' },
+          { url: 'icon.png' },
         ],
-        site_name: 'SiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
+        site_name: 'Rent A Porta',
       }}
     />
-    <p>SEO Added to Page</p>
+    <p>Porta Potty Rental</p>
   </>
 );
 
