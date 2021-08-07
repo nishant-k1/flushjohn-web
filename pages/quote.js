@@ -9,7 +9,8 @@ import {NextSeo} from 'next-seo'
 import Head from "next/head"
 
 const SEO = {
-  title: 'Rent A Porta - Quote | Get Instant Quote & Bookings'
+  title: 'Rent A Porta - Quote | Get Instant Quote & Bookings',
+  description: 'Rent a porta potty from a leading porta john rental service provider in united states, california, ohio, michigan, alabama'
 }
 
 const quote = () => {
@@ -19,7 +20,6 @@ const quote = () => {
     <> 
       <Head>
         <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
-        <meta name="description" content="Rent a porta potty from a leading porta john rental service provider in united states, california, ohio, michigan, alabama" />
         <meta name='keywords' content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`} />
       </Head>
       <NextSeo {...SEO} />

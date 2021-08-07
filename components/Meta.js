@@ -26,6 +26,7 @@ const Home = () => (
           { url: 'icon.png' },
           { url: 'icon.png' },
         ],
+        type: 'website',
         site_name: 'Rent A Porta',
       }}
     />

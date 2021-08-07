@@ -6,6 +6,7 @@ import Slider from '../components/Slider'
 
 const SEO = {
   title: 'Rent A Porta - Home | porta potty rental california and Maryland | porta potty rental near me in Wisconsin | porta john rental Connecticut and Minnesota | portable restroom rental | rent a toilet',
+  description: 'Leading porta potty rental service provider across united states for events, job sites, residence.'
 }
 
 const products = () => {
@@ -13,7 +14,6 @@ const products = () => {
     <>
       <Head>
         <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
-        <meta name="description" content="Leading porta potty rental service provider across united states for events, job sites, residence." />
         <meta name='keywords' content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`} />
       </Head>
       <NextSeo {...SEO}/>
