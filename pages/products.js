@@ -13,6 +13,8 @@ const products = () => {
     <>
       <Head>
         <meta name="google-site-verification" content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw" />
+        <meta name="description" content="Leading porta potty rental service provider across united states for events, job sites, residence." />
+        <meta name='keywords' content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`} />
       </Head>
       <NextSeo {...SEO}/>
       <div className={`${productStyles.section} ${productStyles.section4Section}`}>
