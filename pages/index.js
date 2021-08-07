@@ -11,7 +11,6 @@ import {NextSeo} from 'next-seo'
 
 const SEO = {
   title: 'Rent A Porta - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet',
-  keywords: 'porta potty rental california, porta john rental, rent a toilet, portable restroom rental, california porta potty rental, newjersey rent a toilet, ohio rent a toilet', 
 }
 
 

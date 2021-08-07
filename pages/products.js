@@ -5,7 +5,7 @@ import Head from "next/head"
 import Slider from '../components/Slider'
 
 const SEO = {
-  title: 'Rent A Porta - Products | Portable Toilet Rental Near Me | Rent Hand Washing Stations'
+  title: 'Rent A Porta - Home | porta potty rental california and Maryland | porta potty rental near me in Wisconsin | porta john rental Connecticut and Minnesota | portable restroom rental | rent a toilet',
 }
 
 const products = () => {
