@@ -8,8 +8,8 @@ const Home = () => (
       canonical="https://www.rentaporta.com/"
       openGraph={{
         url: 'https://www.rentaporta.com/',
-        title: 'Open Graph Title',
-        description: 'Open Graph Description',
+        title: 'Rent A Porta - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet',
+        description: 'Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.',
         images: [
           {
             url: 'icon.png',
