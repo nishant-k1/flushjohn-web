@@ -144,6 +144,9 @@ const Home = () => {
   return (
     <>
       <NextSeo {...SEO}/>
+      <Head>
+        <meta keywords={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`} />
+      </Head>
       <Section1 />
       <Section2 />
       <Section3 />
