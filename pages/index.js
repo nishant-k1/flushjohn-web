@@ -6,6 +6,14 @@ import {FaTruckLoading, FaPhoneAlt} from 'react-icons/fa'
 import {GiVacuumCleaner} from 'react-icons/gi'
 import {RiTimeFill} from 'react-icons/ri'
 import { Event } from "../lib/analytics";
+import {NextSeo} from 'next-seo'
+
+
+const SEO = {
+  title: 'Rent A Porta - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet',
+  keywords: 'porta potty rental california, porta john rental, rent a toilet, portable restroom rental, california porta potty rental, newjersey rent a toilet, ohio rent a toilet', 
+}
+
 
 const Section1 = () => {
   return (
@@ -15,7 +23,7 @@ const Section1 = () => {
         <ul className={homeStyles.section1Left}>
           <li><h1>{homeData.section1.title}</h1></li>
           <li className={homeStyles.phone}>
-            <a href='tel:(855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
+            <a href='tel: +1 (855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
               <div>
                 <FaPhoneAlt />
                 (855) 780-3061
@@ -136,6 +144,7 @@ const Section4 = (props) => {
 const Home = () => {
   return (
     <>
+      <NextSeo {...SEO}/>
       <Section1 />
       <Section2 />
       <Section3 />
