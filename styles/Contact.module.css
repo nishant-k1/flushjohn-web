@@ -1,18 +1,18 @@
-.section{
+.section {
   padding: 0;
   margin: 0;
   min-width: 100%;
   background-color: #2a4358;
 }
 
-.container{
+.container {
   max-width: 1100px;
   padding: 32px;
   margin: 0 auto;
   background-color: #2a4358;
 }
 
-.label{
+.label {
   padding: 0;
   margin: 0;
   color: white;
@@ -38,14 +38,14 @@
 }
 
 .form input:-webkit-autofill,
-.form input:-webkit-autofill:hover, 
-.form input:-webkit-autofill:focus, 
-.form input:-webkit-autofill:active{
+.form input:-webkit-autofill:hover,
+.form input:-webkit-autofill:focus,
+.form input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #2a4358 inset !important;
   -webkit-text-fill-color: white !important;
 }
 
-.form input:focus{
+.form input:focus {
   padding: 0;
   margin: 0;
   color: white;
@@ -74,13 +74,13 @@
   background-color: #2a4358;
   outline: none;
   height: 100px;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   font-size: large;
   font-weight: 300;
   width: 100%;
 }
 
-.textarea:focus{
+.textarea:focus {
   padding: 0;
   margin: 0;
   color: white;
@@ -92,20 +92,20 @@
   background-color: #2a4358;
   outline: none;
   height: 100px;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   font-size: large;
   font-weight: 300;
   width: 100%;
 }
 
-.error{
+.error {
   padding: 0;
   margin: 0;
-  color: yellow;
+  color: #ef648a;
   font-size: small;
 }
 
-.form{
+.form {
   padding: 0;
   margin: 0;
   background-color: #2a4358;
@@ -114,46 +114,46 @@
   align-items: center;
   row-gap: 2rem;
   grid-template-columns: 1fr;
-  grid-template-areas: 
-    "fName" 
+  grid-template-areas:
+    "fName"
     "lName"
     "email"
-    "phone" 
+    "phone"
     "message"
     "button";
 }
 
-.firstName{
+.firstName {
   grid-area: fName;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.lastName{
+.lastName {
   grid-area: lName;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.email{
+.email {
   grid-area: email;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.phone{
+.phone {
   grid-area: phone;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.message{
+.message {
   grid-area: message;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.button{
+.button {
   padding: 0;
   margin: 0;
   grid-area: button;
@@ -166,104 +166,108 @@
   border-radius: 2px;
 }
 
-.button:hover{
+.button:hover {
   background-color: rgba(255, 255, 255, 0.603);
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.processing{
+.processing {
   padding: 0;
   margin: 0;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-template-columns: max-content max-content;
-  column-gap: .2rem;
+  column-gap: 0.2rem;
 }
 
-.processing h3{
+.processing h3 {
   padding: 0;
   margin: 0;
   font-size: medium;
   font-weight: 900;
 }
 
-.notSubmitted{
-  padding: .5rem 1rem;
+.notSubmitted {
+  padding: 0.5rem 1rem;
   font-size: large;
   font-weight: 500;
 }
 
-.submitted{
+.submitted {
   padding: 0;
   margin: 0;
   border: none;
   background-color: transparent;
 }
 
-
-.button.submitted:hover{
+.button.submitted:hover {
   background-color: transparent;
 }
 
 @keyframes spinner {
-  from {transform:rotate(0deg);}
-  to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.spinner{
+.spinner {
   padding: 0;
   margin: 0;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  animation: spinner .9s linear infinite;
+  animation: spinner 0.9s linear infinite;
 }
 
-.acknowledge{
+.acknowledge {
   align-items: center;
   justify-content: center;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
-.acknowledge img{
+.acknowledge img {
   height: 48px;
   width: 48px;
 }
 
-.acknowledge h2{
+.acknowledge h2 {
   padding: 0;
   margin: 0;
   color: white;
 }
 
-@media screen and (min-width:769px) {
-  .form{
+@media screen and (min-width: 769px) {
+  .form {
     padding: 64px 0;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
     justify-content: space-between;
     align-items: center;
-    grid-template-areas: 
-    "fName message" 
-    "lName message"
-    "email message"
-    "phone message" 
-    ". button";
+    grid-template-areas:
+      "fName message"
+      "lName message"
+      "email message"
+      "phone message"
+      ". button";
   }
 
-  .message .label, .message .error{
+  .message .label,
+  .message .error {
     padding-left: 1rem;
   }
 
-  .message{
+  .message {
     border-left: 1px solid rgba(255, 255, 255, 0.507);
     padding: 0;
     margin: 0;
   }
-  .textarea{
+  .textarea {
     padding-left: 1rem;
     padding-top: 1rem;
     margin: 0;
@@ -271,7 +275,7 @@
     border-bottom: none;
   }
 
-  .textarea:focus{
+  .textarea:focus {
     padding-left: 1rem;
     padding-top: 1rem;
     margin: 0;

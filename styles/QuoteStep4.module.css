@@ -1,4 +1,4 @@
-.step4{
+.step4 {
   padding: 0;
   margin: 0;
   text-align: center;
@@ -9,7 +9,7 @@
   row-gap: 1rem;
 }
 
-.thanks{
+.thanks {
   padding: 0;
   margin: 0;
   display: flex;
@@ -21,15 +21,15 @@
   color: white;
 }
 
-.tick{
+.tick {
   padding: 0;
   margin: 0;
   height: 6rem;
   width: 6rem;
-  color: yellow;
+  color: #ef648a;
 }
 
-.confirmation{
+.confirmation {
   padding: 0;
   margin: 0;
   font-size: large;
@@ -37,14 +37,14 @@
   color: white;
 }
 
-.message{
+.message {
   padding: 0;
   margin: 0;
   font-size: medium;
   color: white;
 }
 
-.linkAndMessage{
+.linkAndMessage {
   padding: 0;
   margin: 0;
   display: flex;
@@ -54,7 +54,7 @@
   height: 2rem;
 }
 
-.refreshLink{
+.refreshLink {
   padding: 4px;
   display: grid;
   align-items: center;
@@ -64,12 +64,12 @@
   background: rgba(0, 0, 0, 0);
   border-radius: 4px;
   border: solid 1px white;
-  margin-right: .3rem;
+  margin-right: 0.3rem;
   text-decoration: none;
   font-size: 1rem;
 }
 
-.refreshLinkMessage{
+.refreshLinkMessage {
   font-size: small;
   color: white;
 }

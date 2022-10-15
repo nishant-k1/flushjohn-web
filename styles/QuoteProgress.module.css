@@ -1,40 +1,39 @@
-.section{
+.section {
   min-width: 100%;
   background-color: #4b677e;
 }
 
-.container{
+.container {
   max-width: 1100px;
   padding: 64px 32px;
   margin: 0 auto;
 }
 
-.innerSection{
+.innerSection {
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr;
 }
 
-.progressBar{
+.progressBar {
   display: none;
 }
 
-.step{
+.step {
   display: grid;
   justify-content: center;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
   font-weight: 400;
 }
 
-.step.active{
-  background-color: rgba(255, 255, 0, 0.418);
+.step.active {
+  background-color: #ef648a;
 }
 
-
 @media screen and (min-width: 769px) {
-  .progressBar{
+  .progressBar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;

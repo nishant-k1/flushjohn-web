@@ -1,4 +1,4 @@
-.slider{
+.slider {
   display: grid;
   justify-content: space-between;
   align-items: center;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 250px) {
-  .slider{
+  .slider {
     height: 250px;
     width: 150px;
   }
 }
 
-.slider button{
+.slider button {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -24,13 +24,12 @@
   background-color: transparent;
 }
 
-.slider button:hover{
-  transform: scale(.9);
-  transition: .3s;
+.slider button:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
 }
 
-
-.arrow{
+.arrow {
   height: 2.5rem;
   width: 2.5rem;
   color: rgba(0, 0, 0, 0.466);
@@ -39,40 +38,40 @@
   background-color: transparent;
 }
 
-.indicator{
+.indicator {
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: repeat(2, min-content);
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   justify-self: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
-.circle{
+.circle {
   height: 1rem;
   width: 1rem;
 }
 
-.circleIsSelected{
+.circleIsSelected {
   height: 1rem;
   width: 1rem;
-  background-color: yellow;
+  background-color: #ef648a;
   border-radius: 50% 50%;
   border: solid 1px black;
   /* color: black; */
 }
 
-.quoteLink{
+.quoteLink {
   outline: none;
   border: 1px solid white;
   border-radius: 2px;
-  padding: .3rem;
+  padding: 0.3rem;
   background-color: #dbe0e4d2;
   color: rgba(0, 0, 0, 0.849);
   font-weight: 900;
 }
-.quoteLink:hover{
-  transform: scale(.9);
-  transition: .3s;
+.quoteLink:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
 }

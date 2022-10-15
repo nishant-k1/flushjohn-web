@@ -33,8 +33,8 @@ const products = () => {
             <div className={productStyles.wrapper}>
               <Slider
                 img={{
-                  img1: "assets/sps_yellow.svg",
-                  img2: "assets/yellowSPSInterior1.png",
+                  img1: "assets/sps_#EF648A.svg",
+                  img2: "assets/#EF648ASPSInterior1.png",
                 }}
               />
               <h5>{productData.h1}</h5>

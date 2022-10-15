@@ -119,7 +119,7 @@ export const productData = {
 };
 
 export const slideShowData = {
-  ESPR: "sps_yellow.svg",
+  ESPR: "sps_#EF648A.svg",
   EDFR: "flushable.svg",
   EACR: "ada_blue.svg",
   EHWS: "sink.svg",

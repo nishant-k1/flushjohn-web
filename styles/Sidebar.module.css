@@ -1,42 +1,42 @@
-.section{
+.section {
   width: 60%;
   height: 100%;
-  background-color:#0b2941;
+  background-color: #0b2941;
   padding: 0;
   position: fixed;
-  border-right: solid 1px yellow;
-  top:0;
+  border-right: solid 1px #ef648a;
+  top: 0;
   left: 0;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.container{
+.container {
   margin: 32px auto;
   padding: 32px;
 }
 
-.sidebar{
+.sidebar {
   display: grid;
   grid-template-rows: repeat(2, max-content);
   row-gap: 4rem;
   justify-content: space-between;
   align-items: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   margin: 0;
 }
 
-.sidebar img{
+.sidebar img {
   padding: 0;
   margin: 0;
   height: 5rem;
-  width: 8rem
+  width: 8rem;
 }
 
-.sidebar ul{
+.sidebar ul {
   list-style: none;
   display: grid;
-  grid-template-rows: repeat(4, max-content) ;
+  grid-template-rows: repeat(4, max-content);
   row-gap: 2rem;
   justify-content: space-between;
   align-items: center;
@@ -45,50 +45,49 @@
   color: white;
 }
 
-.sidebar ul li{
+.sidebar ul li {
   display: grid;
   grid-template-columns: max-content;
 }
-.sidebar ul li a:hover{
-  color: yellow;
-  transition: .3s;
+.sidebar ul li a:hover {
+  color: #ef648a;
+  transition: 0.3s;
 }
 
-.quote a{
+.quote a {
   color: white;
   border: solid 1px rgb(49, 98, 170);
   border-radius: 4px;
-  padding: .5rem;
+  padding: 0.5rem;
   font-weight: 500;
 }
 
-.quote a:hover{
+.quote a:hover {
   background-color: rgb(49, 98, 170);
 }
-.sidebar ul .quote a:hover{
+.sidebar ul .quote a:hover {
   color: white;
 }
 
-.phone div{
+.phone div {
   color: white;
   font-weight: 500;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(2, max-content);
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
-.phone div:hover{
+.phone div:hover {
   background-color: rgb(23, 82, 170);
 }
 
-.sidebar ul .phone div:hover{
+.sidebar ul .phone div:hover {
   color: white;
 }
 
-
-@media screen and (min-width: 769px){
-  .section{
+@media screen and (min-width: 769px) {
+  .section {
     display: none;
   }
 }

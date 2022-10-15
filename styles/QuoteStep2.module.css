@@ -1,4 +1,4 @@
-.form{
+.form {
   padding: 0;
   margin: 0;
   display: grid;
@@ -6,25 +6,25 @@
   justify-content: center;
   align-items: center;
   grid-template-columns: max-content;
-  grid-template-areas: 
-                "deliveryDate"
-                "pickupDate"
-                "zip"
-                "hint"
-                "buttons";
+  grid-template-areas:
+    "deliveryDate"
+    "pickupDate"
+    "zip"
+    "hint"
+    "buttons";
 }
 
-.outerBox{
+.outerBox {
   padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: space-between;
   align-items: center;
-  row-gap: .5rem;
+  row-gap: 0.5rem;
 }
 
-.form label{
+.form label {
   padding: 0;
   margin: 0;
   color: white;
@@ -32,8 +32,10 @@
   font-weight: 300;
 }
 
-.form input, .form select, .form textarea{
-  padding: 0 .5rem;
+.form input,
+.form select,
+.form textarea {
+  padding: 0 0.5rem;
   display: grid;
   align-items: center;
   margin: 0;
@@ -48,86 +50,85 @@
   width: 100%;
 }
 
-
-.form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
+.form input::-webkit-outer-spin-button,
+.form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.form input[type=number] {
+.form input[type="number"] {
   -moz-appearance: textfield;
 }
-.form textarea{
-  padding: .5rem;
+.form textarea {
+  padding: 0.5rem;
   margin: 0;
   height: 50px;
   border-right: 1px solid rgba(255, 255, 255, 0.267);
 }
-.form textarea:focus{
+.form textarea:focus {
   height: 50px;
   border-right: 1px solid rgba(255, 255, 255, 0.267);
 }
 
-
-.form select{
+.form select {
   padding: 0;
   margin: 0;
   width: 100%;
   font-size: large;
 }
 
-.error{
+.error {
   padding: 0;
   margin: 0;
-  color: yellow;
+  color: #ef648a;
 }
 
-.date{
+.date {
   background-image: url(/assets/calendar.svg);
   background-position: center right;
   background-size: 1.5rem;
   background-repeat: no-repeat;
 }
 
-.deliveryDate{
+.deliveryDate {
   grid-area: deliveryDate;
 }
 
-.pickupDate{
+.pickupDate {
   grid-area: pickupDate;
 }
-.street{
+.street {
   grid-area: street;
 }
-.city{
+.city {
   grid-area: city;
 }
 
-.state{
+.state {
   grid-area: state;
 }
-.zip{
+.zip {
   grid-area: zip;
 }
 
-.hint{
+.hint {
   grid-area: hint;
 }
-.onsite{
+.onsite {
   grid-area: onsite;
 }
-.onsitePhone{
+.onsitePhone {
   grid-area: onsitePhone;
 }
 
-.buttons{
+.buttons {
   grid-area: buttons;
   display: grid;
   column-gap: 2rem;
   grid-template-columns: 1fr 1fr;
 }
 
-.buttons button{
+.buttons button {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -137,30 +138,29 @@
   font-weight: 500;
   border: solid 1px rgba(255, 255, 255, 0.808);
   border-radius: 2px;
-
 }
 
-.buttons button:hover{
+.buttons button:hover {
   background-color: rgba(255, 255, 255, 0.603);
-  transition: .3s;
-  transform: scale(.98);
+  transition: 0.3s;
+  transform: scale(0.98);
 }
 
 /* desktop */
 @media screen and (min-width: 769px) {
-  .form{
-    grid-template-columns: 2fr .5fr;
+  .form {
+    grid-template-columns: 2fr 0.5fr;
     border: 1px solid rgba(255, 255, 255, 0.253);
     padding: 2rem;
   }
   .form input {
     width: 16rem;
   }
-  .form textarea{
+  .form textarea {
     width: 16rem;
   }
 
-  .form .outerBox{
+  .form .outerBox {
     padding: 0;
     margin: 0;
     display: grid;
@@ -170,7 +170,7 @@
     align-items: center;
   }
 
-  .form button{
+  .form button {
     display: grid;
     justify-content: center;
     align-items: center;

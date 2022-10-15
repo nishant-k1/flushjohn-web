@@ -1,4 +1,4 @@
-.form{
+.form {
   padding: 0;
   margin: 0;
   display: grid;
@@ -6,33 +6,33 @@
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr;
-  grid-template-areas: 
-              "fName"
-              "lName"
-              "cName" 
-              "email"
-              "phone"
-              "buttons";
+  grid-template-areas:
+    "fName"
+    "lName"
+    "cName"
+    "email"
+    "phone"
+    "buttons";
 }
 
-.outerBox{
+.outerBox {
   padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: space-between;
   align-items: center;
-  row-gap: .5rem;
+  row-gap: 0.5rem;
 }
 
-.innerBox{
+.innerBox {
   display: grid;
   justify-content: space-between;
   align-items: center;
   grid-template-columns: 1fr;
 }
 
-.form label{
+.form label {
   padding: 0;
   margin: 0;
   color: white;
@@ -42,58 +42,59 @@
 
 .form input {
   padding: 0;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   margin: 0;
   color: black;
   background-color: white;
   outline: none;
-  border:none;
+  border: none;
   border-bottom: solid 2px white;
   height: 2rem;
   font-size: large;
   font-weight: 400;
 }
 
-.form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button {
+.form input::-webkit-outer-spin-button,
+.form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.form input[type=number] {
+.form input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.error{
+.error {
   padding: 0;
   margin: 0;
-  color: yellow;
+  color: #ef648a;
 }
-.fName{
+.fName {
   grid-area: fName;
 }
 
-.lName{
+.lName {
   grid-area: lName;
 }
-.cName{
+.cName {
   grid-area: cName;
 }
-.email{
+.email {
   grid-area: email;
 }
 
-.phone{
+.phone {
   grid-area: phone;
 }
 
-.buttons{
+.buttons {
   grid-area: buttons;
   display: grid;
   column-gap: 2rem;
   grid-template-columns: 1fr 1fr;
 }
 
-.buttons button{
+.buttons button {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -105,23 +106,23 @@
   border-radius: 2px;
 }
 
-.buttons button:hover{
+.buttons button:hover {
   background-color: rgba(255, 255, 255, 0.603);
-  transition: .3s;
-  transform: scale(.98);
+  transition: 0.3s;
+  transform: scale(0.98);
 }
 
-.processing{
+.processing {
   padding: 0;
   margin: 0;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-template-columns: max-content max-content;
-  column-gap: .2rem;
+  column-gap: 0.2rem;
 }
 
-.processing h3{
+.processing h3 {
   padding: 0;
   margin: 0;
   font-size: smaller;
@@ -129,31 +130,35 @@
 }
 
 @keyframes spinner {
-  from {transform:rotate(0deg);}
-  to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.spinner{
+.spinner {
   padding: 0;
   margin: 0;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  animation: spinner .9s linear infinite;
+  animation: spinner 0.9s linear infinite;
 }
 
 @media screen and (min-width: 769px) {
-  .form{
-    grid-template-columns: 2fr .5fr;
+  .form {
+    grid-template-columns: 2fr 0.5fr;
     border: 1px solid rgba(255, 255, 255, 0.253);
     padding: 2rem;
   }
 
-  .form input{
+  .form input {
     width: 16rem;
   }
 
-  .form .outerBox{
+  .form .outerBox {
     padding: 0;
     margin: 0;
     display: grid;
@@ -163,7 +168,7 @@
     align-items: center;
   }
 
-  .form button{
+  .form button {
     display: grid;
     justify-content: center;
     align-items: center;
