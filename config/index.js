@@ -1,3 +1,5 @@
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== "production";
 
-export const server = dev ? 'http://localhost:3000' : 'https://www.rentaporta.com'
+export const server = dev
+  ? "http://localhost:3000"
+  : "https://www.reliableportable.com";
