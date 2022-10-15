@@ -1,11 +1,11 @@
 /* utilities */
-.section{
+.section {
   padding: 0;
   margin: 0;
   min-width: 100%;
 }
 
-.section h1{
+.section h1 {
   padding: 0;
   margin: 0;
   color: rgb(255, 255, 255);
@@ -13,42 +13,41 @@
   font-size: x-large;
 }
 
-.section h2{
+.section h2 {
   padding: 0;
   margin: 0;
   color: black;
 }
 
-.section h3{
+.section h3 {
   padding: 0;
   margin: 0;
   color: black;
 }
 
-.section p{
+.section p {
   padding: 0;
   margin: 0;
   color: black;
 }
 
-.container{
+.container {
   padding: 0 32px;
   margin: 0 auto;
   max-width: 1100px;
 }
 
 /* section1 */
-.section.section1Section{
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
-  ), url(/assets/hero1.jpg);
-  background-position: bottom;
-  background-size: cover;
+.section.section1Section {
+  background-color: #041b31bd;
+  background-image: url(/assets/hero1.jpg);
+  background-position: top right;
+  background-size: contain;
   height: 600px;
+  background-repeat: no-repeat;
 }
 
-.section1{
+.section1 {
   padding: 0;
   margin: 0;
   display: grid;
@@ -58,7 +57,7 @@
   row-gap: 1rem;
 }
 
-.section1Left{
+.section1Left {
   list-style: none;
   padding: 0;
   padding-top: 2rem;
@@ -70,14 +69,14 @@
   grid-template-columns: 1fr;
 }
 
-.discount{
+.discount {
   height: 4.5rem;
   width: 4.5rem;
   margin: 1rem;
   text-align: left;
 }
 
-.phone{
+.phone {
   display: grid;
   justify-content: start;
   align-items: center;
@@ -85,7 +84,7 @@
   column-gap: 1rem;
 }
 
-.phone div{
+.phone div {
   color: white;
   font-weight: 500;
   font-size: large;
@@ -93,21 +92,19 @@
   align-items: center;
   justify-content: left;
   grid-template-columns: repeat(2, max-content);
-  column-gap: .5rem;
-  width: fit-content;
+  column-gap: 0.5rem;
   padding: 0;
   border-radius: 4px;
 }
 
-.section1Right{
+.section1Right {
   display: grid;
   justify-content: start;
   align-items: center;
 }
 
-
 /********************** section2 *****************/
-.section2{
+.section2 {
   margin-top: 6rem;
   padding: 4rem 0;
   display: grid;
@@ -117,7 +114,7 @@
   row-gap: 2.5rem;
 }
 
-.benefitsDiv{
+.benefitsDiv {
   padding: 0;
   margin: 0;
   display: grid;
@@ -125,7 +122,7 @@
   justify-content: start;
 }
 
-.wrapper{
+.wrapper {
   display: grid;
   align-items: center;
   justify-content: start;
@@ -134,17 +131,17 @@
   margin: 0;
 }
 
-.section2 div h3{
+.section2 div h3 {
   display: grid;
   align-items: center;
   justify-content: start;
   grid-template-columns: 1fr;
   padding: 0;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   font-weight: 500;
 }
 
-.section2 div p{
+.section2 div p {
   display: grid;
   align-items: start;
   justify-content: start;
@@ -154,25 +151,23 @@
   font-weight: 300;
 }
 
-.section2Icons{
+.section2Icons {
   display: grid;
   align-items: start;
   justify-content: start;
-  color: #2364A0;
+  color: #2364a0;
   margin: 1rem 0;
   height: 100px;
   width: 100px;
 }
 
-
-
 /*********************mobile section-3 ****************************/
-.section.section3Section{
-  background-color: #F6F6F6;
+.section.section3Section {
+  background-color: #f6f6f6;
   padding-bottom: 4rem;
 }
 
-.section3{
+.section3 {
   padding: 0;
   margin: 0;
   display: grid;
@@ -182,77 +177,75 @@
   row-gap: 4rem;
 }
 
-.section3 div{
+.section3 div {
   display: grid;
   justify-content: start;
   align-items: start;
-  grid-template-columns:1fr;
+  grid-template-columns: 1fr;
   padding: 0;
   margin: 0;
   row-gap: 1rem;
 }
 
-.section3 div img{
+.section3 div img {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
 }
 
-.section3h2{
+.section3h2 {
   margin: 4rem 0 !important;
 }
 
-.section3 h3{
+.section3 h3 {
   font-weight: 500;
 }
 
-.section3 div p{
+.section3 div p {
   padding: 0;
   margin: 0;
   font-weight: 300;
   line-height: 1.5rem;
 }
 
-
-
 /* section-4 */
-  .section.section4Section{
-    padding: 4rem 0;
-    margin: 0;
-  }
+.section.section4Section {
+  padding: 4rem 0;
+  margin: 0;
+}
 
-  .section4{
-    max-width: 1200px;
-    display: grid;
-    justify-content: space-between;
-    column-gap: 1rem;
-    align-items: start;
-    grid-template-columns: repeat(2, max-content);
-  }
-  
-  .list{
-    display: grid;
-    justify-content: start;
-    align-items: center;
-    grid-template-columns: max-content;
-  }
+.section4 {
+  max-width: 1200px;
+  display: grid;
+  justify-content: space-between;
+  column-gap: 1rem;
+  align-items: start;
+  grid-template-columns: repeat(2, max-content);
+}
 
-  .section4h2{
-    margin-bottom: 4rem !important;
-  }
+.list {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  grid-template-columns: max-content;
+}
 
-  .list p{
-    padding: .3rem !important;
-    font-weight: 300;
-  }
+.section4h2 {
+  margin-bottom: 4rem !important;
+}
+
+.list p {
+  padding: 0.3rem !important;
+  font-weight: 300;
+}
 /* testimonial section */
 
-.section.testimonialSectionSection{
+.section.testimonialSectionSection {
   background-color: #001a2e34;
 }
 
-.testimonialSection{
+.testimonialSection {
   padding: 32px 0;
   margin: 0;
   display: grid;
@@ -262,47 +255,45 @@
   row-gap: 2rem;
 }
 
-.testimonialSection h2{
+.testimonialSection h2 {
   margin: 2rem 0;
 }
 
-.testimonials{
+.testimonials {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 4rem;
 }
 
-.testimonials div{
+.testimonials div {
   text-align: left;
 }
 
-.testimonials div img{
+.testimonials div img {
   height: 6rem;
   width: 6rem;
 }
 
-.testimonials div h3{
+.testimonials div h3 {
   margin-bottom: 1rem;
   font-weight: 400;
 }
 
-.testimonials div p{
+.testimonials div p {
   line-height: 1.5rem;
   font-weight: 300;
 }
 /* desktop */
 @media screen and (min-width: 769px) {
-  .section .section1Section{
-    background-image: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), url(/assets/hero.svg);
+  .section .section1Section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(/assets/hero.svg);
     background-position: bottom;
     background-size: cover;
     height: 600px;
   }
-  
-  .section1{
+
+  .section1 {
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: center;
@@ -310,29 +301,29 @@
     padding: 0;
   }
 
-  .section1start{
+  .section1start {
     padding: 0;
     padding-top: 4rem;
     margin: 0;
   }
-  
-  .section1 ul{
+
+  .section1 ul {
     padding: 0;
     margin: 0;
     display: grid;
   }
-  
-  .section1 h1{
+
+  .section1 h1 {
     font-size: xx-large;
     font-weight: 500;
     line-height: 1.5;
   }
 
-  .phone{
+  .phone {
     display: none;
   }
 
-  .section1Right{
+  .section1Right {
     display: grid;
     grid-template-rows: min-content min-content;
     align-items: center;
@@ -340,18 +331,18 @@
     padding-top: 2.5rem;
   }
 
-  .gifImg{
+  .gifImg {
     height: 8rem;
     width: 8rem;
   }
 
   /* section 2 */
-  .section2{
+  .section2 {
     padding: 6rem 0;
     margin: 0;
   }
 
-  .benefitsDiv{
+  .benefitsDiv {
     display: grid;
     padding: 0;
     align-self: center;
@@ -360,25 +351,24 @@
     column-gap: 4rem;
   }
 
-
   /*********desktop section3 ********** */
-  .section3{
+  .section3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     row-gap: 8rem;
     column-gap: 2.5rem;
   }
-  
-  .section3 div img{
+
+  .section3 div img {
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
   }
-  
+
   /* testimonial Section */
-  .testimonialSection{
+  .testimonialSection {
     display: grid;
     padding: 4rem 0;
     justify-content: start;
@@ -387,7 +377,7 @@
     row-gap: 1rem;
   }
 
-  .testimonials{
+  .testimonials {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 4rem;
     justify-content: start;
@@ -395,8 +385,7 @@
   }
 
   /* section-4 */
-  .section4{
+  .section4 {
     grid-template-columns: repeat(4, max-content);
   }
-
 }
