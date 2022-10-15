@@ -52,7 +52,7 @@ export default async function quoteHandler(req, res) {
             <p>Standard Portable Restroom: ${quoteData.SPR}</p>
             <p>Deluxe Flushable Restroom: ${quoteData.DFR}</p>
             <p>ADA Portable Restroom: ${quoteData.ACR}</p>
-            <p>Hand Wash Sink Station: ${quoteData.HWS}</p>
+            <p>Hand Wash Station: ${quoteData.HWS}</p>
           </div>
           <div>
             <h4>Name:</h4><p>${quoteData.fName} ${quoteData.lName}</p>

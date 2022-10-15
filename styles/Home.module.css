@@ -39,11 +39,12 @@
 
 /* section1 */
 .section.section1Section {
-  background-color: #041b31bd;
+  /* background-color: #041b31bd; */
+  background-color: rgb(5, 18, 36);
   background-image: url(/assets/hero1.jpg);
   background-position: top right;
   background-size: contain;
-  height: 600px;
+  height: 75vh;
   background-repeat: no-repeat;
 }
 

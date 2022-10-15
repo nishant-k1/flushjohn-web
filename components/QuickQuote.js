@@ -53,15 +53,16 @@ const options = [
   { value: "SPR", label: "Standard Portable Restroom" },
   { value: "DFR", label: "Deluxe Flushable Restroom" },
   { value: "ACR", label: "ADA Portable Restroom" },
-  { value: "HWS", label: "Hand Wash Sink Station" },
+  { value: "HWS", label: "Hand Wash Station" },
 ];
 const customStyles = {
   control: (base) => ({
     ...base,
     border: "solid 1px rgba(0, 0, 0, 0.5)",
     borderRadius: "none",
-    background: `#F7F7F7`,
+    background: `#ffffff`,
     boxShadow: "none",
+    height: "8rem",
   }),
   placeholder: (defaultStyles) => {
     return {

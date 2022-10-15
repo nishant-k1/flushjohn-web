@@ -1,18 +1,18 @@
 /* utilities */
-.section{
+.section {
   padding: 0;
   margin: 0;
   min-width: 100%;
-  background-color: #2a43589d;
+  /* background-color: #2a43589d; */
 }
 
-.container{
+.container {
   padding: 0 32px;
   margin: 0 auto;
   max-width: 1100px;
 }
 
-.section4{
+.section4 {
   margin: 0;
   padding: 64px 0;
   text-align: center;
@@ -22,30 +22,32 @@
   width: 100%;
 }
 
-.wrapper{
+.wrapper {
   padding: 1rem;
   margin: 0;
   text-align: center;
   border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.795);
   /* background: url(/assets/textureProduct.png); */
   background-color: rgba(255, 255, 255, 0.945);
   color: rgba(0, 0, 0, 0.815);
   height: 100%;
   width: 100%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
 }
 
-.wrapper img{
+.wrapper img {
   height: 250px;
   width: 150px;
 }
 
-.wrapper h5{
+.wrapper h5 {
   font-size: medium;
 }
 
 @media screen and (max-width: 250) {
-  .wrapper img{
+  .wrapper img {
     height: 250px;
     width: 150px;
   }
@@ -53,16 +55,15 @@
 
 /* desktop */
 @media screen and (min-width: 769px) {
-  .section4{
+  .section4 {
     padding: 6rem 0;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 4rem;
     height: 100%;
     width: 100%;
   }
-  .wrapper img{
+  .wrapper img {
     height: 225px;
     width: 175px;
   }
-
 }
