@@ -1,12 +1,12 @@
-.section{
+.section {
   padding: 0;
   margin: 0;
   min-width: 100%;
-  background-color: #473f28e1;
+  background-color: #ffffff;
   /* background: url(/assets/header.png) repeat; */
 }
 
-.container{
+.container {
   padding: 0 32px;
   margin: 0 auto;
   max-width: 1100px;
@@ -15,70 +15,68 @@
   align-items: center;
   grid-template-columns: repeat(2, max-content);
 }
-.container img{
+.container img {
   padding: 0;
-  margin: 0.3rem;
-  height: 7rem;
-  width: 7rem
+  padding: 0.5rem 0;
 }
 
-.container img:hover{
-  transform: scale(.98);
-  transition: .3s;
+.container img:hover {
+  transform: scale(0.98);
+  transition: 0.3s;
 }
 
-.nav{
+.nav {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5, max-content);
-  column-gap: .5rem;
+  column-gap: 0.5rem;
   justify-content: end;
   align-items: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   margin: 0;
 }
 
-.icon{
+.icon {
   height: 2rem;
-  width: 2rem;  
+  width: 2rem;
   background-color: white;
 }
 
-.icon:hover{
-  transform: scale(.9);
-  transition: .3s;
+.icon:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
 }
 
-.fb{
-  color: #4867AA;
+.fb {
+  color: #4867aa;
 }
 
-.twitter{
-  color: #5DA9DE;
+.twitter {
+  color: #5da9de;
 }
 
-.instagram{
-  color: #C33A86  ;
+.instagram {
+  color: #c33a86;
 }
 
-.linkedin{
-  color: #0377B5;
+.linkedin {
+  color: #0377b5;
 }
 
-.pinterest{
-  color: #E11A20;
+.pinterest {
+  color: #e11a20;
 }
 
 @media screen and (max-width: 768px) {
-  .container img{
+  .container img {
     padding: 0;
     margin: 0.3rem;
     height: 4.5rem;
-    width: 4.5rem
+    width: 4.5rem;
   }
 
-  .icon{
+  .icon {
     height: 2rem;
-    width: 2rem;  
+    width: 2rem;
   }
 }
