@@ -5,7 +5,7 @@ import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
-import { server } from "../config/index";
+
 import axios from "axios";
 import { useState } from "react";
 import { RiRefreshLine } from "react-icons/ri";
@@ -176,7 +176,7 @@ const QuickQuote = () => {
           setSpinner(true);
           await sleep(500);
           try {
-            const res = await axios.post(`${server}/api/quickQuote`, values);
+            const res = await axios.post(`/api/quickQuote`, values);
             res.status === 200 ? setState(true) : setState(false);
           } catch (err) {
             alert(
@@ -193,7 +193,6 @@ const QuickQuote = () => {
               name="products"
               id="products"
               placeholder="Select Products"
-              name="products"
               isMulti
               options={options}
             />

@@ -2,7 +2,7 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import contactStyles from "../styles/Contact.module.css";
-import { server } from "../config/index";
+
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
@@ -101,7 +101,7 @@ const contact = () => {
             setSpinner(true);
             await sleep(500);
             try {
-              const res = await axios.post(`${server}/api/contact`, values);
+              const res = await axios.post(`/api/contact`, values);
               res.status === 200 ? setState(true) : setState(false);
               Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
