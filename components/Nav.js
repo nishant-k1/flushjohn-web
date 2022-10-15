@@ -1,11 +1,10 @@
-import navStyles from '../styles/Nav.module.css'
-import Link from 'next/link'
-import {GiHamburgerMenu} from 'react-icons/gi';
-import {FaPhoneAlt} from 'react-icons/fa'
-import {SidebarContext} from '../contexts/SidebarContext'
-import {useContext} from 'react'
-import {Event} from '../lib/analytics'
-
+import navStyles from "../styles/Nav.module.css";
+import Link from "next/link";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaPhoneAlt } from "react-icons/fa";
+import { SidebarContext } from "../contexts/SidebarContext";
+import { useContext } from "react";
+import { Event } from "../lib/analytics";
 
 const Nav = () => {
   const [active, setActive] = useContext(SidebarContext);
@@ -14,22 +13,46 @@ const Nav = () => {
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          <GiHamburgerMenu className={navStyles.menuIcon} onClick={()=>setActive(!active)}/>
+          <GiHamburgerMenu
+            className={navStyles.menuIcon}
+            onClick={() => setActive(!active)}
+          />
           <p className={navStyles.phoneMobile}>
-            <a href='tel: +1 (855) 780-3061' onClick={ (e) => { Event("Request quote", "Mobile Phone Call", "MPC")}} >
+            <a
+              href="tel: +1 (855) 780-3061"
+              onClick={(e) => {
+                Event("Request quote", "Mobile Phone Call", "MPC");
+              }}
+            >
               <div>
                 <FaPhoneAlt />
                 (855) 780-3061
               </div>
-            </a>    
+            </a>
           </p>
-          <Link href='/'><img src="brand-logo-transparent.svg" alt="brand-logo" /></Link>
+          <Link href="/">
+            <img src="brand-logo-transparent.svg" alt="brand-logo" />
+          </Link>
           <ul className={navStyles.navMenu}>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/products">Products & Services</Link></li>
-            <li className={navStyles.quote}><Link type="button" href="/quote">GET A QUOTE</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/products">Portable Toilets</Link>
+            </li>
+            <li className={navStyles.quote}>
+              <Link type="button" href="/quote">
+                GET A QUOTE
+              </Link>
+            </li>
             <li className={navStyles.phone}>
-              <a href='tel: +1 (855) 780-3061' type="button" onClick={ (e) => { Event("Request quote", "Desktop Phone Call", "DPC")}}>
+              <a
+                href="tel: +1 (855) 780-3061"
+                type="button"
+                onClick={(e) => {
+                  Event("Request quote", "Desktop Phone Call", "DPC");
+                }}
+              >
                 <div>
                   <FaPhoneAlt />
                   (855) 780-3061
@@ -40,7 +63,7 @@ const Nav = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
