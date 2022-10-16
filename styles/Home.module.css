@@ -9,26 +9,26 @@
   padding: 0;
   margin: 0;
   color: rgb(255, 255, 255);
-  font-weight: 300;
+  font-weight: 500;
   font-size: x-large;
 }
 
 .section h2 {
   padding: 0;
   margin: 0;
-  color: black;
+  color: rgba(0, 0, 0, 0.829);
 }
 
 .section h3 {
   padding: 0;
   margin: 0;
-  color: black;
+  color: rgba(0, 0, 0, 0.829);
 }
 
 .section p {
   padding: 0;
   margin: 0;
-  color: black;
+  color: rgba(0, 0, 0, 0.829);
 }
 
 .container {
@@ -149,7 +149,7 @@
   grid-template-columns: 1fr;
   padding: 0;
   margin: 1rem 0;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .section2Icons {
@@ -206,7 +206,7 @@
 .section3 div p {
   padding: 0;
   margin: 0;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.5rem;
 }
 
@@ -238,7 +238,7 @@
 
 .list p {
   padding: 0.3rem !important;
-  font-weight: 300;
+  font-weight: 500;
 }
 /* testimonial section */
 
@@ -282,7 +282,7 @@
 
 .testimonials div p {
   line-height: 1.5rem;
-  font-weight: 300;
+  font-weight: 500;
 }
 /* desktop */
 @media screen and (min-width: 769px) {

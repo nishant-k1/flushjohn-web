@@ -1,21 +1,20 @@
-.sectionTop{
-    min-width: 100%;
-    background-color: #143A58;
-  }
-
-.sectionBottom{
+.sectionTop {
   min-width: 100%;
-  background-color:#002B4C;
+  background-color: #143a58;
 }
 
-.container{
+.sectionBottom {
+  min-width: 100%;
+  background-color: #002b4c;
+}
+
+.container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 32px;
 }
 
-
-.ul{
+.ul {
   padding: 32px 0;
   margin: 0;
   list-style: none;
@@ -26,165 +25,163 @@
   row-gap: 4rem;
   justify-content: space-between;
   grid-template-areas:
-      "logo nav "
-      "contact social";
+    "logo nav "
+    "contact social";
 }
 
-.ul h2{
+.ul h2 {
   font-size: medium;
   font-weight: 400;
-  padding:0;
+  padding: 0;
   margin: 0;
 }
 
-.ul li{
-  padding:0;
+.ul li {
+  padding: 0;
   margin: 0;
   font-size: medium;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 /* logo */
-  .footerLogo{
-    padding: 0;
-    margin: 0;
-    grid-area: logo;
-    display: grid;
-    justify-content: left;
-    align-items: start;
-  }
+.footerLogo {
+  padding: 0;
+  margin: 0;
+  grid-area: logo;
+  display: grid;
+  justify-content: left;
+  align-items: start;
+}
 
-  .footerLogo img{
-    padding: 0;
-    margin: 0;
-    height: 5rem;
-    width: 8rem
-  }
+.footerLogo img {
+  padding: 0;
+  margin: 0;
+  height: 5rem;
+  width: 8rem;
+}
 
-  /* social */
-  .social{
-    padding: 0;
-    grid-area: social;
-    display: grid;
-    justify-content: left;
-    align-items: start;
-    color: white;
-  }
+/* social */
+.social {
+  padding: 0;
+  grid-area: social;
+  display: grid;
+  justify-content: left;
+  align-items: start;
+  color: white;
+}
 
-  .social ul{
-    padding:0;
-    margin: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1.5rem;
-  }
+.social ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.5rem;
+}
 
-  .social ul div{
-    padding:0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    justify-content: left;
-    align-items: center;
-    color: rgb(204, 204, 204);
-  }
+.social ul div {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: left;
+  align-items: center;
+  color: rgb(204, 204, 204);
+}
 
-  .social ul div:hover{
-    color: white;
-    transition: .3s;
-  }
+.social ul div:hover {
+  color: white;
+  transition: 0.3s;
+}
 
 /* nav */
-  .nav{
-    padding:0;
-    margin: 0;
-    grid-area: nav;
-    display: grid;
-    justify-content: left;
-    align-items: start;
-    color: white;
-  }
+.nav {
+  padding: 0;
+  margin: 0;
+  grid-area: nav;
+  display: grid;
+  justify-content: left;
+  align-items: start;
+  color: white;
+}
 
-  .nav ul{
-    list-style: none;
-    padding:0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1.5rem;
-  }
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.5rem;
+}
 
-  .nav ul li a{
-    color: rgb(204, 204, 204);
-  }
+.nav ul li a {
+  color: rgb(204, 204, 204);
+}
 
-  .nav ul li a:hover{
-    color: white;
-    transition: .3s;
-  }
+.nav ul li a:hover {
+  color: white;
+  transition: 0.3s;
+}
 
-  /* contact */
-  .contact{
-    padding: 0;
-    margin: 0;
-    grid-area: contact;
-    display: grid;
-    justify-content: left;
-    align-items: start;
-    color: white;
-  }
+/* contact */
+.contact {
+  padding: 0;
+  margin: 0;
+  grid-area: contact;
+  display: grid;
+  justify-content: left;
+  align-items: start;
+  color: white;
+}
 
-  .contact ul{
-    list-style: none;
-    padding:0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1.5rem;
-  }
+.contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.5rem;
+}
 
-  .contact ul li a{
-    color: rgb(204, 204, 204);
-  }
+.contact ul li a {
+  color: rgb(204, 204, 204);
+}
 
-  .contact ul li a:hover{
-    color: white;
-    transition: .3s;
-  }
+.contact ul li a:hover {
+  color: white;
+  transition: 0.3s;
+}
 
-  .sectionBottom{
-    min-width: 100%;
-    color: white;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    padding:0;
-    margin: 0;
-  }
-  .sectionBottom .container{
-    padding:0;
-    margin: 0;
-  }
-  
-  .sectionBottom .container p{
-    padding: 1rem;
-    margin: 0;
-    font-size: small;
+.sectionBottom {
+  min-width: 100%;
+  color: white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.sectionBottom .container {
+  padding: 0;
+  margin: 0;
+}
+
+.sectionBottom .container p {
+  padding: 1rem;
+  margin: 0;
+  font-size: small;
 }
 
 /* tablet and desktop */
 
 @media screen and (min-width: 769px) {
-  .ul{
-    grid-template-areas:
-    "logo social nav contact";
+  .ul {
+    grid-template-areas: "logo social nav contact";
   }
-  .ul h2{
+  .ul h2 {
     font-size: large;
   }
-  .ul li{
+  .ul li {
     font-size: medium;
   }
-
 }

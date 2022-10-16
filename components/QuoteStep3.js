@@ -99,67 +99,61 @@ const QuoteStep2 = () => {
       >
         <div className={QuoteStep3Styles.section}>
           <div className={QuoteStep3Styles.container}>
-            <Form className={QuoteStep3Styles.form}>
-              <div className={QuoteStep3Styles.fName}>
-                <MyTextInput
-                  label="First Name"
-                  name="fName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="given-name"
-                />
-              </div>
+            <Form>
+              <div className={QuoteStep3Styles.form}>
+                <div className={QuoteStep3Styles.fName}>
+                  <MyTextInput
+                    label="First Name"
+                    name="fName"
+                    type="text"
+                    maxLength="50"
+                    autoComplete="given-name"
+                  />
+                </div>
 
-              <div className={QuoteStep3Styles.lName}>
-                <MyTextInput
-                  label="Last Name"
-                  name="lName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="family-name"
-                />
-              </div>
+                <div className={QuoteStep3Styles.lName}>
+                  <MyTextInput
+                    label="Last Name"
+                    name="lName"
+                    type="text"
+                    maxLength="50"
+                    autoComplete="family-name"
+                  />
+                </div>
 
-              <div className={QuoteStep3Styles.cName}>
-                <MyTextInput
-                  label="Company Name"
-                  name="cName"
-                  type="text"
-                  maxLength="120"
-                  autoComplete="organization"
-                />
-              </div>
+                <div className={QuoteStep3Styles.cName}>
+                  <MyTextInput
+                    label="Company Name"
+                    name="cName"
+                    type="text"
+                    maxLength="120"
+                    autoComplete="organization"
+                  />
+                </div>
 
-              <div className={QuoteStep3Styles.email}>
-                <MyTextInput
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                />
-              </div>
+                <div className={QuoteStep3Styles.email}>
+                  <MyTextInput
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                  />
+                </div>
 
-              <div className={QuoteStep3Styles.phone}>
-                <MyMaskedTextInput
-                  label="Phone"
-                  name="phone"
-                  mask="(999) 999-9999"
-                  autoComplete="off"
-                  type="tel"
-                />
+                <div className={QuoteStep3Styles.phone}>
+                  <MyMaskedTextInput
+                    label="Phone"
+                    name="phone"
+                    mask="(999) 999-9999"
+                    autoComplete="off"
+                    type="tel"
+                  />
+                </div>
               </div>
-
               <div
                 className={`${QuoteStep3Styles.outerBox} ${QuoteStep3Styles.buttons}`}
               >
-                <button
-                  onClick={() => {
-                    setStep(2);
-                  }}
-                >
-                  BACK
-                </button>
-                <button type="submit">
+                <button type="submit" className={QuoteStep3Styles.next}>
                   {spinner ? (
                     <div className={QuoteStep3Styles.processing}>
                       <RiRefreshLine className={QuoteStep3Styles.spinner} />
@@ -168,6 +162,14 @@ const QuoteStep2 = () => {
                   ) : (
                     `SUBMIT`
                   )}
+                </button>
+                <button
+                  className={QuoteStep3Styles.previous}
+                  onClick={() => {
+                    setStep(2);
+                  }}
+                >
+                  PREVIOUS
                 </button>
               </div>
             </Form>

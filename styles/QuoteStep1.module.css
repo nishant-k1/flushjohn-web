@@ -2,10 +2,12 @@
   padding: 0;
   margin: 0;
   display: grid;
-  row-gap: 2rem;
-  justify-content: center;
-  align-items: center;
+  row-gap: 1rem;
+  justify-content: start;
+  align-items: start;
   grid-template-columns: max-content;
+  border: 1px solid rgba(0, 0, 0, 0.541) !important;
+  transition: 0.3s;
   grid-template-areas:
     "SPR"
     "DFR"
@@ -35,15 +37,15 @@
 .form label {
   padding: 0;
   margin: 0;
-  color: black;
+  color: rgba(0, 0, 0, 0.829);
   font-size: large;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .form input {
   padding: 0;
   margin: 0;
-  color: black;
+  color: rgba(0, 0, 0, 0.829);
   background-color: white;
   outline: none;
   border: none;
@@ -83,22 +85,25 @@
 
 .button {
   grid-area: button;
+  margin-top: 2.5rem;
+  padding: 0 2rem;
   display: grid;
   align-items: center;
   justify-content: center;
   height: 2.5rem;
+  min-width: 8rem;
   background-color: rgb(32, 46, 175);
   font-size: large;
   font-weight: 500;
   color: white;
   border-radius: 2px;
   border: none;
+  transition: 0.3s;
 }
 
 .button:hover {
-  background-color: rgba(255, 255, 255, 0.603);
+  background-color: rgb(15, 27, 128);
   transition: 0.3s;
-  transform: scale(0.98);
 }
 
 @media screen and (min-width: 769px) {

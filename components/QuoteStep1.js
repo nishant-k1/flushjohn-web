@@ -39,45 +39,47 @@ const QuoteStep1 = () => {
           }
         }}
       >
-        <Form className={QuoteStep1Styles.form}>
-          <div className={QuoteStep1Styles.SPR}>
-            <MyMaskedTextInput
-              label="Standard Portable Restroom"
-              name="SPR"
-              mask="9999"
-              maskChar=" "
-              type="tel"
-            />
-          </div>
-          <div className={QuoteStep1Styles.DFR}>
-            <MyMaskedTextInput
-              label="Deluxe Flushable Restroom"
-              name="DFR"
-              mask="9999"
-              maskChar=" "
-              type="tel"
-            />
-          </div>
-          <div className={QuoteStep1Styles.ACR}>
-            <MyMaskedTextInput
-              label="ADA Portable Restroom"
-              name="ACR"
-              mask="9999"
-              maskChar=" "
-              type="tel"
-            />
-          </div>
-          <div className={QuoteStep1Styles.HWS}>
-            <MyMaskedTextInput
-              label="Hand Wash Station"
-              name="HWS"
-              mask="9999"
-              maskChar=" "
-              type="tel"
-            />
+        <Form>
+          <div className={QuoteStep1Styles.form}>
+            <div className={QuoteStep1Styles.SPR}>
+              <MyMaskedTextInput
+                label="Standard Portable Restroom"
+                name="SPR"
+                mask="9999"
+                maskChar=" "
+                type="tel"
+              />
+            </div>
+            <div className={QuoteStep1Styles.DFR}>
+              <MyMaskedTextInput
+                label="Deluxe Flushable Restroom"
+                name="DFR"
+                mask="9999"
+                maskChar=" "
+                type="tel"
+              />
+            </div>
+            <div className={QuoteStep1Styles.ACR}>
+              <MyMaskedTextInput
+                label="ADA Portable Restroom"
+                name="ACR"
+                mask="9999"
+                maskChar=" "
+                type="tel"
+              />
+            </div>
+            <div className={QuoteStep1Styles.HWS}>
+              <MyMaskedTextInput
+                label="Hand Wash Station"
+                name="HWS"
+                mask="9999"
+                maskChar=" "
+                type="tel"
+              />
+            </div>
           </div>
           <button className={QuoteStep1Styles.button} type="submit">
-            CONTINUE
+            NEXT
           </button>
         </Form>
       </Formik>

@@ -1,4 +1,4 @@
-.section{
+.section {
   min-width: 100%;
   padding: 0;
   background-color: rgba(0, 0, 0, 0.151);
@@ -6,21 +6,21 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.685);
 }
 
-.container{
+.container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 32px;
 }
 
-.nav{
+.nav {
   display: grid;
   align-items: center;
   justify-content: center;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.phoneMobile div{
-  color: black;
+.phoneMobile div {
+  color: rgba(0, 0, 0, 0.829);
   border-radius: 1px;
   padding: 0;
   margin: 0;
@@ -29,91 +29,91 @@
   align-items: center;
   justify-content: center;
   grid-template-columns: repeat(2, max-content);
-  column-gap: .2rem;
+  column-gap: 0.2rem;
 }
 
-.menuIcon{
-  color: black;
+.menuIcon {
+  color: rgba(0, 0, 0, 0.829);
   height: 2rem;
   width: 2rem;
   justify-self: left;
 }
 
-.nav img{
+.nav img {
   display: none;
   padding: 0;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   height: 3.2rem;
   width: 5rem;
   justify-self: center;
 }
 
-.navMenu{
+.navMenu {
   display: none;
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 769px) {
-  .section{
+  .section {
     border-bottom: 1px solid white;
   }
 
-  .nav{
+  .nav {
     display: grid;
     grid-template-columns: max-content;
     justify-content: end;
     align-items: center;
-    padding: .5rem;
+    padding: 0.5rem;
     margin: 0;
   }
-  
-  .phoneMobile{
+
+  .phoneMobile {
     display: none;
   }
-  .menuIcon{
+  .menuIcon {
     display: none;
   }
 
-  .nav img{
+  .nav img {
     padding: 0;
     margin: 0;
     height: 5rem;
-    width: 5rem
+    width: 5rem;
   }
 
-  .nav ul{
+  .nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, max-content) ;
+    grid-template-columns: repeat(4, max-content);
     column-gap: 1rem;
     justify-content: space-between;
     align-items: center;
   }
 
-  .nav ul li a{
+  .nav ul li a {
     display: grid;
     justify-content: center;
     align-items: center;
     color: rgba(0, 0, 0, 0.911);
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: 1px;
   }
-  .nav ul li a:hover{
+  .nav ul li a:hover {
     color: rgba(0, 0, 0, 0.897);
     background-color: rgb(189, 189, 189);
-    transition: .3s;
-    padding: .5rem;
+    transition: 0.3s;
+    padding: 0.5rem;
   }
 
-  .phone:hover{
-    transform: scale(.98) !important;
-    transition: .3s;
+  .phone:hover {
+    transform: scale(0.98) !important;
+    transition: 0.3s;
   }
 
-  .phone div{
-    color: black;
+  .phone div {
+    color: rgba(0, 0, 0, 0.829);
     border-radius: 1px;
     padding: 0;
     margin: 0;
@@ -122,7 +122,6 @@
     align-items: center;
     justify-content: center;
     grid-template-columns: repeat(2, max-content);
-    column-gap: .2rem;
+    column-gap: 0.2rem;
   }
 }
-

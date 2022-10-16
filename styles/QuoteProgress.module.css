@@ -26,10 +26,14 @@
   align-items: center;
   padding: 0.5rem;
   font-weight: 400;
+  border: 1px solid #ef648a;
+  background-color: #83838338;
+  transition: 0.5s;
 }
 
 .step.active {
   background-color: #ef648a;
+  transition: 0.5s;
 }
 
 @media screen and (min-width: 769px) {
