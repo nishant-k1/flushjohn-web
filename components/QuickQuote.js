@@ -165,7 +165,7 @@ const QuickQuote = () => {
             .email("Invalid email address")
             .required("Required"),
           phone: Yup.string().required("Required"),
-          zip: Yup.string().required("Required"),
+          zip: Yup.string("Invalid email Zip").required("Required"),
           products: Yup.mixed().required("Required"),
           deliveryDate: Yup.date().required("Required"),
           pickupDate: Yup.date().required("Required"),
@@ -223,7 +223,7 @@ const QuickQuote = () => {
               maskChar=""
               autoComplete="postal-code"
               placeholder="Zip Code"
-              type="tel"
+              type="string"
             />
           </div>
           <div className={quickQuoteStyles.instructions}>
@@ -236,7 +236,7 @@ const QuickQuote = () => {
           <div className={quickQuoteStyles.firstName}>
             <MyTextInput
               name="fullName"
-              type="text"
+              type="string"
               maxLength="60"
               autoComplete="given-name"
               placeholder="Full Name"
@@ -271,6 +271,7 @@ const QuickQuote = () => {
             <div
               onClick={() => {}}
               className={`${quickQuoteStyles.button} ${quickQuoteStyles.submitting}`}
+              style={{ backgroundColor: "rgba(42, 43, 44, 0.815)" }}
             >
               {state && (
                 <div style={{ display: "flex", alignItems: "center" }}>
