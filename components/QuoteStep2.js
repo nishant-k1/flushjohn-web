@@ -113,7 +113,6 @@ const QuoteStep3 = () => {
                 label="Complete Address"
                 name="address"
                 autoComplete="on"
-                type="tel"
               />
             </div>
             <div className={QuoteStep2Styles.zip}>
