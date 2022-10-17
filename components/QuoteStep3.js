@@ -123,7 +123,7 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.cName}>
                   <MyTextInput
-                    label="Company Name ( If any )"
+                    label="Company Name (If any)"
                     name="cName"
                     type="text"
                     maxLength="120"
