@@ -5,13 +5,12 @@ import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
+import { MdDone } from "react-icons/md";
 
 import axios from "axios";
 import { useState } from "react";
 import { RiRefreshLine } from "react-icons/ri";
 import { Event } from "../lib/analytics";
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -175,10 +174,10 @@ const QuickQuote = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           Event("Request quote", "Prompt Form Submit", "PFS");
           setSpinner(true);
-          await sleep(500);
           try {
             const res = await axios.post(`/api/quickQuote`, values);
             res.status === 200 ? setState(true) : setState(false);
+            state && resetForm();
           } catch (err) {
             alert(
               `The server has some issues, please try again or just make a phone call :( `
@@ -260,30 +259,26 @@ const QuickQuote = () => {
               type="tel"
             />
           </div>
-          <button
-            className={`${quickQuoteStyles.button} ${
-              state ? quickQuoteStyles.submitted : quickQuoteStyles.notSubmitted
-            }`}
-            type="submit"
-          >
-            {state ? (
-              <div className={quickQuoteStyles.acknowledge}>
-                <p>Request sent</p>
-                <img
-                  className={quickQuoteStyles.tick}
-                  src="/assets/tick.svg"
-                  alt="https://reliableportable.com"
-                />
-              </div>
-            ) : spinner ? (
-              <div className={quickQuoteStyles.processing}>
-                <RiRefreshLine className={quickQuoteStyles.spinner} />
-                <p>SENDING REQUEST</p>
-              </div>
-            ) : (
-              `SEND`
-            )}
-          </button>
+          {!state && (
+            <button
+              className={`${quickQuoteStyles.button} ${quickQuoteStyles.submitting}`}
+              type="submit"
+            >
+              {!state && `SEND`}
+            </button>
+          )}
+          {state && (
+            <div
+              onClick={() => {}}
+              className={`${quickQuoteStyles.button} ${quickQuoteStyles.submitting}`}
+            >
+              {state && (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  REQUEST SENT <MdDone style={{ fontSize: "2rem" }} />
+                </div>
+              )}
+            </div>
+          )}
         </Form>
       </Formik>
     </div>

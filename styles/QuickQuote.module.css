@@ -129,14 +129,14 @@
   align-self: center;
   border: none;
   font-size: smaller;
-  font-weight: 900;
+  font-weight: 600;
   color: white;
-  background-color: #41a5ff;
+  background-color: rgb(32, 46, 175);
+  transition: 0.3s;
 }
 
 .button:hover {
-  background: rgb(30, 125, 207);
-  transform: scale(0.98);
+  background-color: rgb(32, 46, 175);
   transition: 0.3s;
 }
 
