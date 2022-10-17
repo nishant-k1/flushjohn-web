@@ -39,7 +39,7 @@
 
 /* section1 */
 .section.section1Section {
-  background-color: rgb(5, 18, 36);
+  background-color: rgb(4, 10, 29);
   background-image: url(/assets/hero1.jpg);
   background-position: top right;
   background-size: contain;
@@ -336,7 +336,7 @@
     padding: 0;
     align-self: center;
     justify-content: space-between;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 4rem;
   }
 

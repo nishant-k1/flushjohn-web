@@ -42,11 +42,11 @@ const Section2 = () => {
         <div className={homeStyles.section2}>
           <h2>{homeData.section2.heading}</h2>
           <div className={homeStyles.benefitsDiv}>
-            <div className={homeStyles.wrapper}>
+            {/* <div className={homeStyles.wrapper}>
               <AiFillDollarCircle className={homeStyles.section2Icons} />
               <h3>{homeData.section2.h3}</h3>
               <p>{homeData.section2.p1}</p>
-            </div>
+            </div> */}
             <div className={homeStyles.wrapper}>
               <RiTimeFill className={homeStyles.section2Icons} />
               <h3>{homeData.section2.h1}</h3>

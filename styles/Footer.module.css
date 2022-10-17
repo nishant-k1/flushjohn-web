@@ -1,11 +1,11 @@
 .sectionTop {
   min-width: 100%;
-  background-color: #143a58;
+  background-color: #050b24;
 }
 
 .sectionBottom {
   min-width: 100%;
-  background-color: #002b4c;
+  background-color: #04041f;
 }
 
 .container {
@@ -34,6 +34,7 @@
   font-weight: 400;
   padding: 0;
   margin: 0;
+  text-decoration: underline;
 }
 
 .ul li {
@@ -79,7 +80,7 @@
   row-gap: 1.5rem;
 }
 
-.social ul div {
+.social ul a {
   padding: 0;
   margin: 0;
   display: grid;

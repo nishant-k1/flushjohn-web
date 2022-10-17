@@ -33,42 +33,42 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="https://www.facebook.com/portarental">
-                    <div>
+                    <a>
                       <AiFillFacebook className={footerStyles.icon} />
                       Facebook
-                    </div>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://twitter.com/reliableportable">
-                    <div>
+                    <a>
                       <AiFillTwitterSquare className={footerStyles.icon} />
                       Twitter
-                    </div>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://www.instagram.com/rent_a_porta/">
-                    <div>
+                    <a>
                       <AiFillInstagram className={footerStyles.icon} />
                       Instagram
-                    </div>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="linkedin.com/company/rent-a-porta">
-                    <div>
+                    <a>
                       <AiFillLinkedin className={footerStyles.icon} />
                       Linkedin
-                    </div>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="https://www.pinterest.com/renta_porta">
-                    <div>
+                    <a>
                       <FaPinterestSquare className={footerStyles.icon} />
                       Pinterest
-                    </div>
+                    </a>
                   </Link>
                 </li>
               </ul>

@@ -37,13 +37,7 @@ function MyApp({ Component, pageProps }) {
           rel="icon"
           type="image/ico"
           sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/ico"
-          sizes="16x16"
-          href="/favicon-16x16.ico"
+          href="/favicon-32x32.ico"
         />
       </Head>
       <DefaultSeo {...SEO} />
