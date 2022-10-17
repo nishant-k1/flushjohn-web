@@ -40,7 +40,7 @@ const quote = () => {
                   : null
               }`}
             >
-              <b>Step1</b>Requirement Information
+              Requirement Details
             </div>
             <div
               className={`${quoteProgressStyles.step} ${
@@ -49,7 +49,7 @@ const quote = () => {
                   : null
               }`}
             >
-              <b>Step2</b>Personal Information
+              Delivery Details
             </div>
             <div
               className={`${quoteProgressStyles.step} ${
@@ -58,7 +58,7 @@ const quote = () => {
                   : null
               }`}
             >
-              <b>Step3</b>Delivery Information
+              Personal Details
             </div>
           </div>
           <div className={quoteProgressStyles.innerSection}>

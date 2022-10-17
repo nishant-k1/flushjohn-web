@@ -103,7 +103,7 @@ const QuoteStep2 = () => {
               <div className={QuoteStep3Styles.form}>
                 <div className={QuoteStep3Styles.fName}>
                   <MyTextInput
-                    label="First Name"
+                    label="* First Name"
                     name="fName"
                     type="text"
                     maxLength="50"
@@ -113,7 +113,7 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.lName}>
                   <MyTextInput
-                    label="Last Name"
+                    label="* Last Name"
                     name="lName"
                     type="text"
                     maxLength="50"
@@ -123,7 +123,7 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.cName}>
                   <MyTextInput
-                    label="Company Name"
+                    label="Company Name ( If any )"
                     name="cName"
                     type="text"
                     maxLength="120"
@@ -133,7 +133,7 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.email}>
                   <MyTextInput
-                    label="Email Address"
+                    label="* Email Address"
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -142,7 +142,7 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.phone}>
                   <MyMaskedTextInput
-                    label="Phone"
+                    label="* Phone"
                     name="phone"
                     mask="(999) 999-9999"
                     autoComplete="off"

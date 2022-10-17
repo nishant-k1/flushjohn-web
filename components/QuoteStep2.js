@@ -15,17 +15,19 @@ const MyDateInput = ({ label, ...props }) => {
   return (
     <div className={QuoteStep2Styles.outerBox}>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <DatePicker
-        className={`${QuoteStep2Styles.input} ${QuoteStep2Styles.date}`}
-        {...field}
-        {...props}
-        minDate={new Date()}
-        selected={field.value}
-        onChange={(value) => setValue(value)}
-      />
-      {meta.touched && meta.error ? (
-        <div className={QuoteStep2Styles.error}>{meta.error}</div>
-      ) : null}
+      <div className={QuoteStep2Styles.innerBox}>
+        <DatePicker
+          className={`${QuoteStep2Styles.input} ${QuoteStep2Styles.date}`}
+          {...field}
+          {...props}
+          minDate={new Date()}
+          selected={field.value}
+          onChange={(value) => setValue(value)}
+        />
+        {meta.touched && meta.error ? (
+          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+        ) : null}
+      </div>
     </div>
   );
 };
@@ -35,10 +37,12 @@ const MyTextArea = ({ label, ...props }) => {
   return (
     <div className={QuoteStep2Styles.outerBox}>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <textarea {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={QuoteStep2Styles.error}>{meta.error}</div>
-      ) : null}
+      <div className={QuoteStep2Styles.innerBox}>
+        <textarea {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+        ) : null}
+      </div>
     </div>
   );
 };
@@ -48,10 +52,12 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   return (
     <div className={QuoteStep2Styles.outerBox}>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <MaskedInput {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={QuoteStep2Styles.error}>{meta.error}</div>
-      ) : null}
+      <div className={QuoteStep2Styles.innerBox}>
+        <MaskedInput {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+        ) : null}
+      </div>
     </div>
   );
 };
@@ -86,7 +92,7 @@ const QuoteStep3 = () => {
           <div className={QuoteStep2Styles.form}>
             <div className={QuoteStep2Styles.deliveryDate}>
               <MyDateInput
-                label="Delivery Date"
+                label="* Delivery Date"
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
@@ -96,16 +102,23 @@ const QuoteStep3 = () => {
 
             <div className={QuoteStep2Styles.pickupDate}>
               <MyDateInput
-                label="Pickup Date"
+                label="* Pickup Date"
                 name="pickupDate"
                 dateFormat="MMMM d, yyyy"
                 autoComplete="off"
               />
             </div>
-
+            <div className={QuoteStep2Styles.address}>
+              <MyMaskedTextInput
+                label="Complete Address"
+                name="address"
+                autoComplete="on"
+                type="tel"
+              />
+            </div>
             <div className={QuoteStep2Styles.zip}>
               <MyMaskedTextInput
-                label="Zip Code"
+                label="* Zip Code"
                 name="zip"
                 mask="99999"
                 maskChar=""
@@ -118,6 +131,7 @@ const QuoteStep3 = () => {
                 label="Placement Instructions"
                 name="hint"
                 type="textarea"
+                rows="1"
               />
             </div>
           </div>

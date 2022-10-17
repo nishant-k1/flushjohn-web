@@ -11,6 +11,7 @@
   grid-template-areas:
     "deliveryDate"
     "pickupDate"
+    "address"
     "zip"
     "hint"
     "buttons";
@@ -29,21 +30,7 @@
 }
 
 .form input,
-.form select {
-  padding: 0 0.5rem;
-  display: grid;
-  align-items: center;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.829);
-  background-color: white;
-  outline: none;
-  border: none;
-  border-bottom: solid 2px rgba(0, 0, 0, 0.616);
-  height: 2rem;
-  font-size: large;
-  font-weight: 400;
-  width: 100%;
-}
+.form select,
 .form textarea {
   padding: 0 0.5rem;
   display: grid;
@@ -53,11 +40,13 @@
   background-color: white;
   outline: none;
   border: none;
-  border: solid 1px rgba(0, 0, 0, 0.616);
+  border: solid 1px rgba(0, 0, 0, 0.548);
+  height: 2.5rem;
   font-size: large;
   font-weight: 400;
   width: 100%;
 }
+
 .form input::-webkit-outer-spin-button,
 .form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -67,17 +56,8 @@
 .form input[type="number"] {
   -moz-appearance: textfield;
 }
-.form textarea {
-  padding: 0.5rem;
-  margin: 0;
-  height: 50px;
-  border-right: 1px solid rgba(255, 255, 255, 0.267);
+.address {
 }
-.form textarea:focus {
-  height: 50px;
-  border-right: 1px solid rgba(255, 255, 255, 0.267);
-}
-
 .form select {
   padding: 0;
   margin: 0;
@@ -93,7 +73,8 @@
 
 .date {
   background-image: url(/assets/calendar.svg);
-  background-position: center right;
+  background-position-x: 95%;
+  background-position-y: center;
   background-size: 1.5rem;
   background-repeat: no-repeat;
 }
@@ -104,6 +85,9 @@
 
 .pickupDate {
   grid-area: pickupDate;
+}
+.address {
+  grid-area: address;
 }
 .street {
   grid-area: street;
