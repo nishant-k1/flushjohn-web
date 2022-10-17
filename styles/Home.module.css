@@ -39,12 +39,10 @@
 
 /* section1 */
 .section.section1Section {
-  /* background-color: #041b31bd; */
   background-color: rgb(5, 18, 36);
   background-image: url(/assets/hero1.jpg);
   background-position: top right;
   background-size: contain;
-  height: 75vh;
   background-repeat: no-repeat;
 }
 
@@ -53,21 +51,11 @@
   margin: 0;
   display: grid;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   grid-template-columns: 1fr;
-  row-gap: 1rem;
 }
 
 .section1Left {
-  list-style: none;
-  padding: 0;
-  padding-top: 2rem;
-  margin: 0;
-  display: grid;
-  justify-content: start;
-  align-items: center;
-  row-gap: 1rem;
-  grid-template-columns: 1fr;
 }
 
 .discount {

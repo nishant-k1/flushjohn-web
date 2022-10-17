@@ -5,7 +5,6 @@
   background-color: #ffffff;
   /* background: url(/assets/header.png) repeat; */
 }
-
 .container {
   padding: 0 32px;
   margin: 0 auto;
@@ -17,11 +16,10 @@
 }
 .container img {
   padding: 0;
-  padding: 0.5rem 0;
+  padding: 0;
 }
 
 .container img:hover {
-  transform: scale(0.98);
   transition: 0.3s;
 }
 
