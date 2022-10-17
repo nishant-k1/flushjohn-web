@@ -9,8 +9,6 @@ import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 const QuoteStep2 = () => {
   const { render, data } = useContext(QuoteContext);
   const [state, setState] = useState(false);
@@ -81,7 +79,6 @@ const QuoteStep2 = () => {
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSpinner(true);
-          await sleep(500);
           try {
             await setFormValues((prevValues) => {
               return { ...prevValues, ...values };

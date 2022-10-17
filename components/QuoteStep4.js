@@ -19,7 +19,7 @@ const QuoteStep4 = () => {
           Click Here
         </a>
         <p className={QuoteStep4Styles.refreshLinkMessage}>
-          to refresh this page to submit a new quote request.
+          to submit a new quote request.
         </p>
       </div>
     </div>
