@@ -33,7 +33,18 @@ function MyApp({ Component, pageProps }) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#001A2E" />
         <meta name="apple-mobile-web-app-title" content="Reliable Portable" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/ico"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/ico"
+          sizes="16x16"
+          href="/favicon-16x16.ico"
+        />
       </Head>
       <DefaultSeo {...SEO} />
       <SidebarContextProvider>
