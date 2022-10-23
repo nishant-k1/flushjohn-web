@@ -16,7 +16,7 @@ const QuoteStep2 = () => {
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
 
-  const MyTextInput = ({ label, ...props }) => {
+  const MyTextField = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
       <div className={QuoteStep3Styles.outerBox}>
@@ -99,7 +99,7 @@ const QuoteStep2 = () => {
             <Form>
               <div className={QuoteStep3Styles.form}>
                 <div className={QuoteStep3Styles.fName}>
-                  <MyTextInput
+                  <MyTextField
                     label="* First Name"
                     name="fName"
                     type="text"
@@ -109,7 +109,7 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.lName}>
-                  <MyTextInput
+                  <MyTextField
                     label="* Last Name"
                     name="lName"
                     type="text"
@@ -119,7 +119,7 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.cName}>
-                  <MyTextInput
+                  <MyTextField
                     label="Company Name (If any)"
                     name="cName"
                     type="text"
@@ -129,7 +129,7 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.email}>
-                  <MyTextInput
+                  <MyTextField
                     label="* Email Address"
                     name="email"
                     type="email"

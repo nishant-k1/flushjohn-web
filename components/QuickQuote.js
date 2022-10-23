@@ -1,145 +1,15 @@
-import { Formik, Form, useField } from "formik";
-import * as Yup from "yup";
-import MaskedInput from "react-input-mask";
-import Select from "react-select";
-import DatePicker from "react-datepicker";
+import { Formik, Form } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import { MdDone } from "react-icons/md";
-
 import axios from "axios";
 import { useState } from "react";
-import { RiRefreshLine } from "react-icons/ri";
 import { Event } from "../lib/analytics";
-
-const MyTextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <input className={quickQuoteStyles.input} {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MyMaskedTextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <MaskedInput className={quickQuoteStyles.input} {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const options = [
-  { value: "SPR", label: "Standard Portable Restroom" },
-  { value: "DFR", label: "Deluxe Flushable Restroom" },
-  { value: "ACR", label: "ADA Portable Restroom" },
-  { value: "HWS", label: "Hand Wash Station" },
-];
-const customStyles = {
-  control: (base) => ({
-    ...base,
-    border: "solid 1px rgba(0, 0, 0, 0.5)",
-    borderRadius: "none",
-    background: `#ffffff`,
-    boxShadow: "none",
-    height: "8rem",
-  }),
-  placeholder: (defaultStyles) => {
-    return {
-      ...defaultStyles,
-      color: "black",
-      fontSize: `medium`,
-      fontWeight: `300`,
-    };
-  },
-};
-
-const MySelect = ({ label, ...props }) => {
-  const [field, meta, helpers] = useField(props);
-  const { setValue } = helpers;
-  return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <Select
-        styles={customStyles}
-        {...field}
-        {...props}
-        onChange={(value) => setValue(value)}
-      />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MyDateInput = ({ label, ...props }) => {
-  const [field, meta, helpers] = useField(props);
-  const { setValue } = helpers;
-  return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <DatePicker
-        className={`${quickQuoteStyles.input} ${quickQuoteStyles.date}`}
-        {...field}
-        {...props}
-        minDate={new Date()}
-        selected={field.value}
-        onChange={(value) => setValue(value)}
-      />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const MyTextArea = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <textarea className={quickQuoteStyles.textarea} {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
+import MyMaskedTextInput from "../FormControls/MyMaskedTextField";
+import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
+import MyTextField from "../FormControls/MyTextField";
+import MyDateField from "../FormControls/MyDateField";
+import MyMultilineTextField from "../FormControls/MyMultilineTextField";
 
 const QuickQuote = () => {
   const [state, setState] = useState(false);
@@ -157,20 +27,20 @@ const QuickQuote = () => {
           pickupDate: "",
           instructions: "",
         }}
-        validationSchema={Yup.object({
-          fullName: Yup.string()
-            .max(60, "Must be 60 characters or less")
-            .required("Required"),
-          email: Yup.string()
-            .email("Invalid email address")
-            .required("Required"),
-          phone: Yup.string().required("Required"),
-          zip: Yup.string("Invalid email Zip").required("Required"),
-          products: Yup.mixed().required("Required"),
-          deliveryDate: Yup.date().required("Required"),
-          pickupDate: Yup.date().required("Required"),
-          instructions: Yup.string(),
-        })}
+        // validationSchema={Yup.object({
+        //   fullName: Yup.mixed()
+        //     .max(60, "Must be 60 characters or less")
+        //     .required("Required"),
+        //   email: Yup.mixed()
+        //     .email("Invalid email address")
+        //     .required("Required"),
+        //   phone: Yup.mixed().required("Required"),
+        //   zip: Yup.mixed("Invalid email Zip").required("Required"),
+        //   products: Yup.mixed().required("Required"),
+        //   deliveryDate: Yup.date().required("Required"),
+        //   pickupDate: Yup.date().required("Required"),
+        //   instructions: Yup.string(),
+        // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           Event("Request quote", "Prompt Form Submit", "PFS");
           setSpinner(true);
@@ -189,17 +59,16 @@ const QuickQuote = () => {
         <Form className={quickQuoteStyles.form}>
           <h2>Prompt Quote</h2>
           <div className={quickQuoteStyles.products}>
-            <MySelect
+            <MyMultipleSelectCheckmarks
               name="products"
               id="products"
               placeholder="Select Products"
               isMulti
-              options={options}
             />
           </div>
           <div className={quickQuoteStyles.dates}>
             <div className={quickQuoteStyles.deliveryDate}>
-              <MyDateInput
+              <MyDateField
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
@@ -208,7 +77,7 @@ const QuickQuote = () => {
               />
             </div>
             <div className={quickQuoteStyles.pickupDate}>
-              <MyDateInput
+              <MyDateField
                 name="pickupDate"
                 dateFormat="MMMM d, yyyy"
                 placeholderText="Pickup Date"
@@ -227,14 +96,14 @@ const QuickQuote = () => {
             />
           </div>
           <div className={quickQuoteStyles.instructions}>
-            <MyTextArea
+            <MyMultilineTextField
               name="instructions"
               type="textarea"
               placeholder="Instructions"
             />
           </div>
           <div className={quickQuoteStyles.firstName}>
-            <MyTextInput
+            <MyTextField
               name="fullName"
               type="string"
               maxLength="60"
@@ -243,7 +112,7 @@ const QuickQuote = () => {
             />
           </div>
           <div className={quickQuoteStyles.email}>
-            <MyTextInput
+            <MyTextField
               name="email"
               type="email"
               autoComplete="email"

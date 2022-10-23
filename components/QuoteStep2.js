@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const MyDateInput = ({ label, ...props }) => {
+const MyDateField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { setValue } = helpers;
   return (
@@ -32,7 +32,7 @@ const MyDateInput = ({ label, ...props }) => {
   );
 };
 
-const MyTextArea = ({ label, ...props }) => {
+const MyMultilineTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={QuoteStep2Styles.outerBox}>
@@ -91,7 +91,7 @@ const QuoteStep3 = () => {
         <Form>
           <div className={QuoteStep2Styles.form}>
             <div className={QuoteStep2Styles.deliveryDate}>
-              <MyDateInput
+              <MyDateField
                 label="* Delivery Date"
                 id="deliveryDate"
                 name="deliveryDate"
@@ -101,7 +101,7 @@ const QuoteStep3 = () => {
             </div>
 
             <div className={QuoteStep2Styles.pickupDate}>
-              <MyDateInput
+              <MyDateField
                 label="* Pickup Date"
                 name="pickupDate"
                 dateFormat="MMMM d, yyyy"
@@ -126,7 +126,7 @@ const QuoteStep3 = () => {
               />
             </div>
             <div className={QuoteStep2Styles.hint}>
-              <MyTextArea
+              <MyMultilineTextField
                 label="Placement Instructions"
                 name="hint"
                 type="textarea"
