@@ -29,7 +29,6 @@ const QuickQuote = () => {
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         Event("Request quote", "Prompt Form Submit", "PFS");
-        setSpinner(true);
         try {
           const res = await axios.post(`/api/quickQuote`, values);
           res.status === 200 ? setState(true) : setState(false);
@@ -56,7 +55,7 @@ const QuickQuote = () => {
               isMulti
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <MyDateField
               label="Delivery Date"
               id="deliveryDate"
@@ -66,7 +65,7 @@ const QuickQuote = () => {
               autoComplete="off"
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <MyDateField
               label="Pickup Date"
               name="pickupDate"
