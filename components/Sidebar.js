@@ -33,7 +33,7 @@ const Sidebar = () => {
               <Link href="/products">Portable Toilets</Link>
             </li>
             <li className={sidebarStyles.quote} onClick={handleClick}>
-              <Link href="/quote">GET A QUOTE</Link>
+              <Link href="/quote">GET FREE QUOTE</Link>
             </li>
             <li className={sidebarStyles.phone} onClick={handleClick}>
               <Link href="tel:(855) 780-3061">

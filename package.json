@@ -13,7 +13,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/lab": "^5.0.0-alpha.104",
     "@mui/material": "^5.10.10",
+    "@mui/styled-engine-sc": "^5.10.6",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "next": "^12.3.1",
@@ -30,6 +33,7 @@
     "react-select": "^4.3.0",
     "react-simple-image-slider": "^2.1.0",
     "react-slideshow-image": "^3.4.6",
+    "styled-components": "^5.3.6",
     "webpack": "^5.36.2",
     "workbox-webpack-plugin": "^6.5.4",
     "yup": "^0.32.9"

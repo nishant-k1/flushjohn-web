@@ -2,33 +2,21 @@
 .section {
   padding: 0;
   margin: 0;
-  min-width: 100%;
+  width: 100%;
 }
 
-.section h1 {
-  padding: 0;
-  margin: 0;
-  color: rgb(255, 255, 255);
-  font-weight: 500;
-  font-size: x-large;
-}
-
-.section h2 {
-  padding: 0;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.829);
-}
-
-.section h3 {
-  padding: 0;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.829);
-}
-
+.section h1,
+.section h2,
+.section h3,
 .section p {
   padding: 0;
   margin: 0;
   color: rgba(0, 0, 0, 0.829);
+}
+.section h1 {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: x-large;
 }
 
 .container {
@@ -41,21 +29,18 @@
 .section.section1Section {
   background-color: rgb(4, 10, 29);
   background-image: url(/assets/hero1.jpg);
-  background-position: top right;
-  background-size: contain;
+  background-position: bottom right;
+  background-size: 50%;
   background-repeat: no-repeat;
 }
 
 .section1 {
   padding: 0;
   margin: 0;
+  height: 65vh;
   display: grid;
-  justify-content: start;
-  align-items: start;
-  grid-template-columns: 1fr;
-}
-
-.section1Left {
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .discount {
@@ -90,6 +75,7 @@
   display: grid;
   justify-content: start;
   align-items: center;
+  position: relative;
 }
 
 /********************** section2 *****************/

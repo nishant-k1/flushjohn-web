@@ -15,7 +15,7 @@ const MyDateField = ({ label, ...props }) => {
         {label}
       </label>
       <DatePicker
-        className={`${quickQuoteStyles.input} ${quickQuoteStyles.date}`}
+        className={`${quickQuoteStyles.myInput} ${quickQuoteStyles.date}`}
         {...field}
         {...props}
         minDate={new Date()}

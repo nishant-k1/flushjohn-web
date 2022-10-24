@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   min-width: 100%;
-  background-color: #ffffff;
+  /* background-color: #cbd0d4; */
   /* background: url(/assets/header.png) repeat; */
 }
 .container {
@@ -16,6 +16,7 @@
 }
 .container img {
   padding: 0;
+  height: 4rem;
   padding: 0;
 }
 

@@ -87,7 +87,7 @@ const Footer = () => {
                   <Link href="/products">Portable Toilets</Link>
                 </li>
                 <li>
-                  <Link href="/quote">Get a Quote</Link>
+                  <Link href="/quote">GET FREE QUOTE</Link>
                 </li>
               </ul>
             </li>

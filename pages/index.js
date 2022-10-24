@@ -21,14 +21,8 @@ const Section1 = () => {
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
-          <ul className={homeStyles.section1Left}>
-            <li>
-              <h1>{homeData.section1.title}</h1>
-            </li>
-          </ul>
-          <div className={homeStyles.section1Right}>
-            <QuickQuote />
-          </div>
+          <h1>{homeData.section1.title}</h1>
+          <QuickQuote />
         </div>
       </div>
     </div>

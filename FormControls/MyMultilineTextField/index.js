@@ -1,22 +1,28 @@
 import React from "react";
 import { useField } from "formik";
-import quickQuoteStyles from '../../styles/QuickQuote.module.css'
+import { TextField } from "@mui/material";
+import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 
 const MyMultilineTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div>
-      <label
-        className={quickQuoteStyles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-      </label>
-      <textarea className={quickQuoteStyles.textarea} {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
-      ) : null}
-    </div>
+    <TextField
+      {...props}
+      id="outlined-basic"
+      label={label}
+      placeholder={label}
+      placeholdervariant="outlined"
+      fullWidth
+      multiline
+      rows={2}
+      size="small"
+      sx={{
+        background: "white",
+        borderRadius: ".5rem",
+        outline: "none",
+        border: "none",
+      }}
+    />
   );
 };
 

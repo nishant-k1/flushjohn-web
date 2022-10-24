@@ -6,9 +6,6 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import MyTextField from "../MyTextField";
-import { useField } from "formik";
-import quickQuoteStyles from '../../styles/QuickQuote.module.css'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -16,7 +13,6 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
     },
   },
 };
@@ -28,14 +24,14 @@ const names = [
   "Hand Wash Station",
 ];
 
-export default function MyMultipleSelectCheckmarks({ label, ...props }) {
-  const [productName, setProductName] = React.useState([]);
+export default function MyMultipleSelectCheckmarks() {
+  const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setProductName(
+    setPersonName(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
@@ -43,21 +39,28 @@ export default function MyMultipleSelectCheckmarks({ label, ...props }) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+      <FormControl fullWidth>
+        <InputLabel id="demo-multiple-checkbox-label">Select</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={productName}
+          value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
+          input={<OutlinedInput label="Select" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
+          fullWidth
+          sx={{
+            background: "white",
+            borderRadius: ".5rem",
+            outline: "none",
+            border: "none",
+          }}
         >
           {names.map((name) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={productName.indexOf(name) > -1} />
+              <Checkbox checked={personName.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
