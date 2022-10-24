@@ -2,8 +2,7 @@
   min-width: 100%;
   padding: 0;
   background-color: rgb(4, 10, 29);
-  /* border-top: 1px solid rgba(0, 0, 0, 0.685); */
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.685); */
+  border-bottom: 1px solid rgba(247, 247, 247, 0.685);
 }
 
 .container {
@@ -20,7 +19,7 @@
 }
 
 .phoneMobile div {
-  color: rgba(0, 0, 0, 0.829);
+  color: white;
   border-radius: 1px;
   padding: 0;
   margin: 0;
@@ -33,7 +32,7 @@
 }
 
 .menuIcon {
-  color: rgba(0, 0, 0, 0.829);
+  color: rgba(255, 255, 255, 0.829);
   height: 2rem;
   width: 2rem;
   justify-self: left;

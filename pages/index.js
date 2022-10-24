@@ -1,3 +1,4 @@
+import React from "react";
 import homeStyles from "../styles/Home.module.css";
 import QuickQuote from "../components/QuickQuote";
 import homeData from "../components/TextData";
@@ -8,6 +9,7 @@ import { RiTimeFill } from "react-icons/ri";
 import { Event } from "../lib/analytics";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import QuickQuoteButton from "../components/QuickQuoteButton";
 
 const SEO = {
   title:
@@ -16,13 +18,15 @@ const SEO = {
     "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
 };
 
-const Section1 = () => {
+const Section1 = ({ clientWidth }) => {
+  const [viewQuickQuote, setViewQuickQuote] = React.useState(false);
   return (
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
           <h1>{homeData.section1.title}</h1>
-          <QuickQuote />
+          {clientWidth > 600 && <QuickQuote />}
+          {viewQuickQuote && <QuickQuote />}
         </div>
       </div>
     </div>
@@ -129,6 +133,22 @@ const Section4 = (props) => {
   );
 };
 const Home = () => {
+  const [clientWidth, setClientWidth] = React.useState(null);
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setClientWidth(window.innerWidth);
+    }
+    if (clientWidth) {
+      window.addEventListener("resize", () => {
+        setClientWidth(window.innerWidth);
+      });
+    }
+    return () => {
+      window.removeEventListener("resize", () => {
+        setClientWidth(clientWidth);
+      });
+    };
+  }, [clientWidth]);
   return (
     <>
       <NextSeo {...SEO} />
@@ -138,7 +158,7 @@ const Home = () => {
           content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`}
         />
       </Head>
-      <Section1 />
+      <Section1 clientWidth={clientWidth} />
       <Section2 />
       <Section3 />
       <Section4 {...homeData.sectionLocation} />

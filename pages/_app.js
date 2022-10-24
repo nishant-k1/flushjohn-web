@@ -1,3 +1,4 @@
+import React from "react";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";
 import "../styles/globals.css";
@@ -12,13 +13,29 @@ import Testimonial from "../components/Testimonial";
 import { useEffect } from "react";
 import Head from "next/head";
 import initGA, { PageView } from "../lib/analytics";
+import QuickQuoteButton from "../components/QuickQuoteButton";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     initGA("YourTrackingID");
     PageView();
   });
-
+  const [clientWidth, setClientWidth] = React.useState(null);
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setClientWidth(window.innerWidth);
+    }
+    if (clientWidth) {
+      window.addEventListener("resize", () => {
+        setClientWidth(window.innerWidth);
+      });
+    }
+    return () => {
+      window.removeEventListener("resize", () => {
+        setClientWidth(clientWidth);
+      });
+    };
+  }, [clientWidth]);
   return (
     <>
       <html lang="en" />
@@ -48,6 +65,8 @@ function MyApp({ Component, pageProps }) {
             <Header />
             <Nav />
             <Component {...pageProps} />
+            {clientWidth <= 600 && <QuickQuoteButton />}
+
             <Testimonial />
             <Footer />
           </Layout>

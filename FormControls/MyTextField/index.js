@@ -18,8 +18,9 @@ const MyTextField = ({ label, ...props }) => {
       sx={{
         background: "white",
         borderRadius: ".5rem",
-        outline: "none",
-        // height: "2rem",
+      }}
+      InputLabelProps={{
+        style: { color: "#000000" },
       }}
     />
   );
