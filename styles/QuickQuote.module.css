@@ -1,7 +1,8 @@
 .form {
-  background-color: rgba(231, 228, 228, 0.774);
+  background-color: #ef6489ab;
   box-shadow: rgba(0, 0, 0, 0.35);
   padding: 1rem;
+  max-width: 20rem;
   position: absolute;
   top: 3.5rem;
   right: 0;
@@ -10,7 +11,7 @@
 .form h2 {
   text-align: left;
   font-size: large;
-  color: rgba(0, 0, 0, 0.76);
+  color: white;
 }
 
 .error {

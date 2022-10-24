@@ -30,7 +30,7 @@ const MyDateField = ({ label, ...props }) => {
         renderInput={(params) => <TextField {...params} />}
       /> */}
         <MobileDatePicker
-          label="Date mobile"
+          label={label}
           inputFormat="MM/DD/YYYY"
           value={value}
           onChange={handleChange}
