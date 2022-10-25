@@ -1,7 +1,8 @@
 .section {
   width: 60%;
   height: 100%;
-  background-color: #0b2941;
+  background-color: #b93669;
+  background-color: rgba(2, 2, 24, 0.692);
   padding: 0;
   position: fixed;
   border-right: solid 1px #ef648a;
