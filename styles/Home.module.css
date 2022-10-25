@@ -153,7 +153,7 @@
 
 /*********************mobile section-3 ****************************/
 .section.section3Section {
-  background-color: #f6f6f6;
+  background-color: #ef648a;
   padding-bottom: 4rem;
 }
 
@@ -186,17 +186,22 @@
 
 .section3h2 {
   margin: 4rem 0 !important;
+  color: white !important;
 }
 
 .section3 h3 {
-  font-weight: 500;
+  font-weight: 600;
+  text-decoration: underline wavy;
+  padding: 0;
+  color: white;
 }
 
 .section3 div p {
   padding: 0;
   margin: 0;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.5rem;
+  color: white;
 }
 
 /* section-4 */

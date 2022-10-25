@@ -47,7 +47,9 @@ const QuickQuote = () => {
       <Box className={quickQuoteStyles.form}>
         <Grid container spacing={1.5}>
           <Grid item xs={12}>
-            <h2 style={{ paddng: 0, margin: 0 }}>Quick Free Quote</h2>
+            <h2 style={{ paddng: 0, margin: 0, color: "white" }}>
+              Quick Free Quote
+            </h2>
           </Grid>
           <Grid item xs={12}>
             <MyMultipleSelectCheckmarks

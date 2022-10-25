@@ -14,3 +14,26 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff48;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d47ec;
+  /* background: #ef648a; */
+  transition: 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1d47ec;
+  transition: 0.3s;
+}
