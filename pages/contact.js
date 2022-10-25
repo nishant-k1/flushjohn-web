@@ -2,7 +2,6 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import contactStyles from "../styles/Contact.module.css";
-
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { useState } from "react";

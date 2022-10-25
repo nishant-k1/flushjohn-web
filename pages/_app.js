@@ -7,13 +7,17 @@ import Header from "../components/Header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
-import { SidebarContextProvider } from "../contexts/SidebarContext";
 import { QuoteContextProvider } from "../contexts/QuoteContext";
 import Testimonial from "../components/Testimonial";
 import { useEffect } from "react";
 import Head from "next/head";
 import initGA, { PageView } from "../lib/analytics";
 import QuickQuoteButton from "../components/QuickQuoteButton";
+import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
+import { ClientWidthContext } from "../contexts/ClientWidthContext";
+import QuickQuote from "./../components/QuickQuote";
+import { SidebarContext } from "./../contexts/SidebarContext";
+import ModalBackground from "../components/ModalBackground";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -21,9 +25,18 @@ function MyApp({ Component, pageProps }) {
     PageView();
   });
   const [clientWidth, setClientWidth] = React.useState(null);
+  const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
+  const [active, setActive] = React.useState(false);
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       setClientWidth(window.innerWidth);
+      if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
+        document.documentElement.style.overflow = "hidden"; // firefox, chrome
+        document.body.scroll = "no"; // ie only
+      } else {
+        document.documentElement.style.overflow = "scroll"; // firefox, chrome
+        document.body.scroll = "yes"; // ie only
+      }
     }
     if (clientWidth) {
       window.addEventListener("resize", () => {
@@ -35,7 +48,7 @@ function MyApp({ Component, pageProps }) {
         setClientWidth(clientWidth);
       });
     };
-  }, [clientWidth]);
+  }, [clientWidth, quickQuoteViewStatus, active]);
   return (
     <>
       <html lang="en" />
@@ -58,20 +71,32 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <DefaultSeo {...SEO} />
-      <SidebarContextProvider>
+      <SidebarContext.Provider value={{ active, setActive }}>
         <QuoteContextProvider>
-          <Sidebar />
-          <Layout>
-            <Header />
-            <Nav />
-            <Component {...pageProps} />
-            {clientWidth <= 600 && <QuickQuoteButton />}
-
-            <Testimonial />
-            <Footer />
-          </Layout>
+          <QuickQuoteContext.Provider
+            value={{ quickQuoteViewStatus, setQuickQuoteViewStatus }}
+          >
+            <ClientWidthContext.Provider
+              value={{ clientWidth, setClientWidth }}
+            >
+              <Sidebar />
+              <Layout>
+                {active && <ModalBackground />}
+                <Header />
+                <Nav />
+                <Component {...pageProps} />
+                {quickQuoteViewStatus && clientWidth <= 600 && (
+                  <ModalBackground />
+                )}
+                {clientWidth <= 600 && <QuickQuoteButton />}
+                {quickQuoteViewStatus && clientWidth <= 600 && <QuickQuote />}
+                <Testimonial />
+                <Footer />
+              </Layout>
+            </ClientWidthContext.Provider>
+          </QuickQuoteContext.Provider>
         </QuoteContextProvider>
-      </SidebarContextProvider>
+      </SidebarContext.Provider>
     </>
   );
 }

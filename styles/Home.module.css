@@ -18,7 +18,11 @@
   font-weight: 500;
   font-size: x-large;
 }
-
+@media only screen and (max-width: 600px) {
+  .section h1 {
+    padding-left: 2rem;
+  }
+}
 .container {
   padding: 0 32px;
   margin: 0 auto;

@@ -1,4 +1,4 @@
-.main{
+.main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -7,11 +7,11 @@
   background-color: white;
 }
 
-.active{
+.active {
   transform: translateX(60%);
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.inactive{
-  transition: .5s;
-} 
+.inactive {
+  transition: 0.5s;
+}

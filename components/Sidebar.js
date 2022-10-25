@@ -5,7 +5,7 @@ import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext } from "react";
 
 const Sidebar = () => {
-  const [active, setActive] = useContext(SidebarContext);
+  const { active, setActive } = useContext(SidebarContext);
   const handleClick = () => {
     setActive(false);
   };

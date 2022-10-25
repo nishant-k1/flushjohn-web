@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { Event } from "../lib/analytics";
 
 const Nav = () => {
-  const [active, setActive] = useContext(SidebarContext);
+  const { active, setActive } = useContext(SidebarContext);
 
   return (
     <div className={navStyles.section}>

@@ -26,7 +26,6 @@ const Section1 = ({ clientWidth }) => {
         <div className={homeStyles.section1}>
           <h1>{homeData.section1.title}</h1>
           {clientWidth > 600 && <QuickQuote />}
-          {viewQuickQuote && <QuickQuote />}
         </div>
       </div>
     </div>
