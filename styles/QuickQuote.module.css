@@ -6,7 +6,6 @@
   position: absolute;
   top: 3.5rem;
   right: 0;
-  z-index: 200;
 }
 
 @media only screen and (max-width: 600px) {
@@ -16,6 +15,7 @@
     top: 4rem;
     background-color: rgba(0, 0, 0, 0.521);
     background-color: #ef6489ef;
+    z-index: 3;
   }
   .form::before {
     background-color: black;

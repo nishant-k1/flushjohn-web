@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import { MdDone } from "react-icons/md";
 import axios from "axios";
+import React from "react";
 import { useState } from "react";
 import { Event } from "../lib/analytics";
 import MyMaskedTextInput from "../FormControls/MyMaskedTextField";
@@ -12,9 +13,11 @@ import MyDateField from "../FormControls/MyDateField";
 import MyLoadingButton from "../FormControls/MyLoadingButton";
 import { Box, Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { ClientWidthContext } from "./../contexts/ClientWidthContext/index";
 
 const QuickQuote = () => {
   const [state, setState] = useState(false);
+  const { clientWidth } = React.useContext(ClientWidthContext);
   return (
     <Formik
       initialValues={{
