@@ -1,13 +1,19 @@
 import footerStyles from "../styles/Footer.module.css";
-import {
-  AiFillFacebook,
-  AiFillTwitterSquare,
-  AiFillInstagram,
-  AiFillLinkedin,
-} from "react-icons/ai";
-import { FaPinterestSquare } from "react-icons/fa";
+import EmailIcon from "@mui/icons-material/Email";
 
 import Link from "next/link";
+import HomeIcon from "@mui/icons-material/Home";
+import PhoneIcon from "@mui/icons-material/Phone";
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import PolicyIcon from "@mui/icons-material/Policy";
+import GavelIcon from "@mui/icons-material/Gavel";
+import ArticleIcon from "@mui/icons-material/Article";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PinterestIcon from "@mui/icons-material/Pinterest";
 
 var date = new Date();
 var year = date.getFullYear();
@@ -34,7 +40,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.facebook.com/portarental">
                     <a>
-                      <AiFillFacebook className={footerStyles.icon} />
+                      <FacebookIcon />
                       Facebook
                     </a>
                   </Link>
@@ -42,7 +48,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://twitter.com/reliableportable">
                     <a>
-                      <AiFillTwitterSquare className={footerStyles.icon} />
+                      <TwitterIcon />
                       Twitter
                     </a>
                   </Link>
@@ -50,7 +56,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.instagram.com/rent_a_porta/">
                     <a>
-                      <AiFillInstagram className={footerStyles.icon} />
+                      <InstagramIcon />
                       Instagram
                     </a>
                   </Link>
@@ -58,7 +64,7 @@ const Footer = () => {
                 <li>
                   <Link href="linkedin.com/company/rent-a-porta">
                     <a>
-                      <AiFillLinkedin className={footerStyles.icon} />
+                      <LinkedInIcon />
                       Linkedin
                     </a>
                   </Link>
@@ -66,7 +72,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://www.pinterest.com/renta_porta">
                     <a>
-                      <FaPinterestSquare className={footerStyles.icon} />
+                      <PinterestIcon />
                       Pinterest
                     </a>
                   </Link>
@@ -81,13 +87,44 @@ const Footer = () => {
                   <h2>Navigation</h2>
                 </li>
                 <li>
-                  <Link href="/">Home</Link>
+                  <Link href="/">
+                    <a>
+                      <HomeIcon />
+                      Home
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/products">Portable Toilets</Link>
+                  <Link href="/products">
+                    <a>
+                      <LocalShippingIcon />
+                      Portables
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/quote">GET FREE QUOTE</Link>
+                  <Link href="/privacy">
+                    <a>
+                      <PolicyIcon />
+                      Privacy Policy
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms">
+                    <a>
+                      <GavelIcon />
+                      Terms & Conditions
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/disclaimer">
+                    <a>
+                      <ArticleIcon />
+                      Disclaimer
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -99,19 +136,28 @@ const Footer = () => {
                   <h2>Reliable Portable</h2>
                 </li>
                 <li>
-                  <Link href="tel:(855) 780-3061">(855) 780-3061</Link>
+                  <Link href="tel:(855) 780-3061">
+                    <a>
+                      <PhoneIcon />
+                      (855) 780-3061
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact Us</Link>
+                  <Link href="/contact">
+                    <a>
+                      <EmailIcon />
+                      Email
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/privacy">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link href="/terms">Terms & Conditions</Link>
-                </li>
-                <li>
-                  <Link href="/disclaimer">Disclaimer</Link>
+                  <Link href="/quote">
+                    <a>
+                      <RequestQuoteIcon />
+                      Get Free Quote
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </li>

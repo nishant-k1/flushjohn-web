@@ -1,15 +1,15 @@
 .section {
   width: 60%;
   height: 100%;
-  background-color: #b93669;
-  background-color: rgba(2, 2, 24, 0.692);
+  background-color: #040318;
   padding: 0;
   position: fixed;
-  border-right: solid 1px #ef648a;
   top: 0;
   left: 0;
   overflow-x: hidden;
   overflow-y: hidden;
+  border-right: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .container {
@@ -48,7 +48,9 @@
 
 .sidebar ul li {
   display: grid;
-  grid-template-columns: max-content;
+  grid-template-columns: max-content max-content;
+  column-gap: 0.5rem;
+  justify-content: start;
 }
 .sidebar ul li a:hover {
   color: #ef648a;
@@ -67,23 +69,6 @@
   background-color: rgb(49, 98, 170);
 }
 .sidebar ul .quote a:hover {
-  color: white;
-}
-
-.phone div {
-  color: white;
-  font-weight: 500;
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(2, max-content);
-  column-gap: 0.5rem;
-}
-
-.phone div:hover {
-  background-color: rgb(23, 82, 170);
-}
-
-.sidebar ul .phone div:hover {
   color: white;
 }
 

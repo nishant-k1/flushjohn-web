@@ -191,7 +191,6 @@
 
 .section3 h3 {
   font-weight: 600;
-  text-decoration: underline wavy;
   padding: 0;
   color: white;
 }
@@ -232,7 +231,7 @@
 
 .list p {
   padding: 0.3rem !important;
-  font-weight: 500;
+  font-weight: 100;
 }
 /* testimonial section */
 
@@ -276,7 +275,7 @@
 
 .testimonials div p {
   line-height: 1.5rem;
-  font-weight: 500;
+  font-weight: 200;
 }
 /* desktop */
 @media screen and (min-width: 769px) {

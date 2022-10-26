@@ -37,7 +37,7 @@ const Slider = (props) => {
       </div>
       <button className={styleSlide.quoteLink}>
         <Link type="button" href="/quote">
-          GET FREE QUOTE
+          Get Free Quote
         </Link>
       </button>
     </>

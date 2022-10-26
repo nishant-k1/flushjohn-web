@@ -1,8 +1,11 @@
 import sidebarStyles from "../styles/Sidebar.module.css";
 import Link from "next/link";
-import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import PhoneIcon from "@mui/icons-material/Phone";
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
 const Sidebar = () => {
   const { active, setActive } = useContext(SidebarContext);
@@ -26,23 +29,30 @@ const Sidebar = () => {
             />
           </Link>
           <ul className={sidebarStyles.sidebarMenu}>
-            <li onClick={handleClick}>
-              <Link href="/">Home</Link>
-            </li>
-            <li onClick={handleClick}>
-              <Link href="/products">Portable Toilets</Link>
-            </li>
-            <li className={sidebarStyles.quote} onClick={handleClick}>
-              <Link href="/quote">GET FREE QUOTE</Link>
-            </li>
-            <li className={sidebarStyles.phone} onClick={handleClick}>
-              <Link href="tel:(855) 780-3061">
-                <div>
-                  <FaPhoneAlt />
-                  (855) 780-3061
-                </div>
-              </Link>
-            </li>
+            <Link href="/">
+              <li onClick={handleClick}>
+                <HomeIcon />
+                Home
+              </li>
+            </Link>
+            <Link href="/products">
+              <li onClick={handleClick}>
+                <LocalShippingIcon />
+                Portables
+              </li>
+            </Link>
+            <Link href="/quote">
+              <li onClick={handleClick}>
+                <RequestQuoteIcon />
+                Get Free Quote
+              </li>
+            </Link>
+            <Link href="tel:(855) 780-3061">
+              <li onClick={handleClick}>
+                <PhoneIcon />
+                (855) 780-3061
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

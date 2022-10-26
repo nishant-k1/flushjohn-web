@@ -42,7 +42,7 @@ const Nav = () => {
             </li>
             <li className={navStyles.quote}>
               <Link type="button" href="/quote">
-                GET FREE QUOTE
+                Get Free Quote
               </Link>
             </li>
             <li className={navStyles.phone}>
