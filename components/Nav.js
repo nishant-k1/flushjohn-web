@@ -1,21 +1,29 @@
+import React from "react";
 import navStyles from "../styles/Nav.module.css";
 import Link from "next/link";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext } from "react";
 import { Event } from "../lib/analytics";
+import { Divide as Hamburger } from "hamburger-react";
+import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
 
 const Nav = () => {
   const { active, setActive } = useContext(SidebarContext);
+  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+    React.useContext(QuickQuoteContext);
 
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          <GiHamburgerMenu
-            className={navStyles.menuIcon}
-            onClick={() => setActive(!active)}
+          <Hamburger
+            toggled={active}
+            toggle={() => {
+              setActive(!active);
+              !active && setQuickQuoteViewStatus(false);
+            }}
+            color="#ffffff"
           />
           <p className={navStyles.phoneMobile}>
             <a

@@ -21,6 +21,7 @@
     "axios": "^0.21.1",
     "dayjs": "^1.11.6",
     "formik": "^2.2.9",
+    "hamburger-react": "^2.5.0",
     "moment": "^2.29.4",
     "next": "^12.3.1",
     "next-pwa": "^5.2.21",
