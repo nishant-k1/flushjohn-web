@@ -7,24 +7,27 @@ import { useContext } from "react";
 import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
+import { ClientWidthContext } from "./../contexts/ClientWidthContext/index";
 
 const Nav = () => {
-  const { active, setActive } = useContext(SidebarContext);
+  const { active, setActive } = React.useContext(SidebarContext);
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
-
+  const { clientWidth } = React.useContext(ClientWidthContext);
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          <Hamburger
-            toggled={active}
-            toggle={() => {
-              setActive(!active);
-              !active && setQuickQuoteViewStatus(false);
-            }}
-            color="#ffffff"
-          />
+          {clientWidth < 769 && (
+            <Hamburger
+              toggled={active}
+              toggle={() => {
+                setActive(!active);
+                !active && setQuickQuoteViewStatus(false);
+              }}
+              color="#ffffff"
+            />
+          )}
           <p className={navStyles.phoneMobile}>
             <a
               href="tel: +1 (855) 780-3061"
