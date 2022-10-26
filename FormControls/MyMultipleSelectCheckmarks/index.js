@@ -24,7 +24,7 @@ const names = [
   "Hand Wash Station",
 ];
 
-export default function MyMultipleSelectCheckmarks() {
+export default function MyMultipleSelectCheckmarks({ ...props }) {
   const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
@@ -40,10 +40,18 @@ export default function MyMultipleSelectCheckmarks() {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id="demo-multiple-checkbox-label">Select</InputLabel>
+        <InputLabel
+          style={{
+            color: "black",
+            fontWeight: 100,
+            fontSize: "medium",
+            fontFamily: "Times New Roman",
+          }}
+        >
+          {props.label}
+        </InputLabel>
         <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
+          {...props}
           multiple
           value={personName}
           onChange={handleChange}

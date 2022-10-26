@@ -41,8 +41,21 @@ const MyDateField = ({ label, ...props }) => {
               sx={{
                 background: "white",
                 borderRadius: ".5rem",
+                borderColor: "red",
+                color: "white",
+                border: "none",
                 outline: "none",
-                // height: "2rem",
+                fontSize: "large",
+              }}
+              inputProps={{ style: { fontSize: "large" } }}
+              InputLabelProps={{
+                shrink: true,
+                style: {
+                  color: "black",
+                  fontWeight: 100,
+                  fontSize: "medium",
+                  fontFamily: "Times New Roman",
+                },
               }}
             />
           )}

@@ -13,6 +13,22 @@ const MyMaskedTextInput = ({ label, ...props }) => {
       placeholder={label}
       placeholdervariant="outlined"
       fullWidth
+      sx={{
+        background: "white",
+        borderRadius: ".5rem",
+        borderColor: "red",
+        color: "white",
+        border: "none",
+        outline: "none",
+      }}
+      InputLabelProps={{
+        style: {
+          color: "black",
+          fontWeight: 100,
+          fontSize: "medium",
+          fontFamily: "Times New Roman",
+        },
+      }}
     >
       <MaskedInput className={quickQuoteStyles.input} {...field} {...props} />
       {meta.touched && meta.error ? (

@@ -18,9 +18,18 @@ const MyTextField = ({ label, ...props }) => {
       sx={{
         background: "white",
         borderRadius: ".5rem",
+        borderColor: "red",
+        color: "white",
+        border: "none",
+        outline: "none",
       }}
       InputLabelProps={{
-        style: { color: "#000000" },
+        style: {
+          color: "black",
+          fontWeight: 100,
+          fontSize: "medium",
+          fontFamily: "Times New Roman",
+        },
       }}
     />
   );

@@ -22,6 +22,14 @@ const MyMultilineTextField = ({ label, ...props }) => {
         outline: "none",
         border: "none",
       }}
+      InputLabelProps={{
+        style: {
+          color: "black",
+          fontWeight: 100,
+          fontSize: "medium",
+          fontFamily: "Times New Roman",
+        },
+      }}
     />
   );
 };

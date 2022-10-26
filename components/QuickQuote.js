@@ -4,47 +4,52 @@ import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import { MdDone } from "react-icons/md";
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
 import { Event } from "../lib/analytics";
-import MyMaskedTextInput from "../FormControls/MyMaskedTextField";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
-import MyLoadingButton from "../FormControls/MyLoadingButton";
+import Button from "@mui/material/Button";
 import { Box, Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { ClientWidthContext } from "./../contexts/ClientWidthContext/index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QuickQuote = () => {
-  const [state, setState] = useState(false);
-  const { clientWidth } = React.useContext(ClientWidthContext);
+  const notify = () =>
+    toast.success("Quick quote request sent !", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   return (
     <Formik
       initialValues={{
+        portableUnits: [],
+        deliveryDate: "",
+        pickupDate: "",
+        zip: "",
+        instructions: "",
         fullName: "",
         email: "",
         phone: "",
-        products: "",
-        zip: "",
-        deliveryDate: "",
-        pickupDate: "",
-        instructions: "",
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         Event("Request quote", "Prompt Form Submit", "PFS");
         try {
           const res = await axios.post(`/api/quickQuote`, values);
-          res.status === 200 ? setState(true) : setState(false);
-          state && resetForm();
-        } catch (err) {
-          alert(
-            `The server has some issues, please try again or just make a phone call :( `
-          );
-        }
-        resetForm();
+          alert(JSON.stringify(values));
+          console.log(JSON.stringify(values));
+          notify();
+          resetForm();
+        } catch (err) {}
       }}
     >
-      <Box className={quickQuoteStyles.form}>
+      <Form className={quickQuoteStyles.form}>
         <Grid container spacing={1.5}>
           <Grid item xs={12}>
             <h2 style={{ paddng: 0, margin: 0, color: "white" }}>
@@ -53,20 +58,18 @@ const QuickQuote = () => {
           </Grid>
           <Grid item xs={12}>
             <MyMultipleSelectCheckmarks
-              label="Select Products"
-              name="products"
-              id="products"
-              placeholder="Select Products"
+              label="Select Portable Units"
+              name="portableUnits"
+              placeholder="Select Portable Units"
               isMulti
             />
           </Grid>
           <Grid item xs={12} md={6}>
             <MyDateField
               label="Delivery Date"
-              id="deliveryDate"
               name="deliveryDate"
               dateFormat="MMMM d, yyyy"
-              placeholderText="Delivery Date"
+              placeholder="Delivery Date"
               autoComplete="off"
             />
           </Grid>
@@ -75,7 +78,7 @@ const QuickQuote = () => {
               label="Pickup Date"
               name="pickupDate"
               dateFormat="MMMM d, yyyy"
-              placeholderText="Pickup Date"
+              placeholder="Pickup Date"
               autoComplete="off"
             />
           </Grid>
@@ -118,7 +121,6 @@ const QuickQuote = () => {
           </Grid>
           <Grid item xs={12}>
             <MyTextField
-              className={quickQuoteStyles.phone}
               label="Phone"
               name="phone"
               mask="(999) 999-9999"
@@ -128,32 +130,13 @@ const QuickQuote = () => {
             />
           </Grid>
           <Grid item xs={3}>
-            {!state && (
-              <MyLoadingButton
-                variant="contained"
-                size="medium"
-                type="submit"
-                endIcon={<SendIcon />}
-              >
-                {!state && `SEND`}
-              </MyLoadingButton>
-            )}
-            {state && (
-              <Box
-                onClick={() => {}}
-                className={`${quickQuoteStyles.LoadingButton} ${quickQuoteStyles.submitting}`}
-                style={{ backgroundColor: "rgba(42, 43, 44, 0.815)" }}
-              >
-                {state && (
-                  <Box style={{ display: "flex", alignBoxs: "center" }}>
-                    REQUEST SENT <MdDone style={{ fontSize: "2rem" }} />
-                  </Box>
-                )}
-              </Box>
-            )}
+            <Button variant="contained" endIcon={<SendIcon />} type="submit">
+              Send
+            </Button>
+            <ToastContainer />
           </Grid>
         </Grid>
-      </Box>
+      </Form>
     </Formik>
   );
 };

@@ -49,7 +49,7 @@ const Nav = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/products">Portable Toilets</Link>
+              <Link href="/products">Portable Units</Link>
             </li>
             <li className={navStyles.quote}>
               <Link type="button" href="/quote">
