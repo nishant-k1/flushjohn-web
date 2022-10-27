@@ -27,14 +27,16 @@ function MyApp({ Component, pageProps }) {
   const [clientWidth, setClientWidth] = React.useState(null);
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
   const [active, setActive] = React.useState(false);
+
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       setClientWidth(window.innerWidth);
+      // modal container
       if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
-        document.documentElement.style.overflow = "hidden"; // firefox, chrome
+        document.documentElement.style.overflowY = "hidden"; // firefox, chrome
         document.body.scroll = "no"; // ie only
       } else {
-        document.documentElement.style.overflow = "scroll"; // firefox, chrome
+        document.documentElement.style.overflowY = "scroll"; // firefox, chrome
         document.body.scroll = "yes"; // ie only
       }
     }
