@@ -42,8 +42,6 @@ const QuickQuote = () => {
         Event("Request quote", "Prompt Form Submit", "PFS");
         try {
           const res = await axios.post(`/api/quickQuote`, values);
-          alert(JSON.stringify(values));
-          console.log(JSON.stringify(values));
           notify();
           resetForm();
         } catch (err) {}
@@ -68,7 +66,6 @@ const QuickQuote = () => {
             <MyDateField
               label="Delivery Date"
               name="deliveryDate"
-              dateFormat="MMMM d, yyyy"
               placeholder="Delivery Date"
               autoComplete="off"
             />
@@ -77,7 +74,6 @@ const QuickQuote = () => {
             <MyDateField
               label="Pickup Date"
               name="pickupDate"
-              dateFormat="MMMM d, yyyy"
               placeholder="Pickup Date"
               autoComplete="off"
             />

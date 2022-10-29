@@ -42,7 +42,7 @@ export default function MyMultipleSelectCheckmarks({ ...props }) {
       <FormControl fullWidth>
         <InputLabel
           style={{
-            color: "black",
+            color: "#606060",
             fontWeight: 100,
             fontSize: "medium",
             fontFamily: "Times New Roman",

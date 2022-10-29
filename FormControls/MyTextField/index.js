@@ -1,11 +1,10 @@
 import React from "react";
 import { useField } from "formik";
-import quickQuoteStyles from "../../styles/QuickQuote.module.css";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 const MyTextField = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
+  const { setValue } = helpers;
   return (
     <TextField
       id="outlined-basic"
@@ -15,6 +14,9 @@ const MyTextField = ({ label, ...props }) => {
       fullWidth
       size="small"
       {...props}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
       sx={{
         background: "white",
         borderRadius: ".5rem",
@@ -25,7 +27,7 @@ const MyTextField = ({ label, ...props }) => {
       }}
       InputLabelProps={{
         style: {
-          color: "black",
+          color: "#606060",
           fontWeight: 100,
           fontSize: "medium",
           fontFamily: "Times New Roman",

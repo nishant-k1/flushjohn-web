@@ -1,6 +1,5 @@
 .form {
   background-color: #ef6489ab;
-  /* background-color: #ffffff59; */
   box-shadow: rgba(0, 0, 0, 0.35);
   padding: 1rem;
   max-width: 20rem;
@@ -20,9 +19,10 @@
   .form {
     position: fixed;
     right: 0;
-    top: 4rem;
+    top: 2rem;
     background-color: #ef6489ef;
     z-index: 3;
+    transition: 0.3s;
   }
 }
 
