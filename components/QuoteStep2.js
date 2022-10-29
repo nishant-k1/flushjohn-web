@@ -4,8 +4,7 @@ import MaskedInput from "react-input-mask";
 import QuoteStep2Styles from "../styles/QuoteStep2.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

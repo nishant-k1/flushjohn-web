@@ -39,42 +39,32 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="https://www.facebook.com/portarental">
-                    <a>
-                      <FacebookIcon />
-                      Facebook
-                    </a>
+                    <FacebookIcon />
+                    Facebook
                   </Link>
                 </li>
                 <li>
                   <Link href="https://twitter.com/reliableportable">
-                    <a>
-                      <TwitterIcon />
-                      Twitter
-                    </a>
+                    <TwitterIcon />
+                    Twitter
                   </Link>
                 </li>
                 <li>
                   <Link href="https://www.instagram.com/rent_a_porta/">
-                    <a>
-                      <InstagramIcon />
-                      Instagram
-                    </a>
+                    <InstagramIcon />
+                    Instagram
                   </Link>
                 </li>
                 <li>
                   <Link href="linkedin.com/company/rent-a-porta">
-                    <a>
-                      <LinkedInIcon />
-                      Linkedin
-                    </a>
+                    <LinkedInIcon />
+                    Linkedin
                   </Link>
                 </li>
                 <li>
                   <Link href="https://www.pinterest.com/renta_porta">
-                    <a>
-                      <PinterestIcon />
-                      Pinterest
-                    </a>
+                    <PinterestIcon />
+                    Pinterest
                   </Link>
                 </li>
               </ul>
@@ -88,42 +78,32 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="/">
-                    <a>
-                      <HomeIcon />
-                      Home
-                    </a>
+                    <HomeIcon />
+                    Home
                   </Link>
                 </li>
                 <li>
                   <Link href="/products">
-                    <a>
-                      <LocalShippingIcon />
-                      Portables
-                    </a>
+                    <LocalShippingIcon />
+                    Portables
                   </Link>
                 </li>
                 <li>
                   <Link href="/privacy">
-                    <a>
-                      <PolicyIcon />
-                      Privacy Policy
-                    </a>
+                    <PolicyIcon />
+                    Privacy Policy
                   </Link>
                 </li>
                 <li>
                   <Link href="/terms">
-                    <a>
-                      <GavelIcon />
-                      Terms & Conditions
-                    </a>
+                    <GavelIcon />
+                    Terms & Conditions
                   </Link>
                 </li>
                 <li>
                   <Link href="/disclaimer">
-                    <a>
-                      <ArticleIcon />
-                      Disclaimer
-                    </a>
+                    <ArticleIcon />
+                    Disclaimer
                   </Link>
                 </li>
               </ul>
@@ -137,26 +117,20 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="tel:(855) 780-3061">
-                    <a>
-                      <PhoneIcon />
-                      (855) 780-3061
-                    </a>
+                    <PhoneIcon />
+                    (855) 780-3061
                   </Link>
                 </li>
                 <li>
                   <Link href="/contact">
-                    <a>
-                      <EmailIcon />
-                      Email
-                    </a>
+                    <EmailIcon />
+                    Email
                   </Link>
                 </li>
                 <li>
                   <Link href="/quote">
-                    <a>
-                      <RequestQuoteIcon />
-                      Get Free Quote
-                    </a>
+                    <RequestQuoteIcon />
+                    Get Free Quote
                   </Link>
                 </li>
               </ul>

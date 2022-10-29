@@ -1,5 +1,4 @@
 import { Formik, Form } from "formik";
-import "react-datepicker/dist/react-datepicker.css";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import axios from "axios";
 import React from "react";
@@ -8,7 +7,7 @@ import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmar
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
 import Button from "@mui/material/Button";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -28,19 +28,18 @@ const Nav = () => {
               color="#ffffff"
             />
           )}
-          <p className={navStyles.phoneMobile}>
-            <a
-              href="tel: +1 (855) 780-3061"
-              onClick={(e) => {
-                Event("Request quote", "Mobile Phone Call", "MPC");
-              }}
-            >
-              <div>
-                <FaPhoneAlt />
-                (855) 780-3061
-              </div>
-            </a>
-          </p>
+          <a
+            className={navStyles.phoneMobile}
+            href="tel: +1 (855) 780-3061"
+            onClick={(e) => {
+              Event("Request quote", "Mobile Phone Call", "MPC");
+            }}
+          >
+            <div>
+              <FaPhoneAlt />
+              (855) 780-3061
+            </div>
+          </a>
           <Link href="/">
             <img src="brand-logo-transparent.svg" alt="brand-logo" />
           </Link>
