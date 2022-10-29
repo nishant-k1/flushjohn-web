@@ -5,6 +5,7 @@ import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 export default function QuickQuoteButton() {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
+
   return (
     <Button
       variant="contained"
@@ -14,10 +15,12 @@ export default function QuickQuoteButton() {
       }}
       sx={{
         position: "fixed",
-        left: -62,
+        left: -70,
         top: "50vh",
+        fontSize: "14px",
         transform: "rotate(90deg)",
         background: "#0F1B80",
+
         "&:hover": {
           background: "#0F1B80",
           borderColor: "#0F1B80",

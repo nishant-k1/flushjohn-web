@@ -32,8 +32,17 @@
   justify-content: center;
   grid-template-columns: repeat(2, max-content);
   column-gap: 0.2rem;
+  height: 100%;
+}
+.phoneMobile {
+  margin: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .phoneMobile div {
+    font-size: x-large;
+  }
+}
 .menuIcon {
   color: rgba(255, 255, 255, 0.829);
   height: 2rem;
