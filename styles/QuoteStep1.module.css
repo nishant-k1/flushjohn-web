@@ -24,7 +24,7 @@
 
 .innerBox {
   display: grid;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   grid-template-columns: max-content max-content;
 }
