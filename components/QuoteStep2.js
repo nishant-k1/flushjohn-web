@@ -13,10 +13,13 @@ const MyDateField = ({ label, ...props }) => {
   const { setValue } = helpers;
   return (
     <div className={QuoteStep2Styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label htmlFor={props.id || props.name}>
+        {label}
+        {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
+      </label>
       <div className={QuoteStep2Styles.innerBox}>
         <DatePicker
-          className={`${QuoteStep2Styles.input} ${QuoteStep2Styles.date}`}
+          className={QuoteStep2Styles.date}
           {...field}
           {...props}
           minDate={new Date()}
@@ -24,7 +27,12 @@ const MyDateField = ({ label, ...props }) => {
           onChange={(value) => setValue(value)}
         />
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
@@ -39,7 +47,12 @@ const MyMultilineTextField = ({ label, ...props }) => {
       <div className={QuoteStep2Styles.innerBox}>
         <textarea {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
@@ -50,11 +63,22 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={QuoteStep2Styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label>
+        {label}
+        {(() => {
+          if (props.name === "zip" || props.name === "street")
+            return <span style={{ color: "red", fontSize: "x-large" }}>*</span>;
+        })()}
+      </label>
       <div className={QuoteStep2Styles.innerBox}>
         <MaskedInput {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
@@ -91,7 +115,7 @@ const QuoteStep2 = () => {
           <div className={QuoteStep2Styles.form}>
             <div className={QuoteStep2Styles.deliveryDate}>
               <MyDateField
-                label="* Delivery Date"
+                label="Delivery Date"
                 id="deliveryDate"
                 name="deliveryDate"
                 dateFormat="MMMM d, yyyy"
@@ -101,26 +125,37 @@ const QuoteStep2 = () => {
 
             <div className={QuoteStep2Styles.pickupDate}>
               <MyDateField
-                label="* Pickup Date"
+                label="Pickup Date"
                 name="pickupDate"
                 dateFormat="MMMM d, yyyy"
                 autoComplete="off"
               />
             </div>
-            <div className={QuoteStep2Styles.address}>
-              <MyMaskedTextInput
-                label="Complete Address"
-                name="address"
-                autoComplete="on"
-              />
+            <div className={QuoteStep2Styles.street}>
+              <MyMaskedTextInput label="Street" name="street" />
+            </div>
+            <div className={QuoteStep2Styles.city}>
+              <MyMaskedTextInput label="City" name="city" />
+            </div>
+            <div className={QuoteStep2Styles.state}>
+              <MyMaskedTextInput label="State" name="state" />
             </div>
             <div className={QuoteStep2Styles.zip}>
               <MyMaskedTextInput
-                label="* Zip Code"
+                label="Zip Code"
                 name="zip"
                 mask="99999"
                 maskChar=""
                 autoComplete="postal-code"
+                type="tel"
+              />
+            </div>
+            <div className={QuoteStep2Styles.phone}>
+              <MyMaskedTextInput
+                label="Onsite Phone"
+                name="onsite_phone"
+                mask="99999"
+                maskChar=""
                 type="tel"
               />
             </div>
