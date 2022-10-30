@@ -17,10 +17,10 @@ const QuoteStep4 = () => {
           href="https://www.reliableportable.com/quote"
         >
           Click Here
-        
-        <p className={QuoteStep4Styles.refreshLinkMessage}>
-          to submit a new quote request.
-        </p>
+          <p className={QuoteStep4Styles.refreshLinkMessage}>
+            to submit a new quote request.
+          </p>
+        </a>
       </div>
     </div>
   );

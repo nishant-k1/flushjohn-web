@@ -10,10 +10,10 @@ const MyDateField = ({ ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { setValue } = helpers;
   return (
-    <Box sx={{}}>
+    <Box>
       <label
         style={{
-          color: "white",
+          color: "black",
           fontWeight: 100,
           fontSize: "medium",
           fontFamily: "Times New Roman",
@@ -26,15 +26,8 @@ const MyDateField = ({ ...props }) => {
         label={props.label}
         defaultValue={moment(new Date(), "MM/DD/YYYY")}
         format={"MM/DD/YYYY"}
-        style={{
-          color: "black",
-          fontWeight: 100,
-          fontSize: "medium",
-          fontFamily: "Times New Roman",
-          width: "100%",
-          height: "2.5rem",
-        }}
         placeholder={props.label}
+        disabledDate={(d) => !d || d.isBefore(new Date())}
         onChange={(e) => {
           setValue(moment(e).format("MMM Do YY"));
         }}

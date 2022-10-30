@@ -67,6 +67,14 @@ const QuickQuote = () => {
                 name="deliveryDate"
                 placeholder="Delivery Date"
                 autoComplete="off"
+                style={{
+                  color: "black",
+                  fontWeight: 100,
+                  fontSize: "medium",
+                  fontFamily: "Times New Roman",
+                  width: "100%",
+                  height: "2.5rem",
+                }}
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -75,6 +83,14 @@ const QuickQuote = () => {
                 name="pickupDate"
                 placeholder="Pickup Date"
                 autoComplete="off"
+                style={{
+                  color: "black",
+                  fontWeight: 100,
+                  fontSize: "medium",
+                  fontFamily: "Times New Roman",
+                  width: "100%",
+                  height: "2.5rem",
+                }}
               />
             </Grid>
             <Grid item xs={12}>
