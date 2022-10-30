@@ -9,7 +9,7 @@ import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
 
-const QuoteStep2 = () => {
+const QuoteStep3 = () => {
   const { render, data } = useContext(QuoteContext);
   const [state, setState] = useState(false);
   const [spinner, setSpinner] = useState(false);
@@ -177,4 +177,4 @@ const QuoteStep2 = () => {
   );
 };
 
-export default QuoteStep2;
+export default QuoteStep3;

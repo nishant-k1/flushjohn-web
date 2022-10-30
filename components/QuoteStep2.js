@@ -61,7 +61,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   );
 };
 
-const QuoteStep3 = () => {
+const QuoteStep2 = () => {
   const { render, data } = useContext(QuoteContext);
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
@@ -154,4 +154,4 @@ const QuoteStep3 = () => {
   );
 };
 
-export default QuoteStep3;
+export default QuoteStep2;
