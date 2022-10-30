@@ -16,13 +16,40 @@
     "phone"
     "buttons";
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 600px) {
   .form {
-    padding: 2.5rem 0;
+    padding: 2.5rem;
     border: 1px solid rgb(221, 25, 123) !important;
   }
 }
+.outerBox {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  align-items: center;
+}
 
+@media screen and (min-width: 600px) {
+  .outerBox {
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 769px) {
+  .outerBox {
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.innerBox {
+  width: 100%;
+  display: grid;
+  justify-content: start;
+  grid-template-columns: 1fr;
+}
 .form label {
   padding: 0;
   margin: 0;
@@ -112,7 +139,7 @@
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 600px) {
   .buttons {
     padding: 0;
     grid-template-columns: repeat(2, max-content);
@@ -149,72 +176,4 @@
 .previous:hover {
   background-color: rgba(25, 25, 26, 0.918);
   transition: 0.3s;
-}
-.processing {
-  padding: 0;
-  margin: 0;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: max-content max-content;
-  column-gap: 0.2rem;
-}
-
-.processing h3 {
-  padding: 0;
-  margin: 0;
-  font-size: smaller;
-  font-weight: 900;
-}
-
-@keyframes spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.spinner {
-  padding: 0;
-  margin: 0;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  animation: spinner 0.9s linear infinite;
-}
-
-@media screen and (min-width: 769px) {
-  .form {
-    grid-template-columns: 2fr 0.5fr;
-    border: 1px solid rgba(255, 255, 255, 0.253);
-    padding: 2rem;
-  }
-
-  .fName input,
-  .lName input,
-  .cName input,
-  .email input,
-  .phone input {
-    width: 75%;
-  }
-
-  .form .outerBox {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    column-gap: 4rem;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .form button {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    width: 16rem;
-    padding: 0 2rem;
-  }
 }
