@@ -39,6 +39,7 @@
     "react-simple-image-slider": "^2.4.1",
     "react-slideshow-image": "^4.0.5",
     "react-toastify": "^9.0.8",
+    "react-tooltip": "^4.4.3",
     "styled-components": "^5.3.6",
     "webpack": "^5.74.0",
     "workbox-webpack-plugin": "^6.5.4",

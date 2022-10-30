@@ -3,6 +3,7 @@ import QuoteStep1Styles from "../styles/QuoteStep1.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
 import MaskedInput from "react-input-mask";
+import { Tooltip } from "antd";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -10,10 +11,12 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={QuoteStep1Styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label>{label}</label>
       <div className={QuoteStep1Styles.innerBox}>
-        <MaskedInput {...field} {...props} />
-        <label htmlFor={props.id || props.name}>Units</label>
+        <Tooltip placement="top" title="Enter Number">
+          <MaskedInput {...field} {...props} />
+        </Tooltip>
+        <p className={QuoteStep1Styles.units}>Units</p>
       </div>
     </div>
   );
@@ -78,9 +81,11 @@ const QuoteStep1 = () => {
               />
             </div>
           </div>
-          <button className={QuoteStep1Styles.button} type="submit">
-            NEXT
-          </button>
+          <div className={QuoteStep1Styles.buttons}>
+            <button className={QuoteStep1Styles.button} type="submit">
+              NEXT
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

@@ -4,7 +4,6 @@ import MaskedInput from "react-input-mask";
 import QuoteStep3Styles from "../styles/QuoteStep3.module.css";
 import { useContext, useState } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
-
 import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
@@ -25,6 +24,9 @@ const QuoteStep3 = () => {
           htmlFor={props.id || props.name}
         >
           {label}
+          {props.name !== "cName" && (
+            <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+          )}
         </label>
         <div className={QuoteStep3Styles.innerBox}>
           <input className={QuoteStep3Styles.input} {...field} {...props} />
@@ -45,6 +47,7 @@ const QuoteStep3 = () => {
           htmlFor={props.id || props.name}
         >
           {label}
+          {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
         </label>
         <div className={QuoteStep3Styles.innerBox}>
           <MaskedInput
@@ -100,7 +103,7 @@ const QuoteStep3 = () => {
               <div className={QuoteStep3Styles.form}>
                 <div className={QuoteStep3Styles.fName}>
                   <MyTextField
-                    label="* First Name"
+                    label="First Name"
                     name="fName"
                     type="text"
                     maxLength="50"
@@ -110,7 +113,7 @@ const QuoteStep3 = () => {
 
                 <div className={QuoteStep3Styles.lName}>
                   <MyTextField
-                    label="* Last Name"
+                    label="Last Name"
                     name="lName"
                     type="text"
                     maxLength="50"
@@ -130,7 +133,7 @@ const QuoteStep3 = () => {
 
                 <div className={QuoteStep3Styles.email}>
                   <MyTextField
-                    label="* Email Address"
+                    label="Email Address"
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -139,7 +142,7 @@ const QuoteStep3 = () => {
 
                 <div className={QuoteStep3Styles.phone}>
                   <MyMaskedTextInput
-                    label="* Phone"
+                    label="Phone"
                     name="phone"
                     mask="(999) 999-9999"
                     autoComplete="off"
