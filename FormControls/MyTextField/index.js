@@ -7,7 +7,6 @@ const MyTextField = ({ label, ...props }) => {
   const { setValue } = helpers;
   return (
     <TextField
-      id="outlined-basic"
       label={label}
       placeholder={label}
       placeholdervariant="outlined"
@@ -27,7 +26,7 @@ const MyTextField = ({ label, ...props }) => {
       }}
       InputLabelProps={{
         style: {
-          color: "#606060",
+          color: "black",
           fontWeight: 100,
           fontSize: "medium",
           fontFamily: "Times New Roman",

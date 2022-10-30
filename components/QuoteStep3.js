@@ -7,8 +7,21 @@ import { QuoteContext } from "../contexts/QuoteContext";
 import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QuoteStep3 = () => {
+  const notify = () =>
+    toast.success("Quick quote request sent !", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   const { render, data } = useContext(QuoteContext);
   const [state, setState] = useState(false);
   const [spinner, setSpinner] = useState(false);
@@ -31,7 +44,12 @@ const QuoteStep3 = () => {
         <div className={QuoteStep3Styles.innerBox}>
           <input className={QuoteStep3Styles.input} {...field} {...props} />
           {meta.touched && meta.error ? (
-            <div className={QuoteStep3Styles.error}>{meta.error}</div>
+            <div className={QuoteStep3Styles.error}>
+              {meta.error + " "}
+              <span>
+                <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+              </span>
+            </div>
           ) : null}
         </div>
       </div>
@@ -56,7 +74,12 @@ const QuoteStep3 = () => {
             {...props}
           />
           {meta.touched && meta.error ? (
-            <div className={QuoteStep3Styles.error}>{meta.error}</div>
+            <div className={QuoteStep3Styles.error}>
+              {meta.error + " "}
+              <span>
+                <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+              </span>
+            </div>
           ) : null}
         </div>
       </div>
@@ -70,15 +93,15 @@ const QuoteStep3 = () => {
         validationSchema={Yup.object({
           fName: Yup.string()
             .max(50, "Must be 50 characters or less")
-            .required("Required"),
+            .required("It can't be empty..."),
           lName: Yup.string()
             .max(50, "Must be 50 characters or less")
-            .required("Required"),
+            .required("It can't be empty..."),
           cName: Yup.string().max(120, "Must be 120 characters or less"),
           email: Yup.string()
             .email("Invalid email address")
-            .required("Required"),
-          phone: Yup.string().required("Required"),
+            .required("It can't be empty..."),
+          phone: Yup.string().required("It can't be empty..."),
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSpinner(true);
@@ -86,14 +109,13 @@ const QuoteStep3 = () => {
             await setFormValues((prevValues) => {
               return { ...prevValues, ...values };
             });
-            const res = await axios.post(`/api/quote`, values);
-            res.status === 200 ? setState(true) : setState(false);
-            setStep(4);
+            await axios.post(`/api/quote`, values);
+            notify();
+            // setStep(4);
+            resetForm();
             Event("Request quote", "Quote Form Submit", "QFS");
           } catch (err) {
-            alert(
-              `The server has some issues, please make a phone call instead submitting the form :( `
-            );
+            console.log(err);
           }
         }}
       >
@@ -142,8 +164,8 @@ const QuoteStep3 = () => {
 
                 <div className={QuoteStep3Styles.phone}>
                   <MyMaskedTextInput
-                    label="Phone"
-                    name="phone"
+                    label="Onsite Phone"
+                    name="onsitePhone"
                     mask="(999) 999-9999"
                     autoComplete="off"
                     type="tel"
@@ -154,14 +176,7 @@ const QuoteStep3 = () => {
                 className={`${QuoteStep3Styles.outerBox} ${QuoteStep3Styles.buttons}`}
               >
                 <button type="submit" className={QuoteStep3Styles.next}>
-                  {spinner ? (
-                    <div className={QuoteStep3Styles.processing}>
-                      <RiRefreshLine className={QuoteStep3Styles.spinner} />
-                      <h3>SUBMIT</h3>
-                    </div>
-                  ) : (
-                    `SUBMIT`
-                  )}
+                  SUBMIT
                 </button>
                 <button
                   className={QuoteStep3Styles.previous}

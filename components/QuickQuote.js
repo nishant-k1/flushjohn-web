@@ -40,7 +40,7 @@ const QuickQuote = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           Event("Request quote", "Prompt Form Submit", "PFS");
           try {
-            const res = await axios.post(`/api/quickQuote`, values);
+            await axios.post(`/api/quickQuote`, values);
             notify();
             resetForm();
           } catch (err) {}
@@ -144,7 +144,6 @@ const QuickQuote = () => {
               <Button variant="contained" endIcon={<SendIcon />} type="submit">
                 Send
               </Button>
-              <ToastContainer />
             </Grid>
           </Grid>
         </Form>

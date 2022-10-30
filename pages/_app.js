@@ -18,6 +18,7 @@ import { ClientWidthContext } from "../contexts/ClientWidthContext";
 import QuickQuote from "./../components/QuickQuote";
 import { SidebarContext } from "./../contexts/SidebarContext";
 import ModalBackground from "../components/ModalBackground";
+import { ToastContainer, toast } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -82,6 +83,7 @@ function MyApp({ Component, pageProps }) {
               value={{ clientWidth, setClientWidth }}
             >
               <Sidebar />
+
               <Layout>
                 {active && <ModalBackground />}
                 <Header />
@@ -94,6 +96,7 @@ function MyApp({ Component, pageProps }) {
                 {quickQuoteViewStatus && clientWidth <= 600 && <QuickQuote />}
                 <Testimonial />
                 <Footer />
+                <ToastContainer />
               </Layout>
             </ClientWidthContext.Provider>
           </QuickQuoteContext.Provider>

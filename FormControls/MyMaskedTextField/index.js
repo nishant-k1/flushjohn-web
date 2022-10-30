@@ -8,7 +8,6 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <TextField
-      id="outlined-basic"
       label={label}
       placeholder={label}
       placeholdervariant="outlined"
