@@ -14,11 +14,13 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
+import { useRouter } from "next/router";
 
 var date = new Date();
 var year = date.getFullYear();
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <>
       <div className={footerStyles.sectionTop}>

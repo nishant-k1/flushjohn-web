@@ -6,8 +6,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import PhoneIcon from "@mui/icons-material/Phone";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+  const router = useRouter();
   const { active, setActive } = useContext(SidebarContext);
   const handleClick = () => {
     setActive(false);
@@ -28,32 +30,22 @@ const Sidebar = () => {
               alt="brand-logo"
             />
           </Link>
-          <ul className={sidebarStyles.sidebarMenu}>
-            <Link href="/">
-              <li onClick={handleClick}>
-                <HomeIcon />
-                Home
-              </li>
-            </Link>
-            <Link href="/products">
-              <li onClick={handleClick}>
-                <LocalShippingIcon />
-                Portables
-              </li>
-            </Link>
-            <Link href="/quote">
-              <li onClick={handleClick}>
-                <RequestQuoteIcon />
-                Get Free Quote
-              </li>
-            </Link>
-            <Link href="tel:(855) 780-3061">
-              <li onClick={handleClick}>
-                <PhoneIcon />
-                (855) 780-3061
-              </li>
-            </Link>
-          </ul>
+          <Link href="/" onClick={handleClick}>
+            <HomeIcon />
+            Home
+          </Link>
+          <Link href="/products" onClick={handleClick}>
+            <LocalShippingIcon />
+            Portables
+          </Link>
+          <Link href="/quote" onClick={handleClick}>
+            <RequestQuoteIcon />
+            Get Free Quote
+          </Link>
+          <Link href="tel:(855) 780-3061" onClick={handleClick}>
+            <PhoneIcon />
+            (855) 780-3061
+          </Link>
         </div>
       </div>
     </div>
