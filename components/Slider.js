@@ -11,11 +11,27 @@ const Slider = (props) => {
   return (
     <>
       <div className={styleSlide.slider}>
-        <button onClick={() => setImage(img1)}>
+        <button
+          onClick={() => {
+            if (img2) {
+              setImage(img1);
+            } else {
+              setImage(img2);
+            }
+          }}
+        >
           <IoIosArrowDropleft className={styleSlide.arrow} />
         </button>
         <img src={img} alt="https://www.reliableportable.com" />
-        <button onClick={() => setImage(img2)}>
+        <button
+          onClick={() => {
+            if (img) {
+              setImage(img2);
+            } else {
+              setImage(img1);
+            }
+          }}
+        >
           <IoIosArrowDropright className={styleSlide.arrow} />
         </button>
       </div>

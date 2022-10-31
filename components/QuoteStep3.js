@@ -9,10 +9,13 @@ import axios from "axios";
 import { Event } from "../lib/analytics";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { requirementDetails } from "../contexts/QuoteContext";
+import { delivryDetails } from "../contexts/QuoteContext";
+import { personalDetails } from "../contexts/QuoteContext";
 
 const QuoteStep3 = () => {
   const notify = () =>
-    toast.success("Quick quote request sent !", {
+    toast.success("Quote request sent !", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -20,7 +23,7 @@ const QuoteStep3 = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
     });
   const { render, data } = useContext(QuoteContext);
   const [state, setState] = useState(false);
@@ -104,14 +107,21 @@ const QuoteStep3 = () => {
           phone: Yup.string().required("It can't be empty..."),
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          setSpinner(true);
           try {
-            await setFormValues((prevValues) => {
+            setFormValues((prevValues) => {
               return { ...prevValues, ...values };
             });
-            await axios.post(`/api/quote`, values);
             notify();
-            // setStep(4);
+            await axios.post(`/api/quote`, values);
+            setStep(1);
+            setFormValues((prevValues) => {
+              return {
+                ...prevValues,
+                ...delivryDetails,
+                ...requirementDetails,
+                ...personalDetails,
+              };
+            });
             resetForm();
             Event("Request quote", "Quote Form Submit", "QFS");
           } catch (err) {

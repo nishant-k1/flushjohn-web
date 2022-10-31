@@ -30,7 +30,7 @@ const products = () => {
       >
         <div className={productStyles.container}>
           <div className={productStyles.section4}>
-            <div className={productStyles.wrapper}>
+            {/* <div className={productStyles.wrapper}>
               <Slider
                 img={{
                   img1: "assets/sps_yellow.svg",
@@ -39,7 +39,7 @@ const products = () => {
               />
               <h5>{productData.h1}</h5>
               <p>{productData.p1}</p>
-            </div>
+            </div> */}
             <div className={productStyles.wrapper}>
               {/* <img src="/assets/sps_blue.svg" alt="product_pic" /> */}
               <Slider
@@ -81,8 +81,7 @@ const products = () => {
               <h5>{productData.h5}</h5>
               <p>{productData.p5}</p>
             </div>
-            <div className={productStyles.wrapper}>
-              {/* <img src="/assets/VIP-Flush-1.svg" alt="product_pic" /> */}
+            {/* <div className={productStyles.wrapper}>
               <Slider
                 img={{
                   img1: "assets/VIP-Flush-1.svg",
@@ -91,7 +90,7 @@ const products = () => {
               />
               <h5>{productData.h6}</h5>
               <p>{productData.p6}</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

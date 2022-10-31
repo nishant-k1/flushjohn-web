@@ -46,7 +46,7 @@
   font-size: medium;
 }
 
-@media screen and (max-width: 250) {
+@media screen and (max-width: 250px) {
   .wrapper img {
     height: 250px;
     width: 150px;

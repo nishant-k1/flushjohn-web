@@ -2,13 +2,13 @@ import { createContext, useState } from "react";
 
 export const QuoteContext = createContext();
 
-const requirementDetails = {
+export const requirementDetails = {
   SPR: "",
   DFR: "",
   ACR: "",
   HWS: "",
 };
-const delivryDetails = {
+export const delivryDetails = {
   deliveryDate: "",
   pickupDate: "",
   street: "",
@@ -18,7 +18,7 @@ const delivryDetails = {
   hint: "",
   onsitePhone: "",
 };
-const personalDetails = {
+export const personalDetails = {
   fName: "",
   lName: "",
   cName: "",
