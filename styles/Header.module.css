@@ -40,12 +40,12 @@
   height: 2rem;
   width: 2rem;
   background-color: transparent;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .icon:hover {
   transform: scale(0.96);
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .fb {
