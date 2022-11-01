@@ -2,7 +2,8 @@
   padding: 0;
   margin: 0;
   min-width: 100%;
-  background-color: #cbd0d4;
+  background-color: rgb(255, 255, 255);
+  background-color: #040a1d;
   /* background: url(/assets/header.png) repeat; */
 }
 .container {
@@ -38,11 +39,12 @@
 .icon {
   height: 2rem;
   width: 2rem;
-  background-color: white;
+  background-color: transparent;
+  transition: 0.3s;
 }
 
 .icon:hover {
-  transform: scale(0.9);
+  transform: scale(0.96);
   transition: 0.3s;
 }
 

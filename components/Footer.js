@@ -29,7 +29,7 @@ const Footer = () => {
             {/* logo */}
             <li className={footerStyles.footerLogo}>
               <Link href="/">
-                <img src="brand-logo-transparent.svg" alt="brand-logo" />
+                <img src="brand-logo-white.svg" alt="brand-logo" />
               </Link>
             </li>
 

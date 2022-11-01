@@ -22,7 +22,7 @@ const MyDateField = ({ label, ...props }) => {
           className={QuoteStep2Styles.date}
           {...props}
           label={props.label}
-          // defaultValue={moment(new Date(), "MM/DD/YYYY")}
+          defaultValue={moment(new Date(), "MM/DD/YYYY")}
           format={"MM/DD/YYYY"}
           placeholder={props.label}
           disabledDate={(d) => !d || d.isBefore(new Date())}
@@ -127,10 +127,10 @@ const QuoteStep2 = () => {
     <Formik
       initialValues={formValues}
       validationSchema={Yup.object({
-        deliveryDate: Yup.string().required("It can't be empty..."),
-        pickupDate: Yup.string().required("It can't be empty..."),
-        street: Yup.string().required("It can't be empty..."),
-        zip: Yup.string().required("It can't be empty..."),
+        deliveryDate: Yup.string().required("This field can't be empty..."),
+        pickupDate: Yup.string().required("This field can't be empty..."),
+        street: Yup.string().required("This field can't be empty..."),
+        zip: Yup.string().required("This field can't be empty..."),
       })}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {

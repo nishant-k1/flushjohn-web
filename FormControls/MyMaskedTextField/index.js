@@ -25,7 +25,6 @@ const MyMaskedTextInput = ({ label, ...props }) => {
           color: "black",
           fontWeight: 100,
           fontSize: "medium",
-          fontFamily: "Times New Roman",
         },
       }}
     >

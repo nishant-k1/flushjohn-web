@@ -6,11 +6,14 @@ import { Event } from "../lib/analytics";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
+import MyMaskedTextField from "../FormControls/MyMaskedTextField";
+
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as Yup from "yup";
 
 const QuickQuote = () => {
   const notify = () =>
@@ -22,7 +25,7 @@ const QuickQuote = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
     });
   return (
     <>
@@ -37,12 +40,26 @@ const QuickQuote = () => {
           email: "",
           phone: "",
         }}
+        validationSchema={Yup.object({
+          portableUnits: Yup.array("This field can't be empty...").required(
+            "This field can't be empty..."
+          ),
+          deliveryDate: Yup.string().required("This field can't be empty..."),
+          pickupDate: Yup.string().required("This field can't be empty..."),
+          zip: Yup.number().required("This field can't be empty..."),
+          instructions: Yup.string().max(120, "Must be 120 characters or less"),
+          fullName: Yup.string().required("This field can't be empty..."),
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("This field can't be empty..."),
+          phone: Yup.string().required("This field can't be empty..."),
+        })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           Event("Request quote", "Prompt Form Submit", "PFS");
           try {
-            await axios.post(`/api/quickQuote`, values);
             notify();
             resetForm();
+            await axios.post(`/api/quickQuote`, values);
           } catch (err) {}
         }}
       >
@@ -64,6 +81,7 @@ const QuickQuote = () => {
             <Grid item xs={12} md={6}>
               <MyDateField
                 label="Delivery Date"
+                className={quickQuoteStyles.date}
                 name="deliveryDate"
                 placeholder="Delivery Date"
                 autoComplete="off"
@@ -79,6 +97,7 @@ const QuickQuote = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <MyDateField
+                className={quickQuoteStyles.date}
                 label="Pickup Date"
                 name="pickupDate"
                 placeholder="Pickup Date"
@@ -96,6 +115,8 @@ const QuickQuote = () => {
             <Grid item xs={12}>
               <MyTextField
                 label="Zip"
+                type="number"
+                maxlength={5}
                 name="zip"
                 mask="99999"
                 maskChar=""
@@ -131,7 +152,7 @@ const QuickQuote = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <MyTextField
+              <MyMaskedTextField
                 label="Phone"
                 name="phone"
                 mask="(999) 999-9999"

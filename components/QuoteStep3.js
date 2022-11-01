@@ -7,7 +7,7 @@ import { QuoteContext } from "../contexts/QuoteContext";
 import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { requirementDetails } from "../contexts/QuoteContext";
 import { delivryDetails } from "../contexts/QuoteContext";
@@ -26,8 +26,6 @@ const QuoteStep3 = () => {
       theme: "dark",
     });
   const { render, data } = useContext(QuoteContext);
-  const [state, setState] = useState(false);
-  const [spinner, setSpinner] = useState(false);
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
 
@@ -94,17 +92,13 @@ const QuoteStep3 = () => {
       <Formik
         initialValues={formValues}
         validationSchema={Yup.object({
-          fName: Yup.string()
-            .max(50, "Must be 50 characters or less")
-            .required("It can't be empty..."),
-          lName: Yup.string()
-            .max(50, "Must be 50 characters or less")
-            .required("It can't be empty..."),
-          cName: Yup.string().max(120, "Must be 120 characters or less"),
+          fName: Yup.string().required("This field can't be empty..."),
+          lName: Yup.string().required("This field can't be empty..."),
+          cName: Yup.string(),
           email: Yup.string()
             .email("Invalid email address")
-            .required("It can't be empty..."),
-          phone: Yup.string().required("It can't be empty..."),
+            .required("This field can't be empty..."),
+          phone: Yup.string().required("This field can't be empty..."),
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
