@@ -35,7 +35,7 @@ const MyDateField = ({ ...props }) => {
           setValue(moment(e).format("MMM Do YY"));
         }}
       />
-      {touched && error ? (
+      {touched || error ? (
         <div className={quickQuoteStyles.error}>
           {error + " "}
           <span>

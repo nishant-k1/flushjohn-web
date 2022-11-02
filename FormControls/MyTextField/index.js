@@ -16,7 +16,7 @@ const MyTextField = ({ label, ...props }) => {
           setValue(e.target.value);
         }}
       />
-      {touched && error ? (
+      {touched || error ? (
         <div className={quickQuoteStyles.error}>
           {error + " "}
           <span>

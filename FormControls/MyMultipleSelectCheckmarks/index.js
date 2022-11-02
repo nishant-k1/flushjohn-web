@@ -39,7 +39,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
   };
   return (
     <>
-      {" "}
       <Space
         direction="vertical"
         style={{
@@ -48,9 +47,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
       >
         <Select {...selectProps} />
       </Space>
-      {touched && error ? (
+      {touched || error ? (
         <div className={quickQuoteStyles.error}>
-          {error + " "}
+          {"This field can't be empty..." + " "}
           <span>
             <img style={{ height: "1.5rem" }} src="/assets/error.png" />
           </span>

@@ -29,7 +29,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
           }}
         />
       )}
-      {touched && error ? (
+      {touched || error ? (
         <div className={quickQuoteStyles.error}>
           {error + " "}
           <span>
