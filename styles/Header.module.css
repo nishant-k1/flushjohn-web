@@ -1,10 +1,8 @@
 .section {
   padding: 0;
   margin: 0;
-  min-width: 100%;
-  background-color: rgb(255, 255, 255);
+  width: 100%;
   background-color: #040a1d;
-  /* background: url(/assets/header.png) repeat; */
 }
 .container {
   padding: 0 32px;
