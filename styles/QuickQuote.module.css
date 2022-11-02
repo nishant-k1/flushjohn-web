@@ -45,6 +45,7 @@
   padding-left: 12px;
   font-size: 14px;
   color: black;
+  transition: 0.5s;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -54,6 +55,7 @@
 }
 .form input:hover,
 .form textarea:hover {
+  transition: 0.3s;
   border: 1px solid rgb(19, 113, 255);
 }
 .form input:focus,
@@ -73,6 +75,7 @@
 }
 
 .date input {
+  transition: 0.3s;
   width: 100%;
   border: none;
   padding-left: 0;
@@ -89,6 +92,7 @@
   color: rgba(0, 0, 0, 0.7) !important;
   font-weight: 600;
 }
+
 .date input:focus::placeholder {
   color: rgb(19, 113, 255, 0.5) !important;
   font-weight: 600;
