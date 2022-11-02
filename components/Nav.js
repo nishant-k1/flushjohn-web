@@ -35,9 +35,14 @@ const Nav = () => {
               Event("Request quote", "Mobile Phone Call", "MPC");
             }}
           >
-            <div>
-              <FaPhoneAlt />
-              (855) 780-3061
+            <div
+              style={{ display: "grid", gridTemplateColumns: "max-content" }}
+            >
+              <p style={{ textAlign: "center", margin: 0 }}>Order By Phone</p>
+              <div>
+                <FaPhoneAlt />
+                (855) 780-3061
+              </div>
             </div>
           </a>
           <Link href="/">
@@ -64,8 +69,11 @@ const Nav = () => {
                 }}
               >
                 <div>
-                  <FaPhoneAlt />
-                  (855) 780-3061
+                  <h1>Order By Phone : </h1>
+                  <div>
+                    <FaPhoneAlt />
+                    (855) 780-3061
+                  </div>
                 </div>
               </a>
             </li>

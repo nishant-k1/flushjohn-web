@@ -29,6 +29,8 @@ const names = [
 export default function MyMultipleSelectCheckmarks({ ...props }) {
   const [personName, setPersonName] = React.useState([]);
   const [field, meta, helpers] = useField(props);
+  const { touched, error } = meta;
+  const { setValue } = helpers;
 
   const handleChange = (event) => {
     const {
@@ -41,10 +43,15 @@ export default function MyMultipleSelectCheckmarks({ ...props }) {
   };
 
   return (
-    <div>
+    <>
       <FormControl
         size="small"
+        placeholder={props.label}
+        label={props.label}
         fullWidth
+        onChange={(e) => {
+          setValue(e);
+        }}
         sx={{
           background: "white",
           borderRadius: ".5rem",
@@ -52,15 +59,6 @@ export default function MyMultipleSelectCheckmarks({ ...props }) {
           border: "none",
         }}
       >
-        <InputLabel
-          style={{
-            color: "#606060",
-            fontWeight: 100,
-            fontSize: "medium",
-          }}
-        >
-          {props.label}
-        </InputLabel>
         <Select
           {...props}
           multiple
@@ -78,14 +76,14 @@ export default function MyMultipleSelectCheckmarks({ ...props }) {
           ))}
         </Select>
       </FormControl>
-      {meta.touched && meta.error ? (
+      {touched && error ? (
         <div className={QuoteStep3Styles.error}>
-          {meta.error + " "}
+          {error + " "}
           <span>
             <img style={{ height: "1.5rem" }} src="/assets/error.png" />
           </span>
         </div>
       ) : null}
-    </div>
+    </>
   );
 }

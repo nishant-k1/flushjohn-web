@@ -121,12 +121,35 @@
   }
 
   .phone:hover {
-    transform: scale(0.98) !important;
     transition: 0.3s;
     color: #ef648a;
   }
 
-  .phone div {
+  .phone a div {
+    color: white;
+    padding: 0;
+    padding-left: 12px;
+    margin: 0;
+    font-weight: 200;
+    display: grid;
+    align-items: center;
+    justify-content: end;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 0.2rem;
+    transition: 0.3s;
+    font-size: x-large;
+    border-left: 1px solid #ef648a;
+  }
+
+  .phone div h1 {
+    color: white;
+    text-align: right;
+    padding: 0;
+    padding-right: 12px;
+    font-size: large;
+    margin: 0;
+  }
+  .phone div div {
     color: white;
     border-radius: 1px;
     padding: 0;
@@ -139,18 +162,10 @@
     column-gap: 0.2rem;
     transition: 0.3s;
     font-size: x-large;
+    border: none;
   }
-  .phone div:hover {
+  .phone div div:hover {
     color: #ef648a;
-    border-radius: 1px;
-    padding: 0;
-    margin: 0;
-    font-weight: 200;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: repeat(2, max-content);
-    column-gap: 0.2rem;
     transition: 0.3s;
   }
 }

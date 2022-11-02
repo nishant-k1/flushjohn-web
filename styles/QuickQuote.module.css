@@ -1,12 +1,15 @@
 .form {
   background-color: #ef6489ab;
-  background-color: rgba(165, 163, 163, 0.808);
+  /* background-color: rgba(165, 163, 163, 0.808); */
   box-shadow: rgba(0, 0, 0, 0.35);
   padding: 1rem;
-  max-width: 20rem;
   position: absolute;
+  max-width: 300px;
   top: 3.5rem;
   right: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 /* mobile  */
 @media only screen and (max-width: 600px) {
@@ -26,19 +29,75 @@
     width: 300px;
   }
 }
-
 .form h2 {
   text-align: left;
-  font-size: large;
   color: white;
+  font-weight: 600;
 }
-.date {
-  font-size: large;
-  font-weight: 900;
+.form input,
+.form textarea {
+  width: 100%;
+  margin: 0 !important;
+  height: 2.5rem;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.486);
+  padding-left: 12px;
+  font-size: 14px;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+.form textarea {
+  height: 4rem;
+}
+.form input:hover,
+.form textarea:hover {
+  border: 1px solid rgb(19, 113, 255);
+}
+.form input:focus,
+.form textarea:focus {
+  border: 2px solid rgb(19, 113, 255);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+.form input:focus::placeholder,
+.form textarea:focus::placeholder {
+  color: rgb(19, 113, 255, 0.5);
+  font-weight: 600;
+}
+
+.date input {
+  width: 100%;
+  border: none;
+  padding-left: 0;
+  font-size: 14px;
+  color: black !important;
+}
+.date input:hover {
+  border: none;
+}
+.date input:focus {
+  border: none;
+}
+.date input::placeholder {
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 600;
+}
+.date input:focus::placeholder {
+  color: rgb(19, 113, 255, 0.5) !important;
+  font-weight: 600;
+}
+
 .error {
-  padding: 0;
+  padding: 0 12px;
   margin: 0;
+  background-color: rgba(0, 0, 0, 0.671);
   color: rgba(255, 0, 0, 0.747);
 }
 

@@ -9,11 +9,12 @@ import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 
 const MyDateField = ({ ...props }) => {
   const [field, meta, helpers] = useField(props);
+  const { touched, error } = meta;
   const { setValue } = helpers;
 
   return (
     <Box>
-      <label
+      {/* <label
         style={{
           color: "black",
           fontWeight: 100,
@@ -21,12 +22,12 @@ const MyDateField = ({ ...props }) => {
         }}
       >
         {props.label}
-      </label>
+      </label> */}
       <DatePicker
         {...props}
         className={props.className}
         label={props.label}
-        defaultValue={moment(new Date(), "MM/DD/YYYY")}
+        // defaultValue={moment(new Date(), "MM/DD/YYYY")}
         format={"MM/DD/YYYY"}
         placeholder={props.label}
         disabledDate={(d) => !d || d.isBefore(new Date())}
@@ -34,9 +35,9 @@ const MyDateField = ({ ...props }) => {
           setValue(moment(e).format("MMM Do YY"));
         }}
       />
-      {meta.touched && meta.error ? (
+      {touched && error ? (
         <div className={quickQuoteStyles.error}>
-          {meta.error + " "}
+          {error + " "}
           <span>
             <img style={{ height: "1.5rem" }} src="/assets/error.png" />
           </span>

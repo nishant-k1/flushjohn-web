@@ -2,37 +2,44 @@ import React from "react";
 import { useField } from "formik";
 import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 import MaskedInput from "react-input-mask";
-import TextField from "@mui/material/TextField";
+import { Tooltip } from "antd";
 
 const MyMaskedTextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
+  const { touched, error } = meta;
+  const { setValue } = helpers;
+
   return (
-    <TextField
-      label={label}
-      placeholder={label}
-      placeholdervariant="outlined"
-      fullWidth
-      sx={{
-        background: "white",
-        borderRadius: ".5rem",
-        borderColor: "red",
-        color: "white",
-        border: "none",
-        outline: "none",
-      }}
-      InputLabelProps={{
-        style: {
-          color: "black",
-          fontWeight: 100,
-          fontSize: "medium",
-        },
-      }}
-    >
-      <MaskedInput className={quickQuoteStyles.input} {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className={quickQuoteStyles.error}>{meta.error}</div>
+    <>
+      {props.name == "zip" && (
+        <Tooltip placement="right" title="Enter Number">
+          <MaskedInput
+            {...props}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setValue(e.target.value);
+            }}
+          />
+        </Tooltip>
+      )}
+      {props.name == "phone" && (
+        <MaskedInput
+          {...props}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setValue(e.target.value);
+          }}
+        />
+      )}
+      {touched && error ? (
+        <div className={quickQuoteStyles.error}>
+          {error + " "}
+          <span>
+            <img style={{ height: "1.5rem" }} src="/assets/error.png" />
+          </span>
+        </div>
       ) : null}
-    </TextField>
+    </>
   );
 };
 
