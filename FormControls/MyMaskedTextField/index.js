@@ -16,7 +16,6 @@ const MyMaskedTextInput = ({ label, ...props }) => {
           <MaskedInput
             {...props}
             onChange={(e) => {
-              console.log(e.target.value);
               setValue(e.target.value);
             }}
           />
@@ -26,7 +25,6 @@ const MyMaskedTextInput = ({ label, ...props }) => {
         <MaskedInput
           {...props}
           onChange={(e) => {
-            console.log(e.target.value);
             setValue(e.target.value);
           }}
         />

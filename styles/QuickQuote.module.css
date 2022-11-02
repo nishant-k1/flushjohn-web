@@ -55,12 +55,11 @@
 }
 .form input:hover,
 .form textarea:hover {
-  transition: 0.3s;
-  border: 1px solid rgb(19, 113, 255);
+  border: 1.5px solid rgb(50, 132, 255);
 }
 .form input:focus,
 .form textarea:focus {
-  border: 2px solid rgb(19, 113, 255);
+  border: 1.5px solid rgb(50, 132, 255);
 }
 
 .form input::placeholder,
@@ -74,6 +73,9 @@
   font-weight: 600;
 }
 
+.date {
+  width: 100%;
+}
 .date input {
   transition: 0.3s;
   width: 100%;

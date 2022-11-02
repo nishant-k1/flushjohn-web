@@ -16,16 +16,16 @@ import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 
 const quickQuoteValidationSchema = Yup.object({
-  portableUnits: Yup.array().required("This field can't be empty..."),
-  deliveryDate: Yup.string().required("This field can't be empty..."),
-  pickupDate: Yup.string().required("This field can't be empty..."),
-  zip: Yup.number().required("This field can't be empty..."),
-  fullName: Yup.string().required("This field can't be empty..."),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("This field can't be empty..."),
-  // phone: Yup.string().required("This field can't be empty..."),
-  instructions: Yup.string(),
+  // portableUnits: Yup.array().required("This field can't be empty..."),
+  // deliveryDate: Yup.string().required("This field can't be empty..."),
+  // pickupDate: Yup.string().required("This field can't be empty..."),
+  // zip: Yup.number().required("This field can't be empty..."),
+  // fullName: Yup.string().required("This field can't be empty..."),
+  // email: Yup.string()
+  //   .email("Invalid email address")
+  //   .required("This field can't be empty..."),
+  // // phone: Yup.string().required("This field can't be empty..."),
+  // instructions: Yup.string(),
 });
 
 const QuickQuote = () => {
@@ -59,7 +59,8 @@ const QuickQuote = () => {
           try {
             await axios.post(`/api/quickQuote`, values);
             notify();
-            resetForm({ values: {} });
+            console.log(values.portableUnits);
+            resetForm();
           } catch (err) {}
         }}
       >
@@ -98,7 +99,6 @@ const QuickQuote = () => {
                 placeholder="Zip"
               />
             </Grid>
-
             <Grid item xs={12}>
               <MyTextField label="Full Name" name="fullName" />
             </Grid>

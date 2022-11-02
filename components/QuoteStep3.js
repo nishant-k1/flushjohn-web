@@ -118,9 +118,7 @@ const QuoteStep3 = () => {
             });
             resetForm();
             Event("Request quote", "Quote Form Submit", "QFS");
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (err) {}
         }}
       >
         <div className={QuoteStep3Styles.section}>
