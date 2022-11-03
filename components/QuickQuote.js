@@ -61,8 +61,16 @@ const QuickQuote = () => {
           try {
             await axios.post(`/api/quickQuote`, values);
             notify();
-            console.log(values.portableUnits);
-            resetForm();
+            resetForm({
+              portableUnits: [{}],
+              deliveryDate: "",
+              pickupDate: "",
+              zip: "",
+              instructions: "",
+              fullName: "",
+              email: "",
+              phone: "",
+            });
           } catch (err) {}
         }}
       >

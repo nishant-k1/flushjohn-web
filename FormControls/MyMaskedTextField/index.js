@@ -13,6 +13,7 @@ const MyMaskedTextField = ({ label, ...props }) => {
     <>
       <Tooltip placement="top" title="Use Numeric Keys">
         <MaskedInput
+          {...field}
           {...props}
           onChange={(e) => {
             setValue(e.target.value);

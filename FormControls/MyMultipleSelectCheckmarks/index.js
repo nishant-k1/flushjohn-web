@@ -15,11 +15,13 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
   const { touched, error } = meta;
   const { setValue, setTouched, setError } = helpers;
 
+  const value = field.value;
   const selectProps = {
     mode: "multiple",
     style: {
       width: "100%",
     },
+    value: value,
     options,
     onChange: (newValue) => {
       setValue(newValue);

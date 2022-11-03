@@ -3,22 +3,20 @@ import navStyles from "../styles/Nav.module.css";
 import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { useContext } from "react";
 import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
-import { ClientWidthContext } from "./../contexts/ClientWidthContext/index";
 
 const Nav = () => {
   const { active, setActive } = React.useContext(SidebarContext);
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
-  const { clientWidth } = React.useContext(ClientWidthContext);
+
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          {(clientWidth < 768 || clientWidth === null) && (
+          <div className={navStyles.hamburger}>
             <Hamburger
               toggled={active}
               toggle={() => {
@@ -27,7 +25,7 @@ const Nav = () => {
               }}
               color="#ffffff"
             />
-          )}
+          </div>
           <a
             className={navStyles.phoneMobile}
             href="tel: +1 (855) 780-3061"

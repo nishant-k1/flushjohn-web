@@ -9,6 +9,7 @@ const MyTextField = ({ label, ...props }) => {
   return (
     <>
       <input
+        {...field}
         {...props}
         className={props.className}
         placeholder={label}

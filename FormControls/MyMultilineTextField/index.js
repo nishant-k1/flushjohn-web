@@ -9,6 +9,7 @@ const MyMultilineTextField = ({ label, ...props }) => {
   return (
     <>
       <textarea
+        {...field}
         {...props}
         className={props.className}
         placeholder={label}
