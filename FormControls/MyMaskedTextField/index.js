@@ -4,32 +4,23 @@ import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 import MaskedInput from "react-input-mask";
 import { Tooltip } from "antd";
 
-const MyMaskedTextInput = ({ label, ...props }) => {
+const MyMaskedTextField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
 
   return (
     <>
-      {props.name == "zip" && (
-        <Tooltip placement="right" title="Enter Number">
-          <MaskedInput
-            {...props}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-          />
-        </Tooltip>
-      )}
-      {props.name == "phone" && (
+      <Tooltip placement="top" title="Use Numeric Keys">
         <MaskedInput
           {...props}
           onChange={(e) => {
             setValue(e.target.value);
           }}
         />
-      )}
-      {touched || error ? (
+      </Tooltip>
+
+      {touched && error ? (
         <div className={quickQuoteStyles.error}>
           {error + " "}
           <span>
@@ -41,4 +32,4 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   );
 };
 
-export default MyMaskedTextInput;
+export default MyMaskedTextField;

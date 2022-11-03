@@ -47,7 +47,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
       >
         <Select {...selectProps} />
       </Space>
-      {touched || error ? (
+      {touched && error ? (
         <div className={quickQuoteStyles.error}>
           {"This field can't be empty..." + " "}
           <span>
