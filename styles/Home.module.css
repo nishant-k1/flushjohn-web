@@ -95,8 +95,7 @@
 
 /********************** section2 *****************/
 .section2 {
-  margin-top: 6rem;
-  padding: 4rem 0;
+  padding: 64px 0;
   display: grid;
   justify-content: center;
   align-items: center;
