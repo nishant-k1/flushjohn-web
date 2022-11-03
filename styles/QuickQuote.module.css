@@ -15,8 +15,8 @@
 @media only screen and (max-width: 600px) {
   .form {
     position: fixed;
-    right: 0;
-    top: 2rem;
+    right: 36px;
+    top: 0;
     background-color: #ef6489ef;
     z-index: 3;
     transition: 0.3s;
