@@ -14,7 +14,7 @@
 /* mobile  */
 @media only screen and (max-width: 600px) {
   .form {
-    position: fixed;
+    position: absolute;
     right: 36px;
     top: 0;
     margin: 0 auto;
