@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
     initGA("YourTrackingID");
     PageView();
   });
-  const [clientWidth, setClientWidth] = React.useState(null);
+  const [clientWidth, setClientWidth] = React.useState();
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
   const [active, setActive] = React.useState(false);
 
@@ -48,13 +48,12 @@ function MyApp({ Component, pageProps }) {
     }
     return () => {
       window.removeEventListener("resize", () => {
-        setClientWidth(clientWidth);
+        setClientWidth(window.innerWidth);
       });
     };
   }, [clientWidth, quickQuoteViewStatus, active]);
   return (
     <>
-      <html lang="en" />
       <Head>
         <link rel="manifest" href="manifest.webmanifest" />
         <link rel="icon" href="logo-black.svg" />

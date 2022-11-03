@@ -18,7 +18,7 @@ const Nav = () => {
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          {clientWidth < 769 && (
+          {(clientWidth < 768 || clientWidth === null) && (
             <Hamburger
               toggled={active}
               toggle={() => {
