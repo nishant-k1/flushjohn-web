@@ -14,11 +14,13 @@ import SendIcon from "@mui/icons-material/Send";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
+import QuickQuoteButton from "./QuickQuoteButton";
+import { ClientWidthContext } from "../contexts/ClientWidthContext";
+import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
+import ModalBackground from "./ModalBackground";
 
 const quickQuoteValidationSchema = Yup.object().shape({
-  portableUnits: Yup.array().of(
-    Yup.string().required("This field can't be empty...")
-  ),
+  portableUnits: Yup.array().of(Yup.string().required()),
   deliveryDate: Yup.string().required("This field can't be empty..."),
   pickupDate: Yup.string().required("This field can't be empty..."),
   zip: Yup.number().required("This field can't be empty..."),
@@ -31,6 +33,10 @@ const quickQuoteValidationSchema = Yup.object().shape({
 });
 
 const QuickQuote = () => {
+  const [clientWidth, setClientWidth] = React.useContext(ClientWidthContext);
+  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+    React.useContext(QuickQuoteContext);
+
   const notify = () =>
     toast.success("Quick quote request sent !", {
       position: "top-right",
@@ -44,99 +50,111 @@ const QuickQuote = () => {
     });
   return (
     <>
-      <Formik
-        initialValues={{
-          portableUnits: [],
-          deliveryDate: "",
-          pickupDate: "",
-          zip: "",
-          instructions: "",
-          fullName: "",
-          email: "",
-          phone: "",
-        }}
-        validationSchema={quickQuoteValidationSchema}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
-          Event("Request quote", "Prompt Form Submit", "PFS");
-          try {
-            await axios.post(`/api/quickQuote`, values);
-            notify();
-            resetForm({
-              portableUnits: [{}],
-              deliveryDate: "",
-              pickupDate: "",
-              zip: "",
-              instructions: "",
-              fullName: "",
-              email: "",
-              phone: "",
-            });
-          } catch (err) {}
-        }}
-      >
-        <Form className={quickQuoteStyles.form}>
-          <Grid container spacing={1}>
-            <Grid item xs={12}>
-              <h2>Quick Free Quote</h2>
+      {quickQuoteViewStatus && clientWidth <= 600 && <ModalBackground />}
+      {clientWidth <= 600 && <QuickQuoteButton />}
+      {((quickQuoteViewStatus && clientWidth <= 600) || clientWidth > 600) && (
+        <Formik
+          initialValues={{
+            portableUnits: [],
+            deliveryDate: "",
+            pickupDate: "",
+            zip: "",
+            instructions: "",
+            fullName: "",
+            email: "",
+            phone: "",
+          }}
+          validationSchema={quickQuoteValidationSchema}
+          validateOnChange={false}
+          validateOnBlur={true}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            Event("Request quote", "Prompt Form Submit", "PFS");
+            try {
+              await axios.post(`/api/quickQuote`, values);
+              notify();
+              resetForm({
+                portableUnits: [],
+                deliveryDate: "",
+                pickupDate: "",
+                zip: "",
+                instructions: "",
+                fullName: "",
+                email: "",
+                phone: "",
+              });
+            } catch (err) {}
+          }}
+        >
+          <Form className={quickQuoteStyles.form}>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <h2>Quick Free Quote</h2>
+              </Grid>
+              <Grid item xs={12}>
+                <MyMultipleSelectCheckmarks
+                  label="Portable Units"
+                  name="portableUnits"
+                  isMulti
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MyDateField
+                  label="Delivery Date"
+                  className={quickQuoteStyles.date}
+                  name="deliveryDate"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MyDateField
+                  className={quickQuoteStyles.date}
+                  label="Pickup Date"
+                  name="pickupDate"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <MyMaskedTextField
+                  label="Zip"
+                  name="zip"
+                  mask="99999"
+                  maskChar=""
+                  placeholder="Zip"
+                  type="tel"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <MyTextField label="Full Name" name="fullName" />
+              </Grid>
+              <Grid item xs={12}>
+                <MyTextField label="Email" name="email" />
+              </Grid>
+              <Grid item xs={12}>
+                <MyMaskedTextField
+                  label="Phone"
+                  name="phone"
+                  mask="(999) 999-9999"
+                  placeholder="Phone"
+                  type="tel"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <MyMultilineTextField
+                  label="Instructions (if any)"
+                  name="instructions"
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <Button
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                  type="submit"
+                >
+                  Send
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <MyMultipleSelectCheckmarks
-                label="Portable Units"
-                name="portableUnits"
-                isMulti
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <MyDateField
-                label="Delivery Date"
-                className={quickQuoteStyles.date}
-                name="deliveryDate"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <MyDateField
-                className={quickQuoteStyles.date}
-                label="Pickup Date"
-                name="pickupDate"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <MyMaskedTextField
-                label="Zip"
-                name="zip"
-                mask="99999"
-                maskChar=""
-                placeholder="Zip"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <MyTextField label="Full Name" name="fullName" />
-            </Grid>
-            <Grid item xs={12}>
-              <MyTextField label="Email" name="email" />
-            </Grid>
-            <Grid item xs={12}>
-              <MyMaskedTextField
-                label="Phone"
-                name="phone"
-                mask="(999) 999-9999"
-                placeholder="Phone"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <MyMultilineTextField
-                label="Instructions (if any)"
-                name="instructions"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <Button variant="contained" endIcon={<SendIcon />} type="submit">
-                Send
-              </Button>
-            </Grid>
-          </Grid>
-        </Form>
-      </Formik>
+          </Form>
+        </Formik>
+      )}
     </>
   );
 };

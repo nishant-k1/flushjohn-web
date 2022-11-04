@@ -13,19 +13,15 @@ import { useEffect } from "react";
 import Head from "next/head";
 import initGA, { PageView } from "../lib/analytics";
 import QuickQuoteButton from "../components/QuickQuoteButton";
+import QuickQuote from "./../components/QuickQuote";
 import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
-import QuickQuote from "./../components/QuickQuote";
 import { SidebarContext } from "./../contexts/SidebarContext";
 import ModalBackground from "../components/ModalBackground";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    initGA("YourTrackingID");
-    PageView();
-  });
-  const [clientWidth, setClientWidth] = React.useState();
+  const [clientWidth, setClientWidth] = React.useState(null);
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
   const [active, setActive] = React.useState(false);
 
@@ -52,56 +48,32 @@ function MyApp({ Component, pageProps }) {
       });
     };
   }, [clientWidth, quickQuoteViewStatus, active]);
+
   return (
-    <>
-      <Head>
-        <link rel="manifest" href="manifest.webmanifest" />
-        <link rel="icon" href="logo-black.svg" />
-        <link rel="apple-touch-icon" href="icon-192x192.png" />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-        />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#001A2E" />
-        <meta name="apple-mobile-web-app-title" content="Reliable Portable" />
-        <link
-          rel="icon"
-          type="image/ico"
-          sizes="32x32"
-          href="/favicon-32x32.ico"
-        />
-      </Head>
+    <div>
       <DefaultSeo {...SEO} />
-      <SidebarContext.Provider value={{ active, setActive }}>
-        <QuoteContextProvider>
-          <QuickQuoteContext.Provider
-            value={{ quickQuoteViewStatus, setQuickQuoteViewStatus }}
-          >
-            <ClientWidthContext.Provider
-              value={{ clientWidth, setClientWidth }}
+      <ClientWidthContext.Provider value={[clientWidth, setClientWidth]}>
+        <SidebarContext.Provider value={{ active, setActive }}>
+          <QuoteContextProvider>
+            <QuickQuoteContext.Provider
+              value={{ quickQuoteViewStatus, setQuickQuoteViewStatus }}
             >
               <Sidebar />
-
               <Layout>
                 {active && <ModalBackground />}
                 <Header />
                 <Nav />
                 <Component {...pageProps} />
-                {quickQuoteViewStatus && clientWidth <= 600 && (
-                  <ModalBackground />
-                )}
-                {clientWidth <= 600 && <QuickQuoteButton />}
-                {quickQuoteViewStatus && clientWidth <= 600 && <QuickQuote />}
+                {clientWidth <= 600 && <QuickQuote />}
                 <Testimonial />
                 <Footer />
                 <ToastContainer />
               </Layout>
-            </ClientWidthContext.Provider>
-          </QuickQuoteContext.Provider>
-        </QuoteContextProvider>
-      </SidebarContext.Provider>
-    </>
+            </QuickQuoteContext.Provider>
+          </QuoteContextProvider>
+        </SidebarContext.Provider>
+      </ClientWidthContext.Provider>
+    </div>
   );
 }
 

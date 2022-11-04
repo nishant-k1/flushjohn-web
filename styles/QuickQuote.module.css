@@ -14,9 +14,10 @@
 /* mobile  */
 @media only screen and (max-width: 600px) {
   .form {
-    position: absolute;
+    position: fixed;
     right: 36px;
     top: 0;
+    height: fit-content;
     margin: 0 auto;
     background-color: #ef6489ef;
     z-index: 3;
