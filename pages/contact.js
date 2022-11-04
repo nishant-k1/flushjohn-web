@@ -2,7 +2,6 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import contactStyles from "../styles/Contact.module.css";
-
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
@@ -16,7 +15,7 @@ const SEO = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const MyTextInput = ({ label, ...props }) => {
+const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div>
@@ -46,7 +45,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   );
 };
 
-const MyTextArea = ({ label, ...props }) => {
+const MyMultilineTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div>
@@ -115,7 +114,7 @@ const contact = () => {
           <div className={contactStyles.container}>
             <Form className={contactStyles.form}>
               <div className={contactStyles.firstName}>
-                <MyTextInput
+                <MyTextField
                   label="First Name"
                   name="firstName"
                   type="text"
@@ -126,7 +125,7 @@ const contact = () => {
               </div>
 
               <div className={contactStyles.lastName}>
-                <MyTextInput
+                <MyTextField
                   label="Last Name"
                   name="lastName"
                   type="text"
@@ -137,7 +136,7 @@ const contact = () => {
               </div>
 
               <div className={contactStyles.email}>
-                <MyTextInput
+                <MyTextField
                   label="Email Address"
                   name="email"
                   type="email"
@@ -157,7 +156,7 @@ const contact = () => {
               </div>
 
               <div className={contactStyles.message}>
-                <MyTextArea
+                <MyMultilineTextField
                   label="Message"
                   name="message"
                   type="textarea"

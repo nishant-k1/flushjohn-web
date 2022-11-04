@@ -4,35 +4,46 @@ import MaskedInput from "react-input-mask";
 import QuoteStep2Styles from "../styles/QuoteStep2.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
+import moment from "moment";
+import { Tooltip } from "antd";
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-const MyDateInput = ({ label, ...props }) => {
+const MyDateField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { setValue } = helpers;
   return (
     <div className={QuoteStep2Styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label htmlFor={props.id || props.name}>
+        {label}
+        {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
+      </label>
       <div className={QuoteStep2Styles.innerBox}>
         <DatePicker
-          className={`${QuoteStep2Styles.input} ${QuoteStep2Styles.date}`}
-          {...field}
+          className={QuoteStep2Styles.date}
           {...props}
-          minDate={new Date()}
-          selected={field.value}
-          onChange={(value) => setValue(value)}
+          label={props.label}
+          defaultValue={moment(new Date(), "MM/DD/YYYY")}
+          format={"MM/DD/YYYY"}
+          placeholder={props.label}
+          disabledDate={(d) => !d || d.isBefore(new Date())}
+          onChange={(e) => {
+            setValue(moment(e).format("MMM Do YY"));
+          }}
         />
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
   );
 };
 
-const MyTextArea = ({ label, ...props }) => {
+const MyMultilineTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={QuoteStep2Styles.outerBox}>
@@ -40,7 +51,38 @@ const MyTextArea = ({ label, ...props }) => {
       <div className={QuoteStep2Styles.innerBox}>
         <textarea {...field} {...props} />
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+const MyTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className={QuoteStep2Styles.outerBox}>
+      <label>
+        {label}
+        {(() => {
+          if (props.name === "zip" || props.name === "street")
+            return <span style={{ color: "red", fontSize: "x-large" }}>*</span>;
+        })()}
+      </label>
+      <div className={QuoteStep2Styles.innerBox}>
+        <input {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
@@ -51,108 +93,112 @@ const MyMaskedTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={QuoteStep2Styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label>
+        {label}
+        {(() => {
+          if (props.name === "zip" || props.name === "street")
+            return <span style={{ color: "red", fontSize: "x-large" }}>*</span>;
+        })()}
+      </label>
       <div className={QuoteStep2Styles.innerBox}>
-        <MaskedInput {...field} {...props} />
+        {props.name == "zip" && (
+          <Tooltip placement="right" title="Enter Number">
+            <MaskedInput {...field} {...props} />
+          </Tooltip>
+        )}
+        {props.name !== "zip" && <MaskedInput {...field} {...props} />}
         {meta.touched && meta.error ? (
-          <div className={QuoteStep2Styles.error}>{meta.error}</div>
+          <div className={QuoteStep2Styles.error}>
+            {meta.error + " "}
+            <span>
+              <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+            </span>
+          </div>
         ) : null}
       </div>
     </div>
   );
 };
 
-const QuoteStep3 = () => {
+const QuoteStep2 = () => {
   const { render, data } = useContext(QuoteContext);
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
   return (
-    <div>
-      <Formik
-        initialValues={formValues}
-        validationSchema={Yup.object({
-          deliveryDate: Yup.date().required("Required"),
-          pickupDate: Yup.date().required("Required"),
-          zip: Yup.string().required("Required"),
-          hint: Yup.string(),
-        })}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
-          await sleep(500);
-          try {
-            setFormValues((prevValues) => {
-              return { ...prevValues, ...values };
-            });
-            setStep(3);
-          } catch (err) {
-            alert(err);
-          }
-        }}
-      >
-        <Form>
-          <div className={QuoteStep2Styles.form}>
-            <div className={QuoteStep2Styles.deliveryDate}>
-              <MyDateInput
-                label="* Delivery Date"
-                id="deliveryDate"
-                name="deliveryDate"
-                dateFormat="MMMM d, yyyy"
-                autoComplete="off"
-              />
-            </div>
+    <Formik
+      initialValues={formValues}
+      validationSchema={Yup.object({
+        deliveryDate: Yup.string().required("This field can't be empty..."),
+        pickupDate: Yup.string().required("This field can't be empty..."),
+        street: Yup.string().required("This field can't be empty..."),
+        zip: Yup.string().required("This field can't be empty..."),
+      })}
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        try {
+          setFormValues((prevValues) => {
+            return { ...prevValues, ...values };
+          });
+          setStep(3);
+        } catch (err) {}
+      }}
+    >
+      <Form>
+        <div className={QuoteStep2Styles.form}>
+          <div className={QuoteStep2Styles.deliveryDate}>
+            <MyDateField label="Delivery Date" name="deliveryDate" />
+          </div>
+          <div className={QuoteStep2Styles.pickupDate}>
+            <MyDateField label="Pickup Date" name="pickupDate" />
+          </div>
+          <div className={QuoteStep2Styles.street}>
+            <MyTextInput label="Street" name="street" />
+          </div>
+          <div className={QuoteStep2Styles.zip}>
+            <MyMaskedTextInput
+              label="Zip Code"
+              name="zip"
+              mask="99999"
+              maskChar=""
+            />
+          </div>
+          <div className={QuoteStep2Styles.city}>
+            <MyMaskedTextInput label="City" name="city" />
+          </div>
+          <div className={QuoteStep2Styles.state}>
+            <MyMaskedTextInput label="State" name="state" />
+          </div>
+          <div className={QuoteStep2Styles.phone}>
+            <MyMaskedTextInput
+              label="Phone"
+              name="phone"
+              mask="(999) 999-9999"
+              autoComplete="off"
+              type="tel"
+            />
+          </div>
 
-            <div className={QuoteStep2Styles.pickupDate}>
-              <MyDateInput
-                label="* Pickup Date"
-                name="pickupDate"
-                dateFormat="MMMM d, yyyy"
-                autoComplete="off"
-              />
-            </div>
-            <div className={QuoteStep2Styles.address}>
-              <MyMaskedTextInput
-                label="Complete Address"
-                name="address"
-                autoComplete="on"
-              />
-            </div>
-            <div className={QuoteStep2Styles.zip}>
-              <MyMaskedTextInput
-                label="* Zip Code"
-                name="zip"
-                mask="99999"
-                maskChar=""
-                autoComplete="postal-code"
-                type="tel"
-              />
-            </div>
-            <div className={QuoteStep2Styles.hint}>
-              <MyTextArea
-                label="Placement Instructions"
-                name="hint"
-                type="textarea"
-                rows="1"
-              />
-            </div>
+          <div className={QuoteStep2Styles.hint}>
+            <MyMultilineTextField label="Placement Instructions" name="hint" />
           </div>
-          <div
-            className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}
+        </div>
+        <div
+          className={`${QuoteStep2Styles.outerBox} ${QuoteStep2Styles.buttons}`}
+        >
+          <button type="submit" className={QuoteStep2Styles.next}>
+            NEXT
+          </button>
+          <button
+            onClick={() => {
+              setStep(1);
+            }}
+            className={QuoteStep2Styles.previous}
           >
-            <button type="submit" className={QuoteStep2Styles.next}>
-              NEXT
-            </button>
-            <button
-              onClick={() => {
-                setStep(1);
-              }}
-              className={QuoteStep2Styles.previous}
-            >
-              PREVIOUS
-            </button>
-          </div>
-        </Form>
-      </Formik>
-    </div>
+            PREVIOUS
+          </button>
+        </div>
+      </Form>
+    </Formik>
   );
 };
 
-export default QuoteStep3;
+export default QuoteStep2;

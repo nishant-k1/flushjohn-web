@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 769px) {
+  .container {
+    padding: 32px;
+  }
+}
 .innerSection {
   display: grid;
   justify-content: center;
@@ -17,9 +22,36 @@
 }
 
 .progressBar {
-  display: none;
+  display: grid;
+  padding: 0 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.486);
+  margin-bottom: 2rem;
 }
 
+@media screen and (min-width: 600px) {
+  .progressBar {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.486);
+    margin-bottom: 2.5rem;
+  }
+}
+.progressBar div {
+  font-weight: 700;
+  color: white;
+}
+@media screen and (min-width: 769px) {
+  .progressBar div {
+    font-weight: 500;
+    font-size: large;
+  }
+}
 .step {
   display: grid;
   justify-content: center;
@@ -35,15 +67,4 @@
 .step.active {
   background-color: #ef648a;
   transition: 0.5s;
-}
-
-@media screen and (min-width: 769px) {
-  .progressBar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.486);
-    margin-bottom: 2.5rem;
-  }
 }

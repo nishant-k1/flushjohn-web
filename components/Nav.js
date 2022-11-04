@@ -1,48 +1,61 @@
+import React from "react";
 import navStyles from "../styles/Nav.module.css";
 import Link from "next/link";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { useContext } from "react";
 import { Event } from "../lib/analytics";
+import { Divide as Hamburger } from "hamburger-react";
+import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
 
 const Nav = () => {
-  const [active, setActive] = useContext(SidebarContext);
+  const { active, setActive } = React.useContext(SidebarContext);
+  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+    React.useContext(QuickQuoteContext);
 
   return (
     <div className={navStyles.section}>
       <div className={navStyles.container}>
         <div className={navStyles.nav}>
-          <GiHamburgerMenu
-            className={navStyles.menuIcon}
-            onClick={() => setActive(!active)}
-          />
-          <p className={navStyles.phoneMobile}>
-            <a
-              href="tel: +1 (855) 780-3061"
-              onClick={(e) => {
-                Event("Request quote", "Mobile Phone Call", "MPC");
+          <div className={navStyles.hamburger}>
+            <Hamburger
+              toggled={active}
+              toggle={() => {
+                setActive(!active);
+                !active && setQuickQuoteViewStatus(false);
               }}
+              color="#ffffff"
+            />
+          </div>
+          <a
+            className={navStyles.phoneMobile}
+            href="tel: +1 (855) 780-3061"
+            onClick={(e) => {
+              Event("Request quote", "Mobile Phone Call", "MPC");
+            }}
+          >
+            <div
+              style={{ display: "grid", gridTemplateColumns: "max-content" }}
             >
+              <p style={{ textAlign: "center", margin: 0 }}>Order By Phone</p>
               <div>
                 <FaPhoneAlt />
                 (855) 780-3061
               </div>
-            </a>
-          </p>
+            </div>
+          </a>
           <Link href="/">
-            <img src="brand-logo-transparent.svg" alt="brand-logo" />
+            <img src="brand-logo-white.svg" alt="brand-logo" />
           </Link>
           <ul className={navStyles.navMenu}>
             <li>
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/products">Portable Toilets</Link>
+              <Link href="/products">Portable Units</Link>
             </li>
             <li className={navStyles.quote}>
               <Link type="button" href="/quote">
-                GET A QUOTE
+                Get Free Quote
               </Link>
             </li>
             <li className={navStyles.phone}>
@@ -54,8 +67,11 @@ const Nav = () => {
                 }}
               >
                 <div>
-                  <FaPhoneAlt />
-                  (855) 780-3061
+                  <h1>Order By Phone : </h1>
+                  <div>
+                    <FaPhoneAlt />
+                    (855) 780-3061
+                  </div>
                 </div>
               </a>
             </li>

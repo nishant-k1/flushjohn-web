@@ -4,19 +4,32 @@ import MaskedInput from "react-input-mask";
 import QuoteStep3Styles from "../styles/QuoteStep3.module.css";
 import { useContext, useState } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
-
 import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
 import { Event } from "../lib/analytics";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { requirementDetails } from "../contexts/QuoteContext";
+import { delivryDetails } from "../contexts/QuoteContext";
+import { personalDetails } from "../contexts/QuoteContext";
 
-const QuoteStep2 = () => {
+const QuoteStep3 = () => {
+  const notify = () =>
+    toast.success("Quote request sent !", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   const { render, data } = useContext(QuoteContext);
-  const [state, setState] = useState(false);
-  const [spinner, setSpinner] = useState(false);
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
 
-  const MyTextInput = ({ label, ...props }) => {
+  const MyTextField = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
       <div className={QuoteStep3Styles.outerBox}>
@@ -25,11 +38,19 @@ const QuoteStep2 = () => {
           htmlFor={props.id || props.name}
         >
           {label}
+          {props.name !== "cName" && (
+            <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+          )}
         </label>
         <div className={QuoteStep3Styles.innerBox}>
           <input className={QuoteStep3Styles.input} {...field} {...props} />
           {meta.touched && meta.error ? (
-            <div className={QuoteStep3Styles.error}>{meta.error}</div>
+            <div className={QuoteStep3Styles.error}>
+              {meta.error + " "}
+              <span>
+                <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+              </span>
+            </div>
           ) : null}
         </div>
       </div>
@@ -45,6 +66,7 @@ const QuoteStep2 = () => {
           htmlFor={props.id || props.name}
         >
           {label}
+          {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
         </label>
         <div className={QuoteStep3Styles.innerBox}>
           <MaskedInput
@@ -53,7 +75,12 @@ const QuoteStep2 = () => {
             {...props}
           />
           {meta.touched && meta.error ? (
-            <div className={QuoteStep3Styles.error}>{meta.error}</div>
+            <div className={QuoteStep3Styles.error}>
+              {meta.error + " "}
+              <span>
+                <img style={{ height: "2rem" }} src="/assets/cry_emoji.gif" />
+              </span>
+            </div>
           ) : null}
         </div>
       </div>
@@ -65,33 +92,33 @@ const QuoteStep2 = () => {
       <Formik
         initialValues={formValues}
         validationSchema={Yup.object({
-          fName: Yup.string()
-            .max(50, "Must be 50 characters or less")
-            .required("Required"),
-          lName: Yup.string()
-            .max(50, "Must be 50 characters or less")
-            .required("Required"),
-          cName: Yup.string().max(120, "Must be 120 characters or less"),
+          fName: Yup.string().required("This field can't be empty..."),
+          lName: Yup.string().required("This field can't be empty..."),
+          cName: Yup.string(),
           email: Yup.string()
             .email("Invalid email address")
-            .required("Required"),
-          phone: Yup.string().required("Required"),
+            .required("This field can't be empty..."),
+          phone: Yup.string().required("This field can't be empty..."),
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          setSpinner(true);
           try {
-            await setFormValues((prevValues) => {
+            setFormValues((prevValues) => {
               return { ...prevValues, ...values };
             });
-            const res = await axios.post(`/api/quote`, values);
-            res.status === 200 ? setState(true) : setState(false);
-            setStep(4);
+            notify();
+            await axios.post(`/api/quote`, values);
+            setStep(1);
+            setFormValues((prevValues) => {
+              return {
+                ...prevValues,
+                ...delivryDetails,
+                ...requirementDetails,
+                ...personalDetails,
+              };
+            });
+            resetForm();
             Event("Request quote", "Quote Form Submit", "QFS");
-          } catch (err) {
-            alert(
-              `The server has some issues, please make a phone call instead submitting the form :( `
-            );
-          }
+          } catch (err) {}
         }}
       >
         <div className={QuoteStep3Styles.section}>
@@ -99,8 +126,8 @@ const QuoteStep2 = () => {
             <Form>
               <div className={QuoteStep3Styles.form}>
                 <div className={QuoteStep3Styles.fName}>
-                  <MyTextInput
-                    label="* First Name"
+                  <MyTextField
+                    label="First Name"
                     name="fName"
                     type="text"
                     maxLength="50"
@@ -109,8 +136,8 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.lName}>
-                  <MyTextInput
-                    label="* Last Name"
+                  <MyTextField
+                    label="Last Name"
                     name="lName"
                     type="text"
                     maxLength="50"
@@ -119,7 +146,7 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.cName}>
-                  <MyTextInput
+                  <MyTextField
                     label="Company Name (If any)"
                     name="cName"
                     type="text"
@@ -129,8 +156,8 @@ const QuoteStep2 = () => {
                 </div>
 
                 <div className={QuoteStep3Styles.email}>
-                  <MyTextInput
-                    label="* Email Address"
+                  <MyTextField
+                    label="Email Address"
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -139,8 +166,8 @@ const QuoteStep2 = () => {
 
                 <div className={QuoteStep3Styles.phone}>
                   <MyMaskedTextInput
-                    label="* Phone"
-                    name="phone"
+                    label="Onsite Phone"
+                    name="onsitePhone"
                     mask="(999) 999-9999"
                     autoComplete="off"
                     type="tel"
@@ -151,14 +178,7 @@ const QuoteStep2 = () => {
                 className={`${QuoteStep3Styles.outerBox} ${QuoteStep3Styles.buttons}`}
               >
                 <button type="submit" className={QuoteStep3Styles.next}>
-                  {spinner ? (
-                    <div className={QuoteStep3Styles.processing}>
-                      <RiRefreshLine className={QuoteStep3Styles.spinner} />
-                      <h3>SUBMIT</h3>
-                    </div>
-                  ) : (
-                    `SUBMIT`
-                  )}
+                  SUBMIT
                 </button>
                 <button
                   className={QuoteStep3Styles.previous}
@@ -177,4 +197,4 @@ const QuoteStep2 = () => {
   );
 };
 
-export default QuoteStep2;
+export default QuoteStep3;

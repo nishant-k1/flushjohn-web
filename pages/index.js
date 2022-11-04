@@ -1,13 +1,15 @@
+import React from "react";
 import homeStyles from "../styles/Home.module.css";
 import QuickQuote from "../components/QuickQuote";
 import homeData from "../components/TextData";
-import { AiFillDollarCircle } from "react-icons/ai";
 import { FaTruckLoading, FaPhoneAlt } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 import { Event } from "../lib/analytics";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import QuickQuoteButton from "../components/QuickQuoteButton";
+import { ClientWidthContext } from "../contexts/ClientWidthContext";
 
 const SEO = {
   title:
@@ -17,18 +19,14 @@ const SEO = {
 };
 
 const Section1 = () => {
+  const [clientWidth, setClientWidth] = React.useContext(ClientWidthContext);
+
   return (
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
-          <ul className={homeStyles.section1Left}>
-            <li>
-              <h1>{homeData.section1.title}</h1>
-            </li>
-          </ul>
-          <div className={homeStyles.section1Right}>
-            <QuickQuote />
-          </div>
+          <h1>{homeData.section1.title}</h1>
+          {clientWidth > 600 && <QuickQuote />}
         </div>
       </div>
     </div>

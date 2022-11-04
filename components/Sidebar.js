@@ -1,11 +1,16 @@
 import sidebarStyles from "../styles/Sidebar.module.css";
 import Link from "next/link";
-import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import PhoneIcon from "@mui/icons-material/Phone";
+import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
-  const [active, setActive] = useContext(SidebarContext);
+  const router = useRouter();
+  const { active, setActive } = useContext(SidebarContext);
   const handleClick = () => {
     setActive(false);
   };
@@ -21,29 +26,26 @@ const Sidebar = () => {
           <Link href="/">
             <img
               onClick={handleClick}
-              src="brand-logo-transparent.svg"
+              src="brand-logo-white.svg"
               alt="brand-logo"
             />
           </Link>
-          <ul className={sidebarStyles.sidebarMenu}>
-            <li onClick={handleClick}>
-              <Link href="/">Home</Link>
-            </li>
-            <li onClick={handleClick}>
-              <Link href="/products">Portable Toilets</Link>
-            </li>
-            <li className={sidebarStyles.quote} onClick={handleClick}>
-              <Link href="/quote">GET A QUOTE</Link>
-            </li>
-            <li className={sidebarStyles.phone} onClick={handleClick}>
-              <Link href="tel:(855) 780-3061">
-                <div>
-                  <FaPhoneAlt />
-                  (855) 780-3061
-                </div>
-              </Link>
-            </li>
-          </ul>
+          <Link href="/" onClick={handleClick}>
+            <HomeIcon />
+            Home
+          </Link>
+          <Link href="/products" onClick={handleClick}>
+            <LocalShippingIcon />
+            Portables
+          </Link>
+          <Link href="/quote" onClick={handleClick}>
+            <RequestQuoteIcon />
+            Get Free Quote
+          </Link>
+          <Link href="tel:(855) 780-3061" onClick={handleClick}>
+            <PhoneIcon />
+            (855) 780-3061
+          </Link>
         </div>
       </div>
     </div>
