@@ -20,7 +20,9 @@ import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import ModalBackground from "./ModalBackground";
 
 const quickQuoteValidationSchema = Yup.object().shape({
-  portableUnits: Yup.array().of(Yup.string().required()),
+  portableUnits: Yup.array().of(
+    Yup.string().required("This field can't be empty...")
+  ),
   deliveryDate: Yup.string().required("This field can't be empty..."),
   pickupDate: Yup.string().required("This field can't be empty..."),
   zip: Yup.number().required("This field can't be empty..."),

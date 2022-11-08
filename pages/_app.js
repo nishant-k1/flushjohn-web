@@ -31,10 +31,10 @@ function MyApp({ Component, pageProps }) {
       // modal container
       if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
         document.documentElement.style.overflowY = "hidden"; // firefox, chrome
-        document.body.scroll = "no"; // ie only
+        // document.body.scroll = "no"; // ie only
       } else {
         document.documentElement.style.overflowY = "scroll"; // firefox, chrome
-        document.body.scroll = "yes"; // ie only
+        // document.body.scroll = "yes"; // ie only
       }
     }
     if (clientWidth) {

@@ -54,7 +54,7 @@
 }
 
 /* desktop */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .section4 {
     padding: 6rem 0;
     grid-template-columns: repeat(3, 1fr);

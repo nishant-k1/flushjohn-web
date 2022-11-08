@@ -9,9 +9,9 @@
 
 .active {
   transform: translateX(60%);
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .inactive {
-  transition: 0.5s;
+  transition: 0.2s;
 }

@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   .container {
     padding: 32px;
   }
@@ -46,7 +46,7 @@
   font-weight: 700;
   color: white;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .progressBar div {
     font-weight: 500;
     font-size: large;

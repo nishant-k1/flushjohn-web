@@ -16,7 +16,7 @@ a {
 }
 
 /* width */
-::-webkit-scrollbar {
+width ::-webkit-scrollbar {
   width: 8px;
 }
 

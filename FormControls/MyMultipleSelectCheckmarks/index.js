@@ -17,6 +17,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
 
   const value = field.value;
   const selectProps = {
+    ...props,
     mode: "multiple",
     style: {
       width: "100%",
@@ -51,7 +52,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
       </Space>
       {touched && error ? (
         <div className={quickQuoteStyles.error}>
-          {"This field can't be empty..." + " "}
+          {error + " "}
           <span>
             <img style={{ height: "1.5rem" }} src="/assets/error.png" />
           </span>
