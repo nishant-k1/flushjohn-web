@@ -9,10 +9,7 @@ import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 import { QuoteContextProvider } from "../contexts/QuoteContext";
 import Testimonial from "../components/Testimonial";
-import { useEffect } from "react";
 import Head from "next/head";
-import initGA, { PageView } from "../lib/analytics";
-import QuickQuoteButton from "../components/QuickQuoteButton";
 import QuickQuote from "./../components/QuickQuote";
 import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
@@ -51,6 +48,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=1, viewport-fit=cover"
+        />
+      </Head>
       <DefaultSeo {...SEO} />
       <ClientWidthContext.Provider value={[clientWidth, setClientWidth]}>
         <SidebarContext.Provider value={{ active, setActive }}>
@@ -60,7 +63,6 @@ function MyApp({ Component, pageProps }) {
             >
               <Sidebar />
               <Layout>
-                {active && <ModalBackground />}
                 <Header />
                 <Nav />
                 <Component {...pageProps} />

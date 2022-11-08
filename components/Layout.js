@@ -1,6 +1,7 @@
 import styles from "../styles/Layout.module.css";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext } from "react";
+import ModalBackground from "./ModalBackground";
 
 const Layout = ({ children }) => {
   const { active, setActive } = useContext(SidebarContext);
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
       onClick={handleClick}
       className={`${styles.main} ${active ? styles.active : styles.inactive}`}
     >
+      {active && <ModalBackground />}
       {children}
     </div>
   );
