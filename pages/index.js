@@ -8,7 +8,6 @@ import { RiTimeFill } from "react-icons/ri";
 import { Event } from "../lib/analytics";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
-import QuickQuoteButton from "../components/QuickQuoteButton";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
 
 const SEO = {
@@ -26,7 +25,7 @@ const Section1 = () => {
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
           <h1>{homeData.section1.title}</h1>
-          {clientWidth > 600 && <QuickQuote />}
+          {/* {clientWidth > 600 && <QuickQuote />} */}
         </div>
       </div>
     </div>

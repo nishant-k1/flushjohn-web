@@ -14,7 +14,6 @@ import QuickQuote from "./../components/QuickQuote";
 import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
 import { SidebarContext } from "./../contexts/SidebarContext";
-import ModalBackground from "../components/ModalBackground";
 import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
@@ -66,7 +65,7 @@ function MyApp({ Component, pageProps }) {
                 <Header />
                 <Nav />
                 <Component {...pageProps} />
-                {clientWidth <= 600 && <QuickQuote />}
+                <QuickQuote />
                 <Testimonial />
                 <Footer />
                 <ToastContainer />

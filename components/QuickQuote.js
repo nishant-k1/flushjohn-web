@@ -39,6 +39,26 @@ const QuickQuote = () => {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
 
+  const quickQuoteRef = React.useRef(null);
+
+  const pageClickEvent = (event) => {
+    if (quickQuoteRef.current) {
+      if (!quickQuoteRef.current.contains(event.target)) {
+        console.log("click");
+        setQuickQuoteViewStatus(false);
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    if (typeof window) {
+      document.addEventListener("mousedown", pageClickEvent);
+    }
+    return () => {
+      document.removeEventListener("mousedown", pageClickEvent);
+    };
+  }, [quickQuoteViewStatus]);
+
   const notify = () =>
     toast.success("Quick quote request sent !", {
       position: "top-right",
@@ -51,10 +71,9 @@ const QuickQuote = () => {
       theme: "dark",
     });
   return (
-    <>
+    <div ref={quickQuoteRef}>
       {quickQuoteViewStatus && clientWidth <= 600 && <ModalBackground />}
-      {clientWidth <= 600 && <QuickQuoteButton />}
-      {((quickQuoteViewStatus && clientWidth <= 600) || clientWidth > 600) && (
+      {quickQuoteViewStatus && (
         <Formik
           initialValues={{
             portableUnits: [],
@@ -157,7 +176,9 @@ const QuickQuote = () => {
           </Form>
         </Formik>
       )}
-    </>
+
+      <QuickQuoteButton />
+    </div>
   );
 };
 

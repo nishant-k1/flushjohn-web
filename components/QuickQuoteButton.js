@@ -1,27 +1,21 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
+import styles from "../styles/QuickQuote.module.css";
 
 export default function QuickQuoteButton() {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
 
   return (
-    <Button
+    <button
       variant="contained"
       size="small"
       onClick={() => {
         setQuickQuoteViewStatus(!quickQuoteViewStatus);
       }}
-      sx={{
-        position: "fixed",
-        left: -68,
-        top: "50vh",
-        fontSize: "14px",
-        transform: "rotate(90deg)",
-      }}
+      className={styles.quickQuoteBtn}
     >
       Quick Free Quote
-    </Button>
+    </button>
   );
 }
