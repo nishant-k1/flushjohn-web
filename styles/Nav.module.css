@@ -6,6 +6,8 @@
   position: sticky;
   top: -1px;
   z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.363);
+  border-bottom: 1px solid #ed638879;
 }
 
 .container {
@@ -28,8 +30,8 @@
 }
 @media screen and (min-width: 768px) {
   .nav {
-    border-top: 1px solid rgba(255, 255, 255, 0.363);
-    border-bottom: 1px solid #ed638879;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.363);
+    border-bottom: 1px solid #ed638879; */
     grid-template-columns: repeat(4, max-content);
     justify-content: end;
     padding: 0.5rem 0;
