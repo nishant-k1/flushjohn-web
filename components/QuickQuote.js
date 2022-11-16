@@ -44,7 +44,6 @@ const QuickQuote = () => {
   const pageClickEvent = (event) => {
     if (quickQuoteRef.current) {
       if (!quickQuoteRef.current.contains(event.target)) {
-        console.log("click");
         setQuickQuoteViewStatus(false);
       }
     }
