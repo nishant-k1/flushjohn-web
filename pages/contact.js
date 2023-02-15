@@ -7,7 +7,7 @@ import { NextSeo } from "next-seo";
 import { useState } from "react";
 import { RiRefreshLine } from "react-icons/ri";
 import Head from "next/head";
-import { Event } from "../lib/analytics";
+// import { Event } from "../lib/analytics";
 
 const SEO = {
   title: "Reliable Portable - Contact | Portable Restroom Rental",
@@ -102,7 +102,7 @@ const contact = () => {
             try {
               const res = await axios.post(`/api/contact`, values);
               res.status === 200 ? setState(true) : setState(false);
-              Event("Contact", "Contact Form Submit", "CFS");
+              // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
               alert(
                 `The server has some issues, please make a phone call instead submitting the form :( `

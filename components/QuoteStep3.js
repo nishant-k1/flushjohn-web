@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
 import { RiRefreshLine } from "react-icons/ri";
 import axios from "axios";
-import { Event } from "../lib/analytics";
+// import { Event } from "../lib/analytics";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { requirementDetails } from "../contexts/QuoteContext";
@@ -117,7 +117,7 @@ const QuoteStep3 = () => {
               };
             });
             resetForm();
-            Event("Request quote", "Quote Form Submit", "QFS");
+            // Event("Request quote", "Quote Form Submit", "QFS");
           } catch (err) {}
         }}
       >

@@ -5,7 +5,7 @@ import homeData from "../components/TextData";
 import { FaTruckLoading, FaPhoneAlt } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
-import { Event } from "../lib/analytics";
+// import { Event } from "../lib/analytics";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";

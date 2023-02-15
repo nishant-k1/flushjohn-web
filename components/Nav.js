@@ -3,7 +3,7 @@ import navStyles from "../styles/Nav.module.css";
 import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { Event } from "../lib/analytics";
+// import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
 
@@ -30,7 +30,7 @@ const Nav = () => {
             className={navStyles.phoneMobile}
             href="tel: +1 (855) 780-3061"
             onClick={(e) => {
-              Event("Request quote", "Mobile Phone Call", "MPC");
+              // Event("Request quote", "Mobile Phone Call", "MPC");
             }}
           >
             <div
@@ -63,7 +63,7 @@ const Nav = () => {
                 href="tel: +1 (855) 780-3061"
                 type="button"
                 onClick={(e) => {
-                  Event("Request quote", "Desktop Phone Call", "DPC");
+                  // Event("Request quote", "Desktop Phone Call", "DPC");
                 }}
               >
                 <div>

@@ -2,7 +2,7 @@ import { Formik, Form } from "formik";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import axios from "axios";
 import React from "react";
-import { Event } from "../lib/analytics";
+// import { Event } from "../lib/analytics";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
