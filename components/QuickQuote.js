@@ -2,7 +2,6 @@ import { Formik, Form } from "formik";
 import quickQuoteStyles from "../styles/QuickQuote.module.css";
 import axios from "axios";
 import React from "react";
-// import { Event } from "../lib/analytics";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
@@ -42,11 +41,15 @@ const QuickQuote = () => {
   const quickQuoteRef = React.useRef(null);
 
   const pageClickEvent = (event) => {
-    if (quickQuoteRef.current) {
-      if (!quickQuoteRef.current.contains(event.target)) {
+    if (quickQuoteRef.current && event.target.children[0]) {
+      if (
+        !quickQuoteRef.current.contains(event.target) &&
+        !event.target.children[0].hasAttribute("ignore-click")
+      ) {
         setQuickQuoteViewStatus(false);
-      }
+      } 
     }
+
   };
 
   React.useEffect(() => {
@@ -56,7 +59,7 @@ const QuickQuote = () => {
     return () => {
       document.removeEventListener("mousedown", pageClickEvent);
     };
-  }, [quickQuoteViewStatus]);
+  }, [quickQuoteViewStatus, quickQuoteRef]);
 
   const notify = () =>
     toast.success("Quick quote request sent !", {
@@ -88,7 +91,7 @@ const QuickQuote = () => {
           validateOnChange={false}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            Event("Request quote", "Prompt Form Submit", "PFS");
+            // Event("Request quote", "Prompt Form Submit", "PFS");
             try {
               await axios.post(`/api/quickQuote`, values);
               notify();
@@ -102,7 +105,9 @@ const QuickQuote = () => {
                 email: "",
                 phone: "",
               });
-            } catch (err) {}
+            } catch (err) {
+              console.log(err)
+            }
           }}
         >
           <Form className={quickQuoteStyles.form}>
@@ -112,6 +117,7 @@ const QuickQuote = () => {
               </Grid>
               <Grid item xs={12}>
                 <MyMultipleSelectCheckmarks
+                  class={quickQuoteStyles.multiSelect}
                   label="Portable Units"
                   name="portableUnits"
                   isMulti
@@ -165,6 +171,13 @@ const QuickQuote = () => {
               <Grid item xs={3}>
                 <Button
                   variant="contained"
+                  sx={{
+                    background: '#162184',
+                    borderRadius:0,
+                    '&:hover': {
+                      background:"#101B80",
+                    },
+                  }}
                   endIcon={<SendIcon />}
                   type="submit"
                 >

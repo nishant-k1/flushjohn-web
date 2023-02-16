@@ -41,7 +41,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
     maxTagCount: "responsive",
   };
   return (
-    <>
+    <div ignore-click>
       <Space
         direction="vertical"
         style={{
@@ -58,7 +58,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
           </span>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 export default MyMultipleSelectCheckmarks;

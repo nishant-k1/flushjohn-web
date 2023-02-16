@@ -7,13 +7,13 @@ import moment from "moment";
 import { Box } from "@mui/material";
 import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 
-const MyDateField = ({ ...props }) => {
+const MyDateField = ({...props }) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
 
   return (
-    <Box>
+    <div ignore-click >
       {/* <label
         style={{
           color: "black",
@@ -44,7 +44,7 @@ const MyDateField = ({ ...props }) => {
           </span>
         </div>
       ) : null}
-    </Box>
+    </div>
   );
 };
 

@@ -8,8 +8,6 @@ export default function QuickQuoteButton() {
 
   return (
     <button
-      variant="contained"
-      size="small"
       onClick={() => {
         setQuickQuoteViewStatus(!quickQuoteViewStatus);
       }}

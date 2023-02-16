@@ -127,6 +127,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
+  border: 0;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s;

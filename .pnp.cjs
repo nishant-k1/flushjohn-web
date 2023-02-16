@@ -50,6 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemailer", "npm:6.8.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:18.2.0"],\
+            ["react-ga", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:3.3.1"],\
             ["react-icons", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:4.6.0"],\
             ["react-imask", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:6.4.3"],\
             ["react-input-mask", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.0.4"],\
@@ -9429,6 +9430,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-ga", [\
+        ["npm:3.3.1", {\
+          "packageLocation": "./.yarn/cache/react-ga-npm-3.3.1-de5c01fc6e-3026976d02.zip/node_modules/react-ga/",\
+          "packageDependencies": [\
+            ["react-ga", "npm:3.3.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:3.3.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-ga-virtual-d0baa79050/0/cache/react-ga-npm-3.3.1-de5c01fc6e-3026976d02.zip/node_modules/react-ga/",\
+          "packageDependencies": [\
+            ["react-ga", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:3.3.1"],\
+            ["@types/prop-types", null],\
+            ["@types/react", null],\
+            ["prop-types", null],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/prop-types",\
+            "@types/react",\
+            "prop-types",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-icons", [\
         ["npm:4.6.0", {\
           "packageLocation": "./.yarn/cache/react-icons-npm-4.6.0-85b1c2c9bc-a08375d456.zip/node_modules/react-icons/",\
@@ -9840,6 +9867,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemailer", "npm:6.8.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:18.2.0"],\
+            ["react-ga", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:3.3.1"],\
             ["react-icons", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:4.6.0"],\
             ["react-imask", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:6.4.3"],\
             ["react-input-mask", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.0.4"],\
