@@ -30,7 +30,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
     placeholder: (
       <p
         style={{
-          color: "rgba(0, 0, 0, 0.7)",
+          color: "#df194e",
           fontWeight: 600,
           margin: 0,
         }}

@@ -1,15 +1,17 @@
 .form {
-  background-color: #ec4484c7;
+  background-color: #9b023dc2;
   /* background-color: rgba(165, 163, 163, 0.808); */
   /* box-shadow: rgba(0, 0, 0, 0.35); */
-  /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; */
-  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  padding: 1.5rem;
   position: fixed;
   bottom: 4rem;
   right: 2rem;
   max-width: 300px;
   height: fit-content;
   z-index: 3;
+  /* border-radius: 12px; */
+  border: 1px solid rgba(255, 255, 255, 0.308);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -70,7 +72,7 @@
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: rgba(0, 0, 0, 0.7);
+  color: #df194e;
   font-weight: 600;
 }
 .form input:focus::placeholder,
@@ -97,7 +99,7 @@
   border: none;
 }
 .date input::placeholder {
-  color: rgba(0, 0, 0, 0.7) !important;
+  color: #df194e !important;
   font-weight: 600;
 }
 
