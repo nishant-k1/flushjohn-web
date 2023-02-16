@@ -9,10 +9,7 @@ const options = [
   { label: "ADA Portable Restroom", value: "ADA Portable Restroom" },
   { label: "Hand Wash Station", value: "Hand Wash Station" },
 ];
-function handleMyMultipleSelectCheckmarksClick(event) {
-  event.stopPropagation();
-  // Handle the delivery date click event here
-}
+
 const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
@@ -44,7 +41,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
     maxTagCount: "responsive",
   };
   return (
-    <div ignore-click onClick={handleMyMultipleSelectCheckmarksClick}>
+    <div>
       <Space
         direction="vertical"
         style={{
@@ -53,7 +50,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
       >
         <Select
           {...selectProps}
-          onClick={handleMyMultipleSelectCheckmarksClick}
           getPopupContainer={(trigger) => trigger.parentNode} // disable the default behavior of closing on a click outside
         />
       </Space>
