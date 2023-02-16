@@ -4,7 +4,6 @@ import { Button, DatePicker } from "antd";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { useField } from "formik";
 import moment from "moment";
-import { Box } from "@mui/material";
 import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 
 const MyDateField = ({...props }) => {
@@ -12,17 +11,10 @@ const MyDateField = ({...props }) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
 
+  const datePickerRef = React.useRef(null);
+
   return (
-    <div ignore-click >
-      {/* <label
-        style={{
-          color: "black",
-          fontWeight: 100,
-          fontSize: "medium",
-        }}
-      >
-        {props.label}
-      </label> */}
+    <div ref={datePickerRef}>
       <DatePicker
         {...props}
         className={props.className}
@@ -35,6 +27,8 @@ const MyDateField = ({...props }) => {
         onChange={(e) => {
           setValue(moment(e).format("MMM Do YY"));
         }}
+        getPopupContainer={() => datePickerRef.current}
+        // getPopupContainer={(trigger) => trigger.parentNode} // disable the default behavior of closing on a click outside
       />
       {touched && error ? (
         <div className={quickQuoteStyles.error}>

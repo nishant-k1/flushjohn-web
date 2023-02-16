@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-export default async function quickQuoteHandler(req, res) {
+export default async function quoteHandler(req, res) {
   const {
     query: { id, name },
     method,
@@ -22,23 +22,8 @@ export default async function quickQuoteHandler(req, res) {
         "November",
         "December",
       ];
-      const deliveryDate = new Date(`${req.body.deliveryDate}`);
 
-      const longDeliveryDate = `${
-        months[deliveryDate.getMonth()]
-      } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
-
-      const pickupDate = new Date(`${req.body.pickupDate}`);
-
-      const longPickupDate = `${
-        months[pickupDate.getMonth()]
-      } ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`;
-
-      const promptQuoteData = req.body;
-
-      const productsArray = promptQuoteData.products;
-      const products = productsArray.map((element) => element.label);
-      
+      const quickQuoteData = req.body;
       const transporter = nodemailer.createTransport({
         host: "smtp.zoho.in",
         port: 465,
@@ -56,15 +41,41 @@ export default async function quickQuoteHandler(req, res) {
         subject: "Reliable Portable: Quick Quote", // Subject line
         text: ``, // plain text body
         html: `
-          <div><h4>From:</h4> <p>${promptQuoteData.fullName}</p></div>
-            <div><h4>Email:</h4> <p>${promptQuoteData.email}</p></div>
-            <div><h4>Phone:</h4> <p>${promptQuoteData.phone}</p></div>
-            <div><h4>Zip Code:</h4> <p>${promptQuoteData.zip}</p></div>
-            <div><h4>Products:</h4> <p>${products}</p></div>
-            <div><h4>Delivery Date:</h4><p>${longDeliveryDate}</p></div>
-            <div><h4>Pickup Date:</h4><p>${longPickupDate}</p></div>
-            <div><h4>Instructions:</h4> <p>${promptQuoteData.instructions}</p></div>
-          `, // html body
+          <div>
+            <div>
+                <h4>From:</h4>
+                <p>${quickQuoteData.fullName}</p>
+            </div>
+            <div>
+                <h4>Email:</h4>
+                <p>${quickQuoteData.email}</p>
+            </div>
+            <div>
+                <h4>Phone:</h4>
+                <p>${quickQuoteData.phone}</p>
+            </div>
+            <div>
+                <h4>Zip Code:</h4>
+                <p>${quickQuoteData.zip}</p>
+            </div>
+            <div>
+                <h4>Products:</h4>
+                <p>${quickQuoteData.portableUnits}</p>
+            </div>
+            <div>
+                <h4>Delivery Date:</h4>
+                <p>${quickQuoteData.deliveryDate}</p>
+            </div>
+            <div>
+                <h4>Pickup Date:</h4>
+                <p>${quickQuoteData.pickupDate}</p>
+            </div>
+            <div>
+                <h4>Instructions:</h4>
+                <p>${quickQuoteData.instructions}</p>
+            </div>
+          </div>
+        `, // html body
       });
       await res.status(200).json({ status: "Success" });
     } catch (err) {

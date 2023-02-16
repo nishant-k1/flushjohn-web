@@ -41,14 +41,17 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
     maxTagCount: "responsive",
   };
   return (
-    <div ignore-click>
+    <div>
       <Space
         direction="vertical"
         style={{
           width: "100%",
         }}
       >
-        <Select {...selectProps} />
+        <Select
+          {...selectProps}
+          getPopupContainer={(trigger) => trigger.parentNode} // disable the default behavior of closing on a click outside
+        />
       </Space>
       {touched && error ? (
         <div className={quickQuoteStyles.error}>
