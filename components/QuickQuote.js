@@ -40,25 +40,23 @@ const QuickQuote = () => {
 
   const quickQuoteRef = React.useRef(null);
 
-  const pageClickEvent = (event) => {
-    if (quickQuoteRef.current && event.target.children[0]) {
-      if (
-        !quickQuoteRef.current.contains(event.target) &&
-        !event.target.children[0].hasAttribute("ignore-click")
-      ) {
+  const handleClickOutside = (event) => {
+    if (quickQuoteRef.current) {
+      if (!quickQuoteRef.current.contains(event.target)) {
         setQuickQuoteViewStatus(false);
-      } 
+      }
     }
   };
 
+
   React.useEffect(() => {
     if (typeof window) {
-      document.addEventListener("mousedown", pageClickEvent);
+      document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener("mousedown", pageClickEvent);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [quickQuoteViewStatus, quickQuoteRef]);
+  }, [quickQuoteRef]);
 
   const notify = () =>
     toast.success("Quick quote request sent !", {
@@ -96,9 +94,8 @@ const QuickQuote = () => {
               const res = await axios.post(`/api/quickQuote`, values);
               res.status === 200 && notify();
               console.log(res);
-
             } catch (err) {
-              console.log(err)
+              console.log(err);
             }
             resetForm({
               portableUnits: [],
@@ -174,10 +171,10 @@ const QuickQuote = () => {
                 <Button
                   variant="contained"
                   sx={{
-                    background: '#162184',
-                    borderRadius:0,
-                    '&:hover': {
-                      background:"#101B80",
+                    background: "#162184",
+                    borderRadius: 0,
+                    "&:hover": {
+                      background: "#101B80",
                     },
                   }}
                   endIcon={<SendIcon />}

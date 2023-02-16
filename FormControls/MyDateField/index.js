@@ -12,19 +12,32 @@ const MyDateField = ({...props }) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
 
+  const datePickerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+  const handleDocumentClick = (event) => {
+    if (
+      datePickerRef.current &&
+      !datePickerRef.current.contains(event.target)
+    ) {
+      datePickerRef.current.blur();
+    }
+  };
+
   return (
-    <div ignore-click >
-      {/* <label
-        style={{
-          color: "black",
-          fontWeight: 100,
-          fontSize: "medium",
-        }}
-      >
-        {props.label}
-      </label> */}
+    <div ref={datePickerRef}>
       <DatePicker
         {...props}
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
         className={props.className}
         label={props.label}
         value={field.value && moment(new Date(), "MM/DD/YYYY")}
@@ -35,6 +48,8 @@ const MyDateField = ({...props }) => {
         onChange={(e) => {
           setValue(moment(e).format("MMM Do YY"));
         }}
+        getPopupContainer={() => datePickerRef.current}
+        // getPopupContainer={(trigger) => trigger.parentNode} // disable the default behavior of closing on a click outside
       />
       {touched && error ? (
         <div className={quickQuoteStyles.error}>
