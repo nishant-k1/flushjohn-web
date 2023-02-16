@@ -49,7 +49,6 @@ const QuickQuote = () => {
         setQuickQuoteViewStatus(false);
       } 
     }
-
   };
 
   React.useEffect(() => {
@@ -72,6 +71,7 @@ const QuickQuote = () => {
       progress: undefined,
       theme: "dark",
     });
+
   return (
     <div ref={quickQuoteRef}>
       {quickQuoteViewStatus && clientWidth <= 600 && <ModalBackground />}
@@ -93,21 +93,23 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             // Event("Request quote", "Prompt Form Submit", "PFS");
             try {
-              await axios.post(`/api/quickQuote`, values);
-              notify();
-              resetForm({
-                portableUnits: [],
-                deliveryDate: "",
-                pickupDate: "",
-                zip: "",
-                instructions: "",
-                fullName: "",
-                email: "",
-                phone: "",
-              });
+              const res = await axios.post(`/api/quickQuote`, values);
+              res.status === 200 && notify();
+              console.log(res);
+
             } catch (err) {
               console.log(err)
             }
+            resetForm({
+              portableUnits: [],
+              deliveryDate: "",
+              pickupDate: "",
+              zip: "",
+              instructions: "",
+              fullName: "",
+              email: "",
+              phone: "",
+            });
           }}
         >
           <Form className={quickQuoteStyles.form}>

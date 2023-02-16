@@ -8,12 +8,23 @@ import { useState } from "react";
 import { RiRefreshLine } from "react-icons/ri";
 import Head from "next/head";
 // import { Event } from "../lib/analytics";
+import { toast } from "react-toastify";
+
+const notify = () =>
+  toast.success("Your message has been delivered", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
 
 const SEO = {
   title: "Reliable Portable - Contact | Portable Restroom Rental",
 };
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -62,7 +73,6 @@ const MyMultilineTextField = ({ label, ...props }) => {
 
 const contact = () => {
   const [state, setState] = useState(false);
-  const [spinner, setSpinner] = useState(false);
   return (
     <>
       <Head>
@@ -97,16 +107,13 @@ const contact = () => {
               .required("Required"),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            setSpinner(true);
-            await sleep(500);
             try {
               const res = await axios.post(`/api/contact`, values);
               res.status === 200 ? setState(true) : setState(false);
+              res.status === 200 && notify();
               // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
-              alert(
-                `The server has some issues, please make a phone call instead submitting the form :( `
-              );
+              console.log(err);
             }
             resetForm();
           }}
@@ -163,27 +170,11 @@ const contact = () => {
                   placeholder="Message"
                 />
               </div>
-              <button
-                className={`${contactStyles.button} ${
-                  state ? contactStyles.submitted : contactStyles.notSubmitted
-                }`}
-                type="submit"
-              >
-                {state ? (
-                  <div className={contactStyles.acknowledge}>
-                    <h2>Message sent successfully</h2>
-                    <img src="/assets/tick.svg" alt="tick_img" />
-                  </div>
-                ) : spinner ? (
-                  <div className={contactStyles.processing}>
-                    <RiRefreshLine className={contactStyles.spinner} />
-                    <h3>SUBMIT</h3>
-                  </div>
-                ) : (
-                  `SUBMIT`
-                )}
+              <button className={contactStyles.button} type="submit">
+                SUBMIT
               </button>
             </Form>
+            {state && <h1 style={{color:'white'}}>Your message has been delivered</h1>}
           </div>
         </Formik>
       </div>

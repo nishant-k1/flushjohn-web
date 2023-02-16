@@ -23,14 +23,19 @@ export default async function quoteHandler(req, res) {
         "December",
       ];
       const deliveryDate = new Date(`${req.body.deliveryDate}`);
+      
       const longDeliveryDate = `${
         months[deliveryDate.getMonth()]
       } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
+
       const pickupDate = new Date(`${req.body.pickupDate}`);
+
       const longPickupDate = `${
         months[pickupDate.getMonth()]
       } ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`;
+
       const quoteData = req.body;
+
       const transporter = nodemailer.createTransport({
         host: "smtp.zoho.in",
         port: 465,

@@ -8,7 +8,7 @@ export default async function contactHandler(req, res) {
   if (method == "POST") {
     try {
       const emailData = req.body;
-      const transporter = await nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         host: "smtp.zoho.in",
         port: 465,
         secure: true, // true for 465, false for other ports
@@ -19,18 +19,17 @@ export default async function contactHandler(req, res) {
         tls: { rejectUnauthorized: false },
       });
 
-      let info = await transporter.sendMail({
+      await transporter.sendMail({
         from: `Reliable Portable<${process.env.EMAIL_ID}>`, // sender address
         to: `Reliable Portable<${process.env.EMAIL_ID}>`, // list of receivers
         subject: "Reliable Portable: Contact Message", // Subject line
         text: `
-                    From: ${emailData.firstName} ${emailData.lastName}
-                    Email: ${emailData.email}
-                    Phone: ${emailData.phone}
-                    Message: ${emailData.message}`, // plain text body
+          From: ${emailData.firstName} ${emailData.lastName}
+          Email: ${emailData.email}
+          Phone: ${emailData.phone}
+          Message: ${emailData.message}`, // plain text body
         // html: `<h1>${emailData.email}</h1>`, // html body
       });
-
       await res.status(200).json({ status: "Success" });
     } catch (err) {
       res.send(err);

@@ -23,17 +23,22 @@ export default async function quickQuoteHandler(req, res) {
         "December",
       ];
       const deliveryDate = new Date(`${req.body.deliveryDate}`);
+
       const longDeliveryDate = `${
         months[deliveryDate.getMonth()]
       } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
+
       const pickupDate = new Date(`${req.body.pickupDate}`);
+
       const longPickupDate = `${
         months[pickupDate.getMonth()]
       } ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`;
 
       const promptQuoteData = req.body;
+
       const productsArray = promptQuoteData.products;
       const products = productsArray.map((element) => element.label);
+      
       const transporter = nodemailer.createTransport({
         host: "smtp.zoho.in",
         port: 465,
@@ -50,7 +55,8 @@ export default async function quickQuoteHandler(req, res) {
         to: `Reliable Portable<${process.env.EMAIL_ID}>`, // list of receivers
         subject: "Reliable Portable: Quick Quote", // Subject line
         text: ``, // plain text body
-        html: ` <div><h4>From:</h4> <p>${promptQuoteData.fullName}</p></div>
+        html: `
+          <div><h4>From:</h4> <p>${promptQuoteData.fullName}</p></div>
             <div><h4>Email:</h4> <p>${promptQuoteData.email}</p></div>
             <div><h4>Phone:</h4> <p>${promptQuoteData.phone}</p></div>
             <div><h4>Zip Code:</h4> <p>${promptQuoteData.zip}</p></div>
