@@ -14,30 +14,10 @@ const MyDateField = ({...props }) => {
 
   const datePickerRef = React.useRef(null);
 
-  React.useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
-
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, []);
-
-  const handleDocumentClick = (event) => {
-    if (
-      datePickerRef.current &&
-      !datePickerRef.current.contains(event.target)
-    ) {
-      datePickerRef.current.blur();
-    }
-  };
-
   return (
     <div ref={datePickerRef}>
       <DatePicker
         {...props}
-        onClick={(event) => {
-          event.stopPropagation();
-        }}
         className={props.className}
         label={props.label}
         value={field.value && moment(new Date(), "MM/DD/YYYY")}
