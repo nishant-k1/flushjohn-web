@@ -44,7 +44,7 @@ const Nav = () => {
             </div>
           </a>
           <Link href="/">
-            <img src="brand-logo-white.svg" alt="brand-logo" />
+            <img src="brand-logo-white.svg" alt="brand-logo" height="5rem" width="8rem"/>
           </Link>
           <ul className={navStyles.navMenu}>
             <li>

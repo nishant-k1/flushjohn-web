@@ -28,6 +28,8 @@ const Sidebar = () => {
               onClick={handleClick}
               src="brand-logo-white.svg"
               alt="brand-logo"
+              height="5rem"
+              width="8rem"
             />
           </Link>
           <Link href="/" onClick={handleClick}>
