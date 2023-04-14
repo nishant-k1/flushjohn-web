@@ -12,7 +12,7 @@ import { ClientWidthContext } from "../contexts/ClientWidthContext";
 
 const SEO = {
   title:
-    "Reliable Portable - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet",
+    "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
   description:
     "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
 };

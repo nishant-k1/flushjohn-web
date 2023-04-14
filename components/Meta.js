@@ -3,13 +3,13 @@ import { NextSeo } from "next-seo";
 const Home = () => (
   <>
     <NextSeo
-      title="Reliable Portable - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet"
+      title="Reliable Portable | Porta Potty Rentals and Restroom Rentals"
       description="Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area."
       canonical="https://www.reliableportable.com/"
       openGraph={{
         url: "https://www.reliableportable.com/",
         title:
-          "Reliable Portable - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet",
+          "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
         description:
           "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
         images: [
