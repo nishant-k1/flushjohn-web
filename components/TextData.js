@@ -1,19 +1,19 @@
 const homeData = {
   section1: {
     title:
-      "We offer a wide range of portable toilets and hand wash stations  for all your events and job site needs.",
+      "We locally offer a wide range of portable toilet rentals and hand wash station rentals for all your events and job site needs.",
   },
 
   section2: {
     heading: "Our unique benefits and offerings",
     h1: "Prompt Quote & Bookings",
     h2: "Free & Quick Delivery",
-    h3: "$15 Discount on 1st Order.",
-    h4: "Free Servicing",
+    h3: "$15 Discount on Porta Potty Order.",
+    h4: "Free Porta Potty Servicing",
     p1: "Our porta potty rentals are budget friendly and we provide a 15% discount on your 1st order.",
     p2: "We respect your time. Our professional customer support ensures instant quote and bookings.",
-    p3: "Our experienced yard manager and driver facilitates seamless delivery and pickup service with no any extra cost.",
-    p4: "We provide weekly once cleaning service at no any extra cost. Also, we restock the unit with toilet papers.",
+    p3: "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
+    p4: "We provide weekly once cleaning service to out portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
   },
 
   section3: {
@@ -23,8 +23,8 @@ const homeData = {
     h4: "Disaster Relief",
     p1: "Our porta toilets are highly suitable for all your events like birthday parties, family reunions, weddings, etc.",
     p2: "We offer porta potty rental near you for all your job site needs, whether be a construction or any other long term use.",
-    p3: "If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of portable johns and other portable equipments.",
-    p4: "We are always ready to supply portable equipments like portable potties and handwash stations in the areas those affected by the disasters.",
+    p3: "If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of porta potties.",
+    p4: "We are always ready to supply portable equipments like portable toilet and handwash stations in the areas those affected by the disasters.",
   },
 
   testimonialSection: {
@@ -32,14 +32,14 @@ const homeData = {
     h2: "Dean Lacey",
     h3: "Christine Barnes",
     h4: "Janet Estremera",
-    p1: "The porta potty arrived on time as promised and it was wonderful.",
-    p2: "I had to rent a hand wash for my house renovation going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
-    p3: "Ordered an event unit for a family reunion. The porta john arrived the next day of my order.",
-    p4: "Unit was pretty and nice. I had it ordered for a weeding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",
+    p1: "The porta potty arrived on time as promised and it was wonderful. They are best porta potty rental service provider.",
+    p2: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
+    p3: "Ordered an event portable toilet unit for a family reunion. The portable toilet arrived the next day of my order.",
+    p4: "Portable toilet was pretty and nice. I had it ordered for a weeding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",
   },
 
   sectionLocation: {
-    title: "Our service locations",
+    title: "Our portable toilet service locations",
     list1: [
       "Alabama",
       "Arizona",
