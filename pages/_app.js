@@ -52,6 +52,7 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=1, viewport-fit=cover"
         />
+         <link rel="shortcut icon" href="favicon-16x16.ico" type="image/x-icon" />
       </Head>
       <ClientWidthContext.Provider value={[clientWidth, setClientWidth]}>
         <SidebarContext.Provider value={{ active, setActive }}>
