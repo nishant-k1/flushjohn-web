@@ -46,14 +46,13 @@ function MyApp({ Component, pageProps }) {
   }, [clientWidth, quickQuoteViewStatus, active]);
 
   return (
-    <div>
+    <React.Fragment>
       <Head>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=1, viewport-fit=cover"
         />
       </Head>
-      <DefaultSeo {...SEO} />
       <ClientWidthContext.Provider value={[clientWidth, setClientWidth]}>
         <SidebarContext.Provider value={{ active, setActive }}>
           <QuoteContextProvider>
@@ -64,6 +63,7 @@ function MyApp({ Component, pageProps }) {
               <Layout>
                 <Header />
                 <Nav />
+                <DefaultSeo {...SEO} />
                 <Component {...pageProps} />
                 <QuickQuote />
                 <Testimonial />
@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
           </QuoteContextProvider>
         </SidebarContext.Provider>
       </ClientWidthContext.Provider>
-    </div>
+    </React.Fragment>
   );
 }
 

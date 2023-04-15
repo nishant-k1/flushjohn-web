@@ -5,31 +5,12 @@ import QuoteStep4 from "../components/QuoteStep4";
 import quoteProgressStyles from "../styles/QuoteProgress.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "../contexts/QuoteContext";
-import { NextSeo } from "next-seo";
-import Head from "next/head";
-
-const SEO = {
-  title: "Reliable Portable - Quote | Get Instant Quote & Bookings",
-  description:
-    "Reliable Portable potty from a leading porta john rental service provider in united states, california, ohio, michigan, alabama",
-};
 
 const quote = () => {
   const { render } = useContext(QuoteContext);
   const [step] = render;
   return (
-    <>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw"
-        />
-        <meta
-          name="keywords"
-          content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`}
-        />
-      </Head>
-      <NextSeo {...SEO} />
+    <React.Fragment>
       <div className={quoteProgressStyles.section}>
         <div className={quoteProgressStyles.container}>
           <div className={quoteProgressStyles.progressBar}>
@@ -69,7 +50,7 @@ const quote = () => {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

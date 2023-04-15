@@ -3,11 +3,7 @@ import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import contactStyles from "../styles/Contact.module.css";
 import axios from "axios";
-import { NextSeo } from "next-seo";
-import { useState } from "react";
-import { RiRefreshLine } from "react-icons/ri";
-import Head from "next/head";
-// import { Event } from "../lib/analytics";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const notify = () =>
@@ -22,9 +18,6 @@ const notify = () =>
     theme: "dark",
   });
 
-const SEO = {
-  title: "Reliable Portable - Contact | Portable Restroom Rental",
-};
 
 const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -74,14 +67,7 @@ const MyMultilineTextField = ({ label, ...props }) => {
 const contact = () => {
   const [state, setState] = useState(false);
   return (
-    <>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw"
-        />
-      </Head>
-      <NextSeo {...SEO} />
+    <React.Fragment>
       <div className={contactStyles.section}>
         <Formik
           initialValues={{
@@ -178,7 +164,7 @@ const contact = () => {
           </div>
         </Formik>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

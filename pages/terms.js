@@ -1,21 +1,10 @@
+import React from "react";
 import termsStyles from "../styles/Terms.module.css";
-import { NextSeo } from "next-seo";
-import Head from "next/head";
+import { NextSeo } from 'next-seo';
 
-const SEO = {
-  title: "Reliable Portable - Terms & Conditions | Porta John Rental Near Me",
-};
-
-const terms = () => {
-  return (
-    <>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="-7RA9p2zau4hrs82YsLlEwn89woYgVoNsZ6Nxj92qHw"
-        />
-      </Head>
-      <NextSeo {...SEO} />
+const terms = () => (
+    <React.Fragment>
+      <NextSeo noindex={true} nofollow={true} />
       <div className={termsStyles.section}>
         <div className={termsStyles.container}>
           <div>
@@ -647,8 +636,7 @@ const terms = () => {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
-};
 
 export default terms;

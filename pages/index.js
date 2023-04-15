@@ -1,31 +1,16 @@
 import React from "react";
 import homeStyles from "../styles/Home.module.css";
-import QuickQuote from "../components/QuickQuote";
 import homeData from "../components/TextData";
-import { FaTruckLoading, FaPhoneAlt } from "react-icons/fa";
+import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
-// import { Event } from "../lib/analytics";
-import { NextSeo } from "next-seo";
-import Head from "next/head";
-import { ClientWidthContext } from "../contexts/ClientWidthContext";
-
-const SEO = {
-  title:
-    "Reliable Portable - Home | porta potty rental california | porta potty rental near me | porta john rental New Jersey | portable restroom rental | rent a toilet",
-  description:
-    "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
-};
 
 const Section1 = () => {
-  const [clientWidth, setClientWidth] = React.useContext(ClientWidthContext);
-
   return (
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
           <h1>{homeData.section1.title}</h1>
-          {/* {clientWidth > 600 && <QuickQuote />} */}
         </div>
       </div>
     </div>
@@ -131,22 +116,12 @@ const Section4 = (props) => {
     </div>
   );
 };
-const Home = () => {
-  return (
-    <>
-      <NextSeo {...SEO} />
-      <Head>
-        <meta
-          name="keywords"
-          content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`}
-        />
-      </Head>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 {...homeData.sectionLocation} />
-    </>
-  );
-};
+const Home = () => <React.Fragment>
+  <Section1 />
+  <Section2 />
+  <Section3 />
+  <Section4 {...homeData.sectionLocation} />
+</React.Fragment>;
+
 
 export default Home;
