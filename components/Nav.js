@@ -67,7 +67,7 @@ const Nav = () => {
                 }}
               >
                 <div>
-                  <h1>Order By Phone : </h1>
+                  <h2>Order By Phone : </h2>
                   <div>
                     <FaPhoneAlt />
                     (855) 780-3061
