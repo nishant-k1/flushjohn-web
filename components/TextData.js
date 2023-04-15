@@ -13,7 +13,7 @@ const homeData = {
     p1: "Our porta potty rentals are budget friendly and we provide a 15% discount on your 1st order.",
     p2: "We respect your time. Our professional customer support ensures instant quote and bookings.",
     p3: "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
-    p4: "We provide weekly once cleaning service to out portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
+    p4: "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
   },
 
   section3: {
