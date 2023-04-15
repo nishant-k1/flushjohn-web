@@ -30,12 +30,14 @@ export default {
     updated_time: "2023-04-15T12:34:56Z",
   },
   robotsProps:{
-    nosnippet: true,
-    notranslate: true,
-    noimageindex: true,
-    noarchive: true,
-    maxSnippet: -1,
-    maxImagePreview: 'none',
-    maxVideoPreview: -1,
+    noindex: false,
+    nosnippet: false,
+    maxSnippet: 165,
+    noODP: false,
+    noYDIR: false,
+    notranslate: false,
+    noimageindex: false,
+    noarchive: false,
+    maxImagePreview: 'medium',
   }
 };
