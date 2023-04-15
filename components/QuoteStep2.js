@@ -22,7 +22,7 @@ const MyDateField = ({ label, ...props }) => {
           className={QuoteStep2Styles.date}
           {...props}
           label={props.label}
-          defaultValue={moment(new Date(), "MM/DD/YYYY")}
+          // defaultValue={moment(new Date(), "MM/DD/YYYY")}
           format={"MM/DD/YYYY"}
           placeholder={props.label}
           disabledDate={(d) => !d || d.isBefore(new Date())}
