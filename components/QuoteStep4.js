@@ -11,7 +11,7 @@ const QuoteStep4 = () => {
         shortly.
       </h2>
       <div className={QuoteStep4Styles.linkAndMessage}>
-        <a title='porta potty rental'
+        <a
           className={QuoteStep4Styles.refreshLink}
           type="button"
           href="https://www.reliableportable.com/quote"

@@ -109,7 +109,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="/disclaimer">
-                    <a title='porta potty rental'rticleIcon />
+                    <ArticleIcon />
                     Disclaimer
                   </Link>
                 </li>
