@@ -1,13 +1,10 @@
-const withImages = require('next-images');
 /** @type {import('next').NextConfig} */
-
-module.exports = withImages({
+const nextConfig = {
   reactStrictMode: true,
-  esModule: false,
   async headers() {
     return [
       {
-        source: '/(.*)\\.(jpg|jpeg|png|gif|svg|webp)',
+        source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -17,4 +14,6 @@ module.exports = withImages({
       },
     ];
   },
-});
+};
+
+module.exports = nextConfig;
