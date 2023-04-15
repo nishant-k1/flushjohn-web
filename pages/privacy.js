@@ -1,3 +1,4 @@
+import React from "react";
 import privacyStyles from "../styles/Privacy.module.css";
 import { NextSeo } from 'next-seo';
 
