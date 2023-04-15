@@ -4,16 +4,17 @@ const Home = () => (
   <>
     <NextSeo
       title="Reliable Portable | Porta Potty Rentals and Restroom Rentals"
-      description="Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area."
+      description="Local porta potty rentals for events, job sites or residential needs. Cheap and reliable restroom rentals in your area."
       keywords="Reliable Portable, Porta Potty Rental, porta potty site, portable restroom rental, porta toilet rental"
       language="English"
-      canonical="https://www.reliableportable.com/"
+      canonical="https://www.reliableportable.com"
       openGraph={{
-        url: "https://www.reliableportable.com/",
-        title:
-          "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
-        description:
-          "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
+        type: "website",
+        locale: "en_US",
+        url: "https://www.reliableportable.com",
+        site_name: "Reliable Portable",
+        title: "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
+        description: "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
         images: [
           {
             url: "icon.png",
@@ -30,8 +31,7 @@ const Home = () => (
           { url: "icon.png" },
           { url: "icon.png" },
         ],
-        type: "website",
-        site_name: "Reliable Portable",
+        updated_time: "2023-04-15T12:34:56Z",
       }}
     />
     <p>Porta Potty Rental</p>
