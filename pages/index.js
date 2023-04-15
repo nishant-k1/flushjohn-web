@@ -1,31 +1,18 @@
 import React from "react";
 import homeStyles from "../styles/Home.module.css";
-import QuickQuote from "../components/QuickQuote";
 import homeData from "../components/TextData";
 import { FaTruckLoading, FaPhoneAlt } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
-// import { Event } from "../lib/analytics";
-import { NextSeo } from "next-seo";
-import Head from "next/head";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
-
-const SEO = {
-  title:
-    "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
-  description:
-    "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
-};
+import DefaultSeo from "../config/Meta";
 
 const Section1 = () => {
-  const [clientWidth, setClientWidth] = React.useContext(ClientWidthContext);
-
   return (
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
         <div className={homeStyles.section1}>
           <h1>{homeData.section1.title}</h1>
-          {/* {clientWidth > 600 && <QuickQuote />} */}
         </div>
       </div>
     </div>
@@ -39,11 +26,6 @@ const Section2 = () => {
         <div className={homeStyles.section2}>
           <h2>{homeData.section2.heading}</h2>
           <div className={homeStyles.benefitsDiv}>
-            {/* <div className={homeStyles.wrapper}>
-              <a title='porta potty rental'iFillDollarCircle className={homeStyles.section2Icons} />
-              <h3>{homeData.section2.h3}</h3>
-              <p>{homeData.section2.p1}</p>
-            </div> */}
             <div className={homeStyles.wrapper}>
               <RiTimeFill className={homeStyles.section2Icons} />
               <h3>{homeData.section2.h1}</h3>
@@ -134,13 +116,7 @@ const Section4 = (props) => {
 const Home = () => {
   return (
     <>
-      <NextSeo {...SEO} />
-      <Head>
-        <meta
-          name="keywords"
-          content={`porta potty rental in california, porta potty rental near me, porta john rental in New Jersey, portable restroom rental in Indiana, rent a toilet in Michigan`}
-        />
-      </Head>
+      <DefaultSeo />
       <Section1 />
       <Section2 />
       <Section3 />
