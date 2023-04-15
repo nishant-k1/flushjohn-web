@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultSeo } from "next-seo";
+import { DefaultSeo, LocalBusinessJsonLd } from "next-seo";
 import SEO from "../next-seo.config";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
@@ -66,6 +66,25 @@ function MyApp({ Component, pageProps }) {
                 <Header />
                 <Nav />
                 <DefaultSeo {...SEO} />
+                  <LocalBusinessJsonLd
+                    type="LocalBusiness"
+                    id="https://www.reliableportable.com/#local-business"
+                    name="Reliable Portable"
+                    description="We locally offer a wide range of portable toilet rentals and hand wash station rentals for all your events and job site needs."
+                    url="https://www.reliableportable.com/"
+                    // telephone="123-456-7890"
+                    // address={{
+                    //   streetAddress: "123 Main St",
+                    //   addressLocality: "Anytown",
+                    //   addressRegion: "CA",
+                    //   postalCode: "12345",
+                    //   addressCountry: "US"
+                    // }}
+                    openingHours={[
+                      "Monday-Friday 9:00-17:00",
+                      "Saturday 9:00-12:00"
+                    ]}
+                  />
                 <Component {...pageProps} />
                 <QuickQuote />
                 <Testimonial />
