@@ -123,5 +123,4 @@ const Home = () => <React.Fragment>
   <Section4 {...homeData.sectionLocation} />
 </React.Fragment>;
 
-
 export default Home;
