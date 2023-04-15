@@ -40,7 +40,7 @@ const Section2 = () => {
           <h2>{homeData.section2.heading}</h2>
           <div className={homeStyles.benefitsDiv}>
             {/* <div className={homeStyles.wrapper}>
-              <AiFillDollarCircle className={homeStyles.section2Icons} />
+              <a title='porta potty rental'iFillDollarCircle className={homeStyles.section2Icons} />
               <h3>{homeData.section2.h3}</h3>
               <p>{homeData.section2.p1}</p>
             </div> */}

@@ -26,7 +26,7 @@ const Nav = () => {
               color="#ffffff"
             />
           </div>
-          <a
+          <a title='porta potty rental'
             className={navStyles.phoneMobile}
             href="tel: +1 (855) 780-3061"
             onClick={(e) => {
@@ -59,7 +59,7 @@ const Nav = () => {
               </Link>
             </li>
             <li className={navStyles.phone}>
-              <a
+              <a title='porta potty rental'
                 href="tel: +1 (855) 780-3061"
                 type="button"
                 onClick={(e) => {
@@ -67,7 +67,7 @@ const Nav = () => {
                 }}
               >
                 <div>
-                  <h1>Order By Phone : </h1>
+                  <h2>Order By Phone : </h2>
                   <div>
                     <FaPhoneAlt />
                     (855) 780-3061

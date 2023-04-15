@@ -5,6 +5,8 @@ const Home = () => (
     <NextSeo
       title="Reliable Portable | Porta Potty Rentals and Restroom Rentals"
       description="Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area."
+      keywords="Reliable Portable, Porta Potty Rental, porta potty site, portable restroom rental, porta toilet rental"
+      language="English"
       canonical="https://www.reliableportable.com/"
       openGraph={{
         url: "https://www.reliableportable.com/",
