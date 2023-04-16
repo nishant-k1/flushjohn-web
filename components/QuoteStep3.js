@@ -105,8 +105,8 @@ const QuoteStep3 = () => {
             setFormValues((prevValues) => {
               return { ...prevValues, ...values };
             });
-            notify();
             await axios.post(`/api/quote`, values);
+            setTimeout(() => { notify() }, 2000);
             setStep(1);
             setFormValues((prevValues) => {
               return {

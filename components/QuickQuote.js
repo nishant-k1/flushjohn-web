@@ -49,9 +49,8 @@ const QuickQuote = () => {
     }
   };
 
-
   React.useEffect(() => {
-    if (typeof window) {
+    if (typeof window && clientWidth > 600) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
@@ -93,7 +92,8 @@ const QuickQuote = () => {
             // Event("Request quote", "Prompt Form Submit", "PFS");
             try {
               const res = await axios.post(`/api/quickQuote`, values);
-              res.status === 200 && notify();
+              // res.status === 200 && notify();
+              setTimeout(() => { notify() }, 2000);
               console.log(res);
             } catch (err) {
               console.log(err);

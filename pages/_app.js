@@ -17,7 +17,7 @@ import { SidebarContext } from "./../contexts/SidebarContext";
 import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
-  const [clientWidth, setClientWidth] = React.useState(null);
+  const [clientWidth, setClientWidth] = React.useState(typeof window !== 'undefined' ? window.innerWidth : null);
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
 
   React.useEffect(() => {
@@ -29,19 +29,19 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   const [active, setActive] = React.useState(false);
-  
+
   const handleResize = React.useCallback(() => {
     setClientWidth(window.innerWidth);
   }, []);
 
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window) {
       handleResize();
     }
   }, [handleResize]);
 
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window) {
       // modal container
       if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
         document.documentElement.style.overflowY = "hidden"; // firefox, chrome
