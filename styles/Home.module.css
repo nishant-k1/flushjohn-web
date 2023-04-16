@@ -14,11 +14,13 @@
   margin: 0;
   color: rgba(0, 0, 0, 0.829);
 }
+
 .section h1 {
   color: rgb(255, 255, 255);
   font-weight: 500;
   font-size: x-large;
 }
+
 @media only screen and (max-width: 600px) {
   .section h1 {
     padding: 0;
@@ -26,6 +28,7 @@
     font-weight: 400;
   }
 }
+
 .container {
   padding: 0 32px;
   margin: 0 auto;
@@ -41,7 +44,7 @@
   background-repeat: no-repeat;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 912px) {
   .section.section1Section {
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
       url(/assets/hero1.jpg); */
@@ -51,14 +54,16 @@
     padding: 4rem 0;
   }
 }
+
 .section1 {
-  padding: 0;
+  padding: 10rem 0;
   margin: 0;
-  height: 75vh;
+  height: fit-content;
   display: grid;
   position: relative;
   grid-template-columns: repeat(2, 1fr);
 }
+
 @media only screen and (max-width: 600px) {
   .section1 {
     grid-template-columns: 1fr;
@@ -67,6 +72,7 @@
     height: fit-content;
   }
 }
+
 .discount {
   height: 4.5rem;
   width: 4.5rem;
@@ -287,11 +293,13 @@
   line-height: 1.5rem;
   font-weight: 200;
 }
+
+
+
 /* desktop */
 @media screen and (min-width: 768px) {
   .section .section1Section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url(/assets/hero.svg);
+    background-image: url(/assets/hero.svg);
     background-position: bottom;
     background-size: cover;
     height: 600px;
@@ -302,7 +310,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    padding: 0;
+    padding: 12rem 0;
   }
 
   .section1start {

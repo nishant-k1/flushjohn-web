@@ -3,6 +3,7 @@ import navStyles from "../styles/Nav.module.css";
 import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../contexts/SidebarContext";
+
 // import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "./../contexts/QuickQuoteContext/index";
@@ -35,10 +36,13 @@ const Nav = () => {
               // Event("Request quote", "Mobile Phone Call", "MPC");
             }}
           >
-            <div
-              style={{ display: "grid", gridTemplateColumns: "max-content" }}
-            >
-              <p style={{ textAlign: "center", margin: 0 }}>Order By Phone</p>
+            <div style={{ 
+              display: "grid", 
+              gridTemplateColumns: "max-content max-content", 
+              columnGap:".5rem", 
+              justifyContent:'center' 
+            }} >
+              <p style={{ textAlign: "center", margin: 0 }}>Order By Phone:</p>
               <div>
                 <FaPhoneAlt />
                 (855) 780-3061

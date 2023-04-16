@@ -1,7 +1,7 @@
 const homeData = {
   section1: {
     title:
-      "We locally offer a wide range of portable toilet rentals and hand wash station rentals for all your events and job site needs.",
+      "We offer a wide range of portable toilet rentals and hand wash station rentals for all your events, job sites and residential needs.",
   },
 
   section2: {
