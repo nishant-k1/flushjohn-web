@@ -18,8 +18,10 @@
 }
 .closeIcon {
   position: absolute;
+  opacity: 0.8;
   color: black;
-  top: 12px;
+  font-size: xx-large;
+  top: 0;
   right: 0;
 }
 /* mobile  */
