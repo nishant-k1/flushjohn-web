@@ -18,13 +18,13 @@ const Nav = () => {
         <div className={navStyles.nav}>
           <div className={navStyles.hamburger}>
             <Hamburger
-              className={navStyles.hamburger1}
               toggled={active}
               toggle={() => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
               color="#ffffff"
+              // color="#010c27ce"
               size={20}
             />
           </div>

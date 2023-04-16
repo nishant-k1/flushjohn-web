@@ -1,4 +1,4 @@
-import { FaPinterestSquare } from "react-icons/fa";
+import React from "react";
 import headerStyles from "../styles/Header.module.css";
 import Link from "next/link";
 import FacebookIcon from "@mui/icons-material/Facebook";

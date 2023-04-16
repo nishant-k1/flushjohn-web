@@ -35,8 +35,9 @@
 }
 
 .icon {
-  height: 2rem;
-  width: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  color: white;
   background-color: transparent;
   transition: 0.5s;
 }
@@ -46,7 +47,7 @@
   transition: 0.5s;
 }
 
-.fb {
+/* .fb {
   color: #4867aa;
 }
 
@@ -64,7 +65,7 @@
 
 .pinterest {
   color: #e11a20;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .container img {
@@ -75,7 +76,7 @@
   }
 
   .icon {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1rem;
+    width: 1rem;
   }
 }
