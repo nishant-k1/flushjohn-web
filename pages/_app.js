@@ -18,7 +18,16 @@ import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }) {
   const [clientWidth, setClientWidth] = React.useState(null);
-  const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(true);
+  const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout((
+      () => {
+        setQuickQuoteViewStatus(true);
+      }
+    ), 6000);
+  }, [])
+
   const [active, setActive] = React.useState(false);
   
   const handleResize = React.useCallback(() => {
