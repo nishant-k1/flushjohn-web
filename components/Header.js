@@ -21,35 +21,35 @@ const Header = () => {
           <li>
             <Link href="https://www.facebook.com/portarental">
               <FacebookIcon
-                className={`${headerStyles.icon} ${headerStyles.fb}`}
+                className={headerStyles.icon}
               />
             </Link>
           </li>
           <li>
             <Link href="https://twitter.com/reliableportable">
               <TwitterIcon
-                className={`${headerStyles.icon} ${headerStyles.twitter}`}
+                className={headerStyles.icon}
               />
             </Link>
           </li>
           <li>
             <Link href="https://www.instagram.com/rent_a_porta/">
               <InstagramIcon
-                className={`${headerStyles.icon} ${headerStyles.instagram}`}
+                className={headerStyles.icon}
               />
             </Link>
           </li>
           <li>
             <Link href="linkedin.com/company/rent-a-porta">
               <LinkedInIcon
-                className={`${headerStyles.icon} ${headerStyles.linkedin}`}
+                className={headerStyles.icon}
               />
             </Link>
           </li>
           <li>
             <Link href="https://www.pinterest.com/renta_porta">
               <PinterestIcon
-                className={`${headerStyles.icon} ${headerStyles.pinterest}`}
+                className={headerStyles.icon}
               />
             </Link>
           </li>
