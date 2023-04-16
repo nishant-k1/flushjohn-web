@@ -20,10 +20,19 @@ function MyApp({ Component, pageProps }) {
   const [clientWidth, setClientWidth] = React.useState(null);
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(true);
   const [active, setActive] = React.useState(false);
+  
+  const handleResize = React.useCallback(() => {
+    setClientWidth(window.innerWidth);
+  }, []);
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      setClientWidth(window.innerWidth);
+      handleResize();
+    }
+  }, [handleResize]);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
       // modal container
       if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
         document.documentElement.style.overflowY = "hidden"; // firefox, chrome
@@ -33,17 +42,16 @@ function MyApp({ Component, pageProps }) {
         // document.body.scroll = "yes"; // ie only
       }
     }
+  }, [quickQuoteViewStatus, clientWidth, active]);
+
+  React.useEffect(() => {
     if (clientWidth) {
-      window.addEventListener("resize", () => {
-        setClientWidth(window.innerWidth);
-      });
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }
-    return () => {
-      window.removeEventListener("resize", () => {
-        setClientWidth(window.innerWidth);
-      });
-    };
-  }, [clientWidth, quickQuoteViewStatus, active]);
+  }, [clientWidth, handleResize]);
 
   return (
     <React.Fragment>
@@ -70,7 +78,7 @@ function MyApp({ Component, pageProps }) {
                     type="LocalBusiness"
                     id="https://www.reliableportable.com/#local-business"
                     name="Reliable Portable"
-                    description="We locally offer a wide range of portable toilet rentals and hand wash station rentals for all your events and job site needs."
+                    description="We offer a wide range of portable toilet rentals and hand wash station rentals for all your events and job site needs."
                     url="https://www.reliableportable.com/"
                     // telephone="123-456-7890"
                     // address={{

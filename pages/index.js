@@ -5,7 +5,7 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
-const Section1 = () => {
+const Section1 = React.memo(() => {
   return (
     <div className={`${homeStyles.section} ${homeStyles.section1Section}`}>
       <div className={homeStyles.container}>
@@ -15,9 +15,9 @@ const Section1 = () => {
       </div>
     </div>
   );
-};
+});
 
-const Section2 = () => {
+const Section2 = React.memo(() => {
   return (
     <div className={`${homeStyles.section} ${homeStyles.section2Section}`}>
       <div className={homeStyles.container}>
@@ -49,9 +49,9 @@ const Section2 = () => {
       </div>
     </div>
   );
-};
+});
 
-const Section3 = () => {
+const Section3 = React.memo(() => {
   return (
     <div className={`${homeStyles.section} ${homeStyles.section3Section}`}>
       <div className={homeStyles.container}>
@@ -81,9 +81,9 @@ const Section3 = () => {
       </div>
     </div>
   );
-};
+});
 
-const Section4 = (props) => {
+const Section4 = React.memo((props) => {
   return (
     <div className={`${homeStyles.section} ${homeStyles.section4Section}`}>
       <div className={homeStyles.container}>
@@ -115,7 +115,7 @@ const Section4 = (props) => {
       </div>
     </div>
   );
-};
+});
 const Home = () => <React.Fragment>
   <Section1 />
   <Section2 />
