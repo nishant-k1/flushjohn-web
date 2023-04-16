@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
       () => {
         setQuickQuoteViewStatus(true);
       }
-    ), 2000);
+    ), 9000);
   }, [])
 
   const [active, setActive] = React.useState(false);
