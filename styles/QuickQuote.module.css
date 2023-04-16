@@ -1,9 +1,9 @@
 .form {
-  background-color: #9b023dc2;
-  /* background-color: rgba(165, 163, 163, 0.808); */
+  /* background-color: #9b023dc2; */
+  background-color: rgba(165, 163, 163, 0.808);
   /* box-shadow: rgba(0, 0, 0, 0.35); */
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-  padding: 1.5rem;
+  padding: 6px;
   position: fixed;
   bottom: 4rem;
   right: 2rem;
@@ -19,12 +19,12 @@
 /* mobile  */
 @media only screen and (max-width: 600px) {
   .form {
-    position: fixed;
-    right: 36px;
-    top: 0;
+    right: 12px;
+    padding: 4px;
     height: fit-content;
+    width: 250px;
     margin: 0 auto;
-    background-color: #ef6489ef;
+    /* background-color: #ef6489ef; */
     z-index: 3;
     transition: 0.3s;
   }
@@ -127,7 +127,7 @@
   outline: 0;
   padding: 16px 21px;
   position: fixed;
-  right: 0;
+  right: 12px;
   bottom: 0;
   border: 0;
   text-align: center;
