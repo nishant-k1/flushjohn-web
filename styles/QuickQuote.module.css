@@ -29,7 +29,7 @@
     padding: 4px;
     height: fit-content;
     width: 250px;
-    margin: 12px auto;
+    margin: 0 auto;
     /* background-color: #ef6489ef; */
     z-index: 3;
     transition: 0.3s;
@@ -128,10 +128,10 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   outline: 0;
-  padding: 16px 21px;
+  padding: 6px 10px;
   position: fixed;
   right: 12px;
   bottom: 0;
@@ -145,6 +145,8 @@
 }
 @media screen and (min-width: 600px) {
   .quickQuoteBtn {
+    font-size: 18px;
+    padding: 16px 21px;
     position: fixed;
     right: 2rem;
     bottom: 0;

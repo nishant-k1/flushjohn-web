@@ -161,7 +161,9 @@
 
 /*********************mobile section-3 ****************************/
 .section.section3Section {
-  background-color: #8d1845;
+  /* background-color: #8d1845; */
+  background-color: #040A1D;
+  opacity: .9;
   padding-bottom: 4rem;
 }
 
