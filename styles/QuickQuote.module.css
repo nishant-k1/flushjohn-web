@@ -16,6 +16,12 @@
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+.closeIcon {
+  position: absolute;
+  color: black;
+  top: 12px;
+  right: 0;
+}
 /* mobile  */
 @media only screen and (max-width: 600px) {
   .form {
@@ -23,7 +29,7 @@
     padding: 4px;
     height: fit-content;
     width: 250px;
-    margin: 0 auto;
+    margin: 12px auto;
     /* background-color: #ef6489ef; */
     z-index: 3;
     transition: 0.3s;

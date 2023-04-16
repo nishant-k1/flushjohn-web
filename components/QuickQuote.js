@@ -17,6 +17,7 @@ import QuickQuoteButton from "./QuickQuoteButton";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
 import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import ModalBackground from "./ModalBackground";
+import CloseIcon from '@mui/icons-material/Close';
 
 const quickQuoteValidationSchema = Yup.object().shape({
   portableUnits: Yup.array().of(
@@ -110,13 +111,16 @@ const QuickQuote = () => {
           }}
         >
           <Form className={quickQuoteStyles.form}>
+            { quickQuoteViewStatus && clientWidth <= 600 
+              && <CloseIcon className={quickQuoteStyles.closeIcon} onClick={() => {
+                setQuickQuoteViewStatus(false);
+              }} /> }
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <h2>Quick Free Quote</h2>
               </Grid>
               <Grid item xs={12}>
                 <MyMultipleSelectCheckmarks
-                  class={quickQuoteStyles.multiSelect}
                   label="Portable Units"
                   name="portableUnits"
                   isMulti
