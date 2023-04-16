@@ -14,7 +14,6 @@ const Header = () => {
         <Link href="/">
           <img
             src="brand-logo-white.svg"
-            style={{ height: "5rem" }}
             alt="brand-logo"
           />
         </Link>
