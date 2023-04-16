@@ -121,9 +121,10 @@ const QuickQuote = () => {
               </Grid>
               <Grid item xs={12}>
                 <MyMultipleSelectCheckmarks
+                  // className={quickQuoteStyles.multiSelect}
                   label="Portable Units"
                   name="portableUnits"
-                  isMulti
+                  // isMulti
                 />
               </Grid>
               <Grid item xs={12} md={6}>

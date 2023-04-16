@@ -4905,6 +4905,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"install@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "install@npm:0.13.0"
+  checksum: 645bad1253115309c64d791c901caa8acd61a4012731015e3ee5eef88baaca026f3a48dc15a73a2827f7f5b05609804968ea1e3c6525dc0b3a21241837b9cf59
+  languageName: node
+  linkType: hard
+
 "internal-slot@npm:^1.0.3, internal-slot@npm:^1.0.4":
   version: 1.0.5
   resolution: "internal-slot@npm:1.0.5"
@@ -7252,6 +7259,7 @@ __metadata:
     express: ^4.18.2
     formik: 2.2.9
     hamburger-react: 2.5.0
+    install: ^0.13.0
     moment: 2.29.4
     next: 13.0.1
     next-pwa: 5.6.0
@@ -7271,6 +7279,7 @@ __metadata:
     react-slideshow-image: 4.0.5
     react-toastify: 9.0.8
     react-tooltip: 4.4.3
+    react-transition-group: ^4.4.5
     styled-components: 5.3.6
     webpack: 5.74.0
     workbox-webpack-plugin: 6.5.4
