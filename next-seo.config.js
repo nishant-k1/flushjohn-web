@@ -13,7 +13,7 @@ export default {
     description: "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
     images: [
       {
-        url: "icon.png",
+        url: "/windows11/LargeTile.scale-200.png",
         width: 800,
         height: 600,
         alt: "Og Image Alt",
