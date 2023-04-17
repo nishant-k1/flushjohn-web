@@ -1,29 +1,9 @@
-//robots.txt
-
-# Block all crawlers for /disclaimer
 User-agent: *
 Disallow: /disclaimer
-
-# Block all crawlers for /terms
-User-agent: *
 Disallow: /terms
-
-# Block all crawlers for /privacy
-User-agent: *
 Disallow: /privacy
-
-# Allow all crawlers
-User-agent: *
 Allow: /
-
-# Allow all crawlers
-User-agent: *
 Allow: /quote
-
-# Allow all crawlers
-User-agent: *
 Allow: /products
-
-# Allow all crawlers
-User-agent: *
 Allow: /contact
+sitemap: /sitemap.xml
