@@ -43,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:13.0.1"],\
             ["express", "npm:4.18.2"],\
             ["formik", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.2.9"],\
+            ["framer-motion", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:10.12.2"],\
             ["hamburger-react", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.5.0"],\
             ["install", "npm:0.13.0"],\
             ["moment", "npm:2.29.4"],\
@@ -2514,6 +2515,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@emotion/is-prop-valid", [\
+        ["npm:0.8.8", {\
+          "packageLocation": "./.yarn/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-bb7ec6d48c.zip/node_modules/@emotion/is-prop-valid/",\
+          "packageDependencies": [\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@emotion/memoize", "npm:0.7.4"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/@emotion-is-prop-valid-npm-1.2.0-332d343e3d-cc7a19850a.zip/node_modules/@emotion/is-prop-valid/",\
           "packageDependencies": [\
@@ -2524,6 +2533,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@emotion/memoize", [\
+        ["npm:0.7.4", {\
+          "packageLocation": "./.yarn/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-4e3920d4ec.zip/node_modules/@emotion/memoize/",\
+          "packageDependencies": [\
+            ["@emotion/memoize", "npm:0.7.4"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:0.8.0", {\
           "packageLocation": "./.yarn/cache/@emotion-memoize-npm-0.8.0-c5dd451828-c87bb110b8.zip/node_modules/@emotion/memoize/",\
           "packageDependencies": [\
@@ -6394,6 +6410,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["framer-motion", [\
+        ["npm:10.12.2", {\
+          "packageLocation": "./.yarn/cache/framer-motion-npm-10.12.2-9cef6d8e3b-772fdbcd29.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "npm:10.12.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:10.12.2", {\
+          "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-d4a8bbb974/0/cache/framer-motion-npm-10.12.2-9cef6d8e3b-772fdbcd29.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:10.12.2"],\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:18.2.0"],\
+            ["tslib", "npm:2.5.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["fresh", [\
         ["npm:0.5.2", {\
           "packageLocation": "./.yarn/cache/fresh-npm-0.5.2-ad2bb4c0a2-13ea8b08f9.zip/node_modules/fresh/",\
@@ -10243,6 +10287,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:13.0.1"],\
             ["express", "npm:4.18.2"],\
             ["formik", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.2.9"],\
+            ["framer-motion", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:10.12.2"],\
             ["hamburger-react", "virtual:44e84d47287662c7200dc712db2d4d06009edefac9e3811c0b680da04922777631f7fba696382882a0e1ba3cdeff8325cb86052adabf15f9bb95e893a7288b7e#npm:2.5.0"],\
             ["install", "npm:0.13.0"],\
             ["moment", "npm:2.29.4"],\
