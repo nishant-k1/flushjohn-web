@@ -13,7 +13,7 @@ const Header = () => {
       <div className={headerStyles.container}>
         <Link href="/">
           <img
-            src="brand-logo-white.svg"
+            src="reliable_portable_logo.svg"
             alt="brand-logo"
           />
         </Link>

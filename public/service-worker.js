@@ -271,7 +271,7 @@ define("./service-worker.js", ["./workbox-ea903bce"], function (s) {
           revision: "dca31e3410496bb0b9367ddb2f3bc35d",
         },
         {
-          url: "/brand-logo-white.svg",
+          url: "/reliable_portable_logo.svg",
           revision: "6326b5f9fd4727e00ff5661f9d93009c",
         },
         { url: "/favicon.ico", revision: "4757266090e4d1ba98c778610984719d" },

@@ -26,7 +26,7 @@ const Sidebar = () => {
           <Link href="/">
             <img
               onClick={handleClick}
-              src="brand-logo-white.svg"
+              src="reliable_portable_logo.svg"
               alt="brand-logo"
               height="5rem"
               width="8rem"
