@@ -16,6 +16,7 @@
     "*.module.styl"
   ],
   "reactTsScss.references": true,
+<<<<<<< HEAD
   "reactTsScss.codelens": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -34,3 +35,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always"
 }
+=======
+  "reactTsScss.codelens": true
+}
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37

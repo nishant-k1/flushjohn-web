@@ -21,6 +21,7 @@ if (!self.define) {
 
   const singleRequire = (uri, parentUri) => {
     uri = new URL(uri + ".js", parentUri).href;
+<<<<<<< HEAD
     return (
       registry[uri] ||
       new Promise((resolve) => {
@@ -35,6 +36,24 @@ if (!self.define) {
           resolve();
         }
       }).then(() => {
+=======
+    return registry[uri] || (
+      
+        new Promise(resolve => {
+          if ("document" in self) {
+            const script = document.createElement("script");
+            script.src = uri;
+            script.onload = resolve;
+            document.head.appendChild(script);
+          } else {
+            nextDefineUri = uri;
+            importScripts(uri);
+            resolve();
+          }
+        })
+      
+      .then(() => {
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
         let promise = registry[uri];
         if (!promise) {
           throw new Error(`Module ${uri} didn’t register its module`);
@@ -45,15 +64,20 @@ if (!self.define) {
   };
 
   self.define = (depsNames, factory) => {
+<<<<<<< HEAD
     const uri =
       nextDefineUri ||
       ("document" in self ? document.currentScript.src : "") ||
       location.href;
+=======
+    const uri = nextDefineUri || ("document" in self ? document.currentScript.src : "") || location.href;
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
     if (registry[uri]) {
       // Module is already loading or loaded.
       return;
     }
     let exports = {};
+<<<<<<< HEAD
     const require = (depUri) => singleRequire(depUri, uri);
     const specialDeps = {
       module: { uri },
@@ -63,17 +87,33 @@ if (!self.define) {
     registry[uri] = Promise.all(
       depsNames.map((depName) => specialDeps[depName] || require(depName))
     ).then((deps) => {
+=======
+    const require = depUri => singleRequire(depUri, uri);
+    const specialDeps = {
+      module: { uri },
+      exports,
+      require
+    };
+    registry[uri] = Promise.all(depsNames.map(
+      depName => specialDeps[depName] || require(depName)
+    )).then(deps => {
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
       factory(...deps);
       return exports;
     });
   };
 }
+<<<<<<< HEAD
 define(["./workbox-327c579b"], function (workbox) {
   "use strict";
+=======
+define(['./workbox-327c579b'], function (workbox) { 'use strict';
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
 
   importScripts();
   self.skipWaiting();
   workbox.clientsClaim();
+<<<<<<< HEAD
   workbox.registerRoute(
     "/",
     new workbox.NetworkFirst({
@@ -103,5 +143,32 @@ define(["./workbox-327c579b"], function (workbox) {
     }),
     "GET"
   );
+=======
+  workbox.registerRoute("/", new workbox.NetworkFirst({
+    "cacheName": "start-url",
+    plugins: [{
+      cacheWillUpdate: async ({
+        request,
+        response,
+        event,
+        state
+      }) => {
+        if (response && response.type === 'opaqueredirect') {
+          return new Response(response.body, {
+            status: 200,
+            statusText: 'OK',
+            headers: response.headers
+          });
+        }
+        return response;
+      }
+    }]
+  }), 'GET');
+  workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
+    "cacheName": "dev",
+    plugins: []
+  }), 'GET');
+
+>>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
 });
 //# sourceMappingURL=sw.js.map

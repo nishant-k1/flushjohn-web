@@ -19,10 +19,7 @@ a {
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Oswald", sans-serif;
 }
 
 /* width */
@@ -46,9 +43,4 @@ width ::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:hover {
   background: #1d47ec;
   transition: 0.3s;
-}
-
-:root {
-  --primary-color: blue;
-  --akcent-color: orange;
 }
