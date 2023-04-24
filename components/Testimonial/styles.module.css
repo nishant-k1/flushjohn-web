@@ -1,0 +1,30 @@
+.section {
+  /* background-image: url("../public/assets/hero_bg.svg"); */
+  background-color: var(--primary-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  background-size: cover;
+}
+
+.heroWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+
+.heroTitle {
+  display: grid;
+  align-items: center;
+  justify-items: start;
+}
+
+.heroImage {
+  display: grid;
+  align-items: center;
+  justify-content: end;
+}
+.heroImage image {
+  height: 75%;
+  width: fit-content;
+}

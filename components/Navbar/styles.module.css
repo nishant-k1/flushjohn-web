@@ -1,0 +1,72 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+  padding: 0 16px;
+}
+.scrolled {
+  background: rgba(8, 8, 46, 0.932);
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: space-between;
+}
+
+.logo {
+  height: 4rem;
+  width: 6rem;
+}
+
+.hamburger {
+}
+
+.navLinks {
+  display: none;
+}
+
+.active a {
+  color: yellow;
+}
+
+.link,
+.link a {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .logo {
+    height: 4rem;
+    width: 8rem;
+  }
+  .hamburger {
+    display: none;
+  }
+  .navLinks {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-items: center;
+    column-gap: 22px;
+  }
+  .navLinks a {
+    color: red;
+  }
+  .link,
+  .link a {
+    color: white;
+  }
+}

@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /disclaimer
+Disallow: /terms
+Disallow: /privacy
+Allow: /
+Allow: /quote
+Allow: /products
+Allow: /contact
+sitemap: /sitemap.xml

@@ -1,0 +1,36 @@
+{
+  "reactTsScss.autoComplete": true,
+  "reactTsScss.definition": true,
+  "reactTsScss.peekProperties": true,
+  "reactTsScss.cssAutoComplete": true,
+  "reactTsScss.tsconfig": "./tsconfig.json",
+  "reactTsScss.cssDefinitions": true,
+  "reactTsScss.diagnostics": true,
+  "reactTsScss.baseDir": "src",
+  "reactTsScss.cssSyntaxColor": true,
+  "reactTsScss.cleanUpDefs": [
+    "*.module.css",
+    "*.module.scss",
+    "*.module.sass",
+    "*.module.less",
+    "*.module.styl"
+  ],
+  "reactTsScss.references": true,
+  "reactTsScss.codelens": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "smooth",
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "markdown.extension.tableFormatter.delimiterRowNoPadding": true,
+  "markdown.extension.tableFormatter.normalizeIndentation": true,
+  "javascript.format.semicolons": "insert",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.cursorBlinking": true,
+  "editor.fontFamily": "'JetBrains Mono Thin', Consolas, 'Courier New', monospace",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}

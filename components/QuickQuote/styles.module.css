@@ -1,0 +1,179 @@
+.form {
+  /* background-color: #9b023dc2; */
+  background-color: rgba(165, 163, 163, 0.808);
+  /* box-shadow: rgba(0, 0, 0, 0.35); */
+  /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; */
+  padding: 6px;
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem;
+  max-width: 300px;
+  height: fit-content;
+  z-index: 3;
+  /* border-radius: 12px; */
+  border: 1px solid rgba(255, 255, 255, 0.308);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.closeIcon {
+  position: absolute;
+  opacity: 0.8;
+  color: black;
+  font-size: xx-large;
+  top: 0;
+  right: 0;
+}
+/* mobile  */
+@media only screen and (max-width: 600px) {
+  .form {
+    right: 12px;
+    padding: 4px;
+    height: fit-content;
+    width: 250px;
+    margin: 0 auto;
+    /* background-color: #ef6489ef; */
+    z-index: 3;
+    transition: 0.3s;
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 768px) {
+  .form {
+    width: 300px;
+  }
+}
+.form h2 {
+  text-align: left;
+  color: white;
+  font-weight: 600;
+}
+.form input,
+.form textarea {
+  width: 100%;
+  background-color: white;
+  margin: 0 !important;
+  height: 2rem;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.486);
+  padding-left: 12px;
+  font-size: 14px;
+  color: black;
+  transition: 0.5s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.form textarea {
+  height: 4rem;
+}
+.form input:hover,
+.form textarea:hover {
+  border: 1.5px solid rgb(50, 132, 255);
+}
+.form input:focus,
+.form textarea:focus {
+  border: 1.5px solid rgb(50, 132, 255);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #df194e;
+  font-weight: 600;
+}
+.form input:focus::placeholder,
+.form textarea:focus::placeholder {
+  color: rgb(19, 113, 255, 0.5);
+  font-weight: 600;
+}
+
+.date {
+  width: 100%;
+}
+.date input {
+  transition: 0.3s;
+  width: 100%;
+  border: none;
+  padding-left: 0;
+  font-size: 14px;
+  color: black !important;
+}
+.date input:hover {
+  border: none;
+}
+.date input:focus {
+  border: none;
+}
+.date input::placeholder {
+  color: #df194e !important;
+  font-weight: 600;
+}
+
+.date input:focus::placeholder {
+  color: rgb(19, 113, 255, 0.5) !important;
+  font-weight: 600;
+}
+
+.error {
+  padding: 0 12px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.671);
+  color: rgba(255, 0, 0, 0.747);
+}
+
+.quickQuoteBtn {
+  background-color: #a00943c7;
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  outline: 0;
+  padding: 6px 10px;
+  position: fixed;
+  right: 12px;
+  bottom: 0;
+  border: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+@media screen and (min-width: 600px) {
+  .quickQuoteBtn {
+    font-size: 18px;
+    padding: 16px 21px;
+    position: fixed;
+    right: 2rem;
+    bottom: 0;
+    font-size: 14px;
+    padding: 16px 48px;
+  }
+}
+.quickQuoteBtn:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s;
+  width: 92%;
+
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.quickQuoteBtn:hover {
+  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
+    rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
+  transform: scale(1.05);
+}

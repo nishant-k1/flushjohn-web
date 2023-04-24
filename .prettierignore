@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+.next
+.vscode
+.yarn
+coverage
