@@ -32,5 +32,6 @@
   "terminal.integrated.cursorBlinking": true,
   "editor.fontFamily": "'JetBrains Mono Thin', Consolas, 'Courier New', monospace",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontSize": 16
 }

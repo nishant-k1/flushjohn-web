@@ -3,7 +3,7 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
-export const home = {
+export const home_data = {
   hero: {
     title:
       "We offer a wide range of portable toilet rentals and hand wash station rentals for all your events, job sites and residential needs.",
@@ -30,15 +30,15 @@ export const home = {
       {
         id: 3,
         image: <RiTimeFill />,
-        subTitle: "Free & Quick Delivery",
-        subContent:
+        sub_title: "Free & Quick Delivery",
+        sub_content:
           "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
       },
       {
         id: 4,
         image: <GiVacuumCleaner />,
-        subTitle: "Free Porta Potty Servicing",
-        subContent:
+        sub_title: "Free Porta Potty Servicing",
+        sub_content:
           "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
       },
     ],
@@ -154,7 +154,7 @@ export const testimonials = {
   ],
 };
 
-export const productsData = {
+export const products_data = {
   h1: "Standard Portable Restroom",
   h2: "Standard Portable Restroom",
   h3: "ADA-Compliant Portable Restroom",
@@ -169,7 +169,7 @@ export const productsData = {
   p6: "The flushable porta potties are self contained. It has a flush and a sink attached to it from inside.",
 };
 
-export const slideShowData = {
+export const slide_show_data = {
   ESPR: "sps_#EF648A.svg",
   EDFR: "flushable.svg",
   EACR: "ada_blue.svg",
