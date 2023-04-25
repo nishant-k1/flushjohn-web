@@ -6,7 +6,7 @@ import { useField } from "formik";
 import moment from "moment";
 import quickQuoteStyles from "../../styles/QuickQuote.module.css";
 
-const MyDateField = ({...props }) => {
+const MyDateField = ({ ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
@@ -34,7 +34,10 @@ const MyDateField = ({...props }) => {
         <div className={quickQuoteStyles.error}>
           {error + " "}
           <span>
-            <img style={{ height: "1.5rem" }} src="/assets/error.png" />
+            <img
+              style={{ height: "1.5rem" }}
+              src="/assets/error.png"
+            />
           </span>
         </div>
       ) : null}

@@ -8,7 +8,8 @@
     "start": "next start",
     "format": "yarn prettier --write .",
     "upgrade": "yarn upgrade",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node -r @yarnpkg/pnpify --require @yarnpkg/pnpify ./node_modules/.bin/next build"
   },
   "browser": {
     "child_process": false
@@ -57,6 +58,7 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
+    "@yarnpkg/pnp": "^4.0.0-rc.42",
     "eslint": "^8.39.0",
     "eslint-config-next": "13.0.1",
     "lint-staged": "^13.2.1",

@@ -23,11 +23,6 @@ export default async function quoteHandler(req, res) {
         "December",
       ];
       const deliveryDate = new Date(`${req.body.deliveryDate}`);
-<<<<<<< HEAD
-
-=======
-      
->>>>>>> 0436cd482dfd2902c5e8d4bd0ab5e8b22d9c8b37
       const longDeliveryDate = `${
         months[deliveryDate.getMonth()]
       } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
