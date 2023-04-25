@@ -92,7 +92,7 @@ function MyApp({ Component, pageProps }) {
                 <Navbar />
                 <Component {...pageProps} />
                 <QuickQuote />
-                <Testimonial {...testimonials} />
+                {/* <Testimonial {...testimonials} /> */}
                 <Footer />
                 <ToastContainer />
               </Layout>

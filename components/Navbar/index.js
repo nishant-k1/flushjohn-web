@@ -10,8 +10,10 @@ import { QuickQuoteContext } from "../../contexts/QuickQuoteContext/index";
 
 const Navbar = () => {
   const { active, setActive } = React.useContext(SidebarContext);
+
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
+
   const [activeLink, setActiveLink] = React.useState("home");
   const [scrolled, setScrolled] = React.useState(false);
   React.useEffect(() => {
@@ -53,7 +55,7 @@ const Navbar = () => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
-              color="#ffffff"
+              color="#000000"
               size={20}
             />
           </div>
