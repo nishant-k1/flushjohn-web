@@ -55,44 +55,6 @@ export const home = {
     p4: "We are always ready to supply portable equipments like portable toilet and handwash stations in the areas those affected by the disasters.",
   },
 
-  testimonials: {
-    heading: "What do our customers say",
-    content: [
-      {
-        image: {
-          src: "/assets/testimony2.svg",
-          alt: "https://www.reliableportable.com/",
-        },
-        title: "Terry Miles",
-        body: "The porta potty arrived on time as promised and it was wonderful. They are best porta potty rental service provider.",
-      },
-      {
-        image: {
-          src: "/assets/testimony1.svg",
-          alt: "https://www.reliableportable.com/",
-        },
-        title: "Dean Lacey",
-        body: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
-      },
-      {
-        image: {
-          src: "/assets/testimony2.svg",
-          alt: "https://www.reliableportable.com/",
-        },
-        title: "Christine Barnes",
-        body: "Ordered an event portable toilet unit for a family reunion. The portable toilet arrived the next day of my order.",
-      },
-      {
-        image: {
-          src: "/assets/testimony2.svg",
-          alt: "https://www.reliableportable.com/",
-        },
-        title: "Janet Estremera",
-        body: "Portable toilet was pretty and nice. I had it ordered for a weeding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",
-      },
-    ],
-  },
-
   locations: {
     title: "Our portable toilet service locations",
     list: [
@@ -154,7 +116,45 @@ export const home = {
   },
 };
 
-export const products = {
+export const testimonials = {
+  heading: "What do our customers say",
+  content: [
+    {
+      image: {
+        src: "/assets/testimony2.svg",
+        alt: "https://www.reliableportable.com/",
+      },
+      title: "Terry Miles",
+      body: "The porta potty arrived on time as promised and it was wonderful. They are best porta potty rental service provider.",
+    },
+    {
+      image: {
+        src: "/assets/testimony1.svg",
+        alt: "https://www.reliableportable.com/",
+      },
+      title: "Dean Lacey",
+      body: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
+    },
+    {
+      image: {
+        src: "/assets/testimony2.svg",
+        alt: "https://www.reliableportable.com/",
+      },
+      title: "Christine Barnes",
+      body: "Ordered an event portable toilet unit for a family reunion. The portable toilet arrived the next day of my order.",
+    },
+    {
+      image: {
+        src: "/assets/testimony2.svg",
+        alt: "https://www.reliableportable.com/",
+      },
+      title: "Janet Estremera",
+      body: "Portable toilet was pretty and nice. I had it ordered for a weeding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",
+    },
+  ],
+};
+
+export const productsData = {
   h1: "Standard Portable Restroom",
   h2: "Standard Portable Restroom",
   h3: "ADA-Compliant Portable Restroom",
