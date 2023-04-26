@@ -1,45 +1,95 @@
 .section {
-  /* background-image: url("../public/assets/hero_bg.svg"); */
-  background-color: var(--primary-bg-color);
+  background: var(--secondary-bg-color);
   background-size: cover;
+  background-position-y: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-image: url("../../../public/assets/hero/hero_9.jpg"); */
+  /* filter: blur(8px); */
+  /* -webkit-filter: blur(8px); */
 }
 
 .container {
   max-width: 1100px;
-  padding: 16px;
+  padding: 16px 32px;
   margin: 0 auto;
 }
 
 .heroWrapper {
   display: grid;
   grid-template-columns: 1fr;
+  justify-content: start;
   margin-top: 6rem;
 }
 
 .heroTitle {
   display: grid;
   align-items: start;
-  justify-items: center;
+  justify-items: start;
+  color: var(--primary-text-color);
 }
 
 .heroTitle h1 {
   margin: 0;
   padding: 0;
+  color: var(--primary-text-color);
+}
+
+.heroCta {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 16px;
+  justify-content: start;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.heroCta a {
+  padding: 6px;
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  border-radius: 4px;
+}
+
+.heroCta a:hover {
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+.quote {
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
+  border: 2px solid var(--primary-bg-color);
+}
+
+.phone {
+  background-color: var(--tertiary-bg-color);
+  color: var(--primary-text-color);
+  border: 2px solid var(--primary-bg-color);
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+.phone:hover {
+  background-color: var(--primary-bg-color);
+  transition: background-color;
+  transition-property: background-color;
+  transition-duration: 0.3s;
 }
 
 .heroImage {
   display: grid;
   align-items: start;
   justify-content: center;
+  padding: 16px;
   padding-top: 2.5rem;
-  background: var(--primary-gradient-bg-color);
+  /* background: var(--primary-gradient-bg-color); */
 }
 
 .heroImage img {
-  height: 50%;
-  width: fit-content;
+  height: 100%;
+  width: 100%;
 }
 
 /* tablet device breakpoint: 768px*/
@@ -56,4 +106,19 @@
 
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
+  .heroWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 720px;
+    column-gap: 6rem;
+    margin-top: 0;
+    align-items: center;
+    justify-content: space-between;
+    /* height: 720px; */
+  }
+  .heroImage {
+    align-items: center;
+    justify-content: end;
+    padding: 0;
+  }
 }

@@ -55,7 +55,7 @@ const Navbar = () => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
-              color="#000000"
+              color="white"
               size={20}
             />
           </div>

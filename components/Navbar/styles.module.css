@@ -3,16 +3,19 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--tertiary-bg-color);
+  background-color: var(--secondary-bg-color);
   transition-property: background;
   transition-duration: 0.3s;
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
-  padding: 0 16px;
+  padding: 8px 16px;
+  z-index: 200;
 }
 
 .scrolled {
-  background: var(--neutral-bg-color);
+  background: #0b1122;
+  border-bottom: 1px solid var(--primary-bg-color);
+  border-top: 1px solid var(--primary-bg-color);
   transition-property: background;
   transition-duration: 0.3s;
   transition-delay: 0s;
@@ -37,7 +40,7 @@
 }
 
 .hamburger {
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
 }
 
 .navLinks {
