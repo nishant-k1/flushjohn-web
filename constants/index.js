@@ -8,7 +8,7 @@ export const home_data = {
     title:
       "We offer a wide range of portable toilet rentals and hand wash station rentals for all your events, job sites and residential needs.",
     image: {
-      src: "assets/flushable.svg",
+      src: "assets/hero/hero_fm_1.png",
       alt: "porta_potty",
     },
   },

@@ -1,14 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
-html,
-body {
+:root {
   /* --primary-color: #6e8b3d;
   --secondary-color: #d3d3d3;
   --neutral-color: #ffffff; */
-  --primary-color: #ffa500;
-  --secondary-color: #1e2d56;
-  --neutral-color: #cccccc;
+  --primary-bg-color: #bb7f0e;
+  --secondary-bg-color: #0e1529;
+  --primary-gradient-bg-color: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(254, 255, 0, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  --secondary-gradient-bg-color: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  --tertiary-bg-color: transparent;
+  --neutral-bg-color: #cccccc;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #07080c;
+}
 
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -48,7 +64,12 @@ width ::-webkit-scrollbar {
   transition: 0.3s;
 }
 
-:root {
-  --primary-color: blue;
-  --akcent-color: orange;
+/* breakpoints */
+
+/* tablet device breakpoint: 768px*/
+@media only screen and (min-width: 768px) {
+}
+
+/* desktop device / breakpoint: 1024px */
+@media only screen and (min-width: 1024px) {
 }
