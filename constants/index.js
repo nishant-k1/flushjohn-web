@@ -43,16 +43,38 @@ export const home_data = {
   },
 
   services: {
-    h1: "Events",
-    h2: "Job Sites",
-    h3: "Renovations",
-    h4: "Disaster Relief",
-    p1: "Our porta toilets are highly suitable for all your events like birthday parties, family reunions, weddings, etc.",
-    p2: "We offer porta potty rental near you for all your job site needs, whether be a construction or any other long term use.",
-    p3: "If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of porta potties.",
-    p4: "We are always ready to supply portable equipments like portable toilet and handwash stations in the areas those affected by the disasters.",
+    heading: "Our Services",
+    content: [
+      {
+        id: 1,
+        image: "/assets/services/services_event_2.png",
+        alt: "event_pic",
+        title: "Events",
+        body: "Our porta toilets are highly suitable for all your events like birthday parties, family reunions, weddings, etc.",
+      },
+      {
+        id: 2,
+        image: "/assets/services/services_construction_2.png",
+        alt: "construction_pic",
+        title: "Job Sites",
+        body: "We offer porta potty rental near you for all your job site needs, whether be a construction or any other long term use.",
+      },
+      {
+        id: 3,
+        image: "/assets/services/services_renovation_2.png",
+        alt: "renovation_pic",
+        title: "Renovations",
+        body: "If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of porta potties.",
+      },
+      {
+        id: 4,
+        image: "/assets/services/services_relief_2.png",
+        alt: "relief_pic",
+        title: "Disaster Relief",
+        body: "We are always ready to supply portable equipments like portable toilet and handwash stations in the areas those affected by the disasters.",
+      },
+    ],
   },
-
   locations: {
     title: "Our portable toilet service locations",
     list: [

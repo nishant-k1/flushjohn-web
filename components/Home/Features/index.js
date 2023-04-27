@@ -3,10 +3,10 @@ import styles from "./styles.module.css";
 
 const Features = React.memo(({ heading, content }) => {
   return (
-    <div className={`${styles.section} ${styles.featuresSection}`}>
+    <div className={styles.features}>
       <div className={styles.container}>
         <h2>{heading}</h2>
-        <div className={styles.features}>
+        <div className={styles.featuresWrapper}>
           {content &&
             content.map((item) => (
               <div

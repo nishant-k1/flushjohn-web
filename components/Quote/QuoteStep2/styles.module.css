@@ -68,7 +68,7 @@
   align-items: center;
   margin: 0;
   color: rgba(0, 0, 0, 0.829);
-  background-color: white;
+  background-color: var(--primary-text-color);
   outline: none;
   border: none;
   height: 2.5rem;
@@ -183,7 +183,7 @@
   padding: 0 1rem;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary-text-color);
   min-width: 8rem;
   height: 2.5rem;
   font-size: large;

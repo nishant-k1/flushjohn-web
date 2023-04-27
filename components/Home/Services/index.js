@@ -1,44 +1,36 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const Services = React.memo((services) => {
+const Services = React.memo(({ heading, content }) => {
+  console.log(content);
   return (
-    <div className={`${styles.section} ${styles.servicesSection}`}>
+    <div className={styles.services}>
       <div className={styles.container}>
-        <h2 className={styles.servicesh2}>Our Services</h2>
-        <div className={styles.services}>
-          <div>
-            <img
-              src="/assets/event.svg"
-              alt="even_pic"
-            />
-            <h3>{services.h1}</h3>
-            <p>{services.p1}</p>
-          </div>
-          <div>
-            <img
-              src="/assets/construction.svg"
-              alt="event_pic"
-            />
-            <h3>{services.h2}</h3>
-            <p>{services.p2}</p>
-          </div>
-          <div>
-            <img
-              src="/assets/renovation.svg"
-              alt="event_pic"
-            />
-            <h3>{services.h3}</h3>
-            <p>{services.p3}</p>
-          </div>
-          <div>
-            <img
-              src="/assets/relief.svg"
-              alt="even_pic"
-            />
-            <h3>{services.h4}</h3>
-            <p>{services.p4}</p>
-          </div>
+        <h2>{heading}</h2>
+        <div className={styles.serviceWrapper}>
+          {content &&
+            content.map((item, index) => {
+              const { id, image, alt, title, body } = item;
+              return (
+                <div
+                  className={
+                    index % 2 === 0
+                      ? styles.wrapper
+                      : `${styles.wrapper} ${styles.rowReverse}`
+                  }
+                  key={id}
+                >
+                  <img
+                    src={image}
+                    alt={alt}
+                  />
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

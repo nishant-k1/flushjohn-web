@@ -1,4 +1,4 @@
-.section {
+.hero {
   background: var(--secondary-bg-color);
   background-size: cover;
   background-position-y: center;
@@ -6,11 +6,11 @@
   /* background-image: url("../../../public/assets/hero/hero_9.jpg"); */
   /* filter: blur(8px); */
   /* -webkit-filter: blur(8px); */
+  padding: 16px 32px;
 }
 
 .container {
   max-width: 1100px;
-  padding: 16px 32px;
   margin: 0 auto;
 }
 

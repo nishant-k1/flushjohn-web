@@ -44,7 +44,7 @@
 }
 .progressBar div {
   font-weight: 700;
-  color: white;
+  color: var(--primary-text-color);
 }
 @media screen and (min-width: 768px) {
   .progressBar div {

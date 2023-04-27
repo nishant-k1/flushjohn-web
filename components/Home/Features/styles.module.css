@@ -1,22 +1,19 @@
-.section {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: start;
+.features {
+  padding: 16px 32px;
   background-color: var(--secondary-bg-color);
 }
 
 .container {
   max-width: 1100px;
-  padding: 16px 32px;
   margin: 0 auto;
 }
 
 .container h2 {
   color: var(--primary-text-color);
+  padding-bottom: 4rem;
 }
 
-.features {
+.featuresWrapper {
   display: grid;
   align-items: start;
   justify-content: start;
@@ -50,7 +47,7 @@
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
-  .features {
+  .featuresWrapper {
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
     column-gap: 64px;
@@ -70,6 +67,4 @@
 
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
-  .features {
-  }
 }

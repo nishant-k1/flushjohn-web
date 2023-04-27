@@ -64,7 +64,7 @@
 
 .quoteLink {
   outline: none;
-  border: 1px solid white;
+  border: 1px solid var(--primary-text-color);
   border-radius: 2px;
   padding: 0.3rem;
   background-color: #dbe0e4d2;

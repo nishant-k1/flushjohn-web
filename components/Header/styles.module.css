@@ -39,7 +39,7 @@
 .icon {
   height: 1.5rem;
   width: 1.5rem;
-  color: white;
+  color: var(--primary-text-color);
   background-color: transparent;
   transition: 0.5s;
 }

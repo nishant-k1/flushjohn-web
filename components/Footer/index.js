@@ -143,11 +143,9 @@ const Footer = () => {
               </ul>
             </li>
           </ul>
-        </div>
-      </div>
-      <div className={styles.sectionBottom}>
-        <div className={styles.container}>
-          <p>Copyright © {year} reliableportable.com</p>
+          <div className={styles.bottomFooter}>
+            Copyright © {year} reliableportable.com
+          </div>
         </div>
       </div>
     </>

@@ -46,13 +46,13 @@
 }
 .form h2 {
   text-align: left;
-  color: white;
+  color: var(--primary-text-color);
   font-weight: 600;
 }
 .form input,
 .form textarea {
   width: 100%;
-  background-color: white;
+  background-color: var(--primary-text-color);
   margin: 0 !important;
   height: 2rem;
   border-radius: 4px;

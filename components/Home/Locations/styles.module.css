@@ -1,0 +1,37 @@
+.locations {
+  padding: 16px 32px;
+  background-color: var(--secondary-bg-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.container h2 {
+  color: var(--primary-text-color);
+  padding-bottom: 4rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 64px;
+}
+.list p {
+  text-decoration: none;
+  list-style-type: none;
+  padding: 4px 0;
+  color: var(--primary-text-color);
+  font-weight: 100;
+}
+/* tablet device breakpoint: 768px*/
+@media only screen and (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+}
+/* desktop device / breakpoint: 1024px */
+@media only screen and (min-width: 1024px) {
+}
