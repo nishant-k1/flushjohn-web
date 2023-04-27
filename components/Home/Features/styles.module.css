@@ -1,6 +1,10 @@
 .features {
   padding: 16px 32px;
   background-color: var(--secondary-bg-color);
+  background-image: url("/assets/hero/hero_bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -11,6 +15,7 @@
 .container h2 {
   color: var(--primary-text-color);
   padding-bottom: 4rem;
+  font-size: xx-large;
 }
 
 .featuresWrapper {
@@ -36,17 +41,21 @@
 }
 
 .wrapper h3 {
-  font-weight: 400;
+  font-size: large;
   color: var(--primary-text-color);
 }
 
 .wrapper p {
-  font-weight: 100;
+  font-size: 16px;
   color: var(--primary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
+  .features {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
   .featuresWrapper {
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;

@@ -76,7 +76,7 @@ export const home_data = {
     ],
   },
   locations: {
-    title: "Our portable toilet service locations",
+    title: "Our service locations",
     list: [
       "Alabama",
       "Arizona",

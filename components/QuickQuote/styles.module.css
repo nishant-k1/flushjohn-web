@@ -5,7 +5,7 @@
   /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; */
   padding: 6px;
   position: fixed;
-  bottom: 4rem;
+  bottom: 10rem;
   right: 2rem;
   max-width: 300px;
   height: fit-content;
@@ -46,13 +46,13 @@
 }
 .form h2 {
   text-align: left;
-  color: var(--primary-text-color);
+  color: white;
   font-weight: 600;
 }
 .form input,
 .form textarea {
   width: 100%;
-  background-color: var(--primary-text-color);
+  background-color: white;
   margin: 0 !important;
   height: 2rem;
   border-radius: 4px;
@@ -124,9 +124,20 @@
 }
 
 .quickQuoteBtn {
-  background-color: #a00943c7;
-  border: 0;
+  /* background-color: #a00943c7;
   border-radius: 8px 8px 0 0;
+  right: 12px;
+  bottom: 0;
+  border: 0; */
+
+  background-color: var(--primary-bg-color);
+  border-radius: 50%;
+  right: 2rem;
+  bottom: 2rem;
+  height: 6rem;
+  width: 6rem;
+
+  border: 0;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -135,9 +146,6 @@
   outline: 0;
   padding: 6px 10px;
   position: fixed;
-  right: 12px;
-  bottom: 0;
-  border: 0;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s;
@@ -145,30 +153,26 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-@media screen and (min-width: 600px) {
-  .quickQuoteBtn {
-    font-size: 18px;
-    padding: 16px 21px;
-    position: fixed;
-    right: 2rem;
-    bottom: 0;
-    font-size: 14px;
-    padding: 16px 48px;
-  }
-}
+
 .quickQuoteBtn:before {
+  /* height: 50%;
+  width: 92%;
+  top: 0;
+  left: 4%; */
+
+  top: 0;
+  left: 0;
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+
   background-color: initial;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
   border-radius: 125px;
   content: "";
-  height: 50%;
-  left: 4%;
   opacity: 0.5;
   position: absolute;
-  top: 0;
   transition: all 0.3s;
-  width: 92%;
-
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 

@@ -1,6 +1,7 @@
 .sectionTop {
   background-color: var(--secondary-bg-color);
   padding: 0 32px;
+  border-top: 1px solid var(--primary-bg-color);
 }
 
 .container {

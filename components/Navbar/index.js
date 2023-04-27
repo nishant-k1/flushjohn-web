@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const [activeLink, setActiveLink] = React.useState("home");
   const [scrolled, setScrolled] = React.useState(false);
+
   React.useEffect(() => {
     const onScroll = () => {
       if (window.pageYOffset > 50) {
@@ -62,11 +63,7 @@ const Navbar = () => {
           <div className={styles.navLinks}>
             <Link
               href="/"
-              className={
-                activeLink === "home"
-                  ? `${styles.active} ${styles.link}`
-                  : `${styles.link}`
-              }
+              className={activeLink === "home" && styles.activeLink}
               onClick={() => {
                 updateActiveLink("home");
               }}
@@ -75,11 +72,7 @@ const Navbar = () => {
             </Link>
             <Link
               href="/products"
-              className={
-                activeLink === "products"
-                  ? `${styles.active} ${styles.link}`
-                  : `${styles.link}`
-              }
+              className={activeLink === "products" && styles.activeLink}
               onClick={() => {
                 updateActiveLink("products");
               }}
@@ -88,11 +81,7 @@ const Navbar = () => {
             </Link>
             <Link
               href="/quote"
-              className={
-                activeLink === "quote"
-                  ? `${styles.active} ${styles.link}`
-                  : `${styles.link}`
-              }
+              className={activeLink === "quote" && styles.activeLink}
               onClick={() => {
                 updateActiveLink("quote");
               }}

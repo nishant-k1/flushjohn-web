@@ -1,6 +1,10 @@
 .locations {
   padding: 16px 32px;
   background-color: var(--secondary-bg-color);
+  background-image: url("/assets/hero/hero_bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -11,6 +15,7 @@
 .container h2 {
   color: var(--primary-text-color);
   padding-bottom: 4rem;
+  font-size: xx-large;
 }
 
 .list {
@@ -22,11 +27,14 @@
   text-decoration: none;
   list-style-type: none;
   padding: 4px 0;
+  font-size: 16px;
   color: var(--primary-text-color);
-  font-weight: 100;
 }
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
+  .locations {
+    padding: 64px 32px;
+  }
   .list {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;

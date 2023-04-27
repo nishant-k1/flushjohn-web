@@ -1,11 +1,9 @@
 .hero {
-  background: var(--secondary-bg-color);
+  background-color: var(--secondary-bg-color);
+  background-image: url("/assets/hero/hero_bg.svg");
   background-size: cover;
-  background-position-y: center;
+  background-position: center;
   background-repeat: no-repeat;
-  /* background-image: url("../../../public/assets/hero/hero_9.jpg"); */
-  /* filter: blur(8px); */
-  /* -webkit-filter: blur(8px); */
   padding: 16px 32px;
 }
 
@@ -94,6 +92,9 @@
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
+  .hero {
+    padding-top: 24px;
+  }
   .heroWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
