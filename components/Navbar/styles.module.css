@@ -14,8 +14,8 @@
 
 .scrolled {
   background-color: var(--secondary-bg-color);
-  border-bottom: 1px solid var(--primary-bg-color);
-  border-top: 1px solid var(--primary-bg-color);
+  /* border-bottom: 1px solid var(--primary-bg-color);
+  border-top: 1px solid var(--primary-bg-color); */
   transition-property: background;
   transition-duration: 0.3s;
   transition-delay: 0s;
