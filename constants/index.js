@@ -30,17 +30,15 @@ export const home_data = {
       {
         id: 3,
         image: <RiTimeFill />,
-        sub_title: "Free & Quick Delivery",
-        sub_content:
-          "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
+        title: "Free & Quick Delivery",
+        body: "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
       },
-      {
-        id: 4,
-        image: <GiVacuumCleaner />,
-        sub_title: "Free Porta Potty Servicing",
-        sub_content:
-          "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
-      },
+      // {
+      //   id: 4,
+      //   image: <GiVacuumCleaner />,
+      //   title: "Free Porta Potty Servicing",
+      //   body: "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
+      // },
     ],
   },
 

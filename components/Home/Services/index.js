@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const Services = React.memo(() => {
+const Services = React.memo((services) => {
   return (
     <div className={`${styles.section} ${styles.servicesSection}`}>
       <div className={styles.container}>
