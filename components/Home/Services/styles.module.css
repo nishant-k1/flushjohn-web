@@ -39,13 +39,14 @@
 .wrapper p {
   font-size: 16px;
   color: var(--primary-text-color);
+  line-height: 32px;
 }
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .wrapper {
     display: flex;
     align-items: center;
-    column-gap: 12rem;
+    column-gap: 6rem;
   }
   .rowReverse {
     flex-direction: row-reverse;

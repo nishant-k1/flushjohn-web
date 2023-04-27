@@ -5,78 +5,91 @@ import { RiTimeFill } from "react-icons/ri";
 
 export const home_data = {
   hero: {
+    // title:
+    //   "We offer a wide range of portable toilet rentals and hand wash station rentals for all your events, job sites and residential needs.",
     title:
-      "We offer a wide range of portable toilet rentals and hand wash station rentals for all your events, job sites and residential needs.",
+      "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
       src: "assets/hero/hero_fm_1.png",
       alt: "porta_potty",
     },
   },
   features: {
-    heading: "Our features and offerings",
+    heading: "Why Choose Us for Your Sanitation Needs?",
     content: [
       {
         id: 1,
         image: <FaTruckLoading />,
-        title: "Prompt Quote & Bookings",
-        body: "We respect your time. Our professional customer support ensures instant quote and bookings.",
+        title: "Customer Support",
+        body: "Our professional customer support ensures instant quote and bookings and are ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
       },
       {
         id: 2,
-        image: <GiVacuumCleaner />,
-        title: "$15 Discount on Porta Potty Order.",
-        body: "Our porta potty rentals are budget friendly and we provide a 15% discount on your 1st order.",
+        image: <RiTimeFill />,
+        title: "Delivery and Setup",
+        body: "Our experienced yard manager and driver facilitates hassle-free delivery and setup services for your porta potties and handwash stations, saving your time and effort",
       },
       {
         id: 3,
-        image: <RiTimeFill />,
-        title: "Free & Quick Delivery",
-        body: "Our experienced yard manager and driver facilitates seamless portable toilet delivery and pickup service with no any extra cost.",
+        image: <GiVacuumCleaner />,
+        title: "Cleanliness",
+        body: "We ensure that all our porta potties and handwash stations are thoroughly cleaned and sanitized before and after each use, using high-quality cleaning products and equipment",
+        // body: "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
       },
       // {
-      //   id: 4,
+      //   id: 2,
       //   image: <GiVacuumCleaner />,
-      //   title: "Free Porta Potty Servicing",
-      //   body: "We provide weekly once cleaning service to our portable restrooms at no any extra cost. Also, we restock the porta potty unit with toilet papers.",
+      //   title: "$15 Discount on Porta Potty Order.",
+      //   body: "Our porta potty rentals are budget friendly and we provide a 15% discount on your 1st order.",
       // },
     ],
   },
 
   services: {
-    heading: "Our Services",
+    heading:
+      "Comprehensive Porta Potty and Handwash Station Rental Services: Meeting Your Sanitation Needs Anytime, Anywhere",
     content: [
       {
         id: 1,
         image: "/assets/services/services_event_2.png",
         alt: "event_pic",
-        title: "Events",
-        body: "Our porta toilets are highly suitable for all your events like birthday parties, family reunions, weddings, etc.",
+        title:
+          "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
+        body: "When planning an event, one of the most important aspects to consider is providing adequate sanitation facilities for your guests. This is where event purpose porta potty and hand wash station rentals come in. Event purpose porta potties and hand wash rentals are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events. When looking for event purpose porta potty rentals, there are several factors to consider, including the size of your event, the duration of the event, and the number of guests expected.  At our porta potty rental company, we offer a wide range of event purpose porta potties to meet the specific needs of your event. Our porta potties are available in different sizes and styles, including standard and deluxe models, to accommodate events of all sizes and budgets.",
       },
       {
         id: 2,
         image: "/assets/services/services_construction_2.png",
         alt: "construction_pic",
-        title: "Job Sites",
-        body: "We offer porta potty rental near you for all your job site needs, whether be a construction or any other long term use.",
+        title:
+          "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
+        body: "Construction sites are notorious for being dirty and chaotic, but providing proper sanitation facilities is crucial for the health and well-being of workers. This is where construction unit porta potty rentals come in. Construction units are specially designed to meet the unique needs of construction sites, providing a safe and hygienic space for workers to use the restroom. At our porta potty rental company, we offer a wide range of construction unit porta potties to meet the specific needs of your construction site. . Plus, we provide regular cleaning and maintenance services to ensure that our porta potties are always in top condition and ready to use.",
+        //  Using our construction unit porta potty rentals can help improve the overall cleanliness and safety of your construction site, reducing the risk of accidents and injuries. Additionally, providing proper sanitation facilities can help boost worker morale and productivity, leading to a more efficient and successful construction project. By offering reliable and high-quality construction unit porta potty rentals, we can help ensure that your construction site is a safe and healthy environment for workers, promoting their well-being and the success of your project.",
       },
       {
         id: 3,
         image: "/assets/services/services_renovation_2.png",
         alt: "renovation_pic",
-        title: "Renovations",
-        body: "If you have a house renovation, hotel renovation or bathroom remodeling going on, you can always rely on us for your need of porta potties.",
+        title:
+          "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
+        body: "Home renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike. This is where renovation porta potty rentals come in. Renovation porta potties are specially designed to meet the unique needs of home renovation projects, providing a safe and hygienic space for workers and homeowners to use the restroom. At our porta potty rental company, we offer a wide range of renovation porta potties to meet the specific needs of your renovation project. Our porta potties are available in different sizes and styles, including standard, deluxe, and ADA-compliant models, to accommodate projects of all sizes and types.",
+
+        // Our renovation porta potties are also equipped with various features, such as hand sanitizer dispensers, ventilation systems, and locking doors, to ensure maximum comfort and convenience for homeowners and workers. Plus, we provide regular cleaning and maintenance services to ensure that our porta potties are always in top condition and ready to use. Using our renovation porta potty rentals can help improve the overall cleanliness and safety of your renovation project, reducing the risk of accidents and injuries. Additionally, providing proper sanitation facilities can help minimize disruptions to the homeowner's daily routine and promote a positive relationship between the homeowner and construction team. By offering reliable and high-quality renovation porta potty rentals, we can help ensure that your renovation project runs smoothly and efficiently, minimizing disruptions and promoting the comfort and well-being of all parties involved.",
       },
       {
         id: 4,
         image: "/assets/services/services_relief_2.png",
         alt: "relief_pic",
-        title: "Disaster Relief",
-        body: "We are always ready to supply portable equipments like portable toilet and handwash stations in the areas those affected by the disasters.",
+        title:
+          "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
+        body: "Disasters such as hurricanes, earthquakes, and floods can leave communities devastated and in need of immediate assistance. Providing proper sanitation facilities is crucial in such situations, as it can help prevent the spread of disease and promote overall health and well-being. This is where disaster relief porta potty rentals come in. At our porta potty rental company, we offer a wide range of disaster relief porta potties to meet the specific needs of disaster-stricken communities. Our porta potties are designed to be durable, easy to transport, and quick to set up, allowing us to rapidly deploy them to disaster zones across the country. Our disaster relief porta potties are available in different sizes and styles, including standard, wheelchair-accessible, and shower units, to provide a safe and hygienic space for those affected by disasters. ",
+        // Our porta potties are also equipped with various features, such as hand sanitizer dispensers, ventilation systems, and locking doors, to ensure maximum comfort and convenience for disaster victims and aid workers. Using our disaster relief porta potty rentals can help improve the overall health and well-being of disaster victims, promoting a safe and hygienic environment in the midst of chaos and devastation. Additionally, providing proper sanitation facilities can help boost morale and promote a sense of normalcy during a difficult and uncertain time. By offering reliable and high-quality disaster relief porta potty rentals, we can help make a difference in the lives of those affected by disasters, providing critical support and assistance when it is needed most.",
       },
     ],
   },
   locations: {
-    title: "Our service locations",
+    title:
+      "Extensive Service Coverage: Providing Porta Potty Rentals Across Multiple Locations",
     list: [
       "Alabama",
       "Arizona",
@@ -187,6 +200,11 @@ export const products_data = {
   p4: "The flushable portable toilets for events has a flush and a sink. It is self-contained unit.",
   p5: "The standalone sink stations are self-contained and comes with soap and paper towels.",
   p6: "The flushable porta potties are self contained. It has a flush and a sink attached to it from inside.",
+
+  products: {
+    event_unit:
+      "When planning an event, one of the most important aspects to consider is providing adequate sanitation facilities for your guests. This is where event purpose porta potty rentals come in. Event purpose porta potties are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events. When looking for event purpose porta potty rentals, there are several factors to consider, including the size of your event, the duration of the event, and the number of guests expected. You'll also want to consider the features of the porta potties, such as their cleanliness, durability, and accessibility. At our porta potty rental company, we offer a wide range of event purpose porta potties to meet the specific needs of your event. Our porta potties are available in different sizes and styles, including standard, deluxe, and VIP models, to accommodate events of all sizes and budgets. Our event purpose porta potties are also equipped with various features, such as hand sanitizer dispensers, ventilation systems, and locking doors, to ensure maximum comfort and convenience for your guests. Plus, we provide regular cleaning and maintenance services to ensure that our porta potties are always in top condition and ready to use.",
+  },
 };
 
 export const slide_show_data = {
