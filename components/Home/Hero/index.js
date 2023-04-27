@@ -10,14 +10,14 @@ const Hero = React.memo(({ title, image }) => {
             <h1>{title}</h1>
             <div className={styles.heroCta}>
               <a
-                className={styles.quote}
+                className={styles.ctaQuoteBtn}
                 href="/quote"
               >
                 GET QUOTE
               </a>
               <a
                 href="tel:+1 326-598-5963"
-                className={styles.phone}
+                className={styles.ctaPhoneBtn}
               >
                 362-569-3598
               </a>

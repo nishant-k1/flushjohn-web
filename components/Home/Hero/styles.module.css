@@ -56,20 +56,21 @@
   color: var(--primary-text-color);
 }
 
-.quote {
-  color: var(--primary-text-color);
+.ctaQuoteBtn {
+  color: var(--btn-text-color);
   background-color: var(--primary-bg-color);
   border: 2px solid var(--primary-bg-color);
 }
 
-.phone {
+.ctaPhoneBtn {
+  color: var(--btn-text-color);
   background-color: var(--tertiary-bg-color);
-  color: var(--primary-text-color);
   border: 2px solid var(--primary-bg-color);
   transition-property: background-color;
   transition-duration: 0.3s;
 }
-.phone:hover {
+.ctaPhoneBtn:hover {
+  color: var(--btn-text-color);
   background-color: var(--primary-bg-color);
   transition: background-color;
   transition-property: background-color;

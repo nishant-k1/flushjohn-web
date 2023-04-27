@@ -35,7 +35,7 @@
 
 .logo {
   height: 4rem;
-  width: 6rem;
+  width: fit-content;
 }
 
 .hamburger {
@@ -47,25 +47,27 @@
 }
 
 .navLinks a {
-  color: var(--primary-text-color);
+  color: var(--btn-text-color);
   font-size: large;
-  font-weight: 100;
+  font-weight: 400;
+  transition: 0.3s;
 }
 .navLinks a:hover {
   color: var(--primary-bg-color);
+  transition: 0.3s;
 }
 
-.activeLink {
-  color: var(--primary-bg-color);
+.activeLink,
+.activeLink a {
+  color: var(--primary-bg-color) !important;
+  font-weight: 500 !important;
 }
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .logo {
-    position: relative;
-    left: -10px;
-    height: 4rem;
-    width: 8rem;
+    /* position: relative; */
+    /* left: -10px; */
   }
   .hamburger {
     display: none;
@@ -76,19 +78,12 @@
     align-items: center;
     column-gap: 22px;
   }
-  .navLinks a {
-    color: var(--primary-text-color);
-  }
-  .link,
-  .link a {
-    color: var(--primary-text-color);
-  }
 }
 
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
   .logo {
-    height: 4rem;
-    width: 8rem;
+    height: 5rem;
+    width: fit-content;
   }
 }

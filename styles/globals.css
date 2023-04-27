@@ -4,11 +4,13 @@
   /* --primary-color: #6e8b3d;
   --secondary-color: #d3d3d3;
   --neutral-color: #ffffff; */
-  --primary-bg-color: #ef648a;
+  /* --primary-bg-color: #ef648a; */
+  --primary-bg-color: #db517a;
   --secondary-bg-color: #041b25;
   --tertiary-bg-color: transparent;
   --neutral-bg-color: #cccccc;
   --primary-text-color: rgba(255, 255, 255, 0.78);
+  --btn-text-color: white;
   --secondary-text-color: #07080c;
 }
 
@@ -19,7 +21,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -29,7 +30,11 @@ a {
   box-sizing: border-box;
   /* font-family: "Oswald", sans-serif; */
 }
-
+button {
+  text-transform: uppercase !important;
+  color: var(--btn-text-color) !important;
+  background-color: var(--primary-bg-color) !important;
+}
 /* width */
 width ::-webkit-scrollbar {
   width: 8px;

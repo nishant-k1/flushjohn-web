@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../../contexts/SidebarContext";
+import { useRouter } from "next/router";
 
 // import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
@@ -10,6 +11,7 @@ import { QuickQuoteContext } from "../../contexts/QuickQuoteContext/index";
 
 const Navbar = () => {
   const { active, setActive } = React.useContext(SidebarContext);
+  const router = useRouter();
 
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
@@ -31,9 +33,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
-  const updateActiveLink = (value) => {
-    setActiveLink(value);
-  };
+
   return (
     <nav
       className={
@@ -63,28 +63,19 @@ const Navbar = () => {
           <div className={styles.navLinks}>
             <Link
               href="/"
-              className={activeLink === "home" && styles.activeLink}
-              onClick={() => {
-                updateActiveLink("home");
-              }}
+              className={router.route === "/" ? styles.activeLink : ""}
             >
               Home
             </Link>
             <Link
               href="/products"
-              className={activeLink === "products" && styles.activeLink}
-              onClick={() => {
-                updateActiveLink("products");
-              }}
+              className={router.route === "/products" ? styles.activeLink : ""}
             >
               Portables
             </Link>
             <Link
               href="/quote"
-              className={activeLink === "quote" && styles.activeLink}
-              onClick={() => {
-                updateActiveLink("quote");
-              }}
+              className={router.route === "/quote" ? styles.activeLink : ""}
             >
               Get Free Quote
             </Link>
