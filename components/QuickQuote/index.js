@@ -93,14 +93,12 @@ const QuickQuote = () => {
             validateOnChange={false}
             validateOnBlur={true}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
+              setQuickQuoteViewStatus(false);
+              // res.status === 200 && notify();
+              notify();
               // Event("Request quote", "Prompt Form Submit", "PFS");
               try {
                 const res = await axios.post(`/api/quickQuote`, values);
-                // res.status === 200 && notify();
-                setTimeout(() => {
-                  notify();
-                }, 2000);
-                console.log(res);
               } catch (err) {
                 console.log(err);
               }
