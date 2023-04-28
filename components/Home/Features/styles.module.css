@@ -1,22 +1,24 @@
-.section {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: start;
+.features {
+  padding: 16px 32px;
   background-color: var(--secondary-bg-color);
+  /* background-image: url("/assets/hero_bg.svg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
   max-width: 1100px;
-  padding: 16px 32px;
   margin: 0 auto;
 }
 
 .container h2 {
   color: var(--primary-text-color);
+  padding-bottom: 4rem;
+  font-size: xx-large;
 }
 
-.features {
+.featuresWrapper {
   display: grid;
   align-items: start;
   justify-content: start;
@@ -39,18 +41,23 @@
 }
 
 .wrapper h3 {
-  font-weight: 400;
+  font-size: large;
   color: var(--primary-text-color);
 }
 
 .wrapper p {
-  font-weight: 100;
+  font-size: 16px;
   color: var(--primary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .features {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-size: contain;
+  }
+  .featuresWrapper {
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
     column-gap: 64px;
@@ -70,6 +77,4 @@
 
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
-  .features {
-  }
 }

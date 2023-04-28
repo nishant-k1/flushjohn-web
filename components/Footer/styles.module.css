@@ -1,17 +1,12 @@
 .sectionTop {
-  min-width: 100%;
-  background-color: #050b24;
-}
-
-.sectionBottom {
-  min-width: 100%;
-  background-color: #04041f;
+  background-color: var(--secondary-bg-color);
+  padding: 0 32px;
+  border-top: 1px solid var(--primary-bg-color);
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 32px;
 }
 
 .ul {
@@ -32,10 +27,9 @@
 }
 
 .ul h2 {
-  color: white;
+  color: var(--primary-text-color);
   font-size: medium;
   font-weight: 400;
-  padding: 0;
   margin: 0 0 1rem;
 }
 
@@ -72,7 +66,7 @@
   display: grid;
   justify-content: left;
   align-items: start;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 .social ul {
@@ -84,7 +78,7 @@
   row-gap: 0.5rem;
 }
 .social ul li a:hover {
-  color: white;
+  color: var(--primary-text-color);
   transition: 0.3s;
 }
 /* nav */
@@ -95,7 +89,7 @@
   display: grid;
   justify-content: left;
   align-items: start;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 .nav ul {
@@ -107,7 +101,7 @@
   row-gap: 0.5rem;
 }
 .nav ul li a:hover {
-  color: white;
+  color: var(--primary-text-color);
   transition: 0.3s;
 }
 
@@ -119,7 +113,7 @@
   display: grid;
   justify-content: left;
   align-items: start;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 .contact ul {
@@ -136,33 +130,18 @@
 }
 
 .contact ul li a:hover {
-  color: white;
+  color: var(--primary-text-color);
   transition: 0.3s;
 }
 
-.sectionBottom {
-  min-width: 100%;
-  color: white;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
-.sectionBottom .container {
-  padding: 0;
-  margin: 0;
-}
-
-.sectionBottom .container p {
-  padding: 1rem;
-  margin: 0;
+.bottomFooter {
+  padding: 12px 0;
   font-size: small;
+  color: var(--primary-text-color);
 }
 
-/* tablet and desktop */
-
-@media screen and (min-width: 768px) {
+/* tablet device breakpoint: 768px*/
+@media only screen and (min-width: 768px) {
   .ul {
     grid-template-areas: "logo social nav contact";
   }
@@ -172,4 +151,8 @@
   .ul li {
     font-size: medium;
   }
+}
+
+/* desktop device / breakpoint: 1024px */
+@media only screen and (min-width: 1024px) {
 }

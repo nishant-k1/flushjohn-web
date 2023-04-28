@@ -1,16 +1,20 @@
 .section {
   width: 60%;
   height: 100%;
-  background-color: #040318;
+  /* background-color: #040318; */
+  background-image: url("/assets/hero_bg.svg");
+  background-size: cover;
+  background-repeat: repeat;
   padding: 0;
   position: fixed;
   top: 0;
   left: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  border-right: 1px solid white;
+  border-right: 1px solid var(--primary-text-color);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 200;
+  z-index: 250;
+  transition: 0.3s;
 }
 
 .active {
@@ -18,6 +22,7 @@
 
 .inactive {
   display: none;
+  transition: 0.3s;
 }
 
 .container {
@@ -43,7 +48,7 @@
 }
 
 .sidebar a {
-  color: white;
+  color: var(--primary-text-color);
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 0.5rem;

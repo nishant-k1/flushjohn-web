@@ -15,38 +15,40 @@ const Quote = () => {
     <React.Fragment>
       <div className={styles.section}>
         <div className={styles.container}>
-          <div className={styles.progressBar}>
-            <div
-              className={`${styles.step} ${
-                step === 1 || step === 2 || step === 3 || step === 4
-                  ? `${styles.active}`
-                  : null
-              }`}
-            >
-              Requirement Details
+          <div className={styles.quoteWrapper}>
+            <div className={styles.progressBar}>
+              <div
+                className={`${styles.step} ${
+                  step === 1 || step === 2 || step === 3 || step === 4
+                    ? `${styles.active}`
+                    : null
+                }`}
+              >
+                Requirement Details
+              </div>
+              <div
+                className={`${styles.step} ${
+                  step === 2 || step === 3 || step === 4
+                    ? `${styles.active}`
+                    : null
+                }`}
+              >
+                Delivery Details
+              </div>
+              <div
+                className={`${styles.step} ${
+                  step === 3 || step === 4 ? `${styles.active}` : null
+                }`}
+              >
+                Personal Details
+              </div>
             </div>
-            <div
-              className={`${styles.step} ${
-                step === 2 || step === 3 || step === 4
-                  ? `${styles.active}`
-                  : null
-              }`}
-            >
-              Delivery Details
+            <div className={styles.innerSection}>
+              {step === 1 ? <QuoteStep1 /> : null}
+              {step === 2 ? <QuoteStep2 /> : null}
+              {step === 3 ? <QuoteStep3 /> : null}
+              {step === 4 ? <QuoteStep4 /> : null}
             </div>
-            <div
-              className={`${styles.step} ${
-                step === 3 || step === 4 ? `${styles.active}` : null
-              }`}
-            >
-              Personal Details
-            </div>
-          </div>
-          <div className={styles.innerSection}>
-            {step === 1 ? <QuoteStep1 /> : null}
-            {step === 2 ? <QuoteStep2 /> : null}
-            {step === 3 ? <QuoteStep3 /> : null}
-            {step === 4 ? <QuoteStep4 /> : null}
           </div>
         </div>
       </div>
