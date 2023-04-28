@@ -1,0 +1,44 @@
+.indicator {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, min-content);
+  column-gap: 1.5rem;
+  justify-self: center;
+  padding-bottom: 1rem;
+}
+
+.circle {
+  height: 1rem;
+  width: 1rem;
+  border: solid 1px black;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.active {
+  background-color: #ef648a;
+}
+
+.inactive {
+  background-color: transparent;
+}
+
+.quoteLink {
+  outline: none;
+  border: 1px solid var(--primary-bg-color);
+  border-radius: 2px;
+  padding: 0.3rem;
+  background-color: var(--primary-bg-color);
+  margin-bottom: 1rem;
+}
+
+.quoteLink a {
+  color: var(--primary-text-color);
+  font-weight: 400;
+}
+
+.quoteLink:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
+}

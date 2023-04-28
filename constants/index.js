@@ -10,7 +10,7 @@ export const home_data = {
     title:
       "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
-      src: "assets/hero/hero_fm_1.png",
+      src: "assets/home/hero/hero_fm_1.png",
       alt: "porta_potty",
     },
   },
@@ -51,7 +51,7 @@ export const home_data = {
     content: [
       {
         id: 1,
-        image: "/assets/services/services_event_2.png",
+        image: "/assets/home/services/services_event_2.png",
         alt: "event_pic",
         title:
           "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
@@ -59,7 +59,7 @@ export const home_data = {
       },
       {
         id: 2,
-        image: "/assets/services/services_construction_2.png",
+        image: "/assets/home/services/services_construction_2.png",
         alt: "construction_pic",
         title:
           "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
@@ -68,7 +68,7 @@ export const home_data = {
       },
       {
         id: 3,
-        image: "/assets/services/services_renovation_2.png",
+        image: "/assets/home/services/services_renovation_2.png",
         alt: "renovation_pic",
         title:
           "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
@@ -78,7 +78,7 @@ export const home_data = {
       },
       {
         id: 4,
-        image: "/assets/services/services_relief_2.png",
+        image: "/assets/home/services/services_relief_2.png",
         alt: "relief_pic",
         title:
           "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
@@ -154,7 +154,7 @@ export const testimonials = {
   content: [
     {
       image: {
-        src: "/assets/testimony2.svg",
+        src: "/assets/testimonials/testimony2.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Terry Miles",
@@ -162,7 +162,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimony1.svg",
+        src: "/assets/testimonials/testimony1.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Dean Lacey",
@@ -170,7 +170,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimony2.svg",
+        src: "/assets/testimonials/testimony2.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Christine Barnes",
@@ -178,7 +178,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimony2.svg",
+        src: "/assets/testimonials/testimony2.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Janet Estremera",
@@ -200,12 +200,50 @@ export const products_data = {
   p4: "The flushable portable toilets for events has a flush and a sink. It is self-contained unit.",
   p5: "The standalone sink stations are self-contained and comes with soap and paper towels.",
   p6: "The flushable porta potties are self contained. It has a flush and a sink attached to it from inside.",
-
-  products: {
-    event_unit:
-      "When planning an event, one of the most important aspects to consider is providing adequate sanitation facilities for your guests. This is where event purpose porta potty rentals come in. Event purpose porta potties are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events. When looking for event purpose porta potty rentals, there are several factors to consider, including the size of your event, the duration of the event, and the number of guests expected. You'll also want to consider the features of the porta potties, such as their cleanliness, durability, and accessibility. At our porta potty rental company, we offer a wide range of event purpose porta potties to meet the specific needs of your event. Our porta potties are available in different sizes and styles, including standard, deluxe, and VIP models, to accommodate events of all sizes and budgets. Our event purpose porta potties are also equipped with various features, such as hand sanitizer dispensers, ventilation systems, and locking doors, to ensure maximum comfort and convenience for your guests. Plus, we provide regular cleaning and maintenance services to ensure that our porta potties are always in top condition and ready to use.",
-  },
 };
+
+export const products_data_1 = [
+  {
+    id: 1,
+    image: {
+      src_1: "assets/products/sps_blue.svg",
+      src_2: "assets/products/blueSPSInterior1.png",
+      alt: "Standard Portable Restroom",
+    },
+    title: "Standard Portable Restroom",
+    desc: "A standard porta potty is a portable toilet that is perfect for outdoor events and construction sites, providing basic amenities and convenience for users.",
+  },
+  {
+    id: 2,
+    image: {
+      src_1: "assets/products/ada_blue.svg",
+      src_2: "assets/products/ADAInterior1.jpg",
+      alt: "ADA-Compliant Portable Restroom",
+    },
+    title: "ADA-Compliant Portable Restroom",
+    desc: "The Americans with Disabilities Act (ADA) requires that all public events and construction sites provide accessible portable toilets, also known as ADA compliant porta potties, to ensure that people with disabilities have equal access to facilities.",
+  },
+  {
+    id: 3,
+    image: {
+      src_1: "assets/products/flushable.svg",
+      src_2: "assets/products/whiteFlushableInterior1.jpg",
+      alt: "Flushable Restroom-Sink inside",
+    },
+    title: "Flushable Restroom-Sink inside",
+    desc: "A deluxe flushable porta potty is a premium portable toilet that features flushing capability, freshwater supply, and a built-in sink with running water, providing users with a comfortable and convenient restroom experience similar to that of a traditional indoor restroom.",
+  },
+  {
+    id: 4,
+    image: {
+      src_1: "assets/products/sinkFront.png",
+      src_2: "assets/products/sinkFront.png",
+      alt: "Hand Wash Sink Station",
+    },
+    title: "Hand Wash Sink Station",
+    desc: "A standalone handwash sink is a portable sink unit that is often used in outdoor events and construction sites, providing a convenient and hygienic handwashing solution for users to maintain cleanliness and prevent the spread of germs",
+  },
+];
 
 export const slide_show_data = {
   ESPR: "sps_#EF648A.svg",

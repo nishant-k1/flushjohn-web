@@ -1,64 +1,31 @@
-import { useState } from "react";
+import React from "react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
-import { BiCircle } from "react-icons/bi";
 import styles from "./styles.module.css";
-import Link from "next/link";
+import Indicator from "./Indicator";
 
-const Slider = (props) => {
-  const { img1, img2 } = props.img;
-  const [img, setImage] = useState(img1);
-
+const Slider = ({ src_1, src_2, alt }) => {
+  const [toggle, setToggle] = React.useState(false);
+  const setImage = () => {
+    setToggle(!toggle);
+  };
   return (
-    <>
+    <div>
       <div className={styles.slider}>
-        <button
-          onClick={() => {
-            if (img2) {
-              setImage(img1);
-            } else {
-              setImage(img2);
-            }
-          }}
-        >
-          <IoIosArrowDropleft className={styles.arrow} />
-        </button>
+        <IoIosArrowDropleft
+          onClick={setImage}
+          className={styles.arrow}
+        />
         <img
-          src={img}
-          alt="https://www.reliableportable.com"
+          src={toggle ? src_1 : src_2}
+          alt={alt}
         />
-        <button
-          onClick={() => {
-            if (img) {
-              setImage(img2);
-            } else {
-              setImage(img1);
-            }
-          }}
-        >
-          <IoIosArrowDropright className={styles.arrow} />
-        </button>
-      </div>
-      <div className={styles.indicator}>
-        <BiCircle
-          className={
-            img == img1 ? `${styles.circleIsSelected}` : `${styles.circle}`
-          }
-        />
-        <BiCircle
-          className={
-            img == img2 ? `${styles.circleIsSelected}` : `${styles.circle}`
-          }
+        <IoIosArrowDropright
+          onClick={setImage}
+          className={styles.arrow}
         />
       </div>
-      <button className={styles.quoteLink}>
-        <Link
-          type="button"
-          href="/quote"
-        >
-          Get Free Quote
-        </Link>
-      </button>
-    </>
+      <Indicator toggle={toggle} />
+    </div>
   );
 };
 

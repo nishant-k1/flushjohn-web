@@ -1,6 +1,6 @@
 .services {
   background-color: var(--secondary-bg-color);
-  background-image: url("/assets/hero/hero_bg.svg");
+  /* background-image: url("/assets/hero_bg.svg"); */
   background-size: contain;
   background-repeat: repeat;
   padding: 32px;
@@ -43,6 +43,11 @@
 }
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
+  .services {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   .wrapper {
     display: flex;
     align-items: center;

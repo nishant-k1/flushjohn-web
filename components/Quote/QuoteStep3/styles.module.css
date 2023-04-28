@@ -54,7 +54,7 @@
   padding: 0;
   margin: 0;
   font-size: large;
-  color: rgba(0, 0, 0, 0.829);
+  color: var(--primary-text-color);
 }
 
 .form input {
@@ -63,7 +63,7 @@
   align-items: center;
   margin: 0;
   color: rgba(0, 0, 0, 0.829);
-  background-color: var(--primary-text-color);
+  /* background-color: var(--primary-text-color); */
   outline: none;
   border: none;
   border: solid 1px rgba(0, 0, 0, 0.548);
@@ -127,7 +127,7 @@
 .email input:hover,
 .phone input:hover {
   box-shadow: none;
-  border: solid 1px rgb(39, 126, 255);
+  border: solid 1px var(--neutral-bg-color);
 }
 
 .buttons {
@@ -158,22 +158,23 @@
   border-radius: 2px;
   border: none;
   transition: 0.3s;
+  border: 2px solid var(--primary-bg-color);
 }
 
 .next {
-  background-color: rgb(32, 46, 175);
+  background-color: var(--primary-bg-color);
   transition: 0.3s;
 }
 .next:hover {
-  background-color: rgb(15, 27, 128);
+  background-color: var(--primary-bg-color);
   transition: 0.3s;
 }
 
 .previous {
-  background-color: rgba(42, 43, 44, 0.815);
+  background-color: var(--tertiary-bg-color);
   transition: 0.3s;
 }
 .previous:hover {
-  background-color: rgba(25, 25, 26, 0.918);
+  background-color: var(--primary-bg-color);
   transition: 0.3s;
 }
