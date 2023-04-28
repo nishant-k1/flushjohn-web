@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.css";
 
 const Services = React.memo(({ heading, content }) => {
-  console.log(content);
   return (
     <div className={styles.services}>
       <div className={styles.container}>

@@ -34,8 +34,8 @@
 .wrapper div svg {
   color: var(--primary-bg-color);
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   height: 65%;
   width: 65%;
 }

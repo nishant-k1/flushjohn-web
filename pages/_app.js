@@ -16,8 +16,9 @@ import { SidebarContext } from "./../contexts/SidebarContext";
 import { ToastContainer } from "react-toastify";
 import { localBusiness } from "../SEO";
 import { testimonials } from "../constants";
+import { motion } from "framer-motion";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   const [clientWidth, setClientWidth] = React.useState(
     typeof window !== "undefined" ? window.innerWidth : null
   );
@@ -90,7 +91,24 @@ function MyApp({ Component, pageProps }) {
                 <DefaultSeo {...SEO} />
                 <LocalBusinessJsonLd {...localBusiness} />
                 <Navbar />
-                <Component {...pageProps} />
+                <motion.div
+                  key={router.route}
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                    },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        delay: 0.5,
+                      },
+                    },
+                  }}
+                >
+                  <Component {...pageProps} />
+                </motion.div>
                 <QuickQuote />
                 {/* <Testimonial {...testimonials} /> */}
                 <Footer />
