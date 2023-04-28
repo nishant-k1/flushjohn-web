@@ -5,9 +5,9 @@
   /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; */
   padding: 6px;
   position: fixed;
-  bottom: 10rem;
-  right: 2rem;
-  max-width: 300px;
+  bottom: 8rem;
+  right: 2.5rem;
+  width: 250px;
   height: fit-content;
   z-index: 3;
   /* border-radius: 12px; */
@@ -24,7 +24,8 @@
 /* mobile  */
 @media only screen and (max-width: 600px) {
   .form {
-    right: 12px;
+    right: 2rem;
+    bottom: 7.5rem;
     padding: 4px;
     height: fit-content;
     width: 250px;
@@ -38,7 +39,7 @@
 /* desktop */
 @media screen and (min-width: 768px) {
   .form {
-    width: 300px;
+    width: 250px;
   }
 }
 .form h2 {
@@ -130,7 +131,7 @@
   background-color: var(--primary-bg-color);
   border-radius: 50%;
   right: 2rem;
-  bottom: 2rem;
+  bottom: 0.6rem;
   height: 6rem;
   width: 6rem;
 
@@ -162,7 +163,6 @@
   width: 92%;
   height: 92%;
   border-radius: 50%;
-
   background-color: initial;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
   border-radius: 125px;
