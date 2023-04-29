@@ -110,7 +110,7 @@ function MyApp({ Component, pageProps, router }) {
                   <Component {...pageProps} />
                 </motion.div>
                 <QuickQuote />
-                {/* <Testimonial {...testimonials} /> */}
+                <Testimonial {...testimonials} />
                 <Footer />
                 <ToastContainer />
               </Layout>

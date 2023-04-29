@@ -1,5 +1,5 @@
 .section {
-  padding: 16px 32px;
+  padding: 16px;
   background-color: var(--secondary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
@@ -11,15 +11,11 @@
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .quoteWrapper {
-  padding: 12rem 0;
+  padding: 8rem 0;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 32px;
-  }
-}
 .innerSection {
   display: grid;
   justify-content: center;
@@ -38,28 +34,11 @@
   margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 600px) {
-  .progressBar {
-    display: grid;
-    padding: 0;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgba(255, 255, 255, 0.486); */
-    background-color: transparent;
-    margin-bottom: 2.5rem;
-  }
-}
 .progressBar div {
   font-weight: 700;
   color: var(--primary-text-color);
 }
-@media screen and (min-width: 768px) {
-  .progressBar div {
-    font-weight: 500;
-    font-size: large;
-  }
-}
+
 .step {
   display: grid;
   justify-content: center;
@@ -73,6 +52,31 @@
 }
 
 .step.active {
-  background-color: #ef648a;
+  background-color: var(--neutral-bg-color);
+  color: var(--secondary-text-color);
   transition: 0.5s;
+}
+
+/* tablet */
+@media screen and (min-width: 600px) {
+  .progressBar {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(255, 255, 255, 0.486); */
+    background-color: transparent;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0;
+  }
+  .progressBar div {
+    font-weight: 500;
+    font-size: large;
+  }
 }
