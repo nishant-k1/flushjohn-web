@@ -13,24 +13,16 @@ export default {
     site_name: "Reliable Portable",
     title: "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
     description:
-      "Book porta potty anywhere across united states for your events, job sites and residence. Cheapest porta potty rental in your area.",
+      "Reliable Portable provides high-quality portable toilets and sanitation services for events, construction sites, and more. Contact us today to learn how we can help you with your portable restroom needs.",
     images: [
       {
-        url: "/windows11/LargeTile.scale-200.png",
-        width: 800,
+        url: "favicon.svg",
+        width: 520,
         height: 600,
-        alt: "Og Image Alt",
+        alt: "Reliable_Portable",
       },
-      {
-        url: "icon.png",
-        width: 900,
-        height: 800,
-        alt: "Og Image Alt Second",
-      },
-      { url: "icon.png" },
-      { url: "icon.png" },
     ],
-    updated_time: "2023-04-15T12:34:56Z",
+    updated_time: "2023-04-29T12:34:56Z",
   },
   robotsProps: {
     noindex: false,
