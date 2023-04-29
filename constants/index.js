@@ -154,7 +154,7 @@ export const testimonials = {
   content: [
     {
       image: {
-        src: "/assets/testimonials/testimony2.svg",
+        src: "/assets/testimonial/testimony.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Terry Miles",
@@ -162,7 +162,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimonials/testimony1.svg",
+        src: "/assets/testimonial/testimony1.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Dean Lacey",
@@ -170,7 +170,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimonials/testimony2.svg",
+        src: "/assets/testimonial/testimony2.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Christine Barnes",
@@ -178,7 +178,7 @@ export const testimonials = {
     },
     {
       image: {
-        src: "/assets/testimonials/testimony2.svg",
+        src: "/assets/testimonial/testimony2.svg",
         alt: "https://www.reliableportable.com/",
       },
       title: "Janet Estremera",
