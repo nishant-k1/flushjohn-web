@@ -1,7 +1,7 @@
 export default {
   title: "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
   description:
-    "Local porta potty rentals for events, job sites and residential needs. Cheap and reliable restroom rentals in your area.",
+    "Reliable Portable provides high-quality portable toilets and sanitation services for events, construction sites, and more.",
   keywords:
     "Reliable Portable, Porta Potty Rental, porta potty site, portable restroom rental, porta toilet rental",
   language: "English",
@@ -13,7 +13,7 @@ export default {
     site_name: "Reliable Portable",
     title: "Reliable Portable | Porta Potty Rentals and Restroom Rentals",
     description:
-      "Reliable Portable provides high-quality portable toilets and sanitation services for events, construction sites, and more. Contact us today to learn how we can help you with your portable restroom needs.",
+      "Reliable Portable provides high-quality portable toilets and sanitation services for events, construction sites, and more.",
     images: [
       {
         url: "favicon.svg",
