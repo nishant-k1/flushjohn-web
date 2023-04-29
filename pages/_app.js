@@ -70,13 +70,9 @@ function MyApp({ Component, pageProps, router }) {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=1, viewport-fit=cover"
         />
-        <meta
-          name="robots"
-          content="nosnippet,max-snippet:100"
-        />
         <link
           rel="shortcut icon"
-          href="favicon-16x16.ico"
+          href="favicon.svg"
           type="image/x-icon"
         />
       </Head>
