@@ -21,6 +21,12 @@ export default {
         height: 600,
         alt: "Reliable_Portable",
       },
+      {
+        url: "favicon.png",
+        width: 520,
+        height: 600,
+        alt: "Reliable_Portable",
+      },
     ],
     updated_time: "2023-04-29T12:34:56Z",
   },
