@@ -16,13 +16,13 @@ export default {
       "Reliable Portable provides high-quality portable toilets and sanitation services for events, construction sites, and more.",
     images: [
       {
-        url: "favicon.svg",
+        url: "https://www.reliableportable.com/favicon.svg",
         width: 520,
         height: 600,
         alt: "Reliable_Portable",
       },
       {
-        url: "favicon.png",
+        url: "https://www.reliableportable.com/favicon.png",
         width: 520,
         height: 600,
         alt: "Reliable_Portable",
