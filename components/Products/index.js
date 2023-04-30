@@ -5,6 +5,7 @@ import Slider from "../Slider";
 import { products_data_1 } from "../../constants";
 import { useRouter } from "next/router";
 import Breadcrumbs from "../Breadcrumbs";
+import Link from "next/link";
 
 const Products = () => {
   const router = useRouter();
@@ -23,8 +24,26 @@ const Products = () => {
                   key={id}
                 >
                   <Slider {...image} />
+                  <Link
+                    className={styles.quoteLink}
+                    href="/quote"
+                  >
+                    Get Free Quote
+                  </Link>
                   <h3>{title}</h3>
-                  <p>{desc}</p>
+                  <p>
+                    {desc}
+                    <span>
+                      <Link
+                        className={styles.moreLink}
+                        href={`/products/${title
+                          .toLowerCase()
+                          .replaceAll(" ", "-")}`}
+                      >
+                        ...More
+                      </Link>
+                    </span>
+                  </p>
                 </div>
               );
             })}

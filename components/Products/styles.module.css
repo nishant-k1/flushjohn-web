@@ -15,7 +15,6 @@
 
 .productsWrapper {
   margin-top: 6rem;
-  text-align: center;
   display: grid;
   grid-gap: 2rem;
   height: 100%;
@@ -25,20 +24,53 @@
 .wrapper {
   padding: 1rem;
   margin: 0;
-  text-align: center;
   border-radius: 1px;
-  border: 1px solid rgba(0, 0, 0, 0.795);
+  border: 1px solid var(--primary-bg-color);
   background-color: var(--secondary-bg-color);
-  color: var(--primary-text-color);
-  height: 100%;
-  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, min-content);
+}
+
+.quoteLink {
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  display: grid;
+  outline: none;
+  border: 1px solid var(--primary-bg-color);
+  border-radius: 2px;
+  padding: 0.3rem !important;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color) !important;
+  font-weight: 500;
+  font-size: small;
+  justify-self: center;
+}
+
+.quoteLink:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
 }
 
 .wrapper h3 {
   font-size: medium;
   color: var(--primary-text-color);
+  margin-top: 12px;
+}
+.wrapper p {
+  color: var(--primary-text-color);
+  font-size: medium;
+}
+.moreLink {
+  font-size: medium;
+  color: var(--primary-bg-color) !important;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+.moreLink:hover {
+  transform: scale(0.9);
+  transition: 0.3s;
 }
 
 /* tablet device breakpoint: 768px*/
