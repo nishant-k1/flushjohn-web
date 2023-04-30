@@ -3,18 +3,21 @@ import QuoteStep2 from "./QuoteStep2";
 import QuoteStep3 from "./QuoteStep3";
 import QuoteStep1 from "./QuoteStep1";
 import QuoteStep4 from "./QuoteStep4";
-
+import { useRouter } from "next/router";
+import Breadcrumbs from "../Breadcrumbs";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "../../contexts/QuoteContext";
 
 const Quote = () => {
+  const router = useRouter();
   const { render } = useContext(QuoteContext);
   const [step] = render;
   return (
     <React.Fragment>
       <div className={styles.section}>
         <div className={styles.container}>
+          <Breadcrumbs path={router.pathname} />
           <div className={styles.quoteWrapper}>
             <div className={styles.progressBar}>
               <div
