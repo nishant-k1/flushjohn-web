@@ -1,13 +1,18 @@
-.section {
-  min-width: 100%;
-  padding: 4rem 0;
-  background-color: var(--secondary-text-color);
+.disclaimer {
+  background-color: var(--secondary-bg-color);
+  /* background-image: url("/assets/hero_bg.svg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 54px 32px;
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 6rem 0;
+}
+.disclaimerWrapper {
+  padding-top: 108px;
 }
 
 .container h1,

@@ -5,6 +5,8 @@ import styles from "./styles.module.css";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import Breadcrumbs from "../Breadcrumbs";
 
 const notify = () =>
   toast.success("Your message has been delivered", {
@@ -85,6 +87,7 @@ const MyMultilineTextField = ({ label, ...props }) => {
 };
 
 const Contact = () => {
+  const router = useRouter();
   const [state, setState] = useState(false);
   return (
     <React.Fragment>
@@ -125,6 +128,7 @@ const Contact = () => {
           }}
         >
           <div className={styles.container}>
+            <Breadcrumbs path={router.pathname} />
             <Form className={styles.form}>
               <div className={styles.firstName}>
                 <MyTextField

@@ -6477,6 +6477,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nextjs-breadcrumbs@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "nextjs-breadcrumbs@npm:1.1.9"
+  peerDependencies:
+    next: ^11.0.1
+    react: ^17.0.2
+  checksum: 60ec0ad1ee612703a6ac0a42deec169ff144a0e1fda9b1ef3d0d7d8d996724be90b8321244d83a7dc8458bcf4e5a077744e83c27956a7b23418abc46e7223504
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 9.3.1
   resolution: "node-gyp@npm:9.3.1"
@@ -7933,6 +7943,7 @@ __metadata:
     next: 13.0.1
     next-pwa: 5.6.0
     next-seo: 5.11.1
+    nextjs-breadcrumbs: ^1.1.9
     nodemailer: 6.8.0
     prettier: 2.8.7
     react: 18.2.0
