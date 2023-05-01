@@ -7,6 +7,7 @@ import { QuoteContext } from "../../../contexts/QuoteContext";
 import { DatePicker } from "antd";
 import moment from "moment";
 import { Tooltip } from "antd";
+import Image from "next/image";
 
 const MyDateField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -34,8 +35,9 @@ const MyDateField = ({ label, ...props }) => {
           <div className={styles.error}>
             {meta.error + " "}
             <span>
-              <img
-                style={{ height: "2rem" }}
+              <Image
+                height={32}
+                width={32}
                 src="/assets/cry_emoji.gif"
               />
             </span>
@@ -60,8 +62,9 @@ const MyMultilineTextField = ({ label, ...props }) => {
           <div className={styles.error}>
             {meta.error + " "}
             <span>
-              <img
-                style={{ height: "2rem" }}
+              <Image
+                height={32}
+                width={32}
                 src="/assets/cry_emoji.gif"
               />
             </span>
@@ -92,8 +95,9 @@ const MyTextInput = ({ label, ...props }) => {
           <div className={styles.error}>
             {meta.error + " "}
             <span>
-              <img
-                style={{ height: "2rem" }}
+              <Image
+                height={32}
+                width={32}
                 src="/assets/cry_emoji.gif"
               />
             </span>
@@ -137,8 +141,9 @@ const MyMaskedTextInput = ({ label, ...props }) => {
           <div className={styles.error}>
             {meta.error + " "}
             <span>
-              <img
-                style={{ height: "2rem" }}
+              <Image
+                height={32}
+                width={32}
                 src="/assets/cry_emoji.gif"
               />
             </span>

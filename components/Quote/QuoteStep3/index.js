@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { requirementDetails } from "../../../contexts/QuoteContext";
 import { delivryDetails } from "../../../contexts/QuoteContext";
 import { personalDetails } from "../../../contexts/QuoteContext";
+import Image from "next/image";
 
 const QuoteStep3 = () => {
   const notify = () =>
@@ -52,8 +53,9 @@ const QuoteStep3 = () => {
             <div className={styles.error}>
               {meta.error + " "}
               <span>
-                <img
-                  style={{ height: "2rem" }}
+                <Image
+                  height={32}
+                  width={32}
                   src="/assets/cry_emoji.gif"
                 />
               </span>
@@ -85,8 +87,9 @@ const QuoteStep3 = () => {
             <div className={styles.error}>
               {meta.error + " "}
               <span>
-                <img
-                  style={{ height: "2rem" }}
+                <Image
+                  height={32}
+                  width={32}
                   src="/assets/cry_emoji.gif"
                 />
               </span>

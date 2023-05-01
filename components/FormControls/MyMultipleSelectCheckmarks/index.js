@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Select, Space } from "antd";
 import { useField } from "formik";
 import styles from "../../QuickQuote/styles.module.css";
+import Image from "next/image";
 
 const options = [
   { label: "Standard Portable Restroom", value: "Standard Portable Restroom" },
@@ -57,9 +58,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
         <div className={styles.error}>
           {error + " "}
           <span>
-            <img
+            <Image
               style={{ height: "1.5rem" }}
               src="/assets/error.png"
+              height={80}
+              width={128}
             />
           </span>
         </div>

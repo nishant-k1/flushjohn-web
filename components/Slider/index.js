@@ -2,6 +2,7 @@ import React from "react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import styles from "./styles.module.css";
 import Indicator from "./Indicator";
+import Image from "next/image";
 
 const Slider = ({ src_1, src_2, alt }) => {
   const [toggle, setToggle] = React.useState(false);
@@ -15,7 +16,9 @@ const Slider = ({ src_1, src_2, alt }) => {
           onClick={setImage}
           className={styles.arrow}
         />
-        <img
+        <Image
+          height={250}
+          width={150}
           src={toggle ? src_1 : src_2}
           alt={alt}
         />

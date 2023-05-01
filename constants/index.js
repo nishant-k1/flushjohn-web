@@ -10,7 +10,7 @@ export const home_data = {
     title:
       "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
-      src: "assets/home/hero/hero_fm_1.png",
+      src: "/assets/home/hero/hero_fm_1.png",
       alt: "porta_potty",
     },
   },
@@ -192,8 +192,8 @@ export const products_data = {
     {
       id: 1,
       image: {
-        src_1: "assets/products/sps_blue.svg",
-        src_2: "assets/products/blueSPSInterior1.png",
+        src_1: "/assets/products/sps_blue.svg",
+        src_2: "/assets/products/blueSPSInterior1.png",
         alt: "Standard Portable Restroom",
       },
       title: "Standard Portable Restroom",
@@ -202,8 +202,8 @@ export const products_data = {
     {
       id: 2,
       image: {
-        src_1: "assets/products/ada_blue.svg",
-        src_2: "assets/products/ADAInterior1.jpg",
+        src_1: "/assets/products/ada_blue.svg",
+        src_2: "/assets/products/ADAInterior1.jpg",
         alt: "ADA-Compliant Portable Restroom",
       },
       title: "ADA-Compliant Portable Restroom",
@@ -212,8 +212,8 @@ export const products_data = {
     {
       id: 3,
       image: {
-        src_1: "assets/products/flushable.svg",
-        src_2: "assets/products/whiteFlushableInterior1.jpg",
+        src_1: "/assets/products/flushable.svg",
+        src_2: "/assets/products/whiteFlushableInterior1.jpg",
         alt: "Flushable Restroom-Sink inside",
       },
       title: "Flushable Restroom-Sink inside",
@@ -222,8 +222,8 @@ export const products_data = {
     {
       id: 4,
       image: {
-        src_1: "assets/products/sinkFront.png",
-        src_2: "assets/products/sinkFront.png",
+        src_1: "/assets/products/sinkFront.png",
+        src_2: "/assets/products/sinkFront.png",
         alt: "Hand Wash Sink Station",
       },
       title: "Hand Wash Sink Station",
@@ -233,8 +233,8 @@ export const products_data = {
   spr: {
     id: 1,
     image: {
-      src_1: "assets/products/sps_blue.svg",
-      src_2: "assets/products/blueSPSInterior1.png",
+      src_1: "/assets/products/sps_blue.svg",
+      src_2: "/assets/products/blueSPSInterior1.png",
       alt: "Standard Portable Restroom",
     },
     title: "Standard Portable Restroom",
@@ -243,8 +243,8 @@ export const products_data = {
   acpr: {
     id: 2,
     image: {
-      src_1: "assets/products/ada_blue.svg",
-      src_2: "assets/products/ADAInterior1.jpg",
+      src_1: "/assets/products/ada_blue.svg",
+      src_2: "/assets/products/ADAInterior1.jpg",
       alt: "ADA-Compliant Portable Restroom",
     },
     title: "ADA-Compliant Portable Restroom",
@@ -253,8 +253,8 @@ export const products_data = {
   dfr: {
     id: 3,
     image: {
-      src_1: "assets/products/flushable.svg",
-      src_2: "assets/products/whiteFlushableInterior1.jpg",
+      src_1: "/assets/products/flushable.svg",
+      src_2: "/assets/products/whiteFlushableInterior1.jpg",
       alt: "Flushable Restroom-Sink inside",
     },
     title: "Flushable Restroom-Sink inside",
@@ -263,8 +263,8 @@ export const products_data = {
   hss: {
     id: 4,
     image: {
-      src_1: "assets/products/sinkFront.png",
-      src_2: "assets/products/sinkFront.png",
+      src_1: "/assets/products/sinkFront.png",
+      src_2: "/assets/products/sinkFront.png",
       alt: "Hand Wash Sink Station",
     },
     title: "Hand Wash Sink Station",

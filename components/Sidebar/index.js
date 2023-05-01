@@ -7,6 +7,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -24,12 +25,12 @@ const Sidebar = () => {
       <div className={styles.container}>
         <div className={styles.sidebar}>
           <Link href="/">
-            <img
+            <Image
+              height={800}
+              width={128}
               onClick={handleClick}
-              src="reliable_portable_logo.svg"
+              src="/reliable_portable_logo.svg"
               alt="brand-logo"
-              height="5rem"
-              width="8rem"
             />
           </Link>
           <Link
