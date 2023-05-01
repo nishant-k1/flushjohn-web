@@ -8,8 +8,11 @@ const Testimonial = ({ heading, content }) => {
         <h2>{heading}</h2>
         <div className={styles.testimonialsWrapper}>
           {content &&
-            content.map((item) => (
-              <div className={styles.wrapper}>
+            content.map((item, index) => (
+              <div
+                className={styles.wrapper}
+                key={index}
+              >
                 <img
                   src={item.image.src}
                   alt={item.image.alt}
