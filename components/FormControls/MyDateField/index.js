@@ -5,6 +5,7 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { useField } from "formik";
 import moment from "moment";
 import styles from "../../QuickQuote/styles.module.css";
+import Image from "next/image";
 
 const MyDateField = ({ ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -34,9 +35,11 @@ const MyDateField = ({ ...props }) => {
         <div className={styles.error}>
           {error + " "}
           <span>
-            <img
+            <Image
               style={{ height: "1.5rem" }}
               src="/assets/error.png"
+              height={24}
+              width={24}
             />
           </span>
         </div>

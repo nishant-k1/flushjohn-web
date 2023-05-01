@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 
 const Services = React.memo(({ heading, content }) => {
   return (
@@ -19,9 +20,11 @@ const Services = React.memo(({ heading, content }) => {
                   }
                   key={id}
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={alt}
+                    height={300}
+                    width={300}
                   />
                   <div>
                     <h3>{title}</h3>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 
 const Hero = React.memo(({ title, image }) => {
   return (
@@ -25,9 +26,11 @@ const Hero = React.memo(({ title, image }) => {
           </div>
 
           <div className={styles.heroImage}>
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
+              height={300}
+              width={300}
             />
           </div>
         </div>

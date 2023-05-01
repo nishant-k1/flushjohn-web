@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Image from "next/image";
 
 const Testimonial = ({ heading, content }) => {
   return (
@@ -13,7 +14,9 @@ const Testimonial = ({ heading, content }) => {
                 className={styles.wrapper}
                 key={index}
               >
-                <img
+                <Image
+                  height={96}
+                  width={96}
                   src={item.image.src}
                   alt={item.image.alt}
                 />

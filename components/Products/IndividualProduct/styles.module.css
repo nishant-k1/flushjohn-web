@@ -24,12 +24,17 @@
 .wrapper div {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: end;
+  justify-content: start;
 }
 
 .wrapper h1 {
   color: var(--primary-text-color);
 }
-
+.wrapper img {
+  max-width: 400px;
+  height: 100%;
+}
 .wrapper p {
   color: var(--primary-text-color);
 }
@@ -42,7 +47,7 @@
   .wrapper div {
     grid-template-columns: 1fr 1fr;
     justify-content: start;
-    column-gap: 2.5rem;
+    column-gap: 12px;
   }
 }
 /* desktop device / breakpoint: 1024px */

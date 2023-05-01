@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import EmailIcon from "@mui/icons-material/Email";
-
+import Image from "next/image";
 import Link from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -14,13 +14,11 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import { useRouter } from "next/router";
 
 var date = new Date();
 var year = date.getFullYear();
 
 const Footer = () => {
-  const router = useRouter();
   return (
     <>
       <div className={styles.sectionTop}>
@@ -29,11 +27,11 @@ const Footer = () => {
             {/* logo */}
             <li className={styles.footerLogo}>
               <Link href="/">
-                <img
-                  src="reliable_portable_logo.svg"
+                <Image
+                  src="/reliable_portable_logo.svg"
                   alt="brand-logo"
-                  height="5rem"
-                  width="8rem"
+                  height={80}
+                  width={128}
                 />
               </Link>
             </li>

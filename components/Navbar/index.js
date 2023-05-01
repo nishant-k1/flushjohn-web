@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
 import { SidebarContext } from "../../contexts/SidebarContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 // import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
@@ -43,10 +44,12 @@ const Navbar = () => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <Link href="/">
-            <img
+            <Image
               className={styles.logo}
-              src="reliable_portable_logo.svg"
+              src="/reliable_portable_logo.svg"
               alt="porta-potty"
+              height={64}
+              width={100}
             />
           </Link>
           <div className={styles.hamburger}>

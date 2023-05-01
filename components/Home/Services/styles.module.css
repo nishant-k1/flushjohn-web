@@ -27,7 +27,8 @@
 }
 
 .wrapper img {
-  width: 100%;
+  width: 300px;
+  height: 300px;
   padding-bottom: 12px;
 }
 
@@ -57,8 +58,8 @@
     flex-direction: row-reverse;
   }
   .wrapper img {
-    max-width: 420px;
-    max-height: 420px;
+    width: 420px;
+    height: 420px;
     padding-bottom: 12px;
   }
 }

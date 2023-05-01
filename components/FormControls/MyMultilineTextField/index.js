@@ -1,6 +1,7 @@
 import React from "react";
 import { useField } from "formik";
 import styles from "../../QuickQuote/styles.module.css";
+import Image from "next/image";
 
 const MyMultilineTextField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -24,9 +25,11 @@ const MyMultilineTextField = ({ label, ...props }) => {
         >
           {error + " "}
           <span>
-            <img
+            <Image
               style={{ height: "1.5rem" }}
               src="/assets/error.png"
+              height={24}
+              width={24}
             />
           </span>
         </div>
