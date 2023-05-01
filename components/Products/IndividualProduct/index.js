@@ -37,14 +37,14 @@ const IndividualProduct = ({ slug }) => {
             <Image
               src={src_1}
               alt={alt}
-              width={400}
-              height={800}
+              width={300}
+              height={600}
             />
             <Image
               src={src_2}
               alt={alt}
-              width={400}
-              height={800}
+              width={300}
+              height={600}
             />
           </div>
           <p>{desc}</p>
