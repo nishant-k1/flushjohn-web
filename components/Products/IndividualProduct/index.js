@@ -4,6 +4,7 @@ import Breadcrumbs from "../../Breadcrumbs";
 import { products_data } from "../../../constants";
 
 const IndividualProduct = ({ slug }) => {
+  if (!slug) return "";
   const { spr, acpr, dfr, hss } = products_data;
   const currentProduct = (slug) => {
     switch (slug) {
@@ -16,7 +17,7 @@ const IndividualProduct = ({ slug }) => {
       case "flushable-restroom-sink-inside":
         return hss;
       default:
-        break;
+        throw new Error(`Invalid slug: ${slug}`);
     }
   };
 
@@ -47,16 +48,3 @@ const IndividualProduct = ({ slug }) => {
 };
 
 export default IndividualProduct;
-
-// <div className={styles.productsWrapper}>
-// {slug === "standard-portable-restroom" && (
-//   <StandardPortableRestroom />
-// )}
-// {slug === "ada-compliant-portable-restroom" && (
-//   <AdaPortableRestroom />
-// )}
-// {slug === "hand-wash-sink-station" && <HandWashSinkStation />}
-// {slug === "flushable-restroom-sink-inside" && (
-//   <DeluxeFlushableRestroom />
-// )}
-// </div>
