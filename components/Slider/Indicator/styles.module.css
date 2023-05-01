@@ -23,22 +23,3 @@
 .inactive {
   background-color: transparent;
 }
-
-.quoteLink {
-  outline: none;
-  border: 1px solid var(--primary-bg-color);
-  border-radius: 2px;
-  padding: 0.3rem;
-  background-color: var(--primary-bg-color);
-  margin-bottom: 1rem;
-}
-
-.quoteLink a {
-  color: var(--primary-text-color);
-  font-weight: 400;
-}
-
-.quoteLink:hover {
-  transform: scale(0.9);
-  transition: 0.3s;
-}

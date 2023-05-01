@@ -7,22 +7,44 @@
   align-items: center;
 }
 .breadcrumb span {
-  padding: 0 12px;
+  padding: 0 2px;
   color: var(--neutral-bg-color);
-  font-weight: 900;
+  font-weight: 100;
 }
 .breadcrumb a {
   display: grid;
-  padding: 0 12px;
+  padding: 0 4px;
   color: var(--primary-bg-color);
   text-transform: capitalize;
   align-items: center;
-  font-weight: 400;
-  font-size: large;
-  background-color: var(--neutral-bg-color);
+  font-weight: 600;
+  font-size: 12px;
+  background-color: var(--tertiary-bg-color);
 }
+
 .breadcrumb a:hover {
-  background-color: var(--primary-text-color);
   transform: scale(0.95);
   transition: 0.3s;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* tablet device breakpoint: 768px*/
+@media only screen and (min-width: 768px) {
+  .breadcrumb a {
+    display: grid;
+    color: var(--primary-bg-color);
+    text-transform: capitalize;
+    align-items: center;
+    font-weight: 500;
+    font-size: large;
+    /* background-color: var(--neutral-bg-color); */
+  }
+}
+
+/* desktop device / breakpoint: 1024px */
+@media only screen and (min-width: 1024px) {
 }
