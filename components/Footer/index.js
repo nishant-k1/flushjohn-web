@@ -14,6 +14,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
+import MessageIcon from "@mui/icons-material/Message";
+import { FaBloggerB } from "react-icons/fa";
 
 var date = new Date();
 var year = date.getFullYear();
@@ -91,6 +93,18 @@ const Footer = () => {
                   <Link href="/products">
                     <LocalShippingIcon />
                     Portables
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog">
+                    <FaBloggerB style={{ fontSize: "1.5rem" }} />
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact">
+                    <MessageIcon />
+                    Contact
                   </Link>
                 </li>
                 <li>

@@ -1,0 +1,55 @@
+/* utilities */
+.blog {
+  background-color: var(--secondary-bg-color);
+  /* background-image: url("/assets/hero_bg.svg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 32px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.wrapper {
+  margin-top: 6rem;
+  display: grid;
+  grid-gap: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper div {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  justify-content: start;
+}
+
+.wrapper h1 {
+  color: var(--primary-text-color);
+}
+.wrapper img {
+  max-width: 400px;
+  height: 100%;
+}
+.wrapper p {
+  color: var(--primary-text-color);
+}
+
+/* tablet device breakpoint: 768px*/
+@media screen and (min-width: 768px) {
+  .blog {
+    padding: 64px 32px;
+  }
+  .wrapper div {
+    grid-template-columns: 1fr 1fr;
+    justify-content: start;
+    column-gap: 12px;
+  }
+}
+/* desktop device / breakpoint: 1024px */
+@media only screen and (min-width: 1024px) {
+}
