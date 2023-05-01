@@ -6,11 +6,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import PhoneIcon from "@mui/icons-material/Phone";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { phone } from "../../constants";
 
 const Sidebar = () => {
-  const router = useRouter();
+  const { phone_link, phone_number } = phone;
+
   const { active, setActive } = useContext(SidebarContext);
   const handleClick = () => {
     setActive(false);
@@ -55,11 +56,11 @@ const Sidebar = () => {
             Get Free Quote
           </Link>
           <Link
-            href="tel:(855) 780-3061"
+            href={phone_link}
             onClick={handleClick}
           >
             <PhoneIcon />
-            (855) 780-3061
+            {phone_number}
           </Link>
         </div>
       </div>

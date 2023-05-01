@@ -3,6 +3,11 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
+export const phone = {
+  phone_link: "tel:+18557803061",
+  phone_number: "(855) 780-3061",
+};
+
 export const home_data = {
   hero: {
     // title:

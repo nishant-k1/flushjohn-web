@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
+import { phone } from "../../../constants";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const Hero = React.memo(({ title, image }) => {
+  const { phone_link, phone_number } = phone;
+
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
@@ -11,16 +15,17 @@ const Hero = React.memo(({ title, image }) => {
             <h1>{title}</h1>
             <div className={styles.heroCta}>
               <a
-                className={styles.ctaQuoteBtn}
                 href="/quote"
+                className={styles.ctaQuoteBtn}
               >
                 GET QUOTE
               </a>
               <a
-                href="tel:+1 326-598-5963"
+                href={phone_link}
                 className={styles.ctaPhoneBtn}
               >
-                362-569-3598
+                <PhoneIcon />
+                <div>{phone_number}</div>
               </a>
             </div>
           </div>

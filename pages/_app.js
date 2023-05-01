@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps, router }) {
   React.useEffect(() => {
     if (typeof window) {
       // modal container
-      if ((quickQuoteViewStatus && clientWidth <= 600) || active) {
+      if ((quickQuoteViewStatus && clientWidth <= 768) || active) {
         document.documentElement.style.overflowY = "hidden"; // firefox, chrome
         // document.body.scroll = "no"; // ie only
       } else {

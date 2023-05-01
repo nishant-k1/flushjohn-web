@@ -42,13 +42,12 @@
 }
 
 .heroCta a {
-  padding: 6px;
+  padding: 6px 4px;
   display: flex;
-  font-weight: 500;
-  font-size: medium;
+  font-weight: 600;
+  font-size: small;
   align-items: center;
   justify-content: center;
-  width: 8rem;
   border-radius: 2px;
 }
 
@@ -61,6 +60,13 @@
   color: var(--btn-text-color);
   background-color: var(--primary-bg-color);
   border: 2px solid var(--primary-bg-color);
+  width: 8rem;
+  transition: 0.3s;
+}
+
+.ctaQuoteBtn:hover {
+  transform: scale(0.95);
+  transition: 0.3s;
 }
 
 .ctaPhoneBtn {
@@ -69,7 +75,15 @@
   border: 2px solid var(--primary-bg-color);
   transition-property: background-color;
   transition-duration: 0.3s;
+  display: flex;
+  width: 9rem;
+  column-gap: 4px;
 }
+
+.ctaPhoneBtn a div {
+  grid-template-columns: max-content;
+}
+
 .ctaPhoneBtn:hover {
   color: var(--btn-text-color);
   background-color: var(--primary-bg-color);
@@ -111,6 +125,14 @@
     margin-top: 6rem;
     align-items: center;
     justify-content: start;
+  }
+  .ctaQuoteBtn {
+    font-size: medium !important;
+    width: 10rem;
+  }
+  .ctaPhoneBtn {
+    font-size: medium !important;
+    width: 10rem;
   }
 }
 

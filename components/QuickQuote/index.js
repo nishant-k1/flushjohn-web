@@ -76,7 +76,6 @@ const QuickQuote = () => {
       <motion.div
         animate={quickQuoteViewStatus ? { opacity: 1 } : { opacity: 0 }}
       >
-        {quickQuoteViewStatus && clientWidth <= 600 && <ModalOverlay />}
         {quickQuoteViewStatus && (
           <Formik
             initialValues={{
@@ -114,131 +113,138 @@ const QuickQuote = () => {
               });
             }}
           >
-            <Form className={styles.form}>
-              {quickQuoteViewStatus && clientWidth <= 600 && (
-                <CloseIcon
-                  className={styles.closeIcon}
-                  onClick={() => {
-                    setQuickQuoteViewStatus(false);
-                  }}
-                />
-              )}
-              <Grid
-                container
-                spacing={1}
-              >
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <h2>Quick Free Quote</h2>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMultipleSelectCheckmarks
-                    // className={styles.multiSelect}
-                    label="Portable Units"
-                    name="portableUnits"
-                    // isMulti
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  md={6}
-                >
-                  <MyDateField
-                    label="Delivery Date"
-                    className={styles.date}
-                    name="deliveryDate"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  md={6}
-                >
-                  <MyDateField
-                    className={styles.date}
-                    label="Pickup Date"
-                    name="pickupDate"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMaskedTextField
-                    label="Zip"
-                    name="zip"
-                    mask="99999"
-                    maskChar=""
-                    placeholder="Zip"
-                    type="tel"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyTextField
-                    label="Full Name"
-                    name="fullName"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyTextField
-                    label="Email"
-                    name="email"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMaskedTextField
-                    label="Phone"
-                    name="phone"
-                    mask="(999) 999-9999"
-                    placeholder="Phone"
-                    type="tel"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMultilineTextField
-                    label="Instructions (if any)"
-                    name="instructions"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={3}
-                >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      background: "#DB517A",
-                      borderRadius: 0,
-                      "&:hover": {
-                        background: "#DB517A",
-                      },
+            <div
+              className={styles.overlay}
+              style={{
+                display: quickQuoteViewStatus ? "block" : "none",
+              }}
+            >
+              <Form className={styles.form}>
+                {quickQuoteViewStatus && clientWidth <= 768 && (
+                  <CloseIcon
+                    className={styles.closeIcon}
+                    onClick={() => {
+                      setQuickQuoteViewStatus(false);
                     }}
-                    endIcon={<SendIcon />}
-                    type="submit"
+                  />
+                )}
+                <Grid
+                  container
+                  spacing={1}
+                >
+                  <Grid
+                    item
+                    xs={12}
                   >
-                    Send
-                  </Button>
+                    <h2>Quick Free Quote</h2>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMultipleSelectCheckmarks
+                      // className={styles.multiSelect}
+                      label="Portable Units"
+                      name="portableUnits"
+                      // isMulti
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    md={6}
+                  >
+                    <MyDateField
+                      label="Delivery Date"
+                      className={styles.date}
+                      name="deliveryDate"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    md={6}
+                  >
+                    <MyDateField
+                      className={styles.date}
+                      label="Pickup Date"
+                      name="pickupDate"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMaskedTextField
+                      label="Zip"
+                      name="zip"
+                      mask="99999"
+                      maskChar=""
+                      placeholder="Zip"
+                      type="tel"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyTextField
+                      label="Full Name"
+                      name="fullName"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyTextField
+                      label="Email"
+                      name="email"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMaskedTextField
+                      label="Phone"
+                      name="phone"
+                      mask="(999) 999-9999"
+                      placeholder="Phone"
+                      type="tel"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMultilineTextField
+                      label="Instructions (if any)"
+                      name="instructions"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={3}
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{
+                        background: "#DB517A",
+                        borderRadius: 0,
+                        "&:hover": {
+                          background: "#DB517A",
+                        },
+                      }}
+                      endIcon={<SendIcon />}
+                      type="submit"
+                    >
+                      Send
+                    </Button>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Form>
+              </Form>
+            </div>
           </Formik>
         )}
       </motion.div>

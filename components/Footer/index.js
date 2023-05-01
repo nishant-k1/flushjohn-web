@@ -16,11 +16,13 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import MessageIcon from "@mui/icons-material/Message";
 import { FaBloggerB } from "react-icons/fa";
+import { phone } from "../../constants";
 
 var date = new Date();
 var year = date.getFullYear();
 
 const Footer = () => {
+  const { phone_link, phone_number } = phone;
   return (
     <>
       <div className={styles.sectionTop}>
@@ -135,9 +137,9 @@ const Footer = () => {
                   <h2>Reliable Portable</h2>
                 </li>
                 <li>
-                  <Link href="tel:(855) 780-3061">
+                  <Link href={phone_link}>
                     <PhoneIcon />
-                    (855) 780-3061
+                    {phone_number}
                   </Link>
                 </li>
                 <li>
