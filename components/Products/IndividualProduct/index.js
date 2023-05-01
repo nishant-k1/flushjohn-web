@@ -5,9 +5,8 @@ import { products_data } from "../../../constants";
 import Image from "next/image";
 
 const IndividualProduct = ({ slug }) => {
-  if (!slug) {
-    throw new Error("Slug is undefined");
-  }
+  if (!slug) return;
+
   const { spr, acpr, dfr, hss } = products_data;
 
   const currentProduct = (slug) => {

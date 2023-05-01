@@ -38,6 +38,7 @@
   grid-template-columns: max-content max-content;
   column-gap: 0.5rem;
   justify-content: start;
+  align-items: center;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.712);
   font-size: 1rem !important;
@@ -100,6 +101,7 @@
   grid-template-columns: max-content;
   row-gap: 0.5rem;
 }
+
 .nav ul li a:hover {
   color: var(--primary-text-color);
   transition: 0.3s;
