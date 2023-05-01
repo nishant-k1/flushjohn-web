@@ -21,9 +21,6 @@ export default function QuickQuoteButton() {
       </button>
       <a
         href={phone_link}
-        onClick={() => {
-          setQuickQuoteViewStatus(!quickQuoteViewStatus);
-        }}
         className={styles.phoneBtn}
       >
         <PhoneIcon className={styles.icon} />
