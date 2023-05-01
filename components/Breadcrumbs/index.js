@@ -3,8 +3,7 @@ import styles from "./styles.module.css";
 
 const Breadcrumbs = ({ path }) => {
   const pageTitles = path.split("/");
-  // /products/standard-portable-restroom
-  // [" ", products, "", standard - portable - restroom];
+
   const route = (pageTitles, index) => {
     if (!pageTitles || !index) return;
     return pageTitles
@@ -18,7 +17,12 @@ const Breadcrumbs = ({ path }) => {
 
   return (
     <div className={styles.breadcrumb}>
-      <Link href="/">Home</Link>
+      <Link
+        href="/"
+        style={{ paddingLeft: "0" }}
+      >
+        Home
+      </Link>
       {pageTitles.map((item, index) => {
         if (item === "") return <span>{">>"}</span>;
         const pageTitle = item.replaceAll("-", " ");

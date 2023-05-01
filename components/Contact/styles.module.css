@@ -249,8 +249,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .section {
+    padding: 64px 32px;
+  }
   .form {
-    padding: 64px 0;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
     justify-content: space-between;
