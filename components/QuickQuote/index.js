@@ -16,9 +16,9 @@ import * as Yup from "yup";
 import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../../contexts/ClientWidthContext";
-import ModalOverlay from "../ModalOverlay";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
+import { crmApi } from "../../lib";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   portableUnits: Yup.array().of(
@@ -97,7 +97,13 @@ const QuickQuote = () => {
               notify();
               // Event("Request quote", "Prompt Form Submit", "PFS");
               try {
-                const res = await axios.post(`/api/quickQuote`, values);
+                await axios.post(`/api/quickQuote`, values);
+                await axios({
+                  method: "post",
+                  url: "/api/leads",
+                  baseURL: crmApi,
+                  data: { ...values },
+                });
               } catch (err) {
                 console.log(err);
               }
