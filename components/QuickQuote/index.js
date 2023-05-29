@@ -21,7 +21,7 @@ import { motion } from "framer-motion";
 import { crmApi } from "../../lib";
 
 const quickQuoteValidationSchema = Yup.object().shape({
-  portableUnits: Yup.array().of(
+  products: Yup.array().of(
     Yup.string().required("This field can't be empty...")
   ),
   deliveryDate: Yup.string().required("This field can't be empty..."),
@@ -79,7 +79,7 @@ const QuickQuote = () => {
         {quickQuoteViewStatus && (
           <Formik
             initialValues={{
-              portableUnits: [],
+              products: [],
               deliveryDate: "",
               pickupDate: "",
               zip: "",
@@ -102,13 +102,13 @@ const QuickQuote = () => {
                   method: "post",
                   url: "/api/leads",
                   baseURL: crmApi,
-                  data: { ...values },
+                  data: { ...values, leadSource: "Web-Quick Quote" },
                 });
               } catch (err) {
                 console.log(err);
               }
               resetForm({
-                portableUnits: [],
+                products: [],
                 deliveryDate: "",
                 pickupDate: "",
                 zip: "",
@@ -151,7 +151,7 @@ const QuickQuote = () => {
                     <MyMultipleSelectCheckmarks
                       // className={styles.multiSelect}
                       label="Portable Units"
-                      name="portableUnits"
+                      name="products"
                       // isMulti
                     />
                   </Grid>
