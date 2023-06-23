@@ -4,7 +4,7 @@
   "packageManager": "yarn@3.5.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "format": "yarn prettier --write .",

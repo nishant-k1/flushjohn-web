@@ -18,7 +18,6 @@ import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../../contexts/ClientWidthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
-import { crmApi } from "../../lib";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(
@@ -45,7 +44,7 @@ const QuickQuote = () => {
   const handleClickOutside = (event) => {
     if (quickQuoteRef.current) {
       if (!quickQuoteRef.current.contains(event.target)) {
-        setQuickQuoteViewStatus(false);
+        // setQuickQuoteViewStatus(false);
       }
     }
   };
@@ -96,12 +95,12 @@ const QuickQuote = () => {
               // res.status === 200 && notify();
               notify();
               // Event("Request quote", "Prompt Form Submit", "PFS");
+
               try {
-                await axios.post(`/api/quickQuote`, values);
                 await axios({
                   method: "post",
-                  url: "/api/leads",
-                  baseURL: crmApi,
+                  url: "/leads",
+                  baseURL: "http://localhost:3000",
                   data: { ...values, leadSource: "Web-Quick Quote" },
                 });
               } catch (err) {
