@@ -1,8 +1,9 @@
+import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import styles from "./styles.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { QuoteContext } from "../../../contexts/QuoteContext";
 import { DatePicker } from "antd";
 import moment from "moment";
@@ -28,20 +29,11 @@ const MyDateField = ({ label, ...props }) => {
           placeholder={props.label}
           disabledDate={(d) => !d || d.isBefore(new Date())}
           onChange={(e) => {
-            setValue(moment(e).format("MMM Do YY"));
+            setValue(2);
           }}
         />
         {meta.touched && meta.error ? (
-          <div className={styles.error}>
-            {meta.error + " "}
-            <span>
-              <Image
-                height={32}
-                width={32}
-                src="/assets/cry_emoji.gif"
-              />
-            </span>
-          </div>
+          <div className={styles.error}>{meta.error + " "}</div>
         ) : null}
       </div>
     </div>
@@ -59,16 +51,7 @@ const MyMultilineTextField = ({ label, ...props }) => {
           {...props}
         />
         {meta.touched && meta.error ? (
-          <div className={styles.error}>
-            {meta.error + " "}
-            <span>
-              <Image
-                height={32}
-                width={32}
-                src="/assets/cry_emoji.gif"
-              />
-            </span>
-          </div>
+          <div className={styles.error}>{meta.error + " "}</div>
         ) : null}
       </div>
     </div>
@@ -92,16 +75,7 @@ const MyTextInput = ({ label, ...props }) => {
           {...props}
         />
         {meta.touched && meta.error ? (
-          <div className={styles.error}>
-            {meta.error + " "}
-            <span>
-              <Image
-                height={32}
-                width={32}
-                src="/assets/cry_emoji.gif"
-              />
-            </span>
-          </div>
+          <div className={styles.error}>{meta.error + " "}</div>
         ) : null}
       </div>
     </div>
@@ -138,16 +112,7 @@ const MyMaskedTextInput = ({ label, ...props }) => {
           />
         )}
         {meta.touched && meta.error ? (
-          <div className={styles.error}>
-            {meta.error + " "}
-            <span>
-              <Image
-                height={32}
-                width={32}
-                src="/assets/cry_emoji.gif"
-              />
-            </span>
-          </div>
+          <div className={styles.error}>{meta.error + " "}</div>
         ) : null}
       </div>
     </div>
@@ -158,20 +123,27 @@ const QuoteStep2 = () => {
   const { render, data } = useContext(QuoteContext);
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
+
+  React.useEffect(() => {
+    setFormValues(formValues);
+  }, [formValues]);
+
   return (
     <Formik
+      enableReinitialize={true}
       initialValues={formValues}
-      validationSchema={Yup.object({
-        deliveryDate: Yup.string().required("This field can't be empty..."),
-        pickupDate: Yup.string().required("This field can't be empty..."),
-        street: Yup.string().required("This field can't be empty..."),
-        zip: Yup.string().required("This field can't be empty..."),
-      })}
+      // validationSchema={Yup.object({
+      //   deliveryDate: Yup.string().required("This field can't be empty"),
+      //   pickupDate: Yup.string().required("This field can't be empty"),
+      //   street: Yup.string().required("This field can't be empty"),
+      //   zip: Yup.string().required("This field can't be empty"),
+      // })}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
-          setFormValues((prevValues) => {
-            return { ...prevValues, ...values };
-          });
+          setFormValues((prevValues) => ({
+            ...prevValues,
+            ...values,
+          }));
           setStep(3);
         } catch (err) {}
       }}
@@ -216,20 +188,10 @@ const QuoteStep2 = () => {
               name="state"
             />
           </div>
-          <div className={styles.phone}>
-            <MyMaskedTextInput
-              label="Phone"
-              name="phone"
-              mask="(999) 999-9999"
-              autoComplete="off"
-              type="tel"
-            />
-          </div>
-
           <div className={styles.hint}>
             <MyMultilineTextField
               label="Placement Instructions"
-              name="hint"
+              name="instructions"
             />
           </div>
         </div>

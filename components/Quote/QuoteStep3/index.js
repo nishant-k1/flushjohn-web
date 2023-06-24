@@ -1,3 +1,4 @@
+import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
@@ -9,10 +10,58 @@ import axios from "axios";
 // import { Event } from "../lib/analytics";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { requirementDetails } from "../../../contexts/QuoteContext";
-import { delivryDetails } from "../../../contexts/QuoteContext";
-import { personalDetails } from "../../../contexts/QuoteContext";
-import Image from "next/image";
+import { initialQuoteValues } from "../../../contexts/QuoteContext";
+
+const MyTextField = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className={styles.outerBox}>
+      <label
+        className={styles.label}
+        htmlFor={props.id || props.name}
+      >
+        {label}
+        {props.name !== "cName" && (
+          <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+        )}
+      </label>
+      <div className={styles.innerBox}>
+        <input
+          className={styles.input}
+          {...field}
+          {...props}
+        />
+        {meta.touched && meta.error ? (
+          <div className={styles.error}>{meta.error + " "}</div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+const MyMaskedTextInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className={styles.outerBox}>
+      <label className={styles.label}>
+        {label}
+        {props.name !== "onsitePhone" && props.name !== "contactPersonName" && (
+          <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+        )}
+      </label>
+      <div className={styles.innerBox}>
+        <MaskedInput
+          className={styles.input}
+          {...field}
+          {...props}
+        />
+        {meta.touched && meta.error ? (
+          <div className={styles.error}>{meta.error + " "}</div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
 
 const QuoteStep3 = () => {
   const notify = () =>
@@ -30,110 +79,44 @@ const QuoteStep3 = () => {
   const [step, setStep] = render;
   const [formValues, setFormValues] = data;
 
-  const MyTextField = ({ label, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-      <div className={styles.outerBox}>
-        <label
-          className={styles.label}
-          htmlFor={props.id || props.name}
-        >
-          {label}
-          {props.name !== "cName" && (
-            <span style={{ color: "red", fontSize: "x-large" }}>*</span>
-          )}
-        </label>
-        <div className={styles.innerBox}>
-          <input
-            className={styles.input}
-            {...field}
-            {...props}
-          />
-          {meta.touched && meta.error ? (
-            <div className={styles.error}>
-              {meta.error + " "}
-              <span>
-                <Image
-                  height={32}
-                  width={32}
-                  src="/assets/cry_emoji.gif"
-                />
-              </span>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  };
-
-  const MyMaskedTextInput = ({ label, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-      <div className={styles.outerBox}>
-        <label
-          className={styles.label}
-          htmlFor={props.id || props.name}
-        >
-          {label}
-          {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
-        </label>
-        <div className={styles.innerBox}>
-          <MaskedInput
-            className={styles.input}
-            {...field}
-            {...props}
-          />
-          {meta.touched && meta.error ? (
-            <div className={styles.error}>
-              {meta.error + " "}
-              <span>
-                <Image
-                  height={32}
-                  width={32}
-                  src="/assets/cry_emoji.gif"
-                />
-              </span>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  };
+  React.useEffect(() => {
+    setFormValues(formValues);
+  }, [formValues]);
 
   return (
     <div>
       <Formik
+        enableReinitialize={true}
         initialValues={formValues}
-        validationSchema={Yup.object({
-          fName: Yup.string().required("This field can't be empty..."),
-          lName: Yup.string().required("This field can't be empty..."),
-          cName: Yup.string(),
-          email: Yup.string()
-            .email("Invalid email address")
-            .required("This field can't be empty..."),
-          phone: Yup.string().required("This field can't be empty..."),
-        })}
+        // validationSchema={Yup.object({
+        //   fName: Yup.string().required("This field can't be empty"),
+        //   lName: Yup.string().required("This field can't be empty"),
+        //   cName: Yup.string(),
+        //   email: Yup.string()
+        //     .email("Invalid email address")
+        //     .required("This field can't be empty"),
+        //   phone: Yup.string().required("This field can't be empty"),
+        // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            setFormValues((prevValues) => {
-              return { ...prevValues, ...values };
+            // setFormValues((prevValues) => ({
+            //   ...prevValues,
+            //   ...values,
+            // }));
+            await axios.post(`/api/quote`, {
+              ...values,
+              leadSource: "Web-Long-Quote",
             });
-            await axios.post(`/api/quote`, values);
             setTimeout(() => {
               notify();
             }, 2000);
             setStep(1);
-            setFormValues((prevValues) => {
-              return {
-                ...prevValues,
-                ...delivryDetails,
-                ...requirementDetails,
-                ...personalDetails,
-              };
-            });
+            setFormValues(initialQuoteValues);
             resetForm();
             // Event("Request quote", "Quote Form Submit", "QFS");
-          } catch (err) {}
+          } catch (err) {
+            console.log(err);
+          }
         }}
       >
         <div className={styles.section}>
@@ -181,7 +164,23 @@ const QuoteStep3 = () => {
 
                 <div className={styles.phone}>
                   <MyMaskedTextInput
-                    label="Onsite Phone"
+                    label="Phone"
+                    name="phone"
+                    mask="(999) 999-9999"
+                    autoComplete="off"
+                    type="tel"
+                  />
+                </div>
+
+                <div className={styles.contactPersonName}>
+                  <MyMaskedTextInput
+                    label="Onsite Contact Person Name"
+                    name="contactPersonName"
+                  />
+                </div>
+                <div className={styles.phone}>
+                  <MyMaskedTextInput
+                    label="Onsite Contact Person Phone"
                     name="onsitePhone"
                     mask="(999) 999-9999"
                     autoComplete="off"

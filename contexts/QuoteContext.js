@@ -2,34 +2,50 @@ import { createContext, useState } from "react";
 
 export const QuoteContext = createContext();
 
-export const requirementDetails = {
-  SPR: "",
-  DFR: "",
-  ACR: "",
-  HWS: "",
+const requirementDetails = {
+  usageType: "",
+  products: [
+    {
+      name: "Standard Portable Restroom",
+      qty: "",
+    },
+    { name: "Deluxe Flushable Restroom", qty: "" },
+    { name: "ADA Portable Restroom", qty: "" },
+    { name: "Hand Wash Station", qty: "" },
+  ],
 };
-export const delivryDetails = {
+
+const deliveryDetails = {
   deliveryDate: "",
   pickupDate: "",
   street: "",
   zip: "",
   city: "",
   state: "",
-  hint: "",
-  onsitePhone: "",
+  instructions: "",
 };
-export const personalDetails = {
+
+const personalDetails = {
   fName: "",
   lName: "",
   cName: "",
   email: "",
   phone: "",
+  contactPersonName: "",
+  onsitePhone: "",
 };
+
+export const initialQuoteValues = {
+  ...requirementDetails,
+  ...deliveryDetails,
+  ...personalDetails,
+};
+
 export const QuoteContextProvider = ({ children }) => {
   const [step, setStep] = useState(1);
   const [formValues, setFormValues] = useState({
-    ...delivryDetails,
     ...requirementDetails,
+    ...deliveryDetails,
     ...personalDetails,
   });
 
