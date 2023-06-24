@@ -1,9 +1,17 @@
 .services {
-  background-color: var(--secondary-bg-color);
-  /* background-image: url("/assets/hero_bg.svg"); */
-  background-size: contain;
+  background-color: var(--tertiary-bg-color);
+  background-image: url("/assets/hero_bg.svg");
+  background-size: cover;
   background-repeat: repeat;
-  padding: 32px;
+  padding: 16px 32px;
+}
+
+.services_light {
+  background-color: var(--tertiary-bg-color);
+  /* background-image: url("/assets/hero_bg.svg"); */
+  background-size: cover;
+  background-repeat: repeat;
+  padding: 16px 32px;
 }
 
 .container {
@@ -13,20 +21,29 @@
 .container h2 {
   color: var(--primary-text-color);
   padding-bottom: 4rem;
-  font-size: xx-large;
+  font-size: x-large;
 }
+
+.container_light h2 {
+  color: var(--primary-text-color);
+  padding-bottom: 4rem;
+  font-size: x-large;
+}
+
 .serviceWrapper {
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: 2.5rem;
 }
 
-.wrapper {
+.wrapper,
+.wrapper_light {
   display: grid;
   grid-template-columns: 1fr;
-  padding-bottom: 64px;
 }
 
-.wrapper img {
+.wrapper img,
+.wrapper_light img {
   width: 300px;
   height: 300px;
   padding-bottom: 12px;
@@ -37,30 +54,50 @@
   color: var(--primary-text-color);
 }
 
+.wrapper_light h3 {
+  font-size: large;
+  color: var(--secondary-text-color);
+}
+
 .wrapper p {
   font-size: 16px;
   color: var(--primary-text-color);
   line-height: 32px;
 }
+
+.wrapper_light p {
+  font-size: 16px;
+  color: var(--secondary-text-color);
+  line-height: 32px;
+}
+
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .services {
-    background-size: contain;
-    background-repeat: no-repeat;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-size: cover;
+    background-repeat: repeat;
   }
 
+  .services_light {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-size: cover;
+    background-repeat: repeat;
+  }
   .wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 6rem;
+  }
+  .wrapper_light {
     display: flex;
     align-items: center;
     column-gap: 6rem;
   }
   .rowReverse {
     flex-direction: row-reverse;
-  }
-  .wrapper img {
-    width: 420px;
-    height: 420px;
-    padding-bottom: 12px;
   }
 }
 

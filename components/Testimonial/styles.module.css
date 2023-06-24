@@ -1,6 +1,6 @@
 .testimonials {
   padding: 16px 32px;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
@@ -11,9 +11,9 @@
   margin: 0 auto;
 }
 .container h2 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   padding-bottom: 4rem;
-  font-size: xx-large;
+  font-size: x-large;
 }
 .testimonialsWrapper {
   display: grid;
@@ -32,12 +32,12 @@
 
 .wrapper h3 {
   font-size: large;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .wrapper p {
   font-size: 16px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/

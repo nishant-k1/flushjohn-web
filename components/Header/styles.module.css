@@ -16,12 +16,10 @@
 .container img {
   height: 6rem;
   padding: 8px 0;
-  transform: scale(1);
   transition: 0.3s;
 }
 
 .container img:hover {
-  transform: scale(1.1);
   transition: 0.3s;
 }
 
@@ -45,7 +43,6 @@
 }
 
 .icon:hover {
-  transform: scale(0.96);
   transition: 0.5s;
 }
 

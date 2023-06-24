@@ -1,6 +1,6 @@
 .features {
   padding: 16px 32px;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
@@ -13,9 +13,9 @@
 }
 
 .container h2 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   padding-bottom: 4rem;
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .featuresWrapper {
@@ -36,18 +36,18 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 65%;
-  width: 65%;
+  height: 40%;
+  width: 40%;
 }
 
 .wrapper h3 {
   font-size: large;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .wrapper p {
   font-size: 16px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/
@@ -55,7 +55,7 @@
   .features {
     padding-top: 64px;
     padding-bottom: 64px;
-    background-size: contain;
+    background-size: cover;
   }
   .featuresWrapper {
     grid-template-columns: repeat(3, 1fr);

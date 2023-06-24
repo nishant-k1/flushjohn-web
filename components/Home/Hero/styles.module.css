@@ -1,9 +1,10 @@
 .hero {
   background-color: var(--secondary-bg-color);
-  /* background-image: url("/assets/hero_bg.svg"); */
+  background-image: url("/assets/blur_bg.svg");
+  background-image: url("/assets/hero_bg.svg");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: left;
+  background-repeat: repeat;
   padding: 16px 32px;
 }
 
@@ -67,7 +68,8 @@
 }
 
 .ctaQuoteBtn:hover {
-  transform: scale(0.95);
+  background-color: #af6523;
+  border: 2px solid #af6523;
   transition: 0.3s;
 }
 
@@ -114,7 +116,7 @@
 @media only screen and (min-width: 768px) {
   .hero {
     padding-top: 24px;
-    background-size: contain;
+    background-size: cover;
   }
 
   .heroImage img {

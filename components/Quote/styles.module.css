@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
@@ -36,29 +36,26 @@
   margin-bottom: 2rem;
 }
 
-.progressBar div {
-  font-weight: 700;
-  color: var(--primary-text-color);
-}
-
 .step {
   display: grid;
   padding: 0.2rem 1rem;
   justify-content: center;
   align-items: center;
+  font-size: large;
   font-weight: 400;
-  border: 1px solid #ef648a;
+  border: 1px solid var(--primary-bg-color);
   /* border-radius: 0 50px 50px 0; */
   background-color: #83838338;
   transition: 0.5s;
+  color: var(--secondary-text-color);
 }
 
 .step.active {
-  background-color: #df194e;
-  color: white;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
   transition: 0.5s;
   font-size: large;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 /* tablet */
@@ -76,9 +73,5 @@
 
 @media screen and (min-width: 768px) {
   .container {
-  }
-  .progressBar div {
-    font-weight: 500;
-    font-size: large;
   }
 }

@@ -56,20 +56,15 @@
   width: 92%;
   height: 92%;
   border-radius: 50%;
-
-  background-color: initial;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
   border-radius: 125px;
   content: "";
   opacity: 0.5;
   position: absolute;
   transition: all 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .quickQuoteBtn:hover {
-  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
-    rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
   transform: scale(1.05);
 }
 
@@ -101,7 +96,6 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .icon {
@@ -120,12 +114,9 @@
   opacity: 0.5;
   position: absolute;
   transition: all 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .phoneBtn:hover {
   color: var(--primary-text-color);
-  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
-    rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
   transform: scale(1.05);
 }

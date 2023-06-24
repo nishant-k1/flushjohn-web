@@ -1,10 +1,10 @@
 /* utilities */
 .product {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   padding: 32px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .wrapper h1 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 .wrapper img {
   max-width: 400px;
@@ -38,7 +38,7 @@
 }
 .wrapper p {
   font-size: 16px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/

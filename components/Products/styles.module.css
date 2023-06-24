@@ -1,6 +1,6 @@
 /* utilities */
 .products {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
@@ -24,9 +24,13 @@
 .wrapper {
   padding: 1rem;
   margin: 0;
-  border-radius: 1px;
-  border: 1px solid var(--primary-bg-color);
-  background-color: var(--secondary-bg-color);
+  border-radius: 4px;
+  border: 1px solid var(--neutral-bg-color);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+
+  background-color: var(--tertiary-bg-color);
   display: grid;
   grid-template-rows: repeat(4, min-content);
 }
@@ -39,7 +43,7 @@
   outline: none;
   border: 1px solid var(--primary-bg-color);
   border-radius: 2px;
-  padding: 0.3rem !important;
+  padding: 0.3rem 1rem !important;
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color) !important;
   font-weight: 500;
@@ -48,17 +52,17 @@
 }
 
 .quoteLink:hover {
-  transform: scale(0.9);
+  background-color: #af6523;
   transition: 0.3s;
 }
 
 .wrapper h3 {
   font-size: medium;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   margin-top: 12px;
 }
 .wrapper p {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   font-size: medium;
 }
 .moreLink {

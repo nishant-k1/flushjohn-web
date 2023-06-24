@@ -27,7 +27,7 @@
   padding: 0;
   margin: 0;
   font-size: large;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .form input {
@@ -101,7 +101,6 @@
   padding: 0 1rem;
   align-items: center;
   justify-content: center;
-  color: var(--primary-text-color);
   min-width: 8rem;
   height: 2.5rem;
   font-size: large;
@@ -113,20 +112,24 @@
 }
 
 .next {
+  color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
   transition: 0.3s;
 }
 .next:hover {
-  background-color: #b63e62;
+  background-color: #9b581e;
+  border-color: #9b581e;
   transition: 0.3s;
 }
 
 .previous {
+  color: var(--secondary-text-color);
   background-color: var(--tertiary-bg-color);
   transition: 0.3s;
 }
 .previous:hover {
   background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
   transition: 0.3s;
 }
 

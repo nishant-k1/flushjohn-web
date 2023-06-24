@@ -1,6 +1,6 @@
 .section {
   padding: 48px 32px;
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
@@ -55,7 +55,7 @@
   border-left: none;
   border-right: none;
   border-bottom: solid 2px var(--primary-text-color);
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   outline: none;
   height: 2rem;
   font-size: large;
@@ -90,7 +90,7 @@
   border-left: none;
   border-right: none;
   border-bottom: solid 2px var(--primary-text-color);
-  background-color: var(--secondary-bg-color);
+  background-color: var(--tertiary-bg-color);
   outline: none;
   height: 100px;
   padding-top: 0.5rem;

@@ -17,7 +17,6 @@ const Navbar = () => {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
 
-  const [activeLink, setActiveLink] = React.useState("home");
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
@@ -38,7 +37,11 @@ const Navbar = () => {
   return (
     <nav
       className={
-        scrolled ? `${styles.navbar} ${styles.scrolled}` : `${styles.navbar}`
+        scrolled
+          ? `${router.route === "/" ? styles.navbar_home : styles.navbar} ${
+              styles.scrolled
+            }`
+          : `${router.route === "/" ? styles.navbar_home : styles.navbar}`
       }
     >
       <div className={styles.container}>

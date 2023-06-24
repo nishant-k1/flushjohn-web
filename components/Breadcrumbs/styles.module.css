@@ -23,7 +23,7 @@
 }
 
 .breadcrumb a:hover {
-  transform: scale(0.95);
+  color: #aa601f;
   transition: 0.3s;
 }
 

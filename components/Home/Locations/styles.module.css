@@ -1,10 +1,11 @@
 .locations {
-  padding: 16px 32px;
-  background-color: var(--secondary-bg-color);
-  /* background-image: url("/assets/hero_bg.svg"); */
+  display: flex;
+  background-color: var(--tertiary-bg-color);
+  background-image: url("/assets/hero_bg.svg");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: left;
+  background-repeat: repeat;
+  padding: 16px 32px;
 }
 
 .container {
@@ -15,7 +16,7 @@
 .container h2 {
   color: var(--primary-text-color);
   padding-bottom: 4rem;
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .list {
@@ -34,8 +35,8 @@
 @media only screen and (min-width: 768px) {
   .locations {
     padding: 64px 32px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: repeat;
   }
   .list {
     grid-template-columns: repeat(6, 1fr);
