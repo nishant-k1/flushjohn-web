@@ -18,6 +18,7 @@ import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../../contexts/ClientWidthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
+import { apiBaseUrls } from "../../constants";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(
@@ -93,19 +94,28 @@ const QuickQuote = () => {
             onSubmit={async (values, { setSubmitting, resetForm }) => {
               setQuickQuoteViewStatus(false);
               // res.status === 200 && notify();
-              notify();
+
               // Event("Request quote", "Prompt Form Submit", "PFS");
 
               try {
                 await axios({
                   method: "post",
                   url: "/leads",
-                  baseURL: "http://localhost:3000",
+                  baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
+                  data: { ...values, leadSource: "Web-Quick Quote" },
+                });
+
+                await axios({
+                  method: "post",
+                  url: "/quick-quote",
                   data: { ...values, leadSource: "Web-Quick Quote" },
                 });
               } catch (err) {
                 console.log(err);
               }
+
+              notify();
+
               resetForm({
                 products: [],
                 deliveryDate: "",
