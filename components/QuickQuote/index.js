@@ -191,8 +191,7 @@ const QuickQuote = () => {
                   </Grid>
                   <Grid
                     item
-                    xs={12}
-                    md={6}
+                    xs={6}
                   >
                     <MyDateField
                       label="Delivery Date"
@@ -202,8 +201,7 @@ const QuickQuote = () => {
                   </Grid>
                   <Grid
                     item
-                    xs={12}
-                    md={6}
+                    xs={6}
                   >
                     <MyDateField
                       className={styles.date}
