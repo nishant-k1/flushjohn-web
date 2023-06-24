@@ -19,6 +19,7 @@ import { ClientWidthContext } from "../../contexts/ClientWidthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 import { apiBaseUrls } from "../../constants";
+import MyRadioField from "../FormControls/MyRadioField";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(
@@ -79,6 +80,7 @@ const QuickQuote = () => {
         {quickQuoteViewStatus && (
           <Formik
             initialValues={{
+              usageType: "",
               products: [],
               deliveryDate: "",
               pickupDate: "",
@@ -117,6 +119,7 @@ const QuickQuote = () => {
               notify();
 
               resetForm({
+                usageType: "",
                 products: [],
                 deliveryDate: "",
                 pickupDate: "",
@@ -135,23 +138,45 @@ const QuickQuote = () => {
               }}
             >
               <Form className={styles.form}>
-                {quickQuoteViewStatus && clientWidth <= 768 && (
-                  <CloseIcon
-                    className={styles.closeIcon}
-                    onClick={() => {
-                      setQuickQuoteViewStatus(false);
-                    }}
-                  />
-                )}
+                {/* {quickQuoteViewStatus && clientWidth <= 768 && ( */}
+                <CloseIcon
+                  className={styles.closeIcon}
+                  onClick={() => {
+                    setQuickQuoteViewStatus(false);
+                  }}
+                />
+                {/* )} */}
                 <Grid
                   container
-                  spacing={1}
+                  spacing={0.5}
                 >
                   <Grid
                     item
                     xs={12}
                   >
                     <h2>Quick Free Quote</h2>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyRadioField
+                      label="Event"
+                      name="usageType"
+                      value="event"
+                      className={styles.radio}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyRadioField
+                      label="Construction"
+                      name="usageType"
+                      value="construction"
+                      className={styles.radio}
+                    />
                   </Grid>
                   <Grid
                     item
