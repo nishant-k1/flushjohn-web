@@ -22,10 +22,10 @@ const Navbar = () => {
 
   React.useEffect(() => {
     const onScroll = () => {
-      if (window.pageYOffset > 50) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       }
-      if (window.pageYOffset < 50) {
+      if (window.scrollY < 50) {
         setScrolled(false);
       }
     };
