@@ -195,7 +195,7 @@
 @media only screen and (min-width: 768px) {
   .form {
     padding: 2.5rem;
-    border: 1px solid rgb(221, 25, 123) !important;
+    border: 1px solid var(--primary-bg-color) !important;
   }
   .outerBox {
     column-gap: 2rem;

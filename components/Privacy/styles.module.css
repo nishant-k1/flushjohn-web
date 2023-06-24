@@ -23,7 +23,7 @@
 .container h6,
 .container p,
 .container li {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   padding-bottom: 1rem;
   text-transform: capitalize;
 }

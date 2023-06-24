@@ -32,13 +32,13 @@
 }
 
 .wrapper h1 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 .wrapper h2 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 .wrapper h3 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 .wrapper img {
   max-width: 400px;
@@ -47,7 +47,7 @@
 }
 .wrapper p {
   font-size: 16px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/

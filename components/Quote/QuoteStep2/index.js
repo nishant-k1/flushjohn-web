@@ -26,7 +26,7 @@ const MyDateField = ({ label, ...props }) => {
           label={props.label}
           // defaultValue={moment(new Date(), "MM/DD/YYYY")}
           format={"MM/DD/YYYY"}
-          placeholder={props.label}
+          // placeholder={props.label}
           disabledDate={(d) => !d || d.isBefore(new Date())}
           onChange={(e) => {
             setValue(2);

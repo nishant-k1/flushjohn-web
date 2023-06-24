@@ -24,14 +24,6 @@ const MyMultilineTextField = ({ label, ...props }) => {
           style={{ background: "red" }}
         >
           {error + " "}
-          <span>
-            <Image
-              style={{ height: "1.5rem" }}
-              src="/assets/error.png"
-              height={24}
-              width={24}
-            />
-          </span>
         </div>
       ) : null}
     </>

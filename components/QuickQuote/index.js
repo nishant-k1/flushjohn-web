@@ -266,10 +266,10 @@ const QuickQuote = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        background: "#DB517A",
+                        background: "var(--primary-bg-color)",
                         borderRadius: 0,
                         "&:hover": {
-                          background: "#DB517A",
+                          background: "#ac6324",
                         },
                       }}
                       endIcon={<SendIcon />}

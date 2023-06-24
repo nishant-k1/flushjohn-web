@@ -29,11 +29,11 @@
 }
 
 .wrapper h1 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   margin: 0;
 }
 .wrapper h2 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   margin: 0;
 }
 .wrapper img {
@@ -43,7 +43,7 @@
 }
 .wrapper p {
   font-size: 16px;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 /* tablet device breakpoint: 768px*/

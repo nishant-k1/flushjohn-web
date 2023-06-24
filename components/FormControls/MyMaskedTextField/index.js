@@ -26,17 +26,7 @@ const MyMaskedTextField = ({ label, ...props }) => {
       </Tooltip>
 
       {touched && error ? (
-        <div className={styles.error}>
-          {error + " "}
-          <span>
-            <Image
-              style={{ height: "1.5rem" }}
-              src="/assets/error.png"
-              height={80}
-              width={128}
-            />
-          </span>
-        </div>
+        <div className={styles.error}>{error + " "}</div>
       ) : null}
     </>
   );

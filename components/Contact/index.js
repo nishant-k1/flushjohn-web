@@ -137,7 +137,6 @@ const Contact = () => {
                   type="text"
                   maxLength="15"
                   autoComplete="given-name"
-                  placeholder="Jane"
                 />
               </div>
 
@@ -148,7 +147,6 @@ const Contact = () => {
                   type="text"
                   maxLength="20"
                   autoComplete="family-name"
-                  placeholder="Doe"
                 />
               </div>
 
@@ -158,7 +156,6 @@ const Contact = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="jane@email.com"
                 />
               </div>
 
@@ -168,7 +165,6 @@ const Contact = () => {
                   name="phone"
                   mask="(999) 999-9999"
                   autoComplete="tel-national"
-                  placeholder="(000) 000-0000"
                 />
               </div>
 
@@ -177,7 +173,6 @@ const Contact = () => {
                   label="Message"
                   name="message"
                   type="textarea"
-                  placeholder="Message"
                 />
               </div>
               <button

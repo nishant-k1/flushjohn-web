@@ -118,5 +118,4 @@
 
 .phoneBtn:hover {
   color: var(--primary-text-color);
-  transform: scale(1.05);
 }

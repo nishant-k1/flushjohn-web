@@ -31,7 +31,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
     placeholder: (
       <p
         style={{
-          color: "#df194e",
+          color: "var(--primary-bg-color)",
           fontWeight: 600,
           margin: 0,
         }}
@@ -55,17 +55,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }) => {
         />
       </Space>
       {touched && error ? (
-        <div className={styles.error}>
-          {error + " "}
-          <span>
-            <Image
-              style={{ height: "1.5rem" }}
-              src="/assets/error.png"
-              height={80}
-              width={128}
-            />
-          </span>
-        </div>
+        <div className={styles.error}>{error + " "}</div>
       ) : null}
     </div>
   );

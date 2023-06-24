@@ -22,7 +22,7 @@ const MyRadioField = ({ label, ...props }) => {
       >
         <label
           style={{
-            color: "#df194e",
+            color: "var(--primary-bg-color)",
             fontWeight: "600",
             paddingLeft: "6px",
             fontSize: "small",
@@ -47,17 +47,7 @@ const MyRadioField = ({ label, ...props }) => {
         />
       </div>
       {touched && error ? (
-        <div className={styles.error}>
-          {error + " "}
-          <span>
-            <Image
-              style={{ height: "1.5rem" }}
-              src="/assets/error.png"
-              height={24}
-              width={24}
-            />
-          </span>
-        </div>
+        <div className={styles.error}>{error + " "}</div>
       ) : null}
     </>
   );
