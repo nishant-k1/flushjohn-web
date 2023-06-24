@@ -19,17 +19,7 @@ const MyTextField = ({ label, ...props }) => {
         }}
       />
       {touched && error ? (
-        <div className={styles.error}>
-          {error + " "}
-          <span>
-            <Image
-              style={{ height: "1.5rem" }}
-              src="/assets/error.png"
-              height={24}
-              width={24}
-            />
-          </span>
-        </div>
+        <div className={styles.error}>{error + " "}</div>
       ) : null}
     </>
   );

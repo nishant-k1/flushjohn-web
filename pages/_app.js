@@ -17,17 +17,22 @@ import { ToastContainer } from "react-toastify";
 import { localBusiness } from "../SEO";
 import { testimonials } from "../constants";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps, router }) {
+  const { route } = useRouter();
+
   const [clientWidth, setClientWidth] = React.useState(
     typeof window !== "undefined" ? window.innerWidth : null
   );
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setQuickQuoteViewStatus(true);
-    }, 9000);
+    if (route !== "/quote") {
+      setTimeout(() => {
+        setQuickQuoteViewStatus(true);
+      }, 9000);
+    }
   }, []);
 
   const [active, setActive] = React.useState(false);

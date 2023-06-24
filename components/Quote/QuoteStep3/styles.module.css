@@ -1,19 +1,10 @@
 .form {
   margin-bottom: 1rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr;
   width: 100%;
   transition: 0.3s;
-  grid-template-areas:
-    "fName"
-    "lName"
-    "cName"
-    "email"
-    "phone"
-    "buttons";
 }
 
 .outerBox {
@@ -69,23 +60,6 @@
   padding: 0;
   margin: 0;
   color: #ef648a;
-}
-.fName {
-  grid-area: fName;
-}
-
-.lName {
-  grid-area: lName;
-}
-.cName {
-  grid-area: cName;
-}
-.email {
-  grid-area: email;
-}
-
-.phone {
-  grid-area: phone;
 }
 
 .fName input,
@@ -143,7 +117,7 @@
   transition: 0.3s;
 }
 .next:hover {
-  transform: scale(0.9);
+  background-color: #b63e62;
   transition: 0.3s;
 }
 

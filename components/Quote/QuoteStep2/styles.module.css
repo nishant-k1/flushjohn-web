@@ -175,7 +175,7 @@
   transition: 0.3s;
 }
 .next:hover {
-  transform: scale(0.9);
+  background-color: #b63e62;
   transition: 0.3s;
 }
 

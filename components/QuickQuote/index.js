@@ -22,17 +22,15 @@ import { apiBaseUrls } from "../../constants";
 import MyRadioField from "../FormControls/MyRadioField";
 
 const quickQuoteValidationSchema = Yup.object().shape({
-  products: Yup.array().of(
-    Yup.string().required("This field can't be empty...")
-  ),
-  deliveryDate: Yup.string().required("This field can't be empty..."),
-  pickupDate: Yup.string().required("This field can't be empty..."),
-  zip: Yup.number().required("This field can't be empty..."),
-  fullName: Yup.string().required("This field can't be empty..."),
+  products: Yup.array().of(Yup.string().required("This field can't be empty")),
+  deliveryDate: Yup.string().required("This field can't be empty"),
+  pickupDate: Yup.string().required("This field can't be empty"),
+  zip: Yup.number().required("This field can't be empty"),
+  fullName: Yup.string().required("This field can't be empty"),
   email: Yup.string()
     .email("Invalid email address")
-    .required("This field can't be empty..."),
-  phone: Yup.string().required("This field can't be empty..."),
+    .required("This field can't be empty"),
+  phone: Yup.string().required("This field can't be empty"),
   instructions: Yup.string(),
 });
 
