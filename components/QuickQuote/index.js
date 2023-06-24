@@ -158,7 +158,7 @@ const QuickQuote = () => {
                   </Grid>
                   <Grid
                     item
-                    xs={6}
+                    xs={5}
                   >
                     <MyRadioField
                       label="Event"
@@ -169,7 +169,7 @@ const QuickQuote = () => {
                   </Grid>
                   <Grid
                     item
-                    xs={6}
+                    xs={7}
                   >
                     <MyRadioField
                       label="Construction"
