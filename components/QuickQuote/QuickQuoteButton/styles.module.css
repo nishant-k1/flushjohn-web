@@ -27,8 +27,8 @@
   border: 0; */
   /* position: relative; */
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  right: 2rem;
+  bottom: 2rem;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary-bg-color);
@@ -76,8 +76,8 @@
   border: 0; */
   /* position: relative; */
   position: fixed;
-  right: 1rem;
-  bottom: 6rem;
+  right: 2rem;
+  bottom: 7rem;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary-bg-color);
