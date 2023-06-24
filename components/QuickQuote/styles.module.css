@@ -43,11 +43,21 @@
 .form .radio {
   height: 2rem;
   width: 2rem;
+  appearance: none;
+  border-radius: 50%;
+  border: 1px solid #df194e;
+  border-color: #df194e;
+  box-sizing: border-box;
+}
+
+.form .radio:checked {
+  background-color: #df194e;
+  border-color: #df194e;
 }
 
 .form input:checked {
-  background-color: #df194e;
-  border-color: #df194e;
+  background-color: #df194e !important;
+  border-color: #df194e !important;
 }
 
 .form input,
