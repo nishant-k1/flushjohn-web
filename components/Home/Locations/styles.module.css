@@ -19,7 +19,7 @@
 .container h2 {
   color: var(--primary-text-color);
   padding-bottom: 1rem;
-  font-size: x-large;
+  font-size: medium;
 }
 
 .container p {
