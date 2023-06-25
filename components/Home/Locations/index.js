@@ -5,12 +5,8 @@ const Locations = React.memo(({ title, list }) => {
   return (
     <div className={styles.locations}>
       <div className={styles.container}>
-        <div className={styles.locationWrapper}>
-          <h2>{title}</h2>
-          <div className={styles.list}>
-            {list && list.map((item, index) => <p key={index}>{item}</p>)}
-          </div>
-        </div>
+        <h2>{title}</h2>
+        <p className={styles.list}>{list.join(" | ")}</p>
       </div>
     </div>
   );

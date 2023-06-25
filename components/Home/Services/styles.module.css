@@ -1,6 +1,7 @@
 .services {
   background-color: var(--tertiary-bg-color);
-  background-image: url("/assets/hero_bg.svg");
+  /* background-image: url("/assets/hero_bg.svg"); */
+  background-color: #d9dce1;
   background-size: cover;
   background-repeat: repeat;
   padding: 16px 32px;
@@ -19,7 +20,7 @@
   margin: 0 auto;
 }
 .container h2 {
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   padding-bottom: 4rem;
   font-size: x-large;
 }
@@ -52,6 +53,7 @@
 .wrapper h3 {
   font-size: large;
   color: var(--primary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .wrapper_light h3 {
@@ -62,6 +64,7 @@
 .wrapper p {
   font-size: 16px;
   color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   line-height: 32px;
 }
 

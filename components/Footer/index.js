@@ -17,15 +17,18 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import MessageIcon from "@mui/icons-material/Message";
 import { FaBloggerB } from "react-icons/fa";
 import { phone } from "../../constants";
+import Locations from "../Home/Locations";
+import { home_data } from "../../constants";
 
 var date = new Date();
 var year = date.getFullYear();
 
 const Footer = () => {
+  const { locations } = home_data;
   const { phone_link, phone_number } = phone;
   return (
     <>
-      <div className={styles.sectionTop}>
+      <div className={styles.footer}>
         <div className={styles.container}>
           <ul className={styles.ul}>
             {/* logo */}
@@ -157,6 +160,7 @@ const Footer = () => {
               </ul>
             </li>
           </ul>
+          <Locations {...locations} />
           <div className={styles.bottomFooter}>
             Copyright © {year} reliableportable.com
           </div>

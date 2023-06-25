@@ -106,7 +106,7 @@ export const home_data = {
   },
   locations: {
     title:
-      "Extensive Service Coverage: Providing Porta Potty Rentals Across Multiple Locations",
+      "Extensive service coverage: We're providing porta potty rentals across multiple locations",
     list: [
       "Alabama",
       "Arizona",

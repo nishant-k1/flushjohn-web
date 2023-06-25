@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Testimonial = ({ heading, content }) => {
   return (
@@ -14,14 +15,17 @@ const Testimonial = ({ heading, content }) => {
                 className={styles.wrapper}
                 key={index}
               >
-                <Image
-                  height={96}
-                  width={96}
-                  src={item.image.src}
-                  alt={item.image.alt}
+                <PersonIcon
+                  style={{
+                    height: 96,
+                    width: 96,
+                    color: "var(--primary-bg-color)",
+                  }}
                 />
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
               </div>
             ))}
         </div>
