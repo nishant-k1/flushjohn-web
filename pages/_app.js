@@ -1,7 +1,6 @@
 import React from "react";
 import { DefaultSeo, LocalBusinessJsonLd } from "next-seo";
 import defaultSeoConfig, { localBusinessConfig } from "../next-seo.config";
-
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -15,7 +14,6 @@ import { QuickQuoteContext } from "../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../contexts/ClientWidthContext";
 import { SidebarContext } from "./../contexts/SidebarContext";
 import { ToastContainer } from "react-toastify";
-import { localBusiness } from "../SEO";
 import { testimonials } from "../constants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
