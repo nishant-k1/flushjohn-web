@@ -83,7 +83,7 @@
 .email input:hover,
 .phone input:hover {
   box-shadow: none;
-  border: solid 1px var(--neutral-bg-color);
+  border: solid 1px var(--primary-bg-color);
 }
 
 .buttons {

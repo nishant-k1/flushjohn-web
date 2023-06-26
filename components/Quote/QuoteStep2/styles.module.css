@@ -142,7 +142,7 @@
 .hint textarea:hover,
 .date:hover {
   box-shadow: none;
-  border: solid 1px rgb(39, 126, 255);
+  border: solid 1px var(--primary-bg-color);
 }
 
 .buttons {
