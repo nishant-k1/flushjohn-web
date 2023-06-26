@@ -46,7 +46,7 @@ const Sidebar = () => {
             onClick={handleClick}
           >
             <LocalShippingIcon />
-            Portables
+            Rentals
           </Link>
           <Link
             href="/quote"

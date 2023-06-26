@@ -97,7 +97,7 @@ const Footer = () => {
                 <li>
                   <Link href="/products">
                     <LocalShippingIcon />
-                    Portables
+                    Rentals
                   </Link>
                 </li>
                 <li>

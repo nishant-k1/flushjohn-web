@@ -1,6 +1,7 @@
 import React from "react";
 import { DefaultSeo, LocalBusinessJsonLd } from "next-seo";
-import SEO from "../next-seo.config";
+import defaultSeoConfig, { localBusinessConfig } from "../next-seo.config";
+
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
@@ -89,8 +90,8 @@ function MyApp({ Component, pageProps, router }) {
             >
               <Sidebar />
               <Layout>
-                <DefaultSeo {...SEO} />
-                <LocalBusinessJsonLd {...localBusiness} />
+                <DefaultSeo {...defaultSeoConfig} />
+                <LocalBusinessJsonLd {...localBusinessConfig} />
                 <Navbar />
                 <motion.div
                   key={router.route}

@@ -77,7 +77,7 @@ const Navbar = () => {
               href="/products"
               className={router.route === "/products" ? styles.activeLink : ""}
             >
-              Portables
+              Rentals
             </Link>
             <Link
               href="/quote"
