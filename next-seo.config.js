@@ -1,4 +1,4 @@
-import constants from "./constants";
+import { home_data } from "./constants";
 
 export default {
   title:
@@ -113,5 +113,5 @@ export const localBusinessConfig = {
       },
     },
   ],
-  areasServed: [...constants.home_data.locations.list],
+  areasServed: [...home_data.locations.list],
 };
