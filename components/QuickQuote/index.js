@@ -96,7 +96,7 @@ const QuickQuote = () => {
               // res.status === 200 && notify();
 
               // Event("Request quote", "Prompt Form Submit", "PFS");
-
+              notify();
               try {
                 await axios({
                   method: "post",
@@ -113,8 +113,6 @@ const QuickQuote = () => {
               } catch (err) {
                 console.log(err);
               }
-
-              notify();
 
               resetForm({
                 usageType: "",

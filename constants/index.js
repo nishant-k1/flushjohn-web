@@ -4,9 +4,12 @@ import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
 export const apiBaseUrls = {
-  CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
-  CRM_RP_SOCKET_SERVICES_BASE_URL:
-    "https://crm-rp-socket-services.reliableportable.com",
+  // CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
+  // CRM_RP_SOCKET_SERVICES_BASE_URL:
+  //   "https://crm-rp-socket-services.reliableportable.com",
+
+  CRM_RP_SERVICES_BASE_URL: "http://localhost:8080",
+  CRM_RP_SOCKET_SERVICES_BASE_URL: "http://localhost:3000",
 };
 
 export const phone = {

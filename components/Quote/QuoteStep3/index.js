@@ -45,9 +45,10 @@ const MyMaskedTextInput = ({ label, ...props }) => {
     <div className={styles.outerBox}>
       <label className={styles.label}>
         {label}
-        {props.name !== "onsitePhone" && props.name !== "contactPersonName" && (
-          <span style={{ color: "red", fontSize: "x-large" }}>*</span>
-        )}
+        {props.name !== "contactPersonPhone" &&
+          props.name !== "contactPersonName" && (
+            <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+          )}
       </label>
       <div className={styles.innerBox}>
         <MaskedInput
@@ -181,7 +182,7 @@ const QuoteStep3 = () => {
                 <div className={styles.phone}>
                   <MyMaskedTextInput
                     label="Onsite Contact Person Phone"
-                    name="onsitePhone"
+                    name="contactPersonPhone"
                     mask="(999) 999-9999"
                     autoComplete="off"
                     type="tel"

@@ -32,7 +32,7 @@ const personalDetails = {
   email: "",
   phone: "",
   contactPersonName: "",
-  onsitePhone: "",
+  contactPersonPhone: "",
 };
 
 export const initialQuoteValues = {

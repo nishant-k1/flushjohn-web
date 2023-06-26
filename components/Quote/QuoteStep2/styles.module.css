@@ -114,8 +114,8 @@
 .onsite {
   grid-area: onsite;
 }
-.onsitePhone {
-  grid-area: onsitePhone;
+.contactPersonPhone {
+  grid-area: contactPersonPhone;
 }
 .street input,
 .city input,
