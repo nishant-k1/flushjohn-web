@@ -47,6 +47,7 @@ export const QuoteContextProvider = ({ children }) => {
     ...requirementDetails,
     ...deliveryDetails,
     ...personalDetails,
+    leadSource: "Web Lead",
   });
 
   return (

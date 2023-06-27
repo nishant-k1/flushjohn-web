@@ -20,13 +20,19 @@ const MyDateField = ({ ...props }) => {
         {...props}
         className={props.className}
         label={props.label}
-        value={field.value && moment(new Date(), "MM/DD/YYYY")}
-        defaultValue={moment(new Date(), "MM/DD/YYYY")}
-        format={"MM/DD/YYYY"}
         placeholder={props.label}
+        // value={field.value && new Date()}
+        // defaultValue={new Date()}
+        format={"MM/DD/YYYY"}
         disabledDate={(d) => !d || d.isBefore(new Date())}
-        onChange={(e) => {
-          setValue(moment(e).format("MMM Do YY"));
+        onChange={(date, dateString) => {
+          setValue(
+            new Date(date).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })
+          );
         }}
         getPopupContainer={() => datePickerRef.current}
         // getPopupContainer={(trigger) => trigger.parentNode} // disable the default behavior of closing on a click outside

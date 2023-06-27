@@ -105,9 +105,7 @@ const QuoteStep3 = () => {
             //   ...values,
             // }));
             await axios.post(`/api/quote`, {
-              ...values,
-              leadSource: "Web-Long-Quote",
-            });
+              ...values            });
             setTimeout(() => {
               notify();
             }, 2000);

@@ -26,7 +26,8 @@ const quickQuoteValidationSchema = Yup.object().shape({
   deliveryDate: Yup.string().required("This field can't be empty"),
   pickupDate: Yup.string().required("This field can't be empty"),
   zip: Yup.number().required("This field can't be empty"),
-  fullName: Yup.string().required("This field can't be empty"),
+  fName: Yup.string().required("This field can't be empty"),
+  lName: Yup.string().required("This field can't be empty"),
   email: Yup.string()
     .email("Invalid email address")
     .required("This field can't be empty"),
@@ -80,13 +81,22 @@ const QuickQuote = () => {
             initialValues={{
               usageType: "",
               products: [],
+
               deliveryDate: "",
               pickupDate: "",
+              street: "",
               zip: "",
+              city: "",
+              state: "",
               instructions: "",
-              fullName: "",
+
+              fName: "",
+              lName: "",
+              cName: "",
               email: "",
               phone: "",
+              contactPersonName: "",
+              contactPersonPhone: "",
             }}
             validationSchema={quickQuoteValidationSchema}
             validateOnChange={false}
@@ -102,13 +112,13 @@ const QuickQuote = () => {
                   method: "post",
                   url: "/leads",
                   baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
-                  data: { ...values, leadSource: "Web-Quick Quote" },
+                  data: { ...values, leadSource: "Web Quick Lead" },
                 });
 
                 await axios({
                   method: "post",
                   url: "/quick-quote",
-                  data: { ...values, leadSource: "Web-Quick Quote" },
+                  data: { ...values, leadSource: "Web Quick Lead" },
                 });
               } catch (err) {
                 console.log(err);
@@ -122,6 +132,8 @@ const QuickQuote = () => {
                 zip: "",
                 instructions: "",
                 fullName: "",
+                fName: "",
+                lName: "",
                 email: "",
                 phone: "",
               });
@@ -218,13 +230,23 @@ const QuickQuote = () => {
                       type="tel"
                     />
                   </Grid>
+
                   <Grid
                     item
-                    xs={12}
+                    xs={6}
                   >
                     <MyTextField
-                      label="Full Name"
-                      name="fullName"
+                      label="First Name"
+                      name="fName"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyTextField
+                      label="Last Name"
+                      name="lName"
                     />
                   </Grid>
                   <Grid
