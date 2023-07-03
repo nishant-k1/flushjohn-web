@@ -42,7 +42,6 @@ const Footer = () => {
                 />
               </Link>
             </li>
-
             {/* social */}
             <li className={styles.social}>
               <ul>
@@ -50,31 +49,36 @@ const Footer = () => {
                   <h2>Social</h2>
                 </li>
                 <li>
-                  <Link href="https://www.facebook.com/portarental">
+                  {/* <Link href="https://www.facebook.com/portarental"> */}
+                  <Link href="/">
                     <FacebookIcon />
                     Facebook
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://twitter.com/reliableportable">
+                  {/* <Link href="https://twitter.com/reliableportable"> */}
+                  <Link href="/">
                     <TwitterIcon />
                     Twitter
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://www.instagram.com/rent_a_porta/">
+                  {/* <Link href="https://www.instagram.com/rent_a_porta/">  */}
+                  <Link href="/">
                     <InstagramIcon />
                     Instagram
                   </Link>
                 </li>
                 <li>
-                  <Link href="linkedin.com/company/rent-a-porta">
+                  {/* <Link href="linkedin.com/company/rent-a-porta"> */}
+                  <Link href="/">
                     <LinkedInIcon />
                     Linkedin
                   </Link>
                 </li>
                 <li>
-                  <Link href="https://www.pinterest.com/renta_porta">
+                  {/* <Link href="https://www.pinterest.com/renta_porta"> */}
+                  <Link href="/">
                     <PinterestIcon />
                     Pinterest
                   </Link>
