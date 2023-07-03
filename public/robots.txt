@@ -4,6 +4,6 @@ Disallow: /terms
 Disallow: /privacy
 Allow: /
 Allow: /quote
-Allow: /products
+Allow: /rental-products
 Allow: /contact
 sitemap: /sitemap.xml

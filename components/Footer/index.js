@@ -95,9 +95,9 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products">
+                  <Link href="/rental-products">
                     <LocalShippingIcon />
-                    Rentals
+                    Rental Products
                   </Link>
                 </li>
                 <li>
