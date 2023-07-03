@@ -30,7 +30,7 @@ export default {
         alt: "reliable_portable",
       },
     ],
-    updated_time: "2023-06-26T12:34:56Z",
+    updated_time: "2023-07-03T12:34:56Z",
   },
   robotsProps: {
     noindex: false,
@@ -51,7 +51,7 @@ export const localBusinessConfig = {
   name: "Reliable Portable",
   description:
     "Rent portable toilets and restrooms for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all",
-  url: "https://www.reliableportable.com/",
+  // url: "https://www.reliableportable.com/",
   openingHours: ["Monday-Friday 9:00-17:00"],
   rating: {
     ratingValue: "4.5",

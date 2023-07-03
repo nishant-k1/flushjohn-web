@@ -91,9 +91,12 @@ function MyApp({ Component, pageProps, router }) {
                 <DefaultSeo
                   {...defaultSeoConfig}
                   canonical={asPath}
-                  openGraph={{ url: asPath }}
+                  openGraph={{ ...defaultSeoConfig.openGraph, url: asPath }}
                 />
-                <LocalBusinessJsonLd {...localBusinessConfig} />
+                <LocalBusinessJsonLd
+                  {...localBusinessConfig}
+                  url={asPath}
+                />
                 <Navbar />
                 <motion.div
                   key={router.route}
