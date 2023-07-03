@@ -35,7 +35,7 @@ const Products = () => {
                     <span>
                       <Link
                         className={styles.moreLink}
-                        href={`/products/${title
+                        href={`/rental-products/${title
                           .toLowerCase()
                           .replaceAll(" ", "-")}`}
                       >

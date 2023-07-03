@@ -42,11 +42,11 @@ const Sidebar = () => {
             Home
           </Link>
           <Link
-            href="/products"
+            href="/rental-products"
             onClick={handleClick}
           >
             <LocalShippingIcon />
-            Rentals
+            Rental Products
           </Link>
           <Link
             href="/quote"

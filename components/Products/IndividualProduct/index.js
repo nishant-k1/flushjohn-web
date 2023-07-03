@@ -30,7 +30,7 @@ const IndividualProduct = ({ slug }) => {
   return (
     <div className={styles.product}>
       <div className={styles.container}>
-        <Breadcrumbs path={`/products/${slug}`} />
+        <Breadcrumbs path={`/rental-products/${slug}`} />
         <div className={styles.wrapper}>
           <h1>{title}</h1>
           <div>

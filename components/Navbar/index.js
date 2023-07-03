@@ -74,10 +74,12 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/products"
-              className={router.route === "/products" ? styles.activeLink : ""}
+              href="/rental-products"
+              className={
+                router.route === "/rental-products" ? styles.activeLink : ""
+              }
             >
-              Rentals
+              Rental Products
             </Link>
             <Link
               href="/quote"
