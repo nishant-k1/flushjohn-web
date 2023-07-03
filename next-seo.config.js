@@ -8,11 +8,11 @@ export default {
   keywords:
     "reliable porta potty rental, onsite services porta potty, portable bathroom rental, portable toilets on rent, porta potty rental",
   language: "English",
-  canonical: "https://www.reliableportable.com",
+  canonical: "https://www.reliableportable.com/",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.reliableportable.com",
+    url: "https://www.reliableportable.com/",
     siteName: "Reliable Portable",
     title:
       "Reliable Portable | Portable Restroom & Toilets Rental | Portable Toilet Rental",
