@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps, router }) {
-  const { route } = useRouter();
+  const { asPath } = useRouter();
 
   const [clientWidth, setClientWidth] = React.useState(
     typeof window !== "undefined" ? window.innerWidth : null
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps, router }) {
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
 
   React.useEffect(() => {
-    if (route !== "/quote") {
+    if (asPath !== "/quote") {
       setTimeout(() => {
         setQuickQuoteViewStatus(true);
       }, 9000);
@@ -88,7 +88,11 @@ function MyApp({ Component, pageProps, router }) {
             >
               <Sidebar />
               <Layout>
-                <DefaultSeo {...defaultSeoConfig} />
+                <DefaultSeo
+                  {...defaultSeoConfig}
+                  canonical={asPath}
+                  openGraph={{ url: asPath }}
+                />
                 <LocalBusinessJsonLd {...localBusinessConfig} />
                 <Navbar />
                 <motion.div
