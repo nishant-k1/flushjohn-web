@@ -1,10 +1,9 @@
 import { home_data } from "./constants";
 
 export default {
-  title:
-    "Reliable Portable | Portable Restroom Rental | Portable Toilet Rental",
+  title: "Reliable Portable | Porta Potty Rental",
   description:
-    "Rent portable restrooms for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
+    "Portable restroom rental for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
   keywords:
     "reliable porta potty rental, onsite services porta potty, portable bathroom rental, portable toilets on rent, porta potty rental",
   language: "English",
@@ -12,10 +11,9 @@ export default {
     type: "website",
     locale: "en_US",
     siteName: "Reliable Portable",
-    title:
-      "Reliable Portable | Portable Restroom Rental | Portable Toilet Rental",
+    title: "Reliable Portable | Porta Potty Rental",
     description:
-      "Rent portable restrooms for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
+      "Portable restroom rental for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
     images: [
       {
         url: "https://www.reliableportable.com/favicon.svg",
