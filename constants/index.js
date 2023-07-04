@@ -4,17 +4,17 @@ import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
 export const apiBaseUrls = {
-  // CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
-  // CRM_RP_SOCKET_SERVICES_BASE_URL:
-  //   "https://crm-rp-socket-services.reliableportable.com",
+  CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
+  CRM_RP_SOCKET_SERVICES_BASE_URL:
+    "https://crm-rp-socket-services.reliableportable.com",
 
-  CRM_RP_SERVICES_BASE_URL: "http://localhost:8080",
-  CRM_RP_SOCKET_SERVICES_BASE_URL: "http://localhost:3000",
+  // CRM_RP_SERVICES_BASE_URL: "http://localhost:8080",
+  // CRM_RP_SOCKET_SERVICES_BASE_URL: "http://localhost:3000",
 };
 
 export const phone = {
-  phone_link: "tel:+18557803061",
-  phone_number: "(855) 780-3061",
+  phone_link: "tel:+18778904945",
+  phone_number: "(877) 890-4945",
 };
 
 export const home_data = {
