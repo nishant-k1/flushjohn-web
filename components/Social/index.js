@@ -10,27 +10,32 @@ const Social = () => {
     <div>
       <ul className={headerStyles.nav}>
         <li>
-          <Link href="https://www.facebook.com/portarental">
+          {/* <Link href="https://www.facebook.com/portarental"> */}
+          <Link href="/">
             <FacebookIcon className={headerStyles.icon} />
           </Link>
         </li>
         <li>
-          <Link href="https://twitter.com/reliableportable">
+          {/* <Link href="https://twitter.com/reliableportable"> */}
+          <Link href="/">
             <TwitterIcon className={headerStyles.icon} />
           </Link>
         </li>
         <li>
-          <Link href="https://www.instagram.com/rent_a_porta/">
+          {/* <Link href="https://www.instagram.com/rent_a_porta/"> */}
+          <Link href="/">
             <InstagramIcon className={headerStyles.icon} />
           </Link>
         </li>
         <li>
-          <Link href="linkedin.com/company/rent-a-porta">
+          {/* <Link href="linkedin.com/company/rent-a-porta"> */}
+          <Link href="/">
             <LinkedInIcon className={headerStyles.icon} />
           </Link>
         </li>
         <li>
-          <Link href="https://www.pinterest.com/renta_porta">
+          {/* <Link href="https://www.pinterest.com/renta_porta"> */}
+          <Link href="/">
             <PinterestIcon className={headerStyles.icon} />
           </Link>
         </li>

@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import { testimonials } from "../constants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { loadGtag } from "../google-gtag";
 
 function MyApp({ Component, pageProps, router }) {
   const { asPath } = useRouter();
@@ -25,6 +26,10 @@ function MyApp({ Component, pageProps, router }) {
     typeof window !== "undefined" ? window.innerWidth : null
   );
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
+
+  React.useEffect(() => {
+    loadGtag();
+  }, []);
 
   React.useEffect(() => {
     if (asPath !== "/quote") {

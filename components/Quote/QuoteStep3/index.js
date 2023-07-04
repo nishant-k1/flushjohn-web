@@ -11,6 +11,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "../../../contexts/QuoteContext";
+import { gtag } from "../../../google-gtag";
 
 const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -105,7 +106,12 @@ const QuoteStep3 = () => {
             //   ...values,
             // }));
             await axios.post(`/api/quote`, {
-              ...values            });
+              ...values,
+            });
+            gtag("event", "button_click", {
+              event_category: "Button",
+              event_label: "Web Lead Button Clicked",
+            });
             setTimeout(() => {
               notify();
             }, 2000);

@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Breadcrumbs from "../Breadcrumbs";
+import { gtag } from "../../google-gtag";
 
 const notify = () =>
   toast.success("Your message has been delivered", {
@@ -119,7 +120,13 @@ const Contact = () => {
             try {
               const res = await axios.post(`/api/contact`, values);
               res.status === 200 ? setState(true) : setState(false);
-              res.status === 200 && notify();
+              setTimeout(() => {
+                notify();
+              }, 2000);
+              gtag("event", "button_click", {
+                event_category: "Button",
+                event_label: "Contact Email Button Clicked",
+              });
               // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
               console.log(err);

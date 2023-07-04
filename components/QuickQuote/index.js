@@ -20,6 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 import { apiBaseUrls } from "../../constants";
 import MyRadioField from "../FormControls/MyRadioField";
+import { gtag } from "../../google-gtag";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(Yup.string().required("This field can't be empty")),
@@ -106,7 +107,10 @@ const QuickQuote = () => {
               // res.status === 200 && notify();
 
               // Event("Request quote", "Prompt Form Submit", "PFS");
-              notify();
+              setTimeout(() => {
+                notify();
+              }, 2000);
+
               try {
                 await axios({
                   method: "post",
@@ -119,6 +123,11 @@ const QuickQuote = () => {
                   method: "post",
                   url: "/quick-quote",
                   data: { ...values, leadSource: "Web Quick Lead" },
+                });
+
+                gtag("event", "button_click", {
+                  event_category: "Button",
+                  event_label: "Web Quick Lead Button Clicked",
                 });
               } catch (err) {
                 console.log(err);

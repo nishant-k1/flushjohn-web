@@ -8,6 +8,7 @@ import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import Image from "next/image";
 import { phone } from "../../constants";
+import { gtag } from "../../google-gtag";
 
 const Sidebar = () => {
   const { phone_link, phone_number } = phone;
@@ -57,7 +58,13 @@ const Sidebar = () => {
           </Link>
           <Link
             href={phone_link}
-            onClick={handleClick}
+            onClick={() => {
+              setActive(false);
+              gtag("event", "button_click", {
+                event_category: "Button",
+                event_label: "Quick Phone Button Clicked",
+              });
+            }}
           >
             <PhoneIcon />
             {phone_number}
