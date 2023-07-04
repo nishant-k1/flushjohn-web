@@ -83,21 +83,25 @@ width ::-webkit-scrollbar {
 }
 
 /* Target the entire page */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 12px;
   width: 12px; /* Adjust the width of the scrollbar */
 }
 
 /* Track */
-body::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Set the background color of the track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 /* Handle */
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   background: var(--primary-bg-color); /* Set the color of the scroll thumb */
 }
 
 /* Handle on hover */
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #9c561c; /* Set the color of the scroll thumb when hovered */
 }
