@@ -46,7 +46,7 @@
 .wrapper img,
 .wrapper_light img {
   width: 300px;
-  height: 300px;
+  height: 220px;
   padding-bottom: 12px;
 }
 
@@ -106,4 +106,10 @@
 
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
+  .wrapper img,
+  .wrapper_light img {
+    width: 600px;
+    height: 420px;
+    padding-bottom: 12px;
+  }
 }
