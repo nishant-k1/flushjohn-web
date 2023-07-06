@@ -17,6 +17,7 @@ const Products = () => {
           <div className={styles.productsWrapper}>
             {product_list.map((item, index) => {
               const { id, image, title, desc } = item;
+              const slug = title.toLowerCase().replace(/ /g, "-"); // Updated line
               return (
                 <div
                   className={styles.wrapper}
@@ -35,9 +36,7 @@ const Products = () => {
                     <span>
                       <Link
                         className={styles.moreLink}
-                        href={`/rental-products/${title
-                          .toLowerCase()
-                          .replaceAll(" ", "-")}`}
+                        href={`/rental-products/${slug}`}
                       >
                         ...More
                       </Link>

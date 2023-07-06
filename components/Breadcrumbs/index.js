@@ -25,9 +25,12 @@ const Breadcrumbs = ({ path }) => {
       </Link>
       {pageTitles.map((item, index) => {
         if (item === "") return <span>{">>"}</span>;
-        const pageTitle = item.replaceAll("-", " ");
+        const pageTitle = item.replace(/-/g, " "); // Updated line
         return (
-          <div className={styles.wrapper}>
+          <div
+            className={styles.wrapper}
+            key={index}
+          >
             <Link href={route(pageTitles, index)}>{pageTitle}</Link>
             {index !== pageTitles.length - 1 && <span>{">>"}</span>}
           </div>
