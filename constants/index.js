@@ -66,7 +66,7 @@ export const home_data = {
       {
         id: 1,
         // image: "/assets/home/services/services_event_2.png",
-        image: "/assets/home/services/truck.jpeg",
+        image: "/assets/home/services/services_event.jpg",
         alt: "event_pic",
         title:
           "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
@@ -75,7 +75,7 @@ export const home_data = {
       },
       {
         id: 2,
-        image: "/assets/home/services/services_construction.jpg",
+        image: "/assets/home/services/hero_9.jpg",
         alt: "construction_pic",
         title:
           "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
@@ -85,7 +85,7 @@ export const home_data = {
       },
       {
         id: 3,
-        image: "/assets/home/services/hero_10.jpg",
+        image: "/assets/home/services/truck.jpeg",
         alt: "renovation_pic",
         title:
           "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
@@ -97,7 +97,7 @@ export const home_data = {
       },
       {
         id: 4,
-        image: "/assets/home/services/hero_9.jpg",
+        image: "/assets/home/services/services_construction.jpg",
         alt: "relief_pic",
         title:
           "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",

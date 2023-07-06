@@ -108,8 +108,8 @@
 @media only screen and (min-width: 1024px) {
   .wrapper img,
   .wrapper_light img {
-    width: 600px;
-    height: 420px;
+    width: 500px;
+    height: 300px;
     padding-bottom: 12px;
   }
 }
