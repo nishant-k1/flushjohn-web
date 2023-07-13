@@ -3,9 +3,9 @@ import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import MaskedInput from "react-input-mask";
 import styles from "./styles.module.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { QuoteContext } from "../../../contexts/QuoteContext";
-import { RiRefreshLine } from "react-icons/ri";
+import { apiBaseUrls } from "../../../constants";
 import axios from "axios";
 // import { Event } from "../lib/analytics";
 import { toast } from "react-toastify";
@@ -101,13 +101,18 @@ const QuoteStep3 = () => {
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            // setFormValues((prevValues) => ({
-            //   ...prevValues,
-            //   ...values,
-            // }));
+            await axios({
+              method: "post",
+              url: "/leads",
+              baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
+              data: { ...values, leadSource: "Web Lead" },
+            });
+
             await axios.post(`/api/quote`, {
               ...values,
+              leadSource: "Web Lead",
             });
+
             gtag("event", "button_click", {
               event_category: "Button",
               event_label: "Web Lead Button Clicked",
