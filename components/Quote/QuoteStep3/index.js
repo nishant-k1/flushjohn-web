@@ -11,7 +11,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "../../../contexts/QuoteContext";
-import { logEvent } from "../../react-ga4-config";
+import { logEvent } from "../../../react-ga4-config";
 
 const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
