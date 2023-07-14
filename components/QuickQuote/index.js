@@ -127,8 +127,8 @@ const QuickQuote = () => {
 
                 logEvent({
                   category: "Form",
-                  action: "Quick Lead Form Submit",
-                  label: "Submit Button",
+                  action: "Web Quick Lead Form Submit",
+                  label: "Web Quick Lead Form Button",
                   value: undefined,
                   nonInteraction: undefined,
                   transport: "beacon",

@@ -11,7 +11,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "../../../contexts/QuoteContext";
-import { gtag } from "../../../google-gtag";
+import { logEvent } from "../../react-ga4-config";
 
 const MyTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -113,17 +113,22 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             });
 
-            gtag("event", "button_click", {
-              event_category: "Button",
-              event_label: "Web Lead Button Clicked",
+            logEvent({
+              category: "Form",
+              action: "Web Lead Form Submit",
+              label: "Web Lead Form Submit Button",
+              value: undefined,
+              nonInteraction: undefined,
+              transport: "beacon",
             });
+
             setTimeout(() => {
               notify();
-            }, 2000);
+            }, 1000);
+
             setStep(1);
             setFormValues(initialQuoteValues);
             resetForm();
-            // Event("Request quote", "Quote Form Submit", "QFS");
           } catch (err) {
             console.log(err);
           }
