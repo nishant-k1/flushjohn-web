@@ -17,7 +17,6 @@ import { ToastContainer } from "react-toastify";
 import { testimonials } from "../constants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { loadGtag } from "../google-gtag";
 import { initGA, logPageView } from "../react-ga4-config";
 
 function MyApp({ Component, pageProps, router }) {

@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Breadcrumbs from "../Breadcrumbs";
-import { gtag } from "../../google-gtag";
+import { logEvent } from "../../react-ga4-config";
 
 const notify = () =>
   toast.success("Your message has been delivered", {
@@ -126,6 +126,14 @@ const Contact = () => {
               gtag("event", "button_click", {
                 event_category: "Button",
                 event_label: "Contact Email Button Clicked",
+              });
+              logEvent({
+                category: "Button",
+                action: "Contact Email Form submit",
+                label: "Contact Email Button",
+                value: undefined,
+                nonInteraction: undefined,
+                transport: "beacon",
               });
               // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {

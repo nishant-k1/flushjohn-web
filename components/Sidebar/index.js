@@ -8,7 +8,7 @@ import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import Image from "next/image";
 import { phone } from "../../constants";
-import { gtag } from "../../google-gtag";
+import { logEvent } from "../../react-ga4-config";
 
 const Sidebar = () => {
   const { phone_link, phone_number } = phone;
@@ -60,9 +60,13 @@ const Sidebar = () => {
             href={phone_link}
             onClick={() => {
               setActive(false);
-              gtag("event", "button_click", {
-                event_category: "Button",
-                event_label: "Quick Phone Button Clicked",
+              logEvent({
+                category: "Button",
+                action: "Sidebar Lead Phone Call",
+                label: "Sidebar Lead Phone Call Button",
+                value: undefined,
+                nonInteraction: undefined,
+                transport: "beacon",
               });
             }}
           >
