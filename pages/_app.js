@@ -18,6 +18,7 @@ import { testimonials } from "../constants";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { loadGtag } from "../google-gtag";
+import { initGA, logPageView } from "../react-ga4-config";
 
 function MyApp({ Component, pageProps, router }) {
   const { asPath } = useRouter();
@@ -28,8 +29,19 @@ function MyApp({ Component, pageProps, router }) {
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] = React.useState(false);
 
   React.useEffect(() => {
-    loadGtag();
-  }, []);
+    initGA();
+    logPageView(router.pathname, document.title);
+
+    const handleRouteChange = (url) => {
+      logPageView(url, document.title);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   React.useEffect(() => {
     if (asPath !== "/quote") {

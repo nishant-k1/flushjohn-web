@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { phone } from "../../../constants";
 import Link from "next/link";
-import { gtag } from "../../../google-gtag";
+import { logEvent } from "../../../react-ga4-config";
 
 export default function QuickQuoteButton() {
   const { phone_link, phone_number } = phone;
@@ -25,9 +25,13 @@ export default function QuickQuoteButton() {
         href={phone_link}
         className={styles.phoneBtn}
         onClick={() => {
-          gtag("event", "button_click", {
-            event_category: "Button",
-            event_label: "Quick Phone Button Clicked",
+          logEvent({
+            category: "Button",
+            action: "Quick Lead Phone Call",
+            label: "Quick Lead Phone Call Button",
+            value: undefined,
+            nonInteraction: undefined,
+            transport: "beacon",
           });
         }}
       >

@@ -3,8 +3,8 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 import { phone } from "../../../constants";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { gtag } from "../../../google-gtag";
 import Link from "next/link";
+import { logEvent } from "../../../react-ga4-config";
 
 const Hero = React.memo(({ title, image }) => {
   const { phone_link, phone_number } = phone;
@@ -26,9 +26,13 @@ const Hero = React.memo(({ title, image }) => {
                 href={phone_link}
                 className={styles.ctaPhoneBtn}
                 onClick={() => {
-                  gtag("event", "button_click", {
-                    event_category: "Button",
-                    event_label: "Homepage hero Phone Button Clicked",
+                  logEvent({
+                    category: "Button",
+                    action: "Home Page Hero Section Phone Call",
+                    label: "Home Page Hero Section Phone Call Button",
+                    value: undefined,
+                    nonInteraction: undefined,
+                    transport: "beacon",
                   });
                 }}
               >

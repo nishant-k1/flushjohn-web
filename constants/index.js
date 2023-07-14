@@ -3,6 +3,8 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
+export const G_TAG_ID = "AW-11248564671";
+
 export const apiBaseUrls = {
   CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
   CRM_RP_SOCKET_SERVICES_BASE_URL:

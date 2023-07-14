@@ -20,7 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 import { apiBaseUrls } from "../../constants";
 import MyRadioField from "../FormControls/MyRadioField";
-import { gtag } from "../../google-gtag";
+import { logEvent } from "../../react-ga4-config";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(Yup.string().required("This field can't be empty")),
@@ -125,9 +125,13 @@ const QuickQuote = () => {
                   data: { ...values, leadSource: "Web Quick Lead" },
                 });
 
-                gtag("event", "button_click", {
-                  event_category: "Button",
-                  event_label: "Web Quick Lead Button Clicked",
+                logEvent({
+                  category: "Form",
+                  action: "Quick Lead Form Submit",
+                  label: "Submit Button",
+                  value: undefined,
+                  nonInteraction: undefined,
+                  transport: "beacon",
                 });
               } catch (err) {
                 console.log(err);
