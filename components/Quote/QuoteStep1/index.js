@@ -100,14 +100,15 @@ const QuoteStep1 = () => {
               />
             </div>
             {products.map((item, index) => (
-              <MyMaskedTextInput
-                key={index}
-                label={item.name}
-                name={`products[${index}].qty`}
-                mask="9999"
-                maskChar=""
-                type="tel"
-              />
+              <div key={index}>
+                <MyMaskedTextInput
+                  label={item.name}
+                  name={`products[${index}].qty`}
+                  mask="9999"
+                  maskChar=""
+                  type="tel"
+                />
+              </div>
             ))}
           </div>
           <div className={styles.buttons}>

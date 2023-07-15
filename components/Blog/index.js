@@ -12,13 +12,18 @@ const Blog = () => {
   return (
     <div className={styles.blog}>
       <div className={styles.container}>
-        <Breadcrumbs path={router.pathname} />
+        <Breadcrumbs />
         <div className={styles.wrapper}>
           <h1>Blog</h1>
           {post_list.map((item, index) => {
             const { date, title, desc } = item;
+            const slug = title
+              .toLowerCase()
+              .replace(/ /g, "-")
+              .replace(/\/+/g, "/")
+              .replace(/^-|-$/g, "");
             return (
-              <Link href={`/blog/${title.toLowerCase().replaceAll(" ", "-")}`}>
+              <Link href={`/blog/${slug}`}>
                 <h2>{title}</h2>
                 <h3>{date}</h3>
                 <p>{desc}</p>

@@ -17,7 +17,7 @@ const Quote = () => {
     <React.Fragment>
       <div className={styles.section}>
         <div className={styles.container}>
-          <Breadcrumbs path={router.pathname} />
+          <Breadcrumbs />
           <div className={styles.quoteWrapper}>
             <div className={styles.progressBar}>
               <div

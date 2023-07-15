@@ -14,7 +14,7 @@ const Disclaimer = () => {
       />
       <div className={styles.disclaimer}>
         <div className={styles.container}>
-          <Breadcrumbs path={router.pathname} />
+          <Breadcrumbs />
           <div className={styles.disclaimerWrapper}>
             <h2>DISCLAIMER</h2>
             <div>

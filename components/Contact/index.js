@@ -143,7 +143,7 @@ const Contact = () => {
           }}
         >
           <div className={styles.container}>
-            <Breadcrumbs path={router.pathname} />
+            <Breadcrumbs />
             <Form className={styles.form}>
               <div className={styles.firstName}>
                 <MyTextField

@@ -13,11 +13,15 @@ const Products = () => {
     <React.Fragment>
       <div className={styles.products}>
         <div className={styles.container}>
-          <Breadcrumbs path={router.pathname} />
+          <Breadcrumbs />
           <div className={styles.productsWrapper}>
             {product_list.map((item, index) => {
               const { id, image, title, desc } = item;
-              const slug = title.toLowerCase().replace(/ /g, "-"); // Updated line
+              const slug = title
+                .toLowerCase()
+                .replace(/ /g, "-")
+                .replace(/\/+/g, "/")
+                .replace(/^-|-$/g, "");
               return (
                 <div
                   className={styles.wrapper}

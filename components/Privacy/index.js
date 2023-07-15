@@ -14,7 +14,7 @@ const Privacy = () => {
       />
       <div className={styles.privacy}>
         <div className={styles.container}>
-          <Breadcrumbs path={router.pathname} />
+          <Breadcrumbs />
           <div className={styles.privacyWrapper}>
             <h2>PRIVACY POLICY</h2>
             <div>

@@ -1,9 +1,11 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
+import { useRouter } from "next/router";
 
 const Breadcrumbs = ({ path }) => {
-  const pageTitles = path.split("/");
-
+  const router = useRouter();
+  const { asPath } = router;
+  const pageTitles = asPath.split("/");
   const route = (pageTitles, index) => {
     if (!pageTitles || !index) return;
     return pageTitles
@@ -12,7 +14,8 @@ const Breadcrumbs = ({ path }) => {
         else return item;
       })
       .slice(0, index + 1)
-      .join("/");
+      .join("/")
+      .replace(/\/+/g, "/");
   };
 
   return (
@@ -31,7 +34,7 @@ const Breadcrumbs = ({ path }) => {
             className={styles.wrapper}
             key={index}
           >
-            <Link href={route(pageTitles, index)}>{pageTitle}</Link>
+            <Link href={`${route(pageTitles, index)}`}>{pageTitle}</Link>
             {index !== pageTitles.length - 1 && <span>{">>"}</span>}
           </div>
         );

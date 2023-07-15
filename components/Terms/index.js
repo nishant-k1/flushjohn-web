@@ -14,7 +14,7 @@ const Terms = () => {
       />
       <div className={styles.terms}>
         <div className={styles.container}>
-          <Breadcrumbs path={router.pathname} />
+          <Breadcrumbs />
           <div className={styles.termsWrapper}>
             <h2>TERMS AND CONDITIONS</h2>
             <div>
