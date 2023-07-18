@@ -101,7 +101,11 @@ const QuoteStep3 = () => {
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            await axios({
+            setTimeout(() => {
+              notify();
+            }, 1000);
+
+            const res = await axios({
               method: "post",
               url: "/leads",
               baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
@@ -122,13 +126,11 @@ const QuoteStep3 = () => {
               transport: "beacon",
             });
 
-            setTimeout(() => {
-              notify();
-            }, 1000);
-
-            setStep(1);
-            setFormValues(initialQuoteValues);
-            resetForm();
+            if (res.status === 201 && res.data.success) {
+              setStep(1);
+              setFormValues(initialQuoteValues);
+              resetForm();
+            }
           } catch (err) {
             console.log(err);
           }
