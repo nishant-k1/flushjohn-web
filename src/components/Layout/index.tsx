@@ -25,13 +25,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div
+    <main
       onClick={handleClick}
       className={`${styles.main} ${active ? styles.active : styles.inactive}`}
     >
       {active && <ModalOverlay />}
       {children}
-    </div>
+    </main>
   );
 };
 
