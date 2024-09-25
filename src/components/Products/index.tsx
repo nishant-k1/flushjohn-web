@@ -2,12 +2,10 @@ import React from "react";
 import { products_data } from "../../constants";
 import styles from "./styles.module.css";
 import Slider from "../Slider";
-import { useRouter } from "next/router";
 import Breadcrumbs from "../Breadcrumbs";
 import Link from "next/link";
 
 const Products = () => {
-  const router = useRouter();
   const { product_list } = products_data;
   return (
     <React.Fragment>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useState, useEffect, useCallback } from "react";
 
 // Define the type for the context
@@ -21,7 +23,7 @@ export const ClientWidthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [clientWidth, setClientWidth] = useState<number | null>(
+  const [clientWidth, setClientWidth] = React.useState<number | null>(
     typeof window !== "undefined" ? window.innerWidth : null
   );
 
@@ -30,7 +32,7 @@ export const ClientWidthContextProvider = ({
   }, []);
 
   // Add event listener for window resize
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("resize", handleResize);
       handleResize();

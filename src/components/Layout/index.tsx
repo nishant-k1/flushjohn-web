@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./styles.module.css";
 import { SidebarContext } from "@/contexts/SidebarContext";
 import { useContext } from "react";

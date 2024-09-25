@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { QuickQuoteContext } from "../../../contexts/QuickQuoteContext";
 import styles from "./styles.module.css";

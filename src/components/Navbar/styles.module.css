@@ -59,7 +59,7 @@
 }
 
 .logo {
-  height: 4rem;
+  height: 3rem;
   width: fit-content;
 }
 
@@ -108,7 +108,7 @@
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
   .logo {
-    height: 5rem;
+    height: 3rem;
     width: fit-content;
   }
 }

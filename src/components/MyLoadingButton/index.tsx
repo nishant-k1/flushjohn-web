@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";

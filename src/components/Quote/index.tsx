@@ -1,9 +1,11 @@
+"use client";
+
 import React from "react";
 import QuoteStep2 from "./QuoteStep2";
 import QuoteStep3 from "./QuoteStep3";
 import QuoteStep1 from "./QuoteStep1";
 import QuoteStep4 from "./QuoteStep4";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Breadcrumbs from "../Breadcrumbs";
 import styles from "./styles.module.css";
 import { useContext } from "react";

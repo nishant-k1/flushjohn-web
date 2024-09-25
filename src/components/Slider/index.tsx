@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import styles from "./styles.module.css";

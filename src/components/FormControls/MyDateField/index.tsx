@@ -1,6 +1,5 @@
 import React from "react";
 import { DatePicker } from "antd";
-import "antd/dist/antd.css";
 import { useField } from "formik";
 import styles from "../../QuickQuote/styles.module.css";
 

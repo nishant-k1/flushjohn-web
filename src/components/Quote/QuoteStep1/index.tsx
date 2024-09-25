@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Formik, Form, useField } from "formik";
 import styles from "./styles.module.css";

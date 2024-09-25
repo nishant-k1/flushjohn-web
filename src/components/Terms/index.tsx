@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { NextSeo } from "next-seo";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Breadcrumbs from "../Breadcrumbs";
 
 const Terms = () => {

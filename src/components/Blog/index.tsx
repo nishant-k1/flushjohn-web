@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "../Breadcrumbs";
-import { useRouter } from "next/router";
 import { post_data } from "./constant";
 import Link from "next/link";
 
 const Blog = () => {
-  const router = useRouter();
   const { post_list } = post_data;
 
   return (

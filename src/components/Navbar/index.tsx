@@ -1,8 +1,10 @@
+'use client'
+
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 // import { Event } from "../lib/analytics";

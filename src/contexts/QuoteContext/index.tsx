@@ -1,4 +1,6 @@
-import { createContext, useState, ReactNode } from "react";
+"use client";
+
+import React, { createContext, ReactNode } from "react";
 
 // Define the structure for the requirement details
 const requirementDetails = {
@@ -64,9 +66,10 @@ export const QuoteContext =
 
 // Define the provider component
 export const QuoteContextProvider = ({ children }: { children: ReactNode }) => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = React.useState<number>(1);
 
-  const [formValues, setFormValues] = useState<FormValues>(initialQuoteValues);
+  const [formValues, setFormValues] =
+    React.useState<FormValues>(initialQuoteValues);
 
   return (
     <QuoteContext.Provider

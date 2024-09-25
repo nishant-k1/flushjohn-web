@@ -1,9 +1,6 @@
-import React, {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useState,
-} from "react";
+"use client";
+
+import React, { createContext, Dispatch, SetStateAction } from "react";
 
 export type SidebarContextType = {
   active: boolean;
@@ -23,7 +20,7 @@ export const SidebarContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [active, setActive] = useState<boolean>(false);
+  const [active, setActive] = React.useState<boolean>(false);
   return (
     <SidebarContext.Provider value={{ active, setActive }}>
       {children}

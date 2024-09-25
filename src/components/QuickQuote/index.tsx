@@ -1,3 +1,5 @@
+"use client";
+
 import { Formik, Form } from "formik";
 import styles from "./styles.module.css";
 import axios from "axios";
@@ -42,7 +44,7 @@ const quickQuoteValidationSchema = Yup.object().shape({
 const QuickQuote = () => {
   const { clientWidth } = useContext<ClientWidthContextType>(ClientWidthContext);
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } = useContext<QuickQuoteContextType>(QuickQuoteContext);
-  const quickQuoteRef = useRef<HTMLDivElement | null>(null);
+  const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
   // Handle click outside
   const handleClickOutside = (event: MouseEvent) => {
@@ -54,7 +56,7 @@ const QuickQuote = () => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {
       document.addEventListener("mousedown", handleClickOutside);
     }

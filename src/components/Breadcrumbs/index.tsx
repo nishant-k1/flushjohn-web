@@ -1,18 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./styles.module.css";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 type BreadcrumbsProps = {
   path: string;
 };
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ path }) => {
-  const router = useRouter();
-  const { asPath } = router;
+const Breadcrumbs = ({ path }: BreadcrumbsProps) => {
+  const pathname = usePathname();
 
   // Splitting the path to get titles
-  const pageTitles = asPath.split("/");
+  const pageTitles = pathname.split("/");
 
   const route = (pageTitles: string[], index: number) => {
     if (!pageTitles || index < 0) return;

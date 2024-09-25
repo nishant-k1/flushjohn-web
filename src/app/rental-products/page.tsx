@@ -1,6 +1,6 @@
 import React from "react";
 import Products from "@/components/Products";
 
-const products = () => <Products />;
+const ProductsPage = () => <Products />;
 
-export default products;
+export default ProductsPage;
