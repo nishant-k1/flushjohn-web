@@ -14,7 +14,7 @@
   transition-duration: 0.3s;
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
-  padding: 8px 32px;
+  padding: 0 32px;
   z-index: 200;
 }
 
@@ -73,8 +73,8 @@
 
 .navLinks a {
   color: var(--btn-text-color);
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 200;
   transition: 0.3s;
 }
 .navLinks a:hover {
