@@ -1,6 +1,6 @@
 import React from "react";
 import Terms from "@/components/Terms";
 
-const terms = () => <Terms />;
+const TermsPage = () => <Terms />;
 
-export default terms;
+export default TermsPage;

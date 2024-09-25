@@ -1,6 +1,6 @@
 import React from "react";
 import Privacy from "@/components/Privacy";
 
-const privacy = () => <Privacy />;
+const PrivacyPage = () => <Privacy />;
 
-export default privacy;
+export default PrivacyPage;

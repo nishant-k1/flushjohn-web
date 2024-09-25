@@ -1,6 +1,6 @@
 import React from "react";
 import Quote from "@/components/Quote";
 
-const quote = () => <Quote />;
+const QuotePage = () => <Quote />;
 
-export default quote;
+export default QuotePage;

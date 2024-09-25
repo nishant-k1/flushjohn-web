@@ -1,17 +1,16 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { NextSeo } from "next-seo";
-import { useRouter } from "next/navigation";
+// import { NextSeo } from "next-seo";
 import Breadcrumbs from "../Breadcrumbs";
 
 const Disclaimer = () => {
-  const router = useRouter();
+
   return (
     <React.Fragment>
-      <NextSeo
+      {/* <NextSeo
         noindex={true}
         nofollow={true}
-      />
+      /> */}
       <div className={styles.disclaimer}>
         <div className={styles.container}>
           <Breadcrumbs path={""} />

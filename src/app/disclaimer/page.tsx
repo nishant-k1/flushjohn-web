@@ -1,6 +1,6 @@
 import React from "react";
 import Disclaimer from "@/components/Disclaimer";
 
-const disclaimer = () => <Disclaimer />;
+const DisclaimerPage = () => <Disclaimer />;
 
-export default disclaimer;
+export default DisclaimerPage;

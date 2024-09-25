@@ -14,7 +14,7 @@
   transition-duration: 0.3s;
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
-  padding: 0 32px;
+  padding: 6px 32px 0;
   z-index: 200;
 }
 
