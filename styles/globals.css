@@ -1,39 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
-
 :root {
   /* --primary-color: #6e8b3d;
-  --secondary-color: #d3d3d3;
-  --neutral-color: #ffffff;
-  --primary-bg-color: #ef648a; */
-  --primary-bg-color: #db517a;
+    --primary-bg-color: #ef648a; */
+  /* --primary-bg-color: #db517a; */
   --primary-bg-color: #cf772b;
-  --secondary-bg-color: #041b25;
+  --primary-text-color: rgba(255, 255, 255, 0.78);
   /* --secondary-bg-color: #04061bd3; */
   /* --secondary-bg-color: #04061be8; */
   /* --secondary-bg-color: #000000f6; */
   /* --secondary-bg-color: #292903; */
   /* --secondary-bg-color: #0e2903; */
   /* --secondary-bg-color: #03291a; */
+  /* --secondary-bg-color: #041b25; */
+  /* --secondary-color: #d3d3d3; */
   --secondary-bg-color: #021920f3;
+  --secondary-text-color: #0000009d;
   --tertiary-bg-color: transparent;
   --neutral-bg-color: #cccccc;
-  --primary-text-color: rgba(255, 255, 255, 0.78);
+  /* --neutral-color: #ffffff; */
   --btn-text-color: white;
-  --secondary-text-color: #0000009d;
+  --font-poppins: "Poppins", sans-serif;
+  --font-merriweather: "Merriweather", serif;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: var(--font-poppins); /* Primary font */
+  line-height: 1.6;
+
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   /* background-image: url("/assets/hero_bg.svg"); */
   background-size: cover;
   background-repeat: repeat;
 }
-
+h1,
+h2,
+h3 {
+  font-family: var(--font-merriweather); /* Use Merriweather for headings */
+  line-height: 1.3;
+}
 a {
   text-decoration: none;
 }
