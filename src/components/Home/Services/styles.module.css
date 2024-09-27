@@ -19,16 +19,16 @@
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .container h2 {
   color: var(--secondary-text-color);
   padding-bottom: 4rem;
   font-size: x-large;
 }
 
-.container_light h2 {
-  color: var(--primary-text-color);
-  padding-bottom: 4rem;
-  font-size: x-large;
+.container h3 {
+  color: var(--secondary-text-color);
+  padding-bottom: 16px;
 }
 
 .serviceWrapper {
