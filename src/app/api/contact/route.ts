@@ -1,7 +1,10 @@
 const nodemailer = require("nodemailer");
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function contactHandler(req: NextApiRequest, res: NextApiResponse) {
+export default async function contactHandler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const {
     query: { id, name },
     method,
