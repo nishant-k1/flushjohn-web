@@ -61,6 +61,10 @@
 .logo {
   height: 3rem;
   width: fit-content;
+  transition: transform 0.3s ease-in-out;
+}
+.logo:hover {
+  transform: scale(0.96);
 }
 
 .hamburger {

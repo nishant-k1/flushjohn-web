@@ -135,10 +135,10 @@ const QuoteStep2 = () => {
       enableReinitialize={true}
       initialValues={formValues}
       // validationSchema={Yup.object({
-      //   deliveryDate: Yup.string().required("This field can't be empty"),
-      //   pickupDate: Yup.string().required("This field can't be empty"),
-      //   street: Yup.string().required("This field can't be empty"),
-      //   zip: Yup.string().required("This field can't be empty"),
+      //   deliveryDate: Yup.string().required("Required"),
+      //   pickupDate: Yup.string().required("Required"),
+      //   street: Yup.string().required("Required"),
+      //   zip: Yup.string().required("Required"),
       // })}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {

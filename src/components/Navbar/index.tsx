@@ -11,7 +11,7 @@ import { QuickQuoteContext } from "@/contexts/QuickQuoteContext/index";
 import { QuickQuoteContextType } from "@/contexts/QuickQuoteContext/index";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { zoomAndFade } from "@/anmations/effectData";
+import { animations } from "@/anmations/effectData";
 
 const Navbar = () => {
   const { active, setActive } =
@@ -41,17 +41,15 @@ const Navbar = () => {
     >
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <AnimationWrapper effect={zoomAndFade}>
-            <Link href="/">
-              <Image
-                className={styles.logo}
-                src="/reliable_portable_logo.svg"
-                alt="porta-potty"
-                height={64}
-                width={100}
-              />
-            </Link>
-          </AnimationWrapper>
+          <Link href="/">
+            <Image
+              className={styles.logo}
+              src="/reliable_portable_logo.svg"
+              alt="porta-potty"
+              height={64}
+              width={100}
+            />
+          </Link>
           <div className={styles.hamburger}>
             <Hamburger
               toggled={active}

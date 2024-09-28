@@ -1,29 +1,34 @@
 "use client"; // Ensure this component is a client component
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const AnimationWrapper = ({
   children,
   effect,
-  key,
+  animationKey,
+  className,
 }: {
   children: React.ReactNode;
   effect: any;
-  key?: string | number;
+  animationKey?: any;
+  className?: any;
 }) => {
-  console.log("key", key);
-  const { variants, transition } = effect;
+  const { variants } = effect;
+
   return (
     <div>
-      <motion.div
-        key={key}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={variants}
-      >
-        {children}
-      </motion.div>
+      <AnimatePresence>
+        <motion.div
+          key={animationKey}
+          className={className}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={variants}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

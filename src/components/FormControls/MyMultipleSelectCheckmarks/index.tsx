@@ -54,7 +54,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         />
       </Space>
       {touched && error ? (
-        <div className={styles.error}>{error + " "}</div>
+        <div className={styles.error}>{`Required`}</div>
       ) : null}
     </div>
   );

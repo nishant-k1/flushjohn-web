@@ -4,9 +4,6 @@ import { SidebarContext } from "@/contexts/SidebarContext";
 import { useContext } from "react";
 import ModalOverlay from "../ModalOverlay";
 import { SidebarContextType } from "@/contexts/SidebarContext";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import PageTranisition from "@/anmations/PageTranisition";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const sidebarContext = useContext<SidebarContextType>(SidebarContext);
@@ -26,20 +23,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const pathname = usePathname();
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    setKey((prev) => prev + 1);
-  }, [pathname]);
-
   return (
     <main
       onClick={handleClick}
       className={`${styles.main} ${active ? styles.active : styles.inactive}`}
     >
       {active && <ModalOverlay />}
-      <PageTranisition>{children}</PageTranisition>
+      {children}
     </main>
   );
 };

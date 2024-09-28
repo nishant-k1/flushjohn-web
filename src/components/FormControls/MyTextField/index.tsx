@@ -11,14 +11,21 @@ const MyTextField = ({ label, ...props }: any) => {
       <input
         {...field}
         {...props}
-        className={props.className}
+        className={
+          touched && error
+            ? `${props.className} ${styles.error_field}`
+            : props.className
+        }
         placeholder={label}
         onChange={(e) => {
           setValue(e.target.value);
         }}
+        onBlur={() => {
+          setTouched(true); // Mark the field as touched on blur
+        }}
       />
       {touched && error ? (
-        <div className={styles.error}>{error + " "}</div>
+        <div className={styles.error}>{`Required`}</div>
       ) : null}
     </>
   );

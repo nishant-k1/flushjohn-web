@@ -7,7 +7,7 @@ import { Tooltip } from "antd";
 const MyMaskedTextField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
-  const { setValue } = helpers;
+  const { setValue, setTouched, setError } = helpers;
 
   return (
     <>
@@ -21,11 +21,14 @@ const MyMaskedTextField = ({ label, ...props }: any) => {
           onChange={(e) => {
             setValue(e.target.value);
           }}
+
           // Add a placeholder or other necessary attributes here if needed
         />
       </Tooltip>
 
-      {touched && error ? <div className={styles.error}>{error}</div> : null}
+      {touched && error ? (
+        <div className={styles.error}>{`Required`}</div>
+      ) : null}
     </>
   );
 };

@@ -5,8 +5,9 @@ import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import styles from "./styles.module.css";
 import Indicator from "./Indicator";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-const Slider = ({ src_1, src_2, alt }:any) => {
+const Slider = ({ src_1, src_2, alt }: any) => {
   const [toggle, setToggle] = React.useState(false);
   const setImage = () => {
     setToggle(!toggle);
@@ -18,12 +19,21 @@ const Slider = ({ src_1, src_2, alt }:any) => {
           onClick={setImage}
           className={styles.arrow}
         />
-        <Image
-          height={250}
-          width={150}
-          src={toggle ? src_1 : src_2}
-          alt={alt}
-        />
+        <motion.div
+          key={toggle ? src_1 : src_2}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <Image
+            height={250}
+            width={150}
+            src={toggle ? src_1 : src_2}
+            alt={alt}
+          />
+        </motion.div>
+
         <IoIosArrowDropright
           onClick={setImage}
           className={styles.arrow}

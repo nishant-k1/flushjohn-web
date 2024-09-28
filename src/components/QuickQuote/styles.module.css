@@ -68,13 +68,14 @@
   width: 100%;
   margin: 0 !important;
   height: 2rem;
-  /* border-radius: 4px; */
   outline: none;
   border: none;
   padding-left: 12px;
   font-size: 14px;
   color: black;
-  transition: 0.5s;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -102,15 +103,21 @@
   font-weight: 600;
 }
 
+.error_field {
+  border: 1px solid red !important;
+}
+
 .date {
   width: 100%;
 }
+
 .date input {
   transition: 0.3s;
   width: 100%;
   border: none;
   padding-left: 0;
   font-size: 14px;
+  border-radius: 0;
   color: black !important;
 }
 .date input:hover {
@@ -129,11 +136,20 @@
   font-weight: 600;
 }
 
+.error:before {
+  content: "⚠️";
+  margin-right: 0.5rem;
+}
+
 .error {
   padding: 0 12px;
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.671);
-  color: var(--primary-bg-color);
+  background-color: color(a98-rgb 0 0 0 / 0.39);
+  font-size: small; /* Smaller text size */
+  margin-top: 0.25rem; /* Space between input and message */
+  font-weight: 200; /* Emphasized text */
+  color: var(--primary-error-color);
+  border-radius: 0 50px 100px 50px;
 }
 
 /* tablet device breakpoint: 768px*/

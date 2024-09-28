@@ -16,14 +16,12 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
         onChange={(e) => {
           setValue(e.target.value);
         }}
+        onBlur={() => {
+          setTouched(true);
+        }}
       />
       {touched && error ? (
-        <div
-          className={styles.error}
-          style={{ background: "red" }}
-        >
-          {error + " "}
-        </div>
+        <div className={styles.error}>{`Required`}</div>
       ) : null}
     </>
   );

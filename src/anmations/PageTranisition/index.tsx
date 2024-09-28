@@ -1,11 +1,10 @@
 "use client"; // Ensure this component is a client component
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { overlapFade } from "../effectData";
-
-const { variants, transition } = overlapFade;
+import { animations } from "@/anmations/effectData";
+import AnimationWrapper from "../AnimationWrapper";
 
 const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -18,16 +17,12 @@ const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   return (
     <div style={{ overflow: "hidden" }}>
       <AnimatePresence>
-        <motion.div
-          key={key}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          variants={variants}
-          transition={transition}
+        <AnimationWrapper
+          effect={animations?.fadeWithScale}
+          animationKey={key}
         >
           {children}
-        </motion.div>
+        </AnimationWrapper>
       </AnimatePresence>
     </div>
   );

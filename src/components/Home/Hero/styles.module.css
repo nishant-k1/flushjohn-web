@@ -64,13 +64,13 @@
   width: 8rem;
   padding: 1rem;
   height: 2.5rem;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
 .ctaQuoteBtn:hover {
   background-color: #af6523;
   border: 2px solid #af6523;
-  transition: 0.3s;
+  transform: scale(0.96);
 }
 
 .ctaPhoneBtn {

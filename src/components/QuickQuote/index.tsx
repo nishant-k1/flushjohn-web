@@ -19,27 +19,24 @@ import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../../contexts/ClientWidthContext";
 import CloseIcon from "@mui/icons-material/Close";
-import { motion } from "framer-motion";
 import { apiBaseUrls } from "../../constants";
 import MyRadioField from "../FormControls/MyRadioField";
 import { logEvent } from "../../../react-ga4-config";
 import { ClientWidthContextType } from "../../contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { zoomAndFade } from "@/anmations/effectData";
+import { animations } from "@/anmations/effectData";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
-  products: Yup.array().of(Yup.string().required("This field can't be empty")),
-  deliveryDate: Yup.string().required("This field can't be empty"),
-  pickupDate: Yup.string().required("This field can't be empty"),
-  zip: Yup.number().required("This field can't be empty"),
-  fName: Yup.string().required("This field can't be empty"),
-  lName: Yup.string().required("This field can't be empty"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("This field can't be empty"),
-  phone: Yup.string().required("This field can't be empty"),
+  products: Yup.array().of(Yup.string().required("Required")),
+  deliveryDate: Yup.string().required("Required"),
+  pickupDate: Yup.string().required("Required"),
+  zip: Yup.number().required("Required"),
+  fName: Yup.string().required("Required"),
+  lName: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid email address").required("Required"),
+  phone: Yup.string().required("Required"),
   instructions: Yup.string(),
 });
 
@@ -52,12 +49,12 @@ const QuickQuote = () => {
 
   // Handle click outside
   const handleClickOutside = (event: MouseEvent) => {
-    if (quickQuoteRef.current) {
-      const target = event.target as Node; // Type assertion
-      if (!quickQuoteRef.current.contains(target)) {
-        setQuickQuoteViewStatus(false);
-      }
-    }
+    // if (quickQuoteRef.current) {
+    //   const target = event.target as Node; // Type assertion
+    //   if (!quickQuoteRef.current.contains(target)) {
+    //     setQuickQuoteViewStatus(false);
+    //   }
+    // }
   };
 
   React.useEffect(() => {
@@ -80,251 +77,253 @@ const QuickQuote = () => {
       progress: undefined,
       theme: "dark",
     });
-  {
-    console.log("quickQuoteViewStatus", quickQuoteViewStatus);
-  }
+
   return (
     <div ref={quickQuoteRef}>
-      <AnimationWrapper
-        key={quickQuoteViewStatus ? "activateAnimation" : "deactivateAnimation"}
-        effect={zoomAndFade}
-      >
-        {quickQuoteViewStatus && (
-          <Formik
-            initialValues={{
-              usageType: "",
-              products: [],
-              deliveryDate: "",
-              pickupDate: "",
-              street: "",
-              zip: "",
-              city: "",
-              state: "",
-              instructions: "",
-              fName: "",
-              lName: "",
-              cName: "",
-              email: "",
-              phone: "",
-              contactPersonName: "",
-              contactPersonPhone: "",
-            }}
-            validationSchema={quickQuoteValidationSchema}
-            validateOnChange={false}
-            validateOnBlur={true}
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
-              setQuickQuoteViewStatus(false);
-              setTimeout(() => {
-                notify();
-              }, 2000);
+      {quickQuoteViewStatus && (
+        <Formik
+          initialValues={{
+            usageType: "",
+            products: [],
+            deliveryDate: "",
+            pickupDate: "",
+            street: "",
+            zip: "",
+            city: "",
+            state: "",
+            instructions: "",
+            fName: "",
+            lName: "",
+            cName: "",
+            email: "",
+            phone: "",
+            contactPersonName: "",
+            contactPersonPhone: "",
+          }}
+          validationSchema={quickQuoteValidationSchema}
+          validateOnChange={false}
+          validateOnBlur={true}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            setQuickQuoteViewStatus(false);
+            setTimeout(() => {
+              notify();
+            }, 2000);
 
-              try {
-                await axios.post("/leads", {
-                  ...values,
-                  leadSource: "Web Quick Lead",
-                  baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
-                });
-
-                await axios.post("/quick-quote", {
-                  ...values,
-                  leadSource: "Web Quick Lead",
-                });
-
-                logEvent({
-                  category: "Form",
-                  action: "Web Quick Lead Form Submit",
-                  label: "Web Quick Lead Form Button",
-                  value: undefined,
-                  nonInteraction: undefined,
-                  transport: "beacon",
-                });
-              } catch (err) {
-                console.log(err);
-              }
-
-              // Reset the form with all required initial values
-              resetForm({
-                values: {
-                  usageType: "",
-                  products: [],
-                  deliveryDate: "",
-                  pickupDate: "",
-                  street: "",
-                  zip: "",
-                  city: "",
-                  state: "",
-                  instructions: "",
-                  fName: "",
-                  lName: "",
-                  cName: "",
-                  email: "",
-                  phone: "",
-                  contactPersonName: "",
-                  contactPersonPhone: "",
-                },
+            try {
+              await axios.post("/leads", {
+                ...values,
+                leadSource: "Web Quick Lead",
+                baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
               });
+
+              await axios.post("/quick-quote", {
+                ...values,
+                leadSource: "Web Quick Lead",
+              });
+
+              logEvent({
+                category: "Form",
+                action: "Web Quick Lead Form Submit",
+                label: "Web Quick Lead Form Button",
+                value: undefined,
+                nonInteraction: undefined,
+                transport: "beacon",
+              });
+            } catch (err) {
+              console.log(err);
+            }
+
+            // Reset the form with all required initial values
+            resetForm({
+              values: {
+                usageType: "",
+                products: [],
+                deliveryDate: "",
+                pickupDate: "",
+                street: "",
+                zip: "",
+                city: "",
+                state: "",
+                instructions: "",
+                fName: "",
+                lName: "",
+                cName: "",
+                email: "",
+                phone: "",
+                contactPersonName: "",
+                contactPersonPhone: "",
+              },
+            });
+          }}
+        >
+          <div
+            className={styles.overlay}
+            style={{
+              display: quickQuoteViewStatus ? "block" : "none",
             }}
           >
-            <div
-              className={styles.overlay}
-              style={{
-                display: quickQuoteViewStatus ? "block" : "none",
-              }}
-            >
-              <Form className={styles.form}>
-                <CloseIcon
-                  className={styles.closeIcon}
-                  onClick={() => {
-                    setQuickQuoteViewStatus(false);
-                  }}
-                />
-                <Grid
-                  container
-                  spacing={0.5}
-                >
+            <Form>
+              <AnimationWrapper
+                effect={animations?.zoomOutAndZoomIn}
+                animationKey={String(quickQuoteViewStatus)}
+                className={styles.form}
+              >
+                <div>
+                  <CloseIcon
+                    className={styles.closeIcon}
+                    onClick={() => {
+                      setQuickQuoteViewStatus(false);
+                    }}
+                  />
                   <Grid
-                    item
-                    xs={12}
+                    container
+                    spacing={0.5}
                   >
-                    <h2>Quick Free Quote</h2>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyRadioField
-                      label="Event"
-                      name="usageType"
-                      value="event"
-                      className={styles.radio}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyRadioField
-                      label="Construction"
-                      name="usageType"
-                      value="construction"
-                      className={styles.radio}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyMultipleSelectCheckmarks
-                      label="Portable Units"
-                      name="products"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyDateField
-                      label="Delivery Date"
-                      className={styles.date}
-                      name="deliveryDate"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyDateField
-                      className={styles.date}
-                      label="Pickup Date"
-                      name="pickupDate"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyMaskedTextField
-                      label="Zip"
-                      name="zip"
-                      mask="99999"
-                      maskChar=""
-                      placeholder="Zip"
-                      type="tel"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyTextField
-                      label="First Name"
-                      name="fName"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyTextField
-                      label="Last Name"
-                      name="lName"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyTextField
-                      label="Email"
-                      name="email"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyMaskedTextField
-                      label="Phone"
-                      name="phone"
-                      mask="(999) 999-9999"
-                      placeholder="Phone"
-                      type="tel"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyMultilineTextField
-                      label="Instructions (if any)"
-                      name="instructions"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={3}
-                  >
-                    <Button
-                      variant="contained"
-                      sx={{
-                        background: "var(--primary-bg-color)",
-                        borderRadius: 0,
-                        "&:hover": {
-                          background: "#ac6324",
-                        },
-                      }}
-                      endIcon={<SendIcon />}
-                      type="submit"
+                    <Grid
+                      item
+                      xs={12}
                     >
-                      Send
-                    </Button>
+                      <h2>Quick Free Quote</h2>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyRadioField
+                        label="Event"
+                        name="usageType"
+                        value="event"
+                        className={styles.radio}
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyRadioField
+                        label="Construction"
+                        name="usageType"
+                        value="construction"
+                        className={styles.radio}
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyMultipleSelectCheckmarks
+                        label="Portable Units"
+                        name="products"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyDateField
+                        label="Delivery Date"
+                        className={styles.date}
+                        name="deliveryDate"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyDateField
+                        className={styles.date}
+                        label="Pickup Date"
+                        name="pickupDate"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyMaskedTextField
+                        label="Zip"
+                        name="zip"
+                        mask="99999"
+                        maskChar=""
+                        placeholder="Zip"
+                        type="tel"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyTextField
+                        label="First Name"
+                        name="fName"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                    >
+                      <MyTextField
+                        label="Last Name"
+                        name="lName"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyTextField
+                        label="Email"
+                        name="email"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyMaskedTextField
+                        label="Phone"
+                        name="phone"
+                        mask="(999) 999-9999"
+                        placeholder="Phone"
+                        type="tel"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyMultilineTextField
+                        label="Instructions (if any)"
+                        name="instructions"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={3}
+                    >
+                      <Button
+                        variant="contained"
+                        sx={{
+                          background: "var(--primary-bg-color)",
+                          borderRadius: 0,
+                          "&:hover": {
+                            background: "#ac6324",
+                          },
+                        }}
+                        endIcon={<SendIcon />}
+                        type="submit"
+                      >
+                        Send
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Form>
-            </div>
-          </Formik>
-        )}
-      </AnimationWrapper>
+                </div>
+              </AnimationWrapper>
+            </Form>
+          </div>
+        </Formik>
+      )}
+
       <QuickQuoteButton />
     </div>
   );

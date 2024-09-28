@@ -8,7 +8,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import Link from "next/link";
 import { logEvent } from "../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { wave, zoomAndFade } from "@/anmations/effectData";
+import { animations } from "@/anmations/effectData";
 
 type HeroProps = {
   title: string;
@@ -27,14 +27,12 @@ const Hero = React.memo(({ title, image }: HeroProps) => {
           <div className={styles.heroTitle}>
             <h1>{title}</h1>
             <div className={styles.heroCta}>
-              <AnimationWrapper effect={zoomAndFade}>
-                <Link
-                  href="/quote"
-                  className={styles.ctaQuoteBtn}
-                >
-                  GET QUOTE
-                </Link>
-              </AnimationWrapper>
+              <Link
+                href="/quote"
+                className={styles.ctaQuoteBtn}
+              >
+                GET QUOTE
+              </Link>
               <Link
                 href={phone_link}
                 className={styles.ctaPhoneBtn}
@@ -56,7 +54,7 @@ const Hero = React.memo(({ title, image }: HeroProps) => {
           </div>
 
           <div className={styles.heroImage}>
-            <AnimationWrapper effect={wave}>
+            <AnimationWrapper effect={animations?.wave}>
               <Image
                 src={image.src}
                 alt={image.alt}

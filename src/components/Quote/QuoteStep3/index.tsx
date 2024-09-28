@@ -93,13 +93,13 @@ const QuoteStep3 = () => {
         enableReinitialize={true}
         initialValues={formValues}
         // validationSchema={Yup.object({
-        //   fName: Yup.string().required("This field can't be empty"),
-        //   lName: Yup.string().required("This field can't be empty"),
+        //   fName: Yup.string().required("Required"),
+        //   lName: Yup.string().required("Required"),
         //   cName: Yup.string(),
         //   email: Yup.string()
         //     .email("Invalid email address")
-        //     .required("This field can't be empty"),
-        //   phone: Yup.string().required("This field can't be empty"),
+        //     .required("Required"),
+        //   phone: Yup.string().required("Required"),
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {

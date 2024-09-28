@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import styles from "../../QuickQuote/styles.module.css";
 
-const MyRadioField = ({ label, ...props }:any) => {
+const MyRadioField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched, setError } = helpers;
@@ -39,6 +39,9 @@ const MyRadioField = ({ label, ...props }:any) => {
           onChange={(e) => {
             setValue(e.target.value);
           }}
+          onBlur={() => {
+            setTouched(true); // Mark the field as touched on blur
+          }}
           style={{
             height: "1.2rem",
             width: "1.2rem",
@@ -46,7 +49,7 @@ const MyRadioField = ({ label, ...props }:any) => {
         />
       </div>
       {touched && error ? (
-        <div className={styles.error}>{error + " "}</div>
+        <div className={styles.error}>{`Required`}</div>
       ) : null}
     </>
   );

@@ -4,6 +4,7 @@
   /* --primary-bg-color: #db517a; */
   --primary-bg-color: #cf772b;
   --primary-text-color: rgba(255, 255, 255, 0.78);
+  --primary-error-color: red;
   /* --secondary-bg-color: #04061bd3; */
   /* --secondary-bg-color: #04061be8; */
   /* --secondary-bg-color: #000000f6; */
@@ -112,4 +113,22 @@ width ::-webkit-scrollbar {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #9c561c; /* Set the color of the scroll thumb when hovered */
+}
+
+.ant-picker {
+  border-radius: 0 !important;
+}
+.ant-picker-outlined:focus-within {
+  border: 1px solid var(--primary-text-color) !important;
+}
+
+.ant-picker-outlined:hover {
+  border: 1px solid red;
+}
+.ant-picker-panel-container {
+  border-radius: 0 !important;
+}
+
+.ant-select-multiple .ant-select-selector {
+  border-radius: 0 !important;
 }
