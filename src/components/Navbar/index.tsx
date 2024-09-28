@@ -1,36 +1,29 @@
-'use client'
+"use client";
 
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation"; // Import usePathname
 import Image from "next/image";
-
-// import { Event } from "../lib/analytics";
 import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "@/contexts/QuickQuoteContext/index";
 import { QuickQuoteContextType } from "@/contexts/QuickQuoteContext/index";
 import { SidebarContextType } from "@/contexts/SidebarContext";
-
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { zoomAndFade } from "@/anmations/effectData";
 
 const Navbar = () => {
-  const { active, setActive } = React.useContext<SidebarContextType>(SidebarContext);
-  const router = useRouter();
-
-  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+  const { active, setActive } =
+    React.useContext<SidebarContextType>(SidebarContext);
+  const { setQuickQuoteViewStatus } =
     React.useContext<QuickQuoteContextType>(QuickQuoteContext);
-
+  const pathname = usePathname(); // Get the current pathname
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      }
-      if (window.scrollY < 50) {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", onScroll);
     return () => {
@@ -42,23 +35,23 @@ const Navbar = () => {
     <nav
       className={
         scrolled
-          ? `${router.route === "/" ? styles.navbar_home : styles.navbar} ${
-              styles.scrolled
-            }`
-          : `${router.route === "/" ? styles.navbar_home : styles.navbar}`
+          ? `${pathname === "/" ? styles.navbar_home : styles.navbar} ${styles.scrolled}`
+          : `${pathname === "/" ? styles.navbar_home : styles.navbar}`
       }
     >
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Link href="/">
-            <Image
-              className={styles.logo}
-              src="/reliable_portable_logo.svg"
-              alt="porta-potty"
-              height={64}
-              width={100}
-            />
-          </Link>
+          <AnimationWrapper effect={zoomAndFade}>
+            <Link href="/">
+              <Image
+                className={styles.logo}
+                src="/reliable_portable_logo.svg"
+                alt="porta-potty"
+                height={64}
+                width={100}
+              />
+            </Link>
+          </AnimationWrapper>
           <div className={styles.hamburger}>
             <Hamburger
               toggled={active}
@@ -73,21 +66,21 @@ const Navbar = () => {
           <div className={styles.navLinks}>
             <Link
               href="/"
-              className={router.route === "/" ? styles.activeLink : ""}
+              className={pathname === "/" ? styles.activeLink : ""}
             >
               Home
             </Link>
             <Link
               href="/rental-products"
               className={
-                router.route === "/rental-products" ? styles.activeLink : ""
+                pathname === "/rental-products" ? styles.activeLink : ""
               }
             >
               Rental Products
             </Link>
             <Link
               href="/quote"
-              className={router.route === "/quote" ? styles.activeLink : ""}
+              className={pathname === "/quote" ? styles.activeLink : ""}
             >
               Get Free Quote
             </Link>

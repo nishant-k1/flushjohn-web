@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Feature } from "@/constants";
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { bobbleImage } from "@/anmations/effectData";
 
 type FeaturesType = {
   heading: string;
   content: Feature[];
-}
+};
 
 const Features = React.memo(({ heading, content }: FeaturesType) => {
   return (
@@ -19,7 +21,11 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                 key={item.id}
                 className={styles.wrapper}
               >
-                <div>{item.image}</div>
+                <div>
+                  <AnimationWrapper effect={bobbleImage}>
+                    {item.image}
+                  </AnimationWrapper>
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </div>

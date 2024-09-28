@@ -4,14 +4,19 @@ import { motion } from "framer-motion";
 
 const AnimationWrapper = ({
   children,
-  variants,
+  effect,
+  key,
 }: {
   children: React.ReactNode;
-  variants: any;
+  effect: any;
+  key?: string | number;
 }) => {
+  console.log("key", key);
+  const { variants, transition } = effect;
   return (
     <div>
       <motion.div
+        key={key}
         initial="initial"
         animate="animate"
         exit="exit"

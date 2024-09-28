@@ -7,16 +7,17 @@ import { phone } from "../../../constants";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Link from "next/link";
 import { logEvent } from "../../../../react-ga4-config";
-
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { wave, zoomAndFade } from "@/anmations/effectData";
 
 type HeroProps = {
   title: string;
   image: {
     src: string;
     alt: string;
-  }
-}
-const Hero = React.memo(({ title, image }:HeroProps) => {
+  };
+};
+const Hero = React.memo(({ title, image }: HeroProps) => {
   const { phone_link, phone_number } = phone;
 
   return (
@@ -26,12 +27,14 @@ const Hero = React.memo(({ title, image }:HeroProps) => {
           <div className={styles.heroTitle}>
             <h1>{title}</h1>
             <div className={styles.heroCta}>
-              <Link
-                href="/quote"
-                className={styles.ctaQuoteBtn}
-              >
-                GET QUOTE
-              </Link>
+              <AnimationWrapper effect={zoomAndFade}>
+                <Link
+                  href="/quote"
+                  className={styles.ctaQuoteBtn}
+                >
+                  GET QUOTE
+                </Link>
+              </AnimationWrapper>
               <Link
                 href={phone_link}
                 className={styles.ctaPhoneBtn}
@@ -53,12 +56,14 @@ const Hero = React.memo(({ title, image }:HeroProps) => {
           </div>
 
           <div className={styles.heroImage}>
-            <Image
-              src={image.src}
-              alt={image.alt}
-              height={300}
-              width={300}
-            />
+            <AnimationWrapper effect={wave}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                height={300}
+                width={300}
+              />
+            </AnimationWrapper>
           </div>
         </div>
       </div>

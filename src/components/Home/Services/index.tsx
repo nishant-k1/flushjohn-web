@@ -6,9 +6,9 @@ import { Service } from "@/constants";
 type ServicesProps = {
   heading: string;
   content: Service[];
-}
+};
 
-const Services = React.memo(({ heading, content }:ServicesProps) => {
+const Services = React.memo(({ heading, content }: ServicesProps) => {
   return (
     <div>
       <div className={styles.services}>

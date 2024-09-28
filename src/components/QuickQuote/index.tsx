@@ -25,6 +25,8 @@ import MyRadioField from "../FormControls/MyRadioField";
 import { logEvent } from "../../../react-ga4-config";
 import { ClientWidthContextType } from "../../contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { zoomAndFade } from "@/anmations/effectData";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -42,8 +44,10 @@ const quickQuoteValidationSchema = Yup.object().shape({
 });
 
 const QuickQuote = () => {
-  const { clientWidth } = useContext<ClientWidthContextType>(ClientWidthContext);
-  const { quickQuoteViewStatus, setQuickQuoteViewStatus } = useContext<QuickQuoteContextType>(QuickQuoteContext);
+  const { clientWidth } =
+    useContext<ClientWidthContextType>(ClientWidthContext);
+  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+    useContext<QuickQuoteContextType>(QuickQuoteContext);
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
   // Handle click outside
@@ -76,10 +80,15 @@ const QuickQuote = () => {
       progress: undefined,
       theme: "dark",
     });
-
+  {
+    console.log("quickQuoteViewStatus", quickQuoteViewStatus);
+  }
   return (
     <div ref={quickQuoteRef}>
-      <motion.div animate={quickQuoteViewStatus ? { opacity: 1 } : { opacity: 0 }}>
+      <AnimationWrapper
+        key={quickQuoteViewStatus ? "activateAnimation" : "deactivateAnimation"}
+        effect={zoomAndFade}
+      >
         {quickQuoteViewStatus && (
           <Formik
             initialValues={{
@@ -169,11 +178,20 @@ const QuickQuote = () => {
                     setQuickQuoteViewStatus(false);
                   }}
                 />
-                <Grid container spacing={0.5}>
-                  <Grid item xs={12}>
+                <Grid
+                  container
+                  spacing={0.5}
+                >
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <h2>Quick Free Quote</h2>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyRadioField
                       label="Event"
                       name="usageType"
@@ -181,7 +199,10 @@ const QuickQuote = () => {
                       className={styles.radio}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyRadioField
                       label="Construction"
                       name="usageType"
@@ -189,27 +210,39 @@ const QuickQuote = () => {
                       className={styles.radio}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <MyMultipleSelectCheckmarks
                       label="Portable Units"
                       name="products"
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyDateField
                       label="Delivery Date"
                       className={styles.date}
                       name="deliveryDate"
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyDateField
                       className={styles.date}
                       label="Pickup Date"
                       name="pickupDate"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <MyMaskedTextField
                       label="Zip"
                       name="zip"
@@ -219,25 +252,37 @@ const QuickQuote = () => {
                       type="tel"
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyTextField
                       label="First Name"
                       name="fName"
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid
+                    item
+                    xs={6}
+                  >
                     <MyTextField
                       label="Last Name"
                       name="lName"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <MyTextField
                       label="Email"
                       name="email"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <MyMaskedTextField
                       label="Phone"
                       name="phone"
@@ -246,13 +291,19 @@ const QuickQuote = () => {
                       type="tel"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                  >
                     <MyMultilineTextField
                       label="Instructions (if any)"
                       name="instructions"
                     />
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid
+                    item
+                    xs={3}
+                  >
                     <Button
                       variant="contained"
                       sx={{
@@ -273,7 +324,7 @@ const QuickQuote = () => {
             </div>
           </Formik>
         )}
-      </motion.div>
+      </AnimationWrapper>
       <QuickQuoteButton />
     </div>
   );

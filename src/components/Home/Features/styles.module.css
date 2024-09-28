@@ -14,8 +14,13 @@
 
 .container h2 {
   color: var(--secondary-text-color);
-  padding-bottom: 4rem;
+  padding: 16px 0;
   font-size: x-large;
+}
+
+.container h3 {
+  color: var(--secondary-text-color);
+  padding: 16px 0;
 }
 
 .featuresWrapper {

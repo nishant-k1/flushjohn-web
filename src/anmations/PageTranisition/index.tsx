@@ -3,17 +3,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { overlapFade } from "../effectData";
 
-const variants = {
-  initial: { opacity: 0.3, scale: 1 }, // Start slightly zoomed out
-  enter: { opacity: 1, scale: 1 }, // Zoom in to normal size
-  exit: { opacity: 1, scale: 1 }, // Slightly zoom out before exiting
-};
-
-const transition = {
-  ease: "easeInOut",
-  duration: 1.5, // Reduced duration for a snappier transition
-};
+const { variants, transition } = overlapFade;
 
 const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -24,20 +16,20 @@ const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   }, [pathname]);
 
   return (
-    // <div style={{ overflow: "hidden" }}>
-    <AnimatePresence>
-      <motion.div
-        key={key}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={variants}
-        transition={transition}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-    // </div>
+    <div style={{ overflow: "hidden" }}>
+      <AnimatePresence>
+        <motion.div
+          key={key}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+          transition={transition}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
 
