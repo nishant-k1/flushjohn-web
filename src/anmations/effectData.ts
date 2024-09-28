@@ -30,25 +30,51 @@ export const animations = {
 
   slideWithOpacityChange: {
     variants: {
-      initial: { opacity: 0.5, x: "-100%" }, // Start off-screen to the left with reduced opacity
-      animate: { opacity: 1, x: "0%" }, // Slide in to position
-      exit: { opacity: 0.5, x: "100%" }, // Slide out to the right with reduced opacity
-    },
-    transition: {
-      ease: "easeInOut",
-      duration: 1, // Balanced duration for sliding and fading
+      initial: {
+        opacity: 1,
+        x: "100%",
+      }, // Start off-screen to the left with reduced opacity
+      animate: {
+        opacity: 1,
+        x: "0",
+        transition: {
+          ease: "easeInOut",
+          duration: 3, // Balanced duration for sliding and fading
+        },
+      }, // Slide in to position
+      exit: {
+        opacity: 1,
+        x: "100%",
+      }, // Slide out to the right with reduced opacity
     },
   },
 
   swipe: {
     variants: {
-      initial: { opacity: 0, x: "-100%" }, // Off-screen to the left
-      enter: { opacity: 1, x: "0%" }, // Slide in to center
-      exit: { opacity: 0, x: "100%" }, // Slide off-screen to the right
-    },
-    transition: {
-      ease: "easeInOut",
-      duration: 0.8, // Fast swipe effect
+      initial: {
+        opacity: 0,
+        x: "100%",
+        transition: {
+          ease: "easeInOut",
+          duration: 1, // Balanced duration for sliding and fading
+        },
+      }, // Off-screen to the left
+      animate: {
+        opacity: 1,
+        x: "0%",
+        transition: {
+          ease: "easeInOut",
+          duration: 1, // Balanced duration for sliding and fading
+        },
+      }, // Slide in to center
+      exit: {
+        opacity: 0,
+        x: "-100%",
+        transition: {
+          ease: "easeInOut",
+          duration: 1, // Balanced duration for sliding and fading
+        },
+      }, // Slide off-screen to the right
     },
   },
 

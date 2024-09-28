@@ -34,6 +34,7 @@
   /* background-color: rgba(255, 255, 255, 0.486); */
   background-color: transparent;
   margin-bottom: 2rem;
+  transition: background-color 3s ease-in-out;
 }
 
 .step {
@@ -41,23 +42,18 @@
   padding: 0.2rem 1rem;
   justify-content: center;
   align-items: center;
-  font-size: small;
-  font-weight: 400;
+  font-size: medium;
+  font-weight: 100;
   border: 1px solid var(--primary-bg-color);
-  /* border-radius: 0 50px 50px 0; */
-  background-color: #83838338;
-  transition: 0.5s;
-  color: var(--secondary-text-color);
+  background: #83838338;
+  color: var(black);
+  transition: background 0.3s ease-in-out;
 }
 
 .step.active {
-  border: 1px solid var(--primary-bg-color);
-  /* background-color: var(--primary-bg-color); */
-  background-image: url("/assets/hero_bg.svg");
-  color: var(--primary-text-color);
-  transition: 0.5s;
-  font-size: small;
-  font-weight: 400;
+  background: #103247;
+  color: white;
+  transition: background 0.3s ease-in-out;
 }
 
 /* tablet */

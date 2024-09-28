@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Breadcrumbs from "../Breadcrumbs";
 import { logEvent } from "../../../react-ga4-config";
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { animations } from "@/anmations/effectData";
 
 const notify = () =>
   toast.success("Your message has been delivered", {
@@ -154,7 +156,10 @@ const Contact = () => {
         >
           <div className={styles.container}>
             <Breadcrumbs path={""} />
-            <Form className={styles.form}>
+            <AnimationWrapper
+              effect={animations?.fadeWithScale}
+              className={styles.form}
+            >
               <div className={styles.firstName}>
                 <MyTextField
                   label="First Name"
@@ -206,7 +211,7 @@ const Contact = () => {
               >
                 SUBMIT
               </button>
-            </Form>
+            </AnimationWrapper>
             {state && (
               <h1 style={{ color: "white" }}>
                 Your message has been delivered

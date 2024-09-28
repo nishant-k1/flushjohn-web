@@ -37,7 +37,9 @@ export default function RootLayout({
                 <QuoteContextProvider>
                   <Sidebar />
                   <Navbar />
-                  <PageTranisition>{children}</PageTranisition>
+                  {/* <PageTranisition> */}
+                  {children}
+                  {/* </PageTranisition> */}
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />

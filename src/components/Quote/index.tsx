@@ -5,20 +5,23 @@ import QuoteStep2 from "./QuoteStep2";
 import QuoteStep3 from "./QuoteStep3";
 import QuoteStep1 from "./QuoteStep1";
 import QuoteStep4 from "./QuoteStep4";
-import { useRouter } from "next/navigation";
 import Breadcrumbs from "../Breadcrumbs";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { animations } from "@/anmations/effectData";
 
 const Quote = () => {
-  const router = useRouter();
   const { render } = useContext(QuoteContext);
   const [step] = render;
   return (
     <React.Fragment>
       <div className={styles.section}>
-        <div className={styles.container}>
+        <AnimationWrapper
+          effect={animations.fadeWithScale}
+          className={styles.container}
+        >
           <Breadcrumbs path={""} />
           <div className={styles.quoteWrapper}>
             <div className={styles.progressBar}>
@@ -49,13 +52,29 @@ const Quote = () => {
               </div>
             </div>
             <div className={styles.innerSection}>
-              {step === 1 ? <QuoteStep1 /> : null}
-              {step === 2 ? <QuoteStep2 /> : null}
-              {step === 3 ? <QuoteStep3 /> : null}
-              {step === 4 ? <QuoteStep4 /> : null}
+              {step === 1 ? (
+                <AnimationWrapper effect={animations?.fadeWithScale}>
+                  <QuoteStep1 />{" "}
+                </AnimationWrapper>
+              ) : null}
+              {step === 2 ? (
+                <AnimationWrapper effect={animations?.swipe}>
+                  <QuoteStep2 />
+                </AnimationWrapper>
+              ) : null}
+              {step === 3 ? (
+                <AnimationWrapper effect={animations?.swipe}>
+                  <QuoteStep3 />
+                </AnimationWrapper>
+              ) : null}
+              {step === 4 ? (
+                <AnimationWrapper effect={animations?.swipe}>
+                  <QuoteStep4 />
+                </AnimationWrapper>
+              ) : null}
             </div>
           </div>
-        </div>
+        </AnimationWrapper>
       </div>
     </React.Fragment>
   );

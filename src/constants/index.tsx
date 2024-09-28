@@ -9,7 +9,8 @@ export const G_TAG_ID = "AW-11248564671";
 // API base URLs
 export const apiBaseUrls = {
   CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
-  CRM_RP_SOCKET_SERVICES_BASE_URL: "https://crm-rp-socket-services.reliableportable.com",
+  CRM_RP_SOCKET_SERVICES_BASE_URL:
+    "https://crm-rp-socket-services.reliableportable.com",
 };
 
 // Phone number data
@@ -68,6 +69,7 @@ export interface HomeData {
   hero: {
     title: string;
     image: Image;
+    truckImg: Image;
   };
   features: {
     heading: string;
@@ -82,10 +84,15 @@ export interface HomeData {
 
 export const home_data: HomeData = {
   hero: {
-    title: "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
+    title:
+      "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
       src: "/assets/home/hero/hero_fm_1.png",
       alt: "porta_potty",
+    },
+    truckImg: {
+      src: "/assets/home/hero/truck.png",
+      alt: "truck",
     },
   },
   features: {
@@ -112,52 +119,97 @@ export const home_data: HomeData = {
     ],
   },
   services: {
-    heading: "Comprehensive Porta Potty and Handwash Station Rental Services: Meeting Your Sanitation Needs Anytime, Anywhere",
+    heading:
+      "Comprehensive Porta Potty and Handwash Station Rental Services: Meeting Your Sanitation Needs Anytime, Anywhere",
     content: [
       {
         id: 1,
         image: "/assets/home/services/services_event.jpg",
         alt: "event_pic",
-        title: "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
+        title:
+          "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
         body: "When planning an event, one of the most important aspects to consider is providing adequate sanitation facilities for your guests. This is where event purpose porta potty and hand wash station rentals come in. Event purpose porta potties and hand wash rentals are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events.",
       },
       {
         id: 2,
         image: "/assets/home/services/hero_9.jpg",
         alt: "construction_pic",
-        title: "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
+        title:
+          "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
         body: "Construction sites are notorious for being dirty and chaotic, but providing proper sanitation facilities is crucial for the health and well-being of workers. This is where construction unit porta potty rentals come in.",
       },
       {
         id: 3,
         image: "/assets/home/services/truck.jpeg",
         alt: "renovation_pic",
-        title: "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
+        title:
+          "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
         body: "Home renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike.",
       },
       {
         id: 4,
         image: "/assets/home/services/services_construction.jpg",
         alt: "relief_pic",
-        title: "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
+        title:
+          "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
         body: "Disasters such as hurricanes, earthquakes, and floods can leave communities devastated and in need of immediate assistance. Providing proper sanitation facilities is crucial in such situations.",
       },
     ],
   },
   locations: {
-    title: "Extensive service coverage: We're providing porta potty rentals across multiple locations",
+    title:
+      "Extensive service coverage: We're providing porta potty rentals across multiple locations",
     list: [
-      "Alabama", "Arizona", "Arkansas", "California", "Colorado",
-      "Connecticut", "Delaware", "District of Columbia", "Florida",
-      "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-      "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-      "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-      "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-      "New Jersey", "New Mexico", "New York", "North Carolina",
-      "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
-      "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
-      "Texas", "Utah", "Vermont", "Virginia", "Washington",
-      "West Virginia", "Wisconsin", "Wyoming",
+      "Alabama",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "District of Columbia",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
     ],
   },
 };
@@ -246,8 +298,8 @@ export const products_data: ProductsData = {
     {
       id: 4,
       image: {
-        src_1: "/assets/products/handwash_station.svg",
-        src_2: "/assets/products/handwash_station_interior.jpg",
+        src_1: "/assets/products/sinkFront.png",
+        src_2: "/assets/products/sinkFront.png",
         alt: "Portable Handwash Station",
       },
       title: "Portable Handwash Station",
