@@ -1,89 +1,86 @@
-const nodemailer = require("nodemailer");
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-export default async function quoteHandler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const {
-    query: { id, name },
-    method,
-  } = req;
+export async function POST(req: NextRequest) {
+  try {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
 
-  if (method == "POST") {
-    try {
-      const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
+    const quickQuoteData = await req.json(); // Parse the request body
 
-      const quickQuoteData = req.body;
-      const transporter = nodemailer.createTransport({
-        host: "smtp.zoho.in",
-        port: 465,
-        secure: true, // true for 465, false for other ports
-        auth: {
-          user: process.env.EMAIL_ID, // generated ethereal user
-          pass: process.env.EMAIL_PASS, // generated ethereal password
-        },
-        tls: { rejectUnauthorized: false },
-      });
+    const transporter = nodemailer.createTransport({
+      host: "smtp.zoho.in",
+      port: 465,
+      secure: true, // true for port 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_ID, // Email ID from environment variables
+        pass: process.env.EMAIL_PASS, // Email password from environment variables
+      },
+      tls: { rejectUnauthorized: false }, // Allows non-strict SSL
+    });
 
-      await transporter.sendMail({
-        from: `Reliable Portable<${process.env.EMAIL_ID}>`, // sender address
-        to: `Reliable Portable<${process.env.EMAIL_ID}>`, // list of receivers
-        subject: "Reliable Portable: Quick Quote", // Subject line
-        text: ``, // plain text body
-        html: `
+    await transporter.sendMail({
+      from: `Reliable Portable<${process.env.EMAIL_ID}>`, // Sender address
+      to: `Reliable Portable<${process.env.EMAIL_ID}>`, // Receiver address
+      subject: "Reliable Portable: Quick Quote", // Email subject
+      html: `
+        <div>
           <div>
-            <div>
-                <h4>From:</h4>
-                <p>${quickQuoteData.fullName}</p>
-            </div>
-            <div>
-                <h4>Email:</h4>
-                <p>${quickQuoteData.email}</p>
-            </div>
-            <div>
-                <h4>Phone:</h4>
-                <p>${quickQuoteData.phone}</p>
-            </div>
-            <div>
-                <h4>Zip Code:</h4>
-                <p>${quickQuoteData.zip}</p>
-            </div>
-            <div>
-                <h4>Products:</h4>
-                <p>${quickQuoteData.portableUnits}</p>
-            </div>
-            <div>
-                <h4>Delivery Date:</h4>
-                <p>${quickQuoteData.deliveryDate}</p>
-            </div>
-            <div>
-                <h4>Pickup Date:</h4>
-                <p>${quickQuoteData.pickupDate}</p>
-            </div>
-            <div>
-                <h4>Instructions:</h4>
-                <p>${quickQuoteData.instructions}</p>
-            </div>
+            <h4>From:</h4>
+            <p>${quickQuoteData.fullName}</p>
           </div>
-        `, // html body
-      });
-      await res.status(200).json({ status: "Success" });
-    } catch (err) {
-      res.send(err);
-    }
+          <div>
+            <h4>Email:</h4>
+            <p>${quickQuoteData.email}</p>
+          </div>
+          <div>
+            <h4>Phone:</h4>
+            <p>${quickQuoteData.phone}</p>
+          </div>
+          <div>
+            <h4>Zip Code:</h4>
+            <p>${quickQuoteData.zip}</p>
+          </div>
+          <div>
+            <h4>Products:</h4>
+            <p>${quickQuoteData.portableUnits}</p>
+          </div>
+          <div>
+            <h4>Delivery Date:</h4>
+            <p>${quickQuoteData.deliveryDate}</p>
+          </div>
+          <div>
+            <h4>Pickup Date:</h4>
+            <p>${quickQuoteData.pickupDate}</p>
+          </div>
+          <div>
+            <h4>Instructions:</h4>
+            <p>${quickQuoteData.instructions}</p>
+          </div>
+        </div>
+      `, // HTML email body
+    });
+
+    // Respond with a success message
+    return NextResponse.json({ status: "Success" }, { status: 200 });
+  } catch (err) {
+    console.error(err);
+    // Respond with error message in case of failure
+    return NextResponse.json(
+      { error: "Failed to send quote" },
+      { status: 500 }
+    );
   }
 }

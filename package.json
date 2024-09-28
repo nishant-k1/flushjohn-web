@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@types/next-seo": "^2.1.2",
+    "@types/nodemailer": "^6.4.16",
     "@types/react-input-mask": "^3.0.5",
     "@types/react-toastify": "^4.1.0",
     "eslint": "^9.11.1",

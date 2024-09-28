@@ -1,85 +1,85 @@
-const nodemailer = require("nodemailer");
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-export default async function quoteHandler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const {
-    query: { id, name },
-    method,
-  } = req;
+export async function POST(req: NextRequest) {
+  try {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
 
-  if (method == "POST") {
-    try {
-      const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-      const deliveryDate = new Date(`${req.body.deliveryDate}`);
+    // Parse the request body
+    const quoteData = await req.json();
 
-      const longDeliveryDate = `${
-        months[deliveryDate.getMonth()]
-      } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
+    // Format the delivery and pickup dates
+    const deliveryDate = new Date(quoteData.deliveryDate);
+    const longDeliveryDate = `${
+      months[deliveryDate.getMonth()]
+    } ${deliveryDate.getDate()}, ${deliveryDate.getFullYear()}`;
 
-      const pickupDate = new Date(`${req.body.pickupDate}`);
+    const pickupDate = new Date(quoteData.pickupDate);
+    const longPickupDate = `${
+      months[pickupDate.getMonth()]
+    } ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`;
 
-      const longPickupDate = `${
-        months[pickupDate.getMonth()]
-      } ${pickupDate.getDate()}, ${pickupDate.getFullYear()}`;
+    // Create the transporter for sending emails
+    const transporter = nodemailer.createTransport({
+      host: "smtp.zoho.in",
+      port: 465,
+      secure: true, // true for port 465 (SSL)
+      auth: {
+        user: process.env.EMAIL_ID, // Zoho email ID from environment variables
+        pass: process.env.EMAIL_PASS, // Zoho email password from environment variables
+      },
+      tls: { rejectUnauthorized: false }, // Allows non-strict SSL certificates
+    });
 
-      const quoteData = req.body;
+    // Send the email
+    await transporter.sendMail({
+      from: `Reliable Portable<${process.env.EMAIL_ID}>`, // Sender address
+      to: `Reliable Portable<${process.env.EMAIL_ID}>`, // Receiver address
+      subject: "Reliable Portable: Quote", // Subject of the email
+      html: `
+        <div>
+          <h4>Requirements</h4>
+          <p>Standard Portable Restroom: ${quoteData.SPR}</p>
+          <p>Deluxe Flushable Restroom: ${quoteData.DFR}</p>
+          <p>ADA Portable Restroom: ${quoteData.ACR}</p>
+          <p>Hand Wash Station: ${quoteData.HWS}</p>
+        </div>
+        <div>
+          <h4>Name:</h4><p>${quoteData.fName} ${quoteData.lName}</p>
+          <h4>Company Name:</h4><p>${quoteData.cName}</p>
+          <h4>Email:</h4><p>${quoteData.email}</p>
+          <h4>Phone:</h4><p>${quoteData.phone}</p>
+        </div>
+        <div>
+          <h4>Delivery Date:</h4><p>${longDeliveryDate}</p>
+          <h4>Pickup Date:</h4><p>${longPickupDate}</p>
+          <h4>Zip Code:</h4><p>${quoteData.zip}</p>
+          <h4>Instructions:</h4><p>${quoteData.hint}</p>
+        </div>
+      `,
+    });
 
-      const transporter = nodemailer.createTransport({
-        host: "smtp.zoho.in",
-        port: 465,
-        secure: true, // true for 465, false for other ports
-        auth: {
-          user: process.env.EMAIL_ID, // generated ethereal user
-          pass: process.env.EMAIL_PASS, // generated ethereal password
-        },
-        tls: { rejectUnauthorized: false },
-      });
-
-      await transporter.sendMail({
-        from: `Reliable Portable<${process.env.EMAIL_ID}>`, // sender address
-        to: `Reliable Portable<${process.env.EMAIL_ID}>`, // list of receivers
-        subject: "Reliable Portable: Quote", // Subject line
-        text: ``, // plain text body
-        html: ` <div>
-            <h4>Requirements</h4>
-            <p>Standard Portable Restroom: ${quoteData.SPR}</p>
-            <p>Deluxe Flushable Restroom: ${quoteData.DFR}</p>
-            <p>ADA Portable Restroom: ${quoteData.ACR}</p>
-            <p>Hand Wash Station: ${quoteData.HWS}</p>
-          </div>
-          <div>
-            <h4>Name:</h4><p>${quoteData.fName} ${quoteData.lName}</p>
-            <h4>Company Name:</h4><p>${quoteData.cName}</p>
-            <h4>Email:</h4><p>${quoteData.email}</p>
-            <h4>Phone:</h4><p>${quoteData.phone}</p>
-          </div>
-          <div>
-            <h4>Delivery Date:</h4><p>${longDeliveryDate}</p>
-            <h4>Pickup Date:</h4><p>${longPickupDate}</p>
-            <h4>Zip Code:</h4> <p>${quoteData.zip}</p>
-            <h4>Instructions:</h4><p>${quoteData.hint}</p>
-          </div>
-        `,
-      });
-      await res.status(200).json({ status: "Success" });
-    } catch (err) {
-      res.send(err);
-    }
+    // Respond with a success message
+    return NextResponse.json({ status: "Success" }, { status: 200 });
+  } catch (err) {
+    console.error(err);
+    // Respond with an error message in case of failure
+    return NextResponse.json(
+      { error: "Failed to send quote" },
+      { status: 500 }
+    );
   }
 }
