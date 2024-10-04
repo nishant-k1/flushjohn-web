@@ -75,7 +75,9 @@
   font-variant: tabular-nums;
   font-feature-settings: "tnum", "tnum";
   border-radius: 2px;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
   width: 100%;
 }
 
@@ -95,6 +97,7 @@
 .form input:hover {
   box-shadow: none;
   border: solid 1px var(--primary-bg-color);
+  height: 2.5rem;
 }
 
 .form input::-webkit-outer-spin-button,

@@ -166,7 +166,7 @@ const QuickQuote = () => {
               <AnimationWrapper
                 effect={animations?.zoomOutAndZoomIn}
                 animationKey={String(quickQuoteViewStatus)}
-                className={styles.form}
+                className={styles.quickQuoteform}
               >
                 <div>
                   <CloseIcon

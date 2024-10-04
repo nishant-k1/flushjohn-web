@@ -115,20 +115,22 @@ width ::-webkit-scrollbar {
   background: #9c561c; /* Set the color of the scroll thumb when hovered */
 }
 
-.ant-picker {
+.quickQuoteform .ant-picker {
   border-radius: 0 !important;
 }
-.ant-picker-outlined:focus-within {
+
+.quickQuoteform .ant-picker-outlined:focus-within {
   border: 1px solid var(--primary-text-color) !important;
 }
 
-.ant-picker-outlined:hover {
+.quickQuoteform .ant-picker-outlined:hover {
   border: 1px solid red;
 }
-.ant-picker-panel-container {
+
+.quickQuoteform .ant-picker-panel-container {
   border-radius: 0 !important;
 }
 
-.ant-select-multiple .ant-select-selector {
+.quickQuoteform .ant-select-multiple .ant-select-selector {
   border-radius: 0 !important;
 }
