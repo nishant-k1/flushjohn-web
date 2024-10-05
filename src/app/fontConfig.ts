@@ -1,13 +1,15 @@
-import { Poppins, Merriweather } from "next/font/google";
+import localFont from "next/font/local";
 
-export const poppins = Poppins({
-  weight: ["400", "600", "700"], // You can adjust weights
-  subsets: ["latin"], // Ensure to include subsets like 'latin'
-  variable: "--font-poppins", // CSS variable for easy reference
+export const poppins = localFont({
+  src: "https://cdn.flushjohn.com/fonts/poppins.woff2",
+  weight: "400",
+  style: "normal",
+  variable: "--font-poppins",
 });
 
-export const merriweather = Merriweather({
-  weight: ["400", "700"],
-  subsets: ["latin"],
+export const merriweather = localFont({
+  src: "https://cdn.flushjohn.com/fonts/merriweather.woff2",
+  weight: "400",
+  style: "normal",
   variable: "--font-merriweather",
 });

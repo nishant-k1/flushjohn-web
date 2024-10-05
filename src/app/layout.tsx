@@ -13,7 +13,6 @@ import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Layout from "@/components/Layout";
 import { poppins, merriweather } from "./fontConfig";
-import PageTranisition from "@/anmations/PageTranisition";
 
 // import DefaultSeo from "next-seo";
 // import defaultSeoConfig from "../../next-seo.config";
