@@ -102,7 +102,7 @@ export const home_data: HomeData = {
       alt: "porta_potty",
     },
     truckImg: {
-      src: `${s3assets}/assets/home/hero/truck.png`,
+      src: `${s3assets}/assets/home/hero/loadedTruck.png`,
       alt: "truck",
     },
   },

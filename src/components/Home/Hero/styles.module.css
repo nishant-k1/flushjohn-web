@@ -177,7 +177,7 @@
   .heroWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 128px 0 32px;
+    padding: 72px 0 16px;
     column-gap: 6rem;
     margin-top: 0;
     align-items: center;
@@ -187,11 +187,12 @@
   .heroImage {
     align-items: center;
     justify-content: end;
+    max-height: 300px;
     padding: 0;
   }
 
   .heroTitle h1 {
-    font-size: 2.5rem;
+    font-size: xx-large;
   }
 
   .heroTruckImage {
@@ -209,5 +210,9 @@
     transform: rotateY(180deg);
     position: absolute;
     bottom: 0;
+  }
+  .heroImage img {
+    height: 500px;
+    width: 500px;
   }
 }

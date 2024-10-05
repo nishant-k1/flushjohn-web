@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import { ProductImage } from "@/constants";
 
 const Slider = ({ src_1, src_2, alt }: ProductImage) => {
-  console.log(src_1, src_2, alt);
   const [toggle, setToggle] = React.useState(false);
   const setImage = () => {
     setToggle(!toggle);
