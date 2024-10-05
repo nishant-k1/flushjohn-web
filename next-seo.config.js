@@ -1,7 +1,7 @@
 import { home_data } from "./constants";
 
 export default {
-  title: "Reliable Portable | Porta Potty Rental",
+  title: "Flush John | Porta Potty Rental",
   description:
     "Portable restroom rental for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
   keywords:
@@ -10,22 +10,22 @@ export default {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Reliable Portable",
-    title: "Reliable Portable | Porta Potty Rental",
+    siteName: "Flush John",
+    title: "Flush John | Porta Potty Rental",
     description:
       "Portable restroom rental for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all.",
     images: [
       {
-        url: "https://www.reliableportable.com/favicon.svg",
+        url: "https://www.flushjohn.com/favicon.svg",
         width: 520,
         height: 600,
-        alt: "reliable_portable",
+        alt: "flush_john",
       },
       {
-        url: "https://www.reliableportable.com/favicon.png",
+        url: "https://www.flushjohn.com/favicon.png",
         width: 520,
         height: 600,
-        alt: "reliable_portable",
+        alt: "flush_john",
       },
     ],
     updated_time: "2023-07-03T12:34:56Z",
@@ -45,11 +45,11 @@ export default {
 
 export const localBusinessConfig = {
   type: "porta potty rental",
-  id: "https://www.reliableportable.com",
-  name: "Reliable Portable",
+  id: "https://www.flushjohn.com",
+  name: "Flush John",
   description:
     "Rent portable toilets and restrooms for your next event or construction site. Our clean and convenient solutions ensure a comfortable restroom experience for all",
-  // url: "https://www.reliableportable.com/",
+  // url: "https://www.flushjohn.com/",
   openingHours: ["Monday-Friday 9:00-17:00"],
   rating: {
     ratingValue: "4.5",
@@ -74,7 +74,7 @@ export const localBusinessConfig = {
       datePublished: "2021-06-15",
       name: "Best hand wash stations for rent available",
       reviewBody:
-        "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
+        "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Flush John. They are very quick in responding to your requirements and relatively cheaper in price.",
       reviewRating: {
         bestRating: "5",
         worstRating: "1",

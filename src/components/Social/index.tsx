@@ -18,7 +18,7 @@ const Social = () => {
           </Link>
         </li>
         <li>
-          {/* <Link href="https://twitter.com/reliableportable"> */}
+          {/* <Link href="https://twitter.com/flushjohn"> */}
           <Link href="/">
             <TwitterIcon className={styles.icon} />
           </Link>

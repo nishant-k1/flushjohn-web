@@ -18,27 +18,26 @@ const Privacy = () => {
             <div>
               <h3>Introduction</h3>
               <p>
-                Welcome to Reliable Portable. Reliable Portable (“us”, “we”, or
-                “our”) operates reliableportable.com (hereinafter referred to as
-                “Service”). Our Privacy Policy governs your visit to
-                reliableportable.com, and explains how we collect, safeguard and
-                disclose information that results from your use of our Service.
-                We use your data to provide and improve Service. By using
-                Service, you agree to the collection and use of information in
-                accordance with this policy. Unless otherwise defined in this
-                Privacy Policy, the terms used in this Privacy Policy have the
-                same meanings as in our Terms and Conditions. Our Terms and
-                Conditions (“Terms”) govern all use of our Service and together
-                with the Privacy Policy constitutes your agreement with us
-                (“agreement”).
+                Welcome to Flush John. Flush John (“us”, “we”, or “our”)
+                operates flushjohn.com (hereinafter referred to as “Service”).
+                Our Privacy Policy governs your visit to flushjohn.com, and
+                explains how we collect, safeguard and disclose information that
+                results from your use of our Service. We use your data to
+                provide and improve Service. By using Service, you agree to the
+                collection and use of information in accordance with this
+                policy. Unless otherwise defined in this Privacy Policy, the
+                terms used in this Privacy Policy have the same meanings as in
+                our Terms and Conditions. Our Terms and Conditions (“Terms”)
+                govern all use of our Service and together with the Privacy
+                Policy constitutes your agreement with us (“agreement”).
               </p>
             </div>
             <div>
               <h3>Definitions</h3>
               <ul>
                 <li>
-                  SERVICE means the reliableportable.com website operated by
-                  Reliable Portable .
+                  SERVICE means the flushjohn.com website operated by Flush
+                  John.
                 </li>
                 <li>
                   PERSONAL DATA means data about a living individual who can be
@@ -265,8 +264,8 @@ const Privacy = () => {
                   that transfer.
                 </p>
                 <p>
-                  Reliable Portable will take all the steps reasonably necessary
-                  to ensure that your data is treated securely and in accordance
+                  Flush John will take all the steps reasonably necessary to
+                  ensure that your data is treated securely and in accordance
                   with this Privacy Policy and no transfer of your Personal Data
                   will take place to an organisation or a country unless there
                   are adequate controls in place including the security of your

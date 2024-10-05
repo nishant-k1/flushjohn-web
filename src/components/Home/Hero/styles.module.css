@@ -1,7 +1,7 @@
 .hero {
   background-color: var(--secondary-bg-color);
-  background-image: url("/assets/blur_bg.svg");
-  background-image: url("/assets/hero_bg.svg");
+  /* background-image: url("https://cdn.flushjohn.com/assets/blur_bg.svg"); */
+  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg");
   background-size: cover;
   background-position: left;
   background-repeat: repeat;

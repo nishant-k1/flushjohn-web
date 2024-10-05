@@ -32,9 +32,9 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `Reliable Portable<${process.env.EMAIL_ID}>`, // Sender address
-      to: `Reliable Portable<${process.env.EMAIL_ID}>`, // Receiver address
-      subject: "Reliable Portable: Quick Quote", // Email subject
+      from: `Flush John<${process.env.EMAIL_ID}>`, // Sender address
+      to: `Flush John<${process.env.EMAIL_ID}>`, // Receiver address
+      subject: "Flush John: Quick Quote", // Email subject
       html: `
         <div>
           <div>

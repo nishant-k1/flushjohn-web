@@ -17,9 +17,9 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `Reliable Portable<${process.env.EMAIL_ID}>`, // sender address
-      to: `Reliable Portable<${process.env.EMAIL_ID}>`, // receiver address
-      subject: "Reliable Portable: Contact Message", // Subject line
+      from: `Flush John<${process.env.EMAIL_ID}>`, // sender address
+      to: `Flush John<${process.env.EMAIL_ID}>`, // receiver address
+      subject: "Flush John: Contact Message", // Subject line
       text: `
         From: ${emailData.firstName} ${emailData.lastName}
         Email: ${emailData.email}

@@ -14,7 +14,7 @@ const QuoteStep4 = () => {
         <a
           className={styles.refreshLink}
           type="button"
-          href="https://www.reliableportable.com/quote"
+          href="https://www.flushjohn.com/quote"
         >
           Click Here
           <p className={styles.refreshLinkMessage}>

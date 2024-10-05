@@ -9,7 +9,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import Image from "next/image";
-import { phone } from "../../constants";
+import { phone, s3assets } from "../../constants";
 import { logEvent } from "../../../react-ga4-config";
 
 const Sidebar = () => {
@@ -33,7 +33,7 @@ const Sidebar = () => {
               height={800}
               width={128}
               onClick={handleClick}
-              src="/reliable_portable_logo.svg"
+              src={`${s3assets}/flush_john_logo.svg`}
               alt="brand-logo"
             />
           </Link>

@@ -13,11 +13,9 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import MessageIcon from "@mui/icons-material/Message";
 import { FaBloggerB } from "react-icons/fa";
 import EmailIcon from "@mui/icons-material/Email";
-import { home_data } from "../../constants";
 import { phone } from "../../constants";
 
-const { locations } = home_data;
-const { phone_link, phone_number } = phone;
+const { phone_link } = phone;
 
 export const footerLinks = {
   social: [

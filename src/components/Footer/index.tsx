@@ -4,11 +4,18 @@ import Link from "next/link";
 import Locations from "../Home/Locations";
 import { footerLinks } from "./data";
 
-import { home_data } from "../../constants";
+import { home_data, s3assets } from "../../constants";
 const { locations } = home_data;
 
 var date = new Date();
 var year = date.getFullYear();
+
+type itemType = {
+  id: string;
+  name: string;
+  href: string;
+  icon: React.ReactNode;
+};
 
 const Footer = () => {
   return (
@@ -20,7 +27,7 @@ const Footer = () => {
             <li className={styles.footerLogo}>
               <Link href="/">
                 <Image
-                  src="/reliable_portable_logo.svg"
+                  src={`${s3assets}/flush_john_logo.svg`}
                   alt="brand-logo"
                   height={80}
                   width={128}
@@ -30,7 +37,7 @@ const Footer = () => {
             {/* social */}
             <li className={styles.social}>
               <ul>
-                {footerLinks?.social.map((item) => {
+                {footerLinks?.social.map((item: itemType) => {
                   const { id, name, icon, href } = item;
                   return (
                     <li key={id}>
@@ -47,7 +54,7 @@ const Footer = () => {
             {/* nav  */}
             <li className={styles.nav}>
               <ul>
-                {footerLinks?.nav.map((item) => {
+                {footerLinks?.nav.map((item: itemType) => {
                   const { id, name, icon, href } = item;
                   return (
                     <li key={id}>
@@ -64,8 +71,8 @@ const Footer = () => {
             {/* contact */}
             <li className={styles.contact}>
               <ul>
-                {footerLinks?.contact.map((item) => {
-                  const { id, name, icon, href } = item;
+                {footerLinks?.contact.map((item: itemType) => {
+                  const { id, name, href, icon } = item;
                   return (
                     <li key={id}>
                       <Link href={href}>
@@ -80,7 +87,7 @@ const Footer = () => {
           </ul>
           <Locations {...locations} />
           <div className={styles.bottomFooter}>
-            Copyright © {year} reliableportable.com
+            Copyright © {year} flushjohn.com
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 import Breadcrumbs from "../Breadcrumbs";
 
 const Disclaimer = () => {
-
   return (
     <React.Fragment>
       {/* <NextSeo
@@ -19,13 +18,13 @@ const Disclaimer = () => {
             <div>
               <h3>WEBSITE DISCLAIMER</h3>
               <p>
-                The information provided by Reliable Portable (“Company”, “we”,
-                “our”, “us”) on reliableportable.com (the “Site”) is for general
-                informational purposes only. All information on the Site is
-                provided in good faith, however we make no representation or
-                warranty of any kind, express or implied, regarding the
-                accuracy, adequacy, validity, reliability, availability, or
-                completeness of any information on the Site.
+                The information provided by Flush John (“Company”, “we”, “our”,
+                “us”) on flushjohn.com (the “Site”) is for general informational
+                purposes only. All information on the Site is provided in good
+                faith, however we make no representation or warranty of any
+                kind, express or implied, regarding the accuracy, adequacy,
+                validity, reliability, availability, or completeness of any
+                information on the Site.
               </p>
               <p>
                 UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY
@@ -100,7 +99,7 @@ const Disclaimer = () => {
                 particular purpose.
               </p>
               <p>
-                In no event will Reliable Portable, its related partnerships or
+                In no event will Flush John, its related partnerships or
                 corporations, or the partners, agents or employees thereof be
                 liable to you or anyone else for any decision made or action
                 taken in reliance on the information in this Site or for any
@@ -113,11 +112,10 @@ const Disclaimer = () => {
               <h3>LOGOS AND TRADEMARKS DISCLAIMER</h3>
               <p>
                 All logos and trademarks of third parties referenced on
-                reliableportable.com are the trademarks and logos of their
-                respective owners. Any inclusion of such trademarks or logos
-                does not imply or constitute any approval, endorsement or
-                sponsorship of Reliable Portable or Reliable Portable by such
-                owners.
+                flushjohn.com are the trademarks and logos of their respective
+                owners. Any inclusion of such trademarks or logos does not imply
+                or constitute any approval, endorsement or sponsorship of Flush
+                John or Flush John by such owners.
               </p>
             </div>
 

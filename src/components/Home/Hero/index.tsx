@@ -9,6 +9,7 @@ import Link from "next/link";
 import { logEvent } from "../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
+import { phoneType } from "../../../constants";
 
 type HeroProps = {
   title: string;
@@ -23,8 +24,7 @@ type HeroProps = {
 };
 
 const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
-  const { phone_link, phone_number } = phone;
-
+  const { phone_link, phone_number }: phoneType = phone;
   return (
     <div className={styles.hero}>
       <AnimationWrapper effect={animations.fadeWithScale}>

@@ -18,12 +18,11 @@ const Terms = () => {
             <div>
               <h3>Introduction</h3>
               <p>
-                Welcome to Reliable Portable. Hereinafter referred to as
-                “Service”.
+                Welcome to Flush John. Hereinafter referred to as “Service”.
               </p>
               <p>
                 These Terms of Service (“Terms”, “Terms of Service”) govern your
-                use of our website located at reliableportable.com (together or
+                use of our website located at flushjohn.com (together or
                 individually “Service”).
               </p>
               <p>
@@ -60,11 +59,11 @@ const Terms = () => {
               <h3>Rentals and Purchases</h3>
               <p>
                 If you wish to rent or purchase any product or service made
-                available through Reliable Portable, you may be asked to supply
-                certain information relevant to your Rental including but not
-                limited to, your credit or debit card number, the expiration
-                date of your card, your billing address, cvv number, and your
-                shipping information.
+                available through Flush John, you may be asked to supply certain
+                information relevant to your Rental including but not limited
+                to, your credit or debit card number, the expiration date of
+                your card, your billing address, cvv number, and your shipping
+                information.
               </p>
               <p>
                 You represent and warrant that: (i) you have the legal right to
@@ -108,10 +107,9 @@ const Terms = () => {
               <h3>Charges, Payments, Cancellations & Refunds</h3>
               <ul>
                 <li>
-                  Customer shall pay Reliable Portable ("Service") for
-                  cancellation fee, Trip charges or Relocation charges that were
-                  not prepaid by Customer, in accordance with the schedule of
-                  charges.
+                  Customer shall pay Flush John ("Service") for cancellation
+                  fee, Trip charges or Relocation charges that were not prepaid
+                  by Customer, in accordance with the schedule of charges.
                 </li>
                 <li>
                   Cancellations or changes made 24 hours prior to the scheduled
@@ -128,7 +126,7 @@ const Terms = () => {
                 <li>
                   All refund, compensation, and/or credit requests must occur
                   within 30 days of service completion. Any refunds issued will
-                  be at the sole discretion of Reliable Portable.
+                  be at the sole discretion of Flush John.
                 </li>
                 <li>
                   Neither party hereto shall be liable for its failure to
@@ -146,23 +144,23 @@ const Terms = () => {
             <div>
               <h3>Disclaimer</h3>
               <p>
-                Reliable Portable cannot be held responsible for any damage to
-                customer yards, doors, driveways, curbs, lawns or walks, wells
-                and septic systems. It is the customer's responsibility to make
-                us aware of any underground utilities, which might be affected
-                by taking delivery of the equipment.
+                Flush John cannot be held responsible for any damage to customer
+                yards, doors, driveways, curbs, lawns or walks, wells and septic
+                systems. It is the customer's responsibility to make us aware of
+                any underground utilities, which might be affected by taking
+                delivery of the equipment.
               </p>
             </div>
 
             <div>
               <h3>Delivery & Pickup Time</h3>
               <p>
-                Reliable Portable does not guarantee the time of delivery and
-                pickup. The unit will get delivered anytime between 8:00 am to
-                5:00 pm on the scheduled day of delivery. However, due to bad
-                weather, traffic conditions, mechanical breakdowns or sudden
-                damage of the equipments, delivery times or dates might change
-                or order can get cancelled.
+                Flush John does not guarantee the time of delivery and pickup.
+                The unit will get delivered anytime between 8:00 am to 5:00 pm
+                on the scheduled day of delivery. However, due to bad weather,
+                traffic conditions, mechanical breakdowns or sudden damage of
+                the equipments, delivery times or dates might change or order
+                can get cancelled.
               </p>
             </div>
 
@@ -171,10 +169,10 @@ const Terms = () => {
               <p>
                 Customer is responsible to provide access to the equipment on
                 the scheduled pickup day. If the equipment is inaccessible
-                leading to delay in pickup, Reliable Portable will notify the
-                Customer regarding reschedule of the service, however, Reliable
-                Portable will charge an additional fee for Customer’s failure to
-                provide initial access.
+                leading to delay in pickup, Flush John will notify the Customer
+                regarding reschedule of the service, however, Flush John will
+                charge an additional fee for Customer’s failure to provide
+                initial access.
               </p>
             </div>
 
@@ -187,11 +185,10 @@ const Terms = () => {
                 and for its contents. Customer agrees not to overload (by weight
                 or volume), move or alter the equipment, and shall use the
                 equipment only for its proper and intended purpose. Customer
-                agrees to indemnify, defend and hold harmless Reliable Portable
-                against all claims, damages, suits, penalties, fines and
-                liabilities for injury or death to persons or loss or damage to
-                property arising out of Customer’s use, operation or possession
-                of the equipment.
+                agrees to indemnify, defend and hold harmless Flush John against
+                all claims, damages, suits, penalties, fines and liabilities for
+                injury or death to persons or loss or damage to property arising
+                out of Customer’s use, operation or possession of the equipment.
               </p>
             </div>
 
@@ -199,11 +196,11 @@ const Terms = () => {
               <h3>Content</h3>
               <p>
                 Content found on or through this Service are the property of
-                Reliable Portable or used with permission. You may not
-                distribute, modify, transmit, reuse, download, repost, copy, or
-                use said Content, whether in whole or in part, for commercial
-                purposes or for personal gain, without express advance written
-                permission from us.
+                Flush John or used with permission. You may not distribute,
+                modify, transmit, reuse, download, repost, copy, or use said
+                Content, whether in whole or in part, for commercial purposes or
+                for personal gain, without express advance written permission
+                from us.
               </p>
             </div>
 
@@ -337,11 +334,11 @@ const Terms = () => {
               <p>
                 Service and its original content (excluding Content provided by
                 users), features and functionality are and will remain the
-                exclusive property of Reliable Portable LLC and its licensors.
-                Service is protected by copyright, trademark, and other laws of
-                and foreign countries. Our trademarks may not be used in
-                connection with any product or service without the prior written
-                consent of Reliable Portable LLC.
+                exclusive property of Flush John LLC and its licensors. Service
+                is protected by copyright, trademark, and other laws of and
+                foreign countries. Our trademarks may not be used in connection
+                with any product or service without the prior written consent of
+                Flush John LLC.
               </p>
             </div>
 
@@ -444,8 +441,7 @@ const Terms = () => {
               <h3>Links To Other Web Sites</h3>
               <p>
                 Our Service may contain links to third party web sites or
-                services that are not owned or controlled by Reliable Portable
-                LLC.
+                services that are not owned or controlled by Flush John LLC.
               </p>
               <p>
                 We have no control over, and assumes no responsibility for the

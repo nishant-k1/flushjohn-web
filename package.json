@@ -1,14 +1,12 @@
 {
   "name": "reliable-portable",
   "version": "0.1.0",
-  "packageManager": "yarn@3.5.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "format": "yarn prettier --write .",
-    "upgrade": "yarn upgrade",
     "lint": "eslint"
   },
   "browser": {

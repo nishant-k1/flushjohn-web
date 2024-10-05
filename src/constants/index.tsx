@@ -3,21 +3,32 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 
-// Constant to hold Google Tag ID
-export const G_TAG_ID = "AW-11248564671";
+export const G_TAG_ID: string = process.env.NEXT_PUBLIC_G_TAG_ID as string;
 
-// API base URLs
-export const apiBaseUrls = {
-  CRM_RP_SERVICES_BASE_URL: "https://crm.reliableportable.com",
-  CRM_RP_SOCKET_SERVICES_BASE_URL:
-    "https://crm-rp-socket-services.reliableportable.com",
+export type apiBaseUrlsType = {
+  CRM_RP_SERVICES_BASE_URL: string;
+  CRM_RP_SOCKET_SERVICES_BASE_URL: string;
 };
 
-// Phone number data
-export const phone = {
-  phone_link: "tel:+18778904945",
-  phone_number: "(877) 890-4945",
+export const apiBaseUrls: apiBaseUrlsType = {
+  CRM_RP_SERVICES_BASE_URL: process.env
+    .NEXT_PUBLIC_CRM_RP_SERVICES_BASE_URL as string,
+  CRM_RP_SOCKET_SERVICES_BASE_URL: process.env
+    .NEXT_PUBLIC_CRM_RP_SOCKET_SERVICES_BASE_URL as string,
 };
+
+export type phoneType = {
+  phone_link: string;
+  phone_number: string;
+};
+
+export const phone: phoneType = {
+  phone_link: process.env.NEXT_PUBLIC_PHONE_URL as string,
+  phone_number: process.env.NEXT_PUBLIC_PHONE_NUMBER as string,
+};
+
+export const s3assets: string = process.env
+  .NEXT_PUBLIC_CDN_S3_BUCKET_CLOUD_FRONT_URL as string;
 
 // Type definitions for various data structures
 export interface Image {
@@ -87,11 +98,11 @@ export const home_data: HomeData = {
     title:
       "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
-      src: "/assets/home/hero/hero_fm_1.png",
+      src: `${s3assets}/assets/home/hero/hero_fm_1.png`,
       alt: "porta_potty",
     },
     truckImg: {
-      src: "/assets/home/hero/truck.png",
+      src: `${s3assets}/assets/home/hero/truck.png`,
       alt: "truck",
     },
   },
@@ -124,7 +135,7 @@ export const home_data: HomeData = {
     content: [
       {
         id: 1,
-        image: "/assets/home/services/services_event.jpg",
+        image: `${s3assets}/assets/home/services/services_event.jpg`,
         alt: "event_pic",
         title:
           "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
@@ -132,7 +143,7 @@ export const home_data: HomeData = {
       },
       {
         id: 2,
-        image: "/assets/home/services/hero_9.jpg",
+        image: `${s3assets}/assets/home/services/hero_9.jpg`,
         alt: "construction_pic",
         title:
           "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
@@ -140,7 +151,7 @@ export const home_data: HomeData = {
       },
       {
         id: 3,
-        image: "/assets/home/services/truck.jpeg",
+        image: `${s3assets}/assets/home/services/truck.jpeg`,
         alt: "renovation_pic",
         title:
           "Renovation Porta Potty Rentals: Providing Sanitation Solutions for Homeowners and Workers",
@@ -148,7 +159,7 @@ export const home_data: HomeData = {
       },
       {
         id: 4,
-        image: "/assets/home/services/services_construction.jpg",
+        image: `${s3assets}/assets/home/services/services_construction.jpg`,
         alt: "relief_pic",
         title:
           "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
@@ -225,32 +236,32 @@ export const testimonials: TestimonialsData = {
   content: [
     {
       image: {
-        src: "/assets/testimonial/testimony.svg",
-        alt: "https://www.reliableportable.com/",
+        src: `${s3assets}/assets/testimonial/testimony.svg`,
+        alt: "https://www.flushjohn.com/",
       },
       title: "Terry Miles",
       body: "The porta potty arrived on time as promised and it was wonderful. They are best porta potty rental service provider.",
     },
     {
       image: {
-        src: "/assets/testimonial/testimony1.svg",
-        alt: "https://www.reliableportable.com/",
+        src: `${s3assets}/assets/testimonial/testimony1.svg`,
+        alt: "https://www.flushjohn.com/",
       },
       title: "Dean Lacey",
-      body: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Reliable Portable. They are very quick in responding to your requirements and relatively cheaper in price.",
+      body: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Flush John. They are very quick in responding to your requirements and relatively cheaper in price.",
     },
     {
       image: {
-        src: "/assets/testimonial/testimony2.svg",
-        alt: "https://www.reliableportable.com/",
+        src: `${s3assets}/assets/testimonial/testimony2.svg`,
+        alt: "https://www.flushjohn.com/",
       },
       title: "Christine Barnes",
       body: "Ordered an event portable toilet unit for a family reunion. The portable toilet arrived the next day of my order.",
     },
     {
       image: {
-        src: "/assets/testimonial/testimony2.svg",
-        alt: "https://www.reliableportable.com/",
+        src: `${s3assets}/assets/testimonial/testimony2.svg`,
+        alt: "https://www.flushjohn.com/",
       },
       title: "Janet Estremera",
       body: "Portable toilet was pretty and nice. I had it ordered for a wedding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",
@@ -268,8 +279,8 @@ export const products_data: ProductsData = {
     {
       id: 1,
       image: {
-        src_1: "/assets/products/sps_blue.svg",
-        src_2: "/assets/products/blueSPSInterior1.png",
+        src_1: `${s3assets}/assets/products/sps_blue.svg`,
+        src_2: `${s3assets}/assets/products/blueSPSInterior1.png`,
         alt: "Standard Portable Restroom",
       },
       title: "Standard Portable Restroom",
@@ -278,32 +289,32 @@ export const products_data: ProductsData = {
     {
       id: 2,
       image: {
-        src_1: "/assets/products/ada_blue.svg",
-        src_2: "/assets/products/ADAInterior1.jpg",
+        src_1: `${s3assets}/assets/products/adaCropped-removebg-preview.png`,
+        src_2: `${s3assets}/assets/products/ADAInterior1.jpg`,
         alt: "ADA-Compliant Portable Restroom",
       },
       title: "ADA-Compliant Portable Restroom",
-      desc: "The Americans with Disabilities Act (ADA) requires that all public events and construction sites provide accessible portable toilets, also known as ADA compliant porta potties, to ensure that people with disabilities have equal access to facilities.",
+      desc: "The Americans with Disabilities Act (ADA) requires that all public events and job sites must have ADA-compliant porta potties available. These units are designed to accommodate individuals with disabilities.",
     },
     {
       id: 3,
       image: {
-        src_1: "/assets/products/flushable.svg",
-        src_2: "/assets/products/whiteFlushableInterior1.jpg",
+        src_1: `${s3assets}/assets/products/FlushableCropped-removebg-preview.png`,
+        src_2: `${s3assets}/assets/products/whiteFlushableInterior1.jpg`,
         alt: "Flushable Restroom-Sink Combo",
       },
       title: "Flushable Restroom-Sink Combo",
       desc: "A flushable portable restroom is a modern solution for outdoor events and job sites, providing the comfort of a regular bathroom with the convenience of portability.",
     },
     {
-      id: 4,
+      id: 3,
       image: {
-        src_1: "/assets/products/sinkFront.png",
-        src_2: "/assets/products/sinkFront.png",
-        alt: "Portable Handwash Station",
+        src_1: `${s3assets}/assets/products/sinkFront.png`,
+        src_2: `${s3assets}/assets/products/sink3Croppedremovebg.png`,
+        alt: "Hand Wash Stations",
       },
-      title: "Portable Handwash Station",
-      desc: "Handwash stations are essential for any outdoor event, providing a sanitary and convenient way for guests to wash their hands and maintain hygiene.",
+      title: "Hand Wash Stations",
+      desc: "Handwash stations provide a convenient and hygienic way for users to wash their hands. These units are often placed alongside porta potties to enhance the sanitation experience.",
     },
   ],
 };

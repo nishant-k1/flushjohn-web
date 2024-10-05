@@ -6,8 +6,10 @@ import styles from "./styles.module.css";
 import Indicator from "./Indicator";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ProductImage } from "@/constants";
 
-const Slider = ({ src_1, src_2, alt }: any) => {
+const Slider = ({ src_1, src_2, alt }: ProductImage) => {
+  console.log(src_1, src_2, alt);
   const [toggle, setToggle] = React.useState(false);
   const setImage = () => {
     setToggle(!toggle);

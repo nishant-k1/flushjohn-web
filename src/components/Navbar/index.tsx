@@ -10,8 +10,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import { QuickQuoteContext } from "@/contexts/QuickQuoteContext/index";
 import { QuickQuoteContextType } from "@/contexts/QuickQuoteContext/index";
 import { SidebarContextType } from "@/contexts/SidebarContext";
-import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { animations } from "@/anmations/effectData";
+import { s3assets } from "@/constants";
 
 const Navbar = () => {
   const { active, setActive } =
@@ -44,7 +43,7 @@ const Navbar = () => {
           <Link href="/">
             <Image
               className={styles.logo}
-              src="/reliable_portable_logo.svg"
+              src={`${s3assets}/flush_john_logo.svg`}
               alt="porta-potty"
               height={64}
               width={100}
