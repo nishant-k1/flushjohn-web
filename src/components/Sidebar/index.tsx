@@ -33,7 +33,7 @@ const Sidebar = () => {
               height={800}
               width={128}
               onClick={handleClick}
-              src={`${s3assets}/flush_john_logo.svg`}
+              src={`${s3assets}/logo_white.svg`}
               alt="brand-logo"
             />
           </Link>

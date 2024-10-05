@@ -43,7 +43,7 @@ const Navbar = () => {
           <Link href="/">
             <Image
               className={styles.logo}
-              src={`${s3assets}/flush_john_logo.svg`}
+              src={`${s3assets}/logo_white.svg`}
               alt="porta-potty"
               height={64}
               width={100}

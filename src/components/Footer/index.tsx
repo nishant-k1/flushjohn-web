@@ -27,7 +27,7 @@ const Footer = () => {
             <li className={styles.footerLogo}>
               <Link href="/">
                 <Image
-                  src={`${s3assets}/flush_john_logo.svg`}
+                  src={`${s3assets}/logo_white.svg`}
                   alt="brand-logo"
                   height={80}
                   width={128}
