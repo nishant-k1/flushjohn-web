@@ -12,7 +12,6 @@ import { QuoteContextProvider } from "@/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Layout from "@/components/Layout";
-import { poppins, merriweather } from "./fontConfig";
 
 // import DefaultSeo from "next-seo";
 // import defaultSeoConfig from "../../next-seo.config";
@@ -23,10 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.variable} ${merriweather.variable}`}
-    >
+    <html lang="en">
       <head>{/* <DefaultSeo {...defaultSeoConfig} /> */}</head>
       <body>
         <Layout>
