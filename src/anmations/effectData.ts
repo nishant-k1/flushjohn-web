@@ -48,7 +48,34 @@ export const animations = {
       }, // Slide out to the right with reduced opacity
     },
   },
-
+  slidebarSlide: {
+    variants: {
+      initial: {
+        opacity: 1,
+        x: "-100%",
+        transition: {
+          ease: "easeIn",
+          duration: 0.03, // Balanced duration for sliding and fading
+        },
+      }, // Start off-screen to the left with reduced opacity
+      animate: {
+        opacity: 1,
+        x: "0%",
+        transition: {
+          ease: "backIn",
+          duration: 0.03, // Balanced duration for sliding and fading
+        },
+      }, // Slide in to position
+      exit: {
+        opacity: 1,
+        x: "-100%",
+        transition: {
+          ease: "easeOut",
+          duration: 0.05, // Balanced duration for sliding and fading
+        },
+      }, // Slide out to the right with reduced opacity
+    },
+  },
   swipe: {
     variants: {
       initial: {

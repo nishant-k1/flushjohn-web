@@ -11,6 +11,8 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import Image from "next/image";
 import { phone, s3assets } from "../../constants";
 import { logEvent } from "../../../react-ga4-config";
+import AnimationWrapper from "@/anmations/AnimationWrapper";
+import { animations } from "@/anmations/effectData";
 
 const Sidebar = () => {
   const { phone_link, phone_number } = phone;
@@ -21,7 +23,9 @@ const Sidebar = () => {
   };
 
   return (
-    <div
+    <AnimationWrapper
+      effect={animations?.slidebarSlide}
+      animationKey={String(active)}
       className={`${styles.section} ${
         active ? styles.active : styles.inactive
       }`}
@@ -77,7 +81,7 @@ const Sidebar = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </AnimationWrapper>
   );
 };
 
