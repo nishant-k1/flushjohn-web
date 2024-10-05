@@ -106,9 +106,10 @@
   padding: 32px 0;
   /* background: var(--primary-gradient-bg-color); */
 }
+
 .heroImage img {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
 }
 
 .heroTruckImage {
