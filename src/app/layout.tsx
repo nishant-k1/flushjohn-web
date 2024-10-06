@@ -13,9 +13,6 @@ import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Layout from "@/components/Layout";
 
-// import DefaultSeo from "next-seo";
-// import defaultSeoConfig from "../../next-seo.config";
-
 export default function RootLayout({
   children,
 }: {
@@ -23,7 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>{/* <DefaultSeo {...defaultSeoConfig} /> */}</head>
       <body>
         <Layout>
           <ClientWidthContextProvider>

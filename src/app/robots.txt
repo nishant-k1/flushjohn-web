@@ -1,9 +1,18 @@
+# Instructions for all web crawlers
 User-agent: *
+
+# Disallow access to specific pages
 Disallow: /disclaimer
 Disallow: /terms
 Disallow: /privacy
+
+# Allow access to the entire site, except the disallowed pages
 Allow: /
+
+# Explicitly allow access to important pages
 Allow: /quote
 Allow: /rental-products
 Allow: /contact
-sitemap: /sitemap.xml
+
+# Location of the XML sitemap
+Sitemap: /sitemap.xml
