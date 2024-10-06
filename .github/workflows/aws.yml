@@ -2,22 +2,22 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}  # Set this to your preferred AWS region
+  AWS_REGION: ${{ secrets.AWS_REGION }} # Set this to your preferred AWS region
 
 jobs:
   deploy:
     name: Deploy to EC2
-    runs-on: ubuntu-latest  # This is fine, as you cannot run jobs on your EC2 instance directly.
+    runs-on: ubuntu-latest # This is fine, as you cannot run jobs on your EC2 instance directly.
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: npm install  # Modify this depending on your package manager
+        run: npm install # Modify this depending on your package manager
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v0.1.3
