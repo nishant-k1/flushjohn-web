@@ -27,7 +27,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            cd ~/flushjohn
+            cd /home/ec2-user/flush-john/
             git pull origin main   # Pull the latest changes
             npm install            # Install dependencies if needed
             npm run build          # Build the app (optional)
