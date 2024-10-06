@@ -30,5 +30,10 @@ jobs:
             cd /home/ec2-user/flush-john/
             git pull origin main   # Pull the latest changes
             npm install            # Install dependencies if needed
+
+            # Manage .env file
+            # echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env # Create/overwrite .env
+            # echo "ANOTHER_ENV_VARIABLE=${{ secrets.ANOTHER_ENV_VARIABLE }}" >> .env # Create/Append to .env
+
             npm run build          # Build the app (optional)
             pm2 restart 0          # Restart the app (optional)
