@@ -12,6 +12,28 @@ import { QuoteContextProvider } from "@/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Layout from "@/components/Layout";
+import type { Metadata } from "next";
+import { s3assets, websiteURL } from "@/constants";
+
+export const metadata: Metadata = {
+  title: "FlushJohn Porta Potty Rentals",
+  description:
+    "Reliable and affordable porta potty rentals for all your events.",
+  keywords: "porta potty, portable toilets, event rentals, FlushJohn",
+  openGraph: {
+    title: "FlushJohn Porta Potty Rentals",
+    description:
+      "Get portable restrooms for your events at competitive prices.",
+    url: `${websiteURL}/icon.svg`,
+    type: "website",
+    images: [
+      {
+        url: `${s3assets}/icon.svg`,
+        alt: "FlushJohn Portable Toilet Rental Service",
+      },
+    ],
+  },
+};
 
 export default function RootLayout({
   children,

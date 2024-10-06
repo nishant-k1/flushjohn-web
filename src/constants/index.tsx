@@ -30,6 +30,8 @@ export const phone: phoneType = {
 export const s3assets: string = process.env
   .NEXT_PUBLIC_CDN_S3_BUCKET_CLOUD_FRONT_URL as string;
 
+export const websiteURL: string = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
+
 // Type definitions for various data structures
 export interface Image {
   src: string;
@@ -73,6 +75,7 @@ export interface Product {
   image: ProductImage;
   title: string;
   desc: string;
+  keywords: string;
 }
 
 // Home data structure
@@ -285,6 +288,8 @@ export const products_data: ProductsData = {
       },
       title: "Standard Portable Restroom",
       desc: "A standard porta potty is a portable toilet that is perfect for outdoor events and construction sites, providing basic amenities and convenience for users.",
+      keywords:
+        "standard porta potty, portable restroom, outdoor toilet, basic amenities, construction site toilet",
     },
     {
       id: 2,
@@ -295,6 +300,8 @@ export const products_data: ProductsData = {
       },
       title: "ADA-Compliant Portable Restroom",
       desc: "The Americans with Disabilities Act (ADA) requires that all public events and job sites must have ADA-compliant porta potties available. These units are designed to accommodate individuals with disabilities.",
+      keywords:
+        "ADA-compliant toilet, accessible restroom, disability access, portable toilet, public event restroom",
     },
     {
       id: 3,
@@ -305,9 +312,11 @@ export const products_data: ProductsData = {
       },
       title: "Flushable Restroom-Sink Combo",
       desc: "A flushable portable restroom is a modern solution for outdoor events and job sites, providing the comfort of a regular bathroom with the convenience of portability.",
+      keywords:
+        "flushable restroom, portable sink, restroom-sink combo, outdoor bathroom, event restroom",
     },
     {
-      id: 3,
+      id: 4, // Ensure this ID is unique (changed from 3 to 4)
       image: {
         src_1: `${s3assets}/assets/products/sinkFront.png`,
         src_2: `${s3assets}/assets/products/sink3Croppedremovebg.png`,
@@ -315,6 +324,8 @@ export const products_data: ProductsData = {
       },
       title: "Hand Wash Stations",
       desc: "Handwash stations provide a convenient and hygienic way for users to wash their hands. These units are often placed alongside porta potties to enhance the sanitation experience.",
+      keywords:
+        "hand wash station, hygiene, portable sink, sanitation, outdoor handwashing",
     },
   ],
 };
