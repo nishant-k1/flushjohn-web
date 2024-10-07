@@ -6,15 +6,13 @@ import { RiTimeFill } from "react-icons/ri";
 export const G_TAG_ID: string = process.env.NEXT_PUBLIC_G_TAG_ID as string;
 
 export type apiBaseUrlsType = {
-  CRM_RP_SERVICES_BASE_URL: string;
-  CRM_RP_SOCKET_SERVICES_BASE_URL: string;
+  CRM_BASE_URL: string;
+  API_BASE_URL: string;
 };
 
 export const apiBaseUrls: apiBaseUrlsType = {
-  CRM_RP_SERVICES_BASE_URL: process.env
-    .NEXT_PUBLIC_CRM_RP_SERVICES_BASE_URL as string,
-  CRM_RP_SOCKET_SERVICES_BASE_URL: process.env
-    .NEXT_PUBLIC_CRM_RP_SOCKET_SERVICES_BASE_URL as string,
+  CRM_BASE_URL: process.env.NEXT_PUBLIC_CRM_BASE_URL as string,
+  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL as string,
 };
 
 export type phoneType = {

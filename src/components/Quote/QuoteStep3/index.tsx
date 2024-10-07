@@ -110,7 +110,7 @@ const QuoteStep3 = () => {
             const res = await axios({
               method: "post",
               url: "/leads",
-              baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
+              baseURL: apiBaseUrls.API_BASE_URL,
               data: { ...values, leadSource: "Web Lead" },
             });
 

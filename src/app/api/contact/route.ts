@@ -10,15 +10,15 @@ export async function POST(req: NextRequest) {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: process.env.EMAIL_ID, // generated ethereal user
-        pass: process.env.EMAIL_PASS, // generated ethereal password
+        user: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID, // generated ethereal user
+        pass: process.env.FLUSH_JOHN_EMAIL_PASSWORD, // generated ethereal password
       },
       tls: { rejectUnauthorized: false },
     });
 
     await transporter.sendMail({
-      from: `Flush John<${process.env.EMAIL_ID}>`, // sender address
-      to: `Flush John<${process.env.EMAIL_ID}>`, // receiver address
+      from: `Flush John<${process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID}>`, // sender address
+      to: `Flush John<${process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID}>`, // receiver address
       subject: "Flush John: Contact Message", // Subject line
       text: `
         From: ${emailData.firstName} ${emailData.lastName}

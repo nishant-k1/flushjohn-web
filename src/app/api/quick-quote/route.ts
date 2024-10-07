@@ -3,21 +3,6 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
     const quickQuoteData = await req.json(); // Parse the request body
 
     const transporter = nodemailer.createTransport({
@@ -25,15 +10,15 @@ export async function POST(req: NextRequest) {
       port: 465,
       secure: true, // true for port 465, false for other ports
       auth: {
-        user: process.env.EMAIL_ID, // Email ID from environment variables
-        pass: process.env.EMAIL_PASS, // Email password from environment variables
+        user: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID, // Email ID from environment variables
+        pass: process.env.FLUSH_JOHN_EMAIL_PASSWORD, // Email password from environment variables
       },
       tls: { rejectUnauthorized: false }, // Allows non-strict SSL
     });
 
     await transporter.sendMail({
-      from: `Flush John<${process.env.EMAIL_ID}>`, // Sender address
-      to: `Flush John<${process.env.EMAIL_ID}>`, // Receiver address
+      from: `Flush John<${process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID}>`, // Sender address
+      to: `Flush John<${process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID}>`, // Receiver address
       subject: "Flush John: Quick Quote", // Email subject
       html: `
         <div>

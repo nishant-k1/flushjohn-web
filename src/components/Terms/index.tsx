@@ -1,15 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
-// import { NextSeo } from "next-seo";
 import Breadcrumbs from "../Breadcrumbs";
 
 const Terms = () => {
   return (
     <React.Fragment>
-      {/* <NextSeo
-        noindex={true}
-        nofollow={true}
-      /> */}
       <div className={styles.terms}>
         <div className={styles.container}>
           <Breadcrumbs path={""} />

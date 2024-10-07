@@ -92,7 +92,6 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
 };
 
 const Contact = () => {
-  const router = useRouter();
   const [state, setState] = React.useState(false);
   function gtag(
     arg0: string,

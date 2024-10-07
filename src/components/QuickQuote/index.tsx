@@ -113,7 +113,7 @@ const QuickQuote = () => {
               await axios.post("/leads", {
                 ...values,
                 leadSource: "Web Quick Lead",
-                baseURL: apiBaseUrls.CRM_RP_SOCKET_SERVICES_BASE_URL,
+                baseURL: apiBaseUrls.API_BASE_URL,
               });
 
               await axios.post("/quick-quote", {

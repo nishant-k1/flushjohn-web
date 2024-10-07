@@ -1,15 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
-// import { NextSeo } from "next-seo";
 import Breadcrumbs from "../Breadcrumbs";
 
 const Privacy = () => {
   return (
     <React.Fragment>
-      {/* <NextSeo
-        noindex={true}
-        nofollow={true}
-      /> */}
       <div className={styles.privacy}>
         <div className={styles.container}>
           <Breadcrumbs path={""} />
