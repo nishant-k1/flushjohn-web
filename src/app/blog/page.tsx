@@ -29,8 +29,13 @@ export const metadata: Metadata = {
 const BlogPage = async () => {
   const { API_BASE_URL } = apiBaseUrls;
   const API_URL = `${API_BASE_URL}/blogs`;
-  console.log("API_URL", API_URL);
-  let blogList: { date: any; title: any; desc: any; id: any }[] = [];
+
+  let blogList: {
+    createdAt: string;
+    title: string;
+    content: any;
+    _id: string;
+  }[] = [];
 
   try {
     const res = await axios.get(API_URL);
