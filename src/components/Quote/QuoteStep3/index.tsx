@@ -109,15 +109,14 @@ const QuoteStep3 = () => {
 
             const res = await axios({
               method: "post",
-              url: "/leads",
-              baseURL: apiBaseUrls.API_BASE_URL,
+              url: `${apiBaseUrls.API_BASE_URL}/leads`,
               data: { ...values, leadSource: "Web Lead" },
             });
 
-            await axios.post(`/api/quote`, {
-              ...values,
-              leadSource: "Web Lead",
-            });
+            // await axios.post(`/api/quote`, {
+            //   ...values,
+            //   leadSource: "Web Lead",
+            // });
 
             logEvent({
               category: "Form",

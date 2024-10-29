@@ -2,6 +2,8 @@ import React from "react";
 import Blog from "@/components/Blog";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
+import axios from "axios";
+import { apiBaseUrls } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Blog - FlushJohn Porta Potty Rentals",
@@ -24,6 +26,22 @@ export const metadata: Metadata = {
   },
 };
 
-const BlogPage = () => <Blog />;
+const BlogPage = async () => {
+  const { API_BASE_URL } = apiBaseUrls;
+  const API_URL = `${API_BASE_URL}/blogs`;
+  console.log("API_URL", API_URL);
+  let blogList: { date: any; title: any; desc: any; id: any }[] = [];
+
+  try {
+    const res = await axios.get(API_URL);
+    if (res.data.success) {
+      blogList = res.data.data;
+    }
+  } catch (error) {
+    console.error("Error fetching blog list:", error);
+  }
+
+  return <Blog blogList={blogList} />;
+};
 
 export default BlogPage;

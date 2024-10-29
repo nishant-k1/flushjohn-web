@@ -3,7 +3,7 @@
 import { Formik, Form } from "formik";
 import styles from "./styles.module.css";
 import axios from "axios";
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useContext } from "react";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
@@ -100,26 +100,25 @@ const QuickQuote = () => {
             contactPersonName: "",
             contactPersonPhone: "",
           }}
-          validationSchema={quickQuoteValidationSchema}
-          validateOnChange={false}
-          validateOnBlur={true}
+          // validationSchema={quickQuoteValidationSchema}
+          // validateOnChange={false}
+          // validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
-            setTimeout(() => {
-              notify();
-            }, 2000);
+            // setTimeout(() => {
+            //   notify();
+            // }, 2000);
 
             try {
-              await axios.post("/leads", {
+              await axios.post(`${apiBaseUrls.API_BASE_URL}/leads`, {
                 ...values,
                 leadSource: "Web Quick Lead",
-                baseURL: apiBaseUrls.API_BASE_URL,
               });
 
-              await axios.post("/quick-quote", {
-                ...values,
-                leadSource: "Web Quick Lead",
-              });
+              // await axios.post("/quick-quote", {
+              //   ...values,
+              //   leadSource: "Web Quick Lead",
+              // });
 
               logEvent({
                 category: "Form",

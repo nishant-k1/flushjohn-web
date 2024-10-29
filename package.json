@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -15,12 +15,12 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/icons-material": "6.1.1",
+    "@mui/icons-material": "^6.1.2",
     "@mui/lab": "6.0.0-beta.10",
     "@mui/material": "^6.1.1",
     "@types/antd": "^1.0.0",
     "@types/react": "^18.3.9",
-    "antd": "5.21.0",
+    "antd": "^5.21.2",
     "axios": "^1.7.7",
     "formik": "2.4.6",
     "framer-motion": "^11.8.0",
