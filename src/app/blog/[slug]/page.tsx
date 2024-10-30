@@ -57,7 +57,6 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   } catch (error) {
     console.error("Error fetching blog list:", error);
   }
-  console.log("BlogPost", blogPost);
   return (
     <BlogPost
       blogPost={blogPost}
