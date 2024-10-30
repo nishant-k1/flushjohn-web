@@ -1,62 +1,29 @@
 import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
-import { apiBaseUrls, websiteURL } from "@/constants";
-import { post_data } from "@/components/Blog/constant";
+import { apiBaseUrls } from "@/constants";
 import axios from "axios";
-
-// export const generateMetadata = async ({
-//   params,
-// }: {
-//   params: { slug: string };
-// }) => {
-//   const { slug } = params;
-//   if (!slug) return null; // Return null if slug is not provided
-
-//   // Find the current product based on the slug
-//   const currentProduct = post_data.post_list.find((blogPost) => {
-//     const formattedSlug = blogPost.title.toLowerCase().replace(/\s+/g, "-");
-//     return formattedSlug === slug;
-//   });
-
-//   if (!currentProduct) {
-//     throw new Error(`Invalid slug: ${slug}`);
-//   }
-
-//   const { title, image, keywords } = currentProduct;
-//   const { src, alt } = image;
-
-//   return {
-//     title: `${title} - FlushJohn Porta Potty Rentals`, // Use product name
-//     description: `Get detailed information about our ${title}. Affordable and reliable porta potty rentals for your event.`,
-//     keywords: `${keywords}, porta potty rental, flushjohn`, // Use product keywords
-//     openGraph: {
-//       title: `${title} - FlushJohn Porta Potty Rentals`, // Use product name
-//       description: `Discover the features and pricing for our ${title} at FlushJohn. Ideal for all types of events.`,
-//       url: `${websiteURL}/rental-products/${slug}`,
-//       type: "website",
-//       images: [
-//         {
-//           url: src, // Use product image URL
-//           alt: `${alt} - FlushJohn`, // Use product name
-//         },
-//       ],
-//     },
-//   };
-// };
+import DOMPurify from "isomorphic-dompurify"; // Import DOMPurify
 
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const { API_BASE_URL } = apiBaseUrls;
   const API_URL = `${API_BASE_URL}/blogs/${slug}`;
   let blogPost;
+
   try {
     const res = await axios.get(API_URL);
     if (res.data.success) {
-      blogPost = res.data.data;
+      const data = res.data.data;
+      // Sanitize content here
+      blogPost = {
+        ...data,
+        content: DOMPurify.sanitize(data.content),
+      };
     }
   } catch (error) {
-    console.error("Error fetching blog list:", error);
+    console.error("Error fetching blog post:", error);
   }
+
   return (
     <BlogPost
       blogPost={blogPost}
@@ -64,4 +31,5 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
     />
   );
 };
+
 export default BlogPostPage;

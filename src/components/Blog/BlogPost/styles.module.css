@@ -21,12 +21,12 @@
   width: 100%;
 }
 
-.wrapper div {
+/* .wrapper div {
   display: grid;
   grid-template-columns: 1fr;
   align-items: end;
   justify-content: start;
-}
+} */
 
 .wrapper h1 {
   color: var(--secondary-text-color);

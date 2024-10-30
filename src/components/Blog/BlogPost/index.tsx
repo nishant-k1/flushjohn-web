@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "../../Breadcrumbs";
-import Image from "next/image";
 
 const BlogPost = ({ blogPost, slug }: any) => {
-  if (!blogPost) return;
+  if (!blogPost) return null;
   const { title, blogNo, content } = blogPost;
-  const { image, date, desc } = content;
-  const { src, alt } = image;
+  // const { image, date, desc } = content;
+  // const { src, alt } = image;
 
   return (
     <div>
@@ -16,15 +15,17 @@ const BlogPost = ({ blogPost, slug }: any) => {
           <Breadcrumbs path={`/blog/${slug}`} />
           <div className={styles.wrapper}>
             <h1>{title}</h1>
-            <h2>{date}</h2>
+            {/* <h2>{date}</h2> */}
             <h3>{blogNo}</h3>
-            <Image
+            {/* <Image
               src={src}
               alt={alt}
               width={300}
               height={600}
+            /> */}
+            <div
+              dangerouslySetInnerHTML={{ __html: content }} // Sanitize and render HTML
             />
-            {content}
           </div>
         </div>
       </div>
