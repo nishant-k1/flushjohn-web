@@ -7,45 +7,58 @@ import { generateSlug } from "@/utils";
 
 const Blog = ({ blogList }: any) => {
   return (
-    <div className={styles.blog}>
+    <div className={styles.section}>
       <div className={styles.container}>
         <Breadcrumbs path="" />
         <div className={styles.wrapper}>
           <h1>Blog</h1>
-          {blogList.map(
-            (item: {
-              _id: any;
-              title: string;
-              coverImage: {
-                src: string;
-                alt: string;
-              };
-              createdAt: any;
-              blogNo: number;
-            }) => {
-              const { _id, coverImage, title, createdAt, blogNo } = item;
-              const { src = "", alt = "" } = coverImage || {};
-              const slug = generateSlug(title);
-              return (
-                <Link
-                  href={`/blog/${slug}`}
-                  key={_id}
-                >
-                  <h2>{title || ""}</h2>
-                  <h3>{createdAt || ""}</h3>
-                  <h4>{blogNo || ""}</h4>
-                  {coverImage && (
-                    <Image
-                      src={src}
-                      alt={alt}
-                      height={48}
-                      width={48}
-                    />
-                  )}
-                </Link>
-              );
-            }
-          )}
+          <div className={styles.blogWrapper}>
+            {blogList.map(
+              (item: {
+                _id: any;
+                title: string;
+                coverImage: {
+                  src: string;
+                  alt: string;
+                };
+                createdAt: any;
+                desc: string;
+              }) => {
+                const { _id, coverImage, title, createdAt, desc } = item;
+                const blogDate = new Date(createdAt);
+                const { src = "", alt = "" } = coverImage || {};
+                const slug = generateSlug(title);
+
+                return (
+                  <Link
+                    href={`/blog/${slug}`}
+                    key={_id}
+                    className={styles.blogItem}
+                  >
+                    <div className={styles.textContainer}>
+                      <h2>{title || ""}</h2>
+                      <h3>
+                        {blogDate.toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </h3>
+                      <p>{desc || ""}</p>
+                    </div>
+                    {coverImage && (
+                      <Image
+                        src={src}
+                        alt={alt}
+                        height={200}
+                        width={200}
+                      />
+                    )}
+                  </Link>
+                );
+              }
+            )}
+          </div>
         </div>
       </div>
     </div>

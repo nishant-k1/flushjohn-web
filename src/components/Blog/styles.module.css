@@ -1,5 +1,5 @@
 /* utilities */
-.blog {
+.section {
   background-color: var(--tertiary-bg-color);
   /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
   background-size: cover;
@@ -14,57 +14,58 @@
 }
 
 .wrapper {
-  margin-top: 6rem;
-  display: grid;
-  grid-gap: 2rem;
-  height: 100%;
-  width: 100%;
+  padding: 6rem 0;
 }
-
-.wrapper a {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: end;
-  justify-content: start;
-  border: 1px solid var(--primary-bg-color);
-  padding: 12px;
-  border-radius: 4px;
-}
-
 .wrapper h1 {
-  color: var(--secondary-text-color);
+  margin-bottom: 2rem;
 }
 .wrapper h2 {
-  color: var(--secondary-text-color);
+  font-size: large;
 }
 .wrapper h3 {
-  color: var(--secondary-text-color);
+  color: lab(7.18 2.34 -6.15);
+  font-size: small;
 }
-.wrapper img {
-  max-width: 400px;
-  height: 100%;
-  padding-bottom: 2.5rem;
-}
-.wrapper p {
-  font-size: 16px;
-  color: var(--secondary-text-color);
+.blogWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-/* tablet device breakpoint: 768px*/
+.blogItem {
+  display: grid;
+  padding: 24px 0 24px 12px;
+  column-gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.blogItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.textContainer {
+  display: grid;
+  row-gap: 12px;
+  height: fit-content;
+}
+
 @media screen and (min-width: 768px) {
-  .blog {
-    padding: 64px 32px;
-  }
-  .wrapper a {
-    grid-template-columns: 1fr;
-    justify-content: start;
-    column-gap: 12px;
-  }
-  .wrapper img {
-    max-width: 400px;
-    height: 100%;
+  .blogWrapper {
+    grid-template-columns: 1fr 1fr;
   }
 }
-/* desktop device / breakpoint: 1024px */
-@media only screen and (min-width: 1024px) {
+
+@media screen and (min-width: 1024px) {
+  .blogWrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

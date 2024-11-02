@@ -16,7 +16,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
           <div className={styles.wrapper}>
             <h1>{title}</h1>
             {/* <h2>{date}</h2> */}
-            <h3>{blogNo}</h3>
+            {/* <h3>{blogNo}</h3> */}
             <Image
               src={src}
               alt={alt}

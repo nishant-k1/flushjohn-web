@@ -25,25 +25,29 @@ const Products = () => {
                   className={styles.wrapper}
                   key={id}
                 >
-                  <Slider {...image} />
-                  <Link
-                    className={styles.quoteLink}
-                    href="/quote"
-                  >
-                    Get Free Quote
-                  </Link>
-                  <h3>{title}</h3>
-                  <p>
-                    {desc}
-                    <span>
-                      <Link
-                        className={styles.moreLink}
-                        href={`/rental-products/${slug}`}
-                      >
-                        ...More
-                      </Link>
-                    </span>
-                  </p>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>
+                      {desc}
+                      <span>
+                        <Link
+                          className={styles.moreLink}
+                          href={`/rental-products/${slug}`}
+                        >
+                          ...More
+                        </Link>
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    <Slider {...image} />
+                    <Link
+                      className={styles.quoteLink}
+                      href="/quote"
+                    >
+                      Get Free Quote
+                    </Link>
+                  </div>
                 </div>
               );
             })}
