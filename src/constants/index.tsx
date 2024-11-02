@@ -26,7 +26,7 @@ export const phone: phoneType = {
 };
 
 export const s3assets: string = process.env
-  .NEXT_PUBLIC_CDN_S3_BUCKET_CLOUD_FRONT_URL as string;
+  .NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
 export const websiteURL: string = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
 

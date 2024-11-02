@@ -16,19 +16,15 @@ const Blog = ({ blogList }: any) => {
             (item: {
               _id: any;
               title: string;
+              coverImage: {
+                src: string;
+                alt: string;
+              };
               createdAt: any;
               blogNo: number;
-              content: {
-                date: any;
-                image: {
-                  src: string;
-                  alt: string;
-                };
-                desc: string;
-                keywords: [string];
-              };
             }) => {
-              const { _id, title, createdAt, blogNo, content } = item;
+              const { _id, coverImage, title, createdAt, blogNo } = item;
+              const { src = "", alt = "" } = coverImage || {};
               const slug = generateSlug(title);
               return (
                 <Link
@@ -38,12 +34,14 @@ const Blog = ({ blogList }: any) => {
                   <h2>{title || ""}</h2>
                   <h3>{createdAt || ""}</h3>
                   <h4>{blogNo || ""}</h4>
-                  <Image
-                    src={content?.image?.src}
-                    alt={content?.image?.alt}
-                    height={48}
-                    width={48}
-                  />
+                  {coverImage && (
+                    <Image
+                      src={src}
+                      alt={alt}
+                      height={48}
+                      width={48}
+                    />
+                  )}
                 </Link>
               );
             }
