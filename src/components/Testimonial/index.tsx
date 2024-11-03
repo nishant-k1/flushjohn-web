@@ -21,7 +21,10 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
     <div className={styles.testimonials}>
       <div className={styles.container}>
         <h2>{heading}</h2>
-        <Carousel autoplay>
+        <Carousel
+          autoplay
+          arrows
+        >
           {content &&
             content.map((item, index) => (
               <div key={index}>
