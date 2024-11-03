@@ -60,14 +60,14 @@ const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
             </div>
 
             <div className={styles.heroImage}>
-              <AnimationWrapper effect={animations?.fadeWithScale}>
+              {/* <AnimationWrapper effect={animations?.fadeWithScale}>
                 <Image
                   src={image.src}
                   alt={image.alt}
                   height={300}
                   width={300}
                 />
-              </AnimationWrapper>
+              </AnimationWrapper> */}
             </div>
           </div>
         </div>

@@ -22,12 +22,14 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                 className={styles.wrapper}
               >
                 <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+                <div className={styles.iconContainer}>
                   <AnimationWrapper effect={animations?.bobbleImage}>
                     {item.image}
                   </AnimationWrapper>
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
               </div>
             ))}
         </div>

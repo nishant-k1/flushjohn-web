@@ -1,41 +1,51 @@
 import React from "react";
-import styles from "./styles.module.css";
+import { Carousel } from "antd";
 import Image from "next/image";
-import PersonIcon from "@mui/icons-material/Person";
+import styles from "./styles.module.css";
 
 type TestimonialProps = {
   heading: string;
+
   content: {
     title: string;
     body: string;
+    image: {
+      src: string;
+      alt: string;
+    };
   }[];
 };
+
 const Testimonial = ({ heading, content }: TestimonialProps) => {
   return (
     <div className={styles.testimonials}>
       <div className={styles.container}>
         <h2>{heading}</h2>
-        <div className={styles.testimonialsWrapper}>
+        <Carousel autoplay>
           {content &&
             content.map((item, index) => (
-              <div
-                className={styles.wrapper}
-                key={index}
-              >
-                <PersonIcon
-                  style={{
-                    height: 96,
-                    width: 96,
-                    color: "var(--primary-bg-color)",
-                  }}
-                />
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
+              <div key={index}>
+                <div className={styles.wrapper}>
+                  <div>
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      width={96}
+                      height={96}
+                      style={{
+                        height: 96,
+                        width: 96,
+                        // borderRadius: "50%",
+                        color: "var(--primary-bg-color)",
+                      }}
+                    />
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
                 </div>
               </div>
             ))}
-        </div>
+        </Carousel>
       </div>
     </div>
   );

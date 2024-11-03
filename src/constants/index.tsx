@@ -99,7 +99,7 @@ export const home_data: HomeData = {
     title:
       "Clean, Convenient, and Reliable: Rent Top-Quality Porta Potties and Handwash Stations",
     image: {
-      src: `${s3assets}/assets/home/hero/hero_fm_1.png`,
+      src: `${s3assets}/assets/home/hero/hero-img-1.jpeg`,
       alt: "porta_potty",
     },
     truckImg: {
@@ -237,7 +237,7 @@ export const testimonials: TestimonialsData = {
   content: [
     {
       image: {
-        src: `${s3assets}/assets/testimonial/testimony.svg`,
+        src: `${s3assets}/assets/testimonial/testimony-img-4.jpg`,
         alt: "https://www.flushjohn.com/",
       },
       title: "Terry Miles",
@@ -245,7 +245,7 @@ export const testimonials: TestimonialsData = {
     },
     {
       image: {
-        src: `${s3assets}/assets/testimonial/testimony1.svg`,
+        src: `${s3assets}/assets/testimonial/testimony-img-3.jpg`,
         alt: "https://www.flushjohn.com/",
       },
       title: "Dean Lacey",
@@ -253,7 +253,7 @@ export const testimonials: TestimonialsData = {
     },
     {
       image: {
-        src: `${s3assets}/assets/testimonial/testimony2.svg`,
+        src: `${s3assets}/assets/testimonial/testimony-img-1.jpg`,
         alt: "https://www.flushjohn.com/",
       },
       title: "Christine Barnes",
@@ -261,7 +261,7 @@ export const testimonials: TestimonialsData = {
     },
     {
       image: {
-        src: `${s3assets}/assets/testimonial/testimony2.svg`,
+        src: `${s3assets}/assets/testimonial/testimony-img-2.jpg`,
         alt: "https://www.flushjohn.com/",
       },
       title: "Janet Estremera",
