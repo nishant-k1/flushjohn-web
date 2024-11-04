@@ -31,7 +31,7 @@
   background-color: var(--primary-bg-color);
   padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  height: 16rem;
+  height: fit-content;
 }
 
 .wrapper h3 {
