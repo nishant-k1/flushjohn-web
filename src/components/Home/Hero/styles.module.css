@@ -89,32 +89,55 @@
 .ctaQuoteBtn:hover {
   background-color: #af6523;
   border: 2px solid #af6523;
-  transform: scale(0.96);
+  /* transform: scale(0.96); */
+}
+
+.flippedIcon {
+  transform: scaleX(-1);
 }
 
 .ctaPhoneBtn {
+  position: relative;
   color: var(--btn-text-color);
   background-color: var(--tertiary-bg-color);
   border: 2px solid var(--primary-bg-color);
-  transition-property: background-color;
-  transition-duration: 0.3s;
   display: flex;
   column-gap: 4px;
   height: 2.5rem;
   width: fit-content;
   padding: 1rem;
+  overflow: hidden;
+  transition:
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
 }
 
-.ctaPhoneBtn a div {
-  grid-template-columns: max-content;
+.ctaPhoneBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-bg-color); /* Overlay color */
+  transition: left 0.5s ease;
+  z-index: 0; /* Behind the button content */
+}
+
+.ctaPhoneBtn:hover::before {
+  left: 0; /* Move the overlay to cover the button */
 }
 
 .ctaPhoneBtn:hover {
-  color: var(--btn-text-color);
-  background-color: var(--primary-bg-color);
-  transition: background-color;
-  transition-property: background-color;
-  transition-duration: 0.3s;
+  color: var(--tertiary-bg-color); /* Text color change on hover */
+}
+
+.ctaPhoneBtn > * {
+  position: relative;
+  z-index: 1; /* Ensures text stays above overlay */
+}
+.ctaPhoneBtn a div {
+  grid-template-columns: max-content;
 }
 
 .heroImage {

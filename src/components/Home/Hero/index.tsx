@@ -2,7 +2,6 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import Image from "next/image";
 import { phone } from "../../../constants";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Link from "next/link";
@@ -53,8 +52,8 @@ const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
                     });
                   }}
                 >
-                  <PhoneIcon />
                   <div>{phone_number}</div>
+                  <PhoneIcon className={styles.flippedIcon} />
                 </Link>
               </div>
             </div>

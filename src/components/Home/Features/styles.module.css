@@ -30,6 +30,7 @@
 }
 
 .wrapper {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 0.8fr;
   column-gap: 24px;
@@ -37,18 +38,50 @@
   align-items: center;
   height: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: rgba(128 128 128 / 0.49);
+  background: rgba(128, 128, 128, 0.49);
+  overflow: hidden; /* Contain the hover effect within the wrapper */
+  transition: box-shadow 0.3s ease; /* Smooth shadow effect */
+}
+
+.wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(3, 47, 109, 0.5),
+    rgba(3, 58, 102, 0.5)
+  ); /* Bluish tint */
+  transition: left 0.5s ease; /* Smooth slide transition */
+  z-index: 1; /* Ensures overlay is above the background */
+}
+
+.wrapper:hover::after {
+  left: 0; /* Move the tint overlay to cover the wrapper */
+}
+
+.wrapper:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .iconContainer {
-  /* background: var(--primary-bg-color); */
-  /* width: 50%; */
-  background: linear-gradient(rgba(3 12 19 / 0.6), rgba(2 18 30 / 0.6));
+  background: linear-gradient(rgba(3, 12, 19, 0.6), rgba(2, 18, 30, 0.6));
   height: 100%;
   display: grid;
   align-items: center;
   padding: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2; /* Display above the tint overlay */
+  position: relative;
+}
+
+.wrapper h3,
+.wrapper p {
+  z-index: 2; /* Display text above the tint overlay */
+  position: relative;
 }
 
 .wrapper div svg {
@@ -56,8 +89,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* height: 40%;
-  width: 40%; */
   height: 100%;
   width: 100%;
 }
@@ -72,7 +103,7 @@
   color: var(--secondary-text-color);
 }
 
-/* tablet device breakpoint: 768px*/
+/* Tablet device breakpoint: 768px */
 @media only screen and (min-width: 768px) {
   .features {
     padding-top: 64px;
@@ -84,14 +115,8 @@
     justify-content: space-between;
     column-gap: 24px;
   }
-  .wrapper {
-  }
-  .wrapper div svg {
-    /* height: 40%;
-    width: 40%; */
-  }
 }
 
-/* desktop device / breakpoint: 1024px */
+/* Desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
 }
