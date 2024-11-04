@@ -15,20 +15,14 @@
 }
 
 :root {
-  /* --primary-color: #6e8b3d;
-    --primary-bg-color: #ef648a; */
+  /* --primary-color: #6e8b3d; */
+  /* --primary-bg-color: #ef648a; */
   /* --primary-bg-color: #db517a; */
-  --primary-bg-color: #cf772b;
+  /* --primary-bg-color: #cf772b; */
+  --primary-bg-color: #bf8340;
+
   --primary-text-color: rgba(255, 255, 255, 0.78);
   --primary-error-color: red;
-  /* --secondary-bg-color: #04061bd3; */
-  /* --secondary-bg-color: #04061be8; */
-  /* --secondary-bg-color: #000000f6; */
-  /* --secondary-bg-color: #292903; */
-  /* --secondary-bg-color: #0e2903; */
-  /* --secondary-bg-color: #03291a; */
-  /* --secondary-bg-color: #041b25; */
-  /* --secondary-color: #d3d3d3; */
   --secondary-bg-color: #021920f3;
   --secondary-text-color: #0000009d;
   --tertiary-bg-color: transparent;

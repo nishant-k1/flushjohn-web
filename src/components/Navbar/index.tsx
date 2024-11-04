@@ -76,6 +76,12 @@ const Navbar = () => {
               Rental Products
             </Link>
             <Link
+              href="/gallery"
+              className={pathname === "/gallery" ? styles.activeLink : ""}
+            >
+              Gallery
+            </Link>
+            <Link
               href="/quote"
               className={pathname === "/quote" ? styles.activeLink : ""}
             >

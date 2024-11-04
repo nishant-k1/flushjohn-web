@@ -27,12 +27,15 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     }
                     key={id}
                   >
-                    <Image
-                      src={image}
-                      alt={alt}
-                      height={300}
-                      width={300}
-                    />
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={image}
+                        alt={alt}
+                        height={300}
+                        width={300}
+                      />
+                      {/* <div className={styles.imageOverlay} /> */}
+                    </div>
                     <div>
                       <h3>{title}</h3>
                       <p>{body}</p>
@@ -58,12 +61,15 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     }
                     key={id}
                   >
-                    <Image
-                      src={image}
-                      alt={alt}
-                      height={300}
-                      width={300}
-                    />
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={image}
+                        alt={alt}
+                        height={300}
+                        width={300}
+                      />
+                      {/* <div className={styles.imageOverlay} /> */}
+                    </div>
                     <div>
                       <h3>{title}</h3>
                       <p>{body}</p>

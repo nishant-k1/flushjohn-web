@@ -72,7 +72,8 @@ const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
           </div>
         </div>
       </AnimationWrapper>
-      <div
+      {/* HIDE MOVING TRUCK PANEL*/}
+      {/* <div
         className={styles.heroTruckImage}
         style={{ overflow: "hidden" }}
       >
@@ -84,7 +85,7 @@ const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
             width={400}
           />
         </AnimationWrapper>
-      </div>
+      </div> */}
     </div>
   );
 });

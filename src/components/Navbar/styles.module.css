@@ -103,7 +103,7 @@
   }
   .navLinks {
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     align-items: center;
     column-gap: 22px;
   }

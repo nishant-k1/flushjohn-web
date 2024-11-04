@@ -14,6 +14,7 @@ import MessageIcon from "@mui/icons-material/Message";
 import { FaBloggerB } from "react-icons/fa";
 import EmailIcon from "@mui/icons-material/Email";
 import { phone } from "../../constants";
+import { ImagesIcon } from "lucide-react";
 
 const { phone_link } = phone;
 
@@ -65,36 +66,42 @@ export const footerLinks = {
     },
     {
       id: "8",
+      name: "Gallery",
+      href: "/gallery",
+      icon: <ImagesIcon />,
+    },
+    {
+      id: "9",
       name: "Contact",
       href: "/contact",
       icon: <MessageIcon />,
     },
     {
-      id: "9",
+      id: "10",
       name: "Blog",
       href: "/blog",
       icon: <FaBloggerB style={{ fontSize: "1.5rem" }} />,
     },
     {
-      id: "10",
+      id: "11",
       name: "FAQ",
       href: "/faq",
       icon: <ArticleIcon />,
     },
     {
-      id: "11",
+      id: "12",
       name: "Privacy Policy",
       href: "/privacy",
       icon: <PolicyIcon />,
     },
     {
-      id: "12",
+      id: "13",
       name: "Terms & Conditions",
       href: "/terms",
       icon: <GavelIcon />,
     },
     {
-      id: "13",
+      id: "14",
       name: "Disclaimer",
       href: "/disclaimer",
       icon: <ArticleIcon />,
@@ -102,19 +109,19 @@ export const footerLinks = {
   ],
   contact: [
     {
-      id: "14",
+      id: "15",
       name: "Phone",
       href: phone_link,
       icon: <PhoneIcon />,
     },
     {
-      id: "15",
+      id: "16",
       name: "Email",
       href: "/contact",
       icon: <EmailIcon />,
     },
     {
-      id: "16",
+      id: "17",
       name: "Get Free Quote",
       href: "/quote",
       icon: <RequestQuoteIcon />,
