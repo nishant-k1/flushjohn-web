@@ -3,7 +3,7 @@ import Contact from "@/components/Contact";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
-export const metadataJ: Metadata = {
+export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
   description:
     "Have questions? Get in touch with the FlushJohn team for inquiries about porta potty rentals, pricing, or any other services.",
