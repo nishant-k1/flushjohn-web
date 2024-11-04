@@ -11,9 +11,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(5 49 83 / 0.5), rgba(5 55 93 / 0.5)),
+
+  background-image: linear-gradient(rgba(8 26 40 / 0.5), rgba(9 39 61 / 0.5)),
     url("https://cdn.flushjohn.com/assets/home/hero/hero-img-16-9.jpeg");
-  /* background-image: linear-gradient(rgba(5 18 28 / 0.33), rgba(2 10 16 / 0.36)),
+  /* background-image: linear-gradient(rgba(0 0 0 / 0.5), rgba(0 0 0 / 0.5)),
     url("https://cdn.flushjohn.com/assets/home/hero/hero-img-16-9.jpeg"); */
   background-size: cover;
   background-position: center;
