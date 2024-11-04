@@ -21,7 +21,7 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
           className={styles.arrow}
         />
         <motion.div
-          key={toggle ? src_1 : src_2}
+          key={toggle ? src_2 : src_1}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
@@ -30,7 +30,7 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
           <Image
             height={250}
             width={150}
-            src={toggle ? src_1 : src_2}
+            src={toggle ? src_2 : src_1}
             alt={alt}
           />
         </motion.div>
