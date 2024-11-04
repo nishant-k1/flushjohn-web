@@ -77,8 +77,8 @@
 
 .navLinks a {
   color: var(--btn-text-color);
-  font-size: 16px;
-  font-weight: 200;
+  font-size: large;
+  font-weight: 400;
   transition: 0.3s;
 }
 .navLinks a:hover {
