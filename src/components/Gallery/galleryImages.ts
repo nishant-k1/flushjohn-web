@@ -38,7 +38,7 @@ export const galleryImages = [
   },
   {
     id: "6",
-    url: `${s3assets}/assets/gallery/img-6.jpeg`,
+    url: `${s3assets}/assets/gallery/img-6.png`,
     alt: "FlushJohn Portable Toilet Rental Service - Image 6",
     width: 800,
     height: 600,
