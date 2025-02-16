@@ -105,20 +105,17 @@ const QuickQuote = () => {
           // validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
-            // setTimeout(() => {
-            //   notify();
-            // }, 2000);
-
             try {
-              await axios.post(`${apiBaseUrls.API_BASE_URL}/leads`, {
-                ...values,
-                leadSource: "Web Quick Lead",
-              });
-
-              // await axios.post("/quick-quote", {
-              //   ...values,
-              //   leadSource: "Web Quick Lead",
-              // });
+              const res = await axios.post(
+                `${apiBaseUrls.API_BASE_URL}/leads`,
+                {
+                  ...values,
+                  leadSource: "Web Quick Lead",
+                }
+              );
+              if (res?.status === 201) {
+                notify();
+              }
 
               logEvent({
                 category: "Form",

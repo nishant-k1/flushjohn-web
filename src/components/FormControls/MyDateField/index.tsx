@@ -7,7 +7,6 @@ const MyDateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched, setError } = helpers;
-
   const datePickerRef = React.useRef(null);
 
   return (
@@ -15,8 +14,8 @@ const MyDateField = ({ label, ...props }: any) => {
       <DatePicker
         {...props}
         className={props.className}
-        label={props.label}
-        placeholder={props.label}
+        label={label}
+        placeholder={label}
         // value={field.value && new Date()}
         // defaultValue={new Date()}
         format={"MM/DD/YYYY"}
