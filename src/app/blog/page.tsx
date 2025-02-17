@@ -45,7 +45,6 @@ const BlogPage = async () => {
   } catch (error) {
     console.error("Error fetching blog list:", error);
   }
-
   return <Blog blogList={blogList} />;
 };
 

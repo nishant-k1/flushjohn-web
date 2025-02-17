@@ -1,6 +1,7 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
 import styles from "./styles.module.css";
+
 const QuoteStep4 = () => {
   return (
     <div className={styles.step4}>

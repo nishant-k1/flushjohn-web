@@ -60,7 +60,7 @@ const Sidebar = () => {
             onClick={handleClick}
           >
             <RequestQuoteIcon />
-            Get Free Quote
+            Request Quote
           </Link>
           <Link
             href={phone_link}

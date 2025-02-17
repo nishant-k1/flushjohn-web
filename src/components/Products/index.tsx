@@ -45,7 +45,7 @@ const Products = () => {
                       className={styles.quoteLink}
                       href="/quote"
                     >
-                      Get Free Quote
+                      Request Quote
                     </Link>
                   </div>
                 </div>

@@ -35,7 +35,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           margin: 0,
         }}
       >
-        Select Item...
+        Select Rental Item...
       </p>
     ),
     maxTagCount: "responsive",

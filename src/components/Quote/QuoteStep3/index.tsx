@@ -13,7 +13,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "@/contexts/QuoteContext";
-import { logEvent } from "../../../../react-ga4-config";
+// import { logEvent } from "../../../../react-ga4-config";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
@@ -103,35 +103,25 @@ const QuoteStep3 = () => {
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            setTimeout(() => {
-              notify();
-            }, 1000);
-
             const res = await axios({
               method: "post",
               url: `${apiBaseUrls.API_BASE_URL}/leads`,
               data: { ...values, leadSource: "Web Lead" },
             });
-
-            // await axios.post(`/api/quote`, {
-            //   ...values,
-            //   leadSource: "Web Lead",
+            // logEvent({
+            //   category: "Form",
+            //   action: "Web Lead Form Submit",
+            //   label: "Web Lead Form Submit Button",
+            //   value: undefined,
+            //   nonInteraction: undefined,
+            //   transport: "beacon",
             // });
-
-            logEvent({
-              category: "Form",
-              action: "Web Lead Form Submit",
-              label: "Web Lead Form Submit Button",
-              value: undefined,
-              nonInteraction: undefined,
-              transport: "beacon",
-            });
-
             if (res.status === 201 && res.data.success) {
-              setStep(1);
-              setFormValues(initialQuoteValues);
+              notify();
               resetForm();
+              setFormValues(initialQuoteValues);
             }
+            setStep(1);
           } catch (err) {
             console.log(err);
           }

@@ -15,6 +15,7 @@ import { animations } from "@/anmations/effectData";
 const Quote = () => {
   const { render } = useContext(QuoteContext);
   const [step] = render;
+
   return (
     <React.Fragment>
       <div className={styles.section}>

@@ -85,7 +85,7 @@ const Navbar = () => {
               href="/quote"
               className={pathname === "/quote" ? styles.activeLink : ""}
             >
-              Get Free Quote
+              Request Quote
             </Link>
           </div>
         </div>

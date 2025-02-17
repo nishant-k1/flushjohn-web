@@ -48,7 +48,7 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
       <div className={styles.innerBox}>
         <Tooltip
           placement="top"
-          title="Enter Number"
+          title="Enter Quantity"
         >
           <MaskedInput
             {...field}

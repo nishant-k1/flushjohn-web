@@ -7,7 +7,6 @@ const BlogPost = ({ blogPost, slug }: any) => {
   if (!blogPost) return null;
   const { title, coverImage, blogNo, content } = blogPost;
   const { src, alt } = coverImage;
-
   return (
     <div>
       <div className={styles.post}>
@@ -16,14 +15,16 @@ const BlogPost = ({ blogPost, slug }: any) => {
           <div className={styles.wrapper}>
             <h1>{title}</h1>
             {/* <h2>{date}</h2> */}
-            {/* <h3>{blogNo}</h3> */}
+            <h3>{blogNo}</h3>
             <Image
               src={src}
               alt={alt}
-              width={300}
+              width={600}
               height={600}
+              className={styles.coverImage}
             />
             <div
+              className={styles.blogContent}
               dangerouslySetInnerHTML={{ __html: content }} // Sanitize and render HTML
             />
           </div>

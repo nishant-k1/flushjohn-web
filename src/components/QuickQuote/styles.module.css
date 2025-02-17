@@ -42,6 +42,7 @@
 }
 
 .quickQuoteform .radio {
+  cursor: pointer;
   height: 2rem;
   width: 2rem;
   box-sizing: border-box;

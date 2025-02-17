@@ -53,6 +53,7 @@
   outline: 1px solid var(--primary-bg-color);
   border: 2px solid var(--color-bg-light-secondary);
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .form .radio:checked {
@@ -138,6 +139,7 @@
   transition: 0.3s;
   background-color: var(--primary-bg-color);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .button:hover {

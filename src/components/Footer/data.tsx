@@ -122,7 +122,7 @@ export const footerLinks = {
     },
     {
       id: "17",
-      name: "Get Free Quote",
+      name: "Request Quote",
       href: "/quote",
       icon: <RequestQuoteIcon />,
     },

@@ -14,7 +14,6 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
     const res = await axios.get(API_URL);
     if (res.data.success) {
       const data = res.data.data;
-      // Sanitize content here
       blogPost = {
         ...data,
         content: DOMPurify.sanitize(data.content),

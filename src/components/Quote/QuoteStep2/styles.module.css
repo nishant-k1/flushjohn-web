@@ -130,7 +130,9 @@
   font-variant: tabular-nums;
   font-feature-settings: "tnum", "tnum";
   border-radius: 2px;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
   width: 100%;
   padding-left: 12px;
 }
@@ -167,6 +169,7 @@
   border-radius: 2px;
   transition: 0.3s;
   border: 2px solid var(--primary-bg-color);
+  cursor: pointer;
 }
 
 .next {
