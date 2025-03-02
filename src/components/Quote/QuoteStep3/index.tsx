@@ -7,12 +7,13 @@ import MaskedInput from "react-input-mask";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
-import { apiBaseUrls } from "../../../constants";
 import axios from "axios";
+import { io, Socket } from "socket.io-client";
 // import { Event } from "../lib/analytics";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "@/contexts/QuoteContext";
+import { apiBaseUrls } from "@/constants";
 // import { logEvent } from "../../../../react-ga4-config";
 
 const MyTextField = ({ label, ...props }: any) => {
@@ -87,6 +88,20 @@ const QuoteStep3 = () => {
     setFormValues(formValues);
   }, [formValues]);
 
+  const { API_BASE_URL } = apiBaseUrls;
+  const socket = io(`${API_BASE_URL}/leads`, {
+    transports: ["websocket"],
+    autoConnect: true,
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+  });
+  const socketRef = React.useRef<Socket | null>(null);
+  socketRef.current = socket;
+  const createLead = React.useCallback((data: any) => {
+    socketRef.current?.emit("createLead", data);
+  }, []);
+
   return (
     <div>
       <Formik
@@ -103,12 +118,12 @@ const QuoteStep3 = () => {
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            const res = await axios({
-              method: "post",
-              url: `${apiBaseUrls.API_BASE_URL}/leads`,
-              data: { ...values, leadSource: "Web Lead" },
-            });
-            // logEvent({
+            // const res = await axios({
+            //   method: "post",
+            //   url: `${apiBaseUrls.API_BASE_URL}/leads`,
+            //   data: { ...values, leadSource: "Web Lead" },
+            // });
+            // // logEvent({
             //   category: "Form",
             //   action: "Web Lead Form Submit",
             //   label: "Web Lead Form Submit Button",
@@ -116,11 +131,13 @@ const QuoteStep3 = () => {
             //   nonInteraction: undefined,
             //   transport: "beacon",
             // });
-            if (res.status === 201 && res.data.success) {
-              notify();
-              resetForm();
-              setFormValues(initialQuoteValues);
-            }
+            // if (res.status === 201 && res.data.success) {
+            //   notify();
+            //   resetForm();
+            //   setFormValues(initialQuoteValues);
+            // }
+            createLead({ ...values, leadSource: "Web Quick Lead" });
+            notify();
             setStep(1);
           } catch (err) {
             console.log(err);

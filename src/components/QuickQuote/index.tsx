@@ -19,13 +19,15 @@ import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "../../contexts/ClientWidthContext";
 import CloseIcon from "@mui/icons-material/Close";
-import { apiBaseUrls } from "../../constants";
+// import { apiBaseUrls } from "../../constants";
 import MyRadioField from "../FormControls/MyRadioField";
 import { logEvent } from "../../../react-ga4-config";
 import { ClientWidthContextType } from "../../contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
+import { io, Socket } from "socket.io-client";
+import { apiBaseUrls } from "@/constants";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -78,6 +80,20 @@ const QuickQuote = () => {
       theme: "dark",
     });
 
+  const { API_BASE_URL } = apiBaseUrls;
+  const socket = io(`${API_BASE_URL}/leads`, {
+    transports: ["websocket"],
+    autoConnect: true,
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+  });
+  const socketRef = React.useRef<Socket | null>(null);
+  socketRef.current = socket;
+  const createLead = React.useCallback((data: any) => {
+    socketRef.current?.emit("createLead", data);
+  }, []);
+
   return (
     <div ref={quickQuoteRef}>
       {quickQuoteViewStatus && (
@@ -103,19 +119,19 @@ const QuickQuote = () => {
           // validationSchema={quickQuoteValidationSchema}
           // validateOnChange={false}
           // validateOnBlur={true}
+
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
             try {
-              const res = await axios.post(
-                `${apiBaseUrls.API_BASE_URL}/leads`,
-                {
-                  ...values,
-                  leadSource: "Web Quick Lead",
-                }
-              );
-              if (res?.status === 201) {
-                notify();
-              }
+              createLead({ ...values, leadSource: "Web Quick Lead" });
+              notify();
+              // const res = await axios.post(`${API_BASE_URL}/leads`, {
+              //   ...values,
+              //   leadSource: "Web Quick Lead",
+              // });
+              // if (res?.status === 201) {
+              //   notify();
+              // }
 
               logEvent({
                 category: "Form",
