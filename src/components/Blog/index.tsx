@@ -28,7 +28,6 @@ const Blog = ({ blogList }: any) => {
                 const blogDate = new Date(createdAt);
                 const { src = "", alt = "" } = coverImage || {};
                 const slug = generateSlug(title);
-
                 return (
                   <Link
                     href={`/blog/${slug}`}

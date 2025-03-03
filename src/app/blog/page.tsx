@@ -40,7 +40,7 @@ const BlogPage = async () => {
   try {
     const res = await axios.get(API_URL);
     if (res.data.success) {
-      blogList = res.data.data;
+      blogList = [...res.data.data];
     }
   } catch (error) {
     console.error("Error fetching blog list:", error);

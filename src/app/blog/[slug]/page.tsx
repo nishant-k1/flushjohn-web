@@ -7,21 +7,13 @@ import DOMPurify from "isomorphic-dompurify"; // Import DOMPurify
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const { API_BASE_URL } = apiBaseUrls;
-  const API_URL = `${API_BASE_URL}/blogs/${slug}`;
-  let blogPost;
+  const API_URL = `${API_BASE_URL}/blogs`;
+  const res = await axios.get(API_URL, { params: { slug } });
 
-  try {
-    const res = await axios.get(API_URL);
-    if (res.data.success) {
-      const data = res.data.data;
-      blogPost = {
-        ...data,
-        content: DOMPurify.sanitize(data.content),
-      };
-    }
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
-  }
+  const blogPost = {
+    ...res?.data?.data,
+    content: DOMPurify.sanitize(res?.data?.data?.content),
+  };
 
   return (
     <BlogPost
