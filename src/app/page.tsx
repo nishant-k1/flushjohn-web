@@ -42,7 +42,7 @@ const jsonLd = {
   "@type": "Organization",
   name: "FlushJohn",
   url: websiteURL,
-  logo: `${s3assets}/logo.png`, // Ensure this is a valid public URL
+  logo: `${s3assets}/og-image-flushjonn-web.png`, // Ensure this is a valid public URL
   description:
     "FlushJohn offers affordable and reliable porta potty rental services for all types of events.",
   image: `${s3assets}/og-image-flushjonn-web.png`,

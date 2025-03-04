@@ -50,7 +50,7 @@ const jsonLd = {
     url: websiteURL,
     logo: {
       "@type": "ImageObject",
-      url: `${s3assets}/logo.png`,
+      url: `${s3assets}/og-image-flushjonn-web.png`,
     },
   },
 };

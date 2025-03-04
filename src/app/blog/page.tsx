@@ -76,7 +76,7 @@ const BlogPage = async () => {
       name: "FlushJohn",
       logo: {
         "@type": "ImageObject",
-        url: `${s3assets}/logo.png`,
+        url: `${s3assets}/og-image-flushjonn-web.png`,
       },
     },
     blogPost: blogList.map((post) => ({
