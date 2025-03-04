@@ -27,14 +27,14 @@
 .coverImage {
   width: 100% !important;
   height: auto !important;
-  padding: 2.5rem 0;
-
+  padding: 2rem 0;
   object-fit: cover;
 }
 
 .blogContent {
   /* padding: 24px; */
 }
+
 .blogContent img {
   max-width: 50% !important;
   height: auto !important;
@@ -44,12 +44,29 @@
 
 .blogContent ul,
 .blogContent ol {
-  padding: 24px;
+  padding: 0 24px;
+}
+
+.blogContent ul p,
+.blogContent ol p {
+  padding: 0;
+}
+
+.blogContent li {
+  padding: 0 12px;
+}
+
+.blogContent h2,
+.blogContent h3,
+.blogContent h4,
+.blogContent h5 {
+  padding-top: 2rem;
 }
 
 .blogContent p {
   font-size: 16px;
   line-height: 1.5;
+  padding: 12px 0;
   color: var(--secondary-text-color);
 }
 
