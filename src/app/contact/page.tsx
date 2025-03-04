@@ -48,7 +48,7 @@ const jsonLd = {
     url: websiteURL,
     logo: {
       "@type": "ImageObject",
-      url: `${websiteURL}/logo.png`,
+      url: `${s3assets}/og-image-flushjonn-web.png`,
     },
     contactPoint: {
       "@type": "ContactPoint",

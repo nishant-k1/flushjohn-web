@@ -14,7 +14,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
           <div className={styles.wrapper}>
             <h1>{title || "No Title"}</h1>
             {/* <h2>{date}</h2> */}
-            <h3>{blogNo || "0"}</h3>
+            {/* <h3>{blogNo || "0"}</h3> */}
             {coverImage && (
               <Image
                 src={src}

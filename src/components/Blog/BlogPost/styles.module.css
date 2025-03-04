@@ -20,10 +20,15 @@
   display: block; /* Allow it to grow naturally */
   min-height: auto;
 }
+.wrapper h1 {
+  padding: 2.5rem 0;
+}
 
 .coverImage {
   width: 100% !important;
   height: auto !important;
+  padding: 2.5rem 0;
+
   object-fit: cover;
 }
 

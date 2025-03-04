@@ -1,6 +1,6 @@
 import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
-import { apiBaseUrls, websiteURL } from "@/constants";
+import { apiBaseUrls, s3assets, websiteURL } from "@/constants";
 import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
@@ -24,27 +24,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!blog) {
       return { title: "Blog Post Not Found" };
     }
-
     return {
-      title: `${blog.title} | FlushJohn Blog`,
-      description: blog.excerpt || "Read our latest blog post on FlushJohn.",
-      keywords: blog.tags?.join(", ") || "blog, FlushJohn",
+      title: `${blog?.title} | FlushJohn Blog`,
+      description: blog?.excerpt || "Read our latest blog post on FlushJohn.",
+      keywords: blog?.tags?.join(", ") || "blog, FlushJohn",
       openGraph: {
-        title: blog.title,
-        description: blog.excerpt || blog.title,
+        title: blog?.title,
+        description: blog?.excerpt || blog?.title,
         url: `${websiteURL}/blog/${slug}`,
-        images: [{ url: blog.coverImage, alt: blog.title }],
+        images: [
+          {
+            url: blog?.coverImage?.src,
+            height: 630,
+            width: 1200,
+            alt: blog?.title,
+          },
+        ],
         type: "article",
         siteName: "FlushJohn",
-        publishedTime: blog.publishedAt || new Date().toISOString(),
-        modifiedTime: blog.updatedAt || new Date().toISOString(),
-        authors: [blog.author || "FlushJohn Team"],
+        publishedTime: blog?.publishedAt || new Date().toISOString(),
+        modifiedTime: blog?.updatedAt || new Date().toISOString(),
+        authors: [blog?.author || "FlushJohn Team"],
       },
       twitter: {
         card: "summary_large_image",
-        title: blog.title,
-        description: blog.excerpt || blog.title,
-        images: [blog.coverImage],
+        title: blog?.title,
+        description: blog?.excerpt || blog?.title,
+        images: [blog?.coverImage?.src],
       },
       alternates: {
         canonical: `${websiteURL}/blog/${slug}`,
@@ -83,14 +89,15 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
       name: "FlushJohn",
       logo: {
         "@type": "ImageObject",
-        url: `${websiteURL}/logo.png`,
+        url: `${s3assets}/og-image-flushjonn-web.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${websiteURL}/blog/${slug}`,
     },
-    image: blogPost.coverImage,
+    image:
+      blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
   };
 
   return (
