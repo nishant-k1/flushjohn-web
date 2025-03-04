@@ -17,7 +17,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${s3assets}/icon.png`,
+        url: `${s3assets}/og-image-flushjonn-web.png`,
+        height: 630,
+        width: 1200,
         alt: "FlushJohn Quote",
       },
     ],
