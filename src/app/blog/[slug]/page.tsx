@@ -16,9 +16,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
 
   try {
-    const res = await axios.get(API_URL, { params: { slug } });
-    const blog = res?.data?.data;
+    // const res = await axios.get(API_URL, { params: { slug } });
+    // const blog = res?.data?.data;
 
+    const res = await fetch(`${API_URL}?slug=${slug}`, { cache: "no-store" });
+    const { data: blog } = (await res.json()) || {};
     if (!blog) {
       return { title: "Blog Post Not Found" };
     }
