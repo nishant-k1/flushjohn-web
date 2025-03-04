@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: blog.title,
         description: blog.excerpt || blog.title,
         url: `https://flushjohn.com/blog/${slug}`,
-        images: [{ url: blog.imageUrl, alt: blog.title }],
+        images: [{ url: blog.coverImage, alt: blog.title }],
         type: "article",
       },
       twitter: {
         card: "summary_large_image",
         title: blog.title,
         description: blog.excerpt || blog.title,
-        images: [blog.imageUrl],
+        images: [blog.coverImage],
       },
       alternates: {
         canonical: `https://flushjohn.com/blog/${slug}`,
