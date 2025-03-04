@@ -2,6 +2,7 @@ import React from "react";
 import Contact from "@/components/Contact";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
@@ -26,25 +27,63 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+    card: "summary_large_image",
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
-  other: {
-    "og:type": "website",
-    "og:site_name": "FlushJohn",
-    "og:locale": "en_US", // Change if needed
-
-    // For Pinterest (Rich Pins)
-    "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
-    "article:author": "FlushJohn Team",
-
-    // For WhatsApp & Discord (OG works automatically)
+  alternates: {
+    canonical: `${websiteURL}/contact`,
   },
 };
 
-const ContactPage = () => <Contact />;
+// ✅ **JSON-LD Structured Data for SEO**
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  mainEntity: {
+    "@type": "Organization",
+    name: "FlushJohn",
+    url: websiteURL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${websiteURL}/logo.png`,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-800-123-4567",
+      contactType: "Customer Service",
+      email: "support@flushjohn.com",
+      availableLanguage: ["English", "Spanish"],
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "1234 Portable Toilet Ave",
+      addressLocality: "San Francisco",
+      addressRegion: "CA",
+      postalCode: "94105",
+      addressCountry: "US",
+    },
+  },
+};
+
+const ContactPage = () => {
+  return (
+    <>
+      <Head>
+        <link
+          rel="canonical"
+          href={`${websiteURL}/contact`}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      <Contact />
+    </>
+  );
+};
 
 export default ContactPage;

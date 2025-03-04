@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "@/components/Home";
+import Head from "next/head";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
@@ -27,25 +28,43 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: {
-    card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+    card: "summary_large_image",
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
-  },
-  other: {
-    "og:type": "website",
-    "og:site_name": "FlushJohn",
-    "og:locale": "en_US", // Change if needed
-
-    // For Pinterest (Rich Pins)
-    "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
-    "article:author": "FlushJohn Team",
-
-    // For WhatsApp & Discord (OG works automatically)
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
 };
 
-const HomePage = () => <Home />;
+// JSON-LD structured data for homepage
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "FlushJohn",
+  url: websiteURL,
+  logo: `${s3assets}/logo.png`, // Ensure this is a valid public URL
+  description:
+    "FlushJohn offers affordable and reliable porta potty rental services for all types of events.",
+  image: `${s3assets}/og-image-flushjonn-web.png`,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-800-555-1234", // Replace with actual contact
+    contactType: "customer service",
+  },
+};
+
+const HomePage = () => {
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      <Home />
+    </>
+  );
+};
 
 export default HomePage;

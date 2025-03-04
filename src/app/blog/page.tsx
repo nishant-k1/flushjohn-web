@@ -1,9 +1,9 @@
 import React from "react";
 import Blog from "@/components/Blog";
 import type { Metadata } from "next";
-import { s3assets, websiteURL } from "@/constants";
+import { s3assets, websiteURL, apiBaseUrls } from "@/constants";
 import axios from "axios";
-import { apiBaseUrls } from "@/constants";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Blog - FlushJohn Porta Potty Rentals",
@@ -28,25 +28,18 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+    card: "summary_large_image",
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
-  other: {
-    "og:type": "website",
-    "og:site_name": "FlushJohn",
-    "og:locale": "en_US", // Change if needed
-
-    // For Pinterest (Rich Pins)
-    "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
-    "article:author": "FlushJohn Team",
-
-    // For WhatsApp & Discord (OG works automatically)
+  alternates: {
+    canonical: `${websiteURL}/blog`,
   },
 };
 
+// ✅ **Page Component**
 const BlogPage = async () => {
   const { API_BASE_URL } = apiBaseUrls;
   const API_URL = `${API_BASE_URL}/blogs`;
@@ -56,6 +49,9 @@ const BlogPage = async () => {
     title: string;
     content: any;
     _id: string;
+    excerpt?: string;
+    coverImage?: string;
+    author?: string;
   }[] = [];
 
   try {
@@ -66,7 +62,51 @@ const BlogPage = async () => {
   } catch (error) {
     console.error("Error fetching blog list:", error);
   }
-  return <Blog blogList={blogList} />;
+
+  // ✅ JSON-LD structured data for the Blog Listing Page
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "FlushJohn Blog",
+    url: `${websiteURL}/blog`,
+    description:
+      "Stay updated with the latest news, tips, and insights on porta potty rentals from FlushJohn.",
+    publisher: {
+      "@type": "Organization",
+      name: "FlushJohn",
+      logo: {
+        "@type": "ImageObject",
+        url: `${s3assets}/logo.png`,
+      },
+    },
+    blogPost: blogList.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt || post.title,
+      datePublished: post.createdAt,
+      author: {
+        "@type": "Person",
+        name: post.author || "FlushJohn Team",
+      },
+      image: post.coverImage,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${websiteURL}/blog/${post._id}`,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      <Blog blogList={blogList} />
+    </>
+  );
 };
 
 export default BlogPage;

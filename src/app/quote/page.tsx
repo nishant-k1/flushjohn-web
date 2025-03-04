@@ -1,5 +1,6 @@
 import React from "react";
 import Quote from "@/components/Quote";
+import Head from "next/head";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
@@ -26,25 +27,46 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+    card: "summary_large_image",
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
-  },
-  other: {
-    "og:type": "website",
-    "og:site_name": "FlushJohn",
-    "og:locale": "en_US", // Change if needed
-
-    // For Pinterest (Rich Pins)
-    "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
-    "article:author": "FlushJohn Team",
-
-    // For WhatsApp & Discord (OG works automatically)
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
 };
 
-const QuotePage = () => <Quote />;
+// JSON-LD structured data for "Get a Quote" page
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Get a Quote - FlushJohn",
+  url: `${websiteURL}/quote`,
+  description:
+    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing.",
+  image: `${s3assets}/og-image-flushjonn-web.png`,
+  provider: {
+    "@type": "Organization",
+    name: "FlushJohn",
+    url: websiteURL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${s3assets}/logo.png`,
+    },
+  },
+};
+
+const QuotePage = () => {
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      <Quote />
+    </>
+  );
+};
 
 export default QuotePage;

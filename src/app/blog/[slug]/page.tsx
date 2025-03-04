@@ -1,9 +1,10 @@
 import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
-import { apiBaseUrls } from "@/constants";
+import { apiBaseUrls, websiteURL } from "@/constants";
 import axios from "axios";
-import DOMPurify from "isomorphic-dompurify"; // Import DOMPurify
+import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
+import Head from "next/head";
 
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
@@ -29,9 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: blog.title,
         description: blog.excerpt || blog.title,
-        url: `https://flushjohn.com/blog/${slug}`,
+        url: `${websiteURL}/blog/${slug}`,
         images: [{ url: blog.coverImage, alt: blog.title }],
         type: "article",
+        siteName: "FlushJohn",
+        publishedTime: blog.publishedAt || new Date().toISOString(),
+        modifiedTime: blog.updatedAt || new Date().toISOString(),
+        authors: [blog.author || "FlushJohn Team"],
       },
       twitter: {
         card: "summary_large_image",
@@ -40,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: [blog.coverImage],
       },
       alternates: {
-        canonical: `https://flushjohn.com/blog/${slug}`,
+        canonical: `${websiteURL}/blog/${slug}`,
       },
     };
   } catch (error) {
@@ -59,11 +64,46 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
     content: DOMPurify.sanitize(res?.data?.data?.content),
   };
 
+  // ✅ JSON-LD structured data for the Blog Post
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blogPost.title,
+    description: blogPost.excerpt || blogPost.title,
+    datePublished: blogPost.publishedAt || new Date().toISOString(),
+    dateModified: blogPost.updatedAt || new Date().toISOString(),
+    author: {
+      "@type": "Person",
+      name: blogPost.author || "FlushJohn Team",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "FlushJohn",
+      logo: {
+        "@type": "ImageObject",
+        url: `${websiteURL}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${websiteURL}/blog/${slug}`,
+    },
+    image: blogPost.coverImage,
+  };
+
   return (
-    <BlogPost
-      blogPost={blogPost}
-      slug={slug}
-    />
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </Head>
+      <BlogPost
+        blogPost={blogPost}
+        slug={slug}
+      />
+    </>
   );
 };
 
