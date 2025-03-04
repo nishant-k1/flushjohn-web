@@ -17,6 +17,7 @@ export const metadata: Metadata = {
       "Discover insights and tips on porta potty rentals and event hygiene.",
     url: `${websiteURL}/blog`,
     type: "website",
+    siteName: "FlushJohn",
     images: [
       {
         url: `${s3assets}/og-image-flushjonn-web.png`,
@@ -25,6 +26,24 @@ export const metadata: Metadata = {
         alt: "FlushJohn Blog",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+    title: "FlushJohn - Porta Potty Rentals",
+    description:
+      "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
+    images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
+  },
+  other: {
+    "og:type": "website",
+    "og:site_name": "FlushJohn",
+    "og:locale": "en_US", // Change if needed
+
+    // For Pinterest (Rich Pins)
+    "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
+    "article:author": "FlushJohn Team",
+
+    // For WhatsApp & Discord (OG works automatically)
   },
 };
 

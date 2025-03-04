@@ -1,6 +1,6 @@
 import React from "react";
 import IndividualProduct from "@/components/Products/IndividualProduct";
-import { websiteURL } from "@/constants";
+import { s3assets, websiteURL } from "@/constants";
 import { products_data } from "@/constants";
 
 export const generateMetadata = async ({
@@ -33,12 +33,32 @@ export const generateMetadata = async ({
       description: `Discover the features and pricing for our ${title} at FlushJohn. Ideal for all types of events.`,
       url: `${websiteURL}/rental-products/${slug}`,
       type: "website",
+      siteName: "FlushJohn",
       images: [
         {
-          url: src_1, // Use product image URL
+          url: `${s3assets}/og-image-flushjonn-web.png`,
+          height: 630,
+          width: 1200,
           alt: `${alt} - FlushJohn`, // Use product name
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image", // Use "summary" for square/tall images, "summary_large_image" for 1200x630
+      title: "FlushJohn - Porta Potty Rentals",
+      description: `Discover the features and pricing for our ${title} at FlushJohn. Ideal for all types of events.`,
+      images: [`${s3assets}/og-image-flushjonn-web.png`], // Use the same image
+    },
+    other: {
+      "og:type": "website",
+      "og:site_name": "FlushJohn",
+      "og:locale": "en_US", // Change if needed
+
+      // For Pinterest (Rich Pins)
+      "article:published_time": "2024-03-04T12:00:00Z", // Change if needed
+      "article:author": "FlushJohn Team",
+
+      // For WhatsApp & Discord (OG works automatically)
     },
   };
 };
