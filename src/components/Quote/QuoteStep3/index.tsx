@@ -136,8 +136,10 @@ const QuoteStep3 = () => {
             //   resetForm();
             //   setFormValues(initialQuoteValues);
             // }
-            createLead({ ...values, leadSource: "Web Quick Lead" });
+            createLead({ ...values, leadSource: "Web Lead" });
             notify();
+            resetForm();
+            setFormValues(initialQuoteValues);
             setStep(1);
           } catch (err) {
             console.log(err);
