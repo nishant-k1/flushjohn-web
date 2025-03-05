@@ -48,7 +48,7 @@ const jsonLd = {
   image: `${s3assets}/og-image-flushjonn-web.png`,
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-800-555-1234", // Replace with actual contact
+    telephone: "+1-877-790-7062", // Replace with actual contact
     contactType: "customer service",
   },
 };

@@ -52,7 +52,7 @@ const jsonLd = {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-800-123-4567",
+      telephone: "+1-877-790-7062",
       contactType: "Customer Service",
       email: "support@flushjohn.com",
       availableLanguage: ["English", "Spanish"],
