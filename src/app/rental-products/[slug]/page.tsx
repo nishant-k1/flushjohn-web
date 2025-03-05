@@ -1,7 +1,6 @@
 import React from "react";
 import IndividualProduct from "@/components/Products/IndividualProduct";
 import { s3assets, websiteURL, products_data } from "@/constants";
-import Head from "next/head";
 
 export const generateMetadata = async ({
   params,
@@ -91,12 +90,10 @@ const ProductPage = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <IndividualProduct slug={slug} />
     </>
   );

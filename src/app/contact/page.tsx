@@ -2,7 +2,6 @@ import React from "react";
 import Contact from "@/components/Contact";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
@@ -71,16 +70,14 @@ const jsonLd = {
 const ContactPage = () => {
   return (
     <>
-      <Head>
-        <link
-          rel="canonical"
-          href={`${websiteURL}/contact`}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <link
+        rel="canonical"
+        href={`${websiteURL}/contact`}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Contact />
     </>
   );

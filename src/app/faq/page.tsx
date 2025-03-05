@@ -2,7 +2,6 @@ import React from "react";
 import Faq from "@/components/Faq";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "FAQ - FlushJohn Porta Potty Rentals",
@@ -73,12 +72,10 @@ const jsonLd = {
 // ✅ **Page Component**
 const FaqPage = () => (
   <>
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
     <Faq />
   </>
 );

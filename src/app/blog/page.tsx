@@ -3,7 +3,6 @@ import Blog from "@/components/Blog";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, apiBaseUrls } from "@/constants";
 import axios from "axios";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Blog - FlushJohn Porta Potty Rentals",
@@ -98,12 +97,10 @@ const BlogPage = async () => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Blog blogList={blogList} />
     </>
   );

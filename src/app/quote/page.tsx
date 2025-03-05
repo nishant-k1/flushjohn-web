@@ -1,6 +1,5 @@
 import React from "react";
 import Quote from "@/components/Quote";
-import Head from "next/head";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
@@ -58,12 +57,10 @@ const jsonLd = {
 const QuotePage = () => {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Quote />
     </>
   );

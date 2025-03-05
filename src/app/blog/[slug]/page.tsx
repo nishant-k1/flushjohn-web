@@ -4,7 +4,6 @@ import { apiBaseUrls, s3assets, websiteURL } from "@/constants";
 import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
-import Head from "next/head";
 
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
@@ -102,12 +101,10 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BlogPost
         blogPost={blogPost}
         slug={slug}

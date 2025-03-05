@@ -1,6 +1,5 @@
 import React from "react";
 import Gallery from "@/components/Gallery";
-import Head from "next/head";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
@@ -58,12 +57,10 @@ const jsonLd = {
 const GalleryPage = () => {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Gallery />
     </>
   );
