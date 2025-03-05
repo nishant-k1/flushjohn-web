@@ -54,22 +54,22 @@ const Quote = () => {
             </div>
             <div className={styles.innerSection}>
               {step === 1 ? (
-                <AnimationWrapper effect={animations?.fadeWithScale}>
+                <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
                   <QuoteStep1 />{" "}
                 </AnimationWrapper>
               ) : null}
               {step === 2 ? (
-                <AnimationWrapper effect={animations?.swipe}>
+                <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
                   <QuoteStep2 />
                 </AnimationWrapper>
               ) : null}
               {step === 3 ? (
-                <AnimationWrapper effect={animations?.swipe}>
+                <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
                   <QuoteStep3 />
                 </AnimationWrapper>
               ) : null}
               {step === 4 ? (
-                <AnimationWrapper effect={animations?.swipe}>
+                <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
                   <QuoteStep4 />
                 </AnimationWrapper>
               ) : null}

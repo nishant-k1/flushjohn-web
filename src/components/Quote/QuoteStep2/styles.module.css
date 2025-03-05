@@ -178,8 +178,8 @@
   transition: 0.3s;
 }
 .next:hover {
-  background-color: #9b581e;
-  border-color: #9b581e;
+  background-color: var(--primary-bg-color);
+  border-color: var(--primary-bg-color);
   transition: 0.3s;
 }
 

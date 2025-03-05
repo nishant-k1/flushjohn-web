@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { Service } from "@/constants";
+import Link from "next/link";
 
 type ServicesProps = {
   heading: string;
@@ -10,74 +11,37 @@ type ServicesProps = {
 
 const Services = React.memo(({ heading, content }: ServicesProps) => {
   return (
-    <div>
-      <div className={styles.services}>
-        <div className={styles.container}>
-          <h2>{heading}</h2>
-          <div className={styles.serviceWrapper}>
-            {content &&
-              content.slice(0, 2).map((item, index) => {
-                const { id, image, alt, title, body } = item;
-                return (
-                  <div
-                    className={
-                      index % 2 === 0
-                        ? styles.wrapper
-                        : `${styles.wrapper} ${styles.rowReverse}`
-                    }
-                    key={id}
-                  >
-                    <div className={styles.imageContainer}>
-                      <Image
-                        src={image}
-                        alt={alt}
-                        height={300}
-                        width={300}
-                      />
-                      {/* <div className={styles.imageOverlay} /> */}
-                    </div>
-                    <div>
-                      <h3>{title}</h3>
-                      <p>{body}</p>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </div>
-      <div className={styles.services_light}>
-        <div className={styles.container}>
-          <div className={styles.serviceWrapper}>
-            {content &&
-              content.slice(2, content.length).map((item, index) => {
-                const { id, image, alt, title, body } = item;
-                return (
-                  <div
-                    className={
-                      index % 2 === 0
-                        ? styles.wrapper_light
-                        : `${styles.wrapper_light} ${styles.rowReverse}`
-                    }
-                    key={id}
-                  >
-                    <div className={styles.imageContainer}>
-                      <Image
-                        src={image}
-                        alt={alt}
-                        height={300}
-                        width={300}
-                      />
-                      {/* <div className={styles.imageOverlay} /> */}
-                    </div>
-                    <div>
-                      <h3>{title}</h3>
-                      <p>{body}</p>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+    <div className={styles.servicesSection}>
+      <div className={styles.container}>
+        <h2 className={styles.heading}>{heading}</h2>
+        <div className={styles.serviceGrid}>
+          {content.map((item) => {
+            const { id, image, alt, title, body } = item;
+            return (
+              <div
+                className={styles.serviceCard}
+                key={id}
+              >
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={image}
+                    alt={alt}
+                    height={300}
+                    width={450}
+                  />
+                </div>
+                <div className={styles.textContent}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                  <Link href="/quote">
+                    <button className={styles.quoteButton}>
+                      Request a Quote
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

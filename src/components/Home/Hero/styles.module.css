@@ -11,11 +11,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-
-  background-image: linear-gradient(rgba(8 26 40 / 0.5), rgba(9 39 61 / 0.5)),
-    url("https://cdn.flushjohn.com/assets/home/hero/hero-img-16-9.jpeg");
-  /* background-image: linear-gradient(rgba(0 0 0 / 0.5), rgba(0 0 0 / 0.5)),
-    url("https://cdn.flushjohn.com/assets/home/hero/hero-img-16-9.jpeg"); */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://cdn.flushjohn.com/assets/gallery/img-2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -47,105 +45,98 @@
 .heroTitle h1 {
   margin: 0;
   padding: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: var(--primary-text-color);
-  font-size: x-large;
-  font-weight: 200;
 }
 
 .heroCta {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  column-gap: 16px;
-  justify-content: start;
-  align-items: center;
+  display: flex;
+  gap: 16px;
   margin-top: 24px;
 }
 
-.heroCta a {
-  padding: 6px 4px;
+.ctaQuoteBtn,
+.ctaPhoneBtn {
   display: flex;
-  font-weight: 100;
-  font-size: small;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
-}
-
-.heroCta a:hover {
-  text-decoration: none;
-  color: var(--primary-text-color);
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap; /* Prevent text from wrapping */
+  min-width: 160px; /* Adjust width as needed */
+  text-align: center;
 }
 
 .ctaQuoteBtn {
-  color: var(--btn-text-color);
   background-color: var(--primary-bg-color);
+  color: var(--btn-text-color);
   border: 2px solid var(--primary-bg-color);
-  width: 8rem;
-  padding: 1rem;
-  height: 2.5rem;
-  transition: 0.3s ease-in-out;
 }
 
 .ctaQuoteBtn:hover {
-  background-color: #af6523;
-  border: 2px solid #af6523;
-  /* transform: scale(0.96); */
+  background-color: var(--primary-bg-color);
+  border-color: var(--primary-bg-color);
 }
 
-.flippedIcon {
-  transform: scaleX(-1);
+.ctaPhoneBtn {
+  background-color: var(--tertiary-bg-color);
+  color: var(--btn-text-color);
+  border: 2px solid var(--primary-bg-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .ctaPhoneBtn {
   position: relative;
-  color: var(--btn-text-color);
-  background-color: var(--tertiary-bg-color);
-  border: 2px solid var(--primary-bg-color);
   display: flex;
-  column-gap: 4px;
-  height: 2.5rem;
-  width: fit-content;
-  padding: 1rem;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--tertiary-bg-color);
+  color: var(--btn-text-color);
+  border: 2px solid var(--primary-bg-color);
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
   overflow: hidden;
   transition:
     color 0.3s ease-in-out,
     border-color 0.3s ease-in-out;
+  z-index: 1; /* Ensure text is above */
 }
 
 .ctaPhoneBtn::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%; /* Start off-screen to the left */
+  left: -100%;
   width: 100%;
   height: 100%;
-  background-color: var(--primary-bg-color); /* Overlay color */
+  background-color: var(--primary-bg-color);
   transition: left 0.5s ease;
-  z-index: 0; /* Behind the button content */
+  z-index: 0; /* Move background below text */
 }
 
 .ctaPhoneBtn:hover::before {
-  left: 0; /* Move the overlay to cover the button */
+  left: 0;
+}
+
+.ctaPhoneBtn div,
+.ctaPhoneBtn .flippedIcon {
+  position: relative;
+  z-index: 2; /* Ensure text and icon stay visible */
 }
 
 .ctaPhoneBtn:hover {
-  color: var(--tertiary-bg-color); /* Text color change on hover */
+  color: var(--btn-text-color); /* Keep text color intact */
 }
 
-.ctaPhoneBtn > * {
-  position: relative;
-  z-index: 1; /* Ensures text stays above overlay */
-}
-.ctaPhoneBtn a div {
-  grid-template-columns: max-content;
-}
-
-.heroImage {
-  display: grid;
-  align-items: start;
-  justify-content: start;
-  padding: 32px 0;
-  /* background: var(--primary-gradient-bg-color); */
+.flippedIcon {
+  transform: scaleX(-1);
 }
 
 .heroImage img {
@@ -153,110 +144,35 @@
   width: 300px;
 }
 
-.heroTruckImage {
-  display: flex;
-  flex-direction: column-reverse;
-  overflow: "hidden";
-  padding: 0;
-  position: relative;
-  height: 110px;
-}
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .heroWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
 
-.heroTruckImage img {
-  height: 110px;
-  width: fit-content;
-  transform: rotateY(180deg);
-  position: absolute;
-  bottom: 0;
-}
-
-/* tablet device breakpoint: 768px*/
-@media only screen and (min-width: 768px) {
-  .hero {
-    padding-top: 24px;
-    background-size: cover;
+  .heroTitle h1 {
+    font-size: 3rem;
   }
 
   .heroImage img {
     height: 500px;
     width: 500px;
   }
-  .heroTruckImage {
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: "hidden";
-    padding: 0;
-    position: relative;
-    height: 110px;
-  }
-
-  .heroTruckImage img {
-    height: 110px;
-    width: fit-content;
-    transform: rotateY(180deg);
-    position: absolute;
-    bottom: 0;
-  }
-
-  .heroWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2.5rem;
-    margin-top: 6rem;
-    align-items: center;
-    justify-content: start;
-  }
-  .ctaQuoteBtn {
-    font-size: medium !important;
-  }
-  .ctaPhoneBtn {
-    font-size: medium !important;
-  }
 }
 
-/* desktop device / breakpoint: 1024px */
-@media only screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
   .heroWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 72px 0 16px;
     column-gap: 6rem;
-    margin-top: 0;
-    align-items: center;
-    justify-content: space-between;
-    /* height: 720px; */
-  }
-  .heroImage {
-    align-items: center;
-    justify-content: end;
-    max-height: 300px;
-    padding: 0;
   }
 
   .heroTitle h1 {
-    font-size: xx-large;
+    font-size: 3.5rem;
   }
 
-  .heroTruckImage {
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: "hidden";
+  .heroImage {
+    max-height: 300px;
     padding: 0;
-    position: relative;
-    height: 110px;
-  }
-
-  .heroTruckImage img {
-    height: 110px;
-    width: fit-content;
-    transform: rotateY(180deg);
-    position: absolute;
-    bottom: 0;
-  }
-  .heroImage img {
-    /* height: 500px;
-    width: 500px; */
-    /* width: 600px;
-    height: 100%; */
   }
 }

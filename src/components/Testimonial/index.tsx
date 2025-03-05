@@ -29,19 +29,18 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
             content.map((item, index) => (
               <div key={index}>
                 <div className={styles.wrapper}>
+                  <Image
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    width={96}
+                    height={96}
+                    style={{
+                      height: 96,
+                      width: 96,
+                      borderRadius: "50%",
+                    }}
+                  />
                   <div>
-                    <Image
-                      src={item.image.src}
-                      alt={item.image.alt}
-                      width={96}
-                      height={96}
-                      style={{
-                        height: 96,
-                        width: 96,
-                        // borderRadius: "50%",
-                        color: "var(--primary-bg-color)",
-                      }}
-                    />
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
                   </div>

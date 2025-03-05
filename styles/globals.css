@@ -17,9 +17,10 @@
 :root {
   /* --primary-color: #6e8b3d; */
   /* --primary-bg-color: #ef648a; */
+  --primary-bg-color: #ff6600;
   /* --primary-bg-color: #db517a; */
   /* --primary-bg-color: #cf772b; */
-  --primary-bg-color: #bf8340;
+  /* --primary-bg-color: #bf8340; */
 
   --primary-text-color: rgba(255, 255, 255, 0.78);
   --primary-error-color: red;
@@ -45,6 +46,7 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   background-size: cover;
   background-repeat: repeat;
+  overflow-x: hidden;
 }
 h1,
 h2,
