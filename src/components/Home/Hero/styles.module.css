@@ -66,9 +66,19 @@
   font-weight: bold;
   border-radius: 6px;
   transition: all 0.3s ease-in-out;
-  white-space: nowrap; /* Prevent text from wrapping */
-  min-width: 160px; /* Adjust width as needed */
+  white-space: nowrap;
+  min-width: 160px;
   text-align: center;
+  background-color: green !important;
+}
+
+@media screen and (max-width: 768px) {
+  .ctaQuoteBtn,
+  .ctaPhoneBtn {
+    min-width: 120px !important;
+    padding: 12px !important;
+    background-color: green !important;
+  }
 }
 
 .ctaQuoteBtn {
