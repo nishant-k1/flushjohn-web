@@ -45,8 +45,12 @@ const quickQuoteValidationSchema = Yup.object().shape({
 const QuickQuote = () => {
   const { clientWidth } =
     useContext<ClientWidthContextType>(ClientWidthContext);
-  const { quickQuoteViewStatus, setQuickQuoteViewStatus, quickQuoteTitle } =
-    useContext<QuickQuoteContextType>(QuickQuoteContext);
+  const {
+    quickQuoteViewStatus,
+    setQuickQuoteViewStatus,
+    quickQuoteTitle,
+    setQuickQuoteTitle,
+  } = useContext<QuickQuoteContextType>(QuickQuoteContext);
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
   // Handle click outside
@@ -185,6 +189,7 @@ const QuickQuote = () => {
                     className={styles.closeIcon}
                     onClick={() => {
                       setQuickQuoteViewStatus(false);
+                      setQuickQuoteTitle("Quick Quote");
                     }}
                   />
                   <Grid
