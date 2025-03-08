@@ -9,12 +9,14 @@ export type QuickQuoteContextType = {
   quickQuoteViewStatus: boolean;
   setQuickQuoteViewStatus: React.Dispatch<React.SetStateAction<boolean>>;
   quickQuoteTitle: string;
+  setQuickQuoteTitle: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const defaultContextValue: QuickQuoteContextType = {
   quickQuoteViewStatus: false,
   setQuickQuoteViewStatus: () => {},
   quickQuoteTitle: "Quick Quote",
+  setQuickQuoteTitle: () => {},
 };
 
 export const QuickQuoteContext =
@@ -55,11 +57,8 @@ export const QuickQuoteContextProvider = ({
       if (e.clientY < 10 && !quickQuoteViewStatus && !exitTriggered) {
         setQuickQuoteViewStatus(true);
         setQuickQuoteTitle("Wait! Get an instant quote before you go!");
-        setExitTriggered(true); // Prevent multiple triggers
+        setExitTriggered(true);
       }
-      return () => {
-        setQuickQuoteTitle("Quick Quote");
-      };
     };
 
     if (typeof window !== "undefined") {
@@ -81,7 +80,12 @@ export const QuickQuoteContextProvider = ({
 
   return (
     <QuickQuoteContext.Provider
-      value={{ quickQuoteViewStatus, setQuickQuoteViewStatus, quickQuoteTitle }}
+      value={{
+        quickQuoteViewStatus,
+        setQuickQuoteViewStatus,
+        quickQuoteTitle,
+        setQuickQuoteTitle,
+      }}
     >
       {children}
     </QuickQuoteContext.Provider>
