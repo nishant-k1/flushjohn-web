@@ -12,13 +12,7 @@ const MyZipTextField = ({ label, ...props }: any) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
 
-  const USFlag = ({
-    country,
-    countryName,
-  }: {
-    country: string;
-    countryName: string;
-  }) => (
+  const USFlag = () => (
     <div
       role="img"
       aria-label={"USA"}
@@ -48,7 +42,7 @@ const MyZipTextField = ({ label, ...props }: any) => {
           {...field}
           {...props}
           className={styles.input}
-          autoComplete={true}
+          autoComplete={"tel"}
           onChange={(value) => setValue(value)}
           limitMaxLength={true}
           maxLength={5}

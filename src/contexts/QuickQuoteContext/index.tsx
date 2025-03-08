@@ -8,11 +8,13 @@ import { ClientWidthContextType } from "../ClientWidthContext";
 export type QuickQuoteContextType = {
   quickQuoteViewStatus: boolean;
   setQuickQuoteViewStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  quickQuoteTitle: string;
 };
 
 const defaultContextValue: QuickQuoteContextType = {
   quickQuoteViewStatus: false,
-  setQuickQuoteViewStatus: () => {}, // No-op function
+  setQuickQuoteViewStatus: () => {},
+  quickQuoteTitle: "Quick Quote",
 };
 
 export const QuickQuoteContext =
@@ -26,6 +28,11 @@ export const QuickQuoteContextProvider = ({
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] =
     React.useState<boolean>(false);
 
+  const [quickQuoteTitle, setQuickQuoteTitle] =
+    React.useState<string>("Quick Quote");
+
+  const [exitTriggered, setExitTriggered] = React.useState<boolean>(false);
+
   const { clientWidth } =
     React.useContext<ClientWidthContextType>(ClientWidthContext);
   const { active } = React.useContext<SidebarContextType>(SidebarContext);
@@ -37,10 +44,32 @@ export const QuickQuoteContextProvider = ({
     ) {
       const timer = setTimeout(() => {
         setQuickQuoteViewStatus(true);
-      }, 9000);
+      }, 12000);
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Exit-intent trigger
+  React.useEffect(() => {
+    const handleExitIntent = (e: MouseEvent) => {
+      if (e.clientY < 10 && !quickQuoteViewStatus && !exitTriggered) {
+        setQuickQuoteViewStatus(true);
+        setQuickQuoteTitle("Wait! Get an instant quote before you go!");
+        setExitTriggered(true); // Prevent multiple triggers
+      }
+      return () => {
+        setQuickQuoteTitle("Quick Quote");
+      };
+    };
+
+    if (typeof window !== "undefined") {
+      document.addEventListener("mouseleave", handleExitIntent);
+    }
+
+    return () => {
+      document.removeEventListener("mouseleave", handleExitIntent);
+    };
+  }, [quickQuoteViewStatus, exitTriggered]);
 
   React.useEffect(() => {
     document.documentElement.style.overflowY =
@@ -52,7 +81,7 @@ export const QuickQuoteContextProvider = ({
 
   return (
     <QuickQuoteContext.Provider
-      value={{ quickQuoteViewStatus, setQuickQuoteViewStatus }}
+      value={{ quickQuoteViewStatus, setQuickQuoteViewStatus, quickQuoteTitle }}
     >
       {children}
     </QuickQuoteContext.Provider>

@@ -24,7 +24,7 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
           defaultCountry="US"
           addInternationalOption={false}
           countries={["US"]}
-          autoComplete={true}
+          autoComplete={"zip"}
           countryCallingCodeEditable={false}
           displayInitialValueAsLocalNumber={true}
           onChange={(value) => setValue(value)}

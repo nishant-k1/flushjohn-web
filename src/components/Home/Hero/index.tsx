@@ -9,6 +9,7 @@ import { logEvent } from "../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { phoneType } from "../../../constants";
+import HeroQuickQuote from "@/components/HeroQuickQuote";
 
 type HeroProps = {
   title: string;
@@ -57,34 +58,12 @@ const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
                 </Link>
               </div>
             </div>
-
             <div className={styles.heroImage}>
-              {/* <AnimationWrapper effect={animations?.fadeWithScale}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  height={300}
-                  width={300}
-                />
-              </AnimationWrapper> */}
+              <HeroQuickQuote />
             </div>
           </div>
         </div>
       </AnimationWrapper>
-      {/* HIDE MOVING TRUCK PANEL*/}
-      {/* <div
-        className={styles.heroTruckImage}
-        style={{ overflow: "hidden" }}
-      >
-        <AnimationWrapper effect={animations?.slideWithOpacityChange}>
-          <Image
-            src={truckImg.src}
-            alt={image.alt}
-            height={180}
-            width={400}
-          />
-        </AnimationWrapper>
-      </div> */}
     </div>
   );
 });

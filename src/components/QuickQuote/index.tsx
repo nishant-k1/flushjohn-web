@@ -45,7 +45,7 @@ const quickQuoteValidationSchema = Yup.object().shape({
 const QuickQuote = () => {
   const { clientWidth } =
     useContext<ClientWidthContextType>(ClientWidthContext);
-  const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
+  const { quickQuoteViewStatus, setQuickQuoteViewStatus, quickQuoteTitle } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -195,7 +195,7 @@ const QuickQuote = () => {
                       item
                       xs={12}
                     >
-                      <h2>Quick Free Quote</h2>
+                      <h2>{quickQuoteTitle}</h2>
                     </Grid>
                     <Grid
                       item
