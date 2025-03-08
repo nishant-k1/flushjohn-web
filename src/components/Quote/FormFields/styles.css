@@ -1,0 +1,58 @@
+:where(.css-dev-only-do-not-override-240cud).ant-picker {
+  border-radius: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-picker .ant-picker-suffix {
+  display: flex;
+  flex: none;
+  align-self: center;
+  margin-inline-start: 4px;
+  color: black;
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
+}
+
+.PhoneInputCountry {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-right: 0;
+  margin-right: 0;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.88);
+  font-family: small;
+}
+
+.styles-module__zqIsNW__form input::placeholder,
+.styles-module__zqIsNW__form select::placeholder,
+.styles-module__zqIsNW__form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.88);
+  font-family: small;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:focus,
+:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:focus-within,
+:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:hover {
+  border-color: var(--primary-bg-color);
+  box-shadow: none;
+}
+
+.ant-picker-input input {
+  color: black;
+}

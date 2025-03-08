@@ -1,72 +1,18 @@
 "use client";
 
 import React from "react";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
-import axios from "axios";
 import { io, Socket } from "socket.io-client";
-// import { Event } from "../lib/analytics";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "@/contexts/QuoteContext";
 import { apiBaseUrls } from "@/constants";
-// import { logEvent } from "../../../../react-ga4-config";
-
-const MyTextField = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={styles.outerBox}>
-      <label
-        className={styles.label}
-        htmlFor={props.id || props.name}
-      >
-        {label}
-        {props.name !== "cName" && (
-          <span style={{ color: "red", fontSize: "x-large" }}>*</span>
-        )}
-      </label>
-      <div className={styles.innerBox}>
-        <input
-          className={styles.input}
-          {...field}
-          {...props}
-        />
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
-
-const MyMaskedTextInput = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={styles.outerBox}>
-      <label className={styles.label}>
-        {label}
-        {props.name !== "contactPersonPhone" &&
-          props.name !== "contactPersonName" && (
-            <span style={{ color: "red", fontSize: "x-large" }}>*</span>
-          )}
-      </label>
-      <div className={styles.innerBox}>
-        <NumericFormat
-          className={styles.input}
-          {...field}
-          {...props}
-        />
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
+import TextField from "../FormFields/TextField";
+import PhoneField from "../FormFields/PhoneField";
 
 const QuoteStep3 = () => {
   const notify = () =>
@@ -81,7 +27,7 @@ const QuoteStep3 = () => {
       theme: "dark",
     });
   const { render, data } = useContext(QuoteContext);
-  const [step, setStep] = render;
+  const [_, setStep] = render;
   const [formValues, setFormValues] = data;
 
   React.useEffect(() => {
@@ -118,29 +64,12 @@ const QuoteStep3 = () => {
         // })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            // const res = await axios({
-            //   method: "post",
-            //   url: `${apiBaseUrls.API_BASE_URL}/leads`,
-            //   data: { ...values, leadSource: "Web Lead" },
-            // });
-            // // logEvent({
-            //   category: "Form",
-            //   action: "Web Lead Form Submit",
-            //   label: "Web Lead Form Submit Button",
-            //   value: undefined,
-            //   nonInteraction: undefined,
-            //   transport: "beacon",
-            // });
-            // if (res.status === 201 && res.data.success) {
-            //   notify();
-            //   resetForm();
-            //   setFormValues(initialQuoteValues);
-            // }
             createLead({ ...values, leadSource: "Web Lead" });
             notify();
             resetForm();
             setFormValues(initialQuoteValues);
             setStep(1);
+            window.scrollTo(0, 0);
           } catch (err) {
             console.log(err);
           }
@@ -151,7 +80,7 @@ const QuoteStep3 = () => {
             <Form>
               <div className={styles.form}>
                 <div className={styles.fName}>
-                  <MyTextField
+                  <TextField
                     label="First Name"
                     name="fName"
                     type="text"
@@ -161,7 +90,7 @@ const QuoteStep3 = () => {
                 </div>
 
                 <div className={styles.lName}>
-                  <MyTextField
+                  <TextField
                     label="Last Name"
                     name="lName"
                     type="text"
@@ -171,7 +100,7 @@ const QuoteStep3 = () => {
                 </div>
 
                 <div className={styles.cName}>
-                  <MyTextField
+                  <TextField
                     label="Company Name (If any)"
                     name="cName"
                     type="text"
@@ -181,7 +110,7 @@ const QuoteStep3 = () => {
                 </div>
 
                 <div className={styles.email}>
-                  <MyTextField
+                  <TextField
                     label="Email Address"
                     name="email"
                     type="email"
@@ -190,29 +119,27 @@ const QuoteStep3 = () => {
                 </div>
 
                 <div className={styles.phone}>
-                  <MyMaskedTextInput
-                    label="Phone"
-                    name="phone"
-                    mask="(999) 999-9999"
-                    autoComplete="off"
-                    type="tel"
-                  />
+                  <div>
+                    <PhoneField
+                      label="Phone"
+                      name="phone"
+                    />
+                  </div>
                 </div>
-
                 <div className={styles.contactPersonName}>
-                  <MyMaskedTextInput
+                  <TextField
                     label="Onsite Contact Person Name"
                     name="contactPersonName"
                   />
                 </div>
                 <div className={styles.phone}>
-                  <MyMaskedTextInput
-                    label="Onsite Contact Person Phone"
-                    name="contactPersonPhone"
-                    mask="(999) 999-9999"
-                    autoComplete="off"
-                    type="tel"
-                  />
+                  <div>
+                    <PhoneField
+                      label="Onsite Contact Person Phone"
+                      name="contactPersonPhone"
+                      autoComplete="off"
+                    />
+                  </div>
                 </div>
               </div>
               <div className={`${styles.outerBox} ${styles.buttons}`}>
@@ -226,6 +153,7 @@ const QuoteStep3 = () => {
                   className={styles.previous}
                   onClick={() => {
                     setStep(2);
+                    window.scrollTo(0, 0);
                   }}
                 >
                   PREVIOUS

@@ -26,7 +26,7 @@
 .form label {
   padding: 0;
   margin: 0;
-  font-size: large;
+  font-size: medium;
   color: var(--secondary-text-color);
 }
 
@@ -41,7 +41,7 @@
   border: none;
   border: solid 1px rgba(0, 0, 0, 0.548);
   height: 2.5rem;
-  font-size: large;
+  font-size: medium;
   font-weight: 400;
   width: 100%;
 }
@@ -139,8 +139,8 @@
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .form {
-    padding: 2.5rem;
-    border: 1px solid var(--primary-bg-color) !important;
+    /* padding: 2.5rem;
+    border: 1px solid var(--primary-bg-color) !important; */
   }
   .outerBox {
     column-gap: 2rem;

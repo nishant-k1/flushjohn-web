@@ -1,129 +1,18 @@
 "use client";
 
 import React from "react";
-import { Formik, Form, useField } from "formik";
-import * as Yup from "yup";
-import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
-import { DatePicker } from "antd";
-import moment from "moment";
-import { Tooltip } from "antd";
-import Image from "next/image";
-
-const MyDateField = ({ label, ...props }: any) => {
-  const [field, meta, helpers] = useField(props);
-  const { setValue } = helpers;
-  return (
-    <div className={styles.outerBox}>
-      <label htmlFor={props.id || props.name}>
-        {label}
-        {<span style={{ color: "red", fontSize: "x-large" }}>*</span>}
-      </label>
-      <div className={styles.innerBox}>
-        <DatePicker
-          className={styles.date}
-          {...props}
-          label={props.label}
-          // defaultValue={moment(new Date(), "MM/DD/YYYY")}
-          format={"MM/DD/YYYY"}
-          // placeholder={props.label}
-          disabledDate={(d) => !d || d.isBefore(new Date())}
-          onChange={(e) => {
-            setValue(2);
-          }}
-        />
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
-
-const MyMultilineTextField = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={styles.outerBox}>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <div className={styles.innerBox}>
-        <textarea
-          {...field}
-          {...props}
-        />
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
-
-const MyTextInput = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={styles.outerBox}>
-      <label>
-        {label}
-        {(() => {
-          if (props.name === "zip" || props.name === "street")
-            return <span style={{ color: "red", fontSize: "x-large" }}>*</span>;
-        })()}
-      </label>
-      <div className={styles.innerBox}>
-        <input
-          {...field}
-          {...props}
-        />
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
-
-const MyMaskedTextInput = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={styles.outerBox}>
-      <label>
-        {label}
-        {(() => {
-          if (props.name === "zip" || props.name === "street")
-            return <span style={{ color: "red", fontSize: "x-large" }}>*</span>;
-        })()}
-      </label>
-      <div className={styles.innerBox}>
-        {props.name == "zip" && (
-          <Tooltip
-            placement="right"
-            title="Enter Number"
-          >
-            <NumericFormat
-              {...field}
-              {...props}
-            />
-          </Tooltip>
-        )}
-        {props.name !== "zip" && (
-          <NumericFormat
-            {...field}
-            {...props}
-          />
-        )}
-        {meta.touched && meta.error ? (
-          <div className={styles.error}>{meta.error + " "}</div>
-        ) : null}
-      </div>
-    </div>
-  );
-};
+import { Form, Formik } from "formik";
+import TextField from "../FormFields/TextField";
+import MultilineTextField from "../FormFields/MultilineTextField";
+import ZipTextField from "../FormFields/ZipField";
+import DateField from "../FormFields/DateField";
 
 const QuoteStep2 = () => {
   const { render, data } = useContext(QuoteContext);
-  const [step, setStep] = render;
+  const [_, setStep] = render;
   const [formValues, setFormValues] = data;
 
   React.useEffect(() => {
@@ -147,51 +36,52 @@ const QuoteStep2 = () => {
             ...values,
           }));
           setStep(3);
+          window.scrollTo(0, 0);
         } catch (err) {}
       }}
     >
       <Form>
         <div className={styles.form}>
           <div className={styles.deliveryDate}>
-            <MyDateField
+            <DateField
               label="Delivery Date"
               name="deliveryDate"
             />
           </div>
           <div className={styles.pickupDate}>
-            <MyDateField
+            <DateField
               label="Pickup Date"
               name="pickupDate"
             />
           </div>
+          <div className={styles.zip}>
+            <div>
+              <ZipTextField
+                label="Zip Code"
+                name="zip"
+              />
+            </div>
+          </div>
           <div className={styles.street}>
-            <MyTextInput
+            <TextField
               label="Street"
               name="street"
             />
           </div>
-          <div className={styles.zip}>
-            <MyMaskedTextInput
-              label="Zip Code"
-              name="zip"
-              mask="99999"
-              maskChar={null}
-            />
-          </div>
           <div className={styles.city}>
-            <MyMaskedTextInput
+            <TextField
               label="City"
               name="city"
             />
           </div>
           <div className={styles.state}>
-            <MyMaskedTextInput
+            <TextField
               label="State"
               name="state"
             />
           </div>
           <div className={styles.hint}>
-            <MyMultilineTextField
+            <MultilineTextField
               label="Placement Instructions"
               name="instructions"
             />
@@ -207,6 +97,7 @@ const QuoteStep2 = () => {
           <button
             onClick={() => {
               setStep(1);
+              window.scrollTo(0, 0);
             }}
             className={styles.previous}
           >

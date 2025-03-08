@@ -1,0 +1,16 @@
+.outerBox {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: start;
+  align-items: center;
+}
+
+.innerBox {
+  width: 100%;
+  display: grid;
+  justify-content: start;
+  grid-template-columns: 1fr max-content;
+}

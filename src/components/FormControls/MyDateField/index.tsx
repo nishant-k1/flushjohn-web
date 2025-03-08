@@ -4,7 +4,7 @@ import { useField } from "formik";
 import styles from "../../QuickQuote/styles.module.css";
 
 const MyDateField = ({ label, ...props }: any) => {
-  const [field, meta, helpers] = useField(props);
+  const [_, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched, setError } = helpers;
   const datePickerRef = React.useRef(null);
