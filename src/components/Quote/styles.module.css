@@ -46,7 +46,7 @@
   font-weight: 100;
   border: 1px solid var(--primary-bg-color);
   background: #83838338;
-  color: var(black);
+  color: black;
   transition: background 0.3s ease-in-out;
 }
 

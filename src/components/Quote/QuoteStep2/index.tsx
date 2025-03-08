@@ -3,7 +3,7 @@
 import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import MaskedInput from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
 import { useContext, useEffect } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
@@ -101,14 +101,14 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
             placement="right"
             title="Enter Number"
           >
-            <MaskedInput
+            <NumericFormat
               {...field}
               {...props}
             />
           </Tooltip>
         )}
         {props.name !== "zip" && (
-          <MaskedInput
+          <NumericFormat
             {...field}
             {...props}
           />
@@ -175,7 +175,7 @@ const QuoteStep2 = () => {
               label="Zip Code"
               name="zip"
               mask="99999"
-              maskChar=""
+              maskChar={null}
             />
           </div>
           <div className={styles.city}>

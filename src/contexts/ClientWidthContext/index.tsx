@@ -23,19 +23,18 @@ export const ClientWidthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [clientWidth, setClientWidth] = React.useState<number | null>(
-    typeof window !== "undefined" ? window.innerWidth : null
-  );
+  const [clientWidth, setClientWidth] = useState<number | null>(null);
 
   const handleResize = useCallback(() => {
     setClientWidth(window.innerWidth);
   }, []);
 
   // Add event listener for window resize
-  React.useEffect(() => {
+  useEffect(() => {
+    // Ensure this runs only on the client
     if (typeof window !== "undefined") {
+      setClientWidth(window.innerWidth); // Set initial width
       window.addEventListener("resize", handleResize);
-      handleResize();
       return () => {
         window.removeEventListener("resize", handleResize);
       };

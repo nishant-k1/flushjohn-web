@@ -145,3 +145,37 @@ width ::-webkit-scrollbar {
 .quickQuoteform .ant-select-multiple .ant-select-selector {
   border-radius: 0 !important;
 }
+
+.PhoneInputCountrySelectArrow {
+  display: none !important;
+}
+
+.PhoneInputCountry {
+  background-color: var(--primary-text-color) !important;
+  padding: 4px 6px !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-picker {
+  border-radius: 0;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-select-multiple
+  .ant-select-selector {
+  border-radius: 0;
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-enabled) {
+  font-weight: 600;
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
+}
+
+:where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
+  .ant-select-item-option-selected:not(.ant-select-item-option-enabled)
+  svg {
+  color: var(--primary-text-color);
+  font-weight: 600;
+}

@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ✅ **Page Component**
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
+  if (!slug) return;
   const res = await axios.get(API_URL, { params: { slug } });
-
   const blogPost = {
     ...res?.data?.data,
     content: DOMPurify.sanitize(res?.data?.data?.content),

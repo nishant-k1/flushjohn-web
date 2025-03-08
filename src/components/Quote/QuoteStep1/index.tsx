@@ -5,7 +5,7 @@ import { Formik, Form, useField } from "formik";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
-import MaskedInput from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 import { Tooltip } from "antd";
 
 const MyRadioField = ({ label, ...props }: any) => {
@@ -50,7 +50,7 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
           placement="top"
           title="Enter Quantity"
         >
-          <MaskedInput
+          <NumericFormat
             {...field}
             {...props}
           />
@@ -107,7 +107,7 @@ const QuoteStep1 = () => {
                   label={item.name}
                   name={`products[${index}].qty`}
                   mask="9999"
-                  maskChar=""
+                  maskChar={null}
                   type="tel"
                 />
               </div>

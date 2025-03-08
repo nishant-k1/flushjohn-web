@@ -2,7 +2,7 @@
 
 import { Formik, Form, useField, FieldHookConfig } from "formik";
 import * as Yup from "yup";
-import MaskedInput from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
 import axios from "axios";
 import React, { useState } from "react";
@@ -57,7 +57,7 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
       >
         {label}
       </label>
-      <MaskedInput
+      <NumericFormat
         className={styles.input}
         {...field}
         {...props}

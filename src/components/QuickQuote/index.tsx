@@ -2,12 +2,11 @@
 
 import { Formik, Form } from "formik";
 import styles from "./styles.module.css";
-import axios from "axios";
 import React, { useContext } from "react";
 import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "../FormControls/MyTextField";
 import MyDateField from "../FormControls/MyDateField";
-import MyMaskedTextField from "../FormControls/MyMaskedTextField";
+import MyPhoneTextField from "../FormControls/MyPhoneTextField";
 import MyMultilineTextField from "../FormControls/MyMultilineTextField";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
@@ -28,6 +27,7 @@ import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { io, Socket } from "socket.io-client";
 import { apiBaseUrls } from "@/constants";
+import MyZipTextField from "../FormControls/MyZipTextField";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -252,13 +252,13 @@ const QuickQuote = () => {
                       item
                       xs={12}
                     >
-                      <MyMaskedTextField
+                      <MyZipTextField
                         label="Zip"
                         name="zip"
-                        mask="99999"
-                        maskChar=""
                         placeholder="Zip"
-                        type="tel"
+                        min={0}
+                        maxLength={5}
+                        inputMode="numeric"
                       />
                     </Grid>
                     <Grid
@@ -292,10 +292,9 @@ const QuickQuote = () => {
                       item
                       xs={12}
                     >
-                      <MyMaskedTextField
+                      <MyPhoneTextField
                         label="Phone"
                         name="phone"
-                        mask="(999) 999-9999"
                         placeholder="Phone"
                         type="tel"
                       />

@@ -3,7 +3,7 @@
 import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import MaskedInput from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/contexts/QuoteContext";
@@ -55,7 +55,7 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
           )}
       </label>
       <div className={styles.innerBox}>
-        <MaskedInput
+        <NumericFormat
           className={styles.input}
           {...field}
           {...props}
