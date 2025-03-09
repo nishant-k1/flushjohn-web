@@ -10,6 +10,7 @@ import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { phoneType } from "../../../constants";
 import HeroQuickQuote from "@/components/HeroQuickQuote";
+import CarouselView from "@/components/CarouselView";
 
 type HeroProps = {
   title: string;
@@ -23,10 +24,13 @@ type HeroProps = {
   };
 };
 
-const Hero = React.memo(({ title, image, truckImg }: HeroProps) => {
+const Hero = React.memo(({ title }: HeroProps) => {
   const { phone_link, phone_number }: phoneType = phone;
   return (
     <div className={styles.hero}>
+      <div className={styles.carouselWrapper}>
+        <CarouselView />
+      </div>
       <AnimationWrapper effect={animations.fadeWithScale}>
         <div className={styles.container}>
           <div className={styles.heroWrapper}>
