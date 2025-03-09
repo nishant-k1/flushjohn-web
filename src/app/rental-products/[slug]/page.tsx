@@ -5,10 +5,10 @@ import { s3assets, websiteURL, products_data } from "@/constants";
 export const generateMetadata = async ({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) => {
-  const { slug } = params;
-  if (!slug) return null;
+  const { slug } = await params;
+  if (!slug) return { title: "FlushJohn Products" };
 
   // Find the current product based on the slug
   const currentProduct = products_data.product_list.find((product) => {
@@ -55,10 +55,14 @@ export const generateMetadata = async ({
 };
 
 // ✅ **Page Component**
-const ProductPage = ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const ProductPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  if (!slug) return;
 
-  // ✅ Generate JSON-LD for structured data
   const product = products_data.product_list.find((p) => {
     return p.title.toLowerCase().replace(/\s+/g, "-") === slug;
   });

@@ -2,7 +2,6 @@ import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
 import { apiBaseUrls, s3assets, websiteURL } from "@/constants";
 import DOMPurify from "isomorphic-dompurify";
-import { Metadata } from "next";
 
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
@@ -10,8 +9,8 @@ const API_URL = `${API_BASE_URL}/blogs`;
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Promise<Metadata> {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   if (!slug) return { title: "FlushJohn Blog" };
 
@@ -62,7 +61,11 @@ export async function generateMetadata({
 }
 
 // ✅ **Page Component**
-const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
+const BlogPostPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   if (!slug) return;
 
