@@ -46,7 +46,9 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   background-size: cover;
   background-repeat: repeat;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100vw !important;
+  box-sizing: border-box !important;
 }
 h1,
 h2,
@@ -68,66 +70,6 @@ button {
   text-transform: uppercase !important;
   /* color: var(--btn-text-color) !important;
   background-color: var(--primary-bg-color) !important; */
-}
-/* width */
-width ::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #ffffff48;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #1d47ec;
-  /* background: #ef648a; */
-  transition: 0.3s;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #1d47ec;
-  transition: 0.3s;
-}
-
-/* breakpoints */
-
-/* tablet device breakpoint: 768px*/
-@media only screen and (min-width: 768px) {
-}
-
-/* desktop device / breakpoint: 1024px */
-@media only screen and (min-width: 1024px) {
-}
-
-/* Target the entire page */
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  height: 12px;
-  width: 12px; /* Adjust the width of the scrollbar */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-  background: var(--primary-bg-color); /* Set the color of the scroll thumb */
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #9c561c; /* Set the color of the scroll thumb when hovered */
-}
-
-.quickQuoteform .ant-picker {
-  border-radius: 0 !important;
 }
 
 .quickQuoteform .ant-picker-outlined:focus-within {
@@ -178,4 +120,26 @@ width ::-webkit-scrollbar {
   svg {
   color: var(--primary-text-color);
   font-weight: 600;
+}
+
+/* SCROLL BAR */
+/* Apply only to WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar */
+  position: absolute; /* Prevents it from taking up space */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Hides track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4); /* Subtle scrollbar */
+  border-radius: 10px;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
 }
