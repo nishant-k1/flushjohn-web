@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "antd";
-import styles from "../Home/Hero/styles.module.css";
+import styles from "./styles.module.css";
 import Image from "next/image";
 
 export default function CarouselView() {
@@ -10,10 +10,10 @@ export default function CarouselView() {
       autoplaySpeed={2000}
     >
       {[
-        "https://cdn.flushjohn.com/assets/gallery/img-2.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-9.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-10.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-14.jpg",
+        "https://cdn.flushjohn.com/assets/gallery/img-2.1-enhanced-1.jpg",
+        "https://cdn.flushjohn.com/assets/gallery/img-4.jpg",
+        "https://cdn.flushjohn.com/assets/gallery/img-21.jpg",
+        "https://cdn.flushjohn.com/assets/gallery/img-20.jpg",
       ].map((src, index) => (
         <div
           key={index}
@@ -23,10 +23,10 @@ export default function CarouselView() {
             src={src}
             height={900}
             width={2100}
-            alt=""
+            alt="flusjohn-porta-potty-rental"
             className={styles.heroImage}
           />
-          <div className={styles.overlay}></div>
+          <div className={styles.overlayHeroImage}></div>
         </div>
       ))}
     </Carousel>
