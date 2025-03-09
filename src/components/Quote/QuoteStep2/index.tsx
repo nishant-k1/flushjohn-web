@@ -65,7 +65,7 @@ const QuoteStep2 = () => {
           <div className={styles.street}>
             <TextField
               label="Street"
-              name="street"
+              name="streetAddress"
             />
           </div>
           <div className={styles.city}>

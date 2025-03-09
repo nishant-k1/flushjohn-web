@@ -54,7 +54,6 @@ const QuoteStep1 = () => {
                 label={item.name}
                 name={`products[${index}].qty`}
                 mask="9999"
-                maskchar={null}
                 type="tel"
               />
             </div>

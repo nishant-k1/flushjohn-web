@@ -20,7 +20,7 @@ const requirementDetails = {
 const deliveryDetails = {
   deliveryDate: "",
   pickupDate: "",
-  street: "",
+  streetAddress: "",
   zip: "",
   city: "",
   state: "",
