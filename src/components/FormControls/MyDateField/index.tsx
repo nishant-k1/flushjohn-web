@@ -1,10 +1,11 @@
 import React from "react";
 import { DatePicker } from "antd";
 import { useField } from "formik";
+import dayjs from "dayjs"; // Import Day.js
 import styles from "../../QuickQuote/styles.module.css";
 
 const MyDateField = ({ label, ...props }: any) => {
-  const [_, meta, helpers] = useField(props);
+  const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched, setError } = helpers;
   const datePickerRef = React.useRef(null);
@@ -16,18 +17,15 @@ const MyDateField = ({ label, ...props }: any) => {
         className={props.className}
         label={label}
         placeholder={label}
-        // value={field.value && new Date()}
-        // defaultValue={new Date()}
         format={"MM/DD/YYYY"}
-        disabledDate={(d: any) => !d || d.isBefore(new Date())}
+        value={field.value ? dayjs(field.value) : null} // Ensure it's a Day.js object
+        disabledDate={(d) => d && d.isBefore(dayjs(), "day")} // Use Day.js
         onChange={(date: any, dateString: string) => {
-          setValue(
-            new Date(date).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })
-          );
+          if (date) {
+            setValue(date.format("MMMM D, YYYY")); // Store in readable format
+          } else {
+            setValue(""); // Handle cleared value
+          }
         }}
         onBlur={() => {
           setTouched(true); // Mark the field as touched on blur
