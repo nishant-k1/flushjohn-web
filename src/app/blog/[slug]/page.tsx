@@ -1,24 +1,24 @@
 import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
 import { apiBaseUrls, s3assets, websiteURL } from "@/constants";
-import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
 
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
 
-type Props = { params: { slug: string } };
-
-// ✅ **Dynamic Metadata for SEO**
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = await params;
+  if (!slug) return { title: "FlushJohn Blog" };
 
   try {
-    // const res = await axios.get(API_URL, { params: { slug } });
-    // const blog = res?.data?.data;
-
-    const res = await fetch(`${API_URL}?slug=${slug}`, { cache: "no-store" });
+    const res = await fetch(`${API_URL}?slug=${slug}`, {
+      cache: "no-store",
+    });
     const { data: blog } = (await res.json()) || {};
     if (!blog) {
       return { title: "Blog Post Not Found" };
@@ -63,54 +63,64 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // ✅ **Page Component**
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+  const { slug } = await params;
   if (!slug) return;
-  const res = await axios.get(API_URL, { params: { slug } });
-  const blogPost = {
-    ...res?.data?.data,
-    content: DOMPurify.sanitize(res?.data?.data?.content),
-  };
 
-  // ✅ JSON-LD structured data for the Blog Post
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: blogPost.title,
-    description: blogPost.excerpt || blogPost.title,
-    datePublished: blogPost.publishedAt || new Date().toISOString(),
-    dateModified: blogPost.updatedAt || new Date().toISOString(),
-    author: {
-      "@type": "Person",
-      name: blogPost.author || "FlushJohn Team",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "FlushJohn",
-      logo: {
-        "@type": "ImageObject",
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+  try {
+    const res = await fetch(`${API_URL}?slug=${slug}`, { cache: "no-store" });
+    const { data: blog } = (await res.json()) || {};
+    if (!blog) {
+      return <div>Blog Post Not Found</div>;
+    }
+
+    const blogPost = {
+      ...blog,
+      content: DOMPurify.sanitize(blog.content),
+    };
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: blogPost.title,
+      description: blogPost.excerpt || blogPost.title,
+      datePublished: blogPost.publishedAt || new Date().toISOString(),
+      dateModified: blogPost.updatedAt || new Date().toISOString(),
+      author: {
+        "@type": "Person",
+        name: blogPost.author || "FlushJohn Team",
       },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${websiteURL}/blog/${slug}`,
-    },
-    image:
-      blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
-  };
+      publisher: {
+        "@type": "Organization",
+        name: "FlushJohn",
+        logo: {
+          "@type": "ImageObject",
+          url: `${s3assets}/og-image-flushjonn-web.png`,
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${websiteURL}/blog/${slug}`,
+      },
+      image:
+        blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
+    };
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <BlogPost
-        blogPost={blogPost}
-        slug={slug}
-      />
-    </>
-  );
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <BlogPost
+          blogPost={blogPost}
+          slug={slug}
+        />
+      </>
+    );
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
+    return <div>Error loading blog post</div>;
+  }
 };
 
 export default BlogPostPage;
