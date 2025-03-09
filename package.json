@@ -26,6 +26,7 @@
     "formik": "2.4.6",
     "framer-motion": "^12.4.10",
     "hamburger-react": "2.5.2",
+    "html-to-text": "^9.0.5",
     "isomorphic-dompurify": "^2.22.0",
     "lucide-react": "^0.477.0",
     "moment": "2.30.1",

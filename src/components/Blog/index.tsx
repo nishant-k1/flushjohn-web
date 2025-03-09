@@ -4,6 +4,14 @@ import Breadcrumbs from "../Breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import { generateSlug } from "@/utils";
+import { convert } from "html-to-text"; // ✅ Import html-to-text
+
+const truncateText = (html: string, maxLength = 150) => {
+  const plainText = convert(html, { wordwrap: false }); // ✅ Strip HTML tags
+  return plainText.length > maxLength
+    ? plainText.substring(0, maxLength).trim() + "..."
+    : plainText;
+};
 
 const Blog = ({ blogList }: any) => {
   return (
@@ -11,52 +19,46 @@ const Blog = ({ blogList }: any) => {
       <div className={styles.container}>
         <Breadcrumbs path="" />
         <div className={styles.wrapper}>
-          <h1>Blog</h1>
+          <h1>Our Blog</h1>
           <div className={styles.blogWrapper}>
-            {blogList.map(
-              (item: {
-                _id: any;
-                title: string;
-                coverImage: {
-                  src: string;
-                  alt: string;
-                };
-                createdAt: any;
-                desc: string;
-              }) => {
-                const { _id, coverImage, title, createdAt, desc } = item;
-                const blogDate = new Date(createdAt);
-                const { src = "", alt = "" } = coverImage || {};
-                const slug = generateSlug(title);
-                return (
-                  <Link
-                    href={`/blog/${slug}`}
-                    key={_id}
-                    className={styles.blogItem}
-                  >
-                    <div className={styles.textContainer}>
-                      <h2>{title || ""}</h2>
-                      <h3>
-                        {blogDate.toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </h3>
-                      <p>{desc || ""}</p>
-                    </div>
+            {blogList.map((item: any) => {
+              const { _id, coverImage, title, createdAt, content } = item;
+              const blogDate = new Date(createdAt);
+              const { src = "", alt = "" } = coverImage || {};
+              const slug = generateSlug(title);
+              const previewText = truncateText(content);
+
+              return (
+                <Link
+                  href={`/blog/${slug}`}
+                  key={_id}
+                  className={styles.blogItem}
+                >
+                  <div className={styles.imageContainer}>
                     {coverImage && (
                       <Image
                         src={src}
                         alt={alt}
+                        width={400}
                         height={200}
-                        width={200}
                       />
                     )}
-                  </Link>
-                );
-              }
-            )}
+                  </div>
+                  <div className={styles.textContainer}>
+                    <h2>{title || "Untitled"}</h2>
+                    <h3>
+                      {blogDate.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </h3>
+                    <p>{previewText || "No preview available."}</p>
+                    <span className={styles.readMore}>Read More →</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

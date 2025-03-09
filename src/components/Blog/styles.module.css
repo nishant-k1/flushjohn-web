@@ -1,11 +1,6 @@
-/* utilities */
 .section {
   background-color: var(--tertiary-bg-color);
-  /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 32px;
+  padding: 48px 16px;
 }
 
 .container {
@@ -14,30 +9,24 @@
 }
 
 .wrapper {
-  padding: 6rem 0;
+  padding: 4rem 0;
+  text-align: center;
 }
+
 .wrapper h1 {
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
-.wrapper h2 {
-  font-size: large;
-}
-.wrapper h3 {
-  color: lab(7.18 2.34 -6.15);
-  font-size: small;
-}
+
 .blogWrapper {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  justify-content: center;
 }
 
 .blogItem {
-  display: grid;
-  padding: 24px 0 24px 12px;
-  column-gap: 24px;
-  grid-template-columns: 1fr 1fr;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -45,27 +34,73 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .blogItem:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .textContainer {
-  display: grid;
-  row-gap: 12px;
-  height: fit-content;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
 }
 
+.textContainer h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.textContainer h3 {
+  font-size: 14px;
+  color: #888;
+}
+
+.textContainer p {
+  font-size: 14px;
+  color: #555;
+  flex-grow: 1;
+}
+
+.readMore {
+  color: #0070f3;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.readMore:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Grid Layout */
 @media screen and (min-width: 768px) {
   .blogWrapper {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
 
 @media screen and (min-width: 1024px) {
   .blogWrapper {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
