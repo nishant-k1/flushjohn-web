@@ -1,15 +1,15 @@
 "use client";
 
-import React from "react";
-import { ClientWidthContext } from "../ClientWidthContext";
-import { SidebarContext, SidebarContextType } from "../SidebarContext";
-import { ClientWidthContextType } from "../ClientWidthContext";
+import React, { useContext } from "react";
+import { QuoteContext } from "../QuoteContext";
 
 export type QuickQuoteContextType = {
   quickQuoteViewStatus: boolean;
   setQuickQuoteViewStatus: React.Dispatch<React.SetStateAction<boolean>>;
   quickQuoteTitle: string;
   setQuickQuoteTitle: React.Dispatch<React.SetStateAction<string>>;
+  quickQuoteRequested: boolean;
+  setQuickQuoteRequested: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const defaultContextValue: QuickQuoteContextType = {
@@ -17,6 +17,8 @@ const defaultContextValue: QuickQuoteContextType = {
   setQuickQuoteViewStatus: () => {},
   quickQuoteTitle: "Quick Quote",
   setQuickQuoteTitle: () => {},
+  quickQuoteRequested: false,
+  setQuickQuoteRequested: () => {},
 };
 
 export const QuickQuoteContext =
@@ -27,17 +29,18 @@ export const QuickQuoteContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const { quoteRequested } = useContext(QuoteContext);
+
   const [quickQuoteViewStatus, setQuickQuoteViewStatus] =
+    React.useState<boolean>(false);
+
+  const [quickQuoteRequested, setQuickQuoteRequested] =
     React.useState<boolean>(false);
 
   const [quickQuoteTitle, setQuickQuoteTitle] =
     React.useState<string>("Quick Quote");
 
   const [exitTriggered, setExitTriggered] = React.useState<boolean>(false);
-
-  const { clientWidth } =
-    React.useContext<ClientWidthContextType>(ClientWidthContext);
-  const { active } = React.useContext<SidebarContextType>(SidebarContext);
 
   React.useEffect(() => {
     if (
@@ -54,7 +57,14 @@ export const QuickQuoteContextProvider = ({
   // Exit-intent trigger
   React.useEffect(() => {
     const handleExitIntent = (e: MouseEvent) => {
-      if (e.clientY < 10 && !quickQuoteViewStatus && !exitTriggered) {
+      if (
+        e.clientY < 10 &&
+        !quickQuoteViewStatus &&
+        !exitTriggered &&
+        !quickQuoteRequested &&
+        !quoteRequested &&
+        window.location.pathname !== "/quote"
+      ) {
         setQuickQuoteViewStatus(true);
         setQuickQuoteTitle("Wait! Get an instant quote before you go!");
         setExitTriggered(true);
@@ -68,15 +78,26 @@ export const QuickQuoteContextProvider = ({
     return () => {
       document.removeEventListener("mouseleave", handleExitIntent);
     };
-  }, [quickQuoteViewStatus, exitTriggered]);
+  }, [
+    quickQuoteViewStatus,
+    exitTriggered,
+    quoteRequested,
+    quickQuoteRequested,
+  ]);
 
   React.useEffect(() => {
-    document.documentElement.style.overflowY =
-      (quickQuoteViewStatus && clientWidth !== null && clientWidth <= 768) ||
-      active
-        ? "hidden"
-        : "scroll";
-  }, [quickQuoteViewStatus, clientWidth, active]);
+    if (quickQuoteViewStatus) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    };
+  }, [quickQuoteViewStatus]);
 
   return (
     <QuickQuoteContext.Provider
@@ -85,6 +106,8 @@ export const QuickQuoteContextProvider = ({
         setQuickQuoteViewStatus,
         quickQuoteTitle,
         setQuickQuoteTitle,
+        quickQuoteRequested,
+        setQuickQuoteRequested,
       }}
     >
       {children}

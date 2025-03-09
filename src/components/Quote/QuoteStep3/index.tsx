@@ -26,7 +26,7 @@ const QuoteStep3 = () => {
       progress: undefined,
       theme: "dark",
     });
-  const { render, data } = useContext(QuoteContext);
+  const { render, data, setQuoteRequested } = useContext(QuoteContext);
   const [_, setStep] = render;
   const [formValues, setFormValues] = data;
 
@@ -66,6 +66,7 @@ const QuoteStep3 = () => {
           try {
             createLead({ ...values, leadSource: "Web Lead" });
             notify();
+            setQuoteRequested(true);
             resetForm();
             setFormValues(initialQuoteValues);
             setStep(1);

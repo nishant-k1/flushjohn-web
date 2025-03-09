@@ -53,11 +53,15 @@ type FormValues = typeof initialQuoteValues;
 interface QuoteContextType {
   render: [number, React.Dispatch<React.SetStateAction<number>>];
   data: [FormValues, React.Dispatch<React.SetStateAction<FormValues>>];
+  quoteRequested: boolean;
+  setQuoteRequested: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const defaultContextValue: QuoteContextType = {
   render: [1, () => {}],
   data: [initialQuoteValues, () => {}],
+  quoteRequested: false,
+  setQuoteRequested: () => {},
 };
 
 // Initialize the context with default values
@@ -71,9 +75,16 @@ export const QuoteContextProvider = ({ children }: { children: ReactNode }) => {
   const [formValues, setFormValues] =
     React.useState<FormValues>(initialQuoteValues);
 
+  const [quoteRequested, setQuoteRequested] = React.useState<boolean>(false);
+
   return (
     <QuoteContext.Provider
-      value={{ render: [step, setStep], data: [formValues, setFormValues] }}
+      value={{
+        setQuoteRequested,
+        quoteRequested,
+        render: [step, setStep],
+        data: [formValues, setFormValues],
+      }}
     >
       {children}
     </QuoteContext.Provider>

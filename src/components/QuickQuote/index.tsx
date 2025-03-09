@@ -50,6 +50,7 @@ const QuickQuote = () => {
     setQuickQuoteViewStatus,
     quickQuoteTitle,
     setQuickQuoteTitle,
+    setQuickQuoteRequested,
   } = useContext<QuickQuoteContextType>(QuickQuoteContext);
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -128,27 +129,11 @@ const QuickQuote = () => {
             setQuickQuoteViewStatus(false);
             try {
               createLead({ ...values, leadSource: "Web Quick Lead" });
+              setQuickQuoteRequested(true);
               notify();
-              // const res = await axios.post(`${API_BASE_URL}/leads`, {
-              //   ...values,
-              //   leadSource: "Web Quick Lead",
-              // });
-              // if (res?.status === 201) {
-              //   notify();
-              // }
-
-              logEvent({
-                category: "Form",
-                action: "Web Quick Lead Form Submit",
-                label: "Web Quick Lead Form Button",
-                value: undefined,
-                nonInteraction: undefined,
-                transport: "beacon",
-              });
             } catch (err) {
               console.log(err);
             }
-
             // Reset the form with all required initial values
             resetForm({
               values: {

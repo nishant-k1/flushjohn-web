@@ -24,6 +24,10 @@ import { animations } from "@/anmations/effectData";
 import { io, Socket } from "socket.io-client";
 import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "../FormControls/MyZipTextField";
+import {
+  QuickQuoteContext,
+  QuickQuoteContextType,
+} from "@/contexts/QuickQuoteContext";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -43,6 +47,9 @@ const HeroQuickQuote = () => {
     useContext<ClientWidthContextType>(ClientWidthContext);
   const [heroQuickQuoteViewStatus, setHeroQuickQuoteViewStatus] =
     useState(false);
+
+  const { setQuickQuoteRequested } =
+    useContext<QuickQuoteContextType>(QuickQuoteContext);
 
   React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {
@@ -105,6 +112,7 @@ const HeroQuickQuote = () => {
         try {
           createLead({ ...values, leadSource: "Web Hero Quick Lead" });
           notify();
+          setQuickQuoteRequested(true);
         } catch (err) {
           console.log(err);
         }
