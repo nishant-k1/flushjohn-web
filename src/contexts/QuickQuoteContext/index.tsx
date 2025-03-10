@@ -15,7 +15,7 @@ export type QuickQuoteContextType = {
 const defaultContextValue: QuickQuoteContextType = {
   quickQuoteViewStatus: false,
   setQuickQuoteViewStatus: () => {},
-  quickQuoteTitle: "Quick Quote",
+  quickQuoteTitle: "Quick Free Quote",
   setQuickQuoteTitle: () => {},
   quickQuoteRequested: false,
   setQuickQuoteRequested: () => {},
@@ -38,7 +38,7 @@ export const QuickQuoteContextProvider = ({
     React.useState<boolean>(false);
 
   const [quickQuoteTitle, setQuickQuoteTitle] =
-    React.useState<string>("Quick Quote");
+    React.useState<string>("Quick Free Quote");
 
   const [exitTriggered, setExitTriggered] = React.useState<boolean>(false);
 

@@ -160,7 +160,7 @@ const HeroQuickQuote = () => {
                 item
                 xs={12}
               >
-                <h2>Quick Quote</h2>
+                <h2>Get Instant Quote</h2>
               </Grid>
               <Grid
                 item
