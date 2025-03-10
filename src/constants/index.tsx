@@ -155,7 +155,7 @@ export const home_data: HomeData = {
         image: `${s3assets}/assets/home/services/truck.jpeg`,
         alt: "renovation_pic",
         title: "Need a portable restroom during a home or hotel renovations?",
-        body: "Home renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike. Our porta potty rental near me service ensures quick delivery and setup.",
+        body: "Renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike. Our porta potty rental near me service ensures quick delivery and setup.",
       },
       {
         id: 4,
