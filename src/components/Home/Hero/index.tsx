@@ -41,7 +41,7 @@ const Hero = React.memo(({ title }: HeroProps) => {
                   href="/quote"
                   className={styles.ctaQuoteBtn}
                 >
-                  GET QUOTE
+                  GET A QUOTE
                 </Link>
                 <Link
                   href={phone_link}

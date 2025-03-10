@@ -148,7 +148,7 @@ export const home_data: HomeData = {
         alt: "construction_pic",
         title:
           "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
-        body: "Construction sites require reliable sanitation. Our porta potty for construction sites is designed to keep workers safe and productive. Whether you need a long-term porta potty rental or a short-term solution, we've got you covered for the health and well-being of workers. This is where construction porta potty rentals come in.",
+        body: "Construction sites require reliable sanitation. Our porta potty for construction sites is designed to keep workers safe and productive. Whether you need a long-term porta potty rental or a short-term solution, we've got you covered for the health and well-being of workers. This is where flushjohn construction porta potty rentals come in. Worried about keeping your construction site compliant with OSHA regulations? Our porta potty rentals meet all safety standards, ensuring your workers have clean restrooms available 24/7.",
       },
       {
         id: 3,
