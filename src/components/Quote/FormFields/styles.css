@@ -1,21 +1,21 @@
-:where(.css-dev-only-do-not-override-240cud).ant-picker {
-  border-radius: 0;
-  width: 100%;
-  height: 2.5rem;
+.ant-picker {
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 2.5rem !important;
 }
 
-:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined {
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
+.ant-picker-outlined {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: black !important;
 }
 
-:where(.css-dev-only-do-not-override-240cud).ant-picker .ant-picker-suffix {
-  display: flex;
+.ant-picker .ant-picker-suffix {
+  display: flex !important;
   flex: none;
   align-self: center;
   margin-inline-start: 4px;
-  color: black;
+  color: black !important;
   line-height: 1;
   pointer-events: none;
   transition:
@@ -46,13 +46,13 @@
   font-family: small;
 }
 
-:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:focus,
-:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:focus-within,
-:where(.css-dev-only-do-not-override-240cud).ant-picker-outlined:hover {
-  border-color: var(--primary-bg-color);
-  box-shadow: none;
+.ant-picker-outlined:focus,
+.ant-picker-outlined:focus-within,
+.ant-picker-outlined:hover {
+  border-color: var(--primary-bg-color) !important;
+  box-shadow: none !important;
 }
 
 .ant-picker-input input {
-  color: black;
+  color: black !important;
 }
