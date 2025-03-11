@@ -10,12 +10,18 @@
 
 .heroImage {
   position: absolute;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
 }
 
 .overlayHeroImage {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 900px;
   position: absolute;
-  inset: 0;
-  background: rgba(0, 28, 58, 0.6);
+  background: rgba(0 28 58 / 0.8);
   z-index: 2;
   pointer-events: none;
 }

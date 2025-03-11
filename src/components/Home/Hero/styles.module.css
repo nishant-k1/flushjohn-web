@@ -44,6 +44,7 @@
 .heroTitle h2 {
   font-size: large;
   font-weight: 200;
+  line-height: 2rem;
 }
 
 .heroCta {
