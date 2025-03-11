@@ -4,22 +4,13 @@
   overflow: hidden;
 }
 
-/* .hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://cdn.flushjohn.com/assets/gallery/img-2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: scaleX(-1);
-  z-index: -1;
-} */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
 .carouselWrapper {
   position: absolute;
@@ -30,18 +21,11 @@
   z-index: -1;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 .heroWrapper {
   display: grid;
   grid-template-columns: 1fr;
-  justify-content: start;
+  justify-content: center;
+  row-gap: 2rem;
 }
 
 .heroTitle {
@@ -49,15 +33,17 @@
   align-items: start;
   justify-items: start;
   color: var(--primary-text-color);
+  grid-template-rows: max-content max-content;
+  row-gap: 1rem;
 }
 
 .heroTitle h1 {
-  line-height: 3rem;
-  margin: 0;
-  padding: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--primary-text-color);
+  font-size: xx-large;
+}
+
+.heroTitle h2 {
+  font-size: large;
+  font-weight: 200;
 }
 
 .heroCta {
@@ -71,31 +57,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 6px;
   transition: all 0.3s ease-in-out;
   white-space: nowrap;
-  min-width: 160px;
   text-align: center;
+  max-width: 160px;
+  padding: 12px;
 }
 
 .heroImage {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-@media screen and (max-width: 768px) {
-  .ctaQuoteBtn,
-  .ctaPhoneBtn {
-    min-width: 120px !important;
-    padding: 12px !important;
-    background-color: green !important;
-  }
+  justify-content: center;
 }
 
 .ctaQuoteBtn {
@@ -170,19 +146,19 @@
 @media (min-width: 768px) {
   .heroWrapper {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    justify-content: space-between;
   }
-
   .heroTitle h1 {
-    line-height: 3.2rem;
     font-size: 2rem;
+  }
+  .heroImage {
+    justify-content: flex-end;
   }
 }
 
 @media (min-width: 1024px) {
   .heroWrapper {
     padding: 72px 0 16px;
-    column-gap: 6rem;
   }
 
   .heroTitle h1 {

@@ -80,6 +80,7 @@ export interface Product {
 export interface HomeData {
   hero: {
     title: string;
+    subTitle: string;
     image: Image;
     truckImg: Image;
   };
@@ -96,8 +97,8 @@ export interface HomeData {
 
 export const home_data: HomeData = {
   hero: {
-    title:
-      "Clean, Convenient, and Reliable Porta Potty Rentals – Ideal for Job Sites, Construction Sites, Weddings, and Outdoor Events. Get an Instant Quote Today!",
+    title: `Porta Potty Rentals for Events & Construction`,
+    subTitle: `Fast Delivery & Setup! Get an Instant Quote for Affordable, Hygienic Portable Toilet Rentals Near You.`,
     image: {
       src: `${s3assets}/assets/home/hero/hero-img-1.jpeg`,
       alt: "porta_potty",
@@ -108,7 +109,7 @@ export const home_data: HomeData = {
     },
   },
   features: {
-    heading: "Why Choose Us for Your Sanitation Needs?",
+    heading: "Why Choose Us?",
     content: [
       {
         id: 1,
@@ -132,29 +133,27 @@ export const home_data: HomeData = {
   },
   services: {
     heading:
-      "Comprehensive Porta Potty and Handwash Station Rental Services: Meeting Your Sanitation Needs Anytime, Anywhere",
+      "Our Comprehensive Porta Potty and Handwash Station Rental Services",
     content: [
       {
         id: 1,
         image: `${s3assets}/assets/home/services/services_event.jpg`,
         alt: "event_pic",
-        title:
-          "Event Sanitation Services: Providing Clean and Comfortable Restrooms for Your Guests",
+        title: "Event Porta John Rentals",
         body: "Whether you're hosting a wedding, festival, or outdoor event, providing adequate sanitation is essential. Our wedding porta potty rental and festival portable toilets ensure cleanliness and convenience for all guests. This is where event purpose porta potty and hand wash station rentals come in. Event purpose porta potties and hand wash rentals are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events.",
       },
       {
         id: 2,
         image: `${s3assets}/assets/home/services/hero_9.jpg`,
         alt: "construction_pic",
-        title:
-          "Construction Porta Potty Rentals: Keeping Your Job Site Safe and Hygienic",
-        body: "Construction sites require reliable sanitation. Our porta potty for construction sites is designed to keep workers safe and productive. Whether you need a long-term porta potty rental or a short-term solution, we've got you covered for the health and well-being of workers. This is where flushjohn construction porta potty rentals come in. Worried about keeping your construction site compliant with OSHA regulations? Our porta potty rentals meet all safety standards, ensuring your workers have clean restrooms available 24/7.",
+        title: "Construction Porta Potty Rentals And Hand Wash Station Rentals",
+        body: "Construction sites require reliable sanitation. Our porta potty for construction sites is designed to keep workers safe and productive. Whether you need a long-term porta potty rental or a short-term solution, we've got you covered for the health and well-being of workers. This is where flushjohn Construction Porta Potty Rentals And Hand Wash Station Rentals come in. Worried about keeping your construction site compliant with OSHA regulations? Our porta potty rentals meet all safety standards, ensuring your workers have clean restrooms available 24/7.",
       },
       {
         id: 3,
         image: `${s3assets}/assets/home/services/truck.jpeg`,
         alt: "renovation_pic",
-        title: "Need a portable restroom during a home or hotel renovations?",
+        title: "Portable Restroom Rentals For Renovations",
         body: "Renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike. Our porta potty rental near me service ensures quick delivery and setup.",
       },
       {

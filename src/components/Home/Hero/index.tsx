@@ -14,6 +14,7 @@ import CarouselView from "@/components/CarouselView";
 
 type HeroProps = {
   title: string;
+  subTitle: string;
   image: {
     src: string;
     alt: string;
@@ -24,7 +25,7 @@ type HeroProps = {
   };
 };
 
-const Hero = React.memo(({ title }: HeroProps) => {
+const Hero = React.memo(({ title, subTitle }: HeroProps) => {
   const { phone_link, phone_number }: phoneType = phone;
   return (
     <div className={styles.hero}>
@@ -35,7 +36,8 @@ const Hero = React.memo(({ title }: HeroProps) => {
         <div className={styles.container}>
           <div className={styles.heroWrapper}>
             <div className={styles.heroTitle}>
-              <h1>{title}</h1>
+              <h1>{title} -</h1>
+              <h2>{subTitle}</h2>
               <div className={styles.heroCta}>
                 <Link
                   href="/quote"
