@@ -33,6 +33,9 @@ export const metadata: Metadata = {
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
     images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
+  alternates: {
+    canonical: websiteURL,
+  },
 };
 
 // JSON-LD structured data for homepage
