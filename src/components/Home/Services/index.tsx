@@ -13,7 +13,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
   return (
     <div className={styles.servicesSection}>
       <div className={styles.container}>
-        <h1 className={styles.heading}>{heading}</h1>
+        <h2 className={styles.heading}>{heading}</h2>
         <div className={styles.serviceGrid}>
           {content.map((item) => {
             const { id, image, alt, title, body } = item;
