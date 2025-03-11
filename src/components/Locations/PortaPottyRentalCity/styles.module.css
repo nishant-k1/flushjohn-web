@@ -1,4 +1,4 @@
-.faq {
+.city {
   background-color: var(--tertiary-bg-color);
   /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
   background-size: cover;
@@ -12,10 +12,13 @@
   margin: 0 auto;
 }
 
-.faqWrapper {
+.cityWrapper {
   padding-top: 108px;
 }
 
+.cityWrapper ul {
+  padding: 24px;
+}
 .container h1,
 .container h2,
 .container h3,
@@ -26,9 +29,4 @@
 .container li {
   color: var(--secondary-text-color);
   padding-bottom: 1rem;
-  text-transform: capitalize;
-}
-
-.container ul {
-  padding-left: 36px;
 }

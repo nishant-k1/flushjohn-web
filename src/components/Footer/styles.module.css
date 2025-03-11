@@ -13,6 +13,14 @@
   margin: 0 auto;
 }
 
+.container a {
+  transition: 0.3s;
+}
+
+.container a:hover {
+  color: var(--primary-bg-color);
+}
+
 .ul {
   padding: 0;
   margin: 0;
@@ -46,6 +54,7 @@
   font-weight: 100;
   color: rgba(255, 255, 255, 0.712);
   font-size: 1rem !important;
+  transition: 0.3s;
 }
 /* logo */
 .footerLogo {
@@ -83,8 +92,7 @@
   row-gap: 0.5rem;
 }
 .social ul li a:hover {
-  color: var(--primary-text-color);
-  transition: 0.3s;
+  color: var(--primary-bg-color);
 }
 /* nav */
 .nav {
@@ -104,11 +112,6 @@
   display: grid;
   grid-template-columns: max-content;
   row-gap: 0.5rem;
-}
-
-.nav ul li a:hover {
-  color: var(--primary-text-color);
-  transition: 0.3s;
 }
 
 /* contact */
@@ -133,10 +136,6 @@
 
 .contact ul li a {
   color: rgb(204, 204, 204);
-}
-
-.contact ul li a:hover {
-  color: var(--primary-text-color);
   transition: 0.3s;
 }
 

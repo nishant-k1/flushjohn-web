@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Locations from "../Home/Locations";
+import Locations from "../Locations";
 import { footerLinks } from "./data";
 
 import { home_data, s3assets } from "../../constants";
