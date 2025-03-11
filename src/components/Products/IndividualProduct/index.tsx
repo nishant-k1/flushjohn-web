@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import Breadcrumbs from "../../Breadcrumbs";
 import { products_data } from "../../../constants";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IndividualProductProps {
   slug: string;
@@ -29,7 +30,11 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
       <div className={styles.container}>
         <Breadcrumbs path={`/rental-products/${slug}`} />
         <div className={styles.wrapper}>
-          <h1>{title}</h1>
+          <h1>{title} - Porta Potty Rentals Nearby</h1>
+          <p>
+            Reliable, hygienic, and affordable portable toilet rentals for your
+            event or job site.
+          </p>
           <div>
             <Image
               src={src_1}
@@ -45,6 +50,25 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             />
           </div>
           <p>{desc}</p>
+          <h2>Why Choose Our {title}?</h2>
+          <ul>
+            <li>✅ Clean and sanitized before every use</li>
+            <li>✅ Durable and weather-resistant design</li>
+            <li>✅ Available for short-term and long-term rentals</li>
+            <li>
+              ✅ Perfect for events, construction sites, and outdoor gatherings
+            </li>
+          </ul>
+          <p>
+            Need a reliable {title}? <Link href="/quote">Get a free quote</Link>{" "}
+            today or learn more about our{" "}
+            <Link href="/rental-products">rental options</Link>.
+          </p>
+          <p>
+            <Link href="/">Back to Homepage</Link> |{" "}
+            <Link href="/faq">Frequently Asked Questions</Link> |{" "}
+            <Link href="/contact">Contact Us</Link>
+          </p>
         </div>
       </div>
     </div>
