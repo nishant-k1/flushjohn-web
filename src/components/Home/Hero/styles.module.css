@@ -144,6 +144,11 @@
 
 /* Responsive Styles */
 @media (min-width: 768px) {
+  .container {
+    height: fit-content;
+    padding: 4rem 0;
+  }
+
   .heroWrapper {
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
