@@ -60,8 +60,8 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             </li>
           </ul>
           <p>
-            Need a reliable {title}? <Link href="/quote">Get a free quote</Link>{" "}
-            today or learn more about our{" "}
+            Need a {title}? <Link href="/quote">Get a free quote</Link> today or
+            learn more about our{" "}
             <Link href="/rental-products">rental options</Link>.
           </p>
           <p>
