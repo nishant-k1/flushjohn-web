@@ -16,8 +16,8 @@
 
 .heading {
   color: #1a3d5f;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: x-large;
+  font-weight: 600;
   margin-bottom: 50px;
 }
 
@@ -51,8 +51,8 @@
   margin-top: 20px;
 }
 
-.textContent h3 {
-  font-size: 1.8rem;
+.textContent h2 {
+  font-size: large;
   color: #1a3d5f;
   margin-bottom: 16px;
 }

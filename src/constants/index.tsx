@@ -109,7 +109,7 @@ export const home_data: HomeData = {
     },
   },
   features: {
-    heading: "Why Choose Us?",
+    heading: "Why Choose FlushJohn for Porta Potty Rentals?",
     content: [
       {
         id: 1,

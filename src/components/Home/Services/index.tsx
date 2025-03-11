@@ -13,7 +13,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
   return (
     <div className={styles.servicesSection}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>{heading}</h2>
+        <h1 className={styles.heading}>{heading}</h1>
         <div className={styles.serviceGrid}>
           {content.map((item) => {
             const { id, image, alt, title, body } = item;
@@ -31,7 +31,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                   />
                 </div>
                 <div className={styles.textContent}>
-                  <h3>{title}</h3>
+                  <h2>{title}</h2>
                   <p>{body}</p>
                   <Link href="/quote">
                     <button className={styles.quoteButton}>

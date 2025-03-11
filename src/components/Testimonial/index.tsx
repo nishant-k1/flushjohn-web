@@ -20,7 +20,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
   return (
     <div className={styles.testimonials}>
       <div className={styles.container}>
-        <h2>{heading}</h2>
+        <h1>{heading}</h1>
         <Carousel
           autoplay
           arrows
@@ -41,7 +41,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                     }}
                   />
                   <div>
-                    <h3>{item.title}</h3>
+                    <h2>{item.title}</h2>
                     <p>{item.body}</p>
                   </div>
                 </div>

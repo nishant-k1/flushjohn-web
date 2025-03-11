@@ -13,7 +13,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
   return (
     <div className={styles.features}>
       <div className={styles.container}>
-        <h2>{heading}</h2>
+        <h1>{heading}</h1>
         <div className={styles.featuresWrapper}>
           {content &&
             content.map((item: Feature) => (
@@ -22,7 +22,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                 className={styles.wrapper}
               >
                 <div>
-                  <h3>{item.title}</h3>
+                  <h2>{item.title}</h2>
                   <p>{item.body}</p>
                 </div>
                 <div className={styles.iconContainer}>

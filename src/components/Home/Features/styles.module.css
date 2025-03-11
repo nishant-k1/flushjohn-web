@@ -12,10 +12,10 @@
   margin: 0 auto;
 }
 
-.container h2 {
+.container h1 {
   color: #1a3d5f;
   padding: 20px 0;
-  font-size: 2rem;
+  font-size: x-large;
   text-align: center;
   font-weight: bold;
 }
@@ -65,8 +65,8 @@
   color: white;
 }
 
-.wrapper h3 {
-  font-size: 1.2rem;
+.wrapper h2 {
+  font-size: large;
   color: #1a3d5f;
   margin-top: 16px;
   font-weight: bold;
