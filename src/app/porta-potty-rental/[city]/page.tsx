@@ -2,11 +2,11 @@ import React from "react";
 import PortaPottyRentalCity from "@/components/Locations/PortaPottyRentalCity";
 import { cityPageData, s3assets, websiteURL } from "@/constants";
 
-type Props = {
-  params: { city: string };
-};
-
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ city: string }>;
+}) {
   const { city } = await params; // Keeping await as requested
 
   const cityName = city.replace("-", " "); // Convert slug format to readable format
@@ -41,7 +41,11 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function CityPage({ params }: Props) {
+export default async function CityPage({
+  params,
+}: {
+  params: Promise<{ city: string }>;
+}) {
   const { city } = await params; // Keeping await as requested
   const cityName = city.replace("-", " ");
 
