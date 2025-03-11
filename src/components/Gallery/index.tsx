@@ -19,6 +19,8 @@ const Gallery = () => {
                     alt={alt}
                     height={height}
                     width={width}
+                    priority={true}
+                    placeholder="empty"
                   />
                 </div>
               );

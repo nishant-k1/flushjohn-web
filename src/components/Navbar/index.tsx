@@ -47,6 +47,8 @@ const Navbar = () => {
               alt="porta-potty"
               height={64}
               width={100}
+              priority={true}
+              placeholder="empty"
             />
           </Link>
           <div className={styles.hamburger}>
@@ -58,6 +60,7 @@ const Navbar = () => {
               }}
               color="white"
               size={20}
+              label="Toggle navigation menu"
             />
           </div>
           <div className={styles.navLinks}>

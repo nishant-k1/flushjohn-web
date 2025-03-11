@@ -41,6 +41,8 @@ const Blog = ({ blogList }: any) => {
                         alt={alt}
                         width={400}
                         height={200}
+                        priority={true}
+                        placeholder="empty"
                       />
                     )}
                   </div>

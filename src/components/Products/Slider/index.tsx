@@ -32,6 +32,8 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
             width={150}
             src={toggle ? src_2 : src_1}
             alt={alt}
+            priority={true}
+            placeholder="empty"
           />
         </motion.div>
 

@@ -1,12 +1,13 @@
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.flushjohn.com", // your CloudFront distribution URL
-        port: "", // leave empty for default HTTPS port
-        pathname: "/**", // Allows all images in the root and any nested directories
+        hostname: "cdn.flushjohn.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

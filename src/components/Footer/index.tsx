@@ -31,6 +31,8 @@ const Footer = () => {
                   alt="brand-logo"
                   height={80}
                   width={128}
+                  priority={true}
+                  placeholder="empty"
                 />
               </Link>
             </li>

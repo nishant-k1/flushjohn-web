@@ -39,6 +39,8 @@ const Sidebar = () => {
               onClick={handleClick}
               src={`${s3assets}/logo_white.svg`}
               alt="brand-logo"
+              priority={true}
+              placeholder="empty"
             />
           </Link>
           <Link

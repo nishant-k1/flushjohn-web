@@ -41,12 +41,16 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
               alt={alt}
               width={300}
               height={600}
+              priority={true}
+              placeholder="empty"
             />
             <Image
               src={src_2}
               alt={alt}
               width={300}
               height={600}
+              priority={true}
+              placeholder="empty"
             />
           </div>
           <p>{desc}</p>

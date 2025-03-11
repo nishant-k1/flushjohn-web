@@ -8,6 +8,7 @@ export default function CarouselView() {
     <Carousel
       autoplay
       autoplaySpeed={2000}
+      style={{ height: "900px" }}
     >
       {[
         "https://cdn.flushjohn.com/assets/gallery/img-2.1-enhanced-1.jpg",
@@ -21,10 +22,11 @@ export default function CarouselView() {
         >
           <Image
             src={src}
-            height={900}
-            width={2100}
+            fill={true}
             alt="flusjohn-porta-potty-rental"
             className={styles.heroImage}
+            priority={true}
+            placeholder="empty"
           />
           <div className={styles.overlayHeroImage}></div>
         </div>

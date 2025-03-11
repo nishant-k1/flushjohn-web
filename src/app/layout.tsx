@@ -12,6 +12,7 @@ import { QuoteContextProvider } from "@/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Layout from "@/components/Layout";
+import Head from "next/head";
 
 export default function RootLayout({
   children,
@@ -20,6 +21,46 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          rel="preload"
+          as="image"
+          href="https://cdn.flushjohn.com/assets/gallery/img-2.1-enhanced-1.jpg"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://cdn.flushjohn.com/assets/gallery/img-4.jpg"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://cdn.flushjohn.com/assets/gallery/img-21.jpg"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://cdn.flushjohn.com/assets/gallery/img-20.jpg"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="font"
+          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="font"
+          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </Head>
       <body>
         <Layout>
           <ClientWidthContextProvider>

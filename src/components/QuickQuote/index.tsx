@@ -52,6 +52,7 @@ const QuickQuote = () => {
     setQuickQuoteTitle,
     setQuickQuoteRequested,
   } = useContext<QuickQuoteContextType>(QuickQuoteContext);
+
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
 
   // Handle click outside
@@ -93,8 +94,10 @@ const QuickQuote = () => {
     reconnectionAttempts: 5,
     reconnectionDelay: 1000,
   });
+
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
+
   const createLead = React.useCallback((data: any) => {
     socketRef.current?.emit("createLead", data);
   }, []);

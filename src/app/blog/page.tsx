@@ -54,7 +54,7 @@ const BlogPage = async () => {
 
   try {
     const res = await fetch(API_URL, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     const { data } = (await res.json()) || {};
     if (data) {

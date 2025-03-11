@@ -65,7 +65,7 @@
 }
 
 .quoteButton {
-  background-color: var(--primary-bg-color);
+  background-color: #a95d1f;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -76,7 +76,7 @@
 }
 
 .quoteButton:hover {
-  background-color: var(--primary-bg-color);
+  background-color: #a95d1f;
 }
 
 @media only screen and (max-width: 768px) {

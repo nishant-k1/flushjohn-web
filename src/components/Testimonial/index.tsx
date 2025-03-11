@@ -32,8 +32,10 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                   <Image
                     src={item.image.src}
                     alt={item.image.alt}
-                    width={96}
-                    height={96}
+                    width={256}
+                    height={384}
+                    priority={true}
+                    placeholder="empty"
                     style={{
                       height: 96,
                       width: 96,

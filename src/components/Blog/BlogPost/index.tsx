@@ -18,9 +18,11 @@ const BlogPost = ({ blogPost, slug }: any) => {
             {coverImage && (
               <Image
                 src={src}
-                alt={alt}
+                alt={alt || "Blog cover image"}
                 width={600}
                 height={600}
+                priority={true}
+                placeholder="empty"
                 className={styles.coverImage}
               />
             )}
