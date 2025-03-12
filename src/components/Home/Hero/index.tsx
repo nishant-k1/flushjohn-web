@@ -5,12 +5,16 @@ import styles from "./styles.module.css";
 import { phone } from "../../../constants";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Link from "next/link";
-import { logEvent } from "../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { phoneType } from "../../../constants";
-import HeroQuickQuote from "@/components/HeroQuickQuote";
-import CarouselView from "@/components/CarouselView";
+import dynamic from "next/dynamic";
+const CarouselView = dynamic(() => import("@/components/CarouselView"), {
+  ssr: false,
+});
+const HeroQuickQuote = dynamic(() => import("@/components/HeroQuickQuote"), {
+  ssr: false,
+});
 
 type HeroProps = {
   title: string;
@@ -48,16 +52,6 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 <Link
                   href={phone_link}
                   className={styles.ctaPhoneBtn}
-                  onClick={() => {
-                    logEvent({
-                      category: "Button",
-                      action: "Home Page Hero Section Phone Call",
-                      label: "Home Page Hero Section Phone Call Button",
-                      value: undefined,
-                      nonInteraction: undefined,
-                      transport: "beacon",
-                    });
-                  }}
                 >
                   <div>{phone_number}</div>
                   <PhoneIcon className={styles.flippedIcon} />
