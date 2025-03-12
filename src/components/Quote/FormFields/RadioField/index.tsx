@@ -13,6 +13,7 @@ const RadioField = ({ label, ...props }: any) => {
         <input
           {...field}
           {...props}
+          aria-label={props.name}
           style={{
             height: "1.5rem",
             width: "1.5rem",

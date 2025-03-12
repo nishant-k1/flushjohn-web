@@ -32,6 +32,7 @@ const MyRadioField = ({ label, ...props }: any) => {
         <input
           {...field}
           {...props}
+          aria-label={props.name}
           type="radio"
           checked={field.value === props.value}
           // className={props.className}
