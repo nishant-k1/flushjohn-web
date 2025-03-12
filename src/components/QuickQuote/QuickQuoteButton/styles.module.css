@@ -28,13 +28,13 @@
   /* position: relative; */
   position: fixed;
   right: 2rem;
-  bottom: 2rem;
+  bottom: 40vh;
   height: 4rem;
   width: 4rem;
-  background-color: var(--primary-bg-color);
+  background-color: #a95d1f;
   border-radius: 50%;
   border: 0;
-  color: #fff;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
@@ -77,13 +77,13 @@
   /* position: relative; */
   position: fixed;
   right: 2rem;
-  bottom: 7rem;
+  bottom: 52vh;
   height: 4rem;
   width: 4rem;
-  background-color: var(--primary-bg-color);
+  background-color: #a95d1f;
   border-radius: 50%;
   border: 0;
-  color: var(--primary-text-color);
+  color: white;
   cursor: pointer;
   display: flex;
   font-size: 12px;
