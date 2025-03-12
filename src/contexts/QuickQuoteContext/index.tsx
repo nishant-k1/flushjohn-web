@@ -43,11 +43,13 @@ export const QuickQuoteContextProvider = ({
   const [exitTriggered, setExitTriggered] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    if (
-      (typeof window !== "undefined" &&
-        window.location.pathname !== "/quote") ||
-      window.location.pathname !== "/"
-    ) {
+    if (typeof window !== "undefined") {
+      if (
+        window.location.pathname === "/quote" ||
+        window.location.pathname === "/"
+      ) {
+        return;
+      }
       const timer = setTimeout(() => {
         setQuickQuoteViewStatus(true);
       }, 12000);
