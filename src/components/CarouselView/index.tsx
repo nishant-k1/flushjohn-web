@@ -11,10 +11,10 @@ export default function CarouselView() {
       style={{ height: "900px" }}
     >
       {[
-        "https://cdn.flushjohn.com/assets/gallery/img-2.1-enhanced-1.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-4.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-21.jpg",
-        "https://cdn.flushjohn.com/assets/gallery/img-20.jpg",
+        "https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp",
+        "https://cdn.flushjohn.com/images/home-page-images/hero-img-2.webp",
+        "https://cdn.flushjohn.com/images/home-page-images/hero-img-3.webp",
+        "https://cdn.flushjohn.com/images/home-page-images/hero-img-4.webp",
       ].map((src, index) => (
         <div
           key={index}

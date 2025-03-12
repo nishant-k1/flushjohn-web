@@ -25,25 +25,25 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="https://cdn.flushjohn.com/assets/gallery/img-2.1-enhanced-1.jpg"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp"
           type="image/webp"
         />
         <link
           rel="preload"
           as="image"
-          href="https://cdn.flushjohn.com/assets/gallery/img-4.jpg"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-2.webp"
           type="image/webp"
         />
         <link
           rel="preload"
           as="image"
-          href="https://cdn.flushjohn.com/assets/gallery/img-21.jpg"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-3.webp"
           type="image/webp"
         />
         <link
           rel="preload"
           as="image"
-          href="https://cdn.flushjohn.com/assets/gallery/img-20.jpg"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-4.webp"
           type="image/webp"
         />
         <link
