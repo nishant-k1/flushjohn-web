@@ -113,6 +113,11 @@ const HeroQuickQuote = () => {
           createLead({ ...values, leadSource: "Web Hero Quick Lead" });
           notify();
           setQuickQuoteRequested(true);
+          window.gtag("event", "Web Hero Quick Lead", {
+            event_category: "Button",
+            event_label: "Web Hero Quick Quote",
+            value: 1,
+          });
         } catch (err) {
           console.log(err);
         }

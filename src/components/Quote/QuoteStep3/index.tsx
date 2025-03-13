@@ -42,6 +42,7 @@ const QuoteStep3 = () => {
     reconnectionAttempts: 5,
     reconnectionDelay: 1000,
   });
+
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
   const createLead = React.useCallback((data: any) => {
@@ -67,6 +68,11 @@ const QuoteStep3 = () => {
             createLead({ ...values, leadSource: "Web Lead" });
             notify();
             setQuoteRequested(true);
+            window.gtag("event", "Web Lead", {
+              event_category: "Button",
+              event_label: "Web Quote",
+              value: 1,
+            });
             resetForm();
             setFormValues(initialQuoteValues);
             setStep(1);

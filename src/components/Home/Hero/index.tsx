@@ -53,6 +53,13 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
               <Link
                 href={phone_link}
                 className={styles.ctaPhoneBtn}
+                onClick={() => {
+                  window.gtag("event", "Hero Phone Call", {
+                    event_category: "Phone Call",
+                    event_label: "Hero Phone Link",
+                    value: 1,
+                  });
+                }}
               >
                 <div>{phone_number}</div>
                 <PhoneIcon className={styles.flippedIcon} />

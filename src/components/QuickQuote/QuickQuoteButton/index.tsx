@@ -26,6 +26,13 @@ export default function QuickQuoteButton() {
         href={phone_link}
         className={styles.phoneBtn}
         aria-label="Call Us"
+        onClick={() => {
+          window.gtag("event", "Quick Phone Call", {
+            event_category: "Phone Call",
+            event_label: "Quick Phone Link",
+            value: 1,
+          });
+        }}
       >
         <PhoneIcon className={styles.icon} />
       </Link>

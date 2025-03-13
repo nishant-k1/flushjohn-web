@@ -89,6 +89,22 @@ export default function RootLayout({
             });
           `}
         </Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-11246929750');
+          `}
+        </Script>
         <Layout>
           <ClientWidthContextProvider>
             <SidebarContextProvider>

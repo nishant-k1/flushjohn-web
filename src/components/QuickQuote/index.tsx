@@ -132,8 +132,13 @@ const QuickQuote = () => {
             setQuickQuoteViewStatus(false);
             try {
               createLead({ ...values, leadSource: "Web Quick Lead" });
-              setQuickQuoteRequested(true);
               notify();
+              setQuickQuoteRequested(true);
+              window.gtag("event", "Web Quick Lead", {
+                event_category: "Button",
+                event_label: "Web Quick Quote",
+                value: 1,
+              });
             } catch (err) {
               console.log(err);
             }
