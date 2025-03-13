@@ -1,17 +1,30 @@
-import React from "react";
-import Hero from "./Hero";
-import Features from "./Features";
-import Services from "./Services";
+import dynamic from "next/dynamic";
 import { home_data } from "../../constants";
+import React from "react";
+// Lazy load components using dynamic imports
+const Hero = dynamic(() => import("./Hero"));
+const Features = dynamic(() => import("./Features"));
+const Services = dynamic(() => import("./Services"));
+const CTAsection = dynamic(() => import("./CTAsection"));
 
 const Home = () => {
-  const { hero, features, services, locations } = home_data;
+  const { hero, features, services } = home_data;
+
   return (
-    <div>
-      <Hero {...hero} />
-      <Features {...features} />
-      <Services {...services} />
-    </div>
+    <>
+      <React.Suspense fallback={<div>...</div>}>
+        <Hero {...hero} />
+      </React.Suspense>
+      <React.Suspense fallback={<div>...</div>}>
+        <Features {...features} />
+      </React.Suspense>
+      <React.Suspense fallback={<div>...</div>}>
+        <Services {...services} />
+      </React.Suspense>
+      <React.Suspense fallback={<div>...</div>}>
+        <CTAsection />
+      </React.Suspense>
+    </>
   );
 };
 

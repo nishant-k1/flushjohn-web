@@ -1,0 +1,42 @@
+.ctaSection {
+  margin-top: 48px;
+  padding: 24px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ctaSection h3 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 16px;
+}
+
+.ctaSection p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.ctaButton {
+  background-color: var(--primary-bg-color);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: var(--primary-bg-color);
+}
+
+.ctaOffer {
+  margin-top: 16px;
+  font-size: 1rem;
+  color: #4caf50;
+  font-weight: bold;
+}

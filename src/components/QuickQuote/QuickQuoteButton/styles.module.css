@@ -31,7 +31,7 @@
   bottom: 40vh;
   height: 4rem;
   width: 4rem;
-  background-color: #a95d1f;
+  background-color: var(--primary-bg-color);
   border-radius: 50%;
   border: 0;
   color: white;
@@ -80,7 +80,7 @@
   bottom: 52vh;
   height: 4rem;
   width: 4rem;
-  background-color: #a95d1f;
+  background-color: var(--primary-bg-color);
   border-radius: 50%;
   border: 0;
   color: white;

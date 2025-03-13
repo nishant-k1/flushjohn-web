@@ -2,6 +2,7 @@ import React from "react";
 import Home from "@/components/Home";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "FlushJohn - Porta Potty Rentals",
@@ -58,10 +59,23 @@ const jsonLd = {
 const HomePage = () => {
   return (
     <>
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Script
+        id="deferred-css"
+        strategy="lazyOnload"
+      >
+        {`
+            document.addEventListener('DOMContentLoaded', function() {
+              const link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = '/css/non-critical.css';
+              document.head.appendChild(link);
+            });
+          `}
+      </Script>
       <Home />
     </>
   );

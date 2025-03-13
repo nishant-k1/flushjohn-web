@@ -21,10 +21,10 @@
   /* --primary-bg-color: #ef648a; */
   /* --primary-bg-color: #ff6600; */
   /* --primary-bg-color: #db517a; */
-  --primary-bg-color: #cf772b;
   /* --primary-bg-color: #bf8340; */
 
-  --primary-text-color: rgba(255, 255, 255, 0.78);
+  --primary-bg-color: #a95d1f;
+  --primary-text-color: white;
   --primary-error-color: red;
   --secondary-bg-color: #021920f3;
   --secondary-text-color: #0000009d;

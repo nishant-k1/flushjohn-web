@@ -160,7 +160,12 @@ const HeroQuickQuote = () => {
                 item
                 xs={12}
               >
-                <h2>Get Instant Quote</h2>
+                <div>
+                  <h2>Get My Free Quote</h2>
+                  <i style={{ fontSize: "small", padding: "12px 0" }}>
+                    🚀 Claim $15 OFF on Your First Rental!🎉
+                  </i>
+                </div>
               </Grid>
               <Grid
                 item
