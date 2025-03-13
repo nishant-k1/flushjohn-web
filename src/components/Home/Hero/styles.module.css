@@ -19,6 +19,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-color: #0b233a;
 }
 
 .heroWrapper {
@@ -26,6 +27,7 @@
   grid-template-columns: 1fr;
   justify-content: center;
   row-gap: 2rem;
+  background-color: #0b233a;
 }
 
 .heroTitle {
