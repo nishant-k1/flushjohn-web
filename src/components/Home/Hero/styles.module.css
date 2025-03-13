@@ -17,17 +17,21 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 900px;
+  min-height: 900px;
   z-index: -1;
   background-color: #0b233a;
 }
 
 .heroWrapper {
+  height: 900px;
+  min-height: 900px;
   display: grid;
   grid-template-columns: 1fr;
+  align-content: center;
+  align-items: center;
   justify-content: center;
   row-gap: 2rem;
-  background-color: #0b233a;
 }
 
 .heroTitle {
@@ -155,20 +159,18 @@
   .heroWrapper {
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
-  }
-  .heroTitle h1 {
-    font-size: 2rem;
+    height: 500px;
+    min-height: 500px;
   }
   .heroImage {
     justify-content: flex-end;
   }
+  .heroTitle h1 {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  .heroWrapper {
-    padding: 72px 0 16px;
-  }
-
   .heroTitle h1 {
     line-height: 3.5rem;
     font-size: 2.5rem;

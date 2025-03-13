@@ -12,22 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <React.Suspense
-        fallback={
-          <div
-            style={{
-              backgroundColor: "#0b233a",
-              height: "900px",
-              width: "100vw",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            ...
-          </div>
-        }
-      >
+      <React.Suspense fallback={<div>...</div>}>
         <Hero {...hero} />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>

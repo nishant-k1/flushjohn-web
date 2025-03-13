@@ -2,14 +2,16 @@
   position: relative;
   width: 100%;
   height: 900px;
+  min-height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #0b233a;
 }
 
-.heroImage {
+.carouselImage {
+  display: flex;
+  justify-content: center;
   position: absolute;
   object-fit: cover;
   object-position: center;

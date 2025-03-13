@@ -25,13 +25,13 @@ export default function CarouselView() {
         >
           <Image
             src={src}
-            fill
+            fill={true}
             alt="flushjohn-porta-potty-rental"
-            className={styles.heroImage}
-            priority={index === 0} // Only first image loads eagerly
+            className={styles.carouselImage}
+            priority={index === 0}
             loading={index === 0 ? "eager" : "lazy"}
             placeholder="blur"
-            blurDataURL="/placeholder.jpg" // Optional: Use a placeholder image
+            blurDataURL="/placeholder.jpg"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
           />
           <div className={styles.overlayHeroImage}></div>
