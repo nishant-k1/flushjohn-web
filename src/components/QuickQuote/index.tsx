@@ -102,6 +102,23 @@ const QuickQuote = () => {
     socketRef.current?.emit("createLead", data);
   }, []);
 
+  const handleLeadConversion = (url?: string) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      const callback = () => {
+        if (url) {
+          window.location.href = url;
+        }
+      };
+
+      window.gtag("event", "conversion", {
+        send_to: "AW-11248564671/tcj2CLn8kKoaEL_z3fMp",
+        event_callback: callback,
+      });
+    } else {
+      console.warn("Google Ads tracking is not available");
+    }
+  };
+
   return (
     <div ref={quickQuoteRef}>
       {quickQuoteViewStatus && (
@@ -134,11 +151,12 @@ const QuickQuote = () => {
               createLead({ ...values, leadSource: "Web Quick Lead" });
               notify();
               setQuickQuoteRequested(true);
-              window.gtag("event", "Web Quick Lead", {
-                event_category: "Button",
-                event_label: "Web Quick Quote",
-                value: 1,
-              });
+              handleLeadConversion();
+              // window.gtag("event", "conversion", {
+              //   event_category: "Button",
+              //   event_label: "Web Quick Quote",
+              //   value: 1,
+              // });
             } catch (err) {
               console.log(err);
             }

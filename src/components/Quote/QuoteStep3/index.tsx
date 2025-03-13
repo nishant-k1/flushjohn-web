@@ -49,6 +49,23 @@ const QuoteStep3 = () => {
     socketRef.current?.emit("createLead", data);
   }, []);
 
+  const handleLeadConversion = (url?: string) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      const callback = () => {
+        if (url) {
+          window.location.href = url;
+        }
+      };
+
+      window.gtag("event", "conversion", {
+        send_to: "AW-11248564671/EhUQCLz8kKoaEL_z3fMp",
+        event_callback: callback,
+      });
+    } else {
+      console.warn("Google Ads tracking is not available");
+    }
+  };
+
   return (
     <div>
       <Formik
@@ -68,11 +85,7 @@ const QuoteStep3 = () => {
             createLead({ ...values, leadSource: "Web Lead" });
             notify();
             setQuoteRequested(true);
-            window.gtag("event", "Web Lead", {
-              event_category: "Button",
-              event_label: "Web Quote",
-              value: 1,
-            });
+            handleLeadConversion();
             resetForm();
             setFormValues(initialQuoteValues);
             setStep(1);

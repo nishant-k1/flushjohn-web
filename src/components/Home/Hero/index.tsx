@@ -54,7 +54,8 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 href={phone_link}
                 className={styles.ctaPhoneBtn}
                 onClick={() => {
-                  window.gtag("event", "Hero Phone Call", {
+                  window.gtag("event", "conversion", {
+                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
                     event_category: "Phone Call",
                     event_label: "Hero Phone Link",
                     value: 1,

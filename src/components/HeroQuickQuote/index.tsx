@@ -83,6 +83,23 @@ const HeroQuickQuote = () => {
     socketRef.current?.emit("createLead", data);
   }, []);
 
+  const handleLeadConversion = (url?: string) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      const callback = () => {
+        if (url) {
+          window.location.href = url;
+        }
+      };
+
+      window.gtag("event", "conversion", {
+        send_to: "AW-11248564671/6KpkCNjzpaoaEL_z3fMp",
+        event_callback: callback,
+      });
+    } else {
+      console.warn("Google Ads tracking is not available");
+    }
+  };
+
   return (
     <Formik
       initialValues={{
@@ -113,11 +130,7 @@ const HeroQuickQuote = () => {
           createLead({ ...values, leadSource: "Web Hero Quick Lead" });
           notify();
           setQuickQuoteRequested(true);
-          window.gtag("event", "Web Hero Quick Lead", {
-            event_category: "Button",
-            event_label: "Web Hero Quick Quote",
-            value: 1,
-          });
+          handleLeadConversion();
         } catch (err) {
           console.log(err);
         }
