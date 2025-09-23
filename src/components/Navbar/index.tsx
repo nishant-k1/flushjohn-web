@@ -49,6 +49,7 @@ const Navbar = () => {
               width={100}
               priority={true}
               placeholder="empty"
+              style={{ height: "3rem", width: "auto" }}
             />
           </Link>
           <div className={styles.hamburger}>

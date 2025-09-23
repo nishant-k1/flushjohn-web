@@ -30,6 +30,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     width={450}
                     priority={true}
                     placeholder="empty"
+                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
                 <div className={styles.textContent}>

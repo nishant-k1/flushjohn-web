@@ -59,8 +59,6 @@
 }
 
 .logo {
-  height: 3rem;
-  width: fit-content;
   transition: transform 0.3s ease-in-out;
 }
 .logo:hover {
@@ -112,7 +110,6 @@
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
   .logo {
-    height: 3rem;
-    width: fit-content;
+    /* Dimensions handled by inline styles in component */
   }
 }

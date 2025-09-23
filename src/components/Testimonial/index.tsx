@@ -89,12 +89,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGnnxTSli4RJYRrSbMHov4ZX-AIGRKVoS3Ng&s"
               alt="HomeAdvisor"
             />
-            <Image
-              height={40}
-              width={80}
-              src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/2d2a7a4342fc/assets/img/brand/logo_desktop_white.svg"
-              alt="Yelp"
-            />
+            <div className={styles.yelpLogo}>YELP</div>
           </div>
         </div>
       </div>

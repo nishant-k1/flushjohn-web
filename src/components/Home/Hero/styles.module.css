@@ -2,6 +2,8 @@
   position: relative;
   padding: 16px 32px 0;
   overflow: hidden;
+  contain: layout style paint; /* CSS containment */
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .container {
@@ -21,6 +23,39 @@
   min-height: 900px;
   z-index: -1;
   background-color: #0b233a;
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.skeletonCarousel {
+  width: 100%;
+  height: 900px;
+  background: linear-gradient(90deg, #0b233a 25%, #1a3a5c 50%, #0b233a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeletonQuote {
+  width: 400px;
+  height: 600px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 12px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .heroWrapper {

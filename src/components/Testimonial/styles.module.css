@@ -82,6 +82,19 @@
   height: 40px;
 }
 
+.yelpLogo {
+  height: 40px;
+  width: 80px;
+  background-color: #ff1744;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .rating {
   background-color: green;
   padding: 12px;

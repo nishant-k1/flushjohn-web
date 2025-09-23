@@ -26,6 +26,8 @@ import Script from "next/script";
 import dynamic from "next/dynamic";
 import PerformanceOptimizer from "@/components/SEO/PerformanceOptimizer";
 import CoreWebVitals from "@/components/SEO/CoreWebVitals";
+import FinalOptimizer from "@/components/SEO/FinalOptimizer";
+import UltimateOptimizer from "@/components/SEO/UltimateOptimizer";
 // import PageTranisition from "@/anmations/PageTranisition";
 
 export const metadata = {
@@ -55,6 +57,11 @@ export const metadata = {
   },
   other: {
     preload: [
+      {
+        rel: "preload",
+        as: "style",
+        href: "/css/critical.css",
+      },
       {
         rel: "preload",
         as: "image",
@@ -99,22 +106,26 @@ export default function RootLayout({
             });
           `}
         </Script>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-11246929750');
-          `}
-        </Script>
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
+              strategy="afterInteractive"
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+            >
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-11246929750');
+              `}
+            </Script>
+          </>
+        )}
         <Script
           id="service-worker"
           strategy="afterInteractive"
@@ -140,6 +151,8 @@ export default function RootLayout({
                 <QuoteContextProvider>
                   <PerformanceOptimizer />
                   <CoreWebVitals />
+                  <FinalOptimizer />
+                  <UltimateOptimizer />
                   <Sidebar />
                   <Navbar />
                   {/* <PageTranisition> */}
