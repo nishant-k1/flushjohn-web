@@ -39,12 +39,12 @@ const CoreWebVitals = () => {
 
     // Dynamically import web-vitals to avoid SSR issues
     import("web-vitals")
-      .then(({ onCLS, onFCP, onLCP, onTTFB, onINP }) => {
-        onCLS(reportWebVitals);
-        onFCP(reportWebVitals);
-        onLCP(reportWebVitals);
-        onTTFB(reportWebVitals);
-        onINP(reportWebVitals);
+      .then((webVitals) => {
+        if (webVitals.onCLS) webVitals.onCLS(reportWebVitals);
+        if (webVitals.onFCP) webVitals.onFCP(reportWebVitals);
+        if (webVitals.onLCP) webVitals.onLCP(reportWebVitals);
+        if (webVitals.onTTFB) webVitals.onTTFB(reportWebVitals);
+        if (webVitals.onINP) webVitals.onINP(reportWebVitals);
       })
       .catch((error) => {
         console.warn("Web Vitals library not available:", error);
