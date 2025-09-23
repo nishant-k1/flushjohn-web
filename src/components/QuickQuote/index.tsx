@@ -213,9 +213,6 @@ const QuickQuote = () => {
                     >
                       <div>
                         <h2>{quickQuoteTitle}</h2>
-                        <i style={{ fontSize: "small", padding: "12px 0" }}>
-                          🚀 Get $15 OFF on Your First Rental!🎉
-                        </i>
                       </div>
                     </Grid>
                     <Grid

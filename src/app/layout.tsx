@@ -24,6 +24,8 @@ import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
 import Script from "next/script";
 import dynamic from "next/dynamic";
+import PerformanceOptimizer from "@/components/SEO/PerformanceOptimizer";
+import CoreWebVitals from "@/components/SEO/CoreWebVitals";
 // import PageTranisition from "@/anmations/PageTranisition";
 
 export const metadata = {
@@ -33,6 +35,14 @@ export const metadata = {
   url: websiteURL,
   type: "website",
   siteName: "FlushJohn",
+  alternates: {
+    canonical: websiteURL,
+    languages: {
+      "en-US": websiteURL,
+      en: websiteURL,
+      "x-default": websiteURL,
+    },
+  },
   openGraph: {
     images: [
       {
@@ -105,11 +115,31 @@ export default function RootLayout({
             gtag('config', 'AW-11246929750');
           `}
         </Script>
+        <Script
+          id="service-worker"
+          strategy="afterInteractive"
+        >
+          {`
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                  .then((registration) => {
+                    console.log('SW registered: ', registration);
+                  })
+                  .catch((registrationError) => {
+                    console.log('SW registration failed: ', registrationError);
+                  });
+              });
+            }
+          `}
+        </Script>
         <Layout>
           <ClientWidthContextProvider>
             <SidebarContextProvider>
               <QuickQuoteContextProvider>
                 <QuoteContextProvider>
+                  <PerformanceOptimizer />
+                  <CoreWebVitals />
                   <Sidebar />
                   <Navbar />
                   {/* <PageTranisition> */}

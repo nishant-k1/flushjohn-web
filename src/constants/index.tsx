@@ -25,6 +25,32 @@ export const phone: phoneType = {
   phone_number: process.env.NEXT_PUBLIC_PHONE_NUMBER as string,
 };
 
+export type contactType = {
+  email: string;
+  support_email: string;
+  sales_email: string;
+};
+
+export const contact: contactType = {
+  email: "info@flushjohn.com",
+  support_email: "support@flushjohn.com",
+  sales_email: "support@flushjohn.com",
+};
+
+export type socialMediaType = {
+  facebook: string;
+  twitter: string;
+  linkedin: string;
+  instagram: string;
+};
+
+export const socialMedia: socialMediaType = {
+  facebook: "https://www.facebook.com/flushjohn",
+  twitter: "https://www.twitter.com/flushjohn",
+  linkedin: "https://www.linkedin.com/company/flushjohn",
+  instagram: "https://www.instagram.com/flushjohn",
+};
+
 export const s3assets: string = process.env
   .NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
@@ -272,7 +298,7 @@ export const testimonials: TestimonialsData = {
     {
       image: {
         src: `${s3assets}/images/home-page-images/testimony-img-1.webp`,
-        alt: "https://www.flushjohn.com/",
+        alt: "Terry Miles testimonial for FlushJohn porta potty rentals",
       },
       title: "Terry Miles",
       body: "The porta potty arrived on time as promised and it was wonderful. They are best porta potty rental service provider.",
@@ -280,7 +306,7 @@ export const testimonials: TestimonialsData = {
     {
       image: {
         src: `${s3assets}/images/home-page-images/testimony-img-2.webp`,
-        alt: "https://www.flushjohn.com/",
+        alt: "Dean Lacey testimonial for FlushJohn hand wash station rental",
       },
       title: "Dean Lacey",
       body: "I had to rent a hand wash station when my house renovation was going on and the only company on which I could rely on was Flush John. They are very quick in responding to your requirements and relatively cheaper in price.",
@@ -288,7 +314,7 @@ export const testimonials: TestimonialsData = {
     {
       image: {
         src: `${s3assets}/images/home-page-images/testimony-img-3.webp`,
-        alt: "https://www.flushjohn.com/",
+        alt: "Christine Barnes testimonial for FlushJohn event portable toilet",
       },
       title: "Christine Barnes",
       body: "Ordered an event portable toilet unit for a family reunion. The portable toilet arrived the next day of my order.",
@@ -296,7 +322,7 @@ export const testimonials: TestimonialsData = {
     {
       image: {
         src: `${s3assets}/images/home-page-images/testimony-img-4.webp`,
-        alt: "https://www.flushjohn.com/",
+        alt: "Janet Estremera testimonial for FlushJohn wedding porta potty rental",
       },
       title: "Janet Estremera",
       body: "Portable toilet was pretty and nice. I had it ordered for a wedding event on a weekend. As promised over the phone, they dropped it off on Friday and picked up on Monday.",

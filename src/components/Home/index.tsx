@@ -5,6 +5,7 @@ import React from "react";
 const Hero = dynamic(() => import("./Hero"));
 const Features = dynamic(() => import("./Features"));
 const Services = dynamic(() => import("./Services"));
+const TrustSignals = dynamic(() => import("./TrustSignals"));
 const CTAsection = dynamic(() => import("./CTAsection"));
 
 const Home = () => {
@@ -20,6 +21,9 @@ const Home = () => {
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <Services {...services} />
+      </React.Suspense>
+      <React.Suspense fallback={<div>...</div>}>
+        <TrustSignals />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <CTAsection />

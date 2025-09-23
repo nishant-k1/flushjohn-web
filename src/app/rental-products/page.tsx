@@ -54,7 +54,37 @@ const jsonLd = {
       "@type": "ImageObject",
       url: `${s3assets}/og-image-flushjonn-web.png`,
     },
+    areaServed: {
+      "@type": "Country",
+      name: "United States"
+    }
   },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "Porta Potty Rental Products",
+    description: "Complete selection of portable toilet rental units available across the United States",
+    numberOfItems: "10+",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Standard Porta Potty",
+        description: "Basic portable toilet unit for events and construction sites"
+      },
+      {
+        "@type": "ListItem", 
+        position: 2,
+        name: "Deluxe Porta Potty",
+        description: "Enhanced portable toilet with additional amenities"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "ADA Compliant Porta Potty",
+        description: "Americans with Disabilities Act compliant portable toilet"
+      }
+    ]
+  }
 };
 
 const ProductsPage = () => {

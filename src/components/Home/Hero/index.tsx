@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import { phone } from "../../../constants";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -9,11 +9,9 @@ import dynamic from "next/dynamic";
 
 // Lazy load components with skeleton placeholders
 const CarouselView = dynamic(() => import("@/components/CarouselView"), {
-  ssr: false,
   loading: () => <div className={styles.skeletonCarousel} />,
 });
 const HeroQuickQuote = dynamic(() => import("@/components/HeroQuickQuote"), {
-  ssr: false,
   loading: () => <div className={styles.skeletonQuote} />,
 });
 
@@ -26,17 +24,11 @@ type HeroProps = {
 const { phone_link, phone_number } = phone;
 
 const Hero = React.memo(({ title, subTitle }: HeroProps) => {
-  const [showForm, setShowForm] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setShowForm(true), 2000);
-  }, []);
-
   return (
     <div className={styles.hero}>
-      {/* Lazy-loaded carousel with skeleton fallback */}
+      {/* Background carousel */}
       <div className={styles.carouselWrapper}>
-        {showForm && <CarouselView />}
+        <CarouselView />
       </div>
       <div className={styles.container}>
         <div className={styles.heroWrapper}>

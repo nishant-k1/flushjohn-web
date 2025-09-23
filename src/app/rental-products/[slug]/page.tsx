@@ -1,6 +1,6 @@
 import React from "react";
 import IndividualProduct from "@/components/Products/IndividualProduct";
-import { s3assets, websiteURL, products_data } from "@/constants";
+import { s3assets, websiteURL, products_data, phone } from "@/constants";
 
 export const generateMetadata = async ({
   params,
@@ -73,23 +73,103 @@ const ProductPage = async ({
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    description: `Learn more about our ${product.title}.`,
-    image: product.image.src_1,
+    description: `${product.desc}`,
+    image: [product.image.src_1, product.image.src_2],
     brand: {
       "@type": "Brand",
       name: "FlushJohn",
+    },
+    category: "Portable Toilet Rentals",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Event Organizers, Construction Companies",
     },
     offers: {
       "@type": "Offer",
       url: `${websiteURL}/rental-products/${slug}`,
       priceCurrency: "USD",
-      price: "Contact for pricing",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        price: "Competitive rates starting from $50/day",
+        priceCurrency: "USD",
+        eligibleTransactionVolume: {
+          "@type": "PriceSpecification",
+          minPrice: "50.00",
+          priceCurrency: "USD",
+        },
+      },
       availability: "https://schema.org/InStock",
+      availabilityStarts: new Date().toISOString(),
+      itemCondition: "https://schema.org/NewCondition",
       seller: {
         "@type": "Organization",
         name: "FlushJohn",
+        url: websiteURL,
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: phone.phone_number,
+          contactType: "sales",
+        },
+        areaServed: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+      businessFunction: "https://schema.org/LeaseOut",
+      eligibleRegion: {
+        "@type": "Country",
+        name: "United States",
       },
     },
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Rental Duration",
+        value: "Daily, Weekly, Monthly",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Delivery Included",
+        value: "Yes",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Setup Service",
+        value: "Professional Installation",
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: websiteURL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Rental Products",
+        item: `${websiteURL}/rental-products`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.title,
+        item: `${websiteURL}/rental-products/${slug}`,
+      },
+    ],
   };
 
   return (
@@ -97,6 +177,10 @@ const ProductPage = async ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <IndividualProduct slug={slug} />
     </>

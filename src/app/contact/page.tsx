@@ -1,7 +1,7 @@
 import React from "react";
 import Contact from "@/components/Contact";
 import type { Metadata } from "next";
-import { s3assets, websiteURL } from "@/constants";
+import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
@@ -41,6 +41,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
+  name: "Contact FlushJohn - Porta Potty Rentals",
+  description:
+    "Get in touch with FlushJohn for porta potty rental inquiries, pricing, and customer support across the United States.",
   mainEntity: {
     "@type": "Organization",
     name: "FlushJohn",
@@ -48,22 +51,84 @@ const jsonLd = {
     logo: {
       "@type": "ImageObject",
       url: `${s3assets}/og-image-flushjonn-web.png`,
+      width: 1200,
+      height: 630,
     },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+1-877-790-7062",
-      contactType: "Customer Service",
-      email: "support@flushjohn.com",
-      availableLanguage: ["English", "Spanish"],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: phone.phone_number,
+        contactType: "Customer Service",
+        email: contact.support_email,
+        availableLanguage: ["English"],
+        areaServed: "US",
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "07:00",
+          closes: "19:00",
+        },
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: phone.phone_number,
+        contactType: "Sales",
+        email: contact.sales_email,
+        availableLanguage: ["English"],
+        areaServed: "US",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "Emergency Support",
+        telephone: phone.phone_number,
+        availableLanguage: ["English"],
+        areaServed: "US",
+      },
+    ],
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
     },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "1234 Portable Toilet Ave",
-      addressLocality: "San Francisco",
-      addressRegion: "CA",
-      postalCode: "94105",
-      addressCountry: "US",
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: "39.8283",
+        longitude: "-98.5795",
+      },
+      geoRadius: "2000000",
     },
+    sameAs: [socialMedia.facebook, socialMedia.twitter, socialMedia.linkedin],
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: websiteURL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Contact",
+        item: `${websiteURL}/contact`,
+      },
+    ],
+  },
+  potentialAction: {
+    "@type": "ContactAction",
+    target: `${websiteURL}/contact`,
+    name: "Contact FlushJohn",
   },
 };
 

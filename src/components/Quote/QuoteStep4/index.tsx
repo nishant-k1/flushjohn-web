@@ -1,6 +1,7 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
 import styles from "./styles.module.css";
+import { websiteURL } from "@/constants";
 
 const QuoteStep4 = () => {
   return (
@@ -15,7 +16,7 @@ const QuoteStep4 = () => {
         <a
           className={styles.refreshLink}
           type="button"
-          href="https://www.flushjohn.com/quote"
+          href={`${websiteURL}/quote`}
         >
           Click Here
           <p className={styles.refreshLinkMessage}>

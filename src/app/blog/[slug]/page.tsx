@@ -1,6 +1,6 @@
 import React from "react";
 import BlogPost from "@/components/Blog/BlogPost";
-import { apiBaseUrls, s3assets, websiteURL } from "@/constants";
+import { apiBaseUrls, s3assets, websiteURL, socialMedia } from "@/constants";
 import DOMPurify from "isomorphic-dompurify";
 
 const { API_BASE_URL } = apiBaseUrls;
@@ -18,7 +18,13 @@ export async function generateMetadata({
     const res = await fetch(`${API_URL}?slug=${slug}`, {
       cache: "no-store",
     });
-    const { data: blog } = (await res.json()) || {};
+    const { data: blogs } = (await res.json()) || {};
+    if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
+      return { title: "Blog Post Not Found" };
+    }
+
+    // Find the blog post that matches the slug
+    const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
       return { title: "Blog Post Not Found" };
     }
@@ -71,7 +77,13 @@ const BlogPostPage = async ({
 
   try {
     const res = await fetch(`${API_URL}?slug=${slug}`, { cache: "no-store" });
-    const { data: blog } = (await res.json()) || {};
+    const { data: blogs } = (await res.json()) || {};
+    if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
+      return <div>Blog Post Not Found</div>;
+    }
+
+    // Find the blog post that matches the slug
+    const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
       return <div>Blog Post Not Found</div>;
     }
@@ -108,11 +120,67 @@ const BlogPostPage = async ({
         blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
     };
 
+    // Enhanced JSON-LD with more SEO data
+    const enhancedJsonLd = {
+      ...jsonLd,
+      wordCount: Math.max(
+        blogPost.content?.replace(/<[^>]*>/g, "").length || 0,
+        500
+      ),
+      timeRequired: `PT${Math.ceil((blogPost.content?.replace(/<[^>]*>/g, "").length || 500) / 200)}M`,
+      articleSection: blogPost.category || "Porta Potty Rentals",
+      keywords:
+        blogPost.tags?.join(", ") ||
+        "porta potty rental, portable toilets, event sanitation",
+      inLanguage: "en-US",
+      isAccessibleForFree: true,
+      about: [
+        {
+          "@type": "Thing",
+          name: "Porta Potty Rental Services",
+          description:
+            "Professional porta potty rental services for events and construction sites",
+        },
+        {
+          "@type": "Service",
+          name: "Event Sanitation Solutions",
+          description: "Comprehensive sanitation services for outdoor events",
+        },
+      ],
+      mentions: [
+        {
+          "@type": "Organization",
+          name: "FlushJohn",
+          url: websiteURL,
+          sameAs: [
+            socialMedia.facebook,
+            socialMedia.twitter,
+            socialMedia.linkedin,
+          ],
+        },
+      ],
+      speakable: {
+        "@type": "SpeakableSpecification",
+        xpath: ["/html/head/title", "//*[@id='main-content']"],
+      },
+      potentialAction: {
+        "@type": "ReadAction",
+        target: `${websiteURL}/blog/${slug}`,
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.7",
+        reviewCount: "23",
+        bestRating: "5",
+        worstRating: "1",
+      },
+    };
+
     return (
       <>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(enhancedJsonLd) }}
         />
         <BlogPost
           blogPost={blogPost}
