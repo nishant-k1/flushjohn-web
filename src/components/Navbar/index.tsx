@@ -42,14 +42,23 @@ const Navbar = () => {
         <div className={styles.wrapper}>
           <Link href="/">
             <Image
-              className={styles.logo}
               src={`${s3assets}/logo_white.svg`}
               alt="porta-potty"
               height={64}
               width={100}
               priority={true}
               placeholder="empty"
-              style={{ height: "3rem", width: "auto" }}
+              style={{
+                height: "3rem",
+                width: "auto",
+                transition: "transform 0.3s ease-in-out",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(0.96)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
             />
           </Link>
           <div className={styles.hamburger}>

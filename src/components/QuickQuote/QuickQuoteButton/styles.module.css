@@ -7,7 +7,7 @@
     transform: rotate(360deg);
   }
 } */
-/* 
+
 .quickQuoteBtnWrapper {
   position: fixed;
   right: 7.8rem;
@@ -15,9 +15,10 @@
 }
 
 .quickQuoteBtnWrapper img {
-  height: 10rem;
-  width: 10rem;
-} */
+  /* Dimensions handled by Next.js Image component */
+  max-height: 10rem;
+  max-width: 10rem;
+}
 
 .quickQuoteBtn {
   /* background-color: #a00943c7;

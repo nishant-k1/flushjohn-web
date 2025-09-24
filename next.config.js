@@ -1,3 +1,9 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false, // Reduce bundle size
@@ -7,11 +13,19 @@ const nextConfig = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Aggressive optimization for production
     if (!dev && !isServer) {
-      // Enhanced tree shaking
+      // Enhanced tree shaking and size optimization
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
       config.optimization.innerGraph = true;
       config.optimization.providedExports = true;
+      config.optimization.moduleIds = "deterministic";
+      config.optimization.chunkIds = "deterministic";
+
+      // Reduce bundle size with aggressive splitting
+      config.optimization.splitChunks.maxAsyncRequests = 20;
+      config.optimization.splitChunks.maxInitialRequests = 25;
+      config.optimization.splitChunks.minSize = 20000;
+      config.optimization.splitChunks.maxSize = 244000;
 
       // Better minification
       config.optimization.minimize = true;
@@ -210,4 +224,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

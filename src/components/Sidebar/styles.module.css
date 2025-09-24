@@ -43,7 +43,7 @@
 .sidebar img {
   padding: 0;
   margin: 0;
-  height: 5rem;
+  /* height handled by inline styles to prevent aspect ratio warnings */
   width: 8rem;
 }
 

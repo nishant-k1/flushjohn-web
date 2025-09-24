@@ -33,6 +33,12 @@ const Footer = () => {
                   width={128}
                   priority={true}
                   placeholder="empty"
+                  style={{
+                    height: "auto",
+                    width: "8rem",
+                    padding: "0",
+                    margin: "0",
+                  }}
                 />
               </Link>
             </li>

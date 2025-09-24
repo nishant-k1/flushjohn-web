@@ -34,6 +34,11 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
             alt={alt}
             priority={true}
             placeholder="empty"
+            style={{
+              maxHeight: "120px",
+              width: "auto",
+              height: "auto",
+            }}
           />
         </motion.div>
 

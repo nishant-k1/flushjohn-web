@@ -43,6 +43,11 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
               height={600}
               priority={true}
               placeholder="empty"
+              style={{
+                maxWidth: "400px",
+                height: "auto",
+                width: "auto",
+              }}
             />
             <Image
               src={src_2}
@@ -51,6 +56,11 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
               height={600}
               priority={true}
               placeholder="empty"
+              style={{
+                maxWidth: "400px",
+                height: "auto",
+                width: "auto",
+              }}
             />
           </div>
           <p>{desc}</p>

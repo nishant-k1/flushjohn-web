@@ -79,7 +79,8 @@
 }
 
 .asSeenOn img {
-  height: 40px;
+  /* Height handled by Next.js Image component */
+  max-height: 40px;
 }
 
 .yelpLogo {

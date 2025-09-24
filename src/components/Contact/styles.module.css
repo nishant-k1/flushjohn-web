@@ -238,8 +238,9 @@
 }
 
 .acknowledge img {
-  height: 48px;
-  width: 48px;
+  /* Dimensions handled by Next.js Image component */
+  max-height: 48px;
+  max-width: 48px;
 }
 
 .acknowledge h2 {

@@ -41,8 +41,9 @@ const PerformanceOptimizer = () => {
           }
 
           // Add proper alt text if missing
-          if (!img.alt || img.alt === "") {
-            img.alt = "FlushJohn porta potty rental service";
+          const htmlImg = img as HTMLImageElement;
+          if (!htmlImg.alt || htmlImg.alt === "") {
+            htmlImg.alt = "FlushJohn porta potty rental service";
           }
         });
       };

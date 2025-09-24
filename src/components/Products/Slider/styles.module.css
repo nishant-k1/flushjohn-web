@@ -7,8 +7,9 @@
 }
 
 .slider img {
-  max-height: 120px !important;
-  max-width: 72px !important;
+  /* Dimensions handled by Next.js Image component inline styles */
+  max-height: none;
+  max-width: none;
 }
 
 .arrow {

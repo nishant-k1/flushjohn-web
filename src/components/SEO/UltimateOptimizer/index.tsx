@@ -96,9 +96,10 @@ const UltimateOptimizer = () => {
         const images = document.querySelectorAll("img:not([data-nimg])"); // Exclude Next.js images
         images.forEach((img) => {
           // Add proper dimensions if missing
-          if (!img.width || !img.height) {
+          const htmlImg = img as HTMLImageElement;
+          if (!htmlImg.width || !htmlImg.height) {
             // Set aspect ratio to prevent layout shift
-            img.style.aspectRatio = "16/9";
+            htmlImg.style.aspectRatio = "16/9";
           }
 
           // Add proper loading attributes only for non-Next.js images

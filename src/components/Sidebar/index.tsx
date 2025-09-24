@@ -41,6 +41,12 @@ const Sidebar = () => {
               alt="brand-logo"
               priority={true}
               placeholder="empty"
+              style={{
+                height: "auto",
+                width: "8rem",
+                padding: "0",
+                margin: "0",
+              }}
             />
           </Link>
           <Link

@@ -43,6 +43,10 @@ const Blog = ({ blogList }: any) => {
                         height={200}
                         priority={true}
                         placeholder="empty"
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                        }}
                       />
                     )}
                   </div>

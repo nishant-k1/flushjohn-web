@@ -32,8 +32,10 @@
   --neutral-bg-color: #cccccc;
   /* --neutral-color: #ffffff; */
   --btn-text-color: white;
-  --font-poppins: "Poppins", sans-serif;
-  --font-merriweather: "Merriweather", serif;
+  --font-poppins:
+    "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-merriweather: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
 
 html,
