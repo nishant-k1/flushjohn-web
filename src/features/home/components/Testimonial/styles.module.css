@@ -1,0 +1,117 @@
+/* Styles Update */
+.testimonials {
+  padding: 48px;
+  background-image:
+    linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)),
+    url("https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container h2 {
+  color: #ff6600;
+  padding-bottom: 4rem;
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  align-items: start;
+  justify-content: center;
+  justify-items: center;
+  height: 480px;
+  width: fit-content;
+  gap: 2rem;
+  padding: 24px;
+  background-color: var(--primary-text-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--primary-bg-color);
+  border-radius: 10px;
+}
+
+.wrapper h3 {
+  font-size: large;
+  color: var(--primary-bg-color);
+  font-weight: bold;
+}
+
+.wrapper p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.trustBadge {
+  margin-top: 24px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #4caf50;
+  padding: 12px 24px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.asSeenOn {
+  margin-top: 24px;
+}
+
+.asSeenOn h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.asSeenOn div {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.asSeenOn img {
+  /* Height handled by Next.js Image component */
+  max-height: 40px;
+}
+
+.yelpLogo {
+  height: 40px;
+  width: 80px;
+  background-color: #ff1744;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.rating {
+  background-color: green;
+  padding: 12px;
+  margin: 0 auto;
+  /* width: fit-content; */
+  border-radius: 12px;
+}
+
+/* Tablet Breakpoint */
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+    grid-template-columns: min-content 1fr;
+    justify-items: space-between;
+    grid-gap: 2.5rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
-import IndividualProduct from "@/components/Products/IndividualProduct";
-import { s3assets, websiteURL, products_data, phone } from "@/constants";
+import { IndividualProduct } from "@/features/products/components";
+import { s3assets, websiteURL, phone } from "@/constants";
+import { products_data } from "@/features/products/constants";
 
 export const generateMetadata = async ({
   params,

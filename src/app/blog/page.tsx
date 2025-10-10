@@ -1,5 +1,5 @@
 import React from "react";
-import Blog from "@/components/Blog";
+import { Blog } from "@/features/blog/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, apiBaseUrls } from "@/constants";
 

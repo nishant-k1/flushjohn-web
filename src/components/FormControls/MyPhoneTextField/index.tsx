@@ -3,7 +3,7 @@
 import React from "react";
 import { useField } from "formik";
 import { Tooltip } from "antd";
-import styles from "../../QuickQuote/styles.module.css";
+import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 

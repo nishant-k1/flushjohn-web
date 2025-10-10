@@ -1,7 +1,7 @@
 import React from "react";
 import { Select, Space } from "antd";
 import { useField } from "formik";
-import styles from "../../QuickQuote/styles.module.css";
+import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 
 const options = [
   { label: "Standard Portable Restroom", value: "Standard Portable Restroom" },

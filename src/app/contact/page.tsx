@@ -1,5 +1,5 @@
 import React from "react";
-import Contact from "@/components/Contact";
+import { Contact } from "@/features/contact/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
 

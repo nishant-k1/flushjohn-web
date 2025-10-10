@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { websiteURL } from "@/constants";
 import dynamic from "next/dynamic";
 
-const SEOGuidelines = dynamic(() => import("@/components/Blog/SEOGuidelines"));
-const ContentStrategy = dynamic(() => import("@/components/Blog/ContentStrategy"));
+const SEOGuidelines = dynamic(() => import("@/features/blog/components").then(mod => ({ default: mod.SEOGuidelines })));
+const ContentStrategy = dynamic(() => import("@/features/blog/components").then(mod => ({ default: mod.ContentStrategy })));
 
 export const metadata: Metadata = {
   title: "Blog SEO Dashboard - FlushJohn",

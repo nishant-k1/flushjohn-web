@@ -1,5 +1,5 @@
 import React from "react";
-import BlogPost from "@/components/Blog/BlogPost";
+import { BlogPost } from "@/features/blog/components";
 import { apiBaseUrls, s3assets, websiteURL, socialMedia } from "@/constants";
 import DOMPurify from "isomorphic-dompurify";
 

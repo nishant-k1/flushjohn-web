@@ -1,7 +1,8 @@
 import React from "react";
 import "../../styles/globals.css";
 import { ToastContainer } from "react-toastify";
-import { s3assets, websiteURL, testimonials } from "@/constants";
+import { s3assets, websiteURL } from "@/constants";
+import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
@@ -9,19 +10,19 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: true,
 });
-const Testimonial = dynamic(() => import("@/components/Testimonial"), {
+const Testimonial = dynamic(() => import("@/features/home/components").then(mod => ({ default: mod.Testimonial })), {
   ssr: true,
 });
-const QuickQuote = dynamic(() => import("@/components/QuickQuote"), {
+const QuickQuote = dynamic(() => import("@/features/quote/components").then(mod => ({ default: mod.QuickQuote })), {
   ssr: true,
 });
 const Sidebar = dynamic(() => import("@/components/Sidebar"), {
   ssr: true,
 });
 import { ClientWidthContextProvider } from "@/contexts/ClientWidthContext";
-import { QuoteContextProvider } from "@/contexts/QuoteContext";
+import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
-import { QuickQuoteContextProvider } from "@/contexts/QuickQuoteContext";
+import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import PerformanceOptimizer from "@/components/SEO/PerformanceOptimizer";

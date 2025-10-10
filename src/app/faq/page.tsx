@@ -1,5 +1,5 @@
 import React from "react";
-import Faq from "@/components/Faq";
+import { Faq } from "@/features/legal/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 

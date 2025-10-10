@@ -1,5 +1,5 @@
 import React from "react";
-import Terms from "@/components/Terms";
+import { Terms } from "@/features/legal/components";
 
 const TermsPage = () => <Terms />;
 

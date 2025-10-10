@@ -1,5 +1,5 @@
 import React from "react";
-import Disclaimer from "@/components/Disclaimer";
+import { Disclaimer } from "@/features/legal/components";
 
 const DisclaimerPage = () => <Disclaimer />;
 

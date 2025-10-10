@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Locations from "../Locations";
+import { Locations } from "@/features/locations/components";
 import { footerLinks } from "./data";
-
-import { home_data, s3assets } from "../../constants";
+import { home_data } from "@/features/home/constants";
+import { s3assets } from "@/constants";
 const { locations } = home_data;
 
 var date = new Date();

@@ -1,5 +1,5 @@
 import React from "react";
-import Gallery from "@/components/Gallery";
+import { Gallery } from "@/features/gallery/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 

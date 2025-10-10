@@ -2,7 +2,7 @@ import React from "react";
 import { DatePicker } from "antd";
 import { useField } from "formik";
 import dayjs from "dayjs"; // Import Day.js
-import styles from "../../QuickQuote/styles.module.css";
+import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 
 const MyDateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);

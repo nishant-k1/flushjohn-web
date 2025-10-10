@@ -5,7 +5,7 @@ import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Script from "next/script";
 
 // Lazy load the main Home component for better initial load
-const Home = dynamic(() => import("@/components/Home"), {
+const Home = dynamic(() => import("@/features/home/components").then(mod => ({ default: mod.Home })), {
   loading: () => (
     <div
       style={{

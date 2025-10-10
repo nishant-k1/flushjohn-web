@@ -3,31 +3,31 @@
 import { Formik, Form } from "formik";
 import styles from "./styles.module.css";
 import React, { useContext, useState } from "react";
-import MyMultipleSelectCheckmarks from "../FormControls/MyMultipleSelectCheckmarks";
-import MyTextField from "../FormControls/MyTextField";
-import MyDateField from "../FormControls/MyDateField";
-import MyPhoneTextField from "../FormControls/MyPhoneTextField";
-import MyMultilineTextField from "../FormControls/MyMultilineTextField";
+import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
+import MyTextField from "@/components/FormControls/MyTextField";
+import MyDateField from "@/components/FormControls/MyDateField";
+import MyPhoneTextField from "@/components/FormControls/MyPhoneTextField";
+import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
-import { ClientWidthContext } from "../../contexts/ClientWidthContext";
-// import { apiBaseUrls } from "../../constants";
-import MyRadioField from "../FormControls/MyRadioField";
+import { ClientWidthContext } from "@/contexts/ClientWidthContext";
+// import { apiBaseUrls } from "@/constants";
+import MyRadioField from "@/components/FormControls/MyRadioField";
 import { logEvent } from "../../../react-ga4-config";
-import { ClientWidthContextType } from "../../contexts/ClientWidthContext";
+import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { io, Socket } from "socket.io-client";
 import { apiBaseUrls } from "@/constants";
-import MyZipTextField from "../FormControls/MyZipTextField";
+import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import {
   QuickQuoteContext,
   QuickQuoteContextType,
-} from "@/contexts/QuickQuoteContext";
+} from "@/features/quote/contexts/QuickQuoteContext";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({

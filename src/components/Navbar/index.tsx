@@ -7,8 +7,8 @@ import { SidebarContext } from "@/contexts/SidebarContext";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Image from "next/image";
 import { Divide as Hamburger } from "hamburger-react";
-import { QuickQuoteContext } from "@/contexts/QuickQuoteContext/index";
-import { QuickQuoteContextType } from "@/contexts/QuickQuoteContext/index";
+import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
+import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 import { s3assets } from "@/constants";
 

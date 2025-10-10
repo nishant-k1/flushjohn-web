@@ -1,5 +1,5 @@
 import React from "react";
-import Quote from "@/components/Quote";
+import { Quote } from "@/features/quote/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 

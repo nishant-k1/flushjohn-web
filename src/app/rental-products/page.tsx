@@ -1,5 +1,5 @@
 import React from "react";
-import Products from "@/components/Products";
+import { Products } from "@/features/products/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
