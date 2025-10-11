@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useField } from "formik";
-import { Tooltip } from "antd";
 import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 
 const MyZipTextField = ({ label, ...props }: any) => {
@@ -12,24 +11,21 @@ const MyZipTextField = ({ label, ...props }: any) => {
 
   return (
     <div className={styles.inputWrapper}>
-      <Tooltip
-        placement="top"
+      <input
+        {...field}
+        {...props}
+        type="text"
+        className={styles.input}
+        maxLength={5}
+        inputMode="numeric"
+        pattern="[0-9]*"
+        placeholder="Enter 5-digit zip code"
         title="Enter 5-digit zip code"
-      >
-        <input
-          {...field}
-          {...props}
-          type="text"
-          className={styles.input}
-          maxLength={5}
-          inputMode="numeric"
-          pattern="[0-9]*"
-          onChange={(e) => {
-            const value = e.target.value.replace(/\D/g, "").slice(0, 5);
-            setValue(value);
-          }}
-        />
-      </Tooltip>
+        onChange={(e) => {
+          const value = e.target.value.replace(/\D/g, "").slice(0, 5);
+          setValue(value);
+        }}
+      />
       {touched && error && <div className={styles.error}>{error}</div>}
     </div>
   );

@@ -4,6 +4,9 @@ import { ToastContainer } from "react-toastify";
 import { s3assets, websiteURL } from "@/constants";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
+import dynamic from "next/dynamic";
+
+// Dynamic imports for better code splitting
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
 });
@@ -15,21 +18,17 @@ const Testimonial = dynamic(() => import("@/features/home/components").then(mod 
 });
 const QuickQuote = dynamic(() => import("@/features/quote/components").then(mod => ({ default: mod.QuickQuote })), {
   ssr: true,
+  loading: () => null,
 });
 const Sidebar = dynamic(() => import("@/components/Sidebar"), {
   ssr: true,
 });
+
 import { ClientWidthContextProvider } from "@/contexts/ClientWidthContext";
 import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-import PerformanceOptimizer from "@/components/SEO/PerformanceOptimizer";
-import CoreWebVitals from "@/components/SEO/CoreWebVitals";
-import FinalOptimizer from "@/components/SEO/FinalOptimizer";
-import UltimateOptimizer from "@/components/SEO/UltimateOptimizer";
-// import PageTranisition from "@/anmations/PageTranisition";
 
 export const metadata = {
   title: "FlushJohn - Porta Potty Rentals",
@@ -57,32 +56,9 @@ export const metadata = {
     ],
   },
   other: {
-    preload: [
-      {
-        rel: "preload",
-        as: "style",
-        href: "/css/critical.css",
-      },
-      {
-        rel: "preload",
-        as: "image",
-        href: "https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp",
-      },
-      {
-        rel: "preload",
-        as: "font",
-        href: "https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.woff2",
-        type: "font/woff2",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "preload",
-        as: "font",
-        href: "https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.woff2",
-        type: "font/woff2",
-        crossOrigin: "anonymous",
-      },
-    ],
+    // Resource hints for critical resources
+    'dns-prefetch': 'https://cdn.flushjohn.com',
+    'preconnect': 'https://cdn.flushjohn.com',
   },
 };
 
@@ -93,20 +69,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://cdn.flushjohn.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cdn.flushjohn.com" />
+        
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
-        <Script
-          id="deferred-css"
-          strategy="lazyOnload"
-        >
-          {`
-            document.addEventListener('DOMContentLoaded', function() {
-              const link = document.createElement('link');
-              link.rel = 'stylesheet';
-              link.href = '/css/non-critical.css';
-              document.head.appendChild(link);
-            });
-          `}
-        </Script>
+        {/* Minimal inline critical CSS - loads immediately */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical above-the-fold styles */
+            body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+            * { box-sizing: border-box; }
+            img { max-width: 100%; height: auto; }
+          `
+        }} />
+
+        {/* Google Analytics - Load after interactive */}
         {process.env.NODE_ENV === "production" && (
           <>
             <Script
@@ -127,9 +116,11 @@ export default function RootLayout({
             </Script>
           </>
         )}
+
+        {/* Service Worker - Load when idle */}
         <Script
           id="service-worker"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         >
           {`
             if ('serviceWorker' in navigator) {
@@ -145,20 +136,15 @@ export default function RootLayout({
             }
           `}
         </Script>
+
         <Layout>
           <ClientWidthContextProvider>
             <SidebarContextProvider>
               <QuickQuoteContextProvider>
                 <QuoteContextProvider>
-                  <PerformanceOptimizer />
-                  <CoreWebVitals />
-                  <FinalOptimizer />
-                  <UltimateOptimizer />
                   <Sidebar />
                   <Navbar />
-                  {/* <PageTranisition> */}
                   {children}
-                  {/* </PageTranisition> */}
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />

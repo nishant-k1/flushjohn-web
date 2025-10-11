@@ -1,9 +1,11 @@
 import React from "react";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
+import {
+  FacebookIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  InstagramIcon,
+  PinterestIcon,
+} from "@/components/UI/Icons";
 import styles from "../Navbar/styles.module.css";
 import Link from "next/link";
 

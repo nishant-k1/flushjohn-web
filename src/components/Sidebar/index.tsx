@@ -4,10 +4,12 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
 import { useContext } from "react";
-import HomeIcon from "@mui/icons-material/Home";
-import PhoneIcon from "@mui/icons-material/Phone";
-import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import {
+  HomeIcon,
+  PhoneIcon,
+  RequestQuoteIcon,
+  LocalShippingIcon,
+} from "@/components/UI/Icons";
 import Image from "next/image";
 import { phone, s3assets } from "../../constants";
 import { logEvent } from "../../../react-ga4-config";
@@ -53,21 +55,21 @@ const Sidebar = () => {
             href="/"
             onClick={handleClick}
           >
-            <HomeIcon />
+            <HomeIcon size={20} />
             Home
           </Link>
           <Link
             href="/rental-products"
             onClick={handleClick}
           >
-            <LocalShippingIcon />
+            <LocalShippingIcon size={20} />
             Rental Products
           </Link>
           <Link
             href="/quote"
             onClick={handleClick}
           >
-            <RequestQuoteIcon />
+            <RequestQuoteIcon size={20} />
             Request Quote
           </Link>
           <Link
@@ -84,7 +86,7 @@ const Sidebar = () => {
               });
             }}
           >
-            <PhoneIcon />
+            <PhoneIcon size={20} />
             {phone_number}
           </Link>
         </div>

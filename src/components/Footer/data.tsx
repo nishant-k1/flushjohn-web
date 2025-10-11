@@ -1,20 +1,22 @@
-import HomeIcon from "@mui/icons-material/Home";
-import PhoneIcon from "@mui/icons-material/Phone";
-import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import PolicyIcon from "@mui/icons-material/Policy";
-import GavelIcon from "@mui/icons-material/Gavel";
-import ArticleIcon from "@mui/icons-material/Article";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import MessageIcon from "@mui/icons-material/Message";
+import {
+  HomeIcon,
+  PhoneIcon,
+  RequestQuoteIcon,
+  LocalShippingIcon,
+  PolicyIcon,
+  GavelIcon,
+  ArticleIcon,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  InstagramIcon,
+  PinterestIcon,
+  MessageIcon,
+  EmailIcon,
+} from "@/components/UI/Icons";
 import { FaBloggerB } from "react-icons/fa";
-import EmailIcon from "@mui/icons-material/Email";
 import { phone } from "../../constants";
-import { ImagesIcon } from "lucide-react";
+import { Images as ImagesIcon } from "lucide-react";
 
 const { phone_link } = phone;
 

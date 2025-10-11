@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useField } from "formik";
-import { Tooltip } from "antd";
 import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
@@ -14,10 +13,7 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
 
   return (
     <div className={styles.inputWrapper}>
-      <Tooltip
-        placement="top"
-        title="Enter 10-digit phone number"
-      >
+      <div title="Enter 10-digit phone number">
         <PhoneInput
           {...field}
           {...props}
@@ -33,7 +29,7 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
           maxLength={14}
           inputMode="numeric"
         />
-      </Tooltip>
+      </div>
       {touched && error && <div className={styles.error}>{error}</div>}
     </div>
   );

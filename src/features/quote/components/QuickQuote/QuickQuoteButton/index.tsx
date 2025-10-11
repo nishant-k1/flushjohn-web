@@ -3,7 +3,7 @@
 import * as React from "react";
 import { QuickQuoteContext } from "../../../contexts/QuickQuoteContext";
 import styles from "./styles.module.css";
-import PhoneIcon from "@mui/icons-material/Phone";
+import { PhoneIcon } from "@/components/UI/Icons";
 import { phone } from "@/constants";
 import Link from "next/link";
 
@@ -35,7 +35,7 @@ export default function QuickQuoteButton() {
           });
         }}
       >
-        <PhoneIcon className={styles.icon} />
+        <PhoneIcon className={styles.icon} size={24} />
       </Link>
     </div>
   );

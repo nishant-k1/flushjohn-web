@@ -1,7 +1,4 @@
 import { useField } from "formik";
-import { DatePicker } from "antd";
-import { useRef } from "react";
-import dayjs from "dayjs";
 import styles from "./styles.module.css";
 import "../../FormFields/styles.css";
 
@@ -9,7 +6,8 @@ const DateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
-  const datePickerRef = useRef(null);
+
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <div className={styles.outerBox}>
@@ -20,24 +18,27 @@ const DateField = ({ label, ...props }: any) => {
         )}
       </label>
       <div className={styles.innerBox}>
-        <div ref={datePickerRef}>
-          <DatePicker
+        <div>
+          <input
+            type="date"
+            {...field}
             {...props}
             className={props.className}
-            label={label}
-            placeholder={""}
-            format={"MM/DD/YYYY"}
-            value={field.value ? dayjs(field.value) : null} // Ensure it's a Day.js object
-            disabledDate={(d) => d && d.isBefore(dayjs(), "day")} // Use Day.js
-            onChange={(date, dateString) => {
-              if (date) {
-                setValue(date.format("MMMM D, YYYY")); // Store in readable format
+            min={today}
+            onChange={(e) => {
+              if (e.target.value) {
+                const date = new Date(e.target.value);
+                const formatted = date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                });
+                setValue(formatted);
               } else {
-                setValue(""); // Handle cleared value
+                setValue("");
               }
             }}
             onBlur={() => setTouched(true)}
-            getPopupContainer={() => datePickerRef.current}
           />
           {touched && error ? (
             <div className={styles.error}>{meta.error}</div>

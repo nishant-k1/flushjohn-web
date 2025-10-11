@@ -5,6 +5,7 @@ import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Script from "next/script";
 import AIOptimizedMeta from "@/components/SEO/AIOptimizedMeta";
 import RichSnippets from "@/components/SEO/RichSnippets";
+import PerformanceTurbo from "@/components/SEO/PerformanceTurbo";
 
 // Lazy load the main Home component for better initial load
 const Home = dynamic(
@@ -218,6 +219,9 @@ const reviewJsonLd = {
 const HomePage = () => {
   return (
     <>
+      {/* Performance Turbo Mode */}
+      <PerformanceTurbo />
+      
       {/* AI-Optimized Meta Tags for ChatGPT, Claude, etc. */}
       <AIOptimizedMeta />
 

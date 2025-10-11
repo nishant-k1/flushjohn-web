@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { phone } from "@/constants";
-import PhoneIcon from "@mui/icons-material/Phone";
+import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -55,7 +55,7 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 }}
               >
                 <div>{phone_number}</div>
-                <PhoneIcon className={styles.flippedIcon} />
+                <PhoneIcon className={styles.flippedIcon} size={20} />
               </Link>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import Carousel from "antd/es/carousel";
-import "antd/es/carousel/style";
+import Carousel from "@/components/UI/Carousel";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
@@ -25,12 +24,12 @@ export default function CarouselView() {
   ];
 
   return (
-    <Carousel
-      autoplay
-      autoplaySpeed={2000}
-      style={{ height: "900px" }}
-    >
-      {images.map((image, index) => (
+    <div style={{ height: "900px" }}>
+      <Carousel
+        autoplay
+        autoplaySpeed={2000}
+      >
+        {images.map((image, index) => (
         <div
           key={index}
           className={styles.imageWrapper}
@@ -48,7 +47,8 @@ export default function CarouselView() {
           />
           <div className={styles.overlayHeroImage}></div>
         </div>
-      ))}
-    </Carousel>
+        ))}
+      </Carousel>
+    </div>
   );
 }

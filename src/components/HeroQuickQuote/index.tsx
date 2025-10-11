@@ -8,9 +8,9 @@ import MyTextField from "@/components/FormControls/MyTextField";
 import MyDateField from "@/components/FormControls/MyDateField";
 import MyPhoneTextField from "@/components/FormControls/MyPhoneTextField";
 import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField";
-import Button from "@mui/material/Button";
-import { Grid } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+import Button from "@/components/UI/Button";
+import Grid from "@/components/UI/Grid";
+import { SendIcon } from "@/components/UI/Icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
@@ -299,14 +299,11 @@ const HeroQuickQuote = () => {
               >
                 <Button
                   variant="contained"
-                  sx={{
+                  style={{
                     background: "var(--primary-bg-color)",
                     borderRadius: 0,
-                    "&:hover": {
-                      background: "#ac6324",
-                    },
                   }}
-                  endIcon={<SendIcon />}
+                  endIcon={<SendIcon size={18} />}
                   type="submit"
                 >
                   Send

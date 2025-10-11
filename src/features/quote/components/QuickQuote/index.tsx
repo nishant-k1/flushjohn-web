@@ -8,16 +8,15 @@ import MyTextField from "@/components/FormControls/MyTextField";
 import MyDateField from "@/components/FormControls/MyDateField";
 import MyPhoneTextField from "@/components/FormControls/MyPhoneTextField";
 import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField";
-import Button from "@mui/material/Button";
-import { Grid } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+import Button from "@/components/UI/Button";
+import Grid from "@/components/UI/Grid";
+import { SendIcon, CloseIcon } from "@/components/UI/Icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
-import CloseIcon from "@mui/icons-material/Close";
 // import { apiBaseUrls } from "@/constants";
 import MyRadioField from "@/components/FormControls/MyRadioField";
 import { logEvent } from "../../../../../react-ga4-config";
@@ -197,6 +196,7 @@ const QuickQuote = () => {
               >
                 <div>
                   <CloseIcon
+                    size={24}
                     className={styles.closeIcon}
                     onClick={() => {
                       setQuickQuoteViewStatus(false);
@@ -332,14 +332,11 @@ const QuickQuote = () => {
                     >
                       <Button
                         variant="contained"
-                        sx={{
+                        style={{
                           background: "var(--primary-bg-color)",
                           borderRadius: 0,
-                          "&:hover": {
-                            background: "#ac6324",
-                          },
                         }}
-                        endIcon={<SendIcon />}
+                        endIcon={<SendIcon size={18} />}
                         type="submit"
                       >
                         Send

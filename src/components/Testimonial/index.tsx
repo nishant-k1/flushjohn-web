@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel } from "antd";
+import Carousel from "@/components/UI/Carousel";
 import Image from "next/image";
 import styles from "./styles.module.css";
 

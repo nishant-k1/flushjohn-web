@@ -1,0 +1,204 @@
+/* Lightweight Button Styles - Replaces MUI */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Sizes */
+.small {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+  min-height: 30px;
+}
+
+.medium {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-height: 36px;
+}
+
+.large {
+  padding: 8px 22px;
+  font-size: 0.9375rem;
+  min-height: 42px;
+}
+
+/* Variants - Contained */
+.contained.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.contained.primary:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.contained.secondary {
+  background: #f50057;
+  color: white;
+  box-shadow: 0 2px 4px rgba(245, 0, 87, 0.3);
+}
+
+.contained.secondary:hover {
+  background: #c51162;
+}
+
+.contained.success {
+  background: #28a745;
+  color: white;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.contained.success:hover {
+  background: #218838;
+}
+
+.contained.error {
+  background: #dc3545;
+  color: white;
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.contained.error:hover {
+  background: #c82333;
+}
+
+/* Variants - Outlined */
+.outlined {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+
+.outlined.primary {
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.outlined.primary:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+.outlined.secondary {
+  color: #f50057;
+  border-color: #f50057;
+}
+
+.outlined.secondary:hover {
+  background: rgba(245, 0, 87, 0.08);
+}
+
+.outlined.success {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.outlined.success:hover {
+  background: rgba(40, 167, 69, 0.08);
+}
+
+/* Variants - Text */
+.text {
+  background: transparent;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+
+.text.primary {
+  color: #667eea;
+}
+
+.text.primary:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
+.text.secondary {
+  color: #f50057;
+}
+
+.text.secondary:hover {
+  background: rgba(245, 0, 87, 0.08);
+}
+
+/* Full Width */
+.fullWidth {
+  width: 100%;
+}
+
+/* Disabled State */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading State */
+.loading {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon Spacing */
+.startIcon {
+  display: inline-flex;
+  margin-right: -4px;
+  margin-left: 8px;
+}
+
+.endIcon {
+  display: inline-flex;
+  margin-left: -4px;
+  margin-right: 8px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+

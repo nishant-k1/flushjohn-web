@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import LoadingButton from "@mui/lab/LoadingButton";
-import SendIcon from "@mui/icons-material/Send";
+import LoadingButton from "@/components/UI/LoadingButton";
+import { SendIcon } from "@/components/UI/Icons";
 
 export default function MyLoadingButton({ ...props }) {
   const [loading, setLoading] = React.useState(true);
@@ -14,7 +14,7 @@ export default function MyLoadingButton({ ...props }) {
     <LoadingButton
       {...props}
       onClick={handleClick}
-      endIcon={<SendIcon />}
+      endIcon={<SendIcon size={18} />}
       loading={loading}
       loadingPosition="end"
     >
