@@ -37,37 +37,19 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ **Static JSON-LD for SEO**
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How much does it cost to rent a porta potty?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our porta potty rental prices vary depending on location, rental duration, and unit type. Contact us for a quote.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How often are the porta potties cleaned?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We provide regular servicing, including cleaning and restocking, typically on a weekly basis. Additional servicing can be arranged.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you offer delivery and setup?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes! We handle delivery, setup, and pickup to ensure a hassle-free experience for your event or construction site.",
-      },
-    },
-  ],
-};
+import { comprehensiveFaqData, generateFAQSchema } from "@/features/legal/constants/comprehensiveFaq";
+
+// ✅ **Comprehensive JSON-LD for SEO (using first 20 most important FAQs)**
+const topFAQs = [
+  ...comprehensiveFaqData.filter(f => f.category === "Pricing & Costs").slice(0, 5),
+  ...comprehensiveFaqData.filter(f => f.category === "Service Areas & Delivery").slice(0, 4),
+  ...comprehensiveFaqData.filter(f => f.category === "Product Types & Options").slice(0, 4),
+  ...comprehensiveFaqData.filter(f => f.category === "Booking & Reservations").slice(0, 3),
+  ...comprehensiveFaqData.filter(f => f.category === "Events & Occasions").slice(0, 2),
+  ...comprehensiveFaqData.filter(f => f.category === "Construction Sites").slice(0, 2),
+];
+
+const jsonLd = generateFAQSchema(topFAQs, websiteURL);
 
 // ✅ **Page Component**
 const FaqPage = () => (

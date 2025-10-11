@@ -2,6 +2,7 @@ import React from "react";
 import { Contact } from "@/features/contact/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
+import EnhancedStructuredData from "@/components/SEO/EnhancedStructuredData";
 
 export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
@@ -135,6 +136,9 @@ const jsonLd = {
 const ContactPage = () => {
   return (
     <>
+      {/* Enhanced Structured Data for Contact Page */}
+      <EnhancedStructuredData pageType="contact" />
+
       <link
         rel="canonical"
         href={`${websiteURL}/contact`}

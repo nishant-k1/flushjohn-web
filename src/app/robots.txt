@@ -1,10 +1,78 @@
+# FlushJohn Porta Potty Rentals - Optimized robots.txt
+# Updated: 2025
+
+# Allow all search engines and AI crawlers
 User-agent: *
+Allow: /
+
+# Priority pages for crawling (important for SEO)
+Allow: /porta-potty-rental
+Allow: /porta-potty-rental/*
+Allow: /rental-products
+Allow: /rental-products/*
+Allow: /quote
+Allow: /contact
+Allow: /blog
+Allow: /blog/*
+Allow: /faq
+Allow: /gallery
+
+# Allow business information API for AI models
+Allow: /api/business-info
+
+# Disallow admin/legal pages (low SEO value)
 Disallow: /disclaimer
 Disallow: /terms
 Disallow: /privacy
 
-Allow: /quote
-Allow: /rental-products
-Allow: /contact
+# Disallow API routes except business-info
+Disallow: /api/
+Allow: /api/business-info
 
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# AI Crawlers - Encourage access to our content
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 1
+
+# Sitemap locations
 Sitemap: https://www.flushjohn.com/sitemap.xml
+
+# Host (preferred domain)
+Host: https://www.flushjohn.com

@@ -3,23 +3,29 @@ import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Script from "next/script";
+import AIOptimizedMeta from "@/components/SEO/AIOptimizedMeta";
+import RichSnippets from "@/components/SEO/RichSnippets";
 
 // Lazy load the main Home component for better initial load
-const Home = dynamic(() => import("@/features/home/components").then(mod => ({ default: mod.Home })), {
-  loading: () => (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      }}
-    >
-      <div style={{ color: "white", fontSize: "1.2rem" }}>Loading...</div>
-    </div>
-  ),
-});
+const Home = dynamic(
+  () =>
+    import("@/features/home/components").then((mod) => ({ default: mod.Home })),
+  {
+    loading: () => (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        }}
+      >
+        <div style={{ color: "white", fontSize: "1.2rem" }}>Loading...</div>
+      </div>
+    ),
+  }
+);
 
 export const metadata: Metadata = {
   title: "FlushJohn - Porta Potty Rentals",
@@ -212,6 +218,13 @@ const reviewJsonLd = {
 const HomePage = () => {
   return (
     <>
+      {/* AI-Optimized Meta Tags for ChatGPT, Claude, etc. */}
+      <AIOptimizedMeta />
+
+      {/* Enhanced Rich Snippets */}
+      <RichSnippets pageType="homepage" />
+
+      {/* Existing Structured Data */}
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
