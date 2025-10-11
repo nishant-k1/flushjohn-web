@@ -71,7 +71,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     question: 'What is included in the porta potty rental price?',
     answer:
       'Our porta potty rental price includes: delivery to your location, professional setup and placement, toilet paper and hand sanitizer, thorough cleaning before delivery, pickup at the end of the rental period, and customer support. For long-term rentals (weekly or monthly), the price also includes regular servicing (typically weekly), waste removal, restocking of supplies (toilet paper, hand sanitizer, deodorizer), and cleaning between services. Additional cleaning or servicing can be arranged for an extra fee.',
-    keywords: ['what's included', 'rental includes', 'services included', 'delivery included'],
+    keywords: ["what's included", 'rental includes', 'services included', 'delivery included'],
     relatedQuestions: ['pricing-standard', 'maintenance-frequency'],
   },
 
@@ -99,7 +99,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Service Areas & Delivery',
     question: 'How far outside the city do you deliver?',
     answer:
-      'We deliver porta potties within a 50-mile radius of each service city center. Deliveries to locations beyond this radius may be possible with additional delivery fees. The specific delivery area includes urban, suburban, and rural locations within our service radius. If you're unsure whether your location is within our service area, please contact us with your address or zip code, and we'll confirm availability and pricing.',
+      "We deliver porta potties within a 50-mile radius of each service city center. Deliveries to locations beyond this radius may be possible with additional delivery fees. The specific delivery area includes urban, suburban, and rural locations within our service radius. If you're unsure whether your location is within our service area, please contact us with your address or zip code, and we'll confirm availability and pricing.",
     keywords: ['delivery radius', 'how far', 'service radius', 'outside city', 'rural delivery'],
     relatedQuestions: ['service-areas', 'delivery-time', 'service-rural'],
   },
@@ -138,7 +138,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     question: 'What features does a standard porta potty include?',
     answer:
       'Our standard porta potty includes: toilet seat, urinal, toilet paper dispenser with toilet paper, hand sanitizer dispenser with hand sanitizer, ventilation system, non-slip floor, interior coat hook, and translucent roof for natural lighting. Dimensions are approximately 92 inches tall, 48 inches wide, and 48 inches deep. Weight is about 180 lbs. The unit is OSHA compliant and suitable for construction sites, outdoor events, parks, and general use. An ADA accessible version is also available.',
-    keywords: ['standard porta potty', 'basic unit', 'features', 'what's included', 'specifications'],
+    keywords: ['standard porta potty', 'basic unit', 'features', "what's included", 'specifications'],
     relatedQuestions: ['product-types', 'product-deluxe', 'pricing-standard'],
   },
   {
@@ -146,7 +146,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Product Types & Options',
     question: 'What is included in a deluxe porta potty?',
     answer:
-      'Our deluxe flushing porta potty includes: flushing toilet with foot pump, built-in hand washing sink with running water, mirror, interior LED lighting, coat hook, toilet paper dispenser, paper towel dispenser, hand soap dispenser, enhanced ventilation system, and premium interior finishes. It's perfect for weddings, corporate events, VIP areas, and upscale gatherings where a higher level of comfort is desired. The unit provides a more bathroom-like experience compared to standard units.',
+      "Our deluxe flushing porta potty includes: flushing toilet with foot pump, built-in hand washing sink with running water, mirror, interior LED lighting, coat hook, toilet paper dispenser, paper towel dispenser, hand soap dispenser, enhanced ventilation system, and premium interior finishes. It's perfect for weddings, corporate events, VIP areas, and upscale gatherings where a higher level of comfort is desired. The unit provides a more bathroom-like experience compared to standard units.",
     keywords: ['deluxe porta potty', 'flushing toilet', 'luxury features', 'upgraded unit', 'wedding'],
     relatedQuestions: ['product-types', 'product-luxury', 'event-wedding'],
   },
@@ -164,7 +164,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Product Types & Options',
     question: 'What is a luxury restroom trailer?',
     answer:
-      'Our luxury restroom trailers are premium portable bathrooms that provide a high-end restroom experience. Features include: multiple private stalls (typically 2-6), flushing porcelain toilets, running water sinks with hot and cold water, climate control (air conditioning and heating), interior and exterior lighting, premium finishes and décor, vanity mirrors, sound system capability, stainless steel fixtures and faucets, separate men's and women's facilities, and fresh water and waste tanks. These 20-30 foot trailers are ideal for upscale weddings, corporate galas, film productions, and VIP events.',
+      "Our luxury restroom trailers are premium portable bathrooms that provide a high-end restroom experience. Features include: multiple private stalls (typically 2-6), flushing porcelain toilets, running water sinks with hot and cold water, climate control (air conditioning and heating), interior and exterior lighting, premium finishes and décor, vanity mirrors, sound system capability, stainless steel fixtures and faucets, separate men's and women's facilities, and fresh water and waste tanks. These 20-30 foot trailers are ideal for upscale weddings, corporate galas, film productions, and VIP events.",
     keywords: ['luxury trailer', 'restroom trailer', 'premium bathroom', 'upscale', 'VIP'],
     relatedQuestions: ['product-types', 'product-deluxe', 'event-wedding', 'event-corporate'],
   },
@@ -184,7 +184,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Booking & Reservations',
     question: 'How do I book a porta potty rental?',
     answer:
-      'Booking a porta potty with FlushJohn is easy. You can: (1) Fill out our online quote form at flushjohn.com/quote with your event or project details, (2) Call us directly - we're available 24/7, or (3) Email us at support@flushjohn.com. Once we receive your request, we'll respond within 1 hour during business hours (within 24 hours otherwise) with a customized quote. After you approve the quote and provide payment, we'll schedule your delivery and send confirmation details.',
+      "Booking a porta potty with FlushJohn is easy. You can: (1) Fill out our online quote form at flushjohn.com/quote with your event or project details, (2) Call us directly - we're available 24/7, or (3) Email us at support@flushjohn.com. Once we receive your request, we'll respond within 1 hour during business hours (within 24 hours otherwise) with a customized quote. After you approve the quote and provide payment, we'll schedule your delivery and send confirmation details.",
     keywords: ['how to book', 'booking process', 'reserve', 'rental process', 'how to rent'],
     relatedQuestions: ['booking-advance', 'booking-info', 'pricing-standard'],
   },
@@ -227,9 +227,9 @@ export const comprehensiveFaqData: FAQItem[] = [
   {
     id: 'booking-modify',
     category: 'Booking & Reservations',
-    question: 'Can I modify my booking after it's confirmed?',
+    question: "Can I modify my booking after it's confirmed?",
     answer:
-      'Yes! You can modify your porta potty booking up to 48 hours before delivery at no additional charge, subject to availability. Modifications include: changing delivery date or time, adding or removing units, upgrading to different unit types, changing delivery location, or adjusting rental duration. Modifications requested less than 48 hours before delivery may be subject to additional fees or may not be possible due to scheduling constraints. For long-term rentals, modifications can typically be made with proper notice. Contact us immediately if you need to make changes.',
+      "Yes! You can modify your porta potty booking up to 48 hours before delivery at no additional charge, subject to availability. Modifications include: changing delivery date or time, adding or removing units, upgrading to different unit types, changing delivery location, or adjusting rental duration. Modifications requested less than 48 hours before delivery may be subject to additional fees or may not be possible due to scheduling constraints. For long-term rentals, modifications can typically be made with proper notice. Contact us immediately if you need to make changes.",
     keywords: ['modify booking', 'change reservation', 'update order', 'booking changes'],
     relatedQuestions: ['booking-cancel', 'booking-process', 'booking-addmore'],
   },
@@ -238,7 +238,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Booking & Reservations',
     question: 'Can I add more porta potties after my rental has started?',
     answer:
-      'Yes! You can request additional porta potties at any time during your rental period. We'll do our best to accommodate your request based on current inventory and scheduling. For same-day additions, call us directly for fastest service. Additional units will be priced at our standard rates and can typically be delivered within 2-4 hours. For multi-day events or long-term rentals, we recommend assessing needs early to ensure availability. There's no penalty for adding units, and we're happy to adjust your rental to meet your needs.',
+      "Yes! You can request additional porta potties at any time during your rental period. We'll do our best to accommodate your request based on current inventory and scheduling. For same-day additions, call us directly for fastest service. Additional units will be priced at our standard rates and can typically be delivered within 2-4 hours. For multi-day events or long-term rentals, we recommend assessing needs early to ensure availability. There's no penalty for adding units, and we're happy to adjust your rental to meet your needs.",
     keywords: ['add more units', 'additional porta potties', 'increase quantity', 'extra units'],
     relatedQuestions: ['booking-modify', 'quantity-needed', 'pricing-standard'],
   },
@@ -259,7 +259,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     question: 'What does porta potty servicing include?',
     answer:
       'Our porta potty servicing includes: (1) Complete waste tank pumping and EPA-compliant disposal, (2) Thorough interior cleaning with industrial-strength disinfectants, (3) Restocking of toilet paper, (4) Restocking of hand sanitizer or soap, (5) Application of fresh deodorizer, (6) Inspection of all components (door latches, vents, etc.), (7) Exterior cleaning if needed, (8) Minor repairs if necessary. All waste is disposed of at licensed facilities following EPA regulations. Our service technicians are trained professionals who ensure each unit meets health and safety standards.',
-    keywords: ['what's included in service', 'servicing details', 'cleaning includes', 'maintenance includes'],
+    keywords: ["what's included in service", 'servicing details', 'cleaning includes', 'maintenance includes'],
     relatedQuestions: ['maintenance-frequency', 'maintenance-standards', 'maintenance-waste'],
   },
   {
@@ -332,7 +332,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Events & Occasions',
     question: 'How many porta potties do I need for a festival?',
     answer:
-      'Festival porta potty quantities depend on attendance, duration, and amenities. General guidelines: for festivals under 4 hours, provide 1 unit per 50-75 attendees. For all-day events (8+ hours), provide 1 unit per 35-50 attendees. If alcohol is served, increase by 25%. Always include ADA compliant units (minimum 10% of total, at least 1 unit). For a 1000-person one-day festival with alcohol, we'd recommend 25-30 standard units plus 3 ADA units, along with hand washing stations. We also recommend on-site attendants for festivals and can provide servicing mid-event if needed. Multi-day festivals require daily servicing.',
+      "Festival porta potty quantities depend on attendance, duration, and amenities. General guidelines: for festivals under 4 hours, provide 1 unit per 50-75 attendees. For all-day events (8+ hours), provide 1 unit per 35-50 attendees. If alcohol is served, increase by 25%. Always include ADA compliant units (minimum 10% of total, at least 1 unit). For a 1000-person one-day festival with alcohol, we'd recommend 25-30 standard units plus 3 ADA units, along with hand washing stations. We also recommend on-site attendants for festivals and can provide servicing mid-event if needed. Multi-day festivals require daily servicing.",
     keywords: ['festival porta potties', 'how many for festival', 'large event', 'festival planning'],
     relatedQuestions: ['quantity-needed', 'maintenance-attendant', 'product-ada'],
   },
@@ -341,7 +341,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Events & Occasions',
     question: 'Are there special requirements for public events?',
     answer:
-      'Yes, public events typically have specific requirements: (1) ADA compliance - federal law requires wheelchair accessible units (typically 10% of total, minimum 1), (2) Local permits - many municipalities require permits for temporary restroom facilities, (3) Health department regulations - some jurisdictions have specific sanitation requirements, (4) Hand washing stations - especially important for events with food service, (5) Minimum quantity standards - based on expected attendance, (6) Servicing schedules for multi-day events. We're experienced with public event requirements and can help ensure compliance. Permit acquisition is typically the event organizer's responsibility, but we provide necessary documentation.',
+      "Yes, public events typically have specific requirements: (1) ADA compliance - federal law requires wheelchair accessible units (typically 10% of total, minimum 1), (2) Local permits - many municipalities require permits for temporary restroom facilities, (3) Health department regulations - some jurisdictions have specific sanitation requirements, (4) Hand washing stations - especially important for events with food service, (5) Minimum quantity standards - based on expected attendance, (6) Servicing schedules for multi-day events. We're experienced with public event requirements and can help ensure compliance. Permit acquisition is typically the event organizer's responsibility, but we provide necessary documentation.",
     keywords: ['public event', 'permit requirements', 'ADA requirements', 'health regulations'],
     relatedQuestions: ['regulations-ada', 'permits-required', 'product-ada', 'event-festival'],
   },
@@ -388,7 +388,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Construction Sites',
     question: 'How long can I rent porta potties for construction projects?',
     answer:
-      'Construction porta potty rentals can be arranged for any duration: weekly ($35-$50/week per unit), monthly ($150-$200/month per unit), or for the entire project duration (discounted long-term rates). Most construction rentals are month-to-month with flexible extension options. There's no maximum rental period - we've supported projects lasting several years. Long-term rentals (3+ months) may qualify for discounted rates. The rental continues until you notify us that the project is complete and schedule pickup. Monthly rentals include weekly servicing.',
+      "Construction porta potty rentals can be arranged for any duration: weekly ($35-$50/week per unit), monthly ($150-$200/month per unit), or for the entire project duration (discounted long-term rates). Most construction rentals are month-to-month with flexible extension options. There's no maximum rental period - we've supported projects lasting several years. Long-term rentals (3+ months) may qualify for discounted rates. The rental continues until you notify us that the project is complete and schedule pickup. Monthly rentals include weekly servicing.",
     keywords: ['construction rental duration', 'long-term rental', 'project duration', 'how long rent'],
     relatedQuestions: ['construction-requirements', 'pricing-longterm', 'booking-modify'],
   },
@@ -397,7 +397,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Construction Sites',
     question: 'How do you secure porta potties on construction sites?',
     answer:
-      'Our construction porta potties can be secured using several methods: (1) Weight - units are heavy (180-280 lbs) and stable in normal conditions, (2) Staking - units can be staked into ground for added stability, (3) Tie-downs - units have tie-down points for securing with straps or cables, (4) Concrete blocks - can be placed around base for extra stability, (5) Fencing - units can be placed within fenced areas for security. For sites with high wind exposure or vandalism concerns, we recommend additional securing methods. Units can also be locked after hours if needed. We'll assess your site and recommend appropriate security measures.',
+      "Our construction porta potties can be secured using several methods: (1) Weight - units are heavy (180-280 lbs) and stable in normal conditions, (2) Staking - units can be staked into ground for added stability, (3) Tie-downs - units have tie-down points for securing with straps or cables, (4) Concrete blocks - can be placed around base for extra stability, (5) Fencing - units can be placed within fenced areas for security. For sites with high wind exposure or vandalism concerns, we recommend additional securing methods. Units can also be locked after hours if needed. We'll assess your site and recommend appropriate security measures.",
     keywords: ['construction security', 'secure porta potty', 'stability', 'tie-down', 'anchoring'],
     relatedQuestions: ['construction-requirements', 'site-requirements', 'construction-duration'],
   },
@@ -444,7 +444,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Regulations & Compliance',
     question: 'Do I need a permit for porta potty rental?',
     answer:
-      'Permit requirements vary by location. You may need permits for: large public events (city/county event permits), street or sidewalk placement (right-of-way permits), extended construction projects (building department permits), food service events (health department permits), park or public property use (parks department permits). Small private events on private property typically don't require permits. We recommend checking with your local city/county offices early in planning. We can provide specifications, insurance certificates, and documentation needed for permit applications. Permit acquisition is typically the customer's responsibility, but we're happy to assist with information.',
+      "Permit requirements vary by location. You may need permits for: large public events (city/county event permits), street or sidewalk placement (right-of-way permits), extended construction projects (building department permits), food service events (health department permits), park or public property use (parks department permits). Small private events on private property typically don't require permits. We recommend checking with your local city/county offices early in planning. We can provide specifications, insurance certificates, and documentation needed for permit applications. Permit acquisition is typically the customer's responsibility, but we're happy to assist with information.",
     keywords: ['permits', 'permit required', 'licensing', 'authorization', 'permissions'],
     relatedQuestions: ['regulations-ada', 'event-public', 'regulations-health'],
   },
@@ -455,7 +455,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Logistics & Setup',
     question: 'What site requirements are needed for porta potty placement?',
     answer:
-      'For proper porta potty placement, you need: (1) Level ground - units must sit level for proper function, (2) Firm surface - concrete, asphalt, compacted gravel, or firm grass (avoid mud or soft ground), (3) Vehicle access - delivery truck needs access within 50 feet, (4) Clearance - 12 feet vertical clearance for delivery truck and boom, (5) No overhead obstacles - no power lines, tree branches, or structures in path, (6) Adequate space - minimum 4'x4' footprint per unit plus door swing space, (7) Away from food areas - recommended 50+ feet from food service or preparation, (8) Accessible to users - consider pedestrian paths and lighting. We'll help assess your site before delivery.',
+      "For proper porta potty placement, you need: (1) Level ground - units must sit level for proper function, (2) Firm surface - concrete, asphalt, compacted gravel, or firm grass (avoid mud or soft ground), (3) Vehicle access - delivery truck needs access within 50 feet, (4) Clearance - 12 feet vertical clearance for delivery truck and boom, (5) No overhead obstacles - no power lines, tree branches, or structures in path, (6) Adequate space - minimum 4'x4' footprint per unit plus door swing space, (7) Away from food areas - recommended 50+ feet from food service or preparation, (8) Accessible to users - consider pedestrian paths and lighting. We'll help assess your site before delivery.",
     keywords: ['site requirements', 'placement requirements', 'ground requirements', 'access requirements'],
     relatedQuestions: ['delivery-requirements', 'site-terrain', 'site-placement'],
   },
@@ -482,7 +482,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Logistics & Setup',
     question: 'Can porta potties be placed at multiple locations?',
     answer:
-      'Yes! We can deliver porta potties to multiple locations within our service area. This is common for: large events with multiple activity areas, construction projects with multiple work zones, company locations across a city, or events spanning large areas. Delivery to multiple sites within the same service area typically doesn't incur extra fees if coordinated on the same delivery day. For widely separated locations (different cities), scheduling and pricing is handled separately for each location. Let us know your multi-site needs when requesting a quote, and we'll coordinate efficient delivery logistics.',
+      "Yes! We can deliver porta potties to multiple locations within our service area. This is common for: large events with multiple activity areas, construction projects with multiple work zones, company locations across a city, or events spanning large areas. Delivery to multiple sites within the same service area typically doesn't incur extra fees if coordinated on the same delivery day. For widely separated locations (different cities), scheduling and pricing is handled separately for each location. Let us know your multi-site needs when requesting a quote, and we'll coordinate efficient delivery logistics.",
     keywords: ['multiple locations', 'different locations', 'multiple sites', 'spread out'],
     relatedQuestions: ['site-placement', 'delivery-requirements', 'booking-info'],
   },
@@ -493,7 +493,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Customer Support',
     question: 'What are your customer service hours?',
     answer:
-      'FlushJohn provides 24/7 customer support, 365 days a year. You can reach us anytime by phone for urgent needs, emergencies, or general questions. For non-urgent inquiries submitted by email or online form, we respond within 1 hour during business hours (8 AM - 6 PM local time, Monday-Friday) and within 24 hours on weekends and holidays. Emergency services and same-day deliveries are available every day including weekends and holidays. We understand that events and construction needs don't follow regular business hours, so we're always available to assist you.',
+      "FlushJohn provides 24/7 customer support, 365 days a year. You can reach us anytime by phone for urgent needs, emergencies, or general questions. For non-urgent inquiries submitted by email or online form, we respond within 1 hour during business hours (8 AM - 6 PM local time, Monday-Friday) and within 24 hours on weekends and holidays. Emergency services and same-day deliveries are available every day including weekends and holidays. We understand that events and construction needs don't follow regular business hours, so we're always available to assist you.",
     keywords: ['customer service hours', 'support hours', 'availability', '24/7', 'when open'],
     relatedQuestions: ['support-contact', 'support-emergency', 'booking-process'],
   },
@@ -511,16 +511,16 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Customer Support',
     question: 'What if I have an emergency or urgent issue during my rental?',
     answer:
-      'For emergencies or urgent issues during your rental period, call us immediately - we're available 24/7. Emergency situations we handle: unit malfunction or damage, unit tipping or instability, unexpected increase in usage requiring more units, sanitation emergencies, vandalism or theft, severe weather damage, or any safety concerns. We respond to emergencies as quickly as possible, typically within 1-2 hours. For same-day urgent needs (additional units, emergency servicing), we prioritize emergency calls and often can respond within hours. Always call rather than email for emergency situations.',
+      "For emergencies or urgent issues during your rental period, call us immediately - we're available 24/7. Emergency situations we handle: unit malfunction or damage, unit tipping or instability, unexpected increase in usage requiring more units, sanitation emergencies, vandalism or theft, severe weather damage, or any safety concerns. We respond to emergencies as quickly as possible, typically within 1-2 hours. For same-day urgent needs (additional units, emergency servicing), we prioritize emergency calls and often can respond within hours. Always call rather than email for emergency situations.",
     keywords: ['emergency', 'urgent issue', 'problem', 'emergency service', '24/7'],
     relatedQuestions: ['support-hours', 'support-contact', 'support-issues'],
   },
   {
     id: 'support-issues',
     category: 'Customer Support',
-    question: 'What if there's a problem with my porta potty rental?',
+    question: "What if there's a problem with my porta potty rental?",
     answer:
-      'If you experience any problems with your porta potty rental, contact us immediately and we'll resolve it quickly. Common issues and solutions: (1) Unit won't lock - we'll send a technician or replace the unit, (2) Unpleasant odor - we'll provide emergency servicing, (3) Out of supplies - we'll restock immediately, (4) Damage - we'll assess and replace if necessary, (5) Delivery issues - we'll reschedule at no charge, (6) Wrong unit type - we'll exchange for correct unit. Most issues can be resolved within a few hours. We stand behind our service and will make things right. Your satisfaction is our priority.',
+      "If you experience any problems with your porta potty rental, contact us immediately and we'll resolve it quickly. Common issues and solutions: (1) Unit won't lock - we'll send a technician or replace the unit, (2) Unpleasant odor - we'll provide emergency servicing, (3) Out of supplies - we'll restock immediately, (4) Damage - we'll assess and replace if necessary, (5) Delivery issues - we'll reschedule at no charge, (6) Wrong unit type - we'll exchange for correct unit. Most issues can be resolved within a few hours. We stand behind our service and will make things right. Your satisfaction is our priority.",
     keywords: ['problems', 'issues', 'complaints', 'service problems', 'troubleshooting'],
     relatedQuestions: ['support-emergency', 'support-contact', 'maintenance-frequency'],
   },
@@ -538,7 +538,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Logistics & Setup',
     question: 'How many porta potties do I need for a wedding?',
     answer:
-      'For wedding porta potty quantities, consider: (1) Guest count, (2) Reception duration, (3) Alcohol service. Recommendations: 50 guests / 4 hours / with bar = 2 units, 100 guests / 4-5 hours / with bar = 2-3 units, 150 guests / 5 hours / with bar = 3-4 units, 200 guests / 5+ hours / with bar = 4-5 units. We recommend deluxe or luxury units for weddings rather than standard units. It's better to have extra capacity than too few units. Consider separate units for ceremony vs. reception if locations are far apart. Plan for women's higher usage (60-70% of restroom usage typically). Include 1 ADA unit for accessibility.',
+      "For wedding porta potty quantities, consider: (1) Guest count, (2) Reception duration, (3) Alcohol service. Recommendations: 50 guests / 4 hours / with bar = 2 units, 100 guests / 4-5 hours / with bar = 2-3 units, 150 guests / 5 hours / with bar = 3-4 units, 200 guests / 5+ hours / with bar = 4-5 units. We recommend deluxe or luxury units for weddings rather than standard units. It's better to have extra capacity than too few units. Consider separate units for ceremony vs. reception if locations are far apart. Plan for women's higher usage (60-70% of restroom usage typically). Include 1 ADA unit for accessibility.",
     keywords: ['wedding quantity', 'how many for wedding', 'wedding planning', 'guest count'],
     relatedQuestions: ['event-wedding', 'product-deluxe', 'quantity-needed'],
   },
