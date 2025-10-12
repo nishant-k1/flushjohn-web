@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 
 const MyRadioField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
-  const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
 
   return (
@@ -26,7 +25,6 @@ const MyRadioField = ({ label, ...props }: any) => {
         />
         <span className={styles.labelText}>{label}</span>
       </label>
-      {touched && error && <div className={styles.error}>Required</div>}
     </div>
   );
 };

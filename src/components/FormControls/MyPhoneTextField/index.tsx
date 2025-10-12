@@ -24,7 +24,11 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
           countryCallingCodeEditable={false}
           displayInitialValueAsLocalNumber={true}
           onChange={(value) => setValue(value)}
-          className={styles.input}
+          className={
+            touched && error
+              ? `${styles.input} ${styles.error_field}`
+              : styles.input
+          }
           limitMaxLength={true}
           maxLength={14}
           inputMode="numeric"

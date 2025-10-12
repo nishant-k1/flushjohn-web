@@ -26,15 +26,14 @@ const PhoneField = ({ label, ...props }: any) => {
             countryCallingCodeEditable={false}
             displayInitialValueAsLocalNumber={true}
             onChange={(value) => setValue(value)}
-            className={styles.phoneInput}
+            className={`${styles.phoneInput} ${touched && error ? "error_field" : ""}`}
+            placeholder={props.placeholder || "Enter phone number"}
             limitMaxLength={true}
             maxLength={14}
             inputMode="numeric"
           />
         </div>
-        {touched && error && (
-          <div className={styles.error}>{meta.error}</div>
-        )}
+        {touched && error && <div className={styles.error}>{meta.error}</div>}
       </div>
     </div>
   );

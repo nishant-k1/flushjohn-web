@@ -43,7 +43,7 @@
 }
 
 .error_field {
-  border-color: #ef648a !important;
+  border: 2px solid red !important;
 }
 
 .error {

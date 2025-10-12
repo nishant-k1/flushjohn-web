@@ -16,6 +16,7 @@ const MultilineTextField = ({ label, ...props }: any) => {
           {...field}
           {...props}
           className={`${styles.textareaInput} ${meta.touched && meta.error ? styles.error_field : ""}`}
+          placeholder={props.placeholder || label}
         />
         {meta.touched && meta.error && (
           <div className={styles.error}>{meta.error}</div>

@@ -105,36 +105,55 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
       >
         <span
           style={{
-            color: value.length === 0 ? "var(--primary-bg-color)" : "#333",
+            color: value.length === 0 ? "rgba(0, 0, 0, 0.6)" : "#333",
             fontSize: "14px",
-            fontWeight: value.length === 0 ? 600 : 500,
+            fontWeight: 500,
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
+            flex: 1,
           }}
         >
           {value.length === 0
-            ? label || "Select Rental Item..."
+            ? label || "Select Portable Units"
             : value.length === 1
               ? `${getQuantity(value[0].type || value[0])} × ${options.find((opt) => opt.value === (value[0].type || value[0]))?.label}`
               : `${getTotalUnits()} units (${value.length} types)`}
         </span>
-        {value.length > 0 && (
-          <span
-            style={{
-              background: "var(--primary-bg-color)",
-              color: "white",
-              padding: "2px 8px",
-              borderRadius: "10px",
-              fontSize: "12px",
-              fontWeight: 600,
-              minWidth: "20px",
-              textAlign: "center",
-            }}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {value.length > 0 && (
+            <span
+              style={{
+                background: "var(--primary-bg-color)",
+                color: "white",
+                padding: "2px 8px",
+                borderRadius: "10px",
+                fontSize: "12px",
+                fontWeight: 600,
+                minWidth: "20px",
+                textAlign: "center",
+              }}
+            >
+              {getTotalUnits()}
+            </span>
+          )}
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ flexShrink: 0, opacity: 0.6 }}
           >
-            {getTotalUnits()}
-          </span>
-        )}
+            <path
+              d="M3 4.5L6 7.5L9 4.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
 
       {isOpen && (

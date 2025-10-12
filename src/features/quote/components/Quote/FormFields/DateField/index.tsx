@@ -47,14 +47,14 @@ const DateField = ({ label, ...props }: any) => {
           onBlur={() => setTouched(true)}
           minDate={new Date()}
           dateFormat="MMMM d, yyyy"
-          placeholderText={label}
-          className={`${styles.dateInput} ${props.className || ""}`}
+          placeholderText={props.placeholder || label}
+          className={`full-form-datepicker ${styles.dateInput} ${props.className || ""} ${
+            touched && error ? "error_field" : ""
+          }`}
           popperPlacement="bottom-start"
           showPopperArrow={false}
         />
-        {touched && error && (
-          <div className={styles.error}>{meta.error}</div>
-        )}
+        {touched && error && <div className={styles.error}>{meta.error}</div>}
       </div>
     </div>
   );

@@ -22,7 +22,6 @@ const RadioField = ({ label, ...props }: any) => {
         />
         <span className={styles.labelText}>{label}</span>
       </label>
-      {touched && error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

@@ -66,20 +66,31 @@ const QuoteStep3 = () => {
     }
   };
 
+  // Validation schema for Step 3
+  const step3ValidationSchema = Yup.object({
+    fName: Yup.string()
+      .min(2, "First name must be at least 2 characters")
+      .required("First name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    phone: Yup.string()
+      .min(10, "Phone number must be at least 10 digits")
+      .required("Phone number is required"),
+    contactPersonName: Yup.string().required("Contact person name is required"),
+    contactPersonPhone: Yup.string()
+      .min(10, "Phone number must be at least 10 digits")
+      .required("Contact person phone is required"),
+  });
+
   return (
     <div>
       <Formik
         enableReinitialize={true}
         initialValues={formValues}
-        // validationSchema={Yup.object({
-        //   fName: Yup.string().required("Required"),
-        //   lName: Yup.string().required("Required"),
-        //   cName: Yup.string(),
-        //   email: Yup.string()
-        //     .email("Invalid email address")
-        //     .required("Required"),
-        //   phone: Yup.string().required("Required"),
-        // })}
+        validationSchema={step3ValidationSchema}
+        validateOnChange={false}
+        validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
             createLead({ ...values, leadSource: "Web Lead" });
@@ -97,7 +108,7 @@ const QuoteStep3 = () => {
       >
         <div className={styles.section}>
           <div className={styles.container}>
-            <Form>
+            <Form noValidate>
               <div className={styles.form}>
                 <TextField
                   label="First Name"
@@ -105,6 +116,7 @@ const QuoteStep3 = () => {
                   type="text"
                   maxLength="50"
                   autoComplete="given-name"
+                  placeholder="Enter first name"
                 />
                 <TextField
                   label="Last Name"
@@ -112,6 +124,7 @@ const QuoteStep3 = () => {
                   type="text"
                   maxLength="50"
                   autoComplete="family-name"
+                  placeholder="Enter last name"
                 />
                 <TextField
                   label="Company Name (If any)"
@@ -119,25 +132,30 @@ const QuoteStep3 = () => {
                   type="text"
                   maxLength="120"
                   autoComplete="organization"
+                  placeholder="Enter company name (optional)"
                 />
                 <TextField
                   label="Email Address"
                   name="email"
                   type="email"
                   autoComplete="email"
+                  placeholder="Enter email address"
                 />
                 <PhoneField
                   label="Phone"
                   name="phone"
+                  placeholder="Enter phone number"
                 />
                 <TextField
                   label="Onsite Contact Person Name"
                   name="contactPersonName"
+                  placeholder="Enter contact person name"
                 />
                 <PhoneField
                   label="Onsite Contact Person Phone"
                   name="contactPersonPhone"
                   autoComplete="off"
+                  placeholder="Enter contact phone number"
                 />
               </div>
               <div className={`${styles.outerBox} ${styles.buttons}`}>

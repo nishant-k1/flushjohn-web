@@ -32,28 +32,44 @@
 }
 
 /* Style the PhoneInput to match other inputs */
-.phoneInput :global(.PhoneInputInput) {
-  width: 100%;
-  height: 40px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 0;
-  font-size: 14px;
-  background: white;
-  color: #333;
-  box-sizing: border-box;
+.inputContainer :global(.PhoneInput) {
+  width: 100% !important;
+  display: flex !important;
 }
 
-.phoneInput :global(.PhoneInputInput):focus {
-  outline: none;
-  border-color: var(--primary-bg-color, #a95d1f);
+.inputContainer :global(.PhoneInputInput) {
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  background: white !important;
+  color: #333 !important;
+  box-sizing: border-box !important;
 }
 
-.phoneInput :global(.PhoneInputCountry) {
-  border: 1px solid #ccc;
-  padding: 0 8px;
-  background: white;
-  border-radius: 0;
+.inputContainer :global(.PhoneInputInput):focus {
+  outline: none !important;
+  border-color: var(--primary-bg-color, #a95d1f) !important;
+}
+
+.inputContainer :global(.PhoneInputCountry) {
+  border: 1px solid #ccc !important;
+  padding: 0 8px !important;
+  background: white !important;
+  border-radius: 0 !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.inputContainer :global(.PhoneInputInput.error_field) {
+  border: 2px solid red !important;
+}
+
+.error_field {
+  border: 2px solid red !important;
 }
 
 .error {

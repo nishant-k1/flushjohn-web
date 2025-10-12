@@ -15,7 +15,11 @@ const MyZipTextField = ({ label, ...props }: any) => {
         {...field}
         {...props}
         type="text"
-        className={styles.input}
+        className={
+          touched && error
+            ? `${styles.input} ${styles.error_field}`
+            : styles.input
+        }
         maxLength={5}
         inputMode="numeric"
         pattern="[0-9]*"

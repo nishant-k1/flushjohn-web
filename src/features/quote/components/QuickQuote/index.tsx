@@ -1,6 +1,6 @@
 "use client";
 
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage, useFormikContext, Field } from "formik";
 import styles from "./styles.module.css";
 import React, { useContext, useState } from "react";
 import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
@@ -18,7 +18,6 @@ import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
 // import { apiBaseUrls } from "@/constants";
-import MyRadioField from "@/components/FormControls/MyRadioField";
 import { logEvent } from "../../../../../react-ga4-config";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
@@ -30,16 +29,186 @@ import MyZipTextField from "@/components/FormControls/MyZipTextField";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
-  products: Yup.array().of(Yup.string().required("Required")),
-  deliveryDate: Yup.string().required("Required"),
-  pickupDate: Yup.string().required("Required"),
-  zip: Yup.number().required("Required"),
-  fName: Yup.string().required("Required"),
-  lName: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
-  phone: Yup.string().required("Required"),
+  usageType: Yup.string().required("Please select usage type"),
+  products: Yup.array()
+    .min(1, "Please select at least one portable unit")
+    .required("Please select at least one portable unit"),
+  deliveryDate: Yup.string().required("Delivery date is required"),
+  pickupDate: Yup.string().required("Pickup date is required"),
+  zip: Yup.string()
+    .matches(/^\d{5}$/, "Zip code must be 5 digits")
+    .required("Zip code is required"),
+  fName: Yup.string()
+    .min(2, "First name must be at least 2 characters")
+    .required("First name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: Yup.string()
+    .min(10, "Phone number must be at least 10 digits")
+    .required("Phone number is required"),
+  lName: Yup.string(),
   instructions: Yup.string(),
 });
+
+// Component to handle usage type with error styling
+const UsageTypeField = () => {
+  const { errors, touched, values, setFieldValue, setFieldTouched } =
+    useFormikContext<any>();
+  const hasError = touched.usageType && errors.usageType;
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  const options = [
+    { label: "Event", value: "event" },
+    { label: "Construction", value: "construction" },
+  ];
+
+  // Close dropdown when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleSelect = async (value: string) => {
+    await setFieldValue("usageType", value);
+    setFieldTouched("usageType", false);
+    setIsOpen(false);
+  };
+
+  const selectedOption = options.find((opt) => opt.value === values.usageType);
+
+  return (
+    <Grid
+      item
+      xs={12}
+    >
+      <div
+        ref={dropdownRef}
+        style={{ position: "relative", width: "100%" }}
+      >
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={hasError ? styles.error_field : ""}
+          style={{
+            padding: "0 12px",
+            border: hasError ? "2px solid red" : "1px solid #d9d9d9",
+            borderRadius: "4px",
+            cursor: "pointer",
+            height: "2rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "white",
+            transition: "border-color 0.2s",
+          }}
+        >
+          <span
+            style={{
+              color: values.usageType ? "#333" : "rgba(0, 0, 0, 0.6)",
+              fontSize: "14px",
+              fontWeight: 500,
+              flex: 1,
+            }}
+          >
+            {selectedOption ? selectedOption.label : "Usage Type"}
+          </span>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ flexShrink: 0, opacity: 0.6 }}
+          >
+            <path
+              d="M3 4.5L6 7.5L9 4.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+
+        {isOpen && (
+          <div
+            style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              background: "white",
+              border: "1px solid #d9d9d9",
+              borderRadius: "6px",
+              marginTop: "6px",
+              maxHeight: "240px",
+              overflowY: "auto",
+              zIndex: 1000,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            }}
+          >
+            {options.map((option) => (
+              <div
+                key={option.value}
+                onClick={() => handleSelect(option.value)}
+                style={{
+                  padding: "10px 12px",
+                  cursor: "pointer",
+                  background:
+                    values.usageType === option.value
+                      ? "rgba(169, 93, 31, 0.1)"
+                      : "white",
+                  borderBottom: "1px solid #f0f0f0",
+                  transition: "all 0.2s",
+                  borderLeft:
+                    values.usageType === option.value
+                      ? "3px solid var(--primary-bg-color)"
+                      : "3px solid transparent",
+                  fontSize: "14px",
+                  fontWeight: values.usageType === option.value ? 600 : 400,
+                  color:
+                    values.usageType === option.value
+                      ? "var(--primary-bg-color)"
+                      : "#333",
+                }}
+                onMouseEnter={(e) => {
+                  if (values.usageType !== option.value) {
+                    e.currentTarget.style.background = "#fafafa";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    values.usageType === option.value
+                      ? "rgba(169, 93, 31, 0.1)"
+                      : "white";
+                }}
+              >
+                {option.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <ErrorMessage name="usageType">
+        {(msg) => <div className={styles.error}>{msg}</div>}
+      </ErrorMessage>
+    </Grid>
+  );
+};
 
 const QuickQuote = () => {
   const { clientWidth } =
@@ -140,10 +309,9 @@ const QuickQuote = () => {
             contactPersonName: "",
             contactPersonPhone: "",
           }}
-          // validationSchema={quickQuoteValidationSchema}
-          // validateOnChange={false}
-          // validateOnBlur={true}
-
+          validationSchema={quickQuoteValidationSchema}
+          validateOnChange={false}
+          validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
             try {
@@ -215,34 +383,13 @@ const QuickQuote = () => {
                         <h2>{quickQuoteTitle}</h2>
                       </div>
                     </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <div className={styles.usageTypeRow}>
-                        <label className={styles.usageTypeLabel}>Usage Type</label>
-                        <div className={styles.radioGroup}>
-                          <MyRadioField
-                            label="Event"
-                            name="usageType"
-                            value="event"
-                            className={styles.radio}
-                          />
-                          <MyRadioField
-                            label="Construction"
-                            name="usageType"
-                            value="construction"
-                            className={styles.radio}
-                          />
-                        </div>
-                      </div>
-                    </Grid>
+                    <UsageTypeField />
                     <Grid
                       item
                       xs={12}
                     >
                       <MyMultipleSelectCheckmarks
-                        label="Portable Units"
+                        label="Select Portable Units"
                         name="products"
                       />
                     </Grid>
@@ -277,6 +424,16 @@ const QuickQuote = () => {
                         min={0}
                         maxLength={5}
                         inputMode="numeric"
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                    >
+                      <MyTextField
+                        label="Street Address"
+                        name="street"
+                        placeholder="Street Address (Optional)"
                       />
                     </Grid>
                     <Grid

@@ -12,7 +12,9 @@ const TextField = ({ label, ...props }: any) => {
         {label}
         {(props.name === "email" ||
           props.name === "fName" ||
-          props.name === "contactPersonName") && (
+          props.name === "contactPersonName" ||
+          props.name === "streetAddress" ||
+          props.required) && (
           <span style={{ color: "red", fontSize: "x-large" }}>*</span>
         )}
       </label>
@@ -21,7 +23,7 @@ const TextField = ({ label, ...props }: any) => {
           {...field}
           {...props}
           className={`${styles.textInput} ${touched && error ? styles.error_field : ""}`}
-          placeholder=""
+          placeholder={props.placeholder || label}
           onChange={(e) => {
             setValue(e.target.value);
           }}
@@ -29,9 +31,7 @@ const TextField = ({ label, ...props }: any) => {
             setTouched(true);
           }}
         />
-        {touched && error && (
-          <div className={styles.error}>{error}</div>
-        )}
+        {touched && error && <div className={styles.error}>{error}</div>}
       </div>
     </div>
   );

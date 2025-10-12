@@ -112,3 +112,21 @@
   opacity: 0.9;
   transition: 0.3s;
 }
+
+/* Error styling */
+.error {
+  color: #ef648a;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: calc(50% + 8px);
+}
+
+.error_message {
+  color: #ef648a;
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: rgba(239, 100, 138, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid #ef648a;
+}

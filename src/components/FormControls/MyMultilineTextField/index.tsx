@@ -11,7 +11,11 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
       <textarea
         {...field}
         {...props}
-        className={props.className}
+        className={
+          touched && error
+            ? `${props.className} ${styles.error_field}`
+            : props.className
+        }
         placeholder={label}
         onChange={(e) => {
           setValue(e.target.value);

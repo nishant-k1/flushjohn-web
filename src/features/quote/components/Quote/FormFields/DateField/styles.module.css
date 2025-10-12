@@ -39,6 +39,34 @@
   border-color: var(--primary-bg-color, #a95d1f);
 }
 
+/* Ensure .full-form-datepicker has proper styling */
+.inputContainer :global(.full-form-datepicker) {
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  background: white !important;
+  color: #333 !important;
+  box-sizing: border-box !important;
+}
+
+.inputContainer :global(.full-form-datepicker):hover,
+.inputContainer :global(.full-form-datepicker):focus {
+  border-color: var(--primary-bg-color, #a95d1f) !important;
+}
+
+.inputContainer :global(.full-form-datepicker.error_field),
+.inputContainer :global(.full-form-datepicker.error_field):hover,
+.inputContainer :global(.full-form-datepicker.error_field):focus {
+  border: 2px solid red !important;
+}
+
+.error_field {
+  border: 2px solid red !important;
+}
+
 .error {
   color: #ef648a;
   font-size: 12px;

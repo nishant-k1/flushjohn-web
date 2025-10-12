@@ -53,3 +53,13 @@
   padding: 0;
   flex-shrink: 0;
 }
+
+.error_field {
+  border: 2px solid red !important;
+}
+
+.error {
+  color: #ef648a;
+  font-size: 12px;
+  margin-top: 4px;
+}
