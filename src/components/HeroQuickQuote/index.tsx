@@ -295,7 +295,9 @@ const HeroQuickQuote = () => {
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setHeroQuickQuoteViewStatus(false);
         try {
-          createLead({ ...values, leadSource: "Web Hero Quick Lead" });
+          const leadData = { ...values, leadSource: "Web Hero Quick Lead" };
+          console.log("📤 Hero Quick Quote - Sending lead data:", leadData);
+          createLead(leadData);
           notify();
           setQuickQuoteRequested(true);
           handleLeadConversion();

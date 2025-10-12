@@ -315,7 +315,9 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
             try {
-              createLead({ ...values, leadSource: "Web Quick Lead" });
+              const leadData = { ...values, leadSource: "Web Quick Lead" };
+              console.log("📤 Quick Quote - Sending lead data:", leadData);
+              createLead(leadData);
               notify();
               setQuickQuoteRequested(true);
               handleLeadConversion();

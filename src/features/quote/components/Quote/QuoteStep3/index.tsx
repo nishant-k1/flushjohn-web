@@ -93,7 +93,15 @@ const QuoteStep3 = () => {
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            createLead({ ...values, leadSource: "Web Lead" });
+            // Merge final step values with existing form data
+            const finalData = {
+              ...formValues,
+              ...values,
+              leadSource: "Web Lead",
+            };
+            
+            console.log("📤 Sending lead data to API:", finalData);
+            createLead(finalData);
             notify();
             setQuoteRequested(true);
             handleLeadConversion();
