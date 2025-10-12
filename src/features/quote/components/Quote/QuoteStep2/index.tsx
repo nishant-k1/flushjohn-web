@@ -42,52 +42,36 @@ const QuoteStep2 = () => {
     >
       <Form>
         <div className={styles.form}>
-          <div className={styles.deliveryDate}>
-            <DateField
-              label="Delivery Date"
-              name="deliveryDate"
-            />
-          </div>
-          <div className={styles.pickupDate}>
-            <DateField
-              label="Pickup Date"
-              name="pickupDate"
-            />
-          </div>
-          <div className={styles.zip}>
-            <div>
-              <ZipTextField
-                label="Zip Code"
-                name="zip"
-              />
-            </div>
-          </div>
-          <div className={styles.street}>
-            <TextField
-              label="Street"
-              name="streetAddress"
-            />
-          </div>
-          <div className={styles.city}>
-            <TextField
-              label="City"
-              name="city"
-            />
-          </div>
-          <div className={styles.state}>
-            <TextField
-              label="State"
-              name="state"
-            />
-          </div>
-          <div className={styles.hint}>
-            <MultilineTextField
-              label="Placement Instructions"
-              name="instructions"
-            />
-          </div>
+          <DateField
+            label="Delivery Date"
+            name="deliveryDate"
+          />
+          <DateField
+            label="Pickup Date"
+            name="pickupDate"
+          />
+          <TextField
+            label="Street"
+            name="streetAddress"
+          />
+          <ZipTextField
+            label="Zip Code"
+            name="zip"
+          />
+          <TextField
+            label="City"
+            name="city"
+          />
+          <TextField
+            label="State"
+            name="state"
+          />
+          <MultilineTextField
+            label="Placement Instructions"
+            name="instructions"
+          />
         </div>
-        <div className={`${styles.outerBox} ${styles.buttons}`}>
+        <div className={styles.buttons}>
           <button
             type="submit"
             className={styles.next}

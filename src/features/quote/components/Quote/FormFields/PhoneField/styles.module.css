@@ -1,16 +1,63 @@
-.outerBox {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: start;
+/* Clean, simple PhoneField design - matches NumberField */
+.fieldRow {
+  display: flex;
   align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+  gap: 16px;
 }
 
-.innerBox {
+.fieldLabel {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.inputContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Ensure the wrapper div takes full width */
+.inputContainer > div {
   width: 100%;
-  display: grid;
-  justify-content: start;
-  grid-template-columns: 1fr max-content;
+}
+
+.phoneInput {
+  width: 100%;
+}
+
+/* Style the PhoneInput to match other inputs */
+.phoneInput :global(.PhoneInputInput) {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.phoneInput :global(.PhoneInputInput):focus {
+  outline: none;
+  border-color: var(--primary-bg-color, #a95d1f);
+}
+
+.phoneInput :global(.PhoneInputCountry) {
+  border: 1px solid #ccc;
+  padding: 0 8px;
+  background: white;
+  border-radius: 0;
+}
+
+.error {
+  color: #ef648a;
+  font-size: 12px;
+  margin-top: 4px;
 }

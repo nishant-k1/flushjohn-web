@@ -1,58 +1,20 @@
-.ant-picker {
-  border-radius: 0 !important;
-  width: 100% !important;
-  height: 2.5rem !important;
-}
+/* Clean form field styles - no conflicting rules */
 
-.ant-picker-outlined {
-  border-width: 1px !important;
-  border-style: solid !important;
-  border-color: black !important;
-}
-
-.ant-picker .ant-picker-suffix {
-  display: flex !important;
-  flex: none;
-  align-self: center;
-  margin-inline-start: 4px;
-  color: black !important;
-  line-height: 1;
-  pointer-events: none;
-  transition:
-    opacity 0.2s,
-    color 0.2s;
-}
-
+/* Phone input country selector */
 .PhoneInputCountry {
   position: relative;
   align-self: stretch;
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   border-right: 0;
   margin-right: 0;
+  background: white;
 }
 
-.form input::placeholder,
-.form textarea::placeholder {
-  color: rgba(0, 0, 0, 0.88);
-  font-family: small;
-}
-
-.styles-module__zqIsNW__form input::placeholder,
-.styles-module__zqIsNW__form select::placeholder,
-.styles-module__zqIsNW__form textarea::placeholder {
-  color: rgba(0, 0, 0, 0.88);
-  font-family: small;
-}
-
-.ant-picker-outlined:focus,
-.ant-picker-outlined:focus-within,
-.ant-picker-outlined:hover {
-  border-color: var(--primary-bg-color) !important;
-  box-shadow: none !important;
-}
-
-.ant-picker-input input {
-  color: black !important;
+/* Placeholder text styling */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
 }

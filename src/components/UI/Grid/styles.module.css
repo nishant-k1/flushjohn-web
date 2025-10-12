@@ -15,10 +15,15 @@
 
 /* Spacing */
 .spacing-0 { gap: 0; }
+.spacing-0_5 { gap: 4px; }
 .spacing-1 { gap: 8px; }
+.spacing-1_5 { gap: 12px; }
 .spacing-2 { gap: 16px; }
+.spacing-2_5 { gap: 20px; }
 .spacing-3 { gap: 24px; }
+.spacing-3_5 { gap: 28px; }
 .spacing-4 { gap: 32px; }
+.spacing-4_5 { gap: 36px; }
 .spacing-5 { gap: 40px; }
 
 /* Grid columns - Extra Small (default/mobile) */

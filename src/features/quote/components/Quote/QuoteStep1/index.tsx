@@ -34,29 +34,31 @@ const QuoteStep1 = () => {
     >
       <Form>
         <div className={styles.form}>
-          <div className={styles.radio_container}>
-            <RadioField
-              label="Event"
-              name="usageType"
-              value="event"
-              className={styles.radio}
-            />
-            <RadioField
-              label="Construction"
-              name="usageType"
-              value="construction"
-              className={styles.radio}
-            />
-          </div>
-          {products.map((item, index) => (
-            <div key={index}>
-              <NumberField
-                label={item.name}
-                name={`products[${index}].qty`}
-                mask="9999"
-                type="tel"
+          <div className={styles.usage_type_row}>
+            <label className={styles.field_label}>Usage Type</label>
+            <div className={styles.radio_inner_box}>
+              <RadioField
+                label="Event"
+                name="usageType"
+                value="event"
+                className={styles.radio}
+              />
+              <RadioField
+                label="Construction"
+                name="usageType"
+                value="construction"
+                className={styles.radio}
               />
             </div>
+          </div>
+          {products.map((item, index) => (
+            <NumberField
+              key={index}
+              label={item.name}
+              name={`products[${index}].qty`}
+              mask="9999"
+              type="tel"
+            />
           ))}
         </div>
         <div className={styles.buttons}>

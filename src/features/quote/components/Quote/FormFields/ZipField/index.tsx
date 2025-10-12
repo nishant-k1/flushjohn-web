@@ -10,16 +10,16 @@ const ZipTextField = ({ label, ...props }: any) => {
   const { setValue } = helpers;
 
   return (
-    <div className={styles.outerBox}>
-      <label>
+    <div className={styles.fieldRow}>
+      <label className={styles.fieldLabel}>
         {label} <span style={{ color: "red", fontSize: "x-large" }}>*</span>
       </label>
-      <div className={styles.innerBox}>
+      <div className={styles.inputContainer}>
         <input
           {...field}
           {...props}
           type="text"
-          className={styles.input}
+          className={`${styles.zipInput} ${touched && error ? styles.error_field : ""}`}
           autoComplete="postal-code"
           maxLength={5}
           inputMode="numeric"

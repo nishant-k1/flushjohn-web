@@ -1,16 +1,50 @@
-.outerBox {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: start;
+/* Clean, simple ZipField design - matches NumberField */
+.fieldRow {
+  display: flex;
   align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+  gap: 16px;
 }
 
-.innerBox {
+.fieldLabel {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.inputContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.zipInput {
   width: 100%;
-  display: grid;
-  justify-content: start;
-  grid-template-columns: 1fr max-content;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.zipInput:focus {
+  outline: none;
+  border-color: var(--primary-bg-color, #a95d1f);
+}
+
+.error_field {
+  border-color: #ef648a !important;
+}
+
+.error {
+  color: #ef648a;
+  font-size: 12px;
+  margin-top: 4px;
 }

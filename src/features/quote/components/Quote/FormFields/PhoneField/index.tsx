@@ -9,12 +9,12 @@ const PhoneField = ({ label, ...props }: any) => {
   const { setValue } = helpers;
 
   return (
-    <div className={styles.outerBox}>
-      <label className={styles.label}>
+    <div className={styles.fieldRow}>
+      <label className={styles.fieldLabel}>
         {label}
         <span style={{ color: "red", fontSize: "x-large" }}>*</span>
       </label>
-      <div className={styles.innerBox}>
+      <div className={styles.inputContainer}>
         <div title="Enter 10-digit phone number">
           <PhoneInput
             {...field}
@@ -26,15 +26,15 @@ const PhoneField = ({ label, ...props }: any) => {
             countryCallingCodeEditable={false}
             displayInitialValueAsLocalNumber={true}
             onChange={(value) => setValue(value)}
-            className={styles.input}
+            className={styles.phoneInput}
             limitMaxLength={true}
             maxLength={14}
             inputMode="numeric"
           />
-          {touched && error ? (
-            <div className={styles.error}>{meta.error + " "}</div>
-          ) : null}
         </div>
+        {touched && error && (
+          <div className={styles.error}>{meta.error}</div>
+        )}
       </div>
     </div>
   );

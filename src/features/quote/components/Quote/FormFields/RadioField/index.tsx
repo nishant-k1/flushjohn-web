@@ -4,33 +4,25 @@ import styles from "./styles.module.css";
 const RadioField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
-  const { setValue, setTouched, setError } = helpers;
+  const { setValue } = helpers;
 
   return (
-    <div>
-      <div className={styles.radio_outerBox}>
-        <label>{label}</label>
+    <div className={styles.radioWrapper}>
+      <label className={styles.radioLabel}>
         <input
           {...field}
           {...props}
           aria-label={props.name}
-          style={{
-            height: "1.5rem",
-            width: "1.5rem",
-          }}
           type="radio"
           checked={field.value === props.value}
           className={props.className}
-          // placeholder={label}
           onChange={(e) => {
             setValue(e.target.value);
           }}
         />
-      </div>
-
-      {touched && error ? (
-        <div className={styles.error}>{error + " "}</div>
-      ) : null}
+        <span className={styles.labelText}>{label}</span>
+      </label>
+      {touched && error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

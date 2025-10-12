@@ -40,6 +40,11 @@ export function Grid({
   className,
   style,
 }: GridProps) {
+  // Convert spacing to class name (handle decimals like 0.5 -> "spacing-0_5")
+  const spacingClass = container 
+    ? styles[`spacing-${spacing}`.replace('.', '_')] 
+    : '';
+  
   const classes = [
     container ? styles.container : '',
     item ? styles.item : '',
@@ -48,7 +53,7 @@ export function Grid({
     md ? styles[`md-${md}`] : '',
     lg ? styles[`lg-${lg}`] : '',
     xl ? styles[`xl-${xl}`] : '',
-    container ? styles[`spacing-${spacing}`] : '',
+    spacingClass,
     direction === 'column' ? styles.column : '',
     className || '',
   ]

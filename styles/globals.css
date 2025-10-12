@@ -147,3 +147,152 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
 }
+
+/* Date Picker Calendar Styling - Chrome/Edge/Safari */
+/* Make calendar dates show pointer cursor */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer !important;
+}
+
+/* Style the calendar dropdown popup (Chrome/Edge) */
+input[type="date"]::-webkit-datetime-edit {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  cursor: pointer;
+}
+
+/* Force radio buttons to be square checkboxes */
+input[type="radio"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #d9d9d9 !important;
+  border-radius: 4px !important;
+  background-color: white !important;
+  cursor: pointer !important;
+  position: relative !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+input[type="radio"]:hover {
+  border-color: var(--primary-bg-color, #a95d1f) !important;
+}
+
+input[type="radio"]:checked {
+  background-color: var(--primary-bg-color, #a95d1f) !important;
+  border-color: var(--primary-bg-color, #a95d1f) !important;
+}
+
+input[type="radio"]:checked::after {
+  content: "✓" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+}
+
+/* Force DatePicker wrapper to take full width - Global Override */
+.react-datepicker-wrapper {
+  width: 100% !important;
+  display: block !important;
+}
+
+.react-datepicker__input-container {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Force date picker input borders to match other inputs - Global Override */
+.react-datepicker__input-container input {
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+}
+
+.react-datepicker__input-container input:hover {
+  border: 1px solid var(--primary-bg-color, #a95d1f) !important;
+}
+
+.react-datepicker__input-container input:focus {
+  border: 1px solid var(--primary-bg-color, #a95d1f) !important;
+}
+
+/* Force specific date picker classes */
+.full-form-datepicker,
+.custom-datepicker {
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 1 !important;
+}
+
+.full-form-datepicker:hover,
+.custom-datepicker:hover {
+  border: 1px solid var(--primary-bg-color, #a95d1f) !important;
+}
+
+.full-form-datepicker:focus,
+.custom-datepicker:focus {
+  border: 1px solid var(--primary-bg-color, #a95d1f) !important;
+}
+
+/* Phone Input Styling - Match other form inputs */
+.PhoneInput {
+  width: 100% !important;
+  display: flex !important;
+}
+
+.PhoneInputInput {
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  background: white !important;
+  color: #333 !important;
+  box-sizing: border-box !important;
+}
+
+.PhoneInputInput:focus {
+  outline: none !important;
+  border-color: var(--primary-bg-color, #a95d1f) !important;
+}
+
+.PhoneInputCountry {
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  padding: 0 8px !important;
+  background: white !important;
+  height: 40px !important;
+  align-items: center !important;
+  display: flex !important;
+}

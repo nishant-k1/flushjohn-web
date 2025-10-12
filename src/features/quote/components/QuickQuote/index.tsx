@@ -217,25 +217,25 @@ const QuickQuote = () => {
                     </Grid>
                     <Grid
                       item
-                      xs={6}
+                      xs={12}
                     >
-                      <MyRadioField
-                        label="Event"
-                        name="usageType"
-                        value="event"
-                        className={styles.radio}
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                    >
-                      <MyRadioField
-                        label="Construction"
-                        name="usageType"
-                        value="construction"
-                        className={styles.radio}
-                      />
+                      <div className={styles.usageTypeRow}>
+                        <label className={styles.usageTypeLabel}>Usage Type</label>
+                        <div className={styles.radioGroup}>
+                          <MyRadioField
+                            label="Event"
+                            name="usageType"
+                            value="event"
+                            className={styles.radio}
+                          />
+                          <MyRadioField
+                            label="Construction"
+                            name="usageType"
+                            value="construction"
+                            className={styles.radio}
+                          />
+                        </div>
+                      </div>
                     </Grid>
                     <Grid
                       item

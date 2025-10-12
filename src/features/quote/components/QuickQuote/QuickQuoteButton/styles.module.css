@@ -10,8 +10,8 @@
 
 .quickQuoteBtnWrapper {
   position: fixed;
-  right: 7.8rem;
-  bottom: 7.8rem;
+  right: 20px;
+  bottom: 20px;
 }
 
 .quickQuoteBtnWrapper img {
@@ -28,8 +28,8 @@
   border: 0; */
   /* position: relative; */
   position: fixed;
-  right: 6px;
-  bottom: 40vh;
+  right: 20px;
+  bottom: 92px;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary-bg-color);
@@ -77,8 +77,8 @@
   border: 0; */
   /* position: relative; */
   position: fixed;
-  right: 6px;
-  bottom: 52vh;
+  right: 20px;
+  bottom: 20px;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary-bg-color);

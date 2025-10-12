@@ -43,11 +43,15 @@ export default function Button({
     .filter(Boolean)
     .join(' ');
 
+  // Merge inline styles with component props
+  const { style, ...restProps } = props;
+
   return (
     <button
       className={buttonClasses}
       disabled={disabled || loading}
-      {...props}
+      style={style}
+      {...restProps}
     >
       {loading && <span className={styles.spinner} />}
       {!loading && startIcon && <span className={styles.startIcon}>{startIcon}</span>}

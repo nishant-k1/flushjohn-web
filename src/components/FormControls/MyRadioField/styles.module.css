@@ -1,4 +1,4 @@
-/* Clean RadioField component - checkbox style */
+/* Clean RadioField component - checkbox style for Quick Quote - matches full quote form exactly */
 .radioWrapper {
   display: inline-flex;
   align-items: center;
@@ -15,13 +15,14 @@
 
 .labelText {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: #333;
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
-/* Custom radio button styling - checkbox style */
+/* Custom radio button styling - checkbox style with checkmark ✓ */
 .radioLabel input[type="radio"] {
   appearance: none !important;
   -webkit-appearance: none !important;
@@ -36,7 +37,8 @@
   transition: all 0.2s ease !important;
   margin: 0 !important;
   padding: 0 !important;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .radioLabel input[type="radio"]:hover {
@@ -48,6 +50,7 @@
   border-color: var(--primary-bg-color, #a95d1f) !important;
 }
 
+/* White checkmark ✓ when checked - stylish version */
 .radioLabel input[type="radio"]:checked::after {
   content: "✓" !important;
   position: absolute !important;
@@ -58,6 +61,7 @@
   font-size: 15px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
+  display: block !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;

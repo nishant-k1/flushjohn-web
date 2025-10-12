@@ -99,68 +99,46 @@ const QuoteStep3 = () => {
           <div className={styles.container}>
             <Form>
               <div className={styles.form}>
-                <div className={styles.fName}>
-                  <TextField
-                    label="First Name"
-                    name="fName"
-                    type="text"
-                    maxLength="50"
-                    autoComplete="given-name"
-                  />
-                </div>
-
-                <div className={styles.lName}>
-                  <TextField
-                    label="Last Name"
-                    name="lName"
-                    type="text"
-                    maxLength="50"
-                    autoComplete="family-name"
-                  />
-                </div>
-
-                <div className={styles.cName}>
-                  <TextField
-                    label="Company Name (If any)"
-                    name="cName"
-                    type="text"
-                    maxLength="120"
-                    autoComplete="organization"
-                  />
-                </div>
-
-                <div className={styles.email}>
-                  <TextField
-                    label="Email Address"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                  />
-                </div>
-
-                <div className={styles.phone}>
-                  <div>
-                    <PhoneField
-                      label="Phone"
-                      name="phone"
-                    />
-                  </div>
-                </div>
-                <div className={styles.contactPersonName}>
-                  <TextField
-                    label="Onsite Contact Person Name"
-                    name="contactPersonName"
-                  />
-                </div>
-                <div className={styles.phone}>
-                  <div>
-                    <PhoneField
-                      label="Onsite Contact Person Phone"
-                      name="contactPersonPhone"
-                      autoComplete="off"
-                    />
-                  </div>
-                </div>
+                <TextField
+                  label="First Name"
+                  name="fName"
+                  type="text"
+                  maxLength="50"
+                  autoComplete="given-name"
+                />
+                <TextField
+                  label="Last Name"
+                  name="lName"
+                  type="text"
+                  maxLength="50"
+                  autoComplete="family-name"
+                />
+                <TextField
+                  label="Company Name (If any)"
+                  name="cName"
+                  type="text"
+                  maxLength="120"
+                  autoComplete="organization"
+                />
+                <TextField
+                  label="Email Address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                />
+                <PhoneField
+                  label="Phone"
+                  name="phone"
+                />
+                <TextField
+                  label="Onsite Contact Person Name"
+                  name="contactPersonName"
+                />
+                <PhoneField
+                  label="Onsite Contact Person Phone"
+                  name="contactPersonPhone"
+                  autoComplete="off"
+                />
               </div>
               <div className={`${styles.outerBox} ${styles.buttons}`}>
                 <button

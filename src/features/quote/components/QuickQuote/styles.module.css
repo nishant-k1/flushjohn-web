@@ -22,9 +22,10 @@
   margin: 0 auto;
   z-index: 300;
   border: 1px solid rgba(255, 255, 255, 0.308);
-  padding: 4px;
+  padding: 8px;
   height: fit-content;
-  width: 280px;
+  width: min(340px, 90vw);
+  max-width: 400px;
 }
 
 .closeIcon {
@@ -43,23 +44,42 @@
   font-weight: 600;
 }
 
-.quickQuoteform .radio {
-  cursor: pointer;
-  height: 2rem;
-  width: 2rem;
-  box-sizing: border-box;
-  appearance: none;
-  border-radius: 50%;
-  border: 1px solid var(--primary-bg-color);
-  border-color: var(--primary-bg-color);
+/* Usage Type Row - Responsive Layout */
+.usageTypeRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  background: white;
+  padding: 8px 12px;
+  margin-bottom: 4px;
 }
 
-.quickQuoteform .radio:checked {
-  background-color: var(--primary-bg-color);
-  border-color: var(--primary-bg-color);
+.usageTypeLabel {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--primary-bg-color) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  height: auto !important;
+  width: auto !important;
+  background: transparent !important;
+  border: none !important;
+  text-align: left !important;
 }
-.quickQuoteform .radio:hover {
-  border: 1px solid var(--primary-bg-color);
+
+.radioGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+/* Remove old circular radio styles */
+.quickQuoteform .radio {
+  cursor: pointer;
 }
 
 .quickQuoteform input:checked {
@@ -124,6 +144,7 @@
   font-size: 14px;
   border-radius: 0;
   color: black !important;
+  cursor: pointer;
 }
 .date input:hover {
   border: none;
@@ -139,6 +160,26 @@
 .date input:focus::placeholder {
   color: rgb(19, 113, 255, 0.5) !important;
   font-weight: 600;
+}
+
+/* Style the calendar picker dropdown */
+.date input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* Style calendar dates to show pointer cursor (Chrome/Edge) */
+.date input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  cursor: pointer;
+}
+
+.date input[type="date"]::-webkit-datetime-edit-text {
+  cursor: pointer;
+}
+
+.date input[type="date"]::-webkit-datetime-edit-month-field,
+.date input[type="date"]::-webkit-datetime-edit-day-field,
+.date input[type="date"]::-webkit-datetime-edit-year-field {
+  cursor: pointer;
 }
 
 .error:before {
