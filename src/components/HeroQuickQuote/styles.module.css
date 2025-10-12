@@ -203,7 +203,7 @@
 }
 
 /* Error state for PhoneInput */
-:global(.PhoneInput.error_field) {
+.quickQuoteform :global(.PhoneInput.error_field) {
   border: 2px solid red !important;
 }
 

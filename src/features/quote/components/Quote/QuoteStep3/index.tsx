@@ -43,9 +43,25 @@ const QuoteStep3 = () => {
     reconnectionDelay: 1000,
   });
 
+  React.useEffect(() => {
+    socket.on("connect", () => {
+      console.log("🟢 Full Quote Form - Connected to leads socket");
+    });
+
+    socket.on("disconnect", () => {
+      console.log("🔴 Full Quote Form - Disconnected from leads socket");
+    });
+
+    return () => {
+      socket.off("connect");
+      socket.off("disconnect");
+    };
+  }, [socket]);
+
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
   const createLead = React.useCallback((data: any) => {
+    console.log("📤 Full Quote Form - Emitting createLead event via socket");
     socketRef.current?.emit("createLead", data);
   }, []);
 
@@ -99,7 +115,7 @@ const QuoteStep3 = () => {
               ...values,
               leadSource: "Web Lead",
             };
-            
+
             console.log("📤 Sending lead data to API:", finalData);
             createLead(finalData);
             notify();
