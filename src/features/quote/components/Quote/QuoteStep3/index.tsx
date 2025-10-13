@@ -13,19 +13,10 @@ import { initialQuoteValues } from "@/features/quote/contexts/QuoteContext";
 import { apiBaseUrls } from "@/constants";
 import TextField from "../FormFields/TextField";
 import PhoneField from "../FormFields/PhoneField";
+import SuccessModal from "@/components/SuccessModal";
 
 const QuoteStep3 = () => {
-  const notify = () =>
-    toast.success("Quote request sent !", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+  const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const { render, data, setQuoteRequested } = useContext(QuoteContext);
   const [_, setStep] = render;
   const [formValues, setFormValues] = data;
@@ -43,25 +34,10 @@ const QuoteStep3 = () => {
     reconnectionDelay: 1000,
   });
 
-  React.useEffect(() => {
-    socket.on("connect", () => {
-      console.log("🟢 Full Quote Form - Connected to leads socket");
-    });
-
-    socket.on("disconnect", () => {
-      console.log("🔴 Full Quote Form - Disconnected from leads socket");
-    });
-
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-    };
-  }, [socket]);
-
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
+
   const createLead = React.useCallback((data: any) => {
-    console.log("📤 Full Quote Form - Emitting createLead event via socket");
     socketRef.current?.emit("createLead", data);
   }, []);
 
@@ -116,15 +92,13 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             };
 
-            console.log("📤 Sending lead data to API:", finalData);
             createLead(finalData);
-            notify();
+            setShowSuccessModal(true);
             setQuoteRequested(true);
             handleLeadConversion();
             resetForm();
             setFormValues(initialQuoteValues);
             setStep(1);
-            window.scrollTo(0, 0);
           } catch (err) {
             console.log(err);
           }
@@ -203,6 +177,17 @@ const QuoteStep3 = () => {
           </div>
         </div>
       </Formik>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => {
+          setShowSuccessModal(false);
+          window.scrollTo(0, 0);
+        }}
+        title="Thank You!"
+        message="Your quote request has been submitted successfully."
+        submessage="One of our representatives will contact you within 24 hours."
+      />
     </div>
   );
 };

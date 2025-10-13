@@ -26,6 +26,7 @@ import { animations } from "@/anmations/effectData";
 import { io, Socket } from "socket.io-client";
 import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
+import SuccessModal from "@/components/SuccessModal";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -222,6 +223,7 @@ const QuickQuote = () => {
   } = useContext<QuickQuoteContextType>(QuickQuoteContext);
 
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Handle click outside
   const handleClickOutside = (event: MouseEvent) => {
@@ -242,18 +244,6 @@ const QuickQuote = () => {
     };
   }, [clientWidth]);
 
-  const notify = () =>
-    toast.success("Quick quote request sent!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
   const { API_BASE_URL } = apiBaseUrls;
   const socket = io(`${API_BASE_URL}/leads`, {
     transports: ["websocket"],
@@ -263,26 +253,10 @@ const QuickQuote = () => {
     reconnectionDelay: 1000,
   });
 
-  React.useEffect(() => {
-    socket.on("connect", () => {
-      console.log("🟢 Quick Quote - Connected to leads socket");
-    });
-
-    socket.on("disconnect", () => {
-      console.log("🔴 Quick Quote - Disconnected from leads socket");
-    });
-
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-    };
-  }, [socket]);
-
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
 
   const createLead = React.useCallback((data: any) => {
-    console.log("📤 Quick Quote - Emitting createLead event via socket");
     socketRef.current?.emit("createLead", data);
   }, []);
 
@@ -331,10 +305,8 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setQuickQuoteViewStatus(false);
             try {
-              const leadData = { ...values, leadSource: "Web Quick Lead" };
-              console.log("📤 Quick Quote - Sending lead data:", leadData);
-              createLead(leadData);
-              notify();
+              createLead({ ...values, leadSource: "Web Quick Lead" });
+              setShowSuccessModal(true);
               setQuickQuoteRequested(true);
               handleLeadConversion();
               // window.gtag("event", "conversion", {
@@ -526,6 +498,14 @@ const QuickQuote = () => {
       )}
 
       <QuickQuoteButton />
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="Your quick quote request has been received successfully."
+        submessage="One of our representatives will contact you within 24 hours."
+      />
     </div>
   );
 };

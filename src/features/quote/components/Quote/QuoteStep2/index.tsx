@@ -39,12 +39,10 @@ const QuoteStep2 = () => {
       validateOnBlur={true}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {
-          const updatedValues = {
-            ...formValues,
+          setFormValues((prevValues) => ({
+            ...prevValues,
             ...values,
-          };
-          console.log("📋 Step 2 - Delivery details submitted:", updatedValues);
-          setFormValues(updatedValues);
+          }));
           setStep(3);
           window.scrollTo(0, 0);
         } catch (err) {}

@@ -27,6 +27,7 @@ import {
   QuickQuoteContext,
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
+import SuccessModal from "@/components/SuccessModal";
 
 // Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -216,6 +217,7 @@ const HeroQuickQuote = () => {
     useContext<ClientWidthContextType>(ClientWidthContext);
   const [heroQuickQuoteViewStatus, setHeroQuickQuoteViewStatus] =
     useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const { setQuickQuoteRequested } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
@@ -226,18 +228,6 @@ const HeroQuickQuote = () => {
     }
   }, [clientWidth]);
 
-  const notify = () =>
-    toast.success("Quick quote request sent!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
   const { API_BASE_URL } = apiBaseUrls;
   const socket = io(`${API_BASE_URL}/leads`, {
     transports: ["websocket"],
@@ -247,25 +237,10 @@ const HeroQuickQuote = () => {
     reconnectionDelay: 1000,
   });
 
-  React.useEffect(() => {
-    socket.on("connect", () => {
-      console.log("🟢 Hero Quick Quote - Connected to leads socket");
-    });
-
-    socket.on("disconnect", () => {
-      console.log("🔴 Hero Quick Quote - Disconnected from leads socket");
-    });
-
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-    };
-  }, [socket]);
-
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
+
   const createLead = React.useCallback((data: any) => {
-    console.log("📤 Hero Quick Quote - Emitting createLead event via socket");
     socketRef.current?.emit("createLead", data);
   }, []);
 
@@ -287,209 +262,217 @@ const HeroQuickQuote = () => {
   };
 
   return (
-    <Formik
-      initialValues={{
-        usageType: "",
-        products: [],
-        deliveryDate: "",
-        pickupDate: "",
-        street: "",
-        zip: "",
-        city: "",
-        state: "",
-        instructions: "",
-        fName: "",
-        lName: "",
-        cName: "",
-        email: "",
-        phone: "",
-        contactPersonName: "",
-        contactPersonPhone: "",
-      }}
-      validationSchema={quickQuoteValidationSchema}
-      validateOnChange={false}
-      validateOnBlur={true}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
-        setHeroQuickQuoteViewStatus(false);
-        try {
-          const leadData = { ...values, leadSource: "Web Hero Quick Lead" };
-          console.log("📤 Hero Quick Quote - Sending lead data:", leadData);
-          createLead(leadData);
-          notify();
-          setQuickQuoteRequested(true);
-          handleLeadConversion();
-        } catch (err) {
-          console.log(err);
-        }
+    <>
+      <Formik
+        initialValues={{
+          usageType: "",
+          products: [],
+          deliveryDate: "",
+          pickupDate: "",
+          street: "",
+          zip: "",
+          city: "",
+          state: "",
+          instructions: "",
+          fName: "",
+          lName: "",
+          cName: "",
+          email: "",
+          phone: "",
+          contactPersonName: "",
+          contactPersonPhone: "",
+        }}
+        validationSchema={quickQuoteValidationSchema}
+        validateOnChange={false}
+        validateOnBlur={true}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          setHeroQuickQuoteViewStatus(false);
+          try {
+            createLead({ ...values, leadSource: "Web Hero Quick Lead" });
+            setShowSuccessModal(true);
+            setQuickQuoteRequested(true);
+            handleLeadConversion();
+          } catch (err) {
+            console.log(err);
+          }
 
-        // Reset the form with all required initial values
-        resetForm({
-          values: {
-            usageType: "",
-            products: [],
-            deliveryDate: "",
-            pickupDate: "",
-            street: "",
-            zip: "",
-            city: "",
-            state: "",
-            instructions: "",
-            fName: "",
-            lName: "",
-            cName: "",
-            email: "",
-            phone: "",
-            contactPersonName: "",
-            contactPersonPhone: "",
-          },
-        });
-      }}
-    >
-      <div
-        className={styles.overlay}
-        style={{
-          display: heroQuickQuoteViewStatus ? "block" : "none",
+          // Reset the form with all required initial values
+          resetForm({
+            values: {
+              usageType: "",
+              products: [],
+              deliveryDate: "",
+              pickupDate: "",
+              street: "",
+              zip: "",
+              city: "",
+              state: "",
+              instructions: "",
+              fName: "",
+              lName: "",
+              cName: "",
+              email: "",
+              phone: "",
+              contactPersonName: "",
+              contactPersonPhone: "",
+            },
+          });
         }}
       >
-        <Form>
-          <AnimationWrapper
-            effect={animations?.zoomOutAndZoomIn}
-            animationKey={String(heroQuickQuoteViewStatus)}
-            className={styles.quickQuoteform}
-          >
-            <Grid
-              container
-              spacing={0.5}
+        <div
+          className={styles.overlay}
+          style={{
+            display: heroQuickQuoteViewStatus ? "block" : "none",
+          }}
+        >
+          <Form>
+            <AnimationWrapper
+              effect={animations?.zoomOutAndZoomIn}
+              animationKey={String(heroQuickQuoteViewStatus)}
+              className={styles.quickQuoteform}
             >
               <Grid
-                item
-                xs={12}
+                container
+                spacing={0.5}
               >
-                <div>
-                  <h2>Get My Free Quote</h2>
-                </div>
-              </Grid>
-              <UsageTypeField />
-              <Grid
-                item
-                xs={12}
-              >
-                <MyMultipleSelectCheckmarks
-                  label="Select Portable Units"
-                  name="products"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyDateField
-                  label="Delivery Date"
-                  className={styles.date}
-                  name="deliveryDate"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyDateField
-                  className={styles.date}
-                  label="Pickup Date"
-                  name="pickupDate"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyZipTextField
-                  label="Zip"
-                  name="zip"
-                  placeholder="Zip"
-                  min={0}
-                  maxLength={5}
-                  inputMode="numeric"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyTextField
-                  label="Street Address"
-                  name="street"
-                  placeholder="Street Address (Optional)"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyTextField
-                  label="First Name"
-                  name="fName"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyTextField
-                  label="Last Name"
-                  name="lName"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyTextField
-                  label="Email"
-                  name="email"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyPhoneTextField
-                  label="Phone"
-                  name="phone"
-                  placeholder="Phone"
-                  type="tel"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyMultilineTextField
-                  label="Instructions (if any)"
-                  name="instructions"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={3}
-              >
-                <Button
-                  variant="contained"
-                  style={{
-                    background: "var(--primary-bg-color)",
-                    borderRadius: 0,
-                  }}
-                  endIcon={<SendIcon size={18} />}
-                  type="submit"
+                <Grid
+                  item
+                  xs={12}
                 >
-                  Send
-                </Button>
+                  <div>
+                    <h2>Get My Free Quote</h2>
+                  </div>
+                </Grid>
+                <UsageTypeField />
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyMultipleSelectCheckmarks
+                    label="Select Portable Units"
+                    name="products"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyDateField
+                    label="Delivery Date"
+                    className={styles.date}
+                    name="deliveryDate"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyDateField
+                    className={styles.date}
+                    label="Pickup Date"
+                    name="pickupDate"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyZipTextField
+                    label="Zip"
+                    name="zip"
+                    placeholder="Zip"
+                    min={0}
+                    maxLength={5}
+                    inputMode="numeric"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyTextField
+                    label="Street Address"
+                    name="street"
+                    placeholder="Street Address (Optional)"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyTextField
+                    label="First Name"
+                    name="fName"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyTextField
+                    label="Last Name"
+                    name="lName"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyTextField
+                    label="Email"
+                    name="email"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyPhoneTextField
+                    label="Phone"
+                    name="phone"
+                    placeholder="Phone"
+                    type="tel"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyMultilineTextField
+                    label="Instructions (if any)"
+                    name="instructions"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={3}
+                >
+                  <Button
+                    variant="contained"
+                    style={{
+                      background: "var(--primary-bg-color)",
+                      borderRadius: 0,
+                    }}
+                    endIcon={<SendIcon size={18} />}
+                    type="submit"
+                  >
+                    Send
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </AnimationWrapper>
-        </Form>
-      </div>
-    </Formik>
+            </AnimationWrapper>
+          </Form>
+        </div>
+      </Formik>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="Your quick quote request has been received successfully."
+        submessage="One of our representatives will contact you within 24 hours."
+      />
+    </>
   );
 };
 
