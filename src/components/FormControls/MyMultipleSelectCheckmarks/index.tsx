@@ -16,27 +16,41 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Value is now an array of objects: [{ type: "Standard Portable Restroom", quantity: 1 }, ...]
+  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: 1, desc: "...", rate: "0.00", amount: 0 }, ...]
   const value = Array.isArray(field.value) ? field.value : [];
 
   const toggleOption = (optionValue: string) => {
     const existingItem = value.find(
-      (v: any) => v.type === optionValue || v === optionValue
+      (v: any) => v.item === optionValue || v.type === optionValue || v === optionValue
     );
 
     if (existingItem) {
       // Remove item
-      setValue(value.filter((v: any) => (v.type || v) !== optionValue));
+      setValue(value.filter((v: any) => (v.item || v.type || v) !== optionValue));
     } else {
-      // Add item with default quantity of 1
-      setValue([...value, { type: optionValue, quantity: 1 }]);
+      // Add item with default quantity of 1 in CRM format
+      setValue([...value, { 
+        id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        item: optionValue,
+        desc: optionValue,
+        qty: 1,
+        rate: "0.00",
+        amount: 0
+      }]);
     }
   };
 
   const updateQuantity = (optionValue: string, quantity: number) => {
     const newValue = value.map((v: any) => {
-      if ((v.type || v) === optionValue) {
-        return { type: optionValue, quantity: Math.max(1, quantity) };
+      if ((v.item || v.type || v) === optionValue) {
+        return { 
+          ...v,
+          item: v.item || v.type || optionValue,
+          desc: v.desc || v.type || optionValue,
+          qty: Math.max(1, quantity),
+          rate: v.rate || "0.00",
+          amount: Number(v.rate || 0) * Math.max(1, quantity)
+        };
       }
       return v;
     });
@@ -44,17 +58,17 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   };
 
   const isSelected = (optionValue: string) => {
-    return value.some((v: any) => (v.type || v) === optionValue);
+    return value.some((v: any) => (v.item || v.type || v) === optionValue);
   };
 
   const getQuantity = (optionValue: string) => {
-    const item = value.find((v: any) => (v.type || v) === optionValue);
-    return item?.quantity || 1;
+    const item = value.find((v: any) => (v.item || v.type || v) === optionValue);
+    return item?.qty || item?.quantity || 1;
   };
 
   const getTotalUnits = () => {
     return value.reduce(
-      (sum: number, item: any) => sum + (item.quantity || 1),
+      (sum: number, item: any) => sum + (item.qty || item.quantity || 1),
       0
     );
   };
@@ -117,7 +131,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           {value.length === 0
             ? label || "Select Portable Units"
             : value.length === 1
-              ? `${getQuantity(value[0].type || value[0])} × ${options.find((opt) => opt.value === (value[0].type || value[0]))?.label}`
+              ? `${getQuantity(value[0].item || value[0].type || value[0])} × ${options.find((opt) => opt.value === (value[0].item || value[0].type || value[0]))?.label}`
               : `${getTotalUnits()} units (${value.length} types)`}
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>

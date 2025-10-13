@@ -15,7 +15,12 @@ const step1ValidationSchema = Yup.object({
   products: Yup.array()
     .of(
       Yup.object().shape({
+        id: Yup.string(),
+        item: Yup.string(),
+        desc: Yup.string(),
         qty: Yup.number().min(0, "Quantity must be 0 or more"),
+        rate: Yup.string(),
+        amount: Yup.number(),
       })
     )
     .test(
@@ -90,8 +95,8 @@ const QuoteStep1 = () => {
           </div>
           {products.map((item, index) => (
             <NumberField
-              key={index}
-              label={item.name}
+              key={item.id || index}
+              label={item.item}
               name={`products[${index}].qty`}
               mask="9999"
               type="tel"

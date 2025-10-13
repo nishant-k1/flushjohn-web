@@ -7,12 +7,37 @@ const requirementDetails = {
   usageType: "",
   products: [
     {
-      name: "Standard Portable Restroom",
+      id: "standard-portable-restroom",
+      item: "Standard Portable Restroom",
+      desc: "Standard Portable Restroom",
       qty: "",
+      rate: "0.00",
+      amount: 0,
     },
-    { name: "Deluxe Flushable Restroom", qty: "" },
-    { name: "ADA Portable Restroom", qty: "" },
-    { name: "Hand Wash Station", qty: "" },
+    { 
+      id: "deluxe-flushable-restroom",
+      item: "Deluxe Flushable Restroom", 
+      desc: "Deluxe Flushable Restroom",
+      qty: "",
+      rate: "0.00",
+      amount: 0,
+    },
+    { 
+      id: "ada-portable-restroom",
+      item: "ADA Portable Restroom", 
+      desc: "ADA Portable Restroom",
+      qty: "",
+      rate: "0.00",
+      amount: 0,
+    },
+    { 
+      id: "hand-wash-station",
+      item: "Hand Wash Station", 
+      desc: "Hand Wash Station",
+      qty: "",
+      rate: "0.00",
+      amount: 0,
+    },
   ],
 };
 
