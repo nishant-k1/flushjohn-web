@@ -126,6 +126,34 @@ export default function PerformanceTurbo() {
       }
     };
 
+    // 7. Optimize third-party scripts
+    const optimizeThirdPartyScripts = () => {
+      // Defer Google Analytics until after user interaction
+      const gaScript = document.querySelector('script[src*="googletagmanager"]');
+      if (gaScript) {
+        gaScript.setAttribute('data-defer', 'true');
+      }
+    };
+
+    // 8. Implement resource hints for better performance
+    const addResourceHints = () => {
+      const hints = [
+        { rel: 'preconnect', href: 'https://cdn.flushjohn.com' },
+        { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+        { rel: 'prefetch', href: '/quote' },
+        { rel: 'prefetch', href: '/contact' },
+      ];
+
+      hints.forEach(hint => {
+        if (!document.querySelector(`link[rel="${hint.rel}"][href="${hint.href}"]`)) {
+          const link = document.createElement('link');
+          link.rel = hint.rel;
+          link.href = hint.href;
+          document.head.appendChild(link);
+        }
+      });
+    };
+
     // 7. Reduce layout shifts
     const preventLayoutShifts = () => {
       // Add dimensions to images without them
@@ -146,6 +174,8 @@ export default function PerformanceTurbo() {
       deferNonCriticalScripts();
       optimizeFonts();
       removeRenderBlocking();
+      optimizeThirdPartyScripts();
+      addResourceHints();
       preventLayoutShifts();
     }, 100);
 

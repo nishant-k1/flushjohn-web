@@ -29,11 +29,12 @@ import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
+import FacebookPixel from "@/components/SEO/FacebookPixel";
 
 export const metadata = {
-  title: "FlushJohn - Porta Potty Rentals",
+  title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
   description:
-    "FlushJohn offers jobsite and event porta potty rental services.",
+    "FlushJohn offers affordable and reliable porta potty rental services for all types of events and construction sites. Get your quote today!",
   url: websiteURL,
   type: "website",
   siteName: "FlushJohn",
@@ -116,6 +117,9 @@ export default function RootLayout({
             </Script>
           </>
         )}
+
+        {/* Facebook Pixel */}
+        <FacebookPixel />
 
         {/* Service Worker - Load when idle */}
         <Script

@@ -100,6 +100,11 @@ const nextConfig = {
   },
   experimental: {
     scrollRestoration: true,
+    serverComponentsExternalPackages: ['nodemailer'],
+  },
+  // Enable HTTP/2 and modern protocols
+  httpAgentOptions: {
+    keepAlive: true,
   },
   images: {
     remotePatterns: [
@@ -188,6 +193,14 @@ const nextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: "Accept-CH",
+            value: "DPR, Viewport-Width, Width",
+          },
+          {
+            key: "Critical-CH",
+            value: "DPR, Viewport-Width, Width",
           },
           ...(process.env.NODE_ENV === "production"
             ? [

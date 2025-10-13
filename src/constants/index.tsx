@@ -29,6 +29,24 @@ export type contactType = {
   sales_email: string;
 };
 
+export type addressType = {
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+  full_address: string;
+};
+
+export const address: addressType = {
+  street: "1234 Main Street",
+  city: "Houston",
+  state: "TX",
+  zip: "77001",
+  country: "United States",
+  full_address: "1234 Main Street, Houston, TX 77001, United States",
+};
+
 export const contact: contactType = {
   email: "info@flushjohn.com",
   support_email: "support@flushjohn.com",

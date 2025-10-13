@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact } from "@/constants";
+import { s3assets, websiteURL, phone, contact, address } from "@/constants";
 import Script from "next/script";
 import AIOptimizedMeta from "@/components/SEO/AIOptimizedMeta";
 import RichSnippets from "@/components/SEO/RichSnippets";
@@ -29,9 +29,9 @@ const Home = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "FlushJohn - Porta Potty Rentals",
+  title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
   description:
-    "FlushJohn offers affordable and reliable porta potty rental services for all types of events. Get your quote today!",
+    "FlushJohn offers affordable and reliable porta potty rental services for all types of events and construction sites. Same-day delivery available. Get your quote today!",
   keywords:
     "porta potty rentals, portable toilets, event hygiene, flushjohn, rental service",
   openGraph: {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 // JSON-LD structured data for homepage
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "LocalBusiness",
   name: "FlushJohn",
   url: websiteURL,
   logo: `${s3assets}/og-image-flushjonn-web.png`,
@@ -74,17 +74,45 @@ const jsonLd = {
     "FlushJohn offers affordable and reliable porta potty rental services for all types of events across the United States.",
   image: `${s3assets}/og-image-flushjonn-web.png`,
   foundingDate: "2020",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: address.street,
+    addressLocality: address.city,
+    addressRegion: address.state,
+    postalCode: address.zip,
+    addressCountry: address.country,
+  },
+  telephone: phone.phone_number,
+  email: contact.email,
   contactPoint: {
     "@type": "ContactPoint",
     telephone: phone.phone_number,
     contactType: "customer service",
     availableLanguage: ["English"],
     areaServed: "US",
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "07:00",
+      closes: "19:00",
+    },
   },
   areaServed: {
     "@type": "Country",
     name: "United States",
   },
+  serviceType: "Porta Potty Rental Services",
+  priceRange: "$$",
+  paymentAccepted: "Cash, Credit Card, Check",
+  currenciesAccepted: "USD",
   knowsAbout: [
     "Porta Potty Rentals",
     "Portable Toilet Services",
@@ -221,7 +249,7 @@ const HomePage = () => {
     <>
       {/* Performance Turbo Mode */}
       <PerformanceTurbo />
-      
+
       {/* AI-Optimized Meta Tags for ChatGPT, Claude, etc. */}
       <AIOptimizedMeta />
 
