@@ -10,6 +10,15 @@
 import { useEffect } from "react";
 import Script from "next/script";
 
+// Extend Window interface for Facebook Pixel
+declare global {
+  interface Window {
+    fbq: any;
+    _fbq: any;
+    trackFacebookEvent: (eventName: string, parameters?: any) => void;
+  }
+}
+
 interface FacebookPixelProps {
   pixelId?: string;
 }
@@ -17,57 +26,21 @@ interface FacebookPixelProps {
 export default function FacebookPixel({
   pixelId = "YOUR_PIXEL_ID",
 }: FacebookPixelProps) {
-  useEffect(() => {
-    // Initialize Facebook Pixel
-    if (process.env.NODE_ENV === "production" && pixelId !== "YOUR_PIXEL_ID") {
-      // @ts-ignore
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-
-      // @ts-ignore
-      fbq("init", pixelId);
-      // @ts-ignore
-      fbq("track", "PageView");
-    }
-  }, [pixelId]);
-
   // Track custom events
   const trackEvent = (eventName: string, parameters?: any) => {
     if (process.env.NODE_ENV === "production" && pixelId !== "YOUR_PIXEL_ID") {
-      // @ts-ignore
-      if (typeof fbq !== "undefined") {
-        // @ts-ignore
-        fbq("track", eventName, parameters);
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", eventName, parameters);
       }
     }
   };
 
   // Expose track function globally for use in other components
   useEffect(() => {
-    // @ts-ignore
-    window.trackFacebookEvent = trackEvent;
-  }, []);
+    if (typeof window !== "undefined") {
+      window.trackFacebookEvent = trackEvent;
+    }
+  }, [trackEvent]);
 
   if (process.env.NODE_ENV !== "production" || pixelId === "YOUR_PIXEL_ID") {
     return null;
