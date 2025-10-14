@@ -16,18 +16,20 @@ const NumberField = ({ label, ...props }: any) => {
       if (e.target.value === "0") {
         setValue("");
       }
+      // Position cursor at the end of the text
+      setTimeout(() => {
+        const length = e.target.value.length;
+        e.target.setSelectionRange(length, length);
+      }, 0);
     },
     [setValue]
   );
 
-  const handleBlur = useCallback(
-    (e: React.FocusEvent<HTMLInputElement>) => {
-      setIsFocused(false);
-      // Keep field empty - don't restore any default value
-      // The placeholder "0" will show when field is empty
-    },
-    []
-  );
+  const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocused(false);
+    // Keep field empty - don't restore any default value
+    // The placeholder "0" will show when field is empty
+  }, []);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -61,6 +63,7 @@ const NumberField = ({ label, ...props }: any) => {
           onKeyDown={handleKeyDown}
           allowNegative={false}
           decimalScale={0}
+          style={{ textAlign: "right" }}
         />
         <span className={styles.unitsText}>Units</span>
       </div>
