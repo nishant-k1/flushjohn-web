@@ -8,37 +8,44 @@ const NumberField = ({ label, ...props }: any) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
   const [isFocused, setIsFocused] = useState(false);
-  
-  const handleFocus = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-    setIsFocused(true);
-    // Clear the field if it contains default values
-    if (e.target.value === "0" || e.target.value === "1") {
-      setValue("");
-    }
-  }, [setValue]);
 
-  const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-    setIsFocused(false);
-    // Restore default value if field is left empty
-    if (e.target.value === "" || e.target.value === "0") {
-      setValue("1");
-    }
-  }, [setValue]);
+  const handleFocus = useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true);
+      // Clear the field if it contains "0" value
+      if (e.target.value === "0") {
+        setValue("");
+      }
+    },
+    [setValue]
+  );
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      const currentValue = parseInt(e.currentTarget.value || "1", 10);
-      const newValue = Math.max(1, currentValue + 1);
-      setValue(newValue.toString());
-    } else if (e.key === "ArrowDown") {
-      e.preventDefault();
-      const currentValue = parseInt(e.currentTarget.value || "1", 10);
-      const newValue = Math.max(1, currentValue - 1);
-      setValue(newValue.toString());
-    }
-  }, [setValue]);
-  
+  const handleBlur = useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false);
+      // Keep field empty - don't restore any default value
+      // The placeholder "0" will show when field is empty
+    },
+    []
+  );
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const currentValue = parseInt(e.currentTarget.value || "0", 10);
+        const newValue = currentValue + 1;
+        setValue(newValue.toString());
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const currentValue = parseInt(e.currentTarget.value || "0", 10);
+        const newValue = Math.max(0, currentValue - 1);
+        setValue(newValue.toString());
+      }
+    },
+    [setValue]
+  );
+
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>{label}</label>
