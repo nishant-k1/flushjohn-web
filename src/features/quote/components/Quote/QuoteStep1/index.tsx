@@ -9,8 +9,8 @@ import { QuoteContext } from "@/features/quote/contexts/QuoteContext";
 import RadioField from "../FormFields/RadioField";
 import NumberField from "../FormFields/NumberField";
 
-// Validation schema for Step 1
-const step1ValidationSchema = Yup.object({
+// Step 1: String format validation (what comes from form inputs)
+const step1StringValidationSchema = Yup.object({
   usageType: Yup.string().required("Usage type is required"),
   products: Yup.array()
     .of(
@@ -18,9 +18,24 @@ const step1ValidationSchema = Yup.object({
         id: Yup.string(),
         item: Yup.string(),
         desc: Yup.string(),
-        qty: Yup.number().min(0, "Quantity must be 0 or more"), // Number in application state
-        rate: Yup.number().min(0, "Rate must be 0 or more"), // Number in application state
-        amount: Yup.number().min(0, "Amount must be 0 or more"), // Number in application state
+        qty: Yup.string()
+          .required("Quantity is required")
+          .matches(/^\d+$/, "Quantity must be a whole number")
+          .test('min-value', 'Quantity must be at least 1', function(value) {
+            return parseInt(value || '0', 10) >= 1;
+          }),
+        rate: Yup.string()
+          .required("Rate is required")
+          .matches(/^\d+\.?\d{0,2}$/, "Rate must be a valid decimal")
+          .test('non-negative', 'Rate cannot be negative', function(value) {
+            return parseFloat(value || '0') >= 0;
+          }),
+        amount: Yup.string()
+          .required("Amount is required")
+          .matches(/^\d+\.?\d{0,2}$/, "Amount must be a valid decimal")
+          .test('non-negative', 'Amount cannot be negative', function(value) {
+            return parseFloat(value || '0') >= 0;
+          }),
       })
     )
     .test(
@@ -29,10 +44,27 @@ const step1ValidationSchema = Yup.object({
       function (products) {
         if (!products) return false;
         return products.some((product: any) => {
-          return product.qty > 0; // Direct number comparison
+          return parseInt(product.qty || '0', 10) > 0; // Parse string to number for comparison
         });
       }
     ),
+});
+
+// Step 2: Parsed type validation (after conversion to proper types)
+const step1ParsedValidationSchema = Yup.object({
+  usageType: Yup.string().required("Usage type is required"),
+  products: Yup.array()
+    .of(
+      Yup.object().shape({
+        id: Yup.string(),
+        item: Yup.string(),
+        desc: Yup.string(),
+        qty: Yup.number().int().min(1, "Quantity must be at least 1"),
+        rate: Yup.number().min(0, "Rate cannot be negative"),
+        amount: Yup.number().min(0, "Amount cannot be negative"),
+      })
+    )
+    .min(1, "At least one product required"),
 });
 
 const QuoteStep1 = () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useField } from "formik";
 import styles from "@/features/quote/components/QuickQuote/styles.module.css";
+import { formatInputValue } from "@/utils/displayFormatting";
 
 const options = [
   { label: "Standard Portable Restroom", value: "Standard Portable Restroom" },
@@ -46,20 +47,34 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     }
   };
 
-  const updateQuantity = (optionValue: string, quantity: number) => {
+  const updateQuantity = (optionValue: string, quantityInput: string) => {
+    // Step 1: Validate string format before parsing
+    if (!/^\d+$/.test(quantityInput)) {
+      console.warn('Invalid quantity format:', quantityInput);
+      return;
+    }
+    
+    // Step 2: Parse to number after validation
+    const quantity = parseInt(quantityInput, 10);
+    if (isNaN(quantity) || quantity < 1) {
+      console.warn('Invalid quantity value:', quantity);
+      return;
+    }
+    
     const newValue = value.map((v: any) => {
       if ((v.item || v.type || v) === optionValue) {
+        // Step 3: Use proper types for calculations
         const qty = Math.max(1, quantity);
-        const rate = parseFloat(v.rate || "0");
+        const rate = Number(v.rate) || 0;
         const amount = rate * qty;
-
+        
         return {
           ...v,
           item: v.item || v.type || optionValue,
           desc: v.desc || v.type || optionValue,
-          qty: qty, // Keep as number in application state
-          rate: parseFloat(v.rate || "0"), // Convert to number
-          amount: amount, // Keep as number
+          qty: qty, // Proper number type
+          rate: rate, // Proper number type
+          amount: amount, // Proper number type
         };
       }
       return v;
@@ -320,10 +335,10 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   <input
                     type="number"
                     min="1"
-                    value={getQuantity(option.value)}
+                    value={formatInputValue(getQuantity(option.value), 'number')}
                     onChange={(e) => {
-                      const qty = parseInt(e.target.value) || 1;
-                      updateQuantity(option.value, qty);
+                      // Accept string from input, validate and parse in updateQuantity
+                      updateQuantity(option.value, e.target.value);
                     }}
                     onClick={(e) => e.stopPropagation()}
                     style={{
