@@ -8,12 +8,12 @@
  * Convert number to formatted string
  */
 export function formatCurrency(
-  amount: number, 
-  currency: string = 'USD',
-  locale: string = 'en-US'
+  amount: number,
+  currency: string = "USD",
+  locale: string = "en-US"
 ): string {
   return new Intl.NumberFormat(locale, {
-    style: 'currency',
+    style: "currency",
     currency: currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -25,7 +25,7 @@ export function formatCurrency(
  */
 export function formatNumber(
   value: number,
-  locale: string = 'en-US',
+  locale: string = "en-US",
   options?: Intl.NumberFormatOptions
 ): string {
   return new Intl.NumberFormat(locale, {
@@ -41,13 +41,13 @@ export function formatNumber(
  */
 export function formatDate(
   date: Date,
-  locale: string = 'en-US',
+  locale: string = "en-US",
   options?: Intl.DateTimeFormatOptions
 ): string {
   return new Intl.DateTimeFormat(locale, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
     ...options,
   }).format(date);
 }
@@ -57,13 +57,16 @@ export function formatDate(
  * Convert Date object to string for HTML input
  */
 export function formatDateForInput(date: Date): string {
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split("T")[0];
 }
 
 /**
  * Format boolean for display
  */
-export function formatBoolean(value: boolean, labels: { true: string; false: string } = { true: 'Yes', false: 'No' }): string {
+export function formatBoolean(
+  value: boolean,
+  labels: { true: string; false: string } = { true: "Yes", false: "No" }
+): string {
   return value ? labels.true : labels.false;
 }
 
@@ -72,13 +75,13 @@ export function formatBoolean(value: boolean, labels: { true: string; false: str
  */
 export function formatPhone(phone: string): string {
   // Remove all non-digits
-  const digits = phone.replace(/\D/g, '');
-  
+  const digits = phone.replace(/\D/g, "");
+
   // Format as (XXX) XXX-XXXX
   if (digits.length === 10) {
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   }
-  
+
   // Return original if not standard US format
   return phone;
 }
@@ -98,15 +101,17 @@ export function formatProductSummary(product: {
 /**
  * Format product list for display
  */
-export function formatProductList(products: Array<{
-  item: string;
-  qty: number;
-  rate: number;
-  amount: number;
-}>): string {
+export function formatProductList(
+  products: Array<{
+    item: string;
+    qty: number;
+    rate: number;
+    amount: number;
+  }>
+): string {
   return products
     .map((product, index) => `${index + 1}. ${formatProductSummary(product)}`)
-    .join('\n');
+    .join("\n");
 }
 
 /**
@@ -123,16 +128,16 @@ export function formatTotalAmount(products: Array<{ amount: number }>): string {
  */
 export function formatInputValue(value: any, inputType: string): string {
   switch (inputType) {
-    case 'number':
-      return value?.toString() || '';
-    case 'date':
-      return value instanceof Date ? formatDateForInput(value) : '';
-    case 'email':
-      return String(value || '').toLowerCase();
-    case 'tel':
-      return String(value || '');
+    case "number":
+      return value?.toString() || "";
+    case "date":
+      return value instanceof Date ? formatDateForInput(value) : "";
+    case "email":
+      return String(value || "").toLowerCase();
+    case "tel":
+      return String(value || "");
     default:
-      return String(value || '');
+      return String(value || "");
   }
 }
 
@@ -141,5 +146,5 @@ export function formatInputValue(value: any, inputType: string): string {
  * Booleans are OK for checked attribute, but convert to string for value
  */
 export function formatCheckboxValue(value: boolean): string {
-  return value ? 'true' : 'false';
+  return value ? "true" : "false";
 }

@@ -21,20 +21,20 @@ const step1StringValidationSchema = Yup.object({
         qty: Yup.string()
           .required("Quantity is required")
           .matches(/^\d+$/, "Quantity must be a whole number")
-          .test('min-value', 'Quantity must be at least 1', function(value) {
-            return parseInt(value || '0', 10) >= 1;
+          .test("min-value", "Quantity must be at least 1", function (value) {
+            return parseInt(value || "0", 10) >= 1;
           }),
         rate: Yup.string()
           .required("Rate is required")
           .matches(/^\d+\.?\d{0,2}$/, "Rate must be a valid decimal")
-          .test('non-negative', 'Rate cannot be negative', function(value) {
-            return parseFloat(value || '0') >= 0;
+          .test("non-negative", "Rate cannot be negative", function (value) {
+            return parseFloat(value || "0") >= 0;
           }),
         amount: Yup.string()
           .required("Amount is required")
           .matches(/^\d+\.?\d{0,2}$/, "Amount must be a valid decimal")
-          .test('non-negative', 'Amount cannot be negative', function(value) {
-            return parseFloat(value || '0') >= 0;
+          .test("non-negative", "Amount cannot be negative", function (value) {
+            return parseFloat(value || "0") >= 0;
           }),
       })
     )
@@ -44,7 +44,7 @@ const step1StringValidationSchema = Yup.object({
       function (products) {
         if (!products) return false;
         return products.some((product: any) => {
-          return parseInt(product.qty || '0', 10) > 0; // Parse string to number for comparison
+          return parseInt(product.qty || "0", 10) > 0; // Parse string to number for comparison
         });
       }
     ),
