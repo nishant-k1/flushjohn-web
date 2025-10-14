@@ -19,20 +19,17 @@ const step1StringValidationSchema = Yup.object({
         item: Yup.string(),
         desc: Yup.string(),
         qty: Yup.string()
-          .required("Quantity is required")
-          .matches(/^\d+$/, "Quantity must be a whole number")
-          .test("min-value", "Quantity must be at least 1", function (value) {
-            return parseInt(value || "0", 10) >= 1;
+          .matches(/^\d*$/, "Quantity must be a whole number")
+          .test("non-negative", "Quantity cannot be negative", function (value) {
+            return parseInt(value || "0", 10) >= 0;
           }),
         rate: Yup.string()
-          .required("Rate is required")
-          .matches(/^\d+\.?\d{0,2}$/, "Rate must be a valid decimal")
+          .matches(/^\d*\.?\d{0,2}$/, "Rate must be a valid decimal")
           .test("non-negative", "Rate cannot be negative", function (value) {
             return parseFloat(value || "0") >= 0;
           }),
         amount: Yup.string()
-          .required("Amount is required")
-          .matches(/^\d+\.?\d{0,2}$/, "Amount must be a valid decimal")
+          .matches(/^\d*\.?\d{0,2}$/, "Amount must be a valid decimal")
           .test("non-negative", "Amount cannot be negative", function (value) {
             return parseFloat(value || "0") >= 0;
           }),
@@ -121,7 +118,12 @@ const QuoteStep1 = () => {
               </div>
             </div>
             <ErrorMessage name="usageType">
-              {(msg) => <div className={styles.error}>{msg}</div>}
+              {(msg) => {
+                // Handle both string and object error messages
+                const errorText =
+                  typeof msg === "string" ? msg : "Please select a usage type";
+                return <div className={styles.error}>{errorText}</div>;
+              }}
             </ErrorMessage>
           </div>
           {products.map((item, index) => (
@@ -134,7 +136,12 @@ const QuoteStep1 = () => {
             />
           ))}
           <ErrorMessage name="products">
-            {(msg) => <div className={styles.error_message}>{msg}</div>}
+            {(msg) => {
+              // Handle both string and object error messages
+              const errorText =
+                typeof msg === "string" ? msg : "Please fix the errors above";
+              return <div className={styles.error_message}>{errorText}</div>;
+            }}
           </ErrorMessage>
         </div>
         <div className={styles.buttons}>
