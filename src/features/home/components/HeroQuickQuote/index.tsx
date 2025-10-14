@@ -34,7 +34,7 @@ const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(Yup.string().required("Required")),
   deliveryDate: Yup.string().required("Required"),
   pickupDate: Yup.string().required("Required"),
-  zip: Yup.number().required("Required"),
+  zip: Yup.string().matches(/^\d{5}$/, "Zip code must be 5 digits").required("Required"),
   fName: Yup.string().required("Required"),
   lName: Yup.string().required("Required"),
   email: Yup.string().email("Invalid email address").required("Required"),

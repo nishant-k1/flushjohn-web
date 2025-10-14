@@ -16,7 +16,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: 1, desc: "...", rate: "0.00", amount: 0 }, ...]
+  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: "1", desc: "...", rate: "0.00", amount: "0.00" }, ...]
   const value = Array.isArray(field.value) ? field.value : [];
 
   const toggleOption = (optionValue: string) => {
