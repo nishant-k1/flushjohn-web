@@ -59,7 +59,7 @@ const step1ParsedValidationSchema = Yup.object({
         id: Yup.string(),
         item: Yup.string(),
         desc: Yup.string(),
-        qty: Yup.number().int().min(1, "Quantity must be at least 1"),
+        qty: Yup.number().integer().min(1, "Quantity must be at least 1"),
         rate: Yup.number().min(0, "Rate cannot be negative"),
         amount: Yup.number().min(0, "Amount cannot be negative"),
       })
