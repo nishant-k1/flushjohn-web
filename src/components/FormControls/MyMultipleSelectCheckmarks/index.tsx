@@ -16,7 +16,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: "1", desc: "...", rate: "0.00", amount: "0.00" }, ...]
+  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: 1, desc: "...", rate: 0.00, amount: 0.00 }, ...]
   const value = Array.isArray(field.value) ? field.value : [];
 
   const toggleOption = (optionValue: string) => {
@@ -31,16 +31,16 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         value.filter((v: any) => (v.item || v.type || v) !== optionValue)
       );
     } else {
-      // Add item with default quantity of 1 in CRM format (all strings)
+      // Add item with proper types in application state
       setValue([
         ...value,
         {
           id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           item: optionValue,
           desc: optionValue,
-          qty: "1",
-          rate: "0.00",
-          amount: "0.00",
+          qty: 1, // Number in application state
+          rate: 0.0, // Number in application state
+          amount: 0.0, // Number in application state
         },
       ]);
     }
@@ -57,9 +57,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           ...v,
           item: v.item || v.type || optionValue,
           desc: v.desc || v.type || optionValue,
-          qty: qty.toString(), // Convert to string
-          rate: v.rate || "0.00",
-          amount: amount.toFixed(2), // Convert to string with 2 decimals
+          qty: qty, // Keep as number in application state
+          rate: parseFloat(v.rate || "0"), // Convert to number
+          amount: amount, // Keep as number
         };
       }
       return v;
@@ -75,13 +75,13 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     const item = value.find(
       (v: any) => (v.item || v.type || v) === optionValue
     );
-    const qty = item?.qty || item?.quantity || "1";
-    return parseInt(qty, 10) || 1; // Convert string to number for input
+    const qty = item?.qty || item?.quantity || 1;
+    return Number(qty) || 1; // Already a number in application state
   };
 
   const getTotalUnits = () => {
     return value.reduce((sum: number, item: any) => {
-      const qty = parseInt(item.qty || item.quantity || "1", 10) || 1;
+      const qty = Number(item.qty || item.quantity || 1) || 1;
       return sum + qty;
     }, 0);
   };
