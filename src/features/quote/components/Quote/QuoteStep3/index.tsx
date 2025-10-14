@@ -188,21 +188,25 @@ const QuoteStep3 = () => {
             // Try HTTP API first, then fallback to Socket.IO
             try {
               await createLeadViaHTTP(finalData);
+              console.log("✅ HTTP API success - showing modal");
               setShowSuccessModal(true);
               setQuoteRequested(true);
               handleLeadConversion();
-              resetForm();
-              setFormValues(initialQuoteValues);
-              setStep(1);
+              // Don't reset form immediately - let modal show first
+              // resetForm();
+              // setFormValues(initialQuoteValues);
+              // setStep(1);
             } catch (httpError) {
               console.log("HTTP API failed, trying Socket.IO:", httpError);
               createLead(finalData);
+              console.log("✅ Socket.IO fallback - showing modal");
               setShowSuccessModal(true);
               setQuoteRequested(true);
               handleLeadConversion();
-              resetForm();
-              setFormValues(initialQuoteValues);
-              setStep(1);
+              // Don't reset form immediately - let modal show first
+              // resetForm();
+              // setFormValues(initialQuoteValues);
+              // setStep(1);
             }
           } catch (err) {
             console.error("Error in form submission:", err);
@@ -290,6 +294,9 @@ const QuoteStep3 = () => {
         isOpen={showSuccessModal}
         onClose={() => {
           setShowSuccessModal(false);
+          // Reset form and go back to step 1 when modal is closed
+          setFormValues(initialQuoteValues);
+          setStep(1);
           window.scrollTo(0, 0);
         }}
         title="Thank You!"
