@@ -37,9 +37,97 @@ const QuoteStep3 = () => {
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
 
-  const createLead = React.useCallback((data: any) => {
-    socketRef.current?.emit("createLead", data);
+  // Add socket event listeners for debugging
+  React.useEffect(() => {
+    const currentSocket = socketRef.current;
+    if (currentSocket) {
+      currentSocket.on("connect", () => {
+        console.log("Socket connected:", currentSocket.id);
+      });
+
+      currentSocket.on("disconnect", () => {
+        console.log("Socket disconnected");
+      });
+
+      currentSocket.on("connect_error", (error) => {
+        console.error("Socket connection error:", error);
+      });
+
+      currentSocket.on("leadCreated", (response) => {
+        console.log("Lead created successfully:", response);
+        toast.success("Quote request submitted successfully!");
+      });
+
+      currentSocket.on("leadCreationError", (error) => {
+        console.error("Lead creation error:", error);
+        toast.error("Failed to submit quote request. Please try again.");
+      });
+
+      return () => {
+        currentSocket.off("connect");
+        currentSocket.off("disconnect");
+        currentSocket.off("connect_error");
+        currentSocket.off("leadCreated");
+        currentSocket.off("leadCreationError");
+      };
+    }
   }, []);
+
+  const createLeadViaHTTP = React.useCallback(
+    async (data: any) => {
+      try {
+        console.log("Creating lead via HTTP API:", data);
+        const response = await fetch(`${API_BASE_URL}/leads`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log("Lead created successfully via HTTP:", result);
+          toast.success("Quote request submitted successfully!");
+          return result;
+        } else {
+          const errorData = await response.json();
+          console.error("HTTP API error:", errorData);
+          toast.error("Failed to submit quote request. Please try again.");
+          throw new Error(errorData.message || "Failed to create lead");
+        }
+      } catch (error) {
+        console.error("HTTP API request failed:", error);
+        toast.error("Failed to submit quote request. Please try again.");
+        throw error;
+      }
+    },
+    [API_BASE_URL]
+  );
+
+  const createLead = React.useCallback(
+    (data: any) => {
+      console.log("Creating lead with data:", data);
+      if (socketRef.current && socketRef.current.connected) {
+        socketRef.current.emit("createLead", data);
+      } else {
+        console.error("Socket not connected. Attempting to connect...");
+        socketRef.current?.connect();
+        // Retry after connection
+        setTimeout(() => {
+          if (socketRef.current?.connected) {
+            socketRef.current.emit("createLead", data);
+          } else {
+            console.log("Socket connection failed, falling back to HTTP API");
+            createLeadViaHTTP(data).catch((error) => {
+              console.error("Both socket and HTTP API failed:", error);
+            });
+          }
+        }, 1000);
+      }
+    },
+    [createLeadViaHTTP]
+  );
 
   const handleLeadConversion = (url?: string) => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -85,6 +173,9 @@ const QuoteStep3 = () => {
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
+            console.log("Form submitted with values:", values);
+            console.log("Current formValues:", formValues);
+
             // Merge final step values with existing form data
             const finalData = {
               ...formValues,
@@ -92,15 +183,32 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             };
 
-            createLead(finalData);
-            setShowSuccessModal(true);
-            setQuoteRequested(true);
-            handleLeadConversion();
-            resetForm();
-            setFormValues(initialQuoteValues);
-            setStep(1);
+            console.log("Final data to be sent:", finalData);
+
+            // Try HTTP API first, then fallback to Socket.IO
+            try {
+              await createLeadViaHTTP(finalData);
+              setShowSuccessModal(true);
+              setQuoteRequested(true);
+              handleLeadConversion();
+              resetForm();
+              setFormValues(initialQuoteValues);
+              setStep(1);
+            } catch (httpError) {
+              console.log("HTTP API failed, trying Socket.IO:", httpError);
+              createLead(finalData);
+              setShowSuccessModal(true);
+              setQuoteRequested(true);
+              handleLeadConversion();
+              resetForm();
+              setFormValues(initialQuoteValues);
+              setStep(1);
+            }
           } catch (err) {
-            console.log(err);
+            console.error("Error in form submission:", err);
+            toast.error("An error occurred. Please try again.");
+          } finally {
+            setSubmitting(false);
           }
         }}
       >
