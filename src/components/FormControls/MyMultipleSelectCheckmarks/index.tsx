@@ -32,14 +32,14 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         value.filter((v: any) => (v.item || v.type || v) !== optionValue)
       );
     } else {
-      // Add item with empty rate - user can enter their own rate
+      // Add item with default quantity of 1 and empty rate - user can enter their own rate
       setValue([
         ...value,
         {
           id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           item: optionValue,
           desc: optionValue,
-          qty: 0, // Default quantity
+          qty: 1, // Default quantity is 1 (user can change it)
           rate: 0.0, // Empty rate - user will enter their own
           amount: 0.0, // Will be calculated when user enters rate
         },
