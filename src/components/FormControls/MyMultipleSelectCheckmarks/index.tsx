@@ -39,7 +39,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           item: optionValue,
           desc: optionValue,
-          qty: 1, // Default quantity
+          qty: 0, // Default quantity
           rate: 0.0, // Empty rate - user will enter their own
           amount: 0.0, // Will be calculated when user enters rate
         },

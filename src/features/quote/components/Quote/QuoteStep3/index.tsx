@@ -55,7 +55,7 @@ const QuoteStep3 = () => {
 
       currentSocket.on("leadCreated", (response) => {
         console.log("Lead created successfully:", response);
-        toast.success("Quote request submitted successfully!");
+        // Success modal will be shown by the form submission handler
       });
 
       currentSocket.on("leadCreationError", (error) => {
@@ -88,7 +88,7 @@ const QuoteStep3 = () => {
         if (response.ok) {
           const result = await response.json();
           console.log("Lead created successfully via HTTP:", result);
-          toast.success("Quote request submitted successfully!");
+          // Success modal will be shown by the form submission handler
           return result;
         } else {
           const errorData = await response.json();
