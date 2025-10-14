@@ -3,6 +3,14 @@
  * Step 11: Convert to strings for display ONLY
  */
 
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+// Extend dayjs with plugins
+dayjs.extend(relativeTime);
+dayjs.extend(customParseFormat);
+
 /**
  * Format currency for display
  * Convert number to formatted string
@@ -37,27 +45,51 @@ export function formatNumber(
 
 /**
  * Format date for display
- * Convert Date object to formatted string
+ * Convert Date object to formatted string using dayjs
  */
 export function formatDate(
-  date: Date,
-  locale: string = "en-US",
-  options?: Intl.DateTimeFormatOptions
+  date: Date | string,
+  format: string = "MMM DD, YYYY"
 ): string {
-  return new Intl.DateTimeFormat(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    ...options,
-  }).format(date);
+  return dayjs(date).format(format);
 }
 
 /**
  * Format date for input fields (YYYY-MM-DD)
  * Convert Date object to string for HTML input
  */
-export function formatDateForInput(date: Date): string {
-  return date.toISOString().split("T")[0];
+export function formatDateForInput(date: Date | string): string {
+  return dayjs(date).format("YYYY-MM-DD");
+}
+
+/**
+ * Format relative date (e.g., "2 days ago", "in 3 days")
+ */
+export function formatRelativeDate(date: Date | string): string {
+  return dayjs(date).fromNow();
+}
+
+/**
+ * Format date range for display
+ */
+export function formatDateRange(startDate: Date | string, endDate: Date | string): string {
+  const start = dayjs(startDate);
+  const end = dayjs(endDate);
+  
+  if (start.isSame(end, 'day')) {
+    return start.format("MMM DD, YYYY");
+  } else if (start.isSame(end, 'year')) {
+    return `${start.format("MMM DD")} - ${end.format("MMM DD, YYYY")}`;
+  } else {
+    return `${start.format("MMM DD, YYYY")} - ${end.format("MMM DD, YYYY")}`;
+  }
+}
+
+/**
+ * Calculate duration between two dates
+ */
+export function calculateDuration(startDate: Date | string, endDate: Date | string): number {
+  return dayjs(endDate).diff(dayjs(startDate), 'day') + 1; // +1 to include both start and end days
 }
 
 /**

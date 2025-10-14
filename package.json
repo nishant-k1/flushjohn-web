@@ -16,7 +16,7 @@
   "dependencies": {
     "@types/react": "^19.0.10",
     "axios": "^1.8.1",
-    "dayjs": "^1.11.13",
+    "dayjs": "^1.11.18",
     "dompurify": "^3.2.4",
     "formik": "2.4.6",
     "framer-motion": "^12.4.10",

@@ -3,6 +3,8 @@
  * Step 4: API Request Payload with proper types
  */
 
+import dayjs from 'dayjs';
+
 // Product type for API requests
 export interface ProductRequest {
   id: string;
@@ -53,14 +55,8 @@ export function prepareApiPayload(formData: any): LeadFormRequest {
       rate: Number(product.rate), // Ensure number type
       amount: Number(product.amount), // Ensure number type
     })),
-    deliveryDate:
-      formData.deliveryDate instanceof Date
-        ? formData.deliveryDate.toISOString()
-        : String(formData.deliveryDate),
-    pickupDate:
-      formData.pickupDate instanceof Date
-        ? formData.pickupDate.toISOString()
-        : String(formData.pickupDate),
+    deliveryDate: dayjs(formData.deliveryDate).toISOString(),
+    pickupDate: dayjs(formData.pickupDate).toISOString(),
     zip: String(formData.zip),
     fName: String(formData.fName),
     lName: String(formData.lName),
@@ -98,10 +94,10 @@ export interface LeadResponse {
 export function parseApiResponse(data: LeadResponse): any {
   return {
     ...data,
-    deliveryDate: new Date(data.deliveryDate),
-    pickupDate: new Date(data.pickupDate),
-    createdAt: new Date(data.createdAt),
-    updatedAt: new Date(data.updatedAt),
+    deliveryDate: dayjs(data.deliveryDate).toDate(),
+    pickupDate: dayjs(data.pickupDate).toDate(),
+    createdAt: dayjs(data.createdAt).toDate(),
+    updatedAt: dayjs(data.updatedAt).toDate(),
     // Products already have proper number types from API
     products: data.products.map((product) => ({
       ...product,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod";
+import dayjs from 'dayjs';
 
 // Step 1: String format validation (before parsing)
 export const stringFormatSchemas = {
@@ -43,11 +44,25 @@ export const stringFormatSchemas = {
   // Email validation
   email: z.string().min(1, "Email is required").email("Invalid email format"),
 
-  // Date validation
+  // Date validation - improved with dayjs
   date: z
     .string()
     .min(1, "Date is required")
-    .refine((val) => !isNaN(Date.parse(val)), "Invalid date format"),
+    .refine((val) => dayjs(val).isValid(), "Invalid date format"),
+  
+  // Delivery date validation
+  deliveryDate: z
+    .string()
+    .min(1, "Delivery date is required")
+    .refine((val) => dayjs(val).isValid(), "Invalid date format")
+    .refine((val) => dayjs(val).isAfter(dayjs().subtract(1, 'day')), "Delivery date cannot be in the past"),
+  
+  // Pickup date validation  
+  pickupDate: z
+    .string()
+    .min(1, "Pickup date is required")
+    .refine((val) => dayjs(val).isValid(), "Invalid date format")
+    .refine((val) => dayjs(val).isAfter(dayjs().subtract(1, 'day')), "Pickup date cannot be in the past"),
 };
 
 // Step 2: Parsed type validation (after string validation passes)
@@ -107,7 +122,7 @@ export function parseFormData(
     ) {
       parsed[key] = parseFloat(value) || 0;
     } else if (key.includes("Date") || key.includes("date")) {
-      parsed[key] = new Date(value);
+      parsed[key] = dayjs(value).toDate();
     } else if (key === "email") {
       parsed[key] = value.trim().toLowerCase();
     } else if (key === "isActive" || key === "is_active") {
