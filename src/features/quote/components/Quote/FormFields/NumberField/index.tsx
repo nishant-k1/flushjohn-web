@@ -1,13 +1,14 @@
 import { useField } from "formik";
 import styles from "./styles.module.css";
 import { NumericFormat } from "react-number-format";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 const NumberField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
   const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFocus = useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
@@ -16,14 +17,6 @@ const NumberField = ({ label, ...props }: any) => {
       if (e.target.value === "0") {
         setValue("");
       }
-      // Position cursor at the right side of the input (after digits)
-      setTimeout(() => {
-        // Force cursor to the end of the input field
-        const input = e.target;
-        const length = input.value.length;
-        input.setSelectionRange(length, length);
-        input.focus();
-      }, 10);
     },
     [setValue]
   );
@@ -35,11 +28,11 @@ const NumberField = ({ label, ...props }: any) => {
   }, []);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
-    // Ensure cursor is positioned at the end when clicking
+    // Position cursor at the beginning when clicking
+    const input = e.currentTarget;
     setTimeout(() => {
-      const input = e.currentTarget;
-      const length = input.value.length;
-      input.setSelectionRange(length, length);
+      input.focus();
+      input.setSelectionRange(0, 0);
     }, 0);
   }, []);
 
@@ -60,6 +53,16 @@ const NumberField = ({ label, ...props }: any) => {
     [setValue]
   );
 
+  // Position cursor at the beginning whenever the field value changes
+  useEffect(() => {
+    if (isFocused && inputRef.current) {
+      const input = inputRef.current;
+      setTimeout(() => {
+        input.setSelectionRange(0, 0);
+      }, 0);
+    }
+  }, [field.value, isFocused]);
+
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>{label}</label>
@@ -67,6 +70,7 @@ const NumberField = ({ label, ...props }: any) => {
         <NumericFormat
           {...field}
           {...props}
+          ref={inputRef}
           className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
           placeholder="0"
           title="Enter Quantity - Use arrow keys to increment/decrement"
@@ -76,7 +80,7 @@ const NumberField = ({ label, ...props }: any) => {
           onKeyDown={handleKeyDown}
           allowNegative={false}
           decimalScale={0}
-          style={{ textAlign: "right" }}
+          style={{ textAlign: "left" }}
         />
         <span className={styles.unitsText}>Units</span>
       </div>
