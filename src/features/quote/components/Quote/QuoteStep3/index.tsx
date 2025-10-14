@@ -185,21 +185,10 @@ const QuoteStep3 = () => {
 
             console.log("Final data to be sent:", finalData);
 
-            // Try HTTP API first, then fallback to Socket.IO
+            // Use Socket.IO as primary method (consistent with other forms)
             try {
-              await createLeadViaHTTP(finalData);
-              console.log("✅ HTTP API success - showing modal");
-              setShowSuccessModal(true);
-              setQuoteRequested(true);
-              handleLeadConversion();
-              // Don't reset form immediately - let modal show first
-              // resetForm();
-              // setFormValues(initialQuoteValues);
-              // setStep(1);
-            } catch (httpError) {
-              console.log("HTTP API failed, trying Socket.IO:", httpError);
               createLead(finalData);
-              console.log("✅ Socket.IO fallback - showing modal");
+              console.log("✅ Socket.IO success - showing modal");
               setShowSuccessModal(true);
               setQuoteRequested(true);
               handleLeadConversion();
@@ -207,6 +196,22 @@ const QuoteStep3 = () => {
               // resetForm();
               // setFormValues(initialQuoteValues);
               // setStep(1);
+            } catch (socketError) {
+              console.log("Socket.IO failed, trying HTTP API:", socketError);
+              try {
+                await createLeadViaHTTP(finalData);
+                console.log("✅ HTTP API fallback - showing modal");
+                setShowSuccessModal(true);
+                setQuoteRequested(true);
+                handleLeadConversion();
+                // Don't reset form immediately - let modal show first
+                // resetForm();
+                // setFormValues(initialQuoteValues);
+                // setStep(1);
+              } catch (httpError) {
+                console.error("Both Socket.IO and HTTP API failed:", httpError);
+                toast.error("Failed to submit quote request. Please try again.");
+              }
             }
           } catch (err) {
             console.error("Error in form submission:", err);
