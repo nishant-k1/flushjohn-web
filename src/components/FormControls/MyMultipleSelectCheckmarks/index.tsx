@@ -315,7 +315,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                       e.stopPropagation();
                       updateQuantity(
                         option.value,
-                        getQuantity(option.value) - 1
+                        (getQuantity(option.value) - 1).toString()
                       );
                     }}
                     style={{
@@ -361,7 +361,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                       e.stopPropagation();
                       updateQuantity(
                         option.value,
-                        getQuantity(option.value) + 1
+                        (getQuantity(option.value) + 1).toString()
                       );
                     }}
                     style={{

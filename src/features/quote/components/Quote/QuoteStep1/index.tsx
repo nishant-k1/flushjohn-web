@@ -81,7 +81,7 @@ const QuoteStep1 = () => {
     <Formik
       enableReinitialize={true}
       initialValues={formValues}
-      validationSchema={step1ValidationSchema}
+      validationSchema={step1StringValidationSchema}
       validateOnChange={false}
       validateOnBlur={true}
       onSubmit={async (values, { setSubmitting, resetForm }) => {

@@ -1,10 +1,43 @@
 import { useField } from "formik";
 import styles from "./styles.module.css";
 import { NumericFormat } from "react-number-format";
+import { useState, useCallback } from "react";
 
 const NumberField = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
+  const { setValue } = helpers;
+  const [isFocused, setIsFocused] = useState(false);
+  
+  const handleFocus = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocused(true);
+    // Clear the field if it contains default values
+    if (e.target.value === "0" || e.target.value === "1") {
+      setValue("");
+    }
+  }, [setValue]);
+
+  const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocused(false);
+    // Restore default value if field is left empty
+    if (e.target.value === "" || e.target.value === "0") {
+      setValue("1");
+    }
+  }, [setValue]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const currentValue = parseInt(e.currentTarget.value || "1", 10);
+      const newValue = Math.max(1, currentValue + 1);
+      setValue(newValue.toString());
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const currentValue = parseInt(e.currentTarget.value || "1", 10);
+      const newValue = Math.max(1, currentValue - 1);
+      setValue(newValue.toString());
+    }
+  }, [setValue]);
   
   return (
     <div className={styles.fieldRow}>
@@ -15,7 +48,12 @@ const NumberField = ({ label, ...props }: any) => {
           {...props}
           className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
           placeholder="0"
-          title="Enter Quantity"
+          title="Enter Quantity - Use arrow keys to increment/decrement"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+          allowNegative={false}
+          decimalScale={0}
         />
         <span className={styles.unitsText}>Units</span>
       </div>
