@@ -3,9 +3,9 @@
  * Step 11: Convert to strings for display ONLY
  */
 
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 // Extend dayjs with plugins
 dayjs.extend(relativeTime);
@@ -72,13 +72,16 @@ export function formatRelativeDate(date: Date | string): string {
 /**
  * Format date range for display
  */
-export function formatDateRange(startDate: Date | string, endDate: Date | string): string {
+export function formatDateRange(
+  startDate: Date | string,
+  endDate: Date | string
+): string {
   const start = dayjs(startDate);
   const end = dayjs(endDate);
-  
-  if (start.isSame(end, 'day')) {
+
+  if (start.isSame(end, "day")) {
     return start.format("MMM DD, YYYY");
-  } else if (start.isSame(end, 'year')) {
+  } else if (start.isSame(end, "year")) {
     return `${start.format("MMM DD")} - ${end.format("MMM DD, YYYY")}`;
   } else {
     return `${start.format("MMM DD, YYYY")} - ${end.format("MMM DD, YYYY")}`;
@@ -88,8 +91,11 @@ export function formatDateRange(startDate: Date | string, endDate: Date | string
 /**
  * Calculate duration between two dates
  */
-export function calculateDuration(startDate: Date | string, endDate: Date | string): number {
-  return dayjs(endDate).diff(dayjs(startDate), 'day') + 1; // +1 to include both start and end days
+export function calculateDuration(
+  startDate: Date | string,
+  endDate: Date | string
+): number {
+  return dayjs(endDate).diff(dayjs(startDate), "day") + 1; // +1 to include both start and end days
 }
 
 /**
