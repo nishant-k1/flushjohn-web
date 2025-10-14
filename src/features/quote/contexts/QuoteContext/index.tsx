@@ -11,7 +11,7 @@ const requirementDetails = {
       item: "Standard Portable Restroom",
       desc: "Standard Portable Restroom",
       qty: 0, // Number in application state
-      rate: 0.00, // Number in application state
+      rate: 125.00, // Default rate for Standard Portable Restroom
       amount: 0.00, // Number in application state
     },
     { 
@@ -19,7 +19,7 @@ const requirementDetails = {
       item: "Deluxe Flushable Restroom",
       desc: "Deluxe Flushable Restroom",
       qty: 0, // Number in application state
-      rate: 0.00, // Number in application state
+      rate: 150.00, // Default rate for Deluxe Flushable Restroom
       amount: 0.00, // Number in application state
     },
     { 
@@ -27,7 +27,7 @@ const requirementDetails = {
       item: "ADA Portable Restroom", 
       desc: "ADA Portable Restroom",
       qty: 0, // Number in application state
-      rate: 0.00, // Number in application state
+      rate: 175.00, // Default rate for ADA Portable Restroom
       amount: 0.00, // Number in application state
     },
     { 
@@ -35,7 +35,7 @@ const requirementDetails = {
       item: "Hand Wash Station", 
       desc: "Hand Wash Station",
       qty: 0, // Number in application state
-      rate: 0.00, // Number in application state
+      rate: 75.00, // Default rate for Hand Wash Station
       amount: 0.00, // Number in application state
     },
   ],
