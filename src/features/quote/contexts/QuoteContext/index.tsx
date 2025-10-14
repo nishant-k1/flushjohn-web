@@ -12,31 +12,31 @@ const requirementDetails = {
       desc: "Standard Portable Restroom",
       qty: "",
       rate: "0.00",
-      amount: 0,
+      amount: "0.00",
     },
-    { 
+    {
       id: "deluxe-flushable-restroom",
-      item: "Deluxe Flushable Restroom", 
+      item: "Deluxe Flushable Restroom",
       desc: "Deluxe Flushable Restroom",
       qty: "",
       rate: "0.00",
-      amount: 0,
+      amount: "0.00",
     },
-    { 
+    {
       id: "ada-portable-restroom",
-      item: "ADA Portable Restroom", 
+      item: "ADA Portable Restroom",
       desc: "ADA Portable Restroom",
       qty: "",
       rate: "0.00",
-      amount: 0,
+      amount: "0.00",
     },
-    { 
+    {
       id: "hand-wash-station",
-      item: "Hand Wash Station", 
+      item: "Hand Wash Station",
       desc: "Hand Wash Station",
       qty: "",
       rate: "0.00",
-      amount: 0,
+      amount: "0.00",
     },
   ],
 };

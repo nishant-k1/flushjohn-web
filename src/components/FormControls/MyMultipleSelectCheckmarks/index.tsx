@@ -21,35 +21,45 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
 
   const toggleOption = (optionValue: string) => {
     const existingItem = value.find(
-      (v: any) => v.item === optionValue || v.type === optionValue || v === optionValue
+      (v: any) =>
+        v.item === optionValue || v.type === optionValue || v === optionValue
     );
 
     if (existingItem) {
       // Remove item
-      setValue(value.filter((v: any) => (v.item || v.type || v) !== optionValue));
+      setValue(
+        value.filter((v: any) => (v.item || v.type || v) !== optionValue)
+      );
     } else {
-      // Add item with default quantity of 1 in CRM format
-      setValue([...value, { 
-        id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-        item: optionValue,
-        desc: optionValue,
-        qty: 1,
-        rate: "0.00",
-        amount: 0
-      }]);
+      // Add item with default quantity of 1 in CRM format (all strings)
+      setValue([
+        ...value,
+        {
+          id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          item: optionValue,
+          desc: optionValue,
+          qty: "1",
+          rate: "0.00",
+          amount: "0.00",
+        },
+      ]);
     }
   };
 
   const updateQuantity = (optionValue: string, quantity: number) => {
     const newValue = value.map((v: any) => {
       if ((v.item || v.type || v) === optionValue) {
-        return { 
+        const qty = Math.max(1, quantity);
+        const rate = parseFloat(v.rate || "0");
+        const amount = rate * qty;
+
+        return {
           ...v,
           item: v.item || v.type || optionValue,
           desc: v.desc || v.type || optionValue,
-          qty: Math.max(1, quantity),
+          qty: qty.toString(), // Convert to string
           rate: v.rate || "0.00",
-          amount: Number(v.rate || 0) * Math.max(1, quantity)
+          amount: amount.toFixed(2), // Convert to string with 2 decimals
         };
       }
       return v;
@@ -62,15 +72,18 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   };
 
   const getQuantity = (optionValue: string) => {
-    const item = value.find((v: any) => (v.item || v.type || v) === optionValue);
-    return item?.qty || item?.quantity || 1;
+    const item = value.find(
+      (v: any) => (v.item || v.type || v) === optionValue
+    );
+    const qty = item?.qty || item?.quantity || "1";
+    return parseInt(qty, 10) || 1; // Convert string to number for input
   };
 
   const getTotalUnits = () => {
-    return value.reduce(
-      (sum: number, item: any) => sum + (item.qty || item.quantity || 1),
-      0
-    );
+    return value.reduce((sum: number, item: any) => {
+      const qty = parseInt(item.qty || item.quantity || "1", 10) || 1;
+      return sum + qty;
+    }, 0);
   };
 
   // Close dropdown when clicking outside

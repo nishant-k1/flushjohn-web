@@ -18,9 +18,9 @@ const step1ValidationSchema = Yup.object({
         id: Yup.string(),
         item: Yup.string(),
         desc: Yup.string(),
-        qty: Yup.number().min(0, "Quantity must be 0 or more"),
+        qty: Yup.string(), // Always string in forms
         rate: Yup.string(),
-        amount: Yup.number(),
+        amount: Yup.string(), // Always string in forms
       })
     )
     .test(
@@ -29,7 +29,7 @@ const step1ValidationSchema = Yup.object({
       function (products) {
         if (!products) return false;
         return products.some((product: any) => {
-          const qty = parseInt(product.qty) || 0;
+          const qty = parseInt(product.qty || "0", 10) || 0;
           return qty > 0;
         });
       }
