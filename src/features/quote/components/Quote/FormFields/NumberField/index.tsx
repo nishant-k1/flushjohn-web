@@ -16,11 +16,14 @@ const NumberField = ({ label, ...props }: any) => {
       if (e.target.value === "0") {
         setValue("");
       }
-      // Position cursor at the end of the text
+      // Position cursor at the right side of the input (after digits)
       setTimeout(() => {
-        const length = e.target.value.length;
-        e.target.setSelectionRange(length, length);
-      }, 0);
+        // Force cursor to the end of the input field
+        const input = e.target;
+        const length = input.value.length;
+        input.setSelectionRange(length, length);
+        input.focus();
+      }, 10);
     },
     [setValue]
   );
@@ -29,6 +32,15 @@ const NumberField = ({ label, ...props }: any) => {
     setIsFocused(false);
     // Keep field empty - don't restore any default value
     // The placeholder "0" will show when field is empty
+  }, []);
+
+  const handleClick = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
+    // Ensure cursor is positioned at the end when clicking
+    setTimeout(() => {
+      const input = e.currentTarget;
+      const length = input.value.length;
+      input.setSelectionRange(length, length);
+    }, 0);
   }, []);
 
   const handleKeyDown = useCallback(
@@ -60,6 +72,7 @@ const NumberField = ({ label, ...props }: any) => {
           title="Enter Quantity - Use arrow keys to increment/decrement"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClick={handleClick}
           onKeyDown={handleKeyDown}
           allowNegative={false}
           decimalScale={0}
