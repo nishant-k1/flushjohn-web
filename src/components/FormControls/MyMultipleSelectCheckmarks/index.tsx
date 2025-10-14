@@ -4,10 +4,10 @@ import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 import { formatInputValue } from "@/utils/displayFormatting";
 
 const options = [
-  { label: "Standard Portable Restroom", value: "Standard Portable Restroom", rate: 125.00 },
-  { label: "Deluxe Flushable Restroom", value: "Deluxe Flushable Restroom", rate: 150.00 },
-  { label: "ADA Portable Restroom", value: "ADA Portable Restroom", rate: 175.00 },
-  { label: "Hand Wash Station", value: "Hand Wash Station", rate: 75.00 },
+  { label: "Standard Portable Restroom", value: "Standard Portable Restroom" },
+  { label: "Deluxe Flushable Restroom", value: "Deluxe Flushable Restroom" },
+  { label: "ADA Portable Restroom", value: "ADA Portable Restroom" },
+  { label: "Hand Wash Station", value: "Hand Wash Station" },
 ];
 
 const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
@@ -32,20 +32,16 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         value.filter((v: any) => (v.item || v.type || v) !== optionValue)
       );
     } else {
-      // Find the option to get the predefined rate
-      const selectedOption = options.find(opt => opt.value === optionValue);
-      const defaultRate = selectedOption?.rate || 0.0;
-      
-      // Add item with proper types in application state
+      // Add item with empty rate - user can enter their own rate
       setValue([
         ...value,
         {
           id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           item: optionValue,
           desc: optionValue,
-          qty: 1, // Number in application state
-          rate: defaultRate, // Use predefined rate
-          amount: defaultRate * 1, // Calculate amount based on qty and rate
+          qty: 1, // Default quantity
+          rate: 0.0, // Empty rate - user will enter their own
+          amount: 0.0, // Will be calculated when user enters rate
         },
       ]);
     }
