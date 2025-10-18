@@ -29,11 +29,11 @@ self.addEventListener("install", (event) => {
     caches
       .open(STATIC_CACHE)
       .then((cache) => {
-        console.log("Service Worker: Caching static assets");
+
         return cache.addAll(STATIC_ASSETS);
       })
       .then(() => {
-        console.log("Service Worker: Skip waiting");
+
         return self.skipWaiting();
       })
   );
@@ -48,14 +48,14 @@ self.addEventListener("activate", (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName !== CACHE_NAME && cacheName !== STATIC_CACHE) {
-              console.log("Service Worker: Deleting old cache:", cacheName);
+
               return caches.delete(cacheName);
             }
           })
         );
       })
       .then(() => {
-        console.log("Service Worker: Claiming clients");
+
         return self.clients.claim();
       })
   );
@@ -108,7 +108,7 @@ async function cacheFirst(request, cacheName) {
 
     return networkResponse;
   } catch (error) {
-    console.error("Cache First failed:", error);
+
     return new Response("Offline", {
       status: 503,
       statusText: "Service Unavailable",
@@ -128,7 +128,7 @@ async function networkFirst(request, cacheName) {
 
     return networkResponse;
   } catch (error) {
-    console.error("Network First failed, trying cache:", error);
+
     const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(request);
 
@@ -172,7 +172,7 @@ self.addEventListener("sync", (event) => {
 
 async function handleQuoteSync() {
   // Handle offline form submissions when back online
-  console.log("Background sync: Processing quote submissions");
+
   // Implementation would depend on your form handling strategy
 }
 

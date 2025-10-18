@@ -23,7 +23,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     
     try {
       // Here you would typically send to your API
-      console.log("Review submitted:", formData);
+
       
       toast.success("Thank you for your review! We appreciate your feedback.", {
         position: "top-right",

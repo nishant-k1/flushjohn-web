@@ -273,7 +273,7 @@ const QuickQuote = () => {
         event_callback: callback,
       });
     } else {
-      console.warn("Google Ads tracking is not available");
+
     }
   };
 
@@ -315,7 +315,7 @@ const QuickQuote = () => {
               //   value: 1,
               // });
             } catch (err) {
-              console.log(err);
+
             }
             // Reset the form with all required initial values
             resetForm({

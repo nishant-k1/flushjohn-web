@@ -148,7 +148,7 @@ const Contact = () => {
               });
               // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
-              console.log(err);
+
             }
             resetForm();
           }}

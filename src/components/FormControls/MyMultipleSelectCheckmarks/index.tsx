@@ -50,14 +50,14 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   const updateQuantity = (optionValue: string, quantityInput: string) => {
     // Step 1: Validate string format before parsing
     if (!/^\d+$/.test(quantityInput)) {
-      console.warn("Invalid quantity format:", quantityInput);
+
       return;
     }
 
     // Step 2: Parse to number after validation
     const quantity = parseInt(quantityInput, 10);
     if (isNaN(quantity) || quantity < 1) {
-      console.warn("Invalid quantity value:", quantity);
+
       return;
     }
 

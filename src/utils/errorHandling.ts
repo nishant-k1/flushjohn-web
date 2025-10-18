@@ -6,7 +6,7 @@
 export const safeConsole = {
   log: (...args: any[]) => {
     if (process.env.NODE_ENV === "development") {
-      console.log(...args);
+
     }
   },
 
@@ -18,7 +18,7 @@ export const safeConsole = {
       !message.includes("chrome-extension") &&
       !message.includes("findDOMNode is deprecated")
     ) {
-      console.warn(...args);
+
     }
   },
 
@@ -30,7 +30,7 @@ export const safeConsole = {
       !message.includes("chrome-extension") &&
       !message.includes("Non-passive event listener")
     ) {
-      console.error(...args);
+
     }
   },
 };
@@ -119,8 +119,8 @@ export const setupPolyfills = () => {
 export const cleanupThirdPartyScripts = () => {
   if (typeof window !== "undefined") {
     // Remove extension-related errors from console
-    const originalConsoleError = console.error;
-    console.error = (...args) => {
+
+
       const message = args[0]?.toString() || "";
       if (
         message.includes("chrome-extension") ||
@@ -134,8 +134,8 @@ export const cleanupThirdPartyScripts = () => {
     };
 
     // Cleanup deprecated warnings
-    const originalConsoleWarn = console.warn;
-    console.warn = (...args) => {
+
+
       const message = args[0]?.toString() || "";
       if (
         message.includes("deprecated") ||

@@ -96,7 +96,7 @@ const HeroQuickQuote = () => {
         event_callback: callback,
       });
     } else {
-      console.warn("Google Ads tracking is not available");
+
     }
   };
 
@@ -132,7 +132,7 @@ const HeroQuickQuote = () => {
           setQuickQuoteRequested(true);
           handleLeadConversion();
         } catch (err) {
-          console.log(err);
+
         }
 
         // Reset the form with all required initial values

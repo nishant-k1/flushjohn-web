@@ -20,7 +20,7 @@ export default function PerformanceTurbo() {
       });
 
       // This is a simplified version - in production use PurgeCSS
-      console.log('CSS optimization: Analyzing used selectors');
+
     };
 
     // 2. Lazy load images below the fold

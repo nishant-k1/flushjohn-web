@@ -61,7 +61,7 @@ export async function generateMetadata({
       },
     };
   } catch (error) {
-    console.error("Error fetching blog metadata:", error);
+
     return { title: "FlushJohn Blog" };
   }
 }
@@ -189,7 +189,7 @@ const BlogPostPage = async ({
       </>
     );
   } catch (error) {
-    console.error("Error fetching blog post:", error);
+
     return <div>Error loading blog post</div>;
   }
 };

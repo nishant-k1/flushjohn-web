@@ -61,7 +61,7 @@ const BlogPage = async () => {
       blogList = [...data];
     }
   } catch (error) {
-    console.error("Error fetching blog list:", error);
+
   }
 
   // ✅ JSON-LD structured data for the Blog Listing Page

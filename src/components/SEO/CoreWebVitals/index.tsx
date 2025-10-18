@@ -6,7 +6,7 @@ const CoreWebVitals = () => {
   useEffect(() => {
     const reportWebVitals = (metric: any) => {
       if (process.env.NODE_ENV === "development") {
-        console.log("Core Web Vitals:", metric);
+
       }
 
       if (
@@ -47,7 +47,7 @@ const CoreWebVitals = () => {
         if (webVitals.onINP) webVitals.onINP(reportWebVitals);
       })
       .catch((error) => {
-        console.warn("Web Vitals library not available:", error);
+
       });
   }, []);
 

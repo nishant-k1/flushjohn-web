@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
     // Respond with a success message
     return NextResponse.json({ status: "Success" }, { status: 200 });
   } catch (err) {
-    console.error(err);
+
     // Respond with error message in case of failure
     return NextResponse.json(
       { error: "Failed to send quote" },

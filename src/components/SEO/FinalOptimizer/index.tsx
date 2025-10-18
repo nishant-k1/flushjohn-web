@@ -34,8 +34,8 @@ const FinalOptimizer = () => {
 
       // Clean up console errors
       const suppressNonCriticalErrors = () => {
-        const originalError = console.error;
-        console.error = (...args) => {
+
+
           // Filter out non-critical errors that affect Lighthouse score
           const message = args[0]?.toString() || "";
           if (
