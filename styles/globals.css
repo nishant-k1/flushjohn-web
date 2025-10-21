@@ -126,26 +126,43 @@ button {
   font-weight: 600;
 }
 
-/* SCROLL BAR */
-/* Apply only to WebKit browsers (Chrome, Safari, Edge) */
+/* SCROLL BAR - Cross-platform consistent styling */
+/* WebKit browsers (Chrome, Safari, Edge, Opera) */
 ::-webkit-scrollbar {
-  width: 6px; /* Thin scrollbar */
-  position: absolute; /* Prevents it from taking up space */
+  width: 8px; /* Slightly wider for better visibility on Windows */
+  height: 8px; /* For horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* Hides track */
+  background: rgba(0, 0, 0, 0.1); /* Subtle track background */
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.4); /* Subtle scrollbar */
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3); /* More visible on Windows */
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
 }
 
-/* For Firefox */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5); /* Darker on hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent; /* Corner where scrollbars meet */
+}
+
+/* Firefox scrollbar styling */
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent behavior across all browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}
 }
 
 /* Date Picker Calendar Styling - Chrome/Edge/Safari */

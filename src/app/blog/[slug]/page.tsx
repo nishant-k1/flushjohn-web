@@ -15,7 +15,7 @@ export async function generateMetadata({
   if (!slug) return { title: "FlushJohn Blog" };
 
   try {
-    const res = await fetch(`${API_URL}?slug=${slug}`, {
+    const res = await fetch(`${API_URL}?slug=${slug}&status=published`, {
       cache: "no-store",
     });
     const { data: blogs } = (await res.json()) || {};
@@ -61,7 +61,6 @@ export async function generateMetadata({
       },
     };
   } catch (error) {
-
     return { title: "FlushJohn Blog" };
   }
 }
@@ -76,7 +75,9 @@ const BlogPostPage = async ({
   if (!slug) return;
 
   try {
-    const res = await fetch(`${API_URL}?slug=${slug}`, { cache: "no-store" });
+    const res = await fetch(`${API_URL}?slug=${slug}&status=published`, {
+      cache: "no-store",
+    });
     const { data: blogs } = (await res.json()) || {};
     if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
       return <div>Blog Post Not Found</div>;
@@ -189,7 +190,6 @@ const BlogPostPage = async ({
       </>
     );
   } catch (error) {
-
     return <div>Error loading blog post</div>;
   }
 };

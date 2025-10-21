@@ -40,7 +40,8 @@ export const metadata: Metadata = {
 // ✅ **Page Component**
 const BlogPage = async () => {
   const { API_BASE_URL } = apiBaseUrls;
-  const API_URL = `${API_BASE_URL}/blogs`;
+  // ✅ FIX: Add status=published filter
+  const API_URL = `${API_BASE_URL}/blogs?status=published`;
 
   let blogList: {
     createdAt: string;
@@ -60,9 +61,7 @@ const BlogPage = async () => {
     if (data) {
       blogList = [...data];
     }
-  } catch (error) {
-
-  }
+  } catch (error) {}
 
   // ✅ JSON-LD structured data for the Blog Listing Page
   const jsonLd = {

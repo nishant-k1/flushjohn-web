@@ -1,0 +1,158 @@
+/* 
+ * Cross-Platform Scrollbar Consistency CSS
+ * 
+ * This file provides consistent scrollbar styling across Windows, Mac, and Linux
+ * browsers. Use this as a reference for maintaining scrollbar consistency.
+ * 
+ * Key features:
+ * - Consistent appearance across all platforms
+ * - Better visibility on Windows (which has different default scrollbars)
+ * - Maintains accessibility and usability
+ * - Works with WebKit, Firefox, and other browsers
+ */
+
+/* ==========================================================================
+   CROSS-PLATFORM SCROLLBAR STYLING
+   ========================================================================== */
+
+/* WebKit browsers (Chrome, Safari, Edge, Opera) */
+::-webkit-scrollbar {
+  width: 8px; /* Slightly wider for better visibility on Windows */
+  height: 8px; /* For horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Subtle track background */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* More visible on Windows */
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5); /* Darker on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.6); /* Even darker when clicked */
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent; /* Corner where scrollbars meet */
+}
+
+/* Firefox scrollbar styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent behavior across all browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   DARK THEME SCROLLBAR VARIATIONS
+   ========================================================================== */
+
+/* For dark themes, use lighter scrollbar colors */
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme html {
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme * {
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY CONSIDERATIONS
+   ========================================================================== */
+
+/* Ensure scrollbars are visible for users who need them */
+@media (prefers-reduced-motion: no-preference) {
+  ::-webkit-scrollbar-thumb {
+    transition: background-color 0.2s ease;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================================================
+   MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+/* On mobile devices, make scrollbars slightly larger for touch interaction */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Hide scrollbars but maintain scroll functionality */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer & Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge, Opera */
+}
+
+/* Custom scrollbar colors for specific components */
+.scrollbar-primary ::-webkit-scrollbar-thumb {
+  background: var(--primary-color, #007bff);
+}
+
+.scrollbar-primary ::-webkit-scrollbar-track {
+  background: rgba(0, 123, 255, 0.1);
+}
+
+/* ==========================================================================
+   BROWSER-SPECIFIC FIXES
+   ========================================================================== */
+
+/* Internet Explorer and Edge Legacy */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  * {
+    scrollbar-base-color: rgba(0, 0, 0, 0.3);
+    scrollbar-face-color: rgba(0, 0, 0, 0.3);
+    scrollbar-track-color: rgba(0, 0, 0, 0.1);
+  }
+}
