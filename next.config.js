@@ -101,7 +101,7 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
-  serverExternalPackages: ['nodemailer'],
+  serverExternalPackages: ["nodemailer"],
   // Enable HTTP/2 and modern protocols
   httpAgentOptions: {
     keepAlive: true,

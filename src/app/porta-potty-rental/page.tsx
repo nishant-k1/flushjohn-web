@@ -177,6 +177,16 @@ const jsonLd = {
 const PortaPottyRentalPage = () => {
   return (
     <>
+      <style jsx>{`
+        .service-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .related-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+      `}</style>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -384,10 +394,11 @@ const PortaPottyRentalPage = () => {
               { name: "Emergency Services", link: "/contact" },
               { name: "Long-term Rentals", link: "/quote" },
             ].map((service) => (
-              <Link
-                key={service.name}
-                href={service.link}
-                style={{
+                <Link
+                  key={service.name}
+                  href={service.link}
+                  className="service-link"
+                  style={{
                   padding: "15px",
                   border: "1px solid #ddd",
                   borderRadius: "5px",
@@ -396,15 +407,7 @@ const PortaPottyRentalPage = () => {
                   color: "inherit",
                   display: "block",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 12px rgba(0,0,0,0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
+                  cursor: "pointer",
                 }}
               >
                 <h4
@@ -435,6 +438,7 @@ const PortaPottyRentalPage = () => {
           >
             <Link
               href="/blog"
+              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
@@ -460,6 +464,7 @@ const PortaPottyRentalPage = () => {
             </Link>
             <Link
               href="/faq"
+              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
@@ -485,6 +490,7 @@ const PortaPottyRentalPage = () => {
             </Link>
             <Link
               href="/gallery"
+              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
