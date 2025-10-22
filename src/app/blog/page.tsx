@@ -40,28 +40,29 @@ export const metadata: Metadata = {
 // ✅ **Page Component**
 const BlogPage = async () => {
   const { API_BASE_URL } = apiBaseUrls;
-  // ✅ FIX: Add status=published filter
-  const API_URL = `${API_BASE_URL}/blogs?status=published`;
 
-  let blogList: {
-    createdAt: string;
-    title: string;
-    content: any;
-    _id: string;
-    excerpt?: string;
-    coverImage?: string;
-    author?: string;
-  }[] = [];
+  // Fetch initial data server-side for SEO
+  let initialBlogs: any[] = [];
+  let initialPagination: any = null;
 
   try {
-    const res = await fetch(API_URL, {
-      next: { revalidate: 60 },
-    });
-    const { data } = (await res.json()) || {};
-    if (data) {
-      blogList = [...data];
+    const res = await fetch(
+      `${API_BASE_URL}/blogs?page=1&limit=12&status=published&sortBy=createdAt&sortOrder=desc`,
+      {
+        next: { revalidate: 300 }, // Revalidate every 5 minutes
+      }
+    );
+
+    if (res.ok) {
+      const result = await res.json();
+      if (result.success) {
+        initialBlogs = result.data || [];
+        initialPagination = result.pagination || null;
+      }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error fetching initial blogs:", error);
+  }
 
   // ✅ JSON-LD structured data for the Blog Listing Page
   const jsonLd = {
@@ -79,7 +80,7 @@ const BlogPage = async () => {
         url: `${s3assets}/og-image-flushjonn-web.png`,
       },
     },
-    blogPost: blogList.map((post) => ({
+    blogPost: initialBlogs.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt || post.title,
@@ -88,7 +89,7 @@ const BlogPage = async () => {
         "@type": "Person",
         name: post.author || "FlushJohn Team",
       },
-      image: post.coverImage,
+      image: post.coverImage?.src,
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": `${websiteURL}/blog/${post._id}`,
@@ -102,7 +103,10 @@ const BlogPage = async () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Blog blogList={blogList} />
+      <Blog
+        initialBlogs={initialBlogs}
+        initialPagination={initialPagination}
+      />
     </>
   );
 };

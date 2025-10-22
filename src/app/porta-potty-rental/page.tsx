@@ -357,30 +357,157 @@ const PortaPottyRentalPage = () => {
             }}
           >
             {[
-              "Construction Sites",
-              "Weddings & Events",
-              "Corporate Events",
-              "Festivals & Concerts",
-              "Sports Events",
-              "Parks & Recreation",
-              "Emergency Services",
-              "Long-term Rentals",
+              {
+                name: "Construction Sites",
+                link: "/rental-products/construction-porta-potty",
+              },
+              {
+                name: "Weddings & Events",
+                link: "/rental-products/luxury-restroom-trailer",
+              },
+              {
+                name: "Corporate Events",
+                link: "/rental-products/deluxe-porta-potty",
+              },
+              {
+                name: "Festivals & Concerts",
+                link: "/rental-products/standard-porta-potty",
+              },
+              {
+                name: "Sports Events",
+                link: "/rental-products/ada-compliant-porta-potty",
+              },
+              {
+                name: "Parks & Recreation",
+                link: "/rental-products/hand-wash-station",
+              },
+              { name: "Emergency Services", link: "/contact" },
+              { name: "Long-term Rentals", link: "/quote" },
             ].map((service) => (
-              <div
-                key={service}
+              <Link
+                key={service.name}
+                href={service.link}
                 style={{
                   padding: "15px",
                   border: "1px solid #ddd",
                   borderRadius: "5px",
                   textAlign: "center",
+                  textDecoration: "none",
+                  color: "inherit",
+                  display: "block",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 12px rgba(0,0,0,0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                <h4 style={{ margin: "0 0 10px 0" }}>{service}</h4>
+                <h4
+                  style={{
+                    margin: "0 0 10px 0",
+                    color: "var(--primary-bg-color)",
+                  }}
+                >
+                  {service.name}
+                </h4>
                 <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
-                  Available in all cities
+                  Available in all cities →
                 </p>
-              </div>
+              </Link>
             ))}
+          </div>
+        </div>
+
+        {/* Related Content Section */}
+        <div style={{ marginBottom: "40px" }}>
+          <h2>Related Resources</h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "20px",
+            }}
+          >
+            <Link
+              href="/blog"
+              style={{
+                padding: "20px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                textDecoration: "none",
+                color: "inherit",
+                display: "block",
+                transition: "transform 0.2s ease",
+              }}
+            >
+              <h3
+                style={{
+                  color: "var(--primary-bg-color)",
+                  margin: "0 0 10px 0",
+                }}
+              >
+                📝 Blog & Guides
+              </h3>
+              <p style={{ margin: "0", color: "#666" }}>
+                Read our comprehensive guides on porta potty rentals, event
+                planning, and construction site requirements.
+              </p>
+            </Link>
+            <Link
+              href="/faq"
+              style={{
+                padding: "20px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                textDecoration: "none",
+                color: "inherit",
+                display: "block",
+                transition: "transform 0.2s ease",
+              }}
+            >
+              <h3
+                style={{
+                  color: "var(--primary-bg-color)",
+                  margin: "0 0 10px 0",
+                }}
+              >
+                ❓ Frequently Asked Questions
+              </h3>
+              <p style={{ margin: "0", color: "#666" }}>
+                Find answers to common questions about porta potty rentals,
+                delivery, pricing, and maintenance.
+              </p>
+            </Link>
+            <Link
+              href="/gallery"
+              style={{
+                padding: "20px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                textDecoration: "none",
+                color: "inherit",
+                display: "block",
+                transition: "transform 0.2s ease",
+              }}
+            >
+              <h3
+                style={{
+                  color: "var(--primary-bg-color)",
+                  margin: "0 0 10px 0",
+                }}
+              >
+                📸 Photo Gallery
+              </h3>
+              <p style={{ margin: "0", color: "#666" }}>
+                See our porta potty units in action at various events and
+                construction sites across the country.
+              </p>
+            </Link>
           </div>
         </div>
 
