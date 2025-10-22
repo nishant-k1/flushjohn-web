@@ -57,12 +57,13 @@ const BlogPost = ({ blogPost, slug }: any) => {
               <div
                 className={styles.blogContent}
                 dangerouslySetInnerHTML={{
-                  __html: actualBlogPost?.content
-                    ?.replace(/^```html\s*\n?/, '') // Remove opening ```html with optional newline
-                    ?.replace(/\n?\s*```\s*$/, '') // Remove closing ``` with optional newline
-                    ?.replace(/^```html\s*/, '') // Fallback: Remove opening ```html
-                    ?.replace(/\s*```\s*$/, '') // Fallback: Remove closing ```
-                    ?.trim() || "",
+                  __html:
+                    actualBlogPost?.content
+                      ?.replace(/^```html\s*\n?/, "") // Remove opening ```html with optional newline
+                      ?.replace(/\n?\s*```\s*$/, "") // Remove closing ``` with optional newline
+                      ?.replace(/^```html\s*/, "") // Fallback: Remove opening ```html
+                      ?.replace(/\s*```\s*$/, "") // Fallback: Remove closing ```
+                      ?.trim() || "",
                 }}
               />
             </div>
@@ -174,13 +175,14 @@ const BlogPost = ({ blogPost, slug }: any) => {
                 color: "#333",
                 marginBottom: "40px",
               }}
-              dangerouslySetInnerHTML={{ 
-                __html: content
-                  ?.replace(/^```html\s*\n?/, '') // Remove opening ```html with optional newline
-                  ?.replace(/\n?\s*```\s*$/, '') // Remove closing ``` with optional newline
-                  ?.replace(/^```html\s*/, '') // Fallback: Remove opening ```html
-                  ?.replace(/\s*```\s*$/, '') // Fallback: Remove closing ```
-                  ?.trim() || ''
+              dangerouslySetInnerHTML={{
+                __html:
+                  content
+                    ?.replace(/^```html\s*\n?/, "") // Remove opening ```html with optional newline
+                    ?.replace(/\n?\s*```\s*$/, "") // Remove closing ``` with optional newline
+                    ?.replace(/^```html\s*/, "") // Fallback: Remove opening ```html
+                    ?.replace(/\s*```\s*$/, "") // Fallback: Remove closing ```
+                    ?.trim() || "",
               }}
             />
 
