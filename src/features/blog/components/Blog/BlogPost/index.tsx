@@ -58,8 +58,10 @@ const BlogPost = ({ blogPost, slug }: any) => {
                 className={styles.blogContent}
                 dangerouslySetInnerHTML={{
                   __html: actualBlogPost?.content
-                    ?.replace(/^```html\s*/, '') // Remove opening ```html
-                    ?.replace(/\s*```\s*$/, '') // Remove closing ```
+                    ?.replace(/^```html\s*\n?/, '') // Remove opening ```html with optional newline
+                    ?.replace(/\n?\s*```\s*$/, '') // Remove closing ``` with optional newline
+                    ?.replace(/^```html\s*/, '') // Fallback: Remove opening ```html
+                    ?.replace(/\s*```\s*$/, '') // Fallback: Remove closing ```
                     ?.trim() || "",
                 }}
               />
@@ -174,8 +176,10 @@ const BlogPost = ({ blogPost, slug }: any) => {
               }}
               dangerouslySetInnerHTML={{ 
                 __html: content
-                  ?.replace(/^```html\s*/, '') // Remove opening ```html
-                  ?.replace(/\s*```\s*$/, '') // Remove closing ```
+                  ?.replace(/^```html\s*\n?/, '') // Remove opening ```html with optional newline
+                  ?.replace(/\n?\s*```\s*$/, '') // Remove closing ``` with optional newline
+                  ?.replace(/^```html\s*/, '') // Fallback: Remove opening ```html
+                  ?.replace(/\s*```\s*$/, '') // Fallback: Remove closing ```
                   ?.trim() || ''
               }}
             />
