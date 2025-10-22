@@ -6,7 +6,6 @@ import AIOptimizedMeta from "@/components/SEO/AIOptimizedMeta";
 import RichSnippets from "@/components/SEO/RichSnippets";
 import PerformanceTurbo from "@/components/SEO/PerformanceTurbo";
 
-// Import Home component directly for better SEO - content is now visible to search engines
 import Home from "@/features/home/components/Home";
 
 export const metadata: Metadata = {
