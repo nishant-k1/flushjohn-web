@@ -180,11 +180,11 @@ const PortaPottyRentalPage = () => {
       <style jsx>{`
         .service-link:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         .related-link:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
       `}</style>
       <script
@@ -394,11 +394,11 @@ const PortaPottyRentalPage = () => {
               { name: "Emergency Services", link: "/contact" },
               { name: "Long-term Rentals", link: "/quote" },
             ].map((service) => (
-                <Link
-                  key={service.name}
-                  href={service.link}
-                  className="service-link"
-                  style={{
+              <Link
+                key={service.name}
+                href={service.link}
+                className="service-link"
+                style={{
                   padding: "15px",
                   border: "1px solid #ddd",
                   borderRadius: "5px",

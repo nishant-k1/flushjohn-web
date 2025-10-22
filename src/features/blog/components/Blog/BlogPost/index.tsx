@@ -57,7 +57,10 @@ const BlogPost = ({ blogPost, slug }: any) => {
               <div
                 className={styles.blogContent}
                 dangerouslySetInnerHTML={{
-                  __html: actualBlogPost?.content || "",
+                  __html: actualBlogPost?.content
+                    ?.replace(/^```html\s*/, '') // Remove opening ```html
+                    ?.replace(/\s*```\s*$/, '') // Remove closing ```
+                    ?.trim() || "",
                 }}
               />
             </div>
@@ -169,7 +172,12 @@ const BlogPost = ({ blogPost, slug }: any) => {
                 color: "#333",
                 marginBottom: "40px",
               }}
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ 
+                __html: content
+                  ?.replace(/^```html\s*/, '') // Remove opening ```html
+                  ?.replace(/\s*```\s*$/, '') // Remove closing ```
+                  ?.trim() || ''
+              }}
             />
 
             {/* SEO-Enhanced CTA Section */}

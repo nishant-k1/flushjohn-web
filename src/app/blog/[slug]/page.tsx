@@ -91,7 +91,12 @@ const BlogPostPage = async ({
 
     const blogPost = {
       ...blog,
-      content: DOMPurify.sanitize(blog.content),
+      content: DOMPurify.sanitize(
+        blog.content
+          ?.replace(/^```html\s*/, '') // Remove opening ```html
+          ?.replace(/\s*```\s*$/, '') // Remove closing ```
+          ?.trim() || ''
+      ),
     };
 
     const jsonLd = {
