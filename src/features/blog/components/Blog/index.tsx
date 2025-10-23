@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect } from "react";
@@ -10,6 +9,7 @@ import { generateSlug } from "@/utils";
 import { convert } from "html-to-text";
 import { useBlogsPagination } from "@/hooks/useBlogsPagination";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { s3assets } from "@/constants";
 
 const truncateText = (html: string, maxLength = 150) => {
   const plainText = convert(html, { wordwrap: false });
@@ -109,9 +109,29 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
           </div>
           <div className={styles.blogWrapper}>
             {blogs.map((item) => {
-              const { _id, coverImage, title, createdAt, content } = item;
+              const {
+                _id,
+                coverImageS3,
+                coverImageUnsplash,
+                title,
+                createdAt,
+                content,
+              } = item;
               const blogDate = new Date(createdAt);
-              const { src = "", alt = "" } = coverImage || {};
+
+              // Prioritize S3 image over Unsplash, with fallback to legacy and default
+              const imageSource =
+                coverImageS3?.src ||
+                coverImageUnsplash?.src ||
+                item.coverImage?.src ||
+                `${s3assets}/og-image-flushjonn-web.png`;
+              const imageAlt =
+                coverImageS3?.alt ||
+                coverImageUnsplash?.alt ||
+                item.coverImage?.alt ||
+                title ||
+                "Blog cover image";
+
               const slug = generateSlug(title);
               const previewText = truncateText(content);
 
@@ -122,20 +142,22 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                   className={styles.blogItem}
                 >
                   <div className={styles.imageContainer}>
-                    {coverImage && (
-                      <Image
-                        src={src}
-                        alt={alt}
-                        width={400}
-                        height={200}
-                        priority={true}
-                        placeholder="empty"
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
-                      />
-                    )}
+                    <Image
+                      src={imageSource}
+                      alt={imageAlt}
+                      width={400}
+                      height={200}
+                      priority={true}
+                      placeholder="empty"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
+                      onError={(e) => {
+                        console.error("Image failed to load:", imageSource);
+                        e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                      }}
+                    />
                   </div>
                   <div className={styles.textContainer}>
                     <h2>{title || "Untitled"}</h2>

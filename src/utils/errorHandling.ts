@@ -1,11 +1,9 @@
-
 /**
  * Safe console wrapper that filters out non-critical errors
  */
 export const safeConsole = {
   log: (...args: any[]) => {
     if (process.env.NODE_ENV === "development") {
-
     }
   },
 
@@ -16,7 +14,6 @@ export const safeConsole = {
       !message.includes("chrome-extension") &&
       !message.includes("findDOMNode is deprecated")
     ) {
-
     }
   },
 
@@ -27,7 +24,6 @@ export const safeConsole = {
       !message.includes("chrome-extension") &&
       !message.includes("Non-passive event listener")
     ) {
-
     }
   },
 };
@@ -74,7 +70,6 @@ export const setupGlobalErrorHandlers = () => {
  */
 export const setupPolyfills = () => {
   if (typeof window !== "undefined") {
-
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame =
         (window as any).webkitRequestAnimationFrame ||

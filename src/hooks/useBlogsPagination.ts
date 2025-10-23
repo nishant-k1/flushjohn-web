@@ -6,7 +6,16 @@ interface Blog {
   title: string;
   content: string;
   excerpt?: string;
+  coverImageS3?: {
+    src: string;
+    alt: string;
+  };
+  coverImageUnsplash?: {
+    src: string;
+    alt: string;
+  };
   coverImage?: {
+    // Legacy field for backward compatibility
     src: string;
     alt: string;
   };

@@ -1,16 +1,20 @@
+"use client";
+
 import React from "react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
-import { phone, websiteURL } from "@/constants";
+import { phone, websiteURL, s3assets } from "@/constants";
 
 const BlogPost = ({ blogPost, slug }: any) => {
   const actualBlogPost = blogPost;
 
   const {
     title,
-    coverImage,
+    coverImageS3,
+    coverImageUnsplash,
+    coverImage, // Legacy field for backward compatibility
     blogNo,
     content,
     author,
@@ -18,7 +22,19 @@ const BlogPost = ({ blogPost, slug }: any) => {
     tags,
     excerpt,
   } = actualBlogPost || {};
-  const { src = "", alt = "" } = coverImage || {};
+
+  // Prioritize S3 image over Unsplash, with fallback to legacy and default
+  const imageSource =
+    coverImageS3?.src ||
+    coverImageUnsplash?.src ||
+    coverImage?.src ||
+    `${s3assets}/og-image-flushjonn-web.png`;
+  const imageAlt =
+    coverImageS3?.alt ||
+    coverImageUnsplash?.alt ||
+    coverImage?.alt ||
+    title ||
+    "Blog cover image";
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "";
@@ -39,17 +55,19 @@ const BlogPost = ({ blogPost, slug }: any) => {
             <Breadcrumbs path={`/blog/${slug}`} />
             <div className={styles.wrapper}>
               <h1>{actualBlogPost?.title || "No Title"}</h1>
-              {actualBlogPost?.coverImage && (
+              {imageSource && (
                 <Image
-                  src={
-                    actualBlogPost.coverImage.src || actualBlogPost.coverImage
-                  }
-                  alt={actualBlogPost.coverImage.alt || "Blog cover image"}
+                  src={imageSource}
+                  alt={imageAlt}
                   width={600}
                   height={600}
                   priority={true}
                   placeholder="empty"
                   className={styles.coverImage}
+                  onError={(e) => {
+                    console.error("Image failed to load:", imageSource);
+                    e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                  }}
                 />
               )}
               <div
@@ -146,11 +164,11 @@ const BlogPost = ({ blogPost, slug }: any) => {
             </header>
 
             {/* Cover Image */}
-            {coverImage && (
+            {imageSource && (
               <div style={{ marginBottom: "30px" }}>
                 <Image
-                  src={src}
-                  alt={alt || title || "Blog cover image"}
+                  src={imageSource}
+                  alt={imageAlt}
                   width={800}
                   height={400}
                   style={{
@@ -160,6 +178,10 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     objectFit: "cover",
                   }}
                   priority
+                  onError={(e) => {
+                    console.error("Image failed to load:", imageSource);
+                    e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                  }}
                 />
               </div>
             )}

@@ -15,7 +15,9 @@ const FinalOptimizer = () => {
           "webkitRequestAnimationFrame" in window &&
           !("requestAnimationFrame" in window)
         ) {
-          (window as any).requestAnimationFrame = (window as any).webkitRequestAnimationFrame;
+          (window as any).requestAnimationFrame = (
+            window as any
+          ).webkitRequestAnimationFrame;
         }
       };
 
