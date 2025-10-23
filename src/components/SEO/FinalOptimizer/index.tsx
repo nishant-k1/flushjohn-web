@@ -15,7 +15,7 @@ const FinalOptimizer = () => {
           "webkitRequestAnimationFrame" in window &&
           !("requestAnimationFrame" in window)
         ) {
-          window.requestAnimationFrame = window.webkitRequestAnimationFrame;
+          (window as any).requestAnimationFrame = (window as any).webkitRequestAnimationFrame;
         }
       };
 
@@ -27,6 +27,8 @@ const FinalOptimizer = () => {
       };
 
       const suppressNonCriticalErrors = () => {
+        const originalError = console.error;
+        console.error = (...args: any[]) => {
           const message = args[0]?.toString() || "";
           if (
             !message.includes("Extension") &&

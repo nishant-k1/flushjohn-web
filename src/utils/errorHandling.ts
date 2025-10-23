@@ -106,6 +106,10 @@ export const setupPolyfills = () => {
  */
 export const cleanupThirdPartyScripts = () => {
   if (typeof window !== "undefined") {
+    const originalConsoleError = console.error;
+    const originalConsoleWarn = console.warn;
+
+    console.error = (...args: any[]) => {
       const message = args[0]?.toString() || "";
       if (
         message.includes("chrome-extension") ||
@@ -118,6 +122,7 @@ export const cleanupThirdPartyScripts = () => {
       originalConsoleError.apply(console, args);
     };
 
+    console.warn = (...args: any[]) => {
       const message = args[0]?.toString() || "";
       if (
         message.includes("deprecated") ||

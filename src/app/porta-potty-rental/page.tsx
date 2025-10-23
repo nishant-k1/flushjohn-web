@@ -170,16 +170,6 @@ const jsonLd = {
 const PortaPottyRentalPage = () => {
   return (
     <>
-      <style jsx>{`
-        .service-link:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .related-link:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-      `}</style>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -390,7 +380,6 @@ const PortaPottyRentalPage = () => {
               <Link
                 key={service.name}
                 href={service.link}
-                className="service-link"
                 style={{
                   padding: "15px",
                   border: "1px solid #ddd",
@@ -431,7 +420,6 @@ const PortaPottyRentalPage = () => {
           >
             <Link
               href="/blog"
-              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
@@ -457,7 +445,6 @@ const PortaPottyRentalPage = () => {
             </Link>
             <Link
               href="/faq"
-              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
@@ -483,7 +470,6 @@ const PortaPottyRentalPage = () => {
             </Link>
             <Link
               href="/gallery"
-              className="related-link"
               style={{
                 padding: "20px",
                 border: "1px solid #ddd",
