@@ -22,7 +22,6 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     e.preventDefault();
     
     try {
-      // Here you would typically send to your API
 
       
       toast.success("Thank you for your review! We appreciate your feedback.", {

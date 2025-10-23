@@ -12,11 +12,9 @@ const MyDateField = ({ label, ...props }: any) => {
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
 
-  // Parse the stored date value (either formatted string or Date object)
   const parseStoredDate = (value: any): Date | null => {
     if (!value) return null;
     if (value instanceof Date) return value;
-    // Try to parse formatted string like "January 15, 2025"
     const parsed = new Date(value);
     return isNaN(parsed.getTime()) ? null : parsed;
   };
@@ -30,7 +28,6 @@ const MyDateField = ({ label, ...props }: any) => {
           selected={selectedDate}
           onChange={(date: Date | null) => {
             if (date) {
-              // Store formatted date
               const formatted = date.toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",

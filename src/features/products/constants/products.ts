@@ -14,7 +14,6 @@ export interface Product {
   keywords: string;
 }
 
-// Products data structure
 export interface ProductsData {
   product_list: Product[];
 }
@@ -71,4 +70,3 @@ export const products_data: ProductsData = {
     },
   ],
 };
-

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -76,7 +77,6 @@ const Navbar = () => {
           <div className={styles.navLinks}>
             <Link
               href="/"
-              // className={pathname === "/" ? styles.activeLink : ""}
             >
               Home
             </Link>

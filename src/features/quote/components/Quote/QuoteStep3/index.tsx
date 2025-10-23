@@ -37,7 +37,6 @@ const QuoteStep3 = () => {
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
 
-  // Add socket event listeners for debugging
   React.useEffect(() => {
     const currentSocket = socketRef.current;
     if (currentSocket) {
@@ -55,7 +54,6 @@ const QuoteStep3 = () => {
 
       currentSocket.on("leadCreated", (response) => {
 
-        // Success modal will be shown by the form submission handler
       });
 
       currentSocket.on("leadCreationError", (error) => {
@@ -88,7 +86,6 @@ const QuoteStep3 = () => {
         if (response.ok) {
           const result = await response.json();
 
-          // Success modal will be shown by the form submission handler
           return result;
         } else {
           const errorData = await response.json();
@@ -113,7 +110,6 @@ const QuoteStep3 = () => {
       } else {
 
         socketRef.current?.connect();
-        // Retry after connection
         setTimeout(() => {
           if (socketRef.current?.connected) {
             socketRef.current.emit("createLead", data);
@@ -146,7 +142,6 @@ const QuoteStep3 = () => {
     }
   };
 
-  // Validation schema for Step 3
   const step3ValidationSchema = Yup.object({
     fName: Yup.string()
       .min(2, "First name must be at least 2 characters")
@@ -174,28 +169,18 @@ const QuoteStep3 = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
 
-
-
-            // Merge final step values with existing form data
             const finalData = {
               ...formValues,
               ...values,
               leadSource: "Web Lead",
             };
 
-
-
-            // Use Socket.IO as primary method (consistent with other forms)
             try {
               createLead(finalData);
 
               setShowSuccessModal(true);
               setQuoteRequested(true);
               handleLeadConversion();
-              // Don't reset form immediately - let modal show first
-              // resetForm();
-              // setFormValues(initialQuoteValues);
-              // setStep(1);
             } catch (socketError) {
 
               try {
@@ -204,10 +189,6 @@ const QuoteStep3 = () => {
                 setShowSuccessModal(true);
                 setQuoteRequested(true);
                 handleLeadConversion();
-                // Don't reset form immediately - let modal show first
-                // resetForm();
-                // setFormValues(initialQuoteValues);
-                // setStep(1);
               } catch (httpError) {
 
                 toast.error("Failed to submit quote request. Please try again.");
@@ -299,7 +280,6 @@ const QuoteStep3 = () => {
         isOpen={showSuccessModal}
         onClose={() => {
           setShowSuccessModal(false);
-          // Reset form and go back to step 1 when modal is closed
           setFormValues(initialQuoteValues);
           setStep(1);
           window.scrollTo(0, 0);

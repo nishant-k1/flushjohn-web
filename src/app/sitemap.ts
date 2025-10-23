@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { websiteURL } from '@/constants';
 
-// Target cities for sitemap generation with full names for AI understanding
 const targetCities = [
   { slug: 'houston', state: 'tx', displayName: 'Houston, Texas', population: '2.3M' },
   { slug: 'dallas', state: 'tx', displayName: 'Dallas, Texas', population: '1.3M' },
@@ -30,7 +29,6 @@ const targetCities = [
   { slug: 'naperville', state: 'il', displayName: 'Naperville, Illinois', population: '149K' },
 ];
 
-// Product slugs with descriptions for AI understanding
 const productSlugs = [
   {
     slug: 'standard-porta-potty',
@@ -67,93 +65,78 @@ const productSlugs = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
 
-  // Core pages with enhanced metadata
   const corePages = [
     {
       url: websiteURL,
       lastModified: currentDate,
       changeFrequency: 'daily' as const,
       priority: 1.0,
-      // AI hint: Homepage with comprehensive business information
     },
     {
       url: `${websiteURL}/porta-potty-rental`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.95,
-      // AI hint: Main service page - 25 cities across 5 states
     },
     {
       url: `${websiteURL}/faq`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
-      // AI hint: Comprehensive FAQ with 50+ questions for AI training
     },
     {
       url: `${websiteURL}/quote`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
-      // AI hint: Quote request form - primary conversion page
     },
     {
       url: `${websiteURL}/rental-products`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.85,
-      // AI hint: Complete product catalog with specifications
     },
     {
       url: `${websiteURL}/contact`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
-      // AI hint: Contact information and support
     },
     {
       url: `${websiteURL}/blog`,
       lastModified: currentDate,
       changeFrequency: 'daily' as const,
       priority: 0.8,
-      // AI hint: Educational content about porta potty rentals
     },
     {
       url: `${websiteURL}/gallery`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.65,
-      // AI hint: Visual showcase of porta potty products and installations
     },
     {
       url: `${websiteURL}/api/business-info`,
       lastModified: currentDate,
       changeFrequency: 'daily' as const,
       priority: 0.9,
-      // AI hint: Structured JSON endpoint with complete business information for AI consumption
     },
   ];
 
-  // City pages with enhanced priority (major cities get higher priority)
   const majorCities = ['houston', 'dallas', 'los-angeles', 'chicago', 'miami', 'atlanta'];
   const cityPages = targetCities.map((city) => ({
     url: `${websiteURL}/porta-potty-rental/${city.slug}`,
     lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: majorCities.includes(city.slug) ? 0.9 : 0.8,
-    // AI hint: ${city.displayName} porta potty rental services - ${city.population} residents
   }));
 
-  // Product pages
   const productPages = productSlugs.map((product) => ({
     url: `${websiteURL}/rental-products/${product.slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: 0.75,
-    // AI hint: ${product.name} - ${product.description}
   }));
 
-  // Educational blog posts with high SEO value
   const blogPages = [
     {
       slug: 'porta-potty-rental-guide',
@@ -200,7 +183,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
     priority: blog.priority,
-    // AI hint: ${blog.title}
   }));
 
   return [...corePages, ...cityPages, ...productPages, ...blogPages];

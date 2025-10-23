@@ -1,3 +1,4 @@
+
 /**
  * Lightweight Button Component
  * Replaces Material-UI Button with native HTML + CSS
@@ -43,7 +44,6 @@ export default function Button({
     .filter(Boolean)
     .join(' ');
 
-  // Merge inline styles with component props
   const { style, ...restProps } = props;
 
   return (
@@ -60,4 +60,3 @@ export default function Button({
     </button>
   );
 }
-

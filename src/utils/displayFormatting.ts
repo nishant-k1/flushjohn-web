@@ -1,3 +1,4 @@
+
 /**
  * Display Formatting Utilities - Enterprise Form Data Pipeline
  * Step 11: Convert to strings for display ONLY
@@ -7,7 +8,6 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-// Extend dayjs with plugins
 dayjs.extend(relativeTime);
 dayjs.extend(customParseFormat);
 
@@ -112,15 +112,12 @@ export function formatBoolean(
  * Format phone number for display
  */
 export function formatPhone(phone: string): string {
-  // Remove all non-digits
   const digits = phone.replace(/\D/g, "");
 
-  // Format as (XXX) XXX-XXXX
   if (digits.length === 10) {
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   }
 
-  // Return original if not standard US format
   return phone;
 }
 

@@ -9,7 +9,6 @@ const Faq = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter FAQs based on category and search
   const filteredFAQs = comprehensiveFaqData.filter((faq) => {
     const matchesCategory = !selectedCategory || faq.category === selectedCategory;
     const matchesSearch =

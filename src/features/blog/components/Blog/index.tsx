@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect } from "react";
@@ -50,14 +51,12 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     rootMargin: "100px",
   });
 
-  // Load more when intersection is detected
   useEffect(() => {
     if (isIntersecting && hasNextPage && !isFetchingMore) {
       loadMore();
     }
   }, [isIntersecting, hasNextPage, isFetchingMore, loadMore]);
 
-  // Only show loading if we don't have initial data
   if (loading && !initialBlogs.length) {
     return (
       <div className={styles.section}>

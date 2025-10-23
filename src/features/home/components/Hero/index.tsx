@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -7,7 +8,6 @@ import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-// Lazy load components with skeleton placeholders
 const CarouselView = dynamic(() => import("@/components/CarouselView"), {
   loading: () => <div className={styles.skeletonCarousel} />,
 });
@@ -20,7 +20,6 @@ type HeroProps = {
   subTitle: string;
 };
 
-// Extract phone data once outside the component
 const { phone_link, phone_number } = phone;
 
 const Hero = React.memo(({ title, subTitle }: HeroProps) => {
@@ -70,5 +69,4 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
   );
 });
 
-// Only re-render if title or subTitle changes
 export default Hero;

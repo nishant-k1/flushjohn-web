@@ -1,3 +1,4 @@
+
 /**
  * Lightweight Grid Component
  * Replaces Material-UI Grid with CSS Grid
@@ -40,7 +41,6 @@ export function Grid({
   className,
   style,
 }: GridProps) {
-  // Convert spacing to class name (handle decimals like 0.5 -> "spacing-0_5")
   const spacingClass = container 
     ? styles[`spacing-${spacing}`.replace('.', '_')] 
     : '';
@@ -74,4 +74,3 @@ export function Grid({
 }
 
 export default Grid;
-

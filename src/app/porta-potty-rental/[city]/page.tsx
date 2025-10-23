@@ -13,9 +13,7 @@ const ReviewCollection = dynamic(
   () => import("@/components/SEO/ReviewCollection")
 );
 
-// FlushJohn service coverage cities
 const cities = [
-  // Texas
   { name: "houston", displayName: "Houston", state: "TX", population: "2.3M" },
   { name: "dallas", displayName: "Dallas", state: "TX", population: "1.3M" },
   { name: "austin", displayName: "Austin", state: "TX", population: "965K" },
@@ -32,7 +30,6 @@ const cities = [
     population: "918K",
   },
 
-  // Florida
   { name: "miami", displayName: "Miami", state: "FL", population: "467K" },
   { name: "orlando", displayName: "Orlando", state: "FL", population: "307K" },
   { name: "tampa", displayName: "Tampa", state: "FL", population: "399K" },
@@ -49,7 +46,6 @@ const cities = [
     population: "182K",
   },
 
-  // California
   {
     name: "los-angeles",
     displayName: "Los Angeles",
@@ -76,7 +72,6 @@ const cities = [
   },
   { name: "fresno", displayName: "Fresno", state: "CA", population: "542K" },
 
-  // Georgia
   { name: "atlanta", displayName: "Atlanta", state: "GA", population: "498K" },
   {
     name: "savannah",
@@ -93,7 +88,6 @@ const cities = [
     population: "206K",
   },
 
-  // Illinois
   { name: "chicago", displayName: "Chicago", state: "IL", population: "2.7M" },
   {
     name: "springfield",
@@ -116,7 +110,6 @@ const cities = [
   },
 ];
 
-// State-specific service areas
 const getServiceAreas = (state: string) => {
   const serviceAreas = {
     TX: [
@@ -296,7 +289,6 @@ const getServiceAreas = (state: string) => {
   return serviceAreas[state as keyof typeof serviceAreas] || serviceAreas.TX;
 };
 
-// City coordinates for LocalBusiness schema
 const getCityCoordinates = (cityName: string) => {
   const coordinates = {
     houston: { lat: "29.7604", lng: "-95.3698" },
@@ -334,7 +326,6 @@ const getCityCoordinates = (cityName: string) => {
   );
 };
 
-// Get nearby cities for internal linking
 const getNearbyCities = (state: string) => {
   const nearbyCities = {
     TX: cities.filter((city) => city.state === "TX").slice(0, 3),
@@ -415,7 +406,6 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
   const cityTitle = `${displayName}, ${state}`;
   const { phone_number, phone_link } = phone;
 
-  // JSON-LD structured data for local business
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -452,7 +442,6 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
     },
   };
 
-  // LocalBusiness schema for better local SEO
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -560,7 +549,6 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
     ],
   };
 
-  // Breadcrumb schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

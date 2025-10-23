@@ -1,8 +1,8 @@
+
 "use client";
 
 import React, { createContext, ReactNode } from "react";
 
-// Define the structure for the requirement details
 const requirementDetails = {
   usageType: "",
   products: [
@@ -41,7 +41,6 @@ const requirementDetails = {
   ],
 };
 
-// Define the structure for the delivery details
 const deliveryDetails = {
   deliveryDate: "",
   pickupDate: "",
@@ -52,7 +51,6 @@ const deliveryDetails = {
   instructions: "",
 };
 
-// Define the structure for personal details
 const personalDetails = {
   fName: "",
   lName: "",
@@ -63,7 +61,6 @@ const personalDetails = {
   contactPersonPhone: "",
 };
 
-// Combine all initial values into one object
 export const initialQuoteValues = {
   ...requirementDetails,
   ...deliveryDetails,
@@ -71,10 +68,8 @@ export const initialQuoteValues = {
   leadSource: "Web Lead", // Add this to the combined initial values
 };
 
-// Define the type for the form values
 type FormValues = typeof initialQuoteValues;
 
-// Define the type for the context
 interface QuoteContextType {
   render: [number, React.Dispatch<React.SetStateAction<number>>];
   data: [FormValues, React.Dispatch<React.SetStateAction<FormValues>>];
@@ -89,11 +84,9 @@ const defaultContextValue: QuoteContextType = {
   setQuoteRequested: () => {},
 };
 
-// Initialize the context with default values
 export const QuoteContext =
   createContext<QuoteContextType>(defaultContextValue);
 
-// Define the provider component
 export const QuoteContextProvider = ({ children }: { children: ReactNode }) => {
   const [step, setStep] = React.useState<number>(1);
 

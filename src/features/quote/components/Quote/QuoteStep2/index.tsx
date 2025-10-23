@@ -11,7 +11,6 @@ import MultilineTextField from "../FormFields/MultilineTextField";
 import ZipTextField from "../FormFields/ZipField";
 import DateField from "../FormFields/DateField";
 
-// Validation schema for Step 2
 const step2ValidationSchema = Yup.object({
   deliveryDate: Yup.string().required("Delivery date is required"),
   pickupDate: Yup.string().required("Pickup date is required"),

@@ -1,3 +1,4 @@
+
 import React from "react";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, address } from "@/constants";
@@ -43,7 +44,6 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD structured data for homepage
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -101,7 +101,6 @@ const jsonLd = {
   ],
 };
 
-// Service schema for remote business
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -131,7 +130,6 @@ const serviceJsonLd = {
   },
 };
 
-// WebSite schema for search functionality
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -144,7 +142,6 @@ const websiteJsonLd = {
   },
 };
 
-// FAQ schema for better featured snippets
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -232,7 +229,6 @@ const faqJsonLd = {
   ],
 };
 
-// Review schema for homepage
 const reviewJsonLd = {
   "@context": "https://schema.org",
   "@type": "Review",

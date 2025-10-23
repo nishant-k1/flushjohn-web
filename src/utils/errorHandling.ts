@@ -1,4 +1,3 @@
-// Error handling utilities to eliminate console errors and improve best practices
 
 /**
  * Safe console wrapper that filters out non-critical errors
@@ -12,7 +11,6 @@ export const safeConsole = {
 
   warn: (...args: any[]) => {
     const message = args[0]?.toString() || "";
-    // Filter out known non-critical warnings
     if (
       !message.includes("Extension") &&
       !message.includes("chrome-extension") &&
@@ -24,7 +22,6 @@ export const safeConsole = {
 
   error: (...args: any[]) => {
     const message = args[0]?.toString() || "";
-    // Filter out non-critical errors
     if (
       !message.includes("Extension") &&
       !message.includes("chrome-extension") &&
@@ -40,19 +37,15 @@ export const safeConsole = {
  */
 export const setupGlobalErrorHandlers = () => {
   if (typeof window !== "undefined") {
-    // Handle unhandled promise rejections
     window.addEventListener("unhandledrejection", (event) => {
       safeConsole.error("Unhandled promise rejection:", event.reason);
-      // Prevent the default behavior (console error)
       event.preventDefault();
     });
 
-    // Handle global errors
     window.addEventListener("error", (event) => {
       safeConsole.error("Global error:", event.error);
     });
 
-    // Handle resource loading errors
     window.addEventListener(
       "error",
       (event) => {
@@ -81,9 +74,7 @@ export const setupGlobalErrorHandlers = () => {
  */
 export const setupPolyfills = () => {
   if (typeof window !== "undefined") {
-    // Replace deprecated APIs with modern equivalents
 
-    // RequestAnimationFrame polyfill
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame =
         (window as any).webkitRequestAnimationFrame ||
@@ -92,7 +83,6 @@ export const setupPolyfills = () => {
         };
     }
 
-    // CancelAnimationFrame polyfill
     if (!window.cancelAnimationFrame) {
       window.cancelAnimationFrame =
         (window as any).webkitCancelAnimationFrame ||
@@ -101,12 +91,10 @@ export const setupPolyfills = () => {
         };
     }
 
-    // Intersection Observer polyfill check
     if (!window.IntersectionObserver) {
       safeConsole.warn("IntersectionObserver not supported");
     }
 
-    // ResizeObserver polyfill check
     if (!window.ResizeObserver) {
       safeConsole.warn("ResizeObserver not supported");
     }
@@ -118,9 +106,6 @@ export const setupPolyfills = () => {
  */
 export const cleanupThirdPartyScripts = () => {
   if (typeof window !== "undefined") {
-    // Remove extension-related errors from console
-
-
       const message = args[0]?.toString() || "";
       if (
         message.includes("chrome-extension") ||
@@ -132,9 +117,6 @@ export const cleanupThirdPartyScripts = () => {
       }
       originalConsoleError.apply(console, args);
     };
-
-    // Cleanup deprecated warnings
-
 
       const message = args[0]?.toString() || "";
       if (
@@ -154,13 +136,10 @@ export const cleanupThirdPartyScripts = () => {
  */
 export const manageCookies = () => {
   if (typeof window !== "undefined") {
-    // Clean up unnecessary cookies
     const cookiesToClean = ["_ga", "_gid", "_gat", "__utm"];
 
     cookiesToClean.forEach((cookieName) => {
-      // Only keep essential cookies
       if (document.cookie.includes(cookieName)) {
-        // Set SameSite and Secure attributes
         document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Strict; Secure`;
       }
     });

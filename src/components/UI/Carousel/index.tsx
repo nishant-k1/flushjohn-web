@@ -1,3 +1,4 @@
+
 /**
  * Lightweight Carousel Component
  * Replaces Antd Carousel (saves 30+ KB!)
@@ -98,4 +99,3 @@ export default function Carousel({
     </div>
   );
 }
-

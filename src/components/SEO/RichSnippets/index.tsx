@@ -28,7 +28,6 @@ export default function RichSnippets({
   blogTitle,
   blogAuthor,
 }: RichSnippetsProps) {
-  // How-To Schema for porta potty rental process
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
@@ -102,7 +101,6 @@ export default function RichSnippets({
     ],
   };
 
-  // Video Object Schema (if you have video content)
   const videoSchema = pageType === 'homepage' ? {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
@@ -115,7 +113,6 @@ export default function RichSnippets({
     embedUrl: `${websiteURL}/#video`,
   } : null;
 
-  // Item List Schema for product catalog
   const productListSchema = pageType === 'product' || pageType === 'homepage' ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -194,7 +191,6 @@ export default function RichSnippets({
     ],
   } : null;
 
-  // Speakable Schema for voice search optimization
   const speakableSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -242,4 +238,3 @@ export default function RichSnippets({
     </>
   );
 }
-

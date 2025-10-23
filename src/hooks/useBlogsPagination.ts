@@ -153,7 +153,6 @@ export const useBlogsPagination = ({
   }, [fetchBlogs]);
 
   useEffect(() => {
-    // Only fetch if we don't have initial data
     if (!initialData.length) {
       fetchBlogs(1, false);
     }

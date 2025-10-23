@@ -13,7 +13,6 @@ const NumberField = ({ label, ...props }: any) => {
   const handleFocus = useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);
-      // Clear the field if it contains "0" value
       if (e.target.value === "0") {
         setValue("");
       }
@@ -23,12 +22,9 @@ const NumberField = ({ label, ...props }: any) => {
 
   const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(false);
-    // Keep field empty - don't restore any default value
-    // The placeholder "0" will show when field is empty
   }, []);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
-    // Position cursor at the beginning when clicking
     const input = e.currentTarget;
     setTimeout(() => {
       input.focus();
@@ -53,7 +49,6 @@ const NumberField = ({ label, ...props }: any) => {
     [setValue]
   );
 
-  // Position cursor at the beginning whenever the field value changes
   useEffect(() => {
     if (isFocused && inputRef.current) {
       const input = inputRef.current;

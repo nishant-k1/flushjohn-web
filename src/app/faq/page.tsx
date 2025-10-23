@@ -39,7 +39,6 @@ export const metadata: Metadata = {
 
 import { comprehensiveFaqData, generateFAQSchema } from "@/features/legal/constants/comprehensiveFaq";
 
-// ✅ **Comprehensive JSON-LD for SEO (using first 20 most important FAQs)**
 const topFAQs = [
   ...comprehensiveFaqData.filter(f => f.category === "Pricing & Costs").slice(0, 5),
   ...comprehensiveFaqData.filter(f => f.category === "Service Areas & Delivery").slice(0, 4),
@@ -51,7 +50,6 @@ const topFAQs = [
 
 const jsonLd = generateFAQSchema(topFAQs, websiteURL);
 
-// ✅ **Page Component**
 const FaqPage = () => (
   <>
     <script

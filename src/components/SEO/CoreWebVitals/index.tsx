@@ -13,7 +13,6 @@ const CoreWebVitals = () => {
         process.env.NODE_ENV === "production" &&
         typeof window !== "undefined"
       ) {
-        // Send to Google Analytics if available
         if (typeof (window as any).gtag !== "undefined") {
           (window as any).gtag("event", metric.name, {
             event_category: "Web Vitals",
@@ -25,7 +24,6 @@ const CoreWebVitals = () => {
           });
         }
 
-        // Send to Google Tag Manager if available
         if (typeof (window as any).dataLayer !== "undefined") {
           (window as any).dataLayer.push({
             event: "web_vitals",
@@ -37,7 +35,6 @@ const CoreWebVitals = () => {
       }
     };
 
-    // Dynamically import web-vitals to avoid SSR issues
     import("web-vitals")
       .then((webVitals) => {
         if (webVitals.onCLS) webVitals.onCLS(reportWebVitals);

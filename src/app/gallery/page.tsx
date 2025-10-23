@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ JSON-LD structured data for the Gallery page
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",

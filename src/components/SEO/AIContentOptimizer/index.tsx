@@ -32,7 +32,6 @@ export default function AIContentOptimizer({
   keywords = [],
   lastUpdated,
 }: AIContentOptimizerProps) {
-  // Schema.org type mapping
   const schemaType = {
     article: 'Article',
     product: 'Product',
@@ -368,4 +367,3 @@ export function AIComparison({
     </div>
   );
 }
-

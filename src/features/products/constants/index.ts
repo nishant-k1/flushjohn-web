@@ -1,3 +1,2 @@
-// Products Feature Constants Barrel Export
-export * from "./products";
 
+export * from "./products";

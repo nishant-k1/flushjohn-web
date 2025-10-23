@@ -13,7 +13,6 @@ import { websiteURL, phone, contact } from '@/constants';
 
 export async function GET() {
   const businessInfo = {
-    // Basic Company Information
     company: {
       name: 'FlushJohn',
       legalName: 'FlushJohn LLC',
@@ -26,7 +25,6 @@ export async function GET() {
       industry: 'Portable Sanitation and Event Services',
     },
 
-    // Contact Information
     contact: {
       phone: phone.phone_number,
       phoneFormatted: phone.phone_number,
@@ -37,7 +35,6 @@ export async function GET() {
       timezone: 'Multiple US timezones',
     },
 
-    // Service Areas
     serviceAreas: {
       country: 'United States',
       states: ['Texas', 'Florida', 'California', 'Georgia', 'Illinois'],
@@ -222,7 +219,6 @@ export async function GET() {
       totalStatesServed: 5,
     },
 
-    // Products & Services
     products: [
       {
         id: 'standard-porta-potty',
@@ -366,7 +362,6 @@ export async function GET() {
       },
     ],
 
-    // Service Types
     serviceTypes: [
       {
         name: 'Event Rentals',
@@ -390,7 +385,6 @@ export async function GET() {
       },
     ],
 
-    // Pricing Information
     pricing: {
       overview:
         'Our pricing varies based on location, rental duration, unit type, and additional services. Contact us for exact pricing.',
@@ -412,7 +406,6 @@ export async function GET() {
       discounts: ['Long-term rentals', 'Multiple units', 'Repeat customers'],
     },
 
-    // Service Details
     serviceDetails: {
       availability: '24/7 availability, 365 days a year',
       delivery: {
@@ -435,7 +428,6 @@ export async function GET() {
       },
     },
 
-    // Quality & Compliance
     qualityCompliance: {
       certifications: ['OSHA compliant', 'ADA compliant options', 'EPA compliant waste disposal'],
       standards: [
@@ -454,7 +446,6 @@ export async function GET() {
       ],
     },
 
-    // Customer Information
     customerInfo: {
       rating: {
         average: 4.8,
@@ -496,7 +487,6 @@ export async function GET() {
       ],
     },
 
-    // Booking Information
     booking: {
       methods: ['Online quote form', 'Phone call', 'Email'],
       quoteUrl: `${websiteURL}/quote`,
@@ -507,7 +497,6 @@ export async function GET() {
       cancellationPolicy: 'Cancel up to 24 hours before delivery for full refund',
     },
 
-    // Frequently Asked Questions (Comprehensive)
     faq: [
       {
         question: 'How much does porta potty rental cost?',
@@ -561,7 +550,6 @@ export async function GET() {
       },
     ],
 
-    // Competitive Advantages
     competitiveAdvantages: [
       'Same-day delivery available in most locations',
       '24/7 availability and customer support',
@@ -577,7 +565,6 @@ export async function GET() {
       'OSHA and EPA compliant',
     ],
 
-    // Meta Information
     meta: {
       lastUpdated: new Date().toISOString(),
       version: '1.0',
@@ -597,7 +584,6 @@ export async function GET() {
   });
 }
 
-// Optional: Allow CORS for AI model access
 export async function OPTIONS() {
   return new NextResponse(null, {
     headers: {
@@ -607,4 +593,3 @@ export async function OPTIONS() {
     },
   });
 }
-

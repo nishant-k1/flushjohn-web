@@ -57,7 +57,6 @@ export const QuickQuoteContextProvider = ({
     }
   }, []);
 
-  // Exit-intent trigger
   React.useEffect(() => {
     const handleExitIntent = (e: MouseEvent) => {
       if (

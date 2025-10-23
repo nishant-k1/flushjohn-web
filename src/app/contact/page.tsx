@@ -38,7 +38,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ **JSON-LD Structured Data for SEO**
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",

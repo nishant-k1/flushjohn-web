@@ -12,7 +12,6 @@ interface IndividualProductProps {
 const IndividualProduct = ({ slug }: IndividualProductProps) => {
   if (!slug) return null; // Return null if slug is not provided
 
-  // Find the current product based on the slug
   const currentProduct = products_data.product_list.find((product) => {
     const formattedSlug = product.title.toLowerCase().replace(/\s+/g, "-");
     return formattedSlug === slug;

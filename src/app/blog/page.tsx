@@ -37,11 +37,9 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ **Page Component**
 const BlogPage = async () => {
   const { API_BASE_URL } = apiBaseUrls;
 
-  // Fetch initial data server-side for SEO
   let initialBlogs: any[] = [];
   let initialPagination: any = null;
 
@@ -64,7 +62,6 @@ const BlogPage = async () => {
     console.error("Error fetching initial blogs:", error);
   }
 
-  // ✅ JSON-LD structured data for the Blog Listing Page
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",

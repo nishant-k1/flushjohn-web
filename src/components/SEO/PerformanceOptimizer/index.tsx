@@ -3,15 +3,11 @@ import { useEffect } from "react";
 
 const PerformanceOptimizer = () => {
   useEffect(() => {
-    // Store scroll handler reference for cleanup
     let scrollHandler: (() => void) | null = null;
 
-    // Wait for hydration to complete before making DOM modifications
     const timer = setTimeout(() => {
-      // Preload critical resources
       const preloadCriticalResources = () => {
         const criticalResources = [
-          // Only preload accessible resources - fonts are loaded via CSS
           "https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp",
         ];
 
@@ -28,11 +24,9 @@ const PerformanceOptimizer = () => {
         });
       };
 
-      // Optimize images (but avoid Next.js images to prevent hydration issues)
       const optimizeImages = () => {
         const images = document.querySelectorAll("img:not([data-nimg])"); // Exclude Next.js images
         images.forEach((img) => {
-          // Add loading="lazy" to images below the fold (only for non-Next.js images)
           if (
             img.getBoundingClientRect().top > window.innerHeight &&
             !img.getAttribute("loading")
@@ -40,7 +34,6 @@ const PerformanceOptimizer = () => {
             img.setAttribute("loading", "lazy");
           }
 
-          // Add proper alt text if missing
           const htmlImg = img as HTMLImageElement;
           if (!htmlImg.alt || htmlImg.alt === "") {
             htmlImg.alt = "FlushJohn porta potty rental service";
@@ -48,7 +41,6 @@ const PerformanceOptimizer = () => {
         });
       };
 
-      // Defer non-critical JavaScript
       const deferNonCriticalJS = () => {
         const scripts = document.querySelectorAll("script[data-defer]");
         scripts.forEach((script) => {
@@ -59,12 +51,10 @@ const PerformanceOptimizer = () => {
         });
       };
 
-      // Initialize optimizations
       preloadCriticalResources();
       optimizeImages();
       deferNonCriticalJS();
 
-      // Re-optimize on scroll (for lazy loading) with throttling
       let ticking = false;
       const handleScroll = () => {
         if (!ticking) {
@@ -76,10 +66,8 @@ const PerformanceOptimizer = () => {
         }
       };
 
-      // Store reference for cleanup
       scrollHandler = handleScroll;
 
-      // Use requestIdleCallback for non-urgent tasks
       if ("requestIdleCallback" in window) {
         requestIdleCallback(deferNonCriticalJS, { timeout: 2000 });
       } else {

@@ -26,17 +26,14 @@ export const BUSINESS_RULES = {
 export function validateDeliveryDate(date: string | Date): { isValid: boolean; error?: string } {
   const deliveryDate = dayjs(date);
   
-  // Check if date is valid
   if (!deliveryDate.isValid()) {
     return { isValid: false, error: "Invalid date format" };
   }
   
-  // Check if date is in the past
   if (deliveryDate.isBefore(dayjs(), 'day')) {
     return { isValid: false, error: "Delivery date cannot be in the past" };
   }
   
-  // Check minimum advance notice
   const today = dayjs().startOf('day');
   const minDeliveryDate = today.add(BUSINESS_RULES.MIN_ADVANCE_NOTICE_DAYS, 'day');
   
@@ -47,7 +44,6 @@ export function validateDeliveryDate(date: string | Date): { isValid: boolean; e
     };
   }
   
-  // Check if too far in the future (reasonable booking window)
   const maxDeliveryDate = today.add(6, 'months');
   if (deliveryDate.isAfter(maxDeliveryDate)) {
     return { 
@@ -69,17 +65,14 @@ export function validatePickupDate(
   const pickup = dayjs(pickupDate);
   const delivery = dayjs(deliveryDate);
   
-  // Check if pickup date is valid
   if (!pickup.isValid()) {
     return { isValid: false, error: "Invalid pickup date format" };
   }
   
-  // Check if pickup is after delivery
   if (!pickup.isAfter(delivery, 'day')) {
     return { isValid: false, error: "Pickup date must be after delivery date" };
   }
   
-  // Check maximum rental duration
   const duration = pickup.diff(delivery, 'day');
   if (duration > BUSINESS_RULES.MAX_RENTAL_DURATION_DAYS) {
     return { 
@@ -88,7 +81,6 @@ export function validatePickupDate(
     };
   }
   
-  // Check minimum rental duration (at least 1 day)
   if (duration < 1) {
     return { isValid: false, error: "Minimum rental duration is 1 day" };
   }
@@ -116,7 +108,6 @@ export function getAvailableDeliveryDates(startDate?: string | Date): string[] {
   
   let current = start;
   while (current.isBefore(end)) {
-    // Skip weekends (Saturday = 6, Sunday = 0)
     if (current.day() !== 0 && current.day() !== 6) {
       dates.push(current.format('YYYY-MM-DD'));
     }
@@ -139,7 +130,6 @@ export function formatBusinessDate(date: string | Date): string {
 export function getNextBusinessDay(date?: string | Date): dayjs.Dayjs {
   let current = date ? dayjs(date).add(1, 'day') : dayjs().add(1, 'day');
   
-  // Skip weekends
   while (current.day() === 0 || current.day() === 6) {
     current = current.add(1, 'day');
   }
@@ -165,7 +155,6 @@ export function getRentalPricing(duration: number): {
 } {
   let discountPercentage = 0;
   
-  // Volume discounts for longer rentals
   if (duration >= 30) {
     discountPercentage = 15; // 15% off for monthly rentals
   } else if (duration >= 14) {
@@ -174,7 +163,6 @@ export function getRentalPricing(duration: number): {
     discountPercentage = 5; // 5% off for weekly rentals
   }
   
-  // Base rate (this would come from your pricing system)
   const baseRate = 125.00; // Example base rate
   
   return {

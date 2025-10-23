@@ -9,7 +9,6 @@ import { QuoteContext } from "@/features/quote/contexts/QuoteContext";
 import RadioField from "../FormFields/RadioField";
 import NumberField from "../FormFields/NumberField";
 
-// Step 1: String format validation (what comes from form inputs)
 const step1StringValidationSchema = Yup.object({
   usageType: Yup.string().required("Usage type is required"),
   products: Yup.array()
@@ -47,7 +46,6 @@ const step1StringValidationSchema = Yup.object({
     ),
 });
 
-// Step 2: Parsed type validation (after conversion to proper types)
 const step1ParsedValidationSchema = Yup.object({
   usageType: Yup.string().required("Usage type is required"),
   products: Yup.array()
@@ -119,7 +117,6 @@ const QuoteStep1 = () => {
             </div>
             <ErrorMessage name="usageType">
               {(msg) => {
-                // Handle both string and object error messages
                 const errorText =
                   typeof msg === "string" ? msg : "Please select a usage type";
                 return <div className={styles.error}>{errorText}</div>;
@@ -137,7 +134,6 @@ const QuoteStep1 = () => {
           ))}
           <ErrorMessage name="products">
             {(msg) => {
-              // Handle both string and object error messages
               const errorText =
                 typeof msg === "string" ? msg : "Please fix the errors above";
               return <div className={styles.error_message}>{errorText}</div>;

@@ -11,7 +11,6 @@ export const generateMetadata = async ({
   const { slug } = await params;
   if (!slug) return { title: "FlushJohn Products" };
 
-  // Find the current product based on the slug
   const currentProduct = products_data.product_list.find((product) => {
     const formattedSlug = product.title.toLowerCase().replace(/\s+/g, "-");
     return formattedSlug === slug;
@@ -55,7 +54,6 @@ export const generateMetadata = async ({
   };
 };
 
-// ✅ **Page Component**
 const ProductPage = async ({
   params,
 }: {

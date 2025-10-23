@@ -12,7 +12,6 @@ type BreadcrumbsProps = {
 const Breadcrumbs = ({ path }: BreadcrumbsProps) => {
   const pathname = usePathname();
 
-  // Splitting the path to get titles
   const pageTitles = pathname.split("/");
 
   const route = (pageTitles: string[], index: number) => {

@@ -23,7 +23,6 @@ export async function generateMetadata({
       return { title: "Blog Post Not Found" };
     }
 
-    // Find the blog post that matches the slug
     const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
       return { title: "Blog Post Not Found" };
@@ -65,7 +64,6 @@ export async function generateMetadata({
   }
 }
 
-// ✅ **Page Component**
 const BlogPostPage = async ({
   params,
 }: {
@@ -83,7 +81,6 @@ const BlogPostPage = async ({
       return <div>Blog Post Not Found</div>;
     }
 
-    // Find the blog post that matches the slug
     const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
       return <div>Blog Post Not Found</div>;
@@ -128,7 +125,6 @@ const BlogPostPage = async ({
         blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
     };
 
-    // Enhanced JSON-LD with more SEO data
     const enhancedJsonLd = {
       ...jsonLd,
       wordCount: Math.max(

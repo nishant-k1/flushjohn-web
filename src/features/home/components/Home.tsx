@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import { home_data } from "../constants";
 import React from "react";
-// Lazy load components using dynamic imports
 const Hero = dynamic(() => import("./Hero"));
 const Features = dynamic(() => import("./Features"));
 const Services = dynamic(() => import("./Services"));

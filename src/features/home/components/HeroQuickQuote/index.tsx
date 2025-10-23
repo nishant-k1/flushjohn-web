@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
-// import { apiBaseUrls } from "@/constants";
 import MyRadioField from "@/components/FormControls/MyRadioField";
 import { logEvent } from "../../../../../react-ga4-config";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
@@ -29,7 +28,6 @@ import {
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
 
-// Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(Yup.string().required("Required")),
   deliveryDate: Yup.string().required("Required"),
@@ -120,9 +118,6 @@ const HeroQuickQuote = () => {
         contactPersonName: "",
         contactPersonPhone: "",
       }}
-      // validationSchema={quickQuoteValidationSchema}
-      // validateOnChange={false}
-      // validateOnBlur={true}
 
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setHeroQuickQuoteViewStatus(false);
@@ -135,7 +130,6 @@ const HeroQuickQuote = () => {
 
         }
 
-        // Reset the form with all required initial values
         resetForm({
           values: {
             usageType: "",

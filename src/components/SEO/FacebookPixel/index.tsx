@@ -1,3 +1,4 @@
+
 /**
  * Facebook Pixel Component
  *
@@ -10,7 +11,6 @@
 import { useEffect } from "react";
 import Script from "next/script";
 
-// Extend Window interface for Facebook Pixel
 declare global {
   interface Window {
     fbq: any;
@@ -26,7 +26,6 @@ interface FacebookPixelProps {
 export default function FacebookPixel({
   pixelId = "YOUR_PIXEL_ID",
 }: FacebookPixelProps) {
-  // Track custom events
   const trackEvent = (eventName: string, parameters?: any) => {
     if (process.env.NODE_ENV === "production" && pixelId !== "YOUR_PIXEL_ID") {
       if (typeof window !== "undefined" && window.fbq) {
@@ -35,7 +34,6 @@ export default function FacebookPixel({
     }
   };
 
-  // Expose track function globally for use in other components
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.trackFacebookEvent = trackEvent;

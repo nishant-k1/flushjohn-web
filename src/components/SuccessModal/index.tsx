@@ -22,7 +22,6 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      // Delay content animation slightly after modal appears
       setTimeout(() => setShowContent(true), 100);
     } else {
       setShowContent(false);

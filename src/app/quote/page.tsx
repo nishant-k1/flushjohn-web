@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD structured data for "Get a Quote" page
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",

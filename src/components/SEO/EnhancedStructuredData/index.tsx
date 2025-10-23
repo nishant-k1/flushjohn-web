@@ -38,7 +38,6 @@ export default function EnhancedStructuredData({
   blogAuthor,
   publishDate,
 }: EnhancedStructuredDataProps) {
-  // Base Organization Schema
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -164,7 +163,6 @@ export default function EnhancedStructuredData({
     },
   };
 
-  // Service Schema
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -235,7 +233,6 @@ export default function EnhancedStructuredData({
     },
   };
 
-  // Local Business Schema (for city pages)
   const localBusinessSchema =
     city && state
       ? {
@@ -310,7 +307,6 @@ export default function EnhancedStructuredData({
         }
       : null;
 
-  // Product Schema (for product pages)
   const productSchema = productName
     ? {
         "@context": "https://schema.org",
@@ -344,7 +340,6 @@ export default function EnhancedStructuredData({
       }
     : null;
 
-  // Website Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -367,7 +362,6 @@ export default function EnhancedStructuredData({
     inLanguage: "en-US",
   };
 
-  // Blog Article Schema (for blog pages)
   const articleSchema = blogTitle
     ? {
         "@context": "https://schema.org",
@@ -391,7 +385,6 @@ export default function EnhancedStructuredData({
       }
     : null;
 
-  // Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

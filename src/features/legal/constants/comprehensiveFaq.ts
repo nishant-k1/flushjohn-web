@@ -1,3 +1,4 @@
+
 /**
  * Comprehensive FAQ Data - AI Optimized
  * 
@@ -28,7 +29,6 @@ export const faqCategories = [
 ];
 
 export const comprehensiveFaqData: FAQItem[] = [
-  // Pricing & Costs
   {
     id: 'pricing-standard',
     category: 'Pricing & Costs',
@@ -75,7 +75,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['pricing-standard', 'maintenance-frequency'],
   },
 
-  // Service Areas & Delivery
   {
     id: 'service-areas',
     category: 'Service Areas & Delivery',
@@ -122,7 +121,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['site-requirements', 'permits-required', 'delivery-time'],
   },
 
-  // Product Types & Options
   {
     id: 'product-types',
     category: 'Product Types & Options',
@@ -178,7 +176,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['product-types', 'construction-osha', 'event-food'],
   },
 
-  // Booking & Reservations
   {
     id: 'booking-process',
     category: 'Booking & Reservations',
@@ -243,7 +240,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['booking-modify', 'quantity-needed', 'pricing-standard'],
   },
 
-  // Maintenance & Cleaning
   {
     id: 'maintenance-frequency',
     category: 'Maintenance & Cleaning',
@@ -299,7 +295,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['maintenance-extra', 'event-large', 'event-festival'],
   },
 
-  // Events & Occasions
   {
     id: 'event-types',
     category: 'Events & Occasions',
@@ -355,7 +350,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['product-handwash', 'regulations-health', 'event-festival'],
   },
 
-  // Construction Sites
   {
     id: 'construction-requirements',
     category: 'Construction Sites',
@@ -402,7 +396,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['construction-requirements', 'site-requirements', 'construction-duration'],
   },
 
-  // Regulations & Compliance
   {
     id: 'regulations-ada',
     category: 'Regulations & Compliance',
@@ -449,7 +442,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['regulations-ada', 'event-public', 'regulations-health'],
   },
 
-  // Logistics & Setup
   {
     id: 'site-requirements',
     category: 'Logistics & Setup',
@@ -487,7 +479,6 @@ export const comprehensiveFaqData: FAQItem[] = [
     relatedQuestions: ['site-placement', 'delivery-requirements', 'booking-info'],
   },
 
-  // Customer Support
   {
     id: 'support-hours',
     category: 'Customer Support',
@@ -544,7 +535,6 @@ export const comprehensiveFaqData: FAQItem[] = [
   },
 ];
 
-// Generate FAQ schema for any subset of questions
 export function generateFAQSchema(faqItems: FAQItem[], baseUrl: string) {
   return {
     '@context': 'https://schema.org',
@@ -560,12 +550,10 @@ export function generateFAQSchema(faqItems: FAQItem[], baseUrl: string) {
   };
 }
 
-// Group FAQs by category
 export function getFAQsByCategory(category: string): FAQItem[] {
   return comprehensiveFaqData.filter((item) => item.category === category);
 }
 
-// Search FAQs by keyword
 export function searchFAQs(keyword: string): FAQItem[] {
   const lowerKeyword = keyword.toLowerCase();
   return comprehensiveFaqData.filter(
@@ -577,4 +565,3 @@ export function searchFAQs(keyword: string): FAQItem[] {
 }
 
 export default comprehensiveFaqData;
-

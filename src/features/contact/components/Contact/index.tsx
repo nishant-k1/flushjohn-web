@@ -146,7 +146,6 @@ const Contact = () => {
                 nonInteraction: undefined,
                 transport: "beacon",
               });
-              // Event("Contact", "Contact Form Submit", "CFS");
             } catch (err) {
 
             }

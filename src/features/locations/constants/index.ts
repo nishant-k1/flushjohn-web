@@ -1,3 +1,2 @@
-// Locations Feature Constants Barrel Export
-export * from "./cities";
 
+export * from "./cities";

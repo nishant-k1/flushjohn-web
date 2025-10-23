@@ -17,7 +17,6 @@ import * as Yup from "yup";
 import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
-// import { apiBaseUrls } from "@/constants";
 import { logEvent } from "../../../../../react-ga4-config";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
@@ -28,7 +27,6 @@ import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 
-// Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Please select usage type"),
   products: Yup.array()
@@ -52,7 +50,6 @@ const quickQuoteValidationSchema = Yup.object().shape({
   instructions: Yup.string(),
 });
 
-// Component to handle usage type with error styling
 const UsageTypeField = () => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext<any>();
@@ -65,7 +62,6 @@ const UsageTypeField = () => {
     { label: "Construction", value: "construction" },
   ];
 
-  // Close dropdown when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -225,14 +221,7 @@ const QuickQuote = () => {
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  // Handle click outside
   const handleClickOutside = (event: MouseEvent) => {
-    // if (quickQuoteRef.current) {
-    //   const target = event.target as Node; // Type assertion
-    //   if (!quickQuoteRef.current.contains(target)) {
-    //     setQuickQuoteViewStatus(false);
-    //   }
-    // }
   };
 
   React.useEffect(() => {
@@ -309,15 +298,9 @@ const QuickQuote = () => {
               setShowSuccessModal(true);
               setQuickQuoteRequested(true);
               handleLeadConversion();
-              // window.gtag("event", "conversion", {
-              //   event_category: "Button",
-              //   event_label: "Web Quick Quote",
-              //   value: 1,
-              // });
             } catch (err) {
 
             }
-            // Reset the form with all required initial values
             resetForm({
               values: {
                 usageType: "",

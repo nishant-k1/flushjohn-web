@@ -1,5 +1,3 @@
-// City Page Data Structure
-
 export interface CityPageData {
   title: string;
   description: string;
@@ -10,4 +8,3 @@ export const cityPageData: CityPageData = {
   description:
     "Looking for a porta potty rental in {city}? FlushJohn provides clean, affordable portable toilets for events, construction sites, and more. Get same-day delivery & a free quote today!",
 };
-

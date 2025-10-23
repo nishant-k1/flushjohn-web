@@ -9,24 +9,17 @@ import { useEffect } from "react";
 
 export default function PerformanceTurbo() {
   useEffect(() => {
-    // 1. Remove unused CSS on page load
     const removeUnusedCSS = () => {
       const usedSelectors = new Set<string>();
       
-      // Get all elements and their classes
       document.querySelectorAll('*').forEach((el) => {
         el.classList.forEach((className) => usedSelectors.add(`.${className}`));
         if (el.id) usedSelectors.add(`#${el.id}`);
       });
-
-      // This is a simplified version - in production use PurgeCSS
-
     };
 
-    // 2. Lazy load images below the fold
     const lazyLoadImages = () => {
       if ('loading' in HTMLImageElement.prototype) {
-        // Native lazy loading supported
         const images = document.querySelectorAll('img[data-src]');
         images.forEach((img) => {
           const htmlImg = img as HTMLImageElement;
@@ -34,7 +27,6 @@ export default function PerformanceTurbo() {
           htmlImg.removeAttribute('data-src');
         });
       } else {
-        // Fallback for older browsers
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -52,7 +44,6 @@ export default function PerformanceTurbo() {
       }
     };
 
-    // 3. Prefetch critical pages when idle
     const prefetchCriticalPages = () => {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
@@ -72,9 +63,7 @@ export default function PerformanceTurbo() {
       }
     };
 
-    // 4. Defer non-critical scripts
     const deferNonCriticalScripts = () => {
-      // Move non-critical scripts to load after page interactive
       const scripts = document.querySelectorAll('script[data-defer="true"]');
       scripts.forEach((script) => {
         const newScript = document.createElement('script');
@@ -87,9 +76,7 @@ export default function PerformanceTurbo() {
       });
     };
 
-    // 5. Optimize font loading
     const optimizeFonts = () => {
-      // Use font-display: swap for custom fonts
       const style = document.createElement('style');
       style.innerHTML = `
         @font-face {
@@ -106,9 +93,7 @@ export default function PerformanceTurbo() {
       document.head.appendChild(style);
     };
 
-    // 6. Remove render-blocking resources
     const removeRenderBlocking = () => {
-      // Load CSS asynchronously after first paint
       const loadCSS = (href: string) => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -120,22 +105,18 @@ export default function PerformanceTurbo() {
         document.head.appendChild(link);
       };
 
-      // Non-critical CSS files
       if (document.readyState === 'complete') {
         loadCSS('/css/non-critical.css');
       }
     };
 
-    // 7. Optimize third-party scripts
     const optimizeThirdPartyScripts = () => {
-      // Defer Google Analytics until after user interaction
       const gaScript = document.querySelector('script[src*="googletagmanager"]');
       if (gaScript) {
         gaScript.setAttribute('data-defer', 'true');
       }
     };
 
-    // 8. Implement resource hints for better performance
     const addResourceHints = () => {
       const hints = [
         { rel: 'preconnect', href: 'https://cdn.flushjohn.com' },
@@ -154,9 +135,7 @@ export default function PerformanceTurbo() {
       });
     };
 
-    // 7. Reduce layout shifts
     const preventLayoutShifts = () => {
-      // Add dimensions to images without them
       const images = document.querySelectorAll('img:not([width]):not([height])');
       images.forEach((img) => {
         const htmlImg = img as HTMLImageElement;
@@ -167,7 +146,6 @@ export default function PerformanceTurbo() {
       });
     };
 
-    // Execute optimizations
     setTimeout(() => {
       lazyLoadImages();
       prefetchCriticalPages();
@@ -179,12 +157,9 @@ export default function PerformanceTurbo() {
       preventLayoutShifts();
     }, 100);
 
-    // Cleanup
     return () => {
-      // Cleanup if needed
     };
   }, []);
 
   return null;
 }
-

@@ -34,7 +34,6 @@ export default function AIOptimizedMeta({
   rating = "4.8 stars",
   yearsInBusiness = "Established 2020",
 }: AIOptimizedMetaProps) {
-  // Generate comprehensive AI description
   const fullAiDescription =
     aiDescription ||
     `FlushJohn is a professional ${businessType} operating across ${serviceArea}. ` +

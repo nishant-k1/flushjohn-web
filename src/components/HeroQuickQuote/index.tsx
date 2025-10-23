@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
-// import { apiBaseUrls } from "@/constants";
 import { logEvent } from "../../../react-ga4-config";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
@@ -29,7 +28,6 @@ import {
 } from "@/features/quote/contexts/QuickQuoteContext";
 import SuccessModal from "@/components/SuccessModal";
 
-// Define validation schema
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Please select usage type"),
   products: Yup.array()
@@ -53,7 +51,6 @@ const quickQuoteValidationSchema = Yup.object().shape({
   instructions: Yup.string(),
 });
 
-// Component to handle usage type with error styling
 const UsageTypeField = () => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext<any>();
@@ -66,7 +63,6 @@ const UsageTypeField = () => {
     { label: "Construction", value: "construction" },
   ];
 
-  // Close dropdown when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -296,7 +292,6 @@ const HeroQuickQuote = () => {
 
           }
 
-          // Reset the form with all required initial values
           resetForm({
             values: {
               usageType: "",

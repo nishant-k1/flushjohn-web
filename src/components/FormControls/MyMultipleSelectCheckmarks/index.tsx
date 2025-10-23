@@ -17,7 +17,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Value is now an array of objects: [{ item: "Standard Portable Restroom", qty: 1, desc: "...", rate: 0.00, amount: 0.00 }, ...]
   const value = Array.isArray(field.value) ? field.value : [];
 
   const toggleOption = (optionValue: string) => {
@@ -27,12 +26,10 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     );
 
     if (existingItem) {
-      // Remove item
       setValue(
         value.filter((v: any) => (v.item || v.type || v) !== optionValue)
       );
     } else {
-      // Add item with default quantity of 1 and empty rate - user can enter their own rate
       setValue([
         ...value,
         {
@@ -48,13 +45,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   };
 
   const updateQuantity = (optionValue: string, quantityInput: string) => {
-    // Step 1: Validate string format before parsing
     if (!/^\d+$/.test(quantityInput)) {
 
       return;
     }
 
-    // Step 2: Parse to number after validation
     const quantity = parseInt(quantityInput, 10);
     if (isNaN(quantity) || quantity < 1) {
 
@@ -63,7 +58,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
 
     const newValue = value.map((v: any) => {
       if ((v.item || v.type || v) === optionValue) {
-        // Step 3: Use proper types for calculations
         const qty = Math.max(1, quantity);
         const rate = Number(v.rate) || 0;
         const amount = rate * qty;
@@ -101,7 +95,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     }, 0);
   };
 
-  // Close dropdown when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -340,7 +333,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                       "number"
                     )}
                     onChange={(e) => {
-                      // Accept string from input, validate and parse in updateQuantity
                       updateQuantity(option.value, e.target.value);
                     }}
                     onClick={(e) => e.stopPropagation()}

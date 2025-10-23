@@ -37,9 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-// FlushJohn service coverage cities
 const cities = [
-  // Texas
   { name: "houston", displayName: "Houston", state: "TX", population: "2.3M" },
   { name: "dallas", displayName: "Dallas", state: "TX", population: "1.3M" },
   { name: "austin", displayName: "Austin", state: "TX", population: "965K" },
@@ -56,7 +54,6 @@ const cities = [
     population: "918K",
   },
 
-  // Florida
   { name: "miami", displayName: "Miami", state: "FL", population: "467K" },
   { name: "orlando", displayName: "Orlando", state: "FL", population: "307K" },
   { name: "tampa", displayName: "Tampa", state: "FL", population: "399K" },
@@ -73,7 +70,6 @@ const cities = [
     population: "182K",
   },
 
-  // California
   {
     name: "los-angeles",
     displayName: "Los Angeles",
@@ -100,7 +96,6 @@ const cities = [
   },
   { name: "fresno", displayName: "Fresno", state: "CA", population: "542K" },
 
-  // Georgia
   { name: "atlanta", displayName: "Atlanta", state: "GA", population: "498K" },
   {
     name: "savannah",
@@ -117,7 +112,6 @@ const cities = [
     population: "206K",
   },
 
-  // Illinois
   { name: "chicago", displayName: "Chicago", state: "IL", population: "2.7M" },
   {
     name: "springfield",
@@ -140,7 +134,6 @@ const cities = [
   },
 ];
 
-// JSON-LD structured data
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",

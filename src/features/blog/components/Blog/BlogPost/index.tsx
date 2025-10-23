@@ -6,7 +6,6 @@ import Link from "next/link";
 import { phone, websiteURL } from "@/constants";
 
 const BlogPost = ({ blogPost, slug }: any) => {
-  // blogPost is now a single object, not an array
   const actualBlogPost = blogPost;
 
   const {
@@ -32,7 +31,6 @@ const BlogPost = ({ blogPost, slug }: any) => {
 
   const readingTime = Math.ceil((content?.length || 0) / 200);
 
-  // Fallback to original simple structure if no enhanced data
   if (!title && !content) {
     return (
       <div>

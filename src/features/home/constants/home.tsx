@@ -1,3 +1,4 @@
+
 import React from "react";
 import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
@@ -5,7 +6,6 @@ import { RiTimeFill } from "react-icons/ri";
 
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
-// Type definitions
 export interface Image {
   src: string;
   alt: string;
@@ -31,7 +31,6 @@ export interface LocationData {
   list: string[];
 }
 
-// Home data structure
 export interface HomeData {
   hero: {
     title: string;
@@ -125,35 +124,30 @@ export const home_data: HomeData = {
     title:
       "Extensive service coverage: We're providing porta potty rentals across multiple locations",
     list: [
-      // Texas (TX)
       "Houston, TX",
       "Dallas, TX",
       "Austin, TX",
       "San Antonio, TX",
       "Fort Worth, TX",
 
-      // Florida (FL)
       "Miami, FL",
       "Orlando, FL",
       "Tampa, FL",
       "Jacksonville, FL",
       "Fort Lauderdale, FL",
 
-      // California (CA)
       "Los Angeles, CA",
       "San Diego, CA",
       "Sacramento, CA",
       "San Jose, CA",
       "Fresno, CA",
 
-      // Georgia (GA)
       "Atlanta, GA",
       "Savannah, GA",
       "Augusta, GA",
       "Macon, GA",
       "Columbus, GA",
 
-      // Illinois (IL)
       "Chicago, IL",
       "Springfield, IL",
       "Peoria, IL",
@@ -162,4 +156,3 @@ export const home_data: HomeData = {
     ],
   },
 };
-

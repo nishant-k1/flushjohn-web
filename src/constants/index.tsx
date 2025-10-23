@@ -1,5 +1,3 @@
-// Cross-Cutting Constants
-// These are shared across multiple features and should remain centralized
 
 export const G_TAG_ID: string = process.env.NEXT_PUBLIC_G_TAG_ID as string;
 
@@ -71,8 +69,3 @@ export const s3assets: string = process.env
   .NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
 export const websiteURL: string = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
-
-// NOTE: Feature-specific constants have been moved to their respective features:
-// - home_data, testimonials → /features/home/constants
-// - products_data → /features/products/constants
-// - cityPageData → /features/locations/constants

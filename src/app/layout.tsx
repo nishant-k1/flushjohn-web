@@ -6,7 +6,6 @@ import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
 
-// Dynamic imports for better code splitting
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
 });
@@ -69,7 +68,6 @@ export const metadata = {
     ],
   },
   other: {
-    // Resource hints for critical resources
     "dns-prefetch": "https://cdn.flushjohn.com",
     preconnect: "https://cdn.flushjohn.com",
   },

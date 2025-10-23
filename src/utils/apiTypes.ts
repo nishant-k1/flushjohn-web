@@ -5,7 +5,6 @@
 
 import dayjs from 'dayjs';
 
-// Product type for API requests
 export interface ProductRequest {
   id: string;
   item: string;
@@ -15,7 +14,6 @@ export interface ProductRequest {
   amount: number; // Proper number type
 }
 
-// Lead form type for API requests
 export interface LeadFormRequest {
   usageType: string;
   products: ProductRequest[];
@@ -29,7 +27,6 @@ export interface LeadFormRequest {
   leadSource: string;
 }
 
-// Customer contact type
 export interface CustomerContactRequest {
   fName: string;
   lName: string;
@@ -98,10 +95,8 @@ export function parseApiResponse(data: LeadResponse): any {
     pickupDate: dayjs(data.pickupDate).toDate(),
     createdAt: dayjs(data.createdAt).toDate(),
     updatedAt: dayjs(data.updatedAt).toDate(),
-    // Products already have proper number types from API
     products: data.products.map((product) => ({
       ...product,
-      // Ensure numbers are actually numbers (in case JSON parsing issues)
       qty: Number(product.qty),
       rate: Number(product.rate),
       amount: Number(product.amount),

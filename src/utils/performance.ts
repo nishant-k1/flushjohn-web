@@ -1,4 +1,3 @@
-// Performance utilities for optimizing main thread work
 
 /**
  * Debounce function to reduce excessive function calls
@@ -52,7 +51,6 @@ export async function processInChunks<T>(
     const chunk = items.slice(i, i + chunkSize);
     chunk.forEach(processor);
 
-    // Yield to main thread after each chunk
     if (i + chunkSize < items.length) {
       await yieldToMain();
     }
@@ -110,7 +108,6 @@ export const optimizeScrollPerformance = (): void => {
   const handleScroll = () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        // Scroll logic here
         ticking = false;
       });
       ticking = true;
@@ -119,4 +116,3 @@ export const optimizeScrollPerformance = (): void => {
 
   window.addEventListener("scroll", handleScroll, { passive: true });
 };
-

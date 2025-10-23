@@ -58,11 +58,9 @@ export async function POST(req: NextRequest) {
       `, // HTML email body
     });
 
-    // Respond with a success message
     return NextResponse.json({ status: "Success" }, { status: 200 });
   } catch (err) {
 
-    // Respond with error message in case of failure
     return NextResponse.json(
       { error: "Failed to send quote" },
       { status: 500 }
