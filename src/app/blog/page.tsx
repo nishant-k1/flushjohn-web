@@ -59,7 +59,7 @@ const BlogPage = async () => {
       }
     }
   } catch (error) {
-    console.error("Error fetching initial blogs:", error);
+    // Error fetching initial blogs
   }
 
   const jsonLd = {

@@ -154,7 +154,6 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                         height: "auto",
                       }}
                       onError={(e) => {
-                        console.error("Image failed to load:", imageSource);
                         e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
                       }}
                     />

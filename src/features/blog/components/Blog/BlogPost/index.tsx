@@ -65,7 +65,6 @@ const BlogPost = ({ blogPost, slug }: any) => {
                   placeholder="empty"
                   className={styles.coverImage}
                   onError={(e) => {
-                    console.error("Image failed to load:", imageSource);
                     e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
                   }}
                 />
@@ -173,7 +172,6 @@ const BlogPost = ({ blogPost, slug }: any) => {
                   }}
                   priority
                   onError={(e) => {
-                    console.error("Image failed to load:", imageSource);
                     e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
                   }}
                 />
