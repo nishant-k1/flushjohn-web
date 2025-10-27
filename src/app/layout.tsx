@@ -124,18 +124,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Minimal inline critical CSS - loads immediately */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-            /* Critical above-the-fold styles */
-            body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
-            * { box-sizing: border-box; }
-            img { max-width: 100%; height: auto; }
-          `,
-          }}
-        />
-
         {/* Google Analytics - Load after interactive */}
         {process.env.NODE_ENV === "production" && (
           <>

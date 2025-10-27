@@ -23,7 +23,7 @@ const renderStars = (rating: number) => {
     stars.push(
       <span
         key={i}
-        style={{ color: i < rating ? "#ffcc00" : "#ccc" }}
+        className={i < rating ? styles.starActive : styles.starInactive}
       >
         ★
       </span>
@@ -54,12 +54,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                     loading={index === 0 ? "eager" : "lazy"}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+i+hVKihuj6VRlddujjwXm3Bx9VoUQpGrVRBevtJ9G/iQgD4f/2Q=="
-                    style={{
-                      height: 128,
-                      width: 128,
-                      borderRadius: "50%",
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                    }}
+                    className={styles.testimonialImage}
                   />
                   <div>
                     <h3>{item.title}</h3>
@@ -68,7 +63,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                         ⭐⭐⭐⭐⭐{/* {renderStars(5)} */}
                       </div>
                       {item.verified && (
-                        <span style={{ marginLeft: "8px", color: "#4CAF50" }}>
+                        <span className={styles.verifiedBadge}>
                           Verified Customer
                         </span>
                       )}

@@ -104,6 +104,27 @@
   border-radius: 12px;
 }
 
+/* Image styles - moved from inline styles */
+.testimonialImage {
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.verifiedBadge {
+  margin-left: 8px;
+  color: #4CAF50;
+}
+
+.starActive {
+  color: #ffcc00;
+}
+
+.starInactive {
+  color: #ccc;
+}
+
 /* Tablet Breakpoint */
 @media only screen and (min-width: 768px) {
   .wrapper {
