@@ -12,7 +12,6 @@ import Button from "@/components/UI/Button";
 import Grid from "@/components/UI/Grid";
 import { SendIcon } from "@/components/UI/Icons";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
 import MyRadioField from "@/components/FormControls/MyRadioField";

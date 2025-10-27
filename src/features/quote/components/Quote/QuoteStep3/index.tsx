@@ -8,7 +8,6 @@ import { useContext } from "react";
 import { QuoteContext } from "@/features/quote/contexts/QuoteContext";
 import { io, Socket } from "socket.io-client";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { initialQuoteValues } from "@/features/quote/contexts/QuoteContext";
 import { apiBaseUrls } from "@/constants";
 import TextField from "../FormFields/TextField";

@@ -3,9 +3,20 @@ import React from "react";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, address } from "@/constants";
 import Script from "next/script";
-import AIOptimizedMeta from "@/components/SEO/AIOptimizedMeta";
-import RichSnippets from "@/components/SEO/RichSnippets";
-import PerformanceTurbo from "@/components/SEO/PerformanceTurbo";
+import dynamic from "next/dynamic";
+
+// Lazy load non-critical SEO components
+const AIOptimizedMeta = dynamic(() => import("@/components/SEO/AIOptimizedMeta"), {
+  ssr: false, // Don't load on server for better performance
+});
+
+const RichSnippets = dynamic(() => import("@/components/SEO/RichSnippets"), {
+  ssr: false,
+});
+
+const PerformanceTurbo = dynamic(() => import("@/components/SEO/PerformanceTurbo"), {
+  ssr: false,
+});
 
 import Home from "@/features/home/components/Home";
 
@@ -263,49 +274,37 @@ const reviewJsonLd = {
 const HomePage = () => {
   return (
     <>
-      {/* Performance Turbo Mode */}
-      <PerformanceTurbo />
-
-      {/* AI-Optimized Meta Tags for ChatGPT, Claude, etc. */}
-      <AIOptimizedMeta />
-
-      {/* Enhanced Rich Snippets */}
-      <RichSnippets pageType="homepage" />
-
-      {/* Existing Structured Data */}
+      {/* Existing Structured Data - Load only essential JSON-LD */}
       <Script
+        id="local-business-schema"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Script
+        id="service-schema"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Script
+        id="website-schema"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <Script
+        id="faq-schema"
         type="application/ld+json"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
-      />
-      <Script
-        id="deferred-css"
-        strategy="lazyOnload"
-      >
-        {`
-            document.addEventListener('DOMContentLoaded', function() {
-              const link = document.createElement('link');
-              link.rel = 'stylesheet';
-              link.href = '/css/non-critical.css';
-              document.head.appendChild(link);
-            });
-          `}
-      </Script>
+
+      {/* Load heavy components after page is interactive */}
+      <PerformanceTurbo />
+      <AIOptimizedMeta />
+      <RichSnippets pageType="homepage" />
+
       <Home />
     </>
   );

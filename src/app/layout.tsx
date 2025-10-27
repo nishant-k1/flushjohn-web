@@ -1,10 +1,19 @@
 import React from "react";
 import "../../styles/globals.css";
-import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { s3assets, websiteURL } from "@/constants";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
+
+// Lazy load ToastContainer to avoid initial bundle size
+const ToastContainer = dynamic(
+  () => import("react-toastify").then((mod) => mod.ToastContainer),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
@@ -27,7 +36,7 @@ const QuickQuote = dynamic(
       default: mod.QuickQuote,
     })),
   {
-    ssr: true,
+    ssr: false, // Changed to false - this is an interactive modal
     loading: () => null,
   }
 );
@@ -40,7 +49,11 @@ import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
-import FacebookPixel from "@/components/SEO/FacebookPixel";
+
+// Lazy load Facebook Pixel to avoid blocking initial render
+const FacebookPixel = dynamic(() => import("@/components/SEO/FacebookPixel"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
@@ -145,28 +158,8 @@ export default function RootLayout({
           </>
         )}
 
-        {/* Facebook Pixel */}
-        <FacebookPixel />
-
-        {/* Service Worker - Load when idle */}
-        <Script
-          id="service-worker"
-          strategy="lazyOnload"
-        >
-          {`
-            if ('serviceWorker' in navigator) {
-              window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                  .then((registration) => {
-
-                  })
-                  .catch((registrationError) => {
-
-                  });
-              });
-            }
-          `}
-        </Script>
+        {/* Facebook Pixel - Load after page is interactive */}
+        {process.env.NODE_ENV === "production" && <FacebookPixel />}
 
         <Layout>
           <ClientWidthContextProvider>
@@ -176,10 +169,13 @@ export default function RootLayout({
                   <Sidebar />
                   <Navbar />
                   {children}
+                  <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                  />
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />
-                  <ToastContainer />
                 </QuoteContextProvider>
               </QuickQuoteContextProvider>
             </SidebarContextProvider>
