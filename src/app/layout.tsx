@@ -6,14 +6,8 @@ import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
 
-// Lazy load ToastContainer to avoid initial bundle size
-const ToastContainer = dynamic(
-  () => import("react-toastify").then((mod) => mod.ToastContainer),
-  {
-    ssr: false,
-    loading: () => null,
-  }
-);
+// Load ToastContainer
+import { ToastContainer } from "react-toastify";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
@@ -36,7 +30,7 @@ const QuickQuote = dynamic(
       default: mod.QuickQuote,
     })),
   {
-    ssr: false, // Changed to false - this is an interactive modal
+    ssr: true,
     loading: () => null,
   }
 );
@@ -50,10 +44,7 @@ import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
 
-// Lazy load Facebook Pixel to avoid blocking initial render
-const FacebookPixel = dynamic(() => import("@/components/SEO/FacebookPixel"), {
-  ssr: false,
-});
+import FacebookPixel from "@/components/SEO/FacebookPixel";
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
@@ -146,8 +137,8 @@ export default function RootLayout({
           </>
         )}
 
-        {/* Facebook Pixel - Load after page is interactive */}
-        {process.env.NODE_ENV === "production" && <FacebookPixel />}
+        {/* Facebook Pixel */}
+        <FacebookPixel />
 
         <Layout>
           <ClientWidthContextProvider>

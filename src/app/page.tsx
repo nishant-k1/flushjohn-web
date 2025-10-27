@@ -3,20 +3,6 @@ import React from "react";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, address } from "@/constants";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-
-// Lazy load non-critical SEO components
-const AIOptimizedMeta = dynamic(() => import("@/components/SEO/AIOptimizedMeta"), {
-  ssr: false, // Don't load on server for better performance
-});
-
-const RichSnippets = dynamic(() => import("@/components/SEO/RichSnippets"), {
-  ssr: false,
-});
-
-const PerformanceTurbo = dynamic(() => import("@/components/SEO/PerformanceTurbo"), {
-  ssr: false,
-});
 
 import Home from "@/features/home/components/Home";
 
@@ -299,11 +285,6 @@ const HomePage = () => {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-
-      {/* Load heavy components after page is interactive */}
-      <PerformanceTurbo />
-      <AIOptimizedMeta />
-      <RichSnippets pageType="homepage" />
 
       <Home />
     </>
