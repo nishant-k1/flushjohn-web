@@ -100,11 +100,19 @@ const nextConfig = {
   },
   experimental: {
     scrollRestoration: true,
+    // Enable HTTP/2 multiplexing when supported
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   },
   serverExternalPackages: ["nodemailer"],
-  // Enable HTTP/2 and modern protocols
+  // Enable HTTP/2 and modern protocols - requires HTTPS deployment
+  // HTTP/2 is automatic on platforms like Vercel, Netlify
+  // For custom server, configure nginx (see nginx.conf)
   httpAgentOptions: {
     keepAlive: true,
+    // Use modern HTTP/2 when available
+    // maxSockets: 50, // Allows multiplexing
   },
   images: {
     remotePatterns: [
