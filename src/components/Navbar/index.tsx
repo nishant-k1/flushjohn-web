@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -7,7 +6,7 @@ import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Image from "next/image";
-import { Divide as Hamburger } from "hamburger-react";
+import { Menu } from "lucide-react";
 import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
@@ -63,23 +62,18 @@ const Navbar = () => {
             />
           </Link>
           <div className={styles.hamburger}>
-            <Hamburger
-              toggled={active}
-              toggle={() => {
+            <button
+              className={styles.hamburger}
+              onClick={() => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
-              color="white"
-              size={20}
-              label="Toggle navigation menu"
-            />
+            >
+              <Menu size={20} />
+            </button>
           </div>
           <div className={styles.navLinks}>
-            <Link
-              href="/"
-            >
-              Home
-            </Link>
+            <Link href="/">Home</Link>
             <Link
               href="/rental-products"
               className={
