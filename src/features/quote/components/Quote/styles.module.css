@@ -1,15 +1,32 @@
 .section {
   background-color: var(--tertiary-bg-color);
-  /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 54px 32px;
+  position: relative;
+}
+
+/* Subtle texture overlay */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.01) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .quoteWrapper {
@@ -26,45 +43,263 @@
   grid-template-columns: 1fr;
 }
 
+/* Animated Progress Bar Container */
+.progressBarContainer {
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
 .progressBar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-xs);
+}
+
+/* Progress Line */
+.progressLine {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 3px;
+  background: var(--neutral-300);
+  border-radius: var(--radius-full);
+  z-index: 0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius-full);
+  position: relative;
+  box-shadow: 0 0 10px rgba(169, 93, 31, 0.5);
+}
+
+.progressFill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Step Wrapper */
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  position: relative;
+  z-index: 1;
+}
+
+/* Step Indicator (Circle) */
+.stepIndicator {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--bg-primary);
+  border: 3px solid var(--neutral-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stepIndicator::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.stepIndicator.current {
+  border-color: var(--primary);
+  background: var(--primary);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(169, 93, 31, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.stepIndicator.current::before {
+  opacity: 0.3;
+}
+
+.stepIndicator.completed {
+  border-color: var(--primary);
+  background: var(--primary);
+  box-shadow: 0 2px 8px rgba(169, 93, 31, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(169, 93, 31, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(169, 93, 31, 0.6);
+  }
+}
+
+.stepNumber {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--neutral-600);
+  transition: color 0.3s ease;
+}
+
+.stepIndicator.current .stepNumber {
+  color: var(--text-inverse);
+}
+
+.stepIndicator.completed svg {
+  color: var(--text-inverse);
+  animation: checkmark 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Step Label */
+.stepLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--neutral-600);
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.stepLabel.activeLabel {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Progress Percentage */
+.progressPercentage {
+  display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(255, 255, 255, 0.486); */
-  background-color: transparent;
-  margin-bottom: 2rem;
-  transition: background-color 3s ease-in-out;
+  margin-top: var(--spacing-lg);
 }
 
-.step {
-  display: grid;
-  padding: 0.2rem 1rem;
-  justify-content: center;
-  align-items: center;
-  font-size: medium;
-  font-weight: 100;
-  border: 1px solid var(--primary-bg-color);
-  background: #83838338;
-  color: black;
-  transition: background 0.3s ease-in-out;
+.percentageText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(169, 93, 31, 0.1);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(169, 93, 31, 0.2);
+  transition: all 0.3s ease;
 }
 
-.step.active {
-  background: #103247;
-  color: white;
-  transition: background 0.3s ease-in-out;
-}
-
-/* tablet */
+/* Tablet and Desktop */
 @media screen and (min-width: 600px) {
+  .progressBarContainer {
+    margin-bottom: 3.5rem;
+  }
+
   .progressBar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgba(255, 255, 255, 0.486); */
-    background-color: transparent;
-    margin-bottom: 2.5rem;
+    gap: var(--spacing-sm);
+  }
+
+  .stepIndicator {
+    width: 48px;
+    height: 48px;
+  }
+
+  .progressLine {
+    top: 24px;
+    height: 4px;
+  }
+
+  .stepLabel {
+    font-size: 0.875rem;
+  }
+
+  .stepNumber {
+    font-size: 1.125rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .progressBar {
+    gap: var(--spacing-md);
+  }
+
+  .stepLabel {
+    font-size: 1rem;
+  }
+
+  .percentageText {
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 599px) {
+  .progressBar {
+    gap: 0;
+  }
+
+  .progressLine {
+    left: 20px;
+    right: 20px;
+  }
+
+  .stepIndicator {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stepNumber {
+    font-size: 0.875rem;
+  }
+
+  .stepLabel {
+    font-size: 0.6875rem;
+    line-height: 1.2;
+  }
+
+  .stepWrapper {
+    gap: var(--spacing-xs);
   }
 }

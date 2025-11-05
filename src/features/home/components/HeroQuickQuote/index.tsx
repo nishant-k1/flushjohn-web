@@ -11,8 +11,8 @@ import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField
 import Button from "@/components/UI/Button";
 import Grid from "@/components/UI/Grid";
 import { SendIcon } from "@/components/UI/Icons";
-import { toast } from "react-toastify";
 import * as Yup from "yup";
+import SuccessModal from "@/components/SuccessModal";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
 import MyRadioField from "@/components/FormControls/MyRadioField";
 import { logEvent } from "../../../../../react-ga4-config";
@@ -44,6 +44,7 @@ const HeroQuickQuote = () => {
     useContext<ClientWidthContextType>(ClientWidthContext);
   const [heroQuickQuoteViewStatus, setHeroQuickQuoteViewStatus] =
     useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const { setQuickQuoteRequested } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
@@ -53,18 +54,6 @@ const HeroQuickQuote = () => {
       setHeroQuickQuoteViewStatus(true);
     }
   }, [clientWidth]);
-
-  const notify = () =>
-    toast.success("Quick quote request sent!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
 
   const { API_BASE_URL } = apiBaseUrls;
   const socket = io(`${API_BASE_URL}/leads`, {
@@ -122,7 +111,7 @@ const HeroQuickQuote = () => {
         setHeroQuickQuoteViewStatus(false);
         try {
           createLead({ ...values, leadSource: "Web Hero Quick Lead" });
-          notify();
+          setShowSuccessModal(true);
           setQuickQuoteRequested(true);
           handleLeadConversion();
         } catch (err) {
@@ -306,6 +295,13 @@ const HeroQuickQuote = () => {
           </AnimationWrapper>
         </Form>
       </div>
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="Quick quote request sent!"
+        submessage="One of our representatives will contact you within 24 hours."
+      />
     </Formik>
   );
 };

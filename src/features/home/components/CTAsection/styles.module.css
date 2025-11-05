@@ -1,102 +1,139 @@
 .ctaSection {
-  margin-top: 48px;
-  padding: 40px 24px;
-  background: linear-gradient(135deg, var(--primary-bg-color) 0%, #ac6324 100%);
-  border-radius: 15px;
+  margin-top: var(--spacing-3xl);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border-radius: var(--radius-xl);
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  color: white;
+  box-shadow: var(--shadow-xl);
+  color: var(--text-inverse);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .ctaSection h3 {
   font-size: 2.2rem;
-  color: white;
-  margin-bottom: 16px;
-  font-weight: bold;
+  color: var(--text-inverse);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaSection p {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 30px;
+  color: var(--text-inverse-secondary);
+  margin-bottom: var(--spacing-xl);
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaButtons {
   display: flex;
-  gap: 20px;
+  gap: var(--spacing-lg);
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 25px;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .ctaButton {
-  background-color: white;
-  color: var(--primary-bg-color);
-  border: none;
-  padding: 15px 30px;
+  background-color: var(--bg-primary);
+  color: var(--primary);
+  border: 2px solid var(--bg-primary);
+  padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 8px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   text-decoration: none;
   display: inline-block;
   min-width: 180px;
+  box-shadow: var(--shadow-md);
 }
 
 .ctaButton:hover {
-  background-color: #f8f9fa;
+  background-color: var(--neutral-50);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--neutral-50);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
 }
 
 .phoneButton {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 15px 30px;
+  background-color: var(--success);
+  color: var(--text-inverse);
+  border: 2px solid var(--success);
+  padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 8px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   text-decoration: none;
   display: inline-block;
   min-width: 180px;
+  box-shadow: var(--shadow-md);
 }
 
 .phoneButton:hover {
-  background-color: #218838;
+  background-color: var(--success-dark);
+  border-color: var(--success-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  color: white;
+  box-shadow: var(--shadow-lg);
+  color: var(--text-inverse);
+}
+
+.phoneButton:focus-visible {
+  outline: 2px solid var(--success-dark);
+  outline-offset: 2px;
 }
 
 .ctaOffer {
-  margin-top: 20px;
+  margin-top: var(--spacing-lg);
   font-size: 1.3rem;
-  color: #ffd700;
-  font-weight: bold;
+  color: var(--accent-gold);
+  font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .trustElements {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-  padding-top: 30px;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .trustItem {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-inverse-secondary);
   font-weight: 500;
 }
 
@@ -105,6 +142,10 @@
 }
 
 @media (max-width: 768px) {
+  .ctaSection {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
   .ctaSection h3 {
     font-size: 1.8rem;
   }
@@ -116,6 +157,7 @@
   .ctaButtons {
     flex-direction: column;
     align-items: center;
+    gap: var(--spacing-md);
   }
 
   .ctaButton,
@@ -126,6 +168,6 @@
 
   .trustElements {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: var(--spacing-md);
   }
 }

@@ -11,7 +11,6 @@ import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField
 import Button from "@/components/UI/Button";
 import Grid from "@/components/UI/Grid";
 import { SendIcon, CloseIcon } from "@/components/UI/Icons";
-import { toast } from "react-toastify";
 import * as Yup from "yup";
 import QuickQuoteButton from "./QuickQuoteButton";
 import { QuickQuoteContext } from "../../contexts/QuickQuoteContext";

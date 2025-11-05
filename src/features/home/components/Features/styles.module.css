@@ -1,29 +1,79 @@
 .features {
-  padding: 20px 40px;
-  background-color: #f4f8fb;
+  padding: var(--spacing-2xl) var(--spacing-2xl);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-tertiary) 100%
+  );
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+}
+
+.features::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* Subtle diagonal texture pattern */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.02) 10px,
+      rgba(255, 255, 255, 0.02) 20px
+    ),
+    /* Subtle dot pattern */
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 0, 0, 0.015) 1px,
+      transparent 0
+    ),
+    /* Brand-colored accent gradients */
+    radial-gradient(circle at 20% 50%, rgba(169, 93, 31, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(26, 61, 95, 0.04) 0%, transparent 50%);
+  background-size: 
+    40px 40px,
+    40px 40px,
+    20px 20px,
+    100% 100%,
+    100% 100%;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-2xl);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .container h2 {
-  color: #1a3d5f;
-  padding: 20px 0;
+  color: var(--accent-blue);
+  padding: var(--spacing-2xl) 0;
   font-size: x-large;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
 }
 
 .featuresWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  align-items: start;
+  gap: var(--spacing-xl);
+  align-items: stretch; /* Makes all cards equal height */
   justify-content: center;
 }
 
@@ -32,55 +82,149 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
-  background: white;
-  border: 2px solid #1a3d5f;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  justify-content: space-between; /* Distributes content evenly */
+  padding: var(--spacing-xl);
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-blue);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  overflow: hidden;
+  height: 100%; /* Ensures cards stretch to fill grid cell */
+}
+
+/* Subtle texture overlay for depth */
+.wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    ),
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(169, 93, 31, 0.02) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(26, 61, 95, 0.02) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-blue) 100%);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.wrapper:hover::before {
+  transform: scaleX(1);
 }
 
 .wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary);
+}
+
+.wrapper > div:first-child {
+  flex: 1; /* Allows text content to take available space */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Ensures content is above texture */
 }
 
 .iconContainer {
-  background: linear-gradient(135deg, #1a3d5f, #4a90e2);
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
   height: 80px;
   width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  margin-bottom: var(--spacing-md);
+  flex-shrink: 0; /* Prevents icon from shrinking */
+  position: relative;
+  z-index: 1; /* Ensures icon is above texture */
+}
+
+.wrapper:hover .iconContainer {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-primary);
 }
 
 .iconContainer svg {
   height: 48px;
   width: 48px;
-  color: white;
+  color: var(--text-inverse);
 }
 
 .wrapper h2 {
   font-size: large;
-  color: #1a3d5f;
-  margin-top: 16px;
-  font-weight: bold;
+  color: var(--accent-blue);
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 700;
   text-align: center;
+  transition: color var(--transition-base);
+  position: relative;
+  z-index: 1; /* Ensures text is above texture */
+}
+
+.wrapper:hover h2 {
+  color: var(--primary);
 }
 
 .wrapper p {
   font-size: 1rem;
-  color: #4a4a4a;
+  color: var(--text-secondary);
   text-align: center;
+  line-height: 1.6;
+  margin: 0; /* Remove default margins for consistent spacing */
+  position: relative;
+  z-index: 1; /* Ensures text is above texture */
 }
 
 /* Responsive Styling */
 @media only screen and (min-width: 768px) {
   .features {
-    padding: 80px 40px;
+    padding: var(--spacing-5xl) var(--spacing-2xl);
+  }
+  
+  .container h2 {
+    font-size: 2rem;
   }
 }

@@ -1,13 +1,9 @@
 import React from "react";
 import "../../styles/globals.css";
-import "react-toastify/dist/ReactToastify.css";
 import { s3assets, websiteURL } from "@/constants";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
-
-// Load ToastContainer
-import { ToastContainer } from "react-toastify";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
@@ -148,10 +144,6 @@ export default function RootLayout({
                   <Sidebar />
                   <Navbar />
                   {children}
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                  />
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />

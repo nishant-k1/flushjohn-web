@@ -6,24 +6,13 @@ import { NumericFormat } from "react-number-format";
 import styles from "./styles.module.css";
 import axios from "axios";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import SuccessModal from "@/components/SuccessModal";
+import ErrorModal from "@/components/ErrorModal";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
-
-const notify = () =>
-  toast.success("Your message has been delivered", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-  });
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -93,6 +82,8 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
 
 const Contact = () => {
   const [state, setState] = React.useState(false);
+  const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+  const [showErrorModal, setShowErrorModal] = React.useState(false);
   function gtag(
     arg0: string,
     arg1: string,
@@ -130,24 +121,28 @@ const Contact = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               const res = await axios.post(`/api/contact`, values);
-              res.status === 200 ? setState(true) : setState(false);
-              setTimeout(() => {
-                notify();
-              }, 2000);
-              gtag("event", "button_click", {
-                event_category: "Button",
-                event_label: "Contact Email Button Clicked",
-              });
-              logEvent({
-                category: "Button",
-                action: "Contact Email Form submit",
-                label: "Contact Email Button",
-                value: undefined,
-                nonInteraction: undefined,
-                transport: "beacon",
-              });
+              if (res.status === 200) {
+                setState(true);
+                setTimeout(() => {
+                  setShowSuccessModal(true);
+                }, 2000);
+                gtag("event", "button_click", {
+                  event_category: "Button",
+                  event_label: "Contact Email Button Clicked",
+                });
+                logEvent({
+                  category: "Button",
+                  action: "Contact Email Form submit",
+                  label: "Contact Email Button",
+                  value: undefined,
+                  nonInteraction: undefined,
+                  transport: "beacon",
+                });
+              } else {
+                setShowErrorModal(true);
+              }
             } catch (err) {
-
+              setShowErrorModal(true);
             }
             resetForm();
           }}
@@ -218,6 +213,20 @@ const Contact = () => {
           </div>
         </Formik>
       </div>
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Message Sent!"
+        message="Your message has been delivered"
+        submessage="We'll get back to you as soon as possible."
+      />
+      <ErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        title="Message Failed"
+        message="Failed to send your message. Please try again."
+        submessage="If the problem persists, please contact us directly."
+      />
     </React.Fragment>
   );
 };

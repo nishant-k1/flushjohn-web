@@ -67,7 +67,7 @@ const NumberField = ({ label, ...props }: any) => {
           {...props}
           ref={inputRef}
           className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
-          placeholder="0"
+          placeholder=""
           title="Enter Quantity - Use arrow keys to increment/decrement"
           onFocus={handleFocus}
           onBlur={handleBlur}

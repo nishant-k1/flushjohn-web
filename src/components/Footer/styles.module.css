@@ -1,24 +1,48 @@
 .footer {
-  background-color: var(--tertiary-bg-color);
-  padding: 32px;
-  border-top: 1px solid var(--primary-bg-color);
+  background-color: var(--bg-dark);
+  padding: var(--spacing-xl);
+  border-top: 2px solid var(--primary);
   background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg");
   background-size: cover;
   background-position: left;
   background-repeat: repeat;
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 25, 32, 0.95) 0%,
+    rgba(2, 25, 32, 0.98) 100%
+  );
+  pointer-events: none;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: var(--container-xl);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .container a {
-  transition: 0.3s;
+  transition: color var(--transition-base);
+  border-radius: var(--radius-sm);
 }
 
 .container a:hover {
-  color: var(--primary-bg-color);
+  color: var(--primary);
+}
+
+.container a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-xs);
 }
 
 .ul {
@@ -39,22 +63,27 @@
 }
 
 .ul h2 {
-  color: var(--primary-text-color);
+  color: var(--text-inverse);
   font-size: medium;
-  font-weight: 400;
-  margin: 0 0 1rem;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-md);
 }
 
 .ul li a {
   display: grid;
   grid-template-columns: max-content max-content;
-  column-gap: 0.5rem;
+  column-gap: var(--spacing-sm);
   justify-content: start;
   align-items: center;
-  font-weight: 100;
-  color: rgba(255, 255, 255, 0.712);
+  font-weight: 400;
+  color: var(--text-inverse-tertiary);
   font-size: 1rem !important;
-  transition: 0.3s;
+  transition: color var(--transition-base);
+  padding: var(--spacing-xs) 0;
+}
+
+.ul li a:hover {
+  color: var(--primary);
 }
 /* logo */
 .footerLogo {
@@ -92,8 +121,14 @@
   row-gap: 0.5rem;
 }
 .social ul li a:hover {
-  color: var(--primary-bg-color);
+  color: var(--primary);
 }
+
+.social ul li a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-xs);
+}
+
 /* nav */
 .nav {
   padding: 0;
@@ -102,7 +137,7 @@
   display: grid;
   justify-content: left;
   align-items: start;
-  color: var(--primary-text-color);
+  color: var(--text-inverse);
 }
 
 .nav ul {
@@ -122,7 +157,7 @@
   display: grid;
   justify-content: left;
   align-items: start;
-  color: var(--primary-text-color);
+  color: var(--text-inverse);
 }
 
 .contact ul {
@@ -131,18 +166,25 @@
   list-style: none;
   display: grid;
   grid-template-columns: max-content;
-  row-gap: 0.5rem;
+  row-gap: var(--spacing-sm);
 }
 
 .contact ul li a {
-  color: rgb(204, 204, 204);
-  transition: 0.3s;
+  color: var(--text-inverse-tertiary);
+  transition: color var(--transition-base);
+}
+
+.contact ul li a:hover {
+  color: var(--primary);
 }
 
 .bottomFooter {
-  padding: 12px 0;
+  padding: var(--spacing-md) 0;
   font-size: small;
-  color: var(--primary-text-color);
+  color: var(--text-inverse-tertiary);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: var(--spacing-xl);
 }
 
 /* tablet device breakpoint: 768px*/

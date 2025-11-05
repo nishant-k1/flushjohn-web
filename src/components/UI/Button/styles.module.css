@@ -4,13 +4,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.75;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-base);
   border: none;
   outline: none;
   text-decoration: none;
@@ -19,17 +19,15 @@
 }
 
 .button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .button:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -54,100 +52,111 @@
 
 /* Variants - Contained */
 .contained.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-primary);
 }
 
 .contained.primary:hover {
-  background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  box-shadow: var(--shadow-primary-lg);
 }
 
 .contained.secondary {
-  background: #f50057;
-  color: white;
-  box-shadow: 0 2px 4px rgba(245, 0, 87, 0.3);
+  background: var(--accent-blue);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 4px rgba(26, 61, 95, 0.3);
 }
 
 .contained.secondary:hover {
-  background: #c51162;
+  background: var(--accent-blue-light);
+  box-shadow: 0 4px 8px rgba(26, 61, 95, 0.4);
 }
 
 .contained.success {
-  background: #28a745;
-  color: white;
+  background: var(--success);
+  color: var(--text-inverse);
   box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
 }
 
 .contained.success:hover {
-  background: #218838;
+  background: var(--success-dark);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
 }
 
 .contained.error {
-  background: #dc3545;
-  color: white;
+  background: var(--error);
+  color: var(--text-inverse);
   box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
 }
 
 .contained.error:hover {
-  background: #c82333;
+  background: var(--error-dark);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
 }
 
 /* Variants - Outlined */
 .outlined {
   background: transparent;
-  border: 1px solid currentColor;
+  border: 2px solid currentColor;
 }
 
 .outlined.primary {
-  color: #667eea;
-  border-color: #667eea;
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .outlined.primary:hover {
-  background: rgba(102, 126, 234, 0.08);
+  background: rgba(169, 93, 31, 0.1);
+  border-color: var(--primary-dark);
+  color: var(--primary-dark);
 }
 
 .outlined.secondary {
-  color: #f50057;
-  border-color: #f50057;
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
 }
 
 .outlined.secondary:hover {
-  background: rgba(245, 0, 87, 0.08);
+  background: rgba(26, 61, 95, 0.1);
+  border-color: var(--accent-blue-light);
+  color: var(--accent-blue-light);
 }
 
 .outlined.success {
-  color: #28a745;
-  border-color: #28a745;
+  color: var(--success);
+  border-color: var(--success);
 }
 
 .outlined.success:hover {
-  background: rgba(40, 167, 69, 0.08);
+  background: rgba(40, 167, 69, 0.1);
+  border-color: var(--success-dark);
+  color: var(--success-dark);
 }
 
 /* Variants - Text */
 .text {
   background: transparent;
   box-shadow: none;
-  padding: 6px 8px;
+  padding: var(--spacing-sm) var(--spacing-sm);
 }
 
 .text.primary {
-  color: #667eea;
+  color: var(--primary);
 }
 
 .text.primary:hover {
-  background: rgba(102, 126, 234, 0.08);
+  background: rgba(169, 93, 31, 0.1);
+  color: var(--primary-dark);
 }
 
 .text.secondary {
-  color: #f50057;
+  color: var(--accent-blue);
 }
 
 .text.secondary:hover {
-  background: rgba(245, 0, 87, 0.08);
+  background: rgba(26, 61, 95, 0.1);
+  color: var(--accent-blue-light);
 }
 
 /* Full Width */

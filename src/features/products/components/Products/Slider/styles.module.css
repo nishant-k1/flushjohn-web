@@ -4,25 +4,48 @@
   align-items: center;
   grid-template-columns: repeat(3, max-content);
   padding-bottom: 1rem;
+  gap: 0.5rem;
 }
 
 .slider img {
   /* Dimensions handled by Next.js Image component inline styles */
   max-height: none;
   max-width: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 4px;
+}
+
+.slider:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 .arrow {
   height: 1.5rem;
   width: 1.5rem;
   color: var(--secondary-text-color);
-  /* color: var(--primary-text-color); */
-  padding: 0;
+  padding: 4px;
   margin: 0;
   background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .arrow:hover {
-  transition: 0.3s;
   color: var(--primary-bg-color);
+  background-color: rgba(169, 93, 31, 0.1);
+  transform: scale(1.2);
+}
+
+.arrow:active {
+  transform: scale(1.1);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--primary-bg-color);
+  outline-offset: 2px;
 }

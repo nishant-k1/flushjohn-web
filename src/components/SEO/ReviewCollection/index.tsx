@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import SuccessModal from "@/components/SuccessModal";
+import ErrorModal from "@/components/ErrorModal";
 
 interface ReviewCollectionProps {
   city?: string;
@@ -9,6 +10,8 @@ interface ReviewCollectionProps {
 
 const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
   const [showForm, setShowForm] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,19 +25,10 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     e.preventDefault();
     
     try {
-
+      // TODO: Add actual API call here
+      // await axios.post('/api/reviews', formData);
       
-      toast.success("Thank you for your review! We appreciate your feedback.", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      
+      setShowSuccessModal(true);
       setFormData({
         name: "",
         email: "",
@@ -45,16 +39,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
       });
       setShowForm(false);
     } catch (error) {
-      toast.error("Failed to submit review. Please try again.", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      setShowErrorModal(true);
     }
   };
 
@@ -256,6 +241,21 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
           </div>
         </div>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="Thank you for your review! We appreciate your feedback."
+        submessage="Your review helps us improve our services."
+      />
+      <ErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        title="Submission Failed"
+        message="Failed to submit review. Please try again."
+        submessage="If the problem persists, please contact our support team."
+      />
     </div>
   );
 };
