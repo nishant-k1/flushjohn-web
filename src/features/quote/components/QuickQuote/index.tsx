@@ -324,9 +324,17 @@ const QuickQuote = () => {
           <div
             className={styles.overlay}
             style={{
-              display: quickQuoteViewStatus ? "block" : "none",
+              display: quickQuoteViewStatus ? "flex" : "none",
             }}
           >
+            <CloseIcon
+              size={24}
+              className={styles.closeIcon}
+              onClick={() => {
+                setQuickQuoteViewStatus(false);
+                setQuickQuoteTitle("Quick Quote");
+              }}
+            />
             <Form>
               <AnimationWrapper
                 effect={animations?.zoomOutAndZoomIn}
@@ -334,14 +342,6 @@ const QuickQuote = () => {
                 className={styles.quickQuoteform}
               >
                 <div>
-                  <CloseIcon
-                    size={24}
-                    className={styles.closeIcon}
-                    onClick={() => {
-                      setQuickQuoteViewStatus(false);
-                      setQuickQuoteTitle("Quick Quote");
-                    }}
-                  />
                   <Grid
                     container
                     spacing={0.5}

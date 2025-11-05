@@ -169,6 +169,7 @@
   font-size: large;
   border: solid 1px var(--primary-bg-color);
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .button:hover {

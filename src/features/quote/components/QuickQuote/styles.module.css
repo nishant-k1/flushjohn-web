@@ -6,36 +6,62 @@
   height: 100%;
   /* background-color: rgba(0 0 0 / 0.86); */
   background-color: lab(35.32 12.12 42.27 / 0.87);
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .quickQuoteform {
   background-color: rgba(165, 163, 163, 0.808);
   position: relative;
-  /* position: fixed; */
-  /* top: 6rem; */
-  /* right: 6rem; */
-  bottom: -6rem;
-  margin: 0 auto;
+  margin: 0;
   z-index: 300;
   border: 1px solid rgba(255, 255, 255, 0.308);
   padding: 8px;
   height: fit-content;
-  width: min(340px, 90vw);
+  width: min(340px, calc(100vw - 2rem));
   max-width: 400px;
 }
 
 .closeIcon {
-  position: absolute;
-  opacity: 0.8;
+  position: fixed;
+  top: calc(50vh - 280px);
+  right: calc(50vw - min(340px, calc(100vw - 2rem)) / 2 - 0.5rem);
+  opacity: 0.9;
   color: black;
-  font-size: 2.5rem;
-  top: 0;
-  right: 0;
+  font-size: 2rem;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+  z-index: 10000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+}
+
+@media (max-width: 400px) {
+  .closeIcon {
+    top: calc(50vh - 230px);
+    right: calc(50vw - calc(100vw - 2rem) / 2 - 0.5rem);
+  }
+}
+
+.closeIcon:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateX(100%) scale(1.1);
+}
+
+.closeIcon:active {
+  transform: translateX(100%) scale(0.95);
 }
 
 .quickQuoteform h2 {

@@ -49,6 +49,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  z-index: 9998;
 }
 
 .quickQuoteBtn:before {
@@ -97,6 +98,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  z-index: 9998;
 }
 
 .icon {

@@ -13,6 +13,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
+import { apiBaseUrls } from "@/constants";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -81,16 +82,10 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
 };
 
 const Contact = () => {
+  const { API_BASE_URL } = apiBaseUrls;
   const [state, setState] = React.useState(false);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
-  function gtag(
-    arg0: string,
-    arg1: string,
-    arg2: { event_category: string; event_label: string }
-  ) {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <React.Fragment>
@@ -120,97 +115,116 @@ const Contact = () => {
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
-              const res = await axios.post(`/api/contact`, values);
+              setSubmitting(true);
+              const res = await axios.post(`${API_BASE_URL}/contact`, values);
               if (res.status === 200) {
                 setState(true);
                 setTimeout(() => {
                   setShowSuccessModal(true);
                 }, 2000);
-                gtag("event", "button_click", {
-                  event_category: "Button",
-                  event_label: "Contact Email Button Clicked",
-                });
-                logEvent({
-                  category: "Button",
-                  action: "Contact Email Form submit",
-                  label: "Contact Email Button",
-                  value: undefined,
-                  nonInteraction: undefined,
-                  transport: "beacon",
-                });
+                try {
+                  if (typeof window !== "undefined" && window.gtag) {
+                    window.gtag("event", "button_click", {
+                      event_category: "Button",
+                      event_label: "Contact Email Button Clicked",
+                    });
+                  }
+                } catch (gtagError) {
+                  console.warn("GTag error:", gtagError);
+                }
+                try {
+                  logEvent({
+                    category: "Button",
+                    action: "Contact Email Form submit",
+                    label: "Contact Email Button",
+                    value: undefined,
+                    nonInteraction: undefined,
+                    transport: "beacon",
+                  });
+                } catch (logError) {
+                  console.warn("Log event error:", logError);
+                }
+                resetForm();
               } else {
                 setShowErrorModal(true);
               }
             } catch (err) {
+              console.error("Contact form error:", err);
               setShowErrorModal(true);
+            } finally {
+              setSubmitting(false);
             }
-            resetForm();
           }}
         >
-          <div className={styles.container}>
-            <Breadcrumbs path={""} />
-            <AnimationWrapper
-              effect={animations?.fadeWithScale}
-              className={styles.form}
-            >
-              <div className={styles.firstName}>
-                <MyTextField
-                  label="First Name"
-                  name="firstName"
-                  type="text"
-                  maxLength="15"
-                  autoComplete="given-name"
-                />
-              </div>
+          {({ isSubmitting }) => (
+            <div className={styles.container}>
+              <Breadcrumbs path={""} />
+              <Form>
+                <AnimationWrapper
+                  effect={animations?.fadeWithScale}
+                  className={styles.form}
+                >
+                  <div className={styles.firstName}>
+                    <MyTextField
+                      label="First Name"
+                      name="firstName"
+                      type="text"
+                      maxLength="15"
+                      autoComplete="given-name"
+                    />
+                  </div>
 
-              <div className={styles.lastName}>
-                <MyTextField
-                  label="Last Name"
-                  name="lastName"
-                  type="text"
-                  maxLength="20"
-                  autoComplete="family-name"
-                />
-              </div>
+                  <div className={styles.lastName}>
+                    <MyTextField
+                      label="Last Name"
+                      name="lastName"
+                      type="text"
+                      maxLength="20"
+                      autoComplete="family-name"
+                    />
+                  </div>
 
-              <div className={styles.email}>
-                <MyTextField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                />
-              </div>
+                  <div className={styles.email}>
+                    <MyTextField
+                      label="Email Address"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                    />
+                  </div>
 
-              <div className={styles.phone}>
-                <MyMaskedTextInput
-                  label="Phone"
-                  name="phone"
-                  mask="(999) 999-9999"
-                  autoComplete="tel-national"
-                />
-              </div>
+                  <div className={styles.phone}>
+                    <MyMaskedTextInput
+                      label="Phone"
+                      name="phone"
+                      mask="(999) 999-9999"
+                      autoComplete="tel-national"
+                    />
+                  </div>
 
-              <div className={styles.message}>
-                <MyMultilineTextField
-                  label="Message"
-                  name="message"
-                  type="textarea"
-                />
-              </div>
-              <button
-                className={styles.button}
-                type="submit"
-              >
-                SUBMIT
-              </button>
-            </AnimationWrapper>
-            {state && (
-              <h1 style={{ color: "white" }}>
-                Your message has been delivered
-              </h1>
-            )}
-          </div>
+                  <div className={styles.message}>
+                    <MyMultilineTextField
+                      label="Message"
+                      name="message"
+                      type="textarea"
+                    />
+                  </div>
+                  <button
+                    className={styles.button}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                  </button>
+                </AnimationWrapper>
+              </Form>
+              {state && (
+                <h1 style={{ color: "white" }}>
+                  Your message has been delivered
+                </h1>
+              )}
+            </div>
+          )}
         </Formik>
       </div>
       <SuccessModal
