@@ -220,6 +220,7 @@ const QuickQuote = () => {
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
 
   const handleClickOutside = (event: MouseEvent) => {
   };
@@ -277,6 +278,7 @@ const QuickQuote = () => {
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -291,6 +293,7 @@ const QuickQuote = () => {
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -372,6 +375,9 @@ const QuickQuote = () => {
           validateOnChange={false}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
+            // Set local submitting state immediately to show spinner
+            setIsSubmittingLocal(true);
+            
             // Store setSubmitting in ref so socket handlers can access it
             setSubmittingRef.current = setSubmitting;
             
@@ -409,6 +415,7 @@ const QuickQuote = () => {
                         submitInProgressRef.current = false;
                         timeoutRef.current = null;
                         setSubmitting(false);
+                    setIsSubmittingLocal(false);
                       });
                   }
                 }, 5000); // 5 second timeout for socket
@@ -434,6 +441,7 @@ const QuickQuote = () => {
                             submitInProgressRef.current = false;
                             timeoutRef.current = null;
                             setSubmitting(false);
+                    setIsSubmittingLocal(false);
                           });
                       }
                     }, 5000);
@@ -453,6 +461,7 @@ const QuickQuote = () => {
                         submitInProgressRef.current = false;
                         timeoutRef.current = null;
                         setSubmitting(false);
+                    setIsSubmittingLocal(false);
                       });
                   }
                 }, 1000);
@@ -468,6 +477,7 @@ const QuickQuote = () => {
               // Reset submitting if not already handled by async operations
               if (!submitInProgressRef.current) {
                 setSubmitting(false);
+                setIsSubmittingLocal(false);
               }
               resetForm({
                 values: {
@@ -492,7 +502,9 @@ const QuickQuote = () => {
             }
           }}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting }) => {
+          const showSpinner = isSubmittingLocal || isSubmitting;
+          return (
             <div
               className={styles.overlay}
               style={{
@@ -638,8 +650,9 @@ const QuickQuote = () => {
                         }}
                         endIcon={<SendIcon size={18} />}
                         type="submit"
-                        loading={isSubmitting}
-                        disabled={isSubmitting}
+                        loading={showSpinner}
+                        disabled={showSpinner}
+                        onClick={() => setIsSubmittingLocal(true)}
                       >
                         Send
                       </Button>
@@ -649,7 +662,8 @@ const QuickQuote = () => {
               </AnimationWrapper>
             </Form>
           </div>
-          )}
+          );
+          }}
         </Formik>
       )}
 

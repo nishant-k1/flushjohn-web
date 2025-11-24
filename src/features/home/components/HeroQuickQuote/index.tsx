@@ -47,6 +47,7 @@ const HeroQuickQuote = () => {
     useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
 
   const { setQuickQuoteRequested } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
@@ -100,6 +101,7 @@ const HeroQuickQuote = () => {
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -114,6 +116,7 @@ const HeroQuickQuote = () => {
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -191,6 +194,9 @@ const HeroQuickQuote = () => {
       }}
 
       onSubmit={async (values, { setSubmitting, resetForm }) => {
+        // Set local submitting state immediately to show spinner
+        setIsSubmittingLocal(true);
+        
         // Store setSubmitting in ref so socket handlers can access it
         setSubmittingRef.current = setSubmitting;
         
@@ -228,6 +234,7 @@ const HeroQuickQuote = () => {
                     submitInProgressRef.current = false;
                     timeoutRef.current = null;
                     setSubmitting(false);
+                    setIsSubmittingLocal(false);
                   });
               }
             }, 5000); // 5 second timeout for socket
@@ -253,6 +260,7 @@ const HeroQuickQuote = () => {
                     submitInProgressRef.current = false;
                     timeoutRef.current = null;
                     setSubmitting(false);
+                    setIsSubmittingLocal(false);
                   });
                   }
                 }, 5000);
@@ -272,6 +280,7 @@ const HeroQuickQuote = () => {
                     submitInProgressRef.current = false;
                     timeoutRef.current = null;
                     setSubmitting(false);
+                    setIsSubmittingLocal(false);
                   });
               }
             }, 1000);
@@ -287,6 +296,7 @@ const HeroQuickQuote = () => {
           // Reset submitting if not already handled by async operations
           if (!submitInProgressRef.current) {
             setSubmitting(false);
+            setIsSubmittingLocal(false);
           }
           resetForm({
             values: {
@@ -311,7 +321,9 @@ const HeroQuickQuote = () => {
         }
       }}
     >
-      {(({ isSubmitting }: any) => (
+      {(({ isSubmitting }: any) => {
+        const showSpinner = isSubmittingLocal || isSubmitting;
+        return (
         <div
           className={styles.overlay}
           style={{
@@ -459,8 +471,9 @@ const HeroQuickQuote = () => {
                     }}
                     endIcon={<SendIcon size={18} />}
                     type="submit"
-                    loading={isSubmitting}
-                    disabled={isSubmitting}
+                    loading={showSpinner}
+                    disabled={showSpinner}
+                    onClick={() => setIsSubmittingLocal(true)}
                   >
                     Send
                   </Button>
@@ -469,7 +482,8 @@ const HeroQuickQuote = () => {
             </AnimationWrapper>
           </Form>
         </div>
-      )) as unknown as React.ReactNode}
+        );
+      }) as unknown as React.ReactNode}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
