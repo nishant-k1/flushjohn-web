@@ -237,6 +237,7 @@ const HeroQuickQuote = () => {
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const setSubmittingRef = React.useRef<((isSubmitting: boolean) => void) | null>(null);
 
   // Set up socket event listeners
   React.useEffect(() => {
@@ -264,6 +265,9 @@ const HeroQuickQuote = () => {
           setQuickQuoteRequested(true);
           handleLeadConversion();
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -275,6 +279,9 @@ const HeroQuickQuote = () => {
           }
           setShowErrorModal(true);
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -354,7 +361,13 @@ const HeroQuickQuote = () => {
         validateOnChange={false}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          setHeroQuickQuoteViewStatus(false);
+          // Store setSubmitting in ref so socket handlers can access it
+          setSubmittingRef.current = setSubmitting;
+          
+          // Set submitting to true immediately to show spinner
+          setSubmitting(true);
+          submitInProgressRef.current = true;
+          
           try {
             const finalData = { ...values, leadSource: "Web Hero Quick Lead" };
 
@@ -363,9 +376,6 @@ const HeroQuickQuote = () => {
               clearTimeout(timeoutRef.current);
               timeoutRef.current = null;
             }
-
-            submitInProgressRef.current = true;
-            setSubmitting(true);
 
             // Try socket first
             if (socketRef.current && socketRef.current.connected) {
@@ -382,11 +392,13 @@ const HeroQuickQuote = () => {
                       handleLeadConversion();
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setSubmitting(false);
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setSubmitting(false);
                     });
                 }
               }, 5000); // 5 second timeout for socket
@@ -401,6 +413,7 @@ const HeroQuickQuote = () => {
                     if (submitInProgressRef.current) {
                       createLeadViaHTTP(finalData)
                         .then(() => {
+                          setHeroQuickQuoteViewStatus(false);
                           setShowSuccessModal(true);
                           setQuickQuoteRequested(true);
                           handleLeadConversion();
@@ -411,6 +424,7 @@ const HeroQuickQuote = () => {
                           setShowErrorModal(true);
                           submitInProgressRef.current = false;
                           timeoutRef.current = null;
+                          setSubmitting(false);
                         });
                     }
                   }, 5000);
@@ -424,11 +438,13 @@ const HeroQuickQuote = () => {
                       handleLeadConversion();
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setSubmitting(false);
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setSubmitting(false);
                     });
                 }
               }, 1000);
@@ -437,8 +453,14 @@ const HeroQuickQuote = () => {
             console.error("Error submitting lead:", err);
             setShowErrorModal(true);
             submitInProgressRef.current = false;
-          } finally {
             setSubmitting(false);
+          } finally {
+            // Clear the ref
+            setSubmittingRef.current = null;
+            // Reset submitting if not already handled by async operations
+            if (!submitInProgressRef.current) {
+              setSubmitting(false);
+            }
             resetForm({
               values: {
                 usageType: "",
@@ -462,150 +484,154 @@ const HeroQuickQuote = () => {
           }
         }}
       >
-        <div
-          className={styles.overlay}
-          style={{
-            display: heroQuickQuoteViewStatus ? "block" : "none",
-          }}
-        >
-          <Form>
-            <AnimationWrapper
-              effect={animations?.zoomOutAndZoomIn}
-              animationKey={String(heroQuickQuoteViewStatus)}
-              className={styles.quickQuoteform}
-            >
-              <Grid
-                container
-                spacing={0.5}
+        {({ isSubmitting }) => (
+          <div
+            className={styles.overlay}
+            style={{
+              display: heroQuickQuoteViewStatus ? "block" : "none",
+            }}
+          >
+            <Form>
+              <AnimationWrapper
+                effect={animations?.zoomOutAndZoomIn}
+                animationKey={String(heroQuickQuoteViewStatus)}
+                className={styles.quickQuoteform}
               >
                 <Grid
-                  item
-                  xs={12}
+                  container
+                  spacing={0.5}
                 >
-                  <div>
-                    <h2>Get My Free Quote</h2>
-                  </div>
-                </Grid>
-                <UsageTypeField />
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMultipleSelectCheckmarks
-                    label="Select Portable Units"
-                    name="products"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                >
-                  <MyDateField
-                    label="Delivery Date"
-                    className={styles.date}
-                    name="deliveryDate"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                >
-                  <MyDateField
-                    className={styles.date}
-                    label="Pickup Date"
-                    name="pickupDate"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyZipTextField
-                    label="Zip"
-                    name="zip"
-                    placeholder="Zip"
-                    min={0}
-                    maxLength={5}
-                    inputMode="numeric"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyTextField
-                    label="Street Address"
-                    name="street"
-                    placeholder="Street Address (Optional)"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                >
-                  <MyTextField
-                    label="First Name"
-                    name="fName"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                >
-                  <MyTextField
-                    label="Last Name"
-                    name="lName"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyTextField
-                    label="Email"
-                    name="email"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyPhoneTextField
-                    label="Phone"
-                    name="phone"
-                    placeholder="Phone"
-                    type="tel"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                >
-                  <MyMultilineTextField
-                    label="Instructions (if any)"
-                    name="instructions"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={3}
-                >
-                  <Button
-                    variant="contained"
-                    style={{
-                      background: "var(--primary-bg-color)",
-                      borderRadius: 0,
-                    }}
-                    endIcon={<SendIcon size={18} />}
-                    type="submit"
+                  <Grid
+                    item
+                    xs={12}
                   >
-                    Send
-                  </Button>
+                    <div>
+                      <h2>Get My Free Quote</h2>
+                    </div>
+                  </Grid>
+                  <UsageTypeField />
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMultipleSelectCheckmarks
+                      label="Select Portable Units"
+                      name="products"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyDateField
+                      label="Delivery Date"
+                      className={styles.date}
+                      name="deliveryDate"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyDateField
+                      className={styles.date}
+                      label="Pickup Date"
+                      name="pickupDate"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyZipTextField
+                      label="Zip"
+                      name="zip"
+                      placeholder="Zip"
+                      min={0}
+                      maxLength={5}
+                      inputMode="numeric"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyTextField
+                      label="Street Address"
+                      name="street"
+                      placeholder="Street Address (Optional)"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyTextField
+                      label="First Name"
+                      name="fName"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                  >
+                    <MyTextField
+                      label="Last Name"
+                      name="lName"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyTextField
+                      label="Email"
+                      name="email"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyPhoneTextField
+                      label="Phone"
+                      name="phone"
+                      placeholder="Phone"
+                      type="tel"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                  >
+                    <MyMultilineTextField
+                      label="Instructions (if any)"
+                      name="instructions"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={3}
+                  >
+                    <Button
+                      variant="contained"
+                      style={{
+                        background: "var(--primary-bg-color)",
+                        borderRadius: 0,
+                      }}
+                      endIcon={<SendIcon size={18} />}
+                      type="submit"
+                      loading={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Send
+                    </Button>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </AnimationWrapper>
-          </Form>
-        </div>
+              </AnimationWrapper>
+            </Form>
+          </div>
+        )}
       </Formik>
 
       <SuccessModal

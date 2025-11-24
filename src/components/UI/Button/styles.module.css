@@ -62,6 +62,12 @@
   box-shadow: var(--shadow-primary-lg);
 }
 
+.contained.primary .spinner,
+.contained .spinner {
+  border-color: rgba(255, 255, 255, 0.9);
+  border-top-color: transparent;
+}
+
 .contained.secondary {
   background: var(--accent-blue);
   color: var(--text-inverse);
@@ -178,13 +184,25 @@
 }
 
 .spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid currentColor;
+  display: inline-block !important;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   border-top-color: transparent;
-  animation: spin 0.6s linear infinite;
+  animation: spin 0.8s linear infinite;
+  margin-right: 10px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+}
+
+.button.loading .spinner {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
 }
 
 @keyframes spin {

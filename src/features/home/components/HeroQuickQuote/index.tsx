@@ -69,6 +69,7 @@ const HeroQuickQuote = () => {
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const setSubmittingRef = React.useRef<((isSubmitting: boolean) => void) | null>(null);
 
   // Set up socket event listeners
   React.useEffect(() => {
@@ -96,6 +97,9 @@ const HeroQuickQuote = () => {
           setQuickQuoteRequested(true);
           handleLeadConversion();
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -107,6 +111,9 @@ const HeroQuickQuote = () => {
           }
           setShowErrorModal(true);
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -184,7 +191,13 @@ const HeroQuickQuote = () => {
       }}
 
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        setHeroQuickQuoteViewStatus(false);
+        // Store setSubmitting in ref so socket handlers can access it
+        setSubmittingRef.current = setSubmitting;
+        
+        // Set submitting to true immediately to show spinner
+        setSubmitting(true);
+        submitInProgressRef.current = true;
+        
         try {
           const finalData = { ...values, leadSource: "Web Hero Quick Lead" };
 
@@ -194,9 +207,6 @@ const HeroQuickQuote = () => {
             timeoutRef.current = null;
           }
 
-          submitInProgressRef.current = true;
-          setSubmitting(true);
-
           // Try socket first
           if (socketRef.current && socketRef.current.connected) {
             socketRef.current.emit("createLead", finalData);
@@ -205,7 +215,7 @@ const HeroQuickQuote = () => {
             timeoutRef.current = setTimeout(() => {
               if (submitInProgressRef.current) {
                 // Socket didn't respond, try HTTP
-                createLeadViaHTTP(finalData)
+                  createLeadViaHTTP(finalData)
                   .then(() => {
                     setShowSuccessModal(true);
                     setQuickQuoteRequested(true);
@@ -217,6 +227,7 @@ const HeroQuickQuote = () => {
                     setShowErrorModal(true);
                     submitInProgressRef.current = false;
                     timeoutRef.current = null;
+                    setSubmitting(false);
                   });
               }
             }, 5000); // 5 second timeout for socket
@@ -229,25 +240,7 @@ const HeroQuickQuote = () => {
                 // Set timeout for HTTP fallback
                 const fallbackTimeout = setTimeout(() => {
                   if (submitInProgressRef.current) {
-                    createLeadViaHTTP(finalData)
-                      .then(() => {
-                        setShowSuccessModal(true);
-                        setQuickQuoteRequested(true);
-                        handleLeadConversion();
-                        submitInProgressRef.current = false;
-                        timeoutRef.current = null;
-                      })
-                      .catch(() => {
-                        setShowErrorModal(true);
-                        submitInProgressRef.current = false;
-                        timeoutRef.current = null;
-                      });
-                  }
-                }, 5000);
-                timeoutRef.current = fallbackTimeout;
-              } else {
-                // Socket failed, use HTTP
-                createLeadViaHTTP(finalData)
+                  createLeadViaHTTP(finalData)
                   .then(() => {
                     setShowSuccessModal(true);
                     setQuickQuoteRequested(true);
@@ -259,6 +252,26 @@ const HeroQuickQuote = () => {
                     setShowErrorModal(true);
                     submitInProgressRef.current = false;
                     timeoutRef.current = null;
+                    setSubmitting(false);
+                  });
+                  }
+                }, 5000);
+                timeoutRef.current = fallbackTimeout;
+              } else {
+                // Socket failed, use HTTP
+                  createLeadViaHTTP(finalData)
+                  .then(() => {
+                    setShowSuccessModal(true);
+                    setQuickQuoteRequested(true);
+                    handleLeadConversion();
+                    submitInProgressRef.current = false;
+                    timeoutRef.current = null;
+                  })
+                  .catch(() => {
+                    setShowErrorModal(true);
+                    submitInProgressRef.current = false;
+                    timeoutRef.current = null;
+                    setSubmitting(false);
                   });
               }
             }, 1000);
@@ -267,8 +280,14 @@ const HeroQuickQuote = () => {
           console.error("Error submitting lead:", err);
           setShowErrorModal(true);
           submitInProgressRef.current = false;
-        } finally {
           setSubmitting(false);
+        } finally {
+          // Clear the ref
+          setSubmittingRef.current = null;
+          // Reset submitting if not already handled by async operations
+          if (!submitInProgressRef.current) {
+            setSubmitting(false);
+          }
           resetForm({
             values: {
               usageType: "",
@@ -292,13 +311,14 @@ const HeroQuickQuote = () => {
         }
       }}
     >
-      <div
-        className={styles.overlay}
-        style={{
-          display: heroQuickQuoteViewStatus ? "block" : "none",
-        }}
-      >
-        <Form>
+      {({ isSubmitting }) => (
+        <div
+          className={styles.overlay}
+          style={{
+            display: heroQuickQuoteViewStatus ? "block" : "none",
+          }}
+        >
+          <Form>
           <AnimationWrapper
             effect={animations?.zoomOutAndZoomIn}
             animationKey={String(heroQuickQuoteViewStatus)}
@@ -439,6 +459,8 @@ const HeroQuickQuote = () => {
                   }}
                   endIcon={<SendIcon size={18} />}
                   type="submit"
+                  loading={isSubmitting}
+                  disabled={isSubmitting}
                 >
                   Send
                 </Button>
@@ -447,6 +469,7 @@ const HeroQuickQuote = () => {
           </AnimationWrapper>
         </Form>
       </div>
+      )}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}

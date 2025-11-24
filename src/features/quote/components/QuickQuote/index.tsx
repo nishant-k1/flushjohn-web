@@ -246,6 +246,7 @@ const QuickQuote = () => {
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const setSubmittingRef = React.useRef<((isSubmitting: boolean) => void) | null>(null);
 
   // Set up socket event listeners
   React.useEffect(() => {
@@ -273,6 +274,9 @@ const QuickQuote = () => {
           setQuickQuoteRequested(true);
           handleLeadConversion();
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -284,6 +288,9 @@ const QuickQuote = () => {
           }
           setShowErrorModal(true);
           submitInProgressRef.current = false;
+          if (setSubmittingRef.current) {
+            setSubmittingRef.current(false);
+          }
         }
       });
 
@@ -365,7 +372,13 @@ const QuickQuote = () => {
           validateOnChange={false}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            setQuickQuoteViewStatus(false);
+            // Store setSubmitting in ref so socket handlers can access it
+            setSubmittingRef.current = setSubmitting;
+            
+            // Set submitting to true immediately to show spinner
+            setSubmitting(true);
+            submitInProgressRef.current = true;
+            
             try {
               const finalData = { ...values, leadSource: "Web Quick Lead" };
 
@@ -374,9 +387,6 @@ const QuickQuote = () => {
                 clearTimeout(timeoutRef.current);
                 timeoutRef.current = null;
               }
-
-              submitInProgressRef.current = true;
-              setSubmitting(true);
 
               // Try socket first
               if (socketRef.current && socketRef.current.connected) {
@@ -398,6 +408,7 @@ const QuickQuote = () => {
                         setShowErrorModal(true);
                         submitInProgressRef.current = false;
                         timeoutRef.current = null;
+                        setSubmitting(false);
                       });
                   }
                 }, 5000); // 5 second timeout for socket
@@ -422,6 +433,7 @@ const QuickQuote = () => {
                             setShowErrorModal(true);
                             submitInProgressRef.current = false;
                             timeoutRef.current = null;
+                            setSubmitting(false);
                           });
                       }
                     }, 5000);
@@ -440,6 +452,7 @@ const QuickQuote = () => {
                         setShowErrorModal(true);
                         submitInProgressRef.current = false;
                         timeoutRef.current = null;
+                        setSubmitting(false);
                       });
                   }
                 }, 1000);
@@ -448,8 +461,14 @@ const QuickQuote = () => {
               console.error("Error submitting lead:", err);
               setShowErrorModal(true);
               submitInProgressRef.current = false;
-            } finally {
               setSubmitting(false);
+            } finally {
+              // Clear the ref
+              setSubmittingRef.current = null;
+              // Reset submitting if not already handled by async operations
+              if (!submitInProgressRef.current) {
+                setSubmitting(false);
+              }
               resetForm({
                 values: {
                   usageType: "",
@@ -473,13 +492,14 @@ const QuickQuote = () => {
             }
           }}
         >
-          <div
-            className={styles.overlay}
-            style={{
-              display: quickQuoteViewStatus ? "flex" : "none",
-            }}
-          >
-            <Form>
+          {({ isSubmitting }) => (
+            <div
+              className={styles.overlay}
+              style={{
+                display: quickQuoteViewStatus ? "flex" : "none",
+              }}
+            >
+              <Form>
               <AnimationWrapper
                 effect={animations?.zoomOutAndZoomIn}
                 animationKey={String(quickQuoteViewStatus)}
@@ -618,6 +638,8 @@ const QuickQuote = () => {
                         }}
                         endIcon={<SendIcon size={18} />}
                         type="submit"
+                        loading={isSubmitting}
+                        disabled={isSubmitting}
                       >
                         Send
                       </Button>
@@ -627,6 +649,7 @@ const QuickQuote = () => {
               </AnimationWrapper>
             </Form>
           </div>
+          )}
         </Formik>
       )}
 

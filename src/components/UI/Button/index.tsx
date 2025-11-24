@@ -53,10 +53,18 @@ export default function Button({
       style={style}
       {...restProps}
     >
-      {loading && <span className={styles.spinner} />}
-      {!loading && startIcon && <span className={styles.startIcon}>{startIcon}</span>}
-      <span className={styles.label}>{children}</span>
-      {!loading && endIcon && <span className={styles.endIcon}>{endIcon}</span>}
+      {loading ? (
+        <>
+          <span className={styles.spinner} aria-label="Loading" />
+          <span className={styles.label}>Sending...</span>
+        </>
+      ) : (
+        <>
+          {startIcon && <span className={styles.startIcon}>{startIcon}</span>}
+          <span className={styles.label}>{children}</span>
+          {endIcon && <span className={styles.endIcon}>{endIcon}</span>}
+        </>
+      )}
     </button>
   );
 }

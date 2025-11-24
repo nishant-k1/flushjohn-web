@@ -214,7 +214,14 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                    {isSubmitting ? (
+                      <>
+                        <span className={styles.spinner}></span>
+                        SUBMITTING...
+                      </>
+                    ) : (
+                      "SUBMIT"
+                    )}
                   </button>
                 </AnimationWrapper>
               </Form>

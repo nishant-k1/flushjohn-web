@@ -249,9 +249,10 @@ const QuoteStep3 = () => {
           }
         }}
       >
-        <div className={styles.section}>
-          <div className={styles.container}>
-            <Form noValidate>
+        {({ isSubmitting }) => (
+          <div className={styles.section}>
+            <div className={styles.container}>
+              <Form noValidate>
               <div className={styles.form}>
                 <TextField
                   label="First Name"
@@ -305,8 +306,16 @@ const QuoteStep3 = () => {
                 <button
                   type="submit"
                   className={styles.next}
+                  disabled={isSubmitting}
                 >
-                  SUBMIT
+                  {isSubmitting ? (
+                    <>
+                      <span className={styles.spinner}></span>
+                      SUBMITTING...
+                    </>
+                  ) : (
+                    "SUBMIT"
+                  )}
                 </button>
                 <button
                   className={styles.previous}
@@ -321,6 +330,7 @@ const QuoteStep3 = () => {
             </Form>
           </div>
         </div>
+        )}
       </Formik>
 
       <SuccessModal
