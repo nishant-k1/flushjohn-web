@@ -170,7 +170,7 @@ const HeroQuickQuote = () => {
   };
 
   return (
-    <Formik<any>
+    <Formik
       initialValues={{
         usageType: "",
         products: [],
@@ -311,7 +311,7 @@ const HeroQuickQuote = () => {
         }
       }}
     >
-      {((({ isSubmitting }: any) => (
+      {(({ isSubmitting }: any) => (
         <div
           className={styles.overlay}
           style={{
@@ -319,156 +319,156 @@ const HeroQuickQuote = () => {
           }}
         >
           <Form>
-          <AnimationWrapper
-            effect={animations?.zoomOutAndZoomIn}
-            animationKey={String(heroQuickQuoteViewStatus)}
-            className={styles.quickQuoteform}
-          >
-            <Grid
-              container
-              spacing={0.5}
+            <AnimationWrapper
+              effect={animations?.zoomOutAndZoomIn}
+              animationKey={String(heroQuickQuoteViewStatus)}
+              className={styles.quickQuoteform}
             >
               <Grid
-                item
-                xs={12}
+                container
+                spacing={0.5}
               >
-                <div>
-                  <h2>Get My Free Quote</h2>
-                </div>
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyRadioField
-                  label="Event"
-                  name="usageType"
-                  value="event"
-                  className={styles.radio}
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyRadioField
-                  label="Construction"
-                  name="usageType"
-                  value="construction"
-                  className={styles.radio}
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyMultipleSelectCheckmarks
-                  label="Portable Units"
-                  name="products"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyDateField
-                  label="Delivery Date"
-                  className={styles.date}
-                  name="deliveryDate"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyDateField
-                  className={styles.date}
-                  label="Pickup Date"
-                  name="pickupDate"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyZipTextField
-                  label="Zip"
-                  name="zip"
-                  placeholder="Zip"
-                  min={0}
-                  maxLength={5}
-                  inputMode="numeric"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyTextField
-                  label="First Name"
-                  name="fName"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={6}
-              >
-                <MyTextField
-                  label="Last Name"
-                  name="lName"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyTextField
-                  label="Email"
-                  name="email"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyPhoneTextField
-                  label="Phone"
-                  name="phone"
-                  placeholder="Phone"
-                  type="tel"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-              >
-                <MyMultilineTextField
-                  label="Instructions (if any)"
-                  name="instructions"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={3}
-              >
-                <Button
-                  variant="contained"
-                  style={{
-                    background: "var(--primary-bg-color)",
-                    borderRadius: 0,
-                  }}
-                  endIcon={<SendIcon size={18} />}
-                  type="submit"
-                  loading={isSubmitting}
-                  disabled={isSubmitting}
+                <Grid
+                  item
+                  xs={12}
                 >
-                  Send
-                </Button>
+                  <div>
+                    <h2>Get My Free Quote</h2>
+                  </div>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyRadioField
+                    label="Event"
+                    name="usageType"
+                    value="event"
+                    className={styles.radio}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyRadioField
+                    label="Construction"
+                    name="usageType"
+                    value="construction"
+                    className={styles.radio}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyMultipleSelectCheckmarks
+                    label="Portable Units"
+                    name="products"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyDateField
+                    label="Delivery Date"
+                    className={styles.date}
+                    name="deliveryDate"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyDateField
+                    className={styles.date}
+                    label="Pickup Date"
+                    name="pickupDate"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyZipTextField
+                    label="Zip"
+                    name="zip"
+                    placeholder="Zip"
+                    min={0}
+                    maxLength={5}
+                    inputMode="numeric"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyTextField
+                    label="First Name"
+                    name="fName"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <MyTextField
+                    label="Last Name"
+                    name="lName"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyTextField
+                    label="Email"
+                    name="email"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyPhoneTextField
+                    label="Phone"
+                    name="phone"
+                    placeholder="Phone"
+                    type="tel"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                >
+                  <MyMultilineTextField
+                    label="Instructions (if any)"
+                    name="instructions"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={3}
+                >
+                  <Button
+                    variant="contained"
+                    style={{
+                      background: "var(--primary-bg-color)",
+                      borderRadius: 0,
+                    }}
+                    endIcon={<SendIcon size={18} />}
+                    type="submit"
+                    loading={isSubmitting}
+                    disabled={isSubmitting}
+                  >
+                    Send
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </AnimationWrapper>
-        </Form>
-      </div>
+            </AnimationWrapper>
+          </Form>
+        </div>
       )) as unknown as React.ReactNode}
       <SuccessModal
         isOpen={showSuccessModal}
