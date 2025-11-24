@@ -162,6 +162,9 @@ const QuoteStep3 = () => {
         validateOnChange={false}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
+          // Set local submitting state immediately to show spinner
+          setIsSubmittingLocal(true);
+          
           try {
             const finalData = {
               ...formValues,
