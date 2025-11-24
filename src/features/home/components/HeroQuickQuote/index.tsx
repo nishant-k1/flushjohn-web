@@ -311,7 +311,7 @@ const HeroQuickQuote = () => {
         }
       }}
     >
-      {(({ isSubmitting }: any) => (
+      {((({ isSubmitting }: any) => (
         <div
           className={styles.overlay}
           style={{
@@ -469,7 +469,7 @@ const HeroQuickQuote = () => {
           </AnimationWrapper>
         </Form>
       </div>
-      )) as React.ReactNode}
+      )) as unknown as React.ReactNode}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
