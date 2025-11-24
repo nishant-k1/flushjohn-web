@@ -1,14 +1,17 @@
 /* Custom React DatePicker Styling - Matches FlushJohn Theme */
 
 /* Date input field - matches original styling exactly */
+.react-datepicker__input-container input.custom-datepicker,
+.react-datepicker__input-container .custom-datepicker,
+input.custom-datepicker,
 .custom-datepicker {
   width: 100% !important;
   margin: 0 !important;
   height: 2rem !important;
   outline: none;
   border: none;
-  padding: 0 8px 0 12px !important;
-  font-size: 14px;
+  padding: 0 32px 0 12px !important;
+  font-size: 14px !important;
   color: black !important;
   background: white !important;
   cursor: pointer !important;
@@ -22,8 +25,6 @@
     "Segoe UI Symbol", "Noto Color Emoji";
   box-sizing: border-box !important;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .custom-datepicker:hover {
@@ -35,14 +36,20 @@
   outline: none;
 }
 
+.react-datepicker__input-container input.custom-datepicker::placeholder,
+.react-datepicker__input-container .custom-datepicker::placeholder,
+input.custom-datepicker::placeholder,
 .custom-datepicker::placeholder {
   color: rgba(0, 0, 0, 0.6) !important;
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
+.react-datepicker__input-container input.custom-datepicker:focus::placeholder,
+.react-datepicker__input-container .custom-datepicker:focus::placeholder,
+input.custom-datepicker:focus::placeholder,
 .custom-datepicker:focus::placeholder {
   color: rgba(0, 0, 0, 0.4) !important;
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 /* Error state styling - needs to override .date input styles */

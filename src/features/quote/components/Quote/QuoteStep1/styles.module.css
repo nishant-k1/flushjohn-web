@@ -130,3 +130,27 @@
   border-radius: 4px;
   border-left: 3px solid #ef648a;
 }
+
+/* Mobile: Stack Usage Type label and radio buttons vertically */
+@media screen and (max-width: 599px) {
+  .usage_type_row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .field_label {
+    flex: none;
+    width: 100%;
+  }
+
+  .radio_inner_box {
+    flex: none;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}

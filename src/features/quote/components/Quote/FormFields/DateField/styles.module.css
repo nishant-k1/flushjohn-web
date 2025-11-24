@@ -72,3 +72,22 @@
   font-size: 12px;
   margin-top: 4px;
 }
+
+/* Mobile: Stack label and input vertically */
+@media screen and (max-width: 599px) {
+  .fieldRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .fieldLabel {
+    flex: none;
+    width: 100%;
+  }
+
+  .inputContainer {
+    flex: none;
+    width: 100%;
+  }
+}

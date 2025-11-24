@@ -33,7 +33,7 @@ const DateField = ({ label, ...props }: any) => {
             if (date) {
               const formatted = date.toLocaleDateString("en-US", {
                 year: "numeric",
-                month: "long",
+                month: "short",
                 day: "numeric",
               });
               setValue(formatted);
@@ -43,7 +43,7 @@ const DateField = ({ label, ...props }: any) => {
           }}
           onBlur={() => setTouched(true)}
           minDate={new Date()}
-          dateFormat="MMMM d, yyyy"
+          dateFormat="MMM d, yyyy"
           placeholderText={props.placeholder || label}
           className={`full-form-datepicker ${styles.dateInput} ${props.className || ""} ${
             touched && error ? "error_field" : ""
