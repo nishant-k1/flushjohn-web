@@ -312,13 +312,13 @@ const HeroQuickQuote = () => {
       }}
     >
       {({ isSubmitting }) => (
-        <div
-          className={styles.overlay}
-          style={{
-            display: heroQuickQuoteViewStatus ? "block" : "none",
-          }}
-        >
-          <Form>
+          <div
+            className={styles.overlay}
+            style={{
+              display: heroQuickQuoteViewStatus ? "block" : "none",
+            }}
+          >
+            <Form>
           <AnimationWrapper
             effect={animations?.zoomOutAndZoomIn}
             animationKey={String(heroQuickQuoteViewStatus)}
