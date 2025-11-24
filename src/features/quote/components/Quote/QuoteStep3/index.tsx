@@ -39,6 +39,7 @@ const QuoteStep3 = () => {
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const forceUpdateRef = React.useRef(0);
 
   const handleLeadConversion = React.useCallback((url?: string) => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -164,9 +165,11 @@ const QuoteStep3 = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           // Set local submitting state immediately to show spinner
           setIsSubmittingLocal(true);
+          // Force re-render by updating ref
+          forceUpdateRef.current += 1;
           
-          // Force a microtask to ensure state update is processed
-          await Promise.resolve();
+          // Use requestAnimationFrame to ensure React processes the state update before async operations
+          await new Promise(resolve => requestAnimationFrame(resolve));
           
           try {
             const finalData = {
@@ -264,9 +267,11 @@ const QuoteStep3 = () => {
         }}
       >
         {({ isSubmitting }) => {
+          // Force re-render by accessing the state value
           const showSpinner = isSubmittingLocal || isSubmitting;
+          // Use a key to force re-render when state changes
           return (
-          <div className={styles.section}>
+          <div key={`form-${isSubmittingLocal}-${isSubmitting}-${forceUpdateRef.current}`} className={styles.section}>
             <div className={styles.container}>
               <Form noValidate>
               <div className={styles.form}>
