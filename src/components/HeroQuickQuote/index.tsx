@@ -25,6 +25,7 @@ import {
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
 import SuccessModal from "@/components/SuccessModal";
+import ErrorModal from "@/components/ErrorModal";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Please select usage type"),
@@ -212,6 +213,7 @@ const HeroQuickQuote = () => {
   const [heroQuickQuoteViewStatus, setHeroQuickQuoteViewStatus] =
     useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const { setQuickQuoteRequested } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
@@ -233,10 +235,83 @@ const HeroQuickQuote = () => {
 
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
+  const submitInProgressRef = React.useRef(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const createLead = React.useCallback((data: any) => {
-    socketRef.current?.emit("createLead", data);
-  }, []);
+  // Set up socket event listeners
+  React.useEffect(() => {
+    const currentSocket = socketRef.current;
+    if (currentSocket) {
+      currentSocket.on("connect", () => {
+        console.log("Socket connected for HeroQuickQuote");
+      });
+
+      currentSocket.on("disconnect", () => {
+        console.log("Socket disconnected for HeroQuickQuote");
+      });
+
+      currentSocket.on("connect_error", (error) => {
+        console.error("Socket connection error:", error);
+      });
+
+      currentSocket.on("leadCreated", (response) => {
+        if (submitInProgressRef.current) {
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+          }
+          setShowSuccessModal(true);
+          setQuickQuoteRequested(true);
+          handleLeadConversion();
+          submitInProgressRef.current = false;
+        }
+      });
+
+      currentSocket.on("leadCreationError", (error) => {
+        if (submitInProgressRef.current) {
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+          }
+          setShowErrorModal(true);
+          submitInProgressRef.current = false;
+        }
+      });
+
+      return () => {
+        currentSocket.off("connect");
+        currentSocket.off("disconnect");
+        currentSocket.off("connect_error");
+        currentSocket.off("leadCreated");
+        currentSocket.off("leadCreationError");
+      };
+    }
+  }, [setQuickQuoteRequested]);
+
+  const createLeadViaHTTP = React.useCallback(
+    async (data: any) => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/leads`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          return result;
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to create lead");
+        }
+      } catch (error) {
+        throw error;
+      }
+    },
+    [API_BASE_URL]
+  );
 
   const handleLeadConversion = (url?: string) => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -282,34 +357,110 @@ const HeroQuickQuote = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setHeroQuickQuoteViewStatus(false);
           try {
-            createLead({ ...values, leadSource: "Web Hero Quick Lead" });
-            setShowSuccessModal(true);
-            setQuickQuoteRequested(true);
-            handleLeadConversion();
+            const finalData = { ...values, leadSource: "Web Hero Quick Lead" };
+
+            // Clear any existing timeout
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current);
+              timeoutRef.current = null;
+            }
+
+            submitInProgressRef.current = true;
+            setSubmitting(true);
+
+            // Try socket first
+            if (socketRef.current && socketRef.current.connected) {
+              socketRef.current.emit("createLead", finalData);
+              // Wait for socket response (handled by event listeners)
+              // Set a timeout to fallback to HTTP if no response
+              timeoutRef.current = setTimeout(() => {
+                if (submitInProgressRef.current) {
+                  // Socket didn't respond, try HTTP
+                  createLeadViaHTTP(finalData)
+                    .then(() => {
+                      setShowSuccessModal(true);
+                      setQuickQuoteRequested(true);
+                      handleLeadConversion();
+                      submitInProgressRef.current = false;
+                      timeoutRef.current = null;
+                    })
+                    .catch(() => {
+                      setShowErrorModal(true);
+                      submitInProgressRef.current = false;
+                      timeoutRef.current = null;
+                    });
+                }
+              }, 5000); // 5 second timeout for socket
+            } else {
+              // Socket not connected, try to connect and emit, or use HTTP
+              socketRef.current?.connect();
+              timeoutRef.current = setTimeout(() => {
+                if (socketRef.current?.connected) {
+                  socketRef.current.emit("createLead", finalData);
+                  // Set timeout for HTTP fallback
+                  const fallbackTimeout = setTimeout(() => {
+                    if (submitInProgressRef.current) {
+                      createLeadViaHTTP(finalData)
+                        .then(() => {
+                          setShowSuccessModal(true);
+                          setQuickQuoteRequested(true);
+                          handleLeadConversion();
+                          submitInProgressRef.current = false;
+                          timeoutRef.current = null;
+                        })
+                        .catch(() => {
+                          setShowErrorModal(true);
+                          submitInProgressRef.current = false;
+                          timeoutRef.current = null;
+                        });
+                    }
+                  }, 5000);
+                  timeoutRef.current = fallbackTimeout;
+                } else {
+                  // Socket failed, use HTTP
+                  createLeadViaHTTP(finalData)
+                    .then(() => {
+                      setShowSuccessModal(true);
+                      setQuickQuoteRequested(true);
+                      handleLeadConversion();
+                      submitInProgressRef.current = false;
+                      timeoutRef.current = null;
+                    })
+                    .catch(() => {
+                      setShowErrorModal(true);
+                      submitInProgressRef.current = false;
+                      timeoutRef.current = null;
+                    });
+                }
+              }, 1000);
+            }
           } catch (err) {
-
+            console.error("Error submitting lead:", err);
+            setShowErrorModal(true);
+            submitInProgressRef.current = false;
+          } finally {
+            setSubmitting(false);
+            resetForm({
+              values: {
+                usageType: "",
+                products: [],
+                deliveryDate: "",
+                pickupDate: "",
+                street: "",
+                zip: "",
+                city: "",
+                state: "",
+                instructions: "",
+                fName: "",
+                lName: "",
+                cName: "",
+                email: "",
+                phone: "",
+                contactPersonName: "",
+                contactPersonPhone: "",
+              },
+            });
           }
-
-          resetForm({
-            values: {
-              usageType: "",
-              products: [],
-              deliveryDate: "",
-              pickupDate: "",
-              street: "",
-              zip: "",
-              city: "",
-              state: "",
-              instructions: "",
-              fName: "",
-              lName: "",
-              cName: "",
-              email: "",
-              phone: "",
-              contactPersonName: "",
-              contactPersonPhone: "",
-            },
-          });
         }}
       >
         <div
@@ -464,6 +615,13 @@ const HeroQuickQuote = () => {
         title="Thank You!"
         message="Your quick quote request has been received successfully."
         submessage="One of our representatives will contact you within 24 hours."
+      />
+      <ErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        title="Submission Failed"
+        message="Failed to submit your quote request. Please try again."
+        submessage="If the problem persists, please contact our support team."
       />
     </>
   );

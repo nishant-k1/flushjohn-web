@@ -110,7 +110,6 @@ const QuoteStep3 = () => {
   const createLeadViaHTTP = React.useCallback(
     async (data: any) => {
       try {
-
         const response = await fetch(`${API_BASE_URL}/leads`, {
           method: "POST",
           headers: {
