@@ -165,6 +165,9 @@ const QuoteStep3 = () => {
           // Set local submitting state immediately to show spinner
           setIsSubmittingLocal(true);
           
+          // Force a microtask to ensure state update is processed
+          await Promise.resolve();
+          
           try {
             const finalData = {
               ...formValues,
