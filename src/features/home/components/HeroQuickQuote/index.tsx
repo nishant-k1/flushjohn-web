@@ -1,6 +1,6 @@
 "use client";
 
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormikContext } from "formik";
 import styles from "./styles.module.css";
 import React, { useContext, useState } from "react";
 import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
@@ -170,7 +170,7 @@ const HeroQuickQuote = () => {
   };
 
   return (
-    <Formik
+    <Formik<any>
       initialValues={{
         usageType: "",
         products: [],
@@ -311,14 +311,14 @@ const HeroQuickQuote = () => {
         }
       }}
     >
-      {({ isSubmitting }) => (
-          <div
-            className={styles.overlay}
-            style={{
-              display: heroQuickQuoteViewStatus ? "block" : "none",
-            }}
-          >
-            <Form>
+      {(({ isSubmitting }: any) => (
+        <div
+          className={styles.overlay}
+          style={{
+            display: heroQuickQuoteViewStatus ? "block" : "none",
+          }}
+        >
+          <Form>
           <AnimationWrapper
             effect={animations?.zoomOutAndZoomIn}
             animationKey={String(heroQuickQuoteViewStatus)}
@@ -469,7 +469,7 @@ const HeroQuickQuote = () => {
           </AnimationWrapper>
         </Form>
       </div>
-      )}
+      )) as React.ReactNode}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
