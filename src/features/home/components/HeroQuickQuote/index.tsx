@@ -473,7 +473,6 @@ const HeroQuickQuote = () => {
                     type="submit"
                     loading={showSpinner}
                     disabled={showSpinner}
-                    onClick={() => setIsSubmittingLocal(true)}
                   >
                     Send
                   </Button>

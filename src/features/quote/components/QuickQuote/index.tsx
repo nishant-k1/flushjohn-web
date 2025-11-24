@@ -652,7 +652,6 @@ const QuickQuote = () => {
                         type="submit"
                         loading={showSpinner}
                         disabled={showSpinner}
-                        onClick={() => setIsSubmittingLocal(true)}
                       >
                         Send
                       </Button>
