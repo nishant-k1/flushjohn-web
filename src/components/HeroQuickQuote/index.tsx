@@ -326,7 +326,6 @@ const HeroQuickQuote = () => {
         event_callback: callback,
       });
     } else {
-
     }
   };
 
