@@ -17,6 +17,7 @@ import ErrorModal from "@/components/ErrorModal";
 const QuoteStep3 = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
+  const [isSubmittingLocal, setIsSubmittingLocal] = React.useState(false);
   const { render, data, setQuoteRequested } = useContext(QuoteContext);
   const [_, setStep] = render;
   const [formValues, setFormValues] = data;
@@ -82,6 +83,7 @@ const QuoteStep3 = () => {
           setQuoteRequested(true);
           handleLeadConversion();
           submitInProgressRef.current = false;
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -94,6 +96,7 @@ const QuoteStep3 = () => {
           }
           setShowErrorModal(true);
           submitInProgressRef.current = false;
+          setIsSubmittingLocal(false);
         }
       });
 
@@ -159,6 +162,9 @@ const QuoteStep3 = () => {
         validateOnChange={false}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
+          // Set local submitting state immediately to show spinner
+          setIsSubmittingLocal(true);
+          
           try {
             const finalData = {
               ...formValues,
@@ -190,11 +196,13 @@ const QuoteStep3 = () => {
                       handleLeadConversion();
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setIsSubmittingLocal(false);
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setIsSubmittingLocal(false);
                     });
                 }
               }, 5000); // 5 second timeout for socket
@@ -232,11 +240,13 @@ const QuoteStep3 = () => {
                       handleLeadConversion();
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setIsSubmittingLocal(false);
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
+                      setIsSubmittingLocal(false);
                     });
                 }
               }, 1000);
@@ -246,10 +256,13 @@ const QuoteStep3 = () => {
             submitInProgressRef.current = false;
           } finally {
             setSubmitting(false);
+            setIsSubmittingLocal(false);
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting }) => {
+          const showSpinner = isSubmittingLocal || isSubmitting;
+          return (
           <div className={styles.section}>
             <div className={styles.container}>
               <Form noValidate>
@@ -306,9 +319,9 @@ const QuoteStep3 = () => {
                 <button
                   type="submit"
                   className={styles.next}
-                  disabled={isSubmitting}
+                  disabled={showSpinner}
                 >
-                  {isSubmitting ? (
+                  {showSpinner ? (
                     <>
                       <span className={styles.spinner}></span>
                       SUBMITTING...
@@ -330,7 +343,8 @@ const QuoteStep3 = () => {
             </Form>
           </div>
         </div>
-        )}
+        );
+        }}
       </Formik>
 
       <SuccessModal
