@@ -327,20 +327,20 @@ const QuickQuote = () => {
               display: quickQuoteViewStatus ? "flex" : "none",
             }}
           >
-            <CloseIcon
-              size={24}
-              className={styles.closeIcon}
-              onClick={() => {
-                setQuickQuoteViewStatus(false);
-                setQuickQuoteTitle("Quick Quote");
-              }}
-            />
             <Form>
               <AnimationWrapper
                 effect={animations?.zoomOutAndZoomIn}
                 animationKey={String(quickQuoteViewStatus)}
                 className={styles.quickQuoteform}
               >
+                <CloseIcon
+                  size={24}
+                  className={styles.closeIcon}
+                  onClick={() => {
+                    setQuickQuoteViewStatus(false);
+                    setQuickQuoteTitle("Quick Quote");
+                  }}
+                />
                 <div>
                   <Grid
                     container
