@@ -38,7 +38,9 @@ const QuoteStep3 = () => {
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
+  const socketSucceededRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const pendingLeadDataRef = React.useRef<any>(null);
 
   const handleLeadConversion = React.useCallback((url?: string) => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -74,6 +76,8 @@ const QuoteStep3 = () => {
 
       currentSocket.on("leadCreated", (response) => {
         if (submitInProgressRef.current) {
+          // Mark socket as succeeded to prevent HTTP fallback
+          socketSucceededRef.current = true;
           // Clear timeout since we got a response
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -84,19 +88,36 @@ const QuoteStep3 = () => {
           handleLeadConversion();
           submitInProgressRef.current = false;
           setIsSubmittingLocal(false);
+          pendingLeadDataRef.current = null;
         }
       });
 
       currentSocket.on("leadCreationError", (error) => {
-        if (submitInProgressRef.current) {
+        if (submitInProgressRef.current && !socketSucceededRef.current) {
+          // Socket failed, allow HTTP fallback
           // Clear timeout since we got an error
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
           }
-          setShowErrorModal(true);
-          submitInProgressRef.current = false;
-          setIsSubmittingLocal(false);
+          // Try HTTP fallback if we have pending data
+          if (pendingLeadDataRef.current) {
+            createLeadViaHTTP(pendingLeadDataRef.current)
+              .then(() => {
+                setShowSuccessModal(true);
+                setQuoteRequested(true);
+                handleLeadConversion();
+                submitInProgressRef.current = false;
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
+              })
+              .catch(() => {
+                setShowErrorModal(true);
+                submitInProgressRef.current = false;
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
+              });
+          }
         }
       });
 
@@ -172,6 +193,10 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             };
 
+            // Reset socket success flag for new submission
+            socketSucceededRef.current = false;
+            pendingLeadDataRef.current = finalData;
+
             // Clear any existing timeout
             if (timeoutRef.current) {
               clearTimeout(timeoutRef.current);
@@ -187,7 +212,8 @@ const QuoteStep3 = () => {
               // Wait for socket response (handled by event listeners)
               // Set a timeout to fallback to HTTP if no response
               timeoutRef.current = setTimeout(() => {
-                if (submitInProgressRef.current) {
+                // Only fallback to HTTP if socket hasn't succeeded
+                if (submitInProgressRef.current && !socketSucceededRef.current) {
                   // Socket didn't respond, try HTTP
                   createLeadViaHTTP(finalData)
                     .then(() => {
@@ -197,12 +223,14 @@ const QuoteStep3 = () => {
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     });
                 }
               }, 5000); // 5 second timeout for socket
@@ -214,7 +242,8 @@ const QuoteStep3 = () => {
                   socketRef.current.emit("createLead", finalData);
                   // Set timeout for HTTP fallback
                   const fallbackTimeout = setTimeout(() => {
-                    if (submitInProgressRef.current) {
+                    // Only fallback to HTTP if socket hasn't succeeded
+                    if (submitInProgressRef.current && !socketSucceededRef.current) {
                       createLeadViaHTTP(finalData)
                         .then(() => {
                           setShowSuccessModal(true);
@@ -222,11 +251,15 @@ const QuoteStep3 = () => {
                           handleLeadConversion();
                           submitInProgressRef.current = false;
                           timeoutRef.current = null;
+                          setIsSubmittingLocal(false);
+                          pendingLeadDataRef.current = null;
                         })
                         .catch(() => {
                           setShowErrorModal(true);
                           submitInProgressRef.current = false;
                           timeoutRef.current = null;
+                          setIsSubmittingLocal(false);
+                          pendingLeadDataRef.current = null;
                         });
                     }
                   }, 5000);
@@ -241,12 +274,14 @@ const QuoteStep3 = () => {
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     });
                 }
               }, 1000);
@@ -257,6 +292,7 @@ const QuoteStep3 = () => {
             submitInProgressRef.current = false;
             setSubmitting(false);
             setIsSubmittingLocal(false);
+            pendingLeadDataRef.current = null;
           }
         }}
       >

@@ -237,8 +237,10 @@ const HeroQuickQuote = () => {
   const socketRef = React.useRef<Socket | null>(null);
   socketRef.current = socket;
   const submitInProgressRef = React.useRef(false);
+  const socketSucceededRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const setSubmittingRef = React.useRef<((isSubmitting: boolean) => void) | null>(null);
+  const pendingLeadDataRef = React.useRef<any>(null);
 
   // Set up socket event listeners
   React.useEffect(() => {
@@ -258,6 +260,8 @@ const HeroQuickQuote = () => {
 
       currentSocket.on("leadCreated", (response) => {
         if (submitInProgressRef.current) {
+          // Mark socket as succeeded to prevent HTTP fallback
+          socketSucceededRef.current = true;
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
@@ -270,21 +274,41 @@ const HeroQuickQuote = () => {
             setSubmittingRef.current(false);
           }
           setIsSubmittingLocal(false);
+          pendingLeadDataRef.current = null;
         }
       });
 
       currentSocket.on("leadCreationError", (error) => {
-        if (submitInProgressRef.current) {
+        if (submitInProgressRef.current && !socketSucceededRef.current) {
+          // Socket failed, allow HTTP fallback
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
           }
-          setShowErrorModal(true);
-          submitInProgressRef.current = false;
-          if (setSubmittingRef.current) {
-            setSubmittingRef.current(false);
+          // Try HTTP fallback if we have pending data
+          if (pendingLeadDataRef.current) {
+            createLeadViaHTTP(pendingLeadDataRef.current)
+              .then(() => {
+                setShowSuccessModal(true);
+                setQuickQuoteRequested(true);
+                handleLeadConversion();
+                submitInProgressRef.current = false;
+                if (setSubmittingRef.current) {
+                  setSubmittingRef.current(false);
+                }
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
+              })
+              .catch(() => {
+                setShowErrorModal(true);
+                submitInProgressRef.current = false;
+                if (setSubmittingRef.current) {
+                  setSubmittingRef.current(false);
+                }
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
+              });
           }
-          setIsSubmittingLocal(false);
         }
       });
 
@@ -377,6 +401,10 @@ const HeroQuickQuote = () => {
           try {
             const finalData = { ...values, leadSource: "Web Hero Quick Lead" };
 
+            // Reset socket success flag for new submission
+            socketSucceededRef.current = false;
+            pendingLeadDataRef.current = finalData;
+
             // Clear any existing timeout
             if (timeoutRef.current) {
               clearTimeout(timeoutRef.current);
@@ -389,7 +417,8 @@ const HeroQuickQuote = () => {
               // Wait for socket response (handled by event listeners)
               // Set a timeout to fallback to HTTP if no response
               timeoutRef.current = setTimeout(() => {
-                if (submitInProgressRef.current) {
+                // Only fallback to HTTP if socket hasn't succeeded
+                if (submitInProgressRef.current && !socketSucceededRef.current) {
                   // Socket didn't respond, try HTTP
                   createLeadViaHTTP(finalData)
                     .then(() => {
@@ -399,14 +428,16 @@ const HeroQuickQuote = () => {
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setSubmitting(false);
-                    setIsSubmittingLocal(false);
+                      setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setSubmitting(false);
-                    setIsSubmittingLocal(false);
+                      setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     });
                 }
               }, 5000); // 5 second timeout for socket
@@ -418,7 +449,8 @@ const HeroQuickQuote = () => {
                   socketRef.current.emit("createLead", finalData);
                   // Set timeout for HTTP fallback
                   const fallbackTimeout = setTimeout(() => {
-                    if (submitInProgressRef.current) {
+                    // Only fallback to HTTP if socket hasn't succeeded
+                    if (submitInProgressRef.current && !socketSucceededRef.current) {
                       createLeadViaHTTP(finalData)
                         .then(() => {
                           setHeroQuickQuoteViewStatus(false);
@@ -427,13 +459,16 @@ const HeroQuickQuote = () => {
                           handleLeadConversion();
                           submitInProgressRef.current = false;
                           timeoutRef.current = null;
+                          setIsSubmittingLocal(false);
+                          pendingLeadDataRef.current = null;
                         })
                         .catch(() => {
                           setShowErrorModal(true);
                           submitInProgressRef.current = false;
                           timeoutRef.current = null;
                           setSubmitting(false);
-                    setIsSubmittingLocal(false);
+                          setIsSubmittingLocal(false);
+                          pendingLeadDataRef.current = null;
                         });
                     }
                   }, 5000);
@@ -448,14 +483,16 @@ const HeroQuickQuote = () => {
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setSubmitting(false);
-                    setIsSubmittingLocal(false);
+                      setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     })
                     .catch(() => {
                       setShowErrorModal(true);
                       submitInProgressRef.current = false;
                       timeoutRef.current = null;
                       setSubmitting(false);
-                    setIsSubmittingLocal(false);
+                      setIsSubmittingLocal(false);
+                      pendingLeadDataRef.current = null;
                     });
                 }
               }, 1000);
@@ -465,6 +502,7 @@ const HeroQuickQuote = () => {
             setShowErrorModal(true);
             submitInProgressRef.current = false;
             setSubmitting(false);
+            pendingLeadDataRef.current = null;
           } finally {
             // Clear the ref
             setSubmittingRef.current = null;
