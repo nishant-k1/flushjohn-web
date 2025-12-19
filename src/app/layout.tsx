@@ -126,19 +126,19 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
         />
 
-        {/* Preload critical fonts - woff2 format for better performance */}
+        {/* Preload critical fonts - using TTF format (matches globals.css) */}
         <link
           rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.woff2"
+          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
           as="font"
-          type="font/woff2"
+          type="font/truetype"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.woff2"
+          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
           as="font"
-          type="font/woff2"
+          type="font/truetype"
           crossOrigin="anonymous"
         />
 
