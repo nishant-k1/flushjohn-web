@@ -23,6 +23,9 @@ const nextConfig = {
       config.optimization.providedExports = true;
       config.optimization.moduleIds = "deterministic";
       config.optimization.chunkIds = "deterministic";
+      
+      // Aggressive tree shaking for unused code elimination
+      config.optimization.flagIncludedChunks = true;
 
       // Reduce bundle size with aggressive splitting
       config.optimization.splitChunks.maxAsyncRequests = 20;
@@ -30,9 +33,13 @@ const nextConfig = {
       config.optimization.splitChunks.minSize = 20000;
       config.optimization.splitChunks.maxSize = 244000;
 
-      // Better minification
+      // Better minification with aggressive settings
       config.optimization.minimize = true;
       config.optimization.concatenateModules = true;
+      config.optimization.mangleExports = true;
+      config.optimization.removeAvailableModules = true;
+      config.optimization.removeEmptyChunks = true;
+      config.optimization.mergeDuplicateChunks = true;
 
       // Remove unused CSS and JS
       config.optimization.splitChunks = {
@@ -168,7 +175,16 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
+          },
+        ],
+      },
+      {
+        source: "/_next/image(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -177,7 +193,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -188,7 +204,7 @@ const nextConfig = {
             key: "Cache-Control",
             value:
               process.env.NODE_ENV === "production"
-                ? "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400"
+                ? "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400, immutable"
                 : "no-store, must-revalidate",
           },
           {

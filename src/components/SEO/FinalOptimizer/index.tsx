@@ -6,6 +6,7 @@ import {
   cleanupThirdPartyScripts,
   manageCookies,
 } from "@/utils/errorHandling";
+import { optimizeLongTasks, deferNonCriticalInit } from "@/utils/longTaskOptimizer";
 
 const FinalOptimizer = () => {
   useEffect(() => {
@@ -72,21 +73,15 @@ const FinalOptimizer = () => {
 
       removeDeprecatedAPIs();
       optimizeThirdPartyScripts();
+      
+      // Optimize long tasks to reduce TBT
+      optimizeLongTasks();
 
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(
-          () => {
-            optimizeFormValidation();
-            optimizeAnimations();
-          },
-          { timeout: 3000 }
-        );
-      } else {
-        setTimeout(() => {
-          optimizeFormValidation();
-          optimizeAnimations();
-        }, 2000);
-      }
+      // Defer non-critical optimizations
+      deferNonCriticalInit(() => {
+        optimizeFormValidation();
+        optimizeAnimations();
+      });
 
       const enablePassiveListeners = () => {
         const events = ["scroll", "wheel", "touchstart", "touchmove"];
