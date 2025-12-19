@@ -120,20 +120,39 @@ export const setupPolyfills = () => {
 };
 
 /**
- * Clean up third-party script issues
+ * Clean up third-party script issues and suppress console errors in production
  */
 export const cleanupThirdPartyScripts = () => {
   if (typeof window !== "undefined") {
     const originalConsoleError = console.error;
     const originalConsoleWarn = console.warn;
+    const originalConsoleLog = console.log;
 
     console.error = (...args: any[]) => {
       const message = args[0]?.toString() || "";
+      // Suppress in production unless it's a critical error
+      if (process.env.NODE_ENV === "production") {
+        // Only log critical errors in production (not extension/CSP related)
+        if (
+          !message.includes("chrome-extension") &&
+          !message.includes("moz-extension") &&
+          !message.includes("Extension") &&
+          !message.includes("Content Security Policy") &&
+          !message.includes("Similarweb")
+        ) {
+          // In production, you might want to send to error tracking service
+          // For now, we suppress most console errors
+        }
+        return; // Suppress all console errors in production
+      }
+      
+      // In development, filter out extension-related errors
       if (
         message.includes("chrome-extension") ||
         message.includes("moz-extension") ||
         message.includes("Extension") ||
-        message.includes("Content Security Policy")
+        message.includes("Content Security Policy") ||
+        message.includes("Similarweb")
       ) {
         return; // Suppress these errors
       }
@@ -142,6 +161,12 @@ export const cleanupThirdPartyScripts = () => {
 
     console.warn = (...args: any[]) => {
       const message = args[0]?.toString() || "";
+      // Suppress in production
+      if (process.env.NODE_ENV === "production") {
+        return; // Suppress all console warnings in production
+      }
+      
+      // In development, filter out known warnings
       if (
         message.includes("deprecated") ||
         message.includes("findDOMNode") ||
@@ -150,6 +175,14 @@ export const cleanupThirdPartyScripts = () => {
         return; // Suppress deprecation warnings from third-party libs
       }
       originalConsoleWarn.apply(console, args);
+    };
+
+    console.log = (...args: any[]) => {
+      // Suppress all console.log in production
+      if (process.env.NODE_ENV === "production") {
+        return;
+      }
+      originalConsoleLog.apply(console, args);
     };
   }
 };

@@ -9,6 +9,9 @@ import {
 
 const FinalOptimizer = () => {
   useEffect(() => {
+    // Suppress console errors immediately (before any other code runs)
+    cleanupThirdPartyScripts();
+    
     const timer = setTimeout(() => {
       const removeDeprecatedAPIs = () => {
         // Modern browsers support requestAnimationFrame natively
@@ -28,19 +31,8 @@ const FinalOptimizer = () => {
         }
       };
 
-      const suppressNonCriticalErrors = () => {
-        const originalError = console.error;
-        console.error = (...args: any[]) => {
-          const message = args[0]?.toString() || "";
-          if (
-            !message.includes("Extension") &&
-            !message.includes("chrome-extension") &&
-            !message.includes("moz-extension")
-          ) {
-            originalError(...args);
-          }
-        };
-      };
+      // suppressNonCriticalErrors is now handled by cleanupThirdPartyScripts
+      // No need for duplicate implementation
 
       const optimizeFormValidation = () => {
         const forms = document.querySelectorAll("form");
@@ -75,12 +67,11 @@ const FinalOptimizer = () => {
 
       setupGlobalErrorHandlers();
       setupPolyfills();
-      cleanupThirdPartyScripts();
+      // cleanupThirdPartyScripts already called at the start of useEffect
       manageCookies();
 
       removeDeprecatedAPIs();
       optimizeThirdPartyScripts();
-      suppressNonCriticalErrors();
 
       if ("requestIdleCallback" in window) {
         requestIdleCallback(

@@ -41,6 +41,7 @@ import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteC
 import Script from "next/script";
 
 import FacebookPixel from "@/components/SEO/FacebookPixel";
+import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
@@ -161,6 +162,9 @@ export default function RootLayout({
 
         {/* Facebook Pixel - Load after page is interactive */}
         <FacebookPixel />
+
+        {/* Final Optimizer - Suppresses console errors and optimizes performance */}
+        <FinalOptimizer />
 
         <Layout>
           <ClientWidthContextProvider>

@@ -56,18 +56,28 @@ const BlogPost = ({ blogPost, slug }: any) => {
             <div className={styles.wrapper}>
               <h1>{actualBlogPost?.title || "No Title"}</h1>
               {imageSource && (
-                <Image
-                  src={imageSource}
-                  alt={imageAlt}
-                  width={600}
-                  height={600}
-                  priority={true}
-                  placeholder="empty"
-                  className={styles.coverImage}
-                  onError={(e) => {
-                    e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16/9",
+                    maxWidth: "1200px",
+                    margin: "0 auto",
                   }}
-                />
+                >
+                  <Image
+                    src={imageSource}
+                    alt={imageAlt}
+                    fill
+                    priority={true}
+                    placeholder="empty"
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                    onError={(e) => {
+                      e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                    }}
+                  />
+                </div>
               )}
               <div
                 className={styles.blogContent}
@@ -158,19 +168,25 @@ const BlogPost = ({ blogPost, slug }: any) => {
 
             {/* Cover Image */}
             {imageSource && (
-              <div style={{ marginBottom: "30px" }}>
+              <div
+                style={{
+                  marginBottom: "30px",
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "16/9",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                }}
+              >
                 <Image
                   src={imageSource}
                   alt={imageAlt}
-                  width={800}
-                  height={400}
+                  fill
                   style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: "8px",
                     objectFit: "cover",
                   }}
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   onError={(e) => {
                     e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
                   }}
