@@ -29,11 +29,23 @@ export default function Carousel({
   useEffect(() => {
     if (!autoplay || totalSlides <= 1) return;
 
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, autoplaySpeed);
+    // Delay autoplay start to ensure first image is measured as LCP
+    // Wait for page to be interactive (LCP typically measured within 2.5s)
+    const startDelay = typeof window !== 'undefined' && 'requestIdleCallback' in window
+      ? 3000 // Wait 3 seconds to ensure LCP measurement completes
+      : 4000; // Fallback for browsers without requestIdleCallback
 
-    return () => clearInterval(timer);
+    const delayTimer = setTimeout(() => {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % totalSlides);
+      }, autoplaySpeed);
+
+      return () => clearInterval(timer);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(delayTimer);
+    };
   }, [autoplay, autoplaySpeed, totalSlides]);
 
   const goToSlide = (index: number) => {
