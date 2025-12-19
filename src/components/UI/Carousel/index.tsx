@@ -1,4 +1,3 @@
-
 /**
  * Lightweight Carousel Component
  * Replaces Antd Carousel (saves 30+ KB!)
@@ -7,8 +6,8 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import styles from './styles.module.css';
+import React, { useState, useEffect } from "react";
+import styles from "./styles.module.css";
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -31,9 +30,10 @@ export default function Carousel({
 
     // Delay autoplay start to ensure first image is measured as LCP
     // Wait for page to be interactive (LCP typically measured within 2.5s)
-    const startDelay = typeof window !== 'undefined' && 'requestIdleCallback' in window
-      ? 3000 // Wait 3 seconds to ensure LCP measurement completes
-      : 4000; // Fallback for browsers without requestIdleCallback
+    const startDelay =
+      typeof window !== "undefined" && "requestIdleCallback" in window
+        ? 3000 // Wait 3 seconds to ensure LCP measurement completes
+        : 4000; // Fallback for browsers without requestIdleCallback
 
     let intervalTimer: NodeJS.Timeout | null = null;
 
@@ -104,7 +104,7 @@ export default function Carousel({
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
-              className={`${styles.dot} ${currentSlide === index ? styles.activeDot : ''}`}
+              className={`${styles.dot} ${currentSlide === index ? styles.activeDot : ""}`}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
             />
