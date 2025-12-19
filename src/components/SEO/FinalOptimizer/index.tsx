@@ -11,13 +11,13 @@ const FinalOptimizer = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       const removeDeprecatedAPIs = () => {
-        if (
-          "webkitRequestAnimationFrame" in window &&
-          !("requestAnimationFrame" in window)
-        ) {
-          (window as any).requestAnimationFrame = (
-            window as any
-          ).webkitRequestAnimationFrame;
+        // Modern browsers support requestAnimationFrame natively
+        // webkitRequestAnimationFrame is deprecated and no longer needed
+        // Only add fallback for very old browsers (pre-2012)
+        if (!window.requestAnimationFrame) {
+          window.requestAnimationFrame = function (callback: FrameRequestCallback) {
+            return window.setTimeout(() => callback(Date.now()), 1000 / 60);
+          };
         }
       };
 

@@ -11,7 +11,8 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Aggressive optimization for production
+    // Aggressive optimization for production builds only
+    // Note: This config only applies to production builds, not Turbopack dev mode
     if (!dev && !isServer) {
       // Enhanced tree shaking and size optimization
       config.optimization.usedExports = true;
@@ -135,10 +136,16 @@ const nextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
-    formats: ["image/webp", "image/avif"],
+    // Prioritize AVIF (better compression) then WebP, fallback to original
+    formats: ["image/avif", "image/webp"],
+    // Optimized device sizes for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Optimized image sizes for srcset
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
+    // Long cache TTL for optimized images
     minimumCacheTTL: 31536000,
+    // Enable image optimization
+    unoptimized: false,
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -219,7 +226,7 @@ const nextConfig = {
                 {
                   key: "Content-Security-Policy",
                   value:
-                    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.flushjohn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src 'self' https://www.google-analytics.com https://api.flushjohn.com wss://api.flushjohn.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
+                    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src 'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net; frame-src 'self' https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;",
                 },
               ]
             : []),

@@ -1,10 +1,16 @@
 "use client"; // Ensure this component is a client component
 
-import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { animations } from "@/anmations/effectData";
 import AnimationWrapper from "../AnimationWrapper";
+
+// Lazy load framer-motion to reduce initial bundle size
+const AnimatePresence = dynamic(
+  () => import("framer-motion").then((mod) => mod.AnimatePresence),
+  { ssr: false }
+);
 
 const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();

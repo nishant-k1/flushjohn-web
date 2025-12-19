@@ -34,33 +34,29 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             Reliable, hygienic, and affordable portable toilet rentals for your
             event or job site.
           </p>
-          <div>
-            <Image
-              src={src_1}
-              alt={alt}
-              width={300}
-              height={600}
-              priority={true}
-              placeholder="empty"
-              style={{
-                maxWidth: "400px",
-                height: "auto",
-                width: "auto",
-              }}
-            />
-            <Image
-              src={src_2}
-              alt={alt}
-              width={300}
-              height={600}
-              priority={true}
-              placeholder="empty"
-              style={{
-                maxWidth: "400px",
-                height: "auto",
-                width: "auto",
-              }}
-            />
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div style={{ position: "relative", width: "300px", height: "400px", maxWidth: "100%" }}>
+              <Image
+                src={src_1}
+                alt={alt}
+                fill
+                priority={true}
+                placeholder="empty"
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 768px) 100vw, 300px"
+              />
+            </div>
+            <div style={{ position: "relative", width: "300px", height: "400px", maxWidth: "100%" }}>
+              <Image
+                src={src_2}
+                alt={alt}
+                fill
+                priority={true}
+                placeholder="empty"
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 768px) 100vw, 300px"
+              />
+            </div>
           </div>
           <p>{desc}</p>
           <h2>Why Choose Our {title}?</h2>

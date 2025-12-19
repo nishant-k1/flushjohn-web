@@ -1,15 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import styles from "./styles.module.css";
 import Indicator from "./Indicator";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { ProductImage } from "../../../constants";
 
+// Lazy load framer-motion to reduce initial bundle size
+const MotionDiv = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.div),
+  { ssr: false }
+);
+
 const Slider = ({ src_1, src_2, alt }: ProductImage) => {
-  const [toggle, setToggle] = React.useState(false);
+  const [toggle, setToggle] = useState(false);
   const setImage = () => {
     setToggle(!toggle);
   };
@@ -20,27 +26,24 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
           onClick={setImage}
           className={styles.arrow}
         />
-        <motion.div
+        <MotionDiv
           key={toggle ? src_2 : src_1}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
+          style={{ position: "relative", width: "150px", height: "120px" }}
         >
           <Image
-            height={250}
-            width={150}
             src={toggle ? src_2 : src_1}
             alt={alt}
+            fill
             priority={true}
             placeholder="empty"
-            style={{
-              maxHeight: "120px",
-              width: "auto",
-              height: "auto",
-            }}
+            style={{ objectFit: "contain" }}
+            sizes="150px"
           />
-        </motion.div>
+        </MotionDiv>
 
         <IoIosArrowDropright
           onClick={setImage}

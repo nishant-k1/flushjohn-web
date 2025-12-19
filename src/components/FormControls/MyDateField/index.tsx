@@ -1,11 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { ComponentType } from "react";
 import { useField } from "formik";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import dynamic from "next/dynamic";
 import "./datepicker.css";
 import styles from "@/features/quote/components/QuickQuote/styles.module.css";
+
+// Import CSS at module level (Next.js will handle it properly)
+import "react-datepicker/dist/react-datepicker.css";
+
+// Lazy load react-datepicker to reduce initial bundle size
+const DatePicker = dynamic(
+  () => import("react-datepicker") as Promise<{ default: ComponentType<any> }>,
+  {
+    ssr: false,
+    loading: () => (
+      <div style={{ padding: "8px", minHeight: "40px", display: "flex", alignItems: "center" }}>
+        Loading date picker...
+      </div>
+    ),
+  }
+);
 
 const MyDateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);

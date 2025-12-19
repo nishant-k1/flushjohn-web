@@ -20,7 +20,8 @@ import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import { QuickQuoteContextType } from "../../contexts/QuickQuoteContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
-import { io, Socket } from "socket.io-client";
+import { createSocket } from "@/utils/socketClient";
+import type { Socket } from "socket.io-client";
 import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
@@ -235,16 +236,31 @@ const QuickQuote = () => {
   }, [clientWidth]);
 
   const { API_BASE_URL } = apiBaseUrls;
-  const socket = io(`${API_BASE_URL}/leads`, {
-    transports: ["websocket"],
-    autoConnect: true,
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000,
-  });
-
   const socketRef = React.useRef<Socket | null>(null);
-  socketRef.current = socket;
+  
+  // Lazy load socket.io-client
+  React.useEffect(() => {
+    let mounted = true;
+    
+    createSocket(`${API_BASE_URL}/leads`, {
+      transports: ["websocket"],
+      autoConnect: true,
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
+    }).then((socket) => {
+      if (mounted) {
+        socketRef.current = socket;
+      }
+    });
+
+    return () => {
+      mounted = false;
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+      }
+    };
+  }, [API_BASE_URL]);
   const submitInProgressRef = React.useRef(false);
   const socketSucceededRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -256,15 +272,18 @@ const QuickQuote = () => {
     const currentSocket = socketRef.current;
     if (currentSocket) {
       currentSocket.on("connect", () => {
-        console.log("Socket connected for QuickQuote");
+        // Socket connected - no logging needed in production
       });
 
       currentSocket.on("disconnect", () => {
-        console.log("Socket disconnected for QuickQuote");
+        // Socket disconnected - no logging needed in production
       });
 
       currentSocket.on("connect_error", (error) => {
-        console.error("Socket connection error:", error);
+        // Only log critical socket errors in development
+        if (process.env.NODE_ENV === "development") {
+          console.error("Socket connection error:", error);
+        }
       });
 
       currentSocket.on("leadCreated", (response) => {
@@ -506,7 +525,9 @@ const QuickQuote = () => {
                 }, 1000);
               }
             } catch (err) {
-              console.error("Error submitting lead:", err);
+              if (process.env.NODE_ENV === "development") {
+                console.error("Error submitting lead:", err);
+              }
               setShowErrorModal(true);
               submitInProgressRef.current = false;
               setSubmitting(false);

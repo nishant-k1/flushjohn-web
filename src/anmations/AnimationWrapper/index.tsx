@@ -1,6 +1,18 @@
 "use client"; // Ensure this component is a client component
 
-import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import React from "react";
+
+// Lazy load framer-motion to reduce initial bundle size
+const AnimatePresence = dynamic(
+  () => import("framer-motion").then((mod) => mod.AnimatePresence),
+  { ssr: false }
+);
+
+const MotionDiv = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.div),
+  { ssr: false }
+);
 
 const AnimationWrapper = ({
   children,
@@ -18,7 +30,7 @@ const AnimationWrapper = ({
   return (
     <div>
       <AnimatePresence>
-        <motion.div
+        <MotionDiv
           key={animationKey}
           className={className}
           initial="initial"
@@ -27,7 +39,7 @@ const AnimationWrapper = ({
           variants={variants}
         >
           {children}
-        </motion.div>
+        </MotionDiv>
       </AnimatePresence>
     </div>
   );

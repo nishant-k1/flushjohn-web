@@ -87,18 +87,42 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes"
         />
 
-        {/* Preconnect to critical domains */}
+        {/* Preconnect to critical domains - highest priority */}
         <link
           rel="preconnect"
           href="https://cdn.flushjohn.com"
+          crossOrigin="anonymous"
         />
         <link
           rel="preconnect"
+          href="https://api.flushjohn.com"
+          crossOrigin="anonymous"
+        />
+        
+        {/* DNS prefetch for third-party domains - lower priority */}
+        <link
+          rel="dns-prefetch"
           href="https://www.googletagmanager.com"
         />
         <link
           rel="dns-prefetch"
-          href="https://cdn.flushjohn.com"
+          href="https://www.google-analytics.com"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://googleads.g.doubleclick.net"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://connect.facebook.net"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://fonts.gstatic.com"
         />
 
         {/* Preload critical fonts */}
@@ -111,29 +135,31 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Google Analytics - Load after interactive */}
+        {/* Google Analytics - Load after interactive with defer for better performance */}
         {process.env.NODE_ENV === "production" && (
           <>
             <Script
-              async
               src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
+              defer
             />
             <Script
               id="google-analytics"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             >
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'AW-11246929750');
+                gtag('config', 'AW-11246929750', {
+                  'send_page_view': false
+                });
               `}
             </Script>
           </>
         )}
 
-        {/* Facebook Pixel */}
+        {/* Facebook Pixel - Load after page is interactive */}
         <FacebookPixel />
 
         <Layout>

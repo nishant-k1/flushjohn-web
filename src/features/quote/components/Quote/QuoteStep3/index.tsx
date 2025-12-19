@@ -6,7 +6,8 @@ import * as Yup from "yup";
 import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/features/quote/contexts/QuoteContext";
-import { io, Socket } from "socket.io-client";
+import { createSocket } from "@/utils/socketClient";
+import type { Socket } from "socket.io-client";
 import { initialQuoteValues } from "@/features/quote/contexts/QuoteContext";
 import { apiBaseUrls } from "@/constants";
 import TextField from "../FormFields/TextField";
@@ -27,16 +28,32 @@ const QuoteStep3 = () => {
   }, [formValues]);
 
   const { API_BASE_URL } = apiBaseUrls;
-  const socket = io(`${API_BASE_URL}/leads`, {
-    transports: ["websocket"],
-    autoConnect: true,
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000,
-  });
-
   const socketRef = React.useRef<Socket | null>(null);
-  socketRef.current = socket;
+  
+  // Lazy load socket.io-client
+  React.useEffect(() => {
+    let mounted = true;
+    
+    createSocket(`${API_BASE_URL}/leads`, {
+      transports: ["websocket"],
+      autoConnect: true,
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
+    }).then((socket) => {
+      if (mounted) {
+        socketRef.current = socket;
+      }
+    });
+
+    return () => {
+      mounted = false;
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+      }
+    };
+  }, [API_BASE_URL]);
+
   const submitInProgressRef = React.useRef(false);
   const socketSucceededRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -287,7 +304,9 @@ const QuoteStep3 = () => {
               }, 1000);
             }
           } catch (err) {
-            console.error("Error submitting lead:", err);
+            if (process.env.NODE_ENV === "development") {
+              console.error("Error submitting lead:", err);
+            }
             setShowErrorModal(true);
             submitInProgressRef.current = false;
             setSubmitting(false);
