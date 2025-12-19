@@ -99,7 +99,7 @@ export default function RootLayout({
           href="https://api.flushjohn.com"
           crossOrigin="anonymous"
         />
-        
+
         {/* DNS prefetch for third-party domains - lower priority */}
         <link
           rel="dns-prefetch"
