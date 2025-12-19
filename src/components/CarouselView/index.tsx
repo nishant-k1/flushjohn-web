@@ -24,7 +24,7 @@ export default function CarouselView() {
   ];
 
   return (
-    <div style={{ height: "900px" }}>
+    <div style={{ height: "900px", minHeight: "900px" }}>
       <Carousel
         autoplay
         autoplaySpeed={2000}
@@ -41,8 +41,7 @@ export default function CarouselView() {
             className={styles.carouselImage}
             priority={index === 0}
             loading={index === 0 ? "eager" : "lazy"}
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+i+hVKihuj6VRlddujjwXm3Bx9VoUQpGrVRBevtJ9G/iQgD4f/2Q=="
+            placeholder="empty"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
           />
           <div className={styles.overlayHeroImage}></div>

@@ -41,8 +41,11 @@
 }
 
 .skeletonQuote {
-  width: 400px;
-  height: 600px;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 500px;
+  min-height: 500px;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.1) 25%,
@@ -51,7 +54,9 @@
   );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
-  border-radius: 12px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  align-self: end;
 }
 
 @keyframes skeleton-loading {

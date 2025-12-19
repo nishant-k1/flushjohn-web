@@ -7,10 +7,9 @@ import { phone } from "@/constants";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+// Import CarouselView directly (not dynamically) to ensure LCP image loads immediately
+import CarouselView from "@/components/CarouselView";
 
-const CarouselView = dynamic(() => import("@/components/CarouselView"), {
-  loading: () => <div className={styles.skeletonCarousel} />,
-});
 const HeroQuickQuote = dynamic(() => import("@/components/HeroQuickQuote"), {
   loading: () => <div className={styles.skeletonQuote} />,
 });
