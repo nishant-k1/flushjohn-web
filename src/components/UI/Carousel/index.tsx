@@ -35,16 +35,19 @@ export default function Carousel({
       ? 3000 // Wait 3 seconds to ensure LCP measurement completes
       : 4000; // Fallback for browsers without requestIdleCallback
 
+    let intervalTimer: NodeJS.Timeout | null = null;
+
     const delayTimer = setTimeout(() => {
-      const timer = setInterval(() => {
+      intervalTimer = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
       }, autoplaySpeed);
-
-      return () => clearInterval(timer);
     }, startDelay);
 
     return () => {
       clearTimeout(delayTimer);
+      if (intervalTimer) {
+        clearInterval(intervalTimer);
+      }
     };
   }, [autoplay, autoplaySpeed, totalSlides]);
 
