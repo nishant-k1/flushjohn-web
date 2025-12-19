@@ -75,10 +75,11 @@ type="font/truetype"
 
 ---
 
-### 5. **Cache Lifetime Issues (241 KiB savings)**
+### 5. **Cache Lifetime Issues (246 KiB savings)**
 **Current Issues:**
 - Fonts from CDN: No cache headers (CDN needs configuration)
 - Images from CDN: No cache headers (CDN needs configuration)
+- SVG assets from CDN: No cache headers
 
 **Next.js Config:**
 - ✅ Static assets: Properly cached (31536000s)
@@ -86,9 +87,11 @@ type="font/truetype"
 - ❌ CDN resources: Need CDN-level cache headers
 
 **Action Required:**
-- Configure CloudFront/Cloudflare to set cache headers:
-  - Fonts: `Cache-Control: public, max-age=31536000, immutable`
-  - Images: `Cache-Control: public, max-age=31536000, immutable`
+- **See `CDN_CACHE_CONFIG.md` for detailed configuration instructions**
+- Configure CloudFront/Cloudflare/CDN to set cache headers:
+  - Fonts: `Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=31536000`
+  - Images: `Cache-Control: public, max-age=31536000, immutable, stale-while-revalidate=31536000`
+  - Fonts also need: `Access-Control-Allow-Origin: *`
 
 ---
 
