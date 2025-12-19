@@ -114,6 +114,52 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
+        {/* Preload critical fonts IMMEDIATELY after preconnect - before CSS to break dependency chain */}
+        <link
+          rel="preload"
+          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
+          as="font"
+          type="font/truetype"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
+          as="font"
+          type="font/truetype"
+          crossOrigin="anonymous"
+        />
+
+        {/* Inline critical @font-face declarations to break CSS dependency chain */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              @font-face {
+                font-family: "Poppins";
+                src: url("https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+                font-weight: 400;
+                font-style: normal;
+                font-display: optional;
+                ascent-override: 95%;
+                descent-override: 25%;
+                line-gap-override: 0%;
+                size-adjust: 100%;
+              }
+              @font-face {
+                font-family: "Merriweather";
+                src: url("https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf") format("truetype");
+                font-weight: 400;
+                font-style: normal;
+                font-display: optional;
+                ascent-override: 105%;
+                descent-override: 30%;
+                line-gap-override: 0%;
+                size-adjust: 100%;
+              }
+            `,
+          }}
+        />
+
         {/* DNS prefetch for third-party domains - lower priority */}
         <link
           rel="dns-prefetch"
@@ -138,22 +184,6 @@ export default function RootLayout({
         <link
           rel="dns-prefetch"
           href="https://fonts.gstatic.com"
-        />
-
-        {/* Preload critical fonts - using TTF format (matches globals.css) */}
-        <link
-          rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
-          as="font"
-          type="font/truetype"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
-          as="font"
-          type="font/truetype"
-          crossOrigin="anonymous"
         />
 
         {/* Preload critical hero image for LCP optimization */}
