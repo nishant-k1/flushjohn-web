@@ -10,6 +10,8 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
+  // Turbopack config (empty for now - webpack config handles production builds)
+  turbopack: {},
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Aggressive optimization for production builds only
     // Note: This config only applies to production builds, not Turbopack dev mode
