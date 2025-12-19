@@ -170,8 +170,8 @@ const nextConfig = {
     ],
     // Prioritize AVIF (better compression) then WebP, fallback to original
     formats: ["image/avif", "image/webp"],
-    // Optimized device sizes for responsive images
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // Optimized device sizes for responsive images - prioritize mobile sizes first
+    deviceSizes: [375, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     // Optimized image sizes for srcset
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
     // Long cache TTL for optimized images

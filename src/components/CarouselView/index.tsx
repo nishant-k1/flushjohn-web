@@ -36,7 +36,16 @@ export default function CarouselView() {
   ];
 
   return (
-    <div style={{ height: "900px", minHeight: "900px", position: "relative" }}>
+    <div
+      style={{
+        height: "900px",
+        minHeight: "900px",
+        maxHeight: "900px",
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+      }}
+    >
       <Carousel
         autoplay
         autoplaySpeed={2000}
@@ -45,7 +54,13 @@ export default function CarouselView() {
           <div
             key={index}
             className={styles.imageWrapper}
-            style={{ aspectRatio: `${image.width} / ${image.height}` }}
+            style={{
+              aspectRatio: `${image.width} / ${image.height}`,
+              width: "100%",
+              height: "900px",
+              minHeight: "900px",
+              maxHeight: "900px",
+            }}
           >
             <Image
               src={image.src}
@@ -56,8 +71,9 @@ export default function CarouselView() {
               loading={index === 0 ? "eager" : "lazy"}
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-              sizes="100vw"
-              quality={85}
+              sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
+              quality={index === 0 ? 90 : 85}
+              fetchPriority={index === 0 ? "high" : "auto"}
             />
             <div className={styles.overlayHeroImage}></div>
           </div>

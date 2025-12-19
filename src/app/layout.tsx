@@ -114,13 +114,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Preconnect to CDN for fonts and images */}
-        <link
-          rel="preconnect"
-          href="https://cdn.flushjohn.com"
-          crossOrigin="anonymous"
-        />
-
         {/* DNS prefetch for third-party domains - lower priority */}
         <link
           rel="dns-prefetch"

@@ -35,26 +35,46 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             event or job site.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <div style={{ position: "relative", width: "300px", height: "400px", maxWidth: "100%" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "300px",
+                height: "400px",
+                maxWidth: "100%",
+                contain: "layout style paint",
+              }}
+            >
               <Image
                 src={src_1}
                 alt={alt}
                 fill
                 priority={true}
-                placeholder="empty"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 style={{ objectFit: "contain" }}
                 sizes="(max-width: 768px) 100vw, 300px"
+                quality={85}
               />
             </div>
-            <div style={{ position: "relative", width: "300px", height: "400px", maxWidth: "100%" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "300px",
+                height: "400px",
+                maxWidth: "100%",
+                contain: "layout style paint",
+              }}
+            >
               <Image
                 src={src_2}
                 alt={alt}
                 fill
                 priority={true}
-                placeholder="empty"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 style={{ objectFit: "contain" }}
                 sizes="(max-width: 768px) 100vw, 300px"
+                quality={85}
               />
             </div>
           </div>
