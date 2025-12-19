@@ -7,6 +7,9 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  /* Prevent layout shift */
+  contain: layout style paint;
+  will-change: contents;
 }
 
 .carouselImage {

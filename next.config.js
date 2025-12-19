@@ -23,15 +23,9 @@ const nextConfig = {
       config.optimization.providedExports = true;
       config.optimization.moduleIds = "deterministic";
       config.optimization.chunkIds = "deterministic";
-      
+
       // Aggressive tree shaking for unused code elimination
       config.optimization.flagIncludedChunks = true;
-
-      // Reduce bundle size with aggressive splitting
-      config.optimization.splitChunks.maxAsyncRequests = 20;
-      config.optimization.splitChunks.maxInitialRequests = 25;
-      config.optimization.splitChunks.minSize = 20000;
-      config.optimization.splitChunks.maxSize = 244000;
 
       // Better minification with aggressive settings
       config.optimization.minimize = true;
@@ -41,22 +35,25 @@ const nextConfig = {
       config.optimization.removeEmptyChunks = true;
       config.optimization.mergeDuplicateChunks = true;
 
-      // Remove unused CSS and JS
+      // Remove unused CSS and JS - Optimized for better code splitting
       config.optimization.splitChunks = {
         chunks: "all",
         minSize: 20000,
         maxSize: 244000,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
         cacheGroups: {
           default: false,
           vendors: false,
 
-          // React and core libraries
+          // React and core libraries - highest priority
           react: {
             name: "react",
             chunks: "all",
             test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
             priority: 40,
             enforce: true,
+            reuseExistingChunk: true,
           },
 
           // MUI components
@@ -66,6 +63,27 @@ const nextConfig = {
             test: /[\\/]node_modules[\\/]@mui[\\/]/,
             priority: 35,
             enforce: true,
+            reuseExistingChunk: true,
+          },
+
+          // Ant Design components
+          antd: {
+            name: "antd",
+            chunks: "all",
+            test: /[\\/]node_modules[\\/]antd[\\/]/,
+            priority: 34,
+            enforce: true,
+            reuseExistingChunk: true,
+          },
+
+          // Large vendor libraries
+          largeVendor: {
+            name: "large-vendor",
+            chunks: "all",
+            test: /[\\/]node_modules[\\/](framer-motion|date-fns|moment|lodash|dayjs)[\\/]/,
+            priority: 30,
+            maxSize: 150000,
+            reuseExistingChunk: true,
           },
 
           // Other vendor libraries
@@ -75,6 +93,7 @@ const nextConfig = {
             test: /[\\/]node_modules[\\/]/,
             priority: 20,
             maxSize: 200000,
+            reuseExistingChunk: true,
           },
 
           // Common app code
@@ -112,8 +131,12 @@ const nextConfig = {
     scrollRestoration: true,
     // Enable HTTP/2 multiplexing when supported
     serverActions: {
-      bodySizeLimit: '2mb',
+      bodySizeLimit: "2mb",
     },
+    // Optimize CSS loading
+    optimizeCss: true,
+    // Enable modern JavaScript output
+    esmExternals: true,
   },
   serverExternalPackages: ["nodemailer"],
   // Enable HTTP/2 and modern protocols - requires HTTPS deployment
@@ -175,7 +198,8 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
+            value:
+              "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -184,7 +208,8 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
+            value:
+              "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -193,7 +218,8 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
+            value:
+              "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -267,6 +293,22 @@ const nextConfig = {
               process.env.NODE_ENV === "production"
                 ? "public, max-age=31536000, immutable"
                 : "no-store, must-revalidate",
+          },
+        ],
+      },
+      {
+        source: "/fonts/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value:
+              process.env.NODE_ENV === "production"
+                ? "public, max-age=31536000, immutable, stale-while-revalidate=31536000"
+                : "no-store, must-revalidate",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
           },
         ],
       },

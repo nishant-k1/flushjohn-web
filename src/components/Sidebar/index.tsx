@@ -42,7 +42,8 @@ const Sidebar = () => {
               src={`${s3assets}/logo_white.svg`}
               alt="brand-logo"
               priority={true}
-              placeholder="empty"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwMCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=="
               style={{
                 height: "auto",
                 width: "8rem",

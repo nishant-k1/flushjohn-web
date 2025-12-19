@@ -1,16 +1,22 @@
 import React from "react";
-import "../../styles/globals.css";
 import { s3assets, websiteURL } from "@/constants";
+// Import CSS at the top to ensure proper loading order
+import "../../styles/globals.css";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
 
+// Critical above-the-fold components - SSR enabled
 const Navbar = dynamic(() => import("@/components/Navbar"), {
   ssr: true,
 });
+
+// Below-the-fold components - can be lazy loaded
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: true,
+  loading: () => <div style={{ minHeight: "200px" }} />, // Reserve space to prevent CLS
 });
+
 const Testimonial = dynamic(
   () =>
     import("@/features/home/components").then((mod) => ({
@@ -18,8 +24,10 @@ const Testimonial = dynamic(
     })),
   {
     ssr: true,
+    loading: () => <div style={{ minHeight: "300px" }} />, // Reserve space
   }
 );
+
 const QuickQuote = dynamic(
   () =>
     import("@/features/quote/components").then((mod) => ({
@@ -30,6 +38,7 @@ const QuickQuote = dynamic(
     loading: () => null,
   }
 );
+
 const Sidebar = dynamic(() => import("@/components/Sidebar"), {
   ssr: true,
 });
@@ -82,6 +91,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Enable back/forward cache */}
+        <meta
+          name="mobile-web-app-capable"
+          content="yes"
+        />
         {/* Viewport meta tag with proper mobile scaling */}
         <meta
           name="viewport"
@@ -97,6 +111,13 @@ export default function RootLayout({
         <link
           rel="preconnect"
           href="https://api.flushjohn.com"
+          crossOrigin="anonymous"
+        />
+
+        {/* Preconnect to CDN for fonts and images */}
+        <link
+          rel="preconnect"
+          href="https://cdn.flushjohn.com"
           crossOrigin="anonymous"
         />
 
@@ -148,6 +169,19 @@ export default function RootLayout({
           href="https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp"
           as="image"
           fetchPriority="high"
+          type="image/webp"
+        />
+
+        {/* Prefetch next carousel images for smoother transitions */}
+        <link
+          rel="prefetch"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-2.webp"
+          as="image"
+        />
+        <link
+          rel="prefetch"
+          href="https://cdn.flushjohn.com/images/home-page-images/hero-img-3.webp"
+          as="image"
         />
       </head>
       <body>
@@ -156,12 +190,11 @@ export default function RootLayout({
           <>
             <Script
               src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
-              strategy="lazyOnload"
-              defer
+              strategy="afterInteractive"
             />
             <Script
               id="google-analytics"
-              strategy="lazyOnload"
+              strategy="afterInteractive"
             >
               {`
                 window.dataLayer = window.dataLayer || [];

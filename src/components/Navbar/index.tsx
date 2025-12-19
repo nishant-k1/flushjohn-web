@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -7,11 +6,30 @@ import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Image from "next/image";
-import { Divide as Hamburger } from "hamburger-react";
+import dynamic from "next/dynamic";
 import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 import { s3assets } from "@/constants";
+
+// Dynamically import hamburger-react to reduce initial bundle size
+const Hamburger = dynamic(
+  () => import("hamburger-react").then((mod) => mod.Divide),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      />
+    ),
+  }
+);
 
 const Navbar = () => {
   const { active, setActive } =
@@ -48,7 +66,8 @@ const Navbar = () => {
               height={64}
               width={100}
               priority={true}
-              placeholder="empty"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjY0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
               style={{
                 height: "3rem",
                 width: "auto",
@@ -75,11 +94,7 @@ const Navbar = () => {
             />
           </div>
           <div className={styles.navLinks}>
-            <Link
-              href="/"
-            >
-              Home
-            </Link>
+            <Link href="/">Home</Link>
             <Link
               href="/rental-products"
               className={

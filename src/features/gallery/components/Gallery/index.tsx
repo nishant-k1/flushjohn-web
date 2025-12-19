@@ -15,16 +15,26 @@ const Gallery = () => {
               // Only prioritize first 3 images for faster initial load
               const isPriority = index < 3;
               return (
-                <div key={id} style={{ position: "relative", aspectRatio: `${width}/${height}`, width: "100%" }}>
+                <div
+                  key={id}
+                  style={{
+                    position: "relative",
+                    aspectRatio: `${width}/${height}`,
+                    width: "100%",
+                    contain: "layout style paint",
+                  }}
+                >
                   <Image
                     src={url}
                     alt={alt}
                     fill
                     priority={isPriority}
                     loading={isPriority ? "eager" : "lazy"}
-                    placeholder="empty"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     style={{ objectFit: "cover" }}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={85}
                   />
                 </div>
               );
