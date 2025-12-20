@@ -20,6 +20,21 @@
   object-fit: cover;
   object-position: center;
   z-index: 1;
+  animation: zoomIn 8s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .overlayHeroImage {
