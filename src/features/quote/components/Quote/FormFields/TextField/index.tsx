@@ -15,9 +15,7 @@ const TextField = ({ label, ...props }: any) => {
           props.name === "contactPersonName" ||
           props.name === "streetAddress" ||
           props.required) && (
-          <span style={{ color: "var(--primary-dark)", fontSize: "x-large" }}>
-            *
-          </span>
+          <span style={{ color: "#ff4444", fontSize: "x-large" }}>*</span>
         )}
       </label>
       <div className={styles.inputContainer}>

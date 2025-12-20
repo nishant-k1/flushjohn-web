@@ -30,37 +30,6 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
       <div className={styles.container}>
         <div className={styles.heroWrapper}>
           <div className={styles.heroTitle}>
-            {/* Trust Signal - Above Fold */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                marginBottom: "16px",
-                flexWrap: "wrap",
-              }}
-            >
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "4px",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#ffd700",
-                }}
-              >
-                ⭐⭐⭐⭐⭐
-              </span>
-              <span
-                style={{
-                  fontSize: "14px",
-                  color: "rgba(255, 255, 255, 0.9)",
-                }}
-              >
-                Rated 4.9/5 • 500+ Happy Customers • Available 24/7
-              </span>
-            </div>
             <h1>{title}</h1>
             <h2>{subTitle}</h2>
             <div className={styles.heroCta}>

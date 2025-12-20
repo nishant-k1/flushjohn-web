@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   gap: 16px;
 }
 
@@ -136,14 +136,17 @@
 .error {
   color: #ffffff;
   font-size: 12px;
-  margin-top: 4px;
-  margin-left: calc(50% + 8px);
+  margin-top: 8px;
+  margin-bottom: 0;
+  margin-left: 0;
   background-color: #ff4444;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 0;
   border-left: 3px solid #cc0000;
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  display: block;
 }
 
 .error_message {
@@ -179,5 +182,6 @@
 
   .error {
     margin-left: 0;
+    width: 100%;
   }
 }
