@@ -98,7 +98,7 @@ const QuoteStep1 = () => {
     >
       <Form noValidate>
         <div className={styles.form}>
-          <div style={{ marginBottom: "16px" }}>
+          <div style={{ marginBottom: "16px", position: "relative" }}>
             <div className={styles.usage_type_row}>
               <label className={styles.field_label}>
                 Usage Type
@@ -151,6 +151,7 @@ const QuoteStep1 = () => {
               type="tel"
             />
           ))}
+          <div style={{ position: "relative", minHeight: 0 }}>
           <ErrorMessage name="products">
             {(msg) => {
               const errorText =
@@ -158,6 +159,7 @@ const QuoteStep1 = () => {
               return <div className={styles.error_message}>{errorText}</div>;
             }}
           </ErrorMessage>
+          </div>
         </div>
         <div className={styles.buttons}>
           <button

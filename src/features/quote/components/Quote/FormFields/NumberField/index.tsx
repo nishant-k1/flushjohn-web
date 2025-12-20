@@ -68,25 +68,29 @@ const NumberField = ({ label, ...props }: any) => {
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>{label}</label>
-      <div className={styles.inputRow}>
-        <NumericFormat
-          {...field}
-          {...props}
-          ref={inputRef}
-          className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
-          placeholder=""
-          title="Enter Quantity - Use arrow keys to increment/decrement"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onClick={handleClick}
-          onKeyDown={handleKeyDown}
-          allowNegative={false}
-          decimalScale={0}
-          style={{ textAlign: "left" }}
-        />
-        <span className={styles.unitsText}>Units</span>
+      <div className={styles.inputContainer}>
+        <div className={styles.inputRow}>
+          <NumericFormat
+            {...field}
+            {...props}
+            ref={inputRef}
+            className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
+            placeholder=""
+            title="Enter Quantity - Use arrow keys to increment/decrement"
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onClick={handleClick}
+            onKeyDown={handleKeyDown}
+            allowNegative={false}
+            decimalScale={0}
+            style={{ textAlign: "left" }}
+          />
+          <span className={styles.unitsText}>Units</span>
+        </div>
+        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? error : ""}
+        </div>
       </div>
-      {touched && error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

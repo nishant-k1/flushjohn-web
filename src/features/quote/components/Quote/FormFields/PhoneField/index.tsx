@@ -33,7 +33,9 @@ const PhoneField = ({ label, ...props }: any) => {
             inputMode="numeric"
           />
         </div>
-        {touched && error && <div className={styles.error}>{meta.error}</div>}
+        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? meta.error : ""}
+        </div>
       </div>
     </div>
   );

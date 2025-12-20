@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ComponentType } from "react";
+import React, { ComponentType, useRef, useEffect } from "react";
 import { useField } from "formik";
 import dynamic from "next/dynamic";
 import "./datepicker.css";
@@ -26,6 +26,37 @@ const MyDateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [showError, setShowError] = React.useState(false);
+
+  useEffect(() => {
+    // Show error only after field is touched (blurred) and there's an error
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        // Only hide error if field is not touched yet
+        // If field is touched and has error, keep showing it
+        if (!touched) {
+          setShowError(false);
+        }
+      }
+    };
+
+    if (showError) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showError, touched]);
 
   const parseStoredDate = (value: any): Date | null => {
     if (!value) return null;
@@ -37,7 +68,7 @@ const MyDateField = ({ label, ...props }: any) => {
   const selectedDate = parseStoredDate(field.value);
 
   return (
-    <div>
+    <div ref={containerRef} style={{ position: "relative" }}>
       <div style={{ position: "relative" }}>
         <DatePicker
           selected={selectedDate}
@@ -53,7 +84,9 @@ const MyDateField = ({ label, ...props }: any) => {
               setValue("");
             }
           }}
-          onBlur={() => setTouched(true)}
+          onBlur={() => {
+            setTouched(true);
+          }}
           minDate={new Date()}
           dateFormat="MMM d, yyyy"
           placeholderText={label}
@@ -109,9 +142,9 @@ const MyDateField = ({ label, ...props }: any) => {
           />
         </svg>
       </div>
-      {touched && error ? (
-        <div className={styles.error}>{`Required`}</div>
-      ) : null}
+      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+        {touched && error ? `Required` : ""}
+      </div>
     </div>
   );
 };

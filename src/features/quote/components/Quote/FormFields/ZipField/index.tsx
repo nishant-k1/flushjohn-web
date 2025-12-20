@@ -31,7 +31,9 @@ const ZipTextField = ({ label, ...props }: any) => {
             setValue(value);
           }}
         />
-        {touched && error && <div className={styles.error}>{error}</div>}
+        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? error : ""}
+        </div>
       </div>
     </div>
   );

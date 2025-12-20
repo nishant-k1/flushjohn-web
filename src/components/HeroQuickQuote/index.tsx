@@ -48,6 +48,7 @@ const UsageTypeField = () => {
     useFormikContext<any>();
   const hasError = touched.usageType && errors.usageType;
   const [isOpen, setIsOpen] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   const options = [
@@ -58,22 +59,38 @@ const UsageTypeField = () => {
   ];
 
   React.useEffect(() => {
+    // Show error only after field is touched (blurred) and there's an error
+    if (hasError) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [hasError]);
+
+  React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        // Mark as touched when clicking outside (equivalent to blur)
+        setFieldTouched("usageType", true);
+        // Only hide error if field is not touched yet
+        // If field is touched and has error, keep showing it
+        if (!touched.usageType) {
+          setShowError(false);
+        }
       }
     };
 
-    if (isOpen) {
+    if (isOpen || showError) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, showError, touched.usageType, setFieldTouched]);
 
   const handleSelect = async (value: string) => {
     await setFieldValue("usageType", value);
@@ -91,13 +108,15 @@ const UsageTypeField = () => {
       <div
         ref={dropdownRef}
         style={{ position: "relative", width: "100%" }}
+        className={styles.usageTypeContainer}
       >
         <div
           onClick={() => {
             setIsOpen(!isOpen);
-            if (!isOpen) {
-              setFieldTouched("usageType", true);
-            }
+            // Don't set touched on click - only on blur or after selection
+          }}
+          onBlur={() => {
+            setFieldTouched("usageType", true);
           }}
           className={hasError ? styles.error_field : ""}
           style={{
@@ -121,7 +140,7 @@ const UsageTypeField = () => {
               flex: 1,
             }}
           >
-            {selectedOption ? selectedOption.label : "Usage Type"}
+            {selectedOption ? selectedOption.label : "Select Usage Type"}
           </span>
           <svg
             width="12"
@@ -199,10 +218,10 @@ const UsageTypeField = () => {
             ))}
           </div>
         )}
+        <div className={`${styles.error} ${showError && hasError ? styles.errorVisible : styles.errorHidden}`}>
+          {hasError ? errors.usageType : ""}
+        </div>
       </div>
-      <ErrorMessage name="usageType">
-        {(msg) => <div className={styles.error}>{msg}</div>}
-      </ErrorMessage>
     </Grid>
   );
 };
@@ -405,7 +424,7 @@ const HeroQuickQuote = () => {
           contactPersonPhone: "",
         }}
         validationSchema={quickQuoteValidationSchema}
-        validateOnChange={false}
+        validateOnChange={true}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           // Set local submitting state immediately to show spinner
@@ -594,7 +613,7 @@ const HeroQuickQuote = () => {
                       xs={12}
                     >
                       <MyMultipleSelectCheckmarks
-                        label="Select Portable Units"
+                        label="Select Items"
                         name="products"
                       />
                     </Grid>

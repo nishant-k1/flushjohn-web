@@ -93,6 +93,17 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     }, 0);
   };
 
+  const [showError, setShowError] = React.useState(false);
+
+  React.useEffect(() => {
+    // Show error only after field is touched (blurred) and there's an error
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
+
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -100,16 +111,23 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        // Mark as touched when clicking outside (equivalent to blur)
+        setTouched(true);
+        // Only hide error if field is not touched yet
+        // If field is touched and has error, keep showing it
+        if (!touched) {
+          setShowError(false);
+        }
       }
     };
 
-    if (isOpen) {
+    if (isOpen || showError) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, showError, touched, setTouched]);
 
   return (
     <div
@@ -124,9 +142,13 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         }
         onClick={() => {
           setIsOpen(!isOpen);
-          if (!isOpen) {
+          // Mark as touched when user interacts with the field
+          if (!touched) {
             setTouched(true);
           }
+        }}
+        onBlur={() => {
+          setTouched(true);
         }}
         style={{
           padding: "0 12px",
@@ -153,7 +175,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           }}
         >
           {value.length === 0
-            ? label || "Select Portable Units"
+            ? label || "Select Items"
             : value.length === 1
               ? `${getQuantity(value[0].item || value[0].type || value[0])} × ${options.find((opt) => opt.value === (value[0].item || value[0].type || value[0]))?.label}`
               : `${getTotalUnits()} units (${value.length} types)`}
@@ -380,7 +402,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         </div>
       )}
 
-      {touched && error ? <div className={styles.error}>Required</div> : null}
+      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+        {touched && error ? "Required" : ""}
+      </div>
     </div>
   );
 };

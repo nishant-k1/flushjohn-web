@@ -31,7 +31,9 @@ const TextField = ({ label, ...props }: any) => {
             setTouched(true);
           }}
         />
-        {touched && error && <div className={styles.error}>{error}</div>}
+        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? error : ""}
+        </div>
       </div>
     </div>
   );
