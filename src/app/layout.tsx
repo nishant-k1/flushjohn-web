@@ -89,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Enable back/forward cache */}
         <meta
@@ -214,7 +214,7 @@ export default function RootLayout({
           as="image"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/* Google Analytics - Load after interactive with defer for better performance */}
         {process.env.NODE_ENV === "production" && (
           <>
