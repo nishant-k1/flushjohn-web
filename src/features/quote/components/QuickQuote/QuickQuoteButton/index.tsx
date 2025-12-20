@@ -11,6 +11,16 @@ export default function QuickQuoteButton() {
   const { phone_link } = phone;
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
+  const [showCallout, setShowCallout] = React.useState(true);
+
+  React.useEffect(() => {
+    // Hide callout after 5 seconds
+    const timer = setTimeout(() => {
+      setShowCallout(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div>
@@ -22,6 +32,18 @@ export default function QuickQuoteButton() {
       >
         Quick Quote
       </button>
+      {showCallout && (
+        <div className={styles.callout}>
+          <button
+            className={styles.calloutClose}
+            onClick={() => setShowCallout(false)}
+            aria-label="Close callout"
+          >
+            ×
+          </button>
+          <span className={styles.calloutText}>Call us now!</span>
+        </div>
+      )}
       <Link
         href={phone_link}
         className={styles.phoneBtn}
