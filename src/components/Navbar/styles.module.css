@@ -23,7 +23,6 @@
 
 .scrolled {
   background-color: var(--bg-dark-alpha);
-  border-bottom: 2px solid var(--primary-light);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }
