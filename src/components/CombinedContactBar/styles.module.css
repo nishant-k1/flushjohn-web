@@ -15,7 +15,7 @@
   width: 100%;
   max-width: var(--container-xl);
   margin: 0 auto;
-  padding: 0 var(--spacing-xl);
+  padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-2xl);
@@ -29,6 +29,7 @@
   position: relative;
   padding-bottom: 0;
   overflow: visible;
+  height: 100%;
   min-height: 80px;
   justify-content: center;
   align-items: flex-start;
@@ -38,7 +39,8 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .zipLabel {
@@ -56,12 +58,13 @@
   gap: var(--spacing-md);
   flex: 1;
   min-width: 200px;
+  flex-wrap: nowrap;
 }
 
 .zipInput {
   flex: 1;
   min-width: 120px;
-  padding: 14px 18px;
+  padding: 12px 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 0;
   font-size: 1.1rem;
@@ -76,10 +79,6 @@
 .zipInput:focus {
   outline: none;
   border-color: var(--primary-light);
-  box-shadow: 
-    0 0 0 4px rgba(255, 255, 255, 0.2),
-    0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
 }
 
 .zipInput::placeholder {
@@ -89,9 +88,9 @@
 
 .checkButton {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  background: linear-gradient(135deg, #5f3300 0%, #b45309 100%);
   color: white;
-  border: 1px solid #d97706;
+  border: 1px solid #7e4505;
   border-radius: 0;
   font-size: 1rem;
   font-weight: 700;
@@ -99,7 +98,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgba(217, 119, 6, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
@@ -110,14 +109,14 @@
   background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
   border-color: #b45309;
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(217, 119, 6, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .checkButton:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgba(217, 119, 6, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
@@ -148,7 +147,9 @@
   gap: var(--spacing-sm);
   box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
   z-index: 10;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
   min-width: 280px;
   max-width: 400px;
   margin-left: auto;
@@ -415,4 +416,3 @@
     font-size: 0.95rem;
   }
 }
-
