@@ -81,15 +81,15 @@
   --text-inverse-secondary: rgba(255, 255, 255, 0.9);
   --text-inverse-tertiary: rgba(255, 255, 255, 0.7);
 
-  /* Background Colors - Single consistent color scheme using darker brown */
-  --bg-primary: #6d5637; /* Main background - body, sections, everything - darker brown */
-  --bg-secondary: #6d5637; /* Same for consistency */
-  --bg-tertiary: #6d5637; /* Same for consistency */
-  --bg-dark: #6d5637; /* Same for consistency */
+  /* Background Colors - Single consistent color scheme using muted darker brown */
+  --bg-primary: #5a4a3a; /* Main background - body, sections, everything - more muted brown */
+  --bg-secondary: #5a4a3a; /* Same for consistency */
+  --bg-tertiary: #5a4a3a; /* Same for consistency */
+  --bg-dark: #5a4a3a; /* Same for consistency */
   --bg-dark-alpha: rgba(
-    109,
-    86,
-    55,
+    90,
+    74,
+    58,
     0.95
   ); /* For header/footer with backdrop */
   --bg-transparent: transparent;

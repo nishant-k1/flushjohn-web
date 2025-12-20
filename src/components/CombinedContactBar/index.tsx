@@ -15,13 +15,13 @@ const CombinedContactBar = () => {
 
   const handleCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!zipCode || zipCode.length !== 5) {
       return;
     }
 
     setIsChecking(true);
-    
+
     // Simulate a brief check (always returns yes)
     setTimeout(() => {
       setIsChecking(false);
@@ -60,9 +60,18 @@ const CombinedContactBar = () => {
     <div className={styles.combinedBar}>
       <div className={styles.container}>
         {/* Zip Code Checker Section */}
-        <div className={styles.zipSection} ref={zipSectionRef}>
-          <form onSubmit={handleCheck} className={styles.zipForm}>
-            <label htmlFor="zipCode" className={styles.zipLabel}>
+        <div
+          className={styles.zipSection}
+          ref={zipSectionRef}
+        >
+          <form
+            onSubmit={handleCheck}
+            className={styles.zipForm}
+          >
+            <label
+              htmlFor="zipCode"
+              className={styles.zipLabel}
+            >
               Enter Delivery Zipcode:
             </label>
             <div className={styles.zipInputGroup}>
@@ -86,22 +95,29 @@ const CombinedContactBar = () => {
               </button>
             </div>
           </form>
-          
+
           {/* Success message - positioned absolutely to prevent layout shift */}
-          <div className={`${styles.resultMessage} ${showResult ? styles.resultVisible : styles.resultHidden}`}>
+          <div
+            className={`${styles.resultMessage} ${showResult ? styles.resultVisible : styles.resultHidden}`}
+          >
             <div className={styles.successIcon}>✓</div>
-            <span className={styles.successText}>Yes! We deliver to your area.</span>
+            <span className={styles.successText}>
+              Yes! We deliver to your area.
+            </span>
           </div>
         </div>
 
         {/* Phone Number Section */}
         <div className={styles.phoneSection}>
-          <span className={styles.phoneLabel}>ORDER BY PHONE:</span>
+          <span className={styles.phoneLabel}>Order By Phone:</span>
           <Link
             href={phone_link}
             className={styles.phoneNumber}
             onClick={() => {
-              if (typeof window !== "undefined" && typeof window.gtag === "function") {
+              if (
+                typeof window !== "undefined" &&
+                typeof window.gtag === "function"
+              ) {
                 window.gtag("event", "conversion", {
                   send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
                   event_category: "Phone Call",
@@ -111,7 +127,10 @@ const CombinedContactBar = () => {
               }
             }}
           >
-            <PhoneIcon className={styles.phoneIcon} size={20} />
+            <PhoneIcon
+              className={styles.phoneIcon}
+              size={20}
+            />
             <span className={styles.phoneNumberText}>{phone_number}</span>
           </Link>
         </div>
@@ -121,4 +140,3 @@ const CombinedContactBar = () => {
 };
 
 export default CombinedContactBar;
-
