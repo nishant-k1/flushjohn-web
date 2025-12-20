@@ -120,7 +120,8 @@
   display: flex;
   gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .ctaQuoteBtn,
@@ -134,7 +135,8 @@
   transition: all var(--transition-base);
   white-space: nowrap;
   text-align: center;
-  min-width: 160px;
+  flex: 1;
+  min-width: 0;
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
   text-decoration: none;
@@ -299,5 +301,33 @@
 
   .heroCta {
     gap: var(--spacing-lg);
+    flex-wrap: nowrap;
+  }
+
+  .ctaQuoteBtn,
+  .ctaPhoneBtn {
+    flex: 0 1 auto;
+    min-width: 160px;
+  }
+}
+
+/* Mobile styles - keep buttons side by side */
+@media (max-width: 767px) {
+  .heroCta {
+    flex-wrap: nowrap;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
+
+  .ctaQuoteBtn,
+  .ctaPhoneBtn {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .ctaPhoneBtn div {
+    font-size: 0.9rem;
   }
 }

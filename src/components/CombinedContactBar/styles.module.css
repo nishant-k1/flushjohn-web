@@ -1,0 +1,418 @@
+.combinedBar {
+  width: 100%;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  padding: var(--spacing-lg) 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+  border-top: 2px solid var(--primary-light);
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+.zipSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  position: relative;
+  padding-bottom: 0;
+  overflow: visible;
+  min-height: 80px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.zipForm {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.zipLabel {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.zipInputGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+  min-width: 200px;
+}
+
+.zipInput {
+  flex: 1;
+  min-width: 120px;
+  padding: 14px 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.zipInput:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 
+    0 0 0 4px rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.zipInput::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+.checkButton {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: white;
+  border: 1px solid #d97706;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 
+    0 4px 12px rgba(217, 119, 6, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  min-width: 160px;
+}
+
+.checkButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+  border-color: #b45309;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(217, 119, 6, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.checkButton:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(217, 119, 6, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.checkButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkButton:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.resultMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--spacing-sm);
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border: 2px solid #28a745;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+  z-index: 10;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  min-width: 280px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* Comic-style dialogue pointer pointing up to zip input field */
+.resultMessage::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #28a745;
+  z-index: 11;
+}
+
+.resultMessage::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #d4edda;
+  z-index: 12;
+}
+
+.resultVisible {
+  opacity: 1;
+  visibility: visible;
+  animation: slideDown 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.resultVisible::before,
+.resultVisible::after {
+  animation: fadeIn 0.4s ease 0.2s both;
+}
+
+.resultHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.successIcon {
+  color: #28a745;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+  flex-shrink: 0;
+}
+
+.successText {
+  color: #155724;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.phoneSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  height: 100%;
+  min-height: 80px;
+}
+
+.phoneLabel {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.phoneNumber {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, #4a7c59 0%, #2d4a35 100%);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 0;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-base);
+  box-shadow:
+    0 4px 12px rgba(45, 74, 53, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  border: 2px solid #4a7c59;
+  white-space: nowrap;
+}
+
+.phoneNumber:hover {
+  background: linear-gradient(135deg, #2d4a35 0%, #1e3124 100%);
+  border-color: #2d4a35;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px rgba(45, 74, 53, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.phoneNumber:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 8px rgba(45, 74, 53, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.phoneNumber:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.phoneIcon {
+  flex-shrink: 0;
+}
+
+.phoneNumberText {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-xl);
+  }
+
+  .phoneSection {
+    justify-content: center;
+  }
+
+  .zipForm {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .combinedBar {
+    padding: var(--spacing-md) 0;
+  }
+
+  .container {
+    padding: 0 var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .zipForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .zipLabel {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .zipInputGroup {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+
+  .zipInput {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  .checkButton {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .phoneSection {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .phoneLabel {
+    font-size: 0.9rem;
+  }
+
+  .phoneNumber {
+    font-size: 1.25rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .resultMessage {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    margin-top: var(--spacing-sm);
+    padding: 10px 16px;
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  .resultMessage::before,
+  .resultMessage::after {
+    display: none;
+  }
+
+  .resultVisible {
+    transform: none !important;
+  }
+
+  .resultHidden {
+    transform: none !important;
+  }
+
+  .successText {
+    font-size: 0.95rem;
+  }
+}
+

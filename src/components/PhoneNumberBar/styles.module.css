@@ -1,0 +1,103 @@
+.phoneBar {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  padding: var(--spacing-md) var(--spacing-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+  border-top: 2px solid var(--primary-light);
+}
+
+.phoneBarContent {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.phoneBarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.phoneBarLabel {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.phoneNumber {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 0;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-base);
+  box-shadow:
+    0 4px 12px rgba(231, 76, 60, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.phoneNumber:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px rgba(231, 76, 60, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.phoneNumber:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 8px rgba(231, 76, 60, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.phoneNumber:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.phoneIcon {
+  flex-shrink: 0;
+}
+
+.phoneNumberText {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .phoneBar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .phoneBarContent {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .phoneBarLabel {
+    font-size: 0.9rem;
+  }
+
+  .phoneNumber {
+    font-size: 1.25rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
