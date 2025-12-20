@@ -42,7 +42,7 @@
 }
 
 .full-form-datepicker:hover {
-  border: 1px solid var(--primary-bg-color) !important;
+  border: 1px solid var(--primary-light) !important;
   background: #fafafa;
 }
 
@@ -55,7 +55,7 @@
 
 /* Force hover/focus states with higher specificity */
 .react-datepicker__input-container .full-form-datepicker:hover {
-  border: 1px solid var(--primary-bg-color) !important;
+  border: 1px solid var(--primary-light) !important;
 }
 
 .react-datepicker__input-container .full-form-datepicker:focus {
@@ -118,7 +118,7 @@
 }
 
 .react-datepicker__navigation:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .react-datepicker__navigation--previous {
@@ -158,7 +158,7 @@
 }
 
 .react-datepicker__day:hover {
-  background-color: rgba(169, 93, 31, 0.1);
+  background-color: rgba(140, 111, 72, 0.2);
   cursor: pointer !important;
 }
 
@@ -172,7 +172,7 @@
 }
 
 .react-datepicker__day--selected:hover {
-  background-color: rgba(169, 93, 31, 0.9);
+  background-color: var(--primary-light);
 }
 
 /* Today's date */

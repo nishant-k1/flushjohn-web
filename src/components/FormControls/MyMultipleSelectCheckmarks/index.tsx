@@ -46,13 +46,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
 
   const updateQuantity = (optionValue: string, quantityInput: string) => {
     if (!/^\d+$/.test(quantityInput)) {
-
       return;
     }
 
     const quantity = parseInt(quantityInput, 10);
     if (isNaN(quantity) || quantity < 1) {
-
       return;
     }
 
@@ -124,10 +122,15 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             ? `${props.className} ${styles.error_field}`
             : props.className
         }
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          if (!isOpen) {
+            setTouched(true);
+          }
+        }}
         style={{
           padding: "0 12px",
-          border: `1px solid ${touched && error ? "#ff4d4f" : "#d9d9d9"}`,
+          border: `1px solid ${touched && error ? "#ff4444" : "#d9d9d9"}`,
           borderRadius: "4px",
           cursor: "pointer",
           height: "2rem",
@@ -377,9 +380,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         </div>
       )}
 
-      {touched && error ? (
-        <div className={styles.error}>{`Required`}</div>
-      ) : null}
+      {touched && error ? <div className={styles.error}>Required</div> : null}
     </div>
   );
 };

@@ -11,7 +11,7 @@
   flex: 1;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   min-width: 0;
@@ -45,9 +45,19 @@
   border-color: var(--primary-bg-color, #a95d1f);
 }
 
+.numberInput::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.numberInput:focus::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
 .unitsText {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
   white-space: nowrap;
   margin: 0;
   padding: 0;
@@ -55,13 +65,19 @@
 }
 
 .error_field {
-  border: 2px solid red !important;
+  border: 1px solid #ff4444 !important;
 }
 
 .error {
-  color: #ef648a;
+  color: #ffffff;
   font-size: 12px;
   margin-top: 4px;
+  background-color: #ff4444;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-left: 3px solid #cc0000;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Mobile: Stack label and input vertically */

@@ -38,6 +38,8 @@ export const metadata: Metadata = {
 };
 
 const cities = [
+  // Business location - Dover, DE (CRITICAL - must be first for local SEO)
+  { name: "dover", displayName: "Dover", state: "DE", population: "39K" },
   { name: "houston", displayName: "Houston", state: "TX", population: "2.3M" },
   { name: "dallas", displayName: "Dallas", state: "TX", population: "1.3M" },
   { name: "austin", displayName: "Austin", state: "TX", population: "965K" },
@@ -175,7 +177,9 @@ const PortaPottyRentalPage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
+      <div
+        style={{ maxWidth: "980px", margin: "0 auto", padding: "80px 18px" }}
+      >
         {/* Hero Section */}
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h1>Porta Potty Rentals by City</h1>
@@ -189,7 +193,11 @@ const PortaPottyRentalPage = () => {
         <div style={{ marginBottom: "40px" }}>
           <h2>Select Your City</h2>
           <p
-            style={{ textAlign: "center", marginBottom: "30px", color: "#666" }}
+            style={{
+              textAlign: "center",
+              marginBottom: "30px",
+              color: "var(--text-secondary)",
+            }}
           >
             We provide porta potty rental services across 25 cities in 5 states
           </p>
@@ -234,7 +242,7 @@ const PortaPottyRentalPage = () => {
                         display: "block",
                         padding: "15px",
                         border: "1px solid #ddd",
-                        borderRadius: "8px",
+                        borderRadius: "0",
                         textDecoration: "none",
                         color: "inherit",
                         background: "white",
@@ -288,7 +296,7 @@ const PortaPottyRentalPage = () => {
               style={{
                 padding: "20px",
                 background: "#f8f9fa",
-                borderRadius: "5px",
+                borderRadius: "0",
               }}
             >
               <h3>🏙️ City Coverage</h3>
@@ -301,7 +309,7 @@ const PortaPottyRentalPage = () => {
               style={{
                 padding: "20px",
                 background: "#f8f9fa",
-                borderRadius: "5px",
+                borderRadius: "0",
               }}
             >
               <h3>⚡ Fast Delivery</h3>
@@ -314,7 +322,7 @@ const PortaPottyRentalPage = () => {
               style={{
                 padding: "20px",
                 background: "#f8f9fa",
-                borderRadius: "5px",
+                borderRadius: "0",
               }}
             >
               <h3>💰 Competitive Pricing</h3>
@@ -327,7 +335,7 @@ const PortaPottyRentalPage = () => {
               style={{
                 padding: "20px",
                 background: "#f8f9fa",
-                borderRadius: "5px",
+                borderRadius: "0",
               }}
             >
               <h3>🧹 Clean & Sanitized</h3>
@@ -383,13 +391,14 @@ const PortaPottyRentalPage = () => {
                 style={{
                   padding: "15px",
                   border: "1px solid #ddd",
-                  borderRadius: "5px",
+                  borderRadius: "0",
                   textAlign: "center",
                   textDecoration: "none",
                   color: "inherit",
                   display: "block",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease",
                   cursor: "pointer",
+                  background: "white",
                 }}
               >
                 <h4
@@ -428,6 +437,7 @@ const PortaPottyRentalPage = () => {
                 color: "inherit",
                 display: "block",
                 transition: "transform 0.2s ease",
+                background: "white",
               }}
             >
               <h3
@@ -453,6 +463,7 @@ const PortaPottyRentalPage = () => {
                 color: "inherit",
                 display: "block",
                 transition: "transform 0.2s ease",
+                background: "white",
               }}
             >
               <h3
@@ -478,6 +489,7 @@ const PortaPottyRentalPage = () => {
                 color: "inherit",
                 display: "block",
                 transition: "transform 0.2s ease",
+                background: "white",
               }}
             >
               <h3
@@ -500,52 +512,55 @@ const PortaPottyRentalPage = () => {
         <div
           style={{
             textAlign: "center",
-            padding: "40px",
+            padding: "80px 18px",
             background: "var(--primary-bg-color)",
             color: "white",
-            borderRadius: "10px",
+            borderRadius: "0",
           }}
         >
-          <h2>Ready to Rent Porta Potties in Your City?</h2>
-          <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
-            Get a free quote for porta potty rental services in your city today!
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <Link
-              href="/quote"
+          <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+            <h2>Ready to Rent Porta Potties in Your City?</h2>
+            <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
+              Get a free quote for porta potty rental services in your city
+              today!
+            </p>
+            <div
               style={{
-                background: "white",
-                color: "var(--primary-bg-color)",
-                padding: "15px 30px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                fontSize: "1.1em",
+                display: "flex",
+                gap: "20px",
+                justifyContent: "center",
+                flexWrap: "wrap",
               }}
             >
-              Get Free Quote
-            </Link>
-            <Link
-              href="/contact"
-              style={{
-                background: "#28a745",
-                color: "white",
-                padding: "15px 30px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                fontSize: "1.1em",
-              }}
-            >
-              Contact Us
-            </Link>
+              <Link
+                href="/quote"
+                style={{
+                  background: "white",
+                  color: "var(--primary-bg-color)",
+                  padding: "15px 30px",
+                  textDecoration: "none",
+                  borderRadius: "0",
+                  fontWeight: "bold",
+                  fontSize: "1.1em",
+                }}
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/contact"
+                style={{
+                  background: "var(--primary)",
+                  color: "white",
+                  padding: "15px 30px",
+                  textDecoration: "none",
+                  borderRadius: "0",
+                  fontWeight: "bold",
+                  fontSize: "1.1em",
+                }}
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </div>

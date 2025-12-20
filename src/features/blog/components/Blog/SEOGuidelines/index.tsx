@@ -115,7 +115,7 @@ const SEOGuidelines = () => {
       style={{
         background: "white",
         padding: "30px",
-        borderRadius: "10px",
+        borderRadius: "0",
         border: "1px solid #ddd",
         marginBottom: "30px",
       }}
@@ -138,7 +138,7 @@ const SEOGuidelines = () => {
             style={{
               background: "#f8f9fa",
               padding: "20px",
-              borderRadius: "8px",
+              borderRadius: "0",
               border: "1px solid #ddd",
             }}
           >
@@ -186,7 +186,7 @@ const SEOGuidelines = () => {
               style={{
                 background: "#f8f9fa",
                 padding: "20px",
-                borderRadius: "8px",
+                borderRadius: "0",
                 border: "1px solid #ddd",
               }}
             >
@@ -226,7 +226,7 @@ const SEOGuidelines = () => {
           marginBottom: "30px",
         }}
       >
-        <h3 style={{ margin: "0 0 15px 0", color: "#28a745" }}>
+        <h3 style={{ margin: "0 0 15px 0", color: "var(--primary)" }}>
           Call-to-Action Examples
         </h3>
         <p style={{ margin: "0 0 15px 0", color: "#555" }}>

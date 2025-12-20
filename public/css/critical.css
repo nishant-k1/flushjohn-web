@@ -1,6 +1,6 @@
 /* Critical CSS - Above the fold styles */
 :root {
-  --primary-bg-color: #a95d1f;
+  --primary-bg-color: #8c6f48;
   --primary-text-color: white;
   --font-poppins: "Poppins", sans-serif;
 }
@@ -15,7 +15,8 @@ html,
 body {
   font-family: var(--font-poppins);
   line-height: 1.6;
-  color: #333;
+  color: white;
+  background-color: #8c6f48;
 }
 
 /* Critical hero section styles */
@@ -33,7 +34,7 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(140, 111, 72, 0.95);
   backdrop-filter: blur(10px);
 }
 
@@ -66,7 +67,7 @@ nav {
 h1,
 h2,
 h3 {
-  color: #333;
+  color: white;
   margin-bottom: 16px;
 }
 
@@ -91,4 +92,3 @@ h2 {
     font-size: 14px;
   }
 }
-

@@ -3,14 +3,18 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { comprehensiveFaqData, faqCategories } from "../../constants/comprehensiveFaq";
+import {
+  comprehensiveFaqData,
+  faqCategories,
+} from "../../constants/comprehensiveFaq";
 
 const Faq = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredFAQs = comprehensiveFaqData.filter((faq) => {
-    const matchesCategory = !selectedCategory || faq.category === selectedCategory;
+    const matchesCategory =
+      !selectedCategory || faq.category === selectedCategory;
     const matchesSearch =
       !searchTerm ||
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -27,10 +31,19 @@ const Faq = () => {
           {/* FAQ Section */}
           <div className={styles.faqWrapper}>
             <h1>Comprehensive Porta Potty Rental FAQs</h1>
-            <p style={{ fontSize: "1.1rem", marginBottom: "2rem", color: "#666" }}>
-              Find detailed answers to all your questions about porta potty rentals, pricing,
-              delivery, maintenance, and more. We've compiled over 50 frequently asked questions
-              to help you plan your event or construction project.
+            <p
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "2rem",
+                color: "var(--text-primary)",
+                opacity: 0.95,
+                lineHeight: "1.8",
+              }}
+            >
+              Find detailed answers to all your questions about porta potty
+              rentals, pricing, delivery, maintenance, and more. We've compiled
+              over 50 frequently asked questions to help you plan your event or
+              construction project.
             </p>
 
             {/* Search Bar */}
@@ -40,14 +53,7 @@ const Faq = () => {
                 placeholder="Search FAQs..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 20px",
-                  fontSize: "1rem",
-                  border: "2px solid #ddd",
-                  borderRadius: "8px",
-                  outline: "none",
-                }}
+                className={styles.searchInput}
               />
             </div>
 
@@ -63,15 +69,9 @@ const Faq = () => {
               >
                 <button
                   onClick={() => setSelectedCategory(null)}
-                  style={{
-                    padding: "8px 16px",
-                    border: selectedCategory === null ? "2px solid var(--primary-bg-color)" : "1px solid #ddd",
-                    borderRadius: "20px",
-                    background: selectedCategory === null ? "var(--primary-bg-color)" : "white",
-                    color: selectedCategory === null ? "white" : "#333",
-                    cursor: "pointer",
-                    fontWeight: selectedCategory === null ? "bold" : "normal",
-                  }}
+                  className={`${styles.categoryButton} ${
+                    selectedCategory === null ? styles.categoryButtonActive : ""
+                  }`}
                 >
                   All Categories ({comprehensiveFaqData.length})
                 </button>
@@ -79,17 +79,19 @@ const Faq = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    style={{
-                      padding: "8px 16px",
-                      border: selectedCategory === category ? "2px solid var(--primary-bg-color)" : "1px solid #ddd",
-                      borderRadius: "20px",
-                      background: selectedCategory === category ? "var(--primary-bg-color)" : "white",
-                      color: selectedCategory === category ? "white" : "#333",
-                      cursor: "pointer",
-                      fontWeight: selectedCategory === category ? "bold" : "normal",
-                    }}
+                    className={`${styles.categoryButton} ${
+                      selectedCategory === category
+                        ? styles.categoryButtonActive
+                        : ""
+                    }`}
                   >
-                    {category} ({comprehensiveFaqData.filter((f) => f.category === category).length})
+                    {category} (
+                    {
+                      comprehensiveFaqData.filter(
+                        (f) => f.category === category
+                      ).length
+                    }
+                    )
                   </button>
                 ))}
               </div>
@@ -98,14 +100,20 @@ const Faq = () => {
             {/* FAQ Items */}
             <div>
               {selectedCategory && (
-                <h2 style={{ marginBottom: "1.5rem", color: "var(--primary-bg-color)" }}>
-                  {selectedCategory}
-                </h2>
+                <h2 style={{ marginBottom: "1.5rem" }}>{selectedCategory}</h2>
               )}
 
               {filteredFAQs.length === 0 && (
-                <p style={{ textAlign: "center", padding: "2rem", color: "#666" }}>
-                  No FAQs found matching your search. Try different keywords or browse all categories.
+                <p
+                  style={{
+                    textAlign: "center",
+                    padding: "2rem",
+                    color: "var(--text-primary)",
+                    opacity: 0.8,
+                  }}
+                >
+                  No FAQs found matching your search. Try different keywords or
+                  browse all categories.
                 </p>
               )}
 
@@ -115,23 +123,18 @@ const Faq = () => {
                   className={styles.faqItem}
                   itemScope
                   itemType="https://schema.org/Question"
-                  style={{ marginBottom: "1.5rem" }}
                 >
-                  <h3 itemProp="name" style={{ color: "#2c3e50", marginBottom: "0.5rem" }}>
-                    {faq.question}
-                  </h3>
+                  <h3 itemProp="name">{faq.question}</h3>
                   <div
                     itemScope
                     itemProp="acceptedAnswer"
                     itemType="https://schema.org/Answer"
                   >
-                    <p itemProp="text" style={{ lineHeight: "1.6", color: "#555" }}>
-                      {faq.answer}
-                    </p>
+                    <p itemProp="text">{faq.answer}</p>
                   </div>
                   {faq.keywords && faq.keywords.length > 0 && (
                     <div style={{ marginTop: "0.5rem" }}>
-                      <small style={{ color: "#888" }}>
+                      <small>
                         <strong>Keywords:</strong> {faq.keywords.join(", ")}
                       </small>
                     </div>
@@ -141,43 +144,22 @@ const Faq = () => {
             </div>
 
             {/* Still Have Questions CTA */}
-            <div
-              style={{
-                marginTop: "3rem",
-                padding: "2rem",
-                background: "#f8f9fa",
-                borderRadius: "10px",
-                textAlign: "center",
-              }}
-            >
-              <h3 style={{ marginBottom: "1rem" }}>Still Have Questions?</h3>
-              <p style={{ marginBottom: "1.5rem", fontSize: "1.1rem" }}>
-                Can't find the answer you're looking for? Our team is here to help 24/7.
+            <div className={styles.ctaBox}>
+              <h3>Still Have Questions?</h3>
+              <p>
+                Can't find the answer you're looking for? Our team is here to
+                help 24/7.
               </p>
-              <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+              <div className={styles.ctaButtons}>
                 <a
                   href="/quote"
-                  style={{
-                    padding: "12px 24px",
-                    background: "var(--primary-bg-color)",
-                    color: "white",
-                    textDecoration: "none",
-                    borderRadius: "5px",
-                    fontWeight: "bold",
-                  }}
+                  className={styles.ctaLink}
                 >
                   Get a Quote
                 </a>
                 <a
                   href="/contact"
-                  style={{
-                    padding: "12px 24px",
-                    background: "#28a745",
-                    color: "white",
-                    textDecoration: "none",
-                    borderRadius: "5px",
-                    fontWeight: "bold",
-                  }}
+                  className={styles.ctaLink}
                 >
                   Contact Us
                 </a>

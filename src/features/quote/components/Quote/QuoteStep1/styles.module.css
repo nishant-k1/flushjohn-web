@@ -5,6 +5,10 @@
   gap: 0;
   width: 100%;
   margin-bottom: 24px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
 }
 
 /* Usage Type Row - matches NumberField structure exactly */
@@ -20,7 +24,7 @@
   flex: 1;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   min-width: 0;
@@ -42,7 +46,7 @@
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   outline: none !important;
   border: 2px solid #d9d9d9 !important;
   background-color: white !important;
@@ -56,7 +60,7 @@
 }
 
 .radio:hover {
-  border-color: var(--primary-bg-color, #a95d1f) !important;
+  border-color: var(--primary-light) !important;
 }
 
 .radio:checked {
@@ -94,41 +98,64 @@
   height: 48px;
   font-size: large;
   font-weight: 500;
-  border-radius: 2px;
+  border-radius: 0;
   transition: 0.3s;
   border: 2px solid var(--primary-bg-color);
   cursor: pointer;
 }
 
 .button {
-  color: var(--primary-text-color);
-  background-color: var(--primary-bg-color);
-  transition: 0.3s;
+  color: var(--text-primary);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  transition: var(--transition-base);
 }
 
 .button:hover {
-  background-color: var(--primary-bg-color);
-  border-color: var(--primary-bg-color);
-  opacity: 0.9;
-  transition: 0.3s;
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary-lg);
+  transition: var(--transition-base);
+}
+
+.button:active {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--text-primary);
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
 }
 
 /* Error styling */
 .error {
-  color: #ef648a;
+  color: #ffffff;
   font-size: 12px;
   margin-top: 4px;
   margin-left: calc(50% + 8px);
+  background-color: #ff4444;
+  padding: 4px 8px;
+  border-radius: 0;
+  border-left: 3px solid #cc0000;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .error_message {
-  color: #ef648a;
+  color: #ffffff;
   font-size: 13px;
   margin-top: 12px;
   padding: 8px 12px;
-  background-color: rgba(239, 100, 138, 0.1);
-  border-radius: 4px;
-  border-left: 3px solid #ef648a;
+  background-color: #ff4444;
+  border-radius: 0;
+  border-left: 3px solid #cc0000;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Mobile: Stack Usage Type label and radio buttons vertically */

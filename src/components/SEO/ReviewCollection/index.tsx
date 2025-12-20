@@ -18,16 +18,16 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     rating: 5,
     review: "",
     city: city || "",
-    state: state || ""
+    state: state || "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // TODO: Add actual API call here
       // await axios.post('/api/reviews', formData);
-      
+
       setShowSuccessModal(true);
       setFormData({
         name: "",
@@ -35,7 +35,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         rating: 5,
         review: "",
         city: city || "",
-        state: state || ""
+        state: state || "",
       });
       setShowForm(false);
     } catch (error) {
@@ -43,21 +43,34 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: name === "rating" ? parseInt(value) : value
+      [name]: name === "rating" ? parseInt(value) : value,
     }));
   };
 
   return (
-    <div style={{ marginTop: "40px", padding: "30px", background: "#f8f9fa", borderRadius: "10px" }}>
+    <div
+      style={{
+        marginTop: "40px",
+        padding: "30px",
+        background: "#f8f9fa",
+        borderRadius: "10px",
+      }}
+    >
       <h2 style={{ marginBottom: "20px", color: "#333" }}>
         Share Your Experience
       </h2>
       <p style={{ marginBottom: "30px", color: "#666" }}>
-        {city ? `Help others in ${city}, ${state} by sharing your experience with FlushJohn porta potty rentals.` : "Help others by sharing your experience with FlushJohn porta potty rentals."}
+        {city
+          ? `Help others in ${city}, ${state} by sharing your experience with FlushJohn porta potty rentals.`
+          : "Help others by sharing your experience with FlushJohn porta potty rentals."}
       </p>
 
       {!showForm ? (
@@ -73,10 +86,10 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               fontSize: "1.1em",
               fontWeight: "bold",
               cursor: "pointer",
-              transition: "background 0.3s ease"
+              transition: "background 0.3s ease",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.background = "#ac6324";
+              e.currentTarget.style.background = "var(--primary-light)";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.background = "var(--primary-bg-color)";
@@ -86,9 +99,19 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "0 auto" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ maxWidth: "600px", margin: "0 auto" }}
+        >
           <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold", color: "#333" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
               Your Name *
             </label>
             <input
@@ -102,13 +125,20 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 padding: "10px",
                 border: "1px solid #ddd",
                 borderRadius: "5px",
-                fontSize: "1em"
+                fontSize: "1em",
               }}
             />
           </div>
 
           <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold", color: "#333" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
               Email Address *
             </label>
             <input
@@ -122,13 +152,20 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 padding: "10px",
                 border: "1px solid #ddd",
                 borderRadius: "5px",
-                fontSize: "1em"
+                fontSize: "1em",
               }}
             />
           </div>
 
           <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold", color: "#333" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
               Rating *
             </label>
             <select
@@ -141,7 +178,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 padding: "10px",
                 border: "1px solid #ddd",
                 borderRadius: "5px",
-                fontSize: "1em"
+                fontSize: "1em",
               }}
             >
               <option value={5}>⭐⭐⭐⭐⭐ Excellent (5 stars)</option>
@@ -153,7 +190,14 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
           </div>
 
           <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold", color: "#333" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "5px",
+                fontWeight: "bold",
+                color: "#333",
+              }}
+            >
               Your Review *
             </label>
             <textarea
@@ -169,12 +213,14 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 border: "1px solid #ddd",
                 borderRadius: "5px",
                 fontSize: "1em",
-                resize: "vertical"
+                resize: "vertical",
               }}
             />
           </div>
 
-          <div style={{ display: "flex", gap: "15px", justifyContent: "center" }}>
+          <div
+            style={{ display: "flex", gap: "15px", justifyContent: "center" }}
+          >
             <button
               type="submit"
               style={{
@@ -185,7 +231,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 borderRadius: "5px",
                 fontSize: "1em",
                 fontWeight: "bold",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             >
               Submit Review
@@ -201,7 +247,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 borderRadius: "5px",
                 fontSize: "1em",
                 fontWeight: "bold",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             >
               Cancel
@@ -210,31 +256,51 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         </form>
       )}
 
-      <div style={{ 
-        marginTop: "30px", 
-        padding: "20px", 
-        background: "white", 
-        borderRadius: "8px",
-        border: "1px solid #ddd"
-      }}>
+      <div
+        style={{
+          marginTop: "30px",
+          padding: "20px",
+          background: "white",
+          borderRadius: "8px",
+          border: "1px solid #ddd",
+        }}
+      >
         <h3 style={{ margin: "0 0 15px 0", color: "#333" }}>
           Why Reviews Matter
         </h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "15px" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "15px",
+          }}
+        >
           <div>
-            <h4 style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}>Help Others</h4>
+            <h4
+              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+            >
+              Help Others
+            </h4>
             <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
               Your review helps other customers make informed decisions
             </p>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}>Improve Service</h4>
+            <h4
+              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+            >
+              Improve Service
+            </h4>
             <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
               We use feedback to continuously improve our services
             </p>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}>Build Trust</h4>
+            <h4
+              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+            >
+              Build Trust
+            </h4>
             <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
               Honest reviews build trust in our porta potty rental services
             </p>

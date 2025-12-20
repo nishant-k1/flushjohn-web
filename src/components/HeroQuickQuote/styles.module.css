@@ -11,7 +11,7 @@
 .quickQuoteform h2 {
   text-align: left;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* Usage Type Row - Responsive Layout */
@@ -23,12 +23,12 @@
   background: white;
   padding: 8px 12px;
   margin-bottom: 4px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .usageTypeLabel {
   font-size: 14px !important;
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   color: var(--primary-bg-color) !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -68,7 +68,7 @@
   padding-left: 12px;
   font-size: 14px;
   color: black;
-  border-radius: 4px;
+  border-radius: 0;
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -101,7 +101,7 @@
 }
 
 .error_field {
-  border: 2px solid red !important;
+  border: 1px solid #ff4444 !important;
 }
 
 .date {
@@ -114,7 +114,7 @@
   border: none;
   padding: 0 8px 0 12px !important;
   font-size: 14px;
-  border-radius: 4px;
+  border-radius: 0;
   color: black !important;
   height: 2rem !important;
   margin: 0 !important;
@@ -141,18 +141,20 @@
 .date input.datepicker-error,
 .date input.datepicker-error:hover,
 .date input.datepicker-error:focus {
-  border: 2px solid red !important;
+  border: 1px solid #ff4444 !important;
 }
 
 .error {
   padding: 0 12px;
   margin: 0;
-  background-color: color(a98-rgb 0 0 0 / 0.39);
+  background-color: #ff4444;
   font-size: small; /* Smaller text size */
   margin-top: 0.25rem; /* Space between input and message */
-  font-weight: 200; /* Emphasized text */
-  color: var(--primary-error-color);
-  border-radius: 0 50px 100px 50px;
+  font-weight: 600; /* Emphasized text */
+  color: #ffffff;
+  border-radius: 0;
+  border-left: 3px solid #cc0000;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /*  Global Variables*/
@@ -204,21 +206,21 @@
 
 /* Error state for PhoneInput */
 .quickQuoteform :global(.PhoneInput.error_field) {
-  border: 2px solid red !important;
+  border: 1px solid #ff4444 !important;
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-picker {
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-select-multiple
   .ant-select-selector {
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled) {
-  font-weight: 600;
+  font-weight: 400;
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
 }
@@ -227,5 +229,5 @@
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled)
   svg {
   color: var(--primary-text-color);
-  font-weight: 600;
+  font-weight: 400;
 }

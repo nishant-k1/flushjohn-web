@@ -15,7 +15,14 @@ const DatePicker = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div style={{ padding: "8px", minHeight: "40px", display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          padding: "8px",
+          minHeight: "40px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         Loading date picker...
       </div>
     ),
@@ -40,7 +47,9 @@ const DateField = ({ label, ...props }: any) => {
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>
         {label}
-        <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+        <span style={{ color: "var(--primary-dark)", fontSize: "x-large" }}>
+          *
+        </span>
       </label>
       <div className={styles.inputContainer}>
         <DatePicker

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { products_data } from "../../constants";
 import styles from "./styles.module.css";
@@ -29,16 +28,16 @@ const Products = () => {
                   <div>
                     <h3>{title}</h3>
                     <p>
-                      {desc}
-                      <span>
-                        <Link
-                          className={styles.moreLink}
-                          href={`/rental-products/${slug}`}
-                        >
-                          ...More
-                        </Link>
-                      </span>
+                      {desc.length > 100
+                        ? `${desc.substring(0, 100)}...`
+                        : desc}
                     </p>
+                    <Link
+                      className={styles.moreLink}
+                      href={`/rental-products/${slug}`}
+                    >
+                      Learn More →
+                    </Link>
                   </div>
                   <div>
                     <Slider {...image} />

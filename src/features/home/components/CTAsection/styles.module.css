@@ -1,13 +1,22 @@
 .ctaSection {
-  margin-top: var(--spacing-3xl);
-  padding: var(--spacing-2xl) var(--spacing-lg);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-radius: var(--radius-xl);
+  margin-top: 0;
+  padding: var(--spacing-section) var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
+  border-radius: 0;
   text-align: center;
   box-shadow: var(--shadow-xl);
   color: var(--text-inverse);
   position: relative;
   overflow: hidden;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .ctaSection::before {
@@ -17,7 +26,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -25,7 +38,8 @@
   font-size: 2.2rem;
   color: var(--text-inverse);
   margin-bottom: var(--spacing-md);
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   position: relative;
   z-index: 1;
 }
@@ -34,7 +48,7 @@
   font-size: 1.2rem;
   color: var(--text-inverse-secondary);
   margin-bottom: var(--spacing-xl);
-  line-height: 1.6;
+  line-height: 1.7;
   position: relative;
   z-index: 1;
 }
@@ -50,13 +64,13 @@
 }
 
 .ctaButton {
-  background-color: var(--bg-primary);
+  background-color: rgba(255, 255, 255, 0.95);
   color: var(--primary);
-  border: 2px solid var(--bg-primary);
+  border: 2px solid rgba(255, 255, 255, 0.95);
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: var(--radius-md);
+  font-weight: 500;
+  border-radius: 0;
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
@@ -66,10 +80,17 @@
 }
 
 .ctaButton:hover {
-  background-color: var(--neutral-50);
+  background-color: var(--text-primary);
+  color: var(--primary);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--neutral-50);
+  border-color: var(--text-primary);
+}
+
+.ctaButton:active {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  transform: translateY(0);
 }
 
 .ctaButton:focus-visible {
@@ -78,13 +99,13 @@
 }
 
 .phoneButton {
-  background-color: var(--success);
-  color: var(--text-inverse);
-  border: 2px solid var(--success);
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+  border: 2px solid var(--primary-light);
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: var(--radius-md);
+  font-weight: 500;
+  border-radius: 0;
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
@@ -94,23 +115,30 @@
 }
 
 .phoneButton:hover {
-  background-color: var(--success-dark);
-  border-color: var(--success-dark);
+  background-color: var(--primary);
+  border-color: var(--primary);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  color: var(--text-inverse);
+  color: var(--text-primary);
+}
+
+.phoneButton:active {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--text-primary);
+  transform: translateY(0);
 }
 
 .phoneButton:focus-visible {
-  outline: 2px solid var(--success-dark);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
 .ctaOffer {
   margin-top: var(--spacing-lg);
   font-size: 1.3rem;
-  color: var(--accent-gold);
-  font-weight: 700;
+  color: var(--primary-light);
+  font-weight: 400;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
@@ -119,7 +147,7 @@
 .trustElements {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--gap-sm); /* 24px - matches nexbaron-web gap-6 */
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -143,9 +171,9 @@
 
 @media (max-width: 768px) {
   .ctaSection {
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-3xl) var(--spacing-md);
   }
-  
+
   .ctaSection h3 {
     font-size: 1.8rem;
   }
@@ -168,6 +196,6 @@
 
   .trustElements {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-md);
+    gap: var(--gap-sm); /* 24px - consistent gap */
   }
 }

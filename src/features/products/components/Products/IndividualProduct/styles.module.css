@@ -1,16 +1,15 @@
 /* utilities */
 .product {
-  background-color: var(--tertiary-bg-color);
-  /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
+  background-color: var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
-  padding: 32px;
+  padding: var(--spacing-section) var(--spacing-lg);
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 980px;
 }
 
 .wrapper {
@@ -19,6 +18,36 @@
   grid-gap: 2rem;
   height: 100%;
   width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top accent border */
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-light) 0%,
+    var(--primary) 100%
+  );
+  opacity: 0.8;
 }
 
 .wrapper div {
@@ -29,22 +58,69 @@
 }
 
 .wrapper h1 {
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
 }
+
+.wrapper h2 {
+  color: var(--text-primary);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
 .wrapper img {
   max-width: 400px;
   height: auto;
   padding-bottom: 2.5rem;
 }
+
 .wrapper p {
   font-size: 16px;
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.95;
+}
+
+.wrapper ul {
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.95;
+}
+
+.wrapper ul li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.wrapper a {
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.wrapper:hover h1,
+.wrapper:hover h2 {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.wrapper:hover p,
+.wrapper:hover ul {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.wrapper a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
 }
 
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
   .product {
-    padding: 64px 32px;
+    padding: var(--spacing-section) var(--spacing-lg);
   }
   .wrapper div {
     grid-template-columns: 1fr 1fr;

@@ -1,13 +1,6 @@
 .features {
-  padding: var(--spacing-2xl) var(--spacing-2xl);
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-tertiary) 100%
-  );
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: var(--spacing-section) var(--spacing-lg);
+  background-color: var(--bg-primary);
   position: relative;
 }
 
@@ -35,15 +28,23 @@
       rgba(255, 255, 255, 0.02) 20px
     ),
     /* Subtle dot pattern */
-    radial-gradient(
-      circle at 1px 1px,
-      rgba(0, 0, 0, 0.015) 1px,
-      transparent 0
-    ),
+      radial-gradient(
+        circle at 1px 1px,
+        rgba(0, 0, 0, 0.015) 1px,
+        transparent 0
+      ),
     /* Brand-colored accent gradients */
-    radial-gradient(circle at 20% 50%, rgba(169, 93, 31, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(26, 61, 95, 0.04) 0%, transparent 50%);
-  background-size: 
+      radial-gradient(
+        circle at 20% 50%,
+        rgba(140, 111, 72, 0.1) 0%,
+        transparent 50%
+      ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(109, 86, 55, 0.1) 0%,
+      transparent 50%
+    );
+  background-size:
     40px 40px,
     40px 40px,
     20px 20px,
@@ -54,25 +55,27 @@
 }
 
 .container {
-  max-width: var(--container-2xl);
+  max-width: 980px;
   margin: 0 auto;
+  padding: 0 var(--spacing-md);
   position: relative;
   z-index: 1;
 }
 
 .container h2 {
-  color: var(--accent-blue);
-  padding: var(--spacing-2xl) 0;
-  font-size: x-large;
+  color: var(--text-primary);
+  padding: var(--spacing-lg) 0;
+  font-size: 1.5rem;
   text-align: center;
-  font-weight: 700;
-  margin-bottom: var(--spacing-lg);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: 0.02em;
 }
 
 .featuresWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
+  gap: var(--gap-md); /* 32px - matches nexbaron-web gap-8 */
   align-items: stretch; /* Makes all cards equal height */
   justify-content: center;
 }
@@ -83,15 +86,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between; /* Distributes content evenly */
-  padding: var(--spacing-xl);
-  background: var(--bg-primary);
-  border: 2px solid var(--accent-blue);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  padding: 2.5rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
-    border-color var(--transition-base);
+    border-color var(--transition-base),
+    background var(--transition-base);
   overflow: hidden;
   height: 100%; /* Ensures cards stretch to fill grid cell */
 }
@@ -104,7 +115,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
+  background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -121,12 +132,12 @@
     ),
     radial-gradient(
       circle at 20% 50%,
-      rgba(169, 93, 31, 0.02) 0%,
+      rgba(140, 111, 72, 0.05) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(26, 61, 95, 0.02) 0%,
+      rgba(109, 86, 55, 0.05) 0%,
       transparent 50%
     );
   pointer-events: none;
@@ -141,7 +152,11 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-blue) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--primary-light) 0%,
+    var(--primary) 100%
+  );
   transform: scaleX(0);
   transition: transform var(--transition-base);
 }
@@ -151,9 +166,16 @@
 }
 
 .wrapper:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-2xl);
-  border-color: var(--primary);
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
 }
 
 .wrapper > div:first-child {
@@ -166,15 +188,22 @@
 }
 
 .iconContainer {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
   height: 80px;
   width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border-radius: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
   margin-bottom: var(--spacing-md);
   flex-shrink: 0; /* Prevents icon from shrinking */
   position: relative;
@@ -182,8 +211,8 @@
 }
 
 .wrapper:hover .iconContainer {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: var(--shadow-primary);
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .iconContainer svg {
@@ -193,11 +222,12 @@
 }
 
 .wrapper h2 {
-  font-size: large;
-  color: var(--accent-blue);
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  color: var(--text-primary);
   margin-top: 0;
   margin-bottom: var(--spacing-sm);
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
   transition: color var(--transition-base);
   position: relative;
@@ -205,25 +235,33 @@
 }
 
 .wrapper:hover h2 {
-  color: var(--primary);
+  color: var(--text-primary);
+}
+
+.wrapper:hover p {
+  color: var(--text-primary);
+  opacity: 1;
 }
 
 .wrapper p {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
   text-align: center;
   line-height: 1.6;
   margin: 0; /* Remove default margins for consistent spacing */
   position: relative;
   z-index: 1; /* Ensures text is above texture */
+  transition:
+    color var(--transition-base),
+    opacity var(--transition-base);
 }
 
 /* Responsive Styling */
 @media only screen and (min-width: 768px) {
   .features {
-    padding: var(--spacing-5xl) var(--spacing-2xl);
+    padding: var(--spacing-section) var(--spacing-lg);
   }
-  
+
   .container h2 {
     font-size: 2rem;
   }

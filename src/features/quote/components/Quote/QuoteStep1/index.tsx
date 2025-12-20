@@ -19,9 +19,13 @@ const step1StringValidationSchema = Yup.object({
         desc: Yup.string(),
         qty: Yup.string()
           .matches(/^\d*$/, "Quantity must be a whole number")
-          .test("non-negative", "Quantity cannot be negative", function (value) {
-            return parseInt(value || "0", 10) >= 0;
-          }),
+          .test(
+            "non-negative",
+            "Quantity cannot be negative",
+            function (value) {
+              return parseInt(value || "0", 10) >= 0;
+            }
+          ),
         rate: Yup.string()
           .matches(/^\d*\.?\d{0,2}$/, "Rate must be a valid decimal")
           .test("non-negative", "Rate cannot be negative", function (value) {
@@ -98,7 +102,12 @@ const QuoteStep1 = () => {
             <div className={styles.usage_type_row}>
               <label className={styles.field_label}>
                 Usage Type
-                <span style={{ color: "red", fontSize: "x-large" }}> *</span>
+                <span
+                  style={{ color: "var(--primary-dark)", fontSize: "x-large" }}
+                >
+                  {" "}
+                  *
+                </span>
               </label>
               <div className={styles.radio_inner_box}>
                 <RadioField

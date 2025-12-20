@@ -21,7 +21,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                 key={item.id}
                 className={styles.wrapper}
               >
-                <div>
+                <div style={{ marginBottom: "1rem" }}>
                   <h2>{item.title}</h2>
                   <p>{item.body}</p>
                 </div>

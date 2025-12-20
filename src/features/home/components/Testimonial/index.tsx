@@ -23,7 +23,11 @@ const renderStars = (rating: number) => {
     stars.push(
       <span
         key={i}
-        style={{ color: i < rating ? "#ffcc00" : "#ccc" }}
+        style={{
+          color: i < rating ? "#FFD700" : "rgba(255, 255, 255, 0.25)",
+          fontSize: "1.25rem",
+          textShadow: i < rating ? "0 0 4px rgba(255, 215, 0, 0.5)" : "none",
+        }}
       >
         ★
       </span>
@@ -45,29 +49,33 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
             content.map((item, index) => (
               <div key={index}>
                 <div className={styles.wrapper}>
-                  <Image
-                    src={item.image.src}
-                    alt={item.image.alt}
-                    width={128}
-                    height={128}
-                    priority={true}
-                    placeholder="empty"
-                    style={{
-                      height: 128,
-                      width: 128,
-                      borderRadius: "50%",
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                    }}
-                  />
+                  <div style={{ position: "relative" }}>
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      width={120}
+                      height={120}
+                      priority={true}
+                      placeholder="empty"
+                      style={{
+                        height: 120,
+                        width: 120,
+                        borderRadius: "0",
+                        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.2)",
+                        objectFit: "cover",
+                        border: "2px solid rgba(255, 255, 255, 0.3)",
+                      }}
+                    />
+                  </div>
                   <div>
                     <h3>{item.title}</h3>
-                    <div>
+                    <div className={styles.ratingContainer}>
                       <div className={styles.rating}>
-                        ⭐⭐⭐⭐⭐{/* {renderStars(5)} */}
+                        {renderStars(item.rating || 5)}
                       </div>
                       {item.verified && (
-                        <span style={{ marginLeft: "8px", color: "#4CAF50" }}>
-                          Verified Customer
+                        <span className={styles.verifiedBadge}>
+                          ✓ Verified Customer
                         </span>
                       )}
                     </div>

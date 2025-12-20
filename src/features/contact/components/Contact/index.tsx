@@ -232,7 +232,7 @@ const Contact = () => {
                 </AnimationWrapper>
               </Form>
               {state && (
-                <h1 style={{ color: "white" }}>
+                <h1 style={{ color: "var(--text-primary)", marginTop: "2rem" }}>
                   Your message has been delivered
                 </h1>
               )}

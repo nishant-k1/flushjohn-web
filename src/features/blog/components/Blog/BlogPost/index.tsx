@@ -155,7 +155,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                         background: "var(--primary-bg-color)",
                         color: "white",
                         padding: "4px 12px",
-                        borderRadius: "20px",
+                        borderRadius: "0",
                         fontSize: "0.8em",
                         marginRight: "8px",
                         marginBottom: "8px",
@@ -176,7 +176,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                   position: "relative",
                   width: "100%",
                   aspectRatio: "16/9",
-                  borderRadius: "8px",
+                  borderRadius: "0",
                   overflow: "hidden",
                 }}
               >
@@ -216,7 +216,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                 background: "var(--primary-bg-color)",
                 color: "white",
                 padding: "30px",
-                borderRadius: "10px",
+                borderRadius: "0",
                 marginBottom: "40px",
                 textAlign: "center",
               }}
@@ -243,7 +243,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     color: "var(--primary-bg-color)",
                     padding: "12px 25px",
                     textDecoration: "none",
-                    borderRadius: "5px",
+                    borderRadius: "0",
                     fontSize: "1em",
                     fontWeight: "bold",
                     display: "inline-block",
@@ -254,11 +254,11 @@ const BlogPost = ({ blogPost, slug }: any) => {
                 <a
                   href={phone.phone_link}
                   style={{
-                    background: "#28a745",
+                    background: "var(--primary)",
                     color: "white",
                     padding: "12px 25px",
                     textDecoration: "none",
-                    borderRadius: "5px",
+                    borderRadius: "0",
                     fontSize: "1em",
                     fontWeight: "bold",
                     display: "inline-block",
@@ -274,7 +274,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
               style={{
                 background: "#f8f9fa",
                 padding: "20px",
-                borderRadius: "8px",
+                borderRadius: "0",
                 marginBottom: "40px",
               }}
             >
@@ -310,7 +310,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
-                    borderRadius: "5px",
+                    borderRadius: "0",
                     fontSize: "0.9em",
                   }}
                 >
@@ -325,7 +325,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
-                    borderRadius: "5px",
+                    borderRadius: "0",
                     fontSize: "0.9em",
                   }}
                 >
@@ -340,7 +340,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
-                    borderRadius: "5px",
+                    borderRadius: "0",
                     fontSize: "0.9em",
                   }}
                 >

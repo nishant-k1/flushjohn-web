@@ -3,12 +3,21 @@ import type { Metadata } from "next";
 import { websiteURL } from "@/constants";
 import dynamic from "next/dynamic";
 
-const SEOGuidelines = dynamic(() => import("@/features/blog/components").then(mod => ({ default: mod.SEOGuidelines })));
-const ContentStrategy = dynamic(() => import("@/features/blog/components").then(mod => ({ default: mod.ContentStrategy })));
+const SEOGuidelines = dynamic(() =>
+  import("@/features/blog/components").then((mod) => ({
+    default: mod.SEOGuidelines,
+  }))
+);
+const ContentStrategy = dynamic(() =>
+  import("@/features/blog/components").then((mod) => ({
+    default: mod.ContentStrategy,
+  }))
+);
 
 export const metadata: Metadata = {
   title: "Blog SEO Dashboard - FlushJohn",
-  description: "Generate SEO-optimized blog posts and manage content strategy for maximum lead generation.",
+  description:
+    "Generate SEO-optimized blog posts and manage content strategy for maximum lead generation.",
   robots: "noindex, nofollow", // Internal dashboard
 };
 
@@ -18,19 +27,22 @@ const BlogDashboard = () => {
       <h1 style={{ marginBottom: "30px", color: "#333" }}>
         Blog SEO Dashboard
       </h1>
-      
-      <div style={{ 
-        background: "#e8f5e8", 
-        padding: "20px", 
-        borderRadius: "8px", 
-        marginBottom: "30px" 
-      }}>
-        <h2 style={{ margin: "0 0 10px 0", color: "#28a745" }}>
+
+      <div
+        style={{
+          background: "#e8f5e8",
+          padding: "20px",
+          borderRadius: "0",
+          marginBottom: "30px",
+        }}
+      >
+        <h2 style={{ margin: "0 0 10px 0", color: "var(--primary)" }}>
           🚀 Blog SEO Strategy for Lead Generation
         </h2>
         <p style={{ margin: "0", color: "#555" }}>
-          Use these guidelines when creating blog posts in your CRM to maximize SEO impact and lead generation. 
-          Each blog post can generate 2-5 leads per month when properly optimized.
+          Use these guidelines when creating blog posts in your CRM to maximize
+          SEO impact and lead generation. Each blog post can generate 2-5 leads
+          per month when properly optimized.
         </p>
       </div>
 
@@ -48,28 +60,36 @@ const BlogDashboard = () => {
         <ContentStrategy />
       </div>
 
-      <div style={{ 
-        background: "#f8f9fa", 
-        padding: "30px", 
-        borderRadius: "10px",
-        marginBottom: "30px"
-      }}>
+      <div
+        style={{
+          background: "#f8f9fa",
+          padding: "30px",
+          borderRadius: "0",
+          marginBottom: "30px",
+        }}
+      >
         <h2 style={{ marginBottom: "20px", color: "#333" }}>
           Blog SEO Best Practices
         </h2>
-        
-        <div style={{ 
-          display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", 
-          gap: "20px" 
-        }}>
-          <div style={{ 
-            background: "white", 
-            padding: "20px", 
-            borderRadius: "8px",
-            border: "1px solid #ddd"
-          }}>
-            <h3 style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "20px",
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "0",
+              border: "1px solid #ddd",
+            }}
+          >
+            <h3
+              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+            >
               Title Optimization
             </h3>
             <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
@@ -81,13 +101,17 @@ const BlogDashboard = () => {
             </ul>
           </div>
 
-          <div style={{ 
-            background: "white", 
-            padding: "20px", 
-            borderRadius: "8px",
-            border: "1px solid #ddd"
-          }}>
-            <h3 style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}>
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "0",
+              border: "1px solid #ddd",
+            }}
+          >
+            <h3
+              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+            >
               Content Structure
             </h3>
             <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
@@ -99,13 +123,17 @@ const BlogDashboard = () => {
             </ul>
           </div>
 
-          <div style={{ 
-            background: "white", 
-            padding: "20px", 
-            borderRadius: "8px",
-            border: "1px solid #ddd"
-          }}>
-            <h3 style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}>
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "0",
+              border: "1px solid #ddd",
+            }}
+          >
+            <h3
+              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+            >
               Internal Linking
             </h3>
             <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
@@ -117,13 +145,17 @@ const BlogDashboard = () => {
             </ul>
           </div>
 
-          <div style={{ 
-            background: "white", 
-            padding: "20px", 
-            borderRadius: "8px",
-            border: "1px solid #ddd"
-          }}>
-            <h3 style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}>
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "0",
+              border: "1px solid #ddd",
+            }}
+          >
+            <h3
+              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+            >
               Call-to-Actions
             </h3>
             <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
@@ -137,64 +169,122 @@ const BlogDashboard = () => {
         </div>
       </div>
 
-      <div style={{ 
-        background: "#d1ecf1", 
-        padding: "30px", 
-        borderRadius: "10px",
-        marginBottom: "30px"
-      }}>
+      <div
+        style={{
+          background: "#d1ecf1",
+          padding: "30px",
+          borderRadius: "0",
+          marginBottom: "30px",
+        }}
+      >
         <h2 style={{ marginBottom: "20px", color: "#333" }}>
           Content Calendar Template
         </h2>
-        
-        <div style={{ 
-          display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
-          gap: "15px" 
-        }}>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "15px",
+          }}
+        >
           {[
-            { month: "January", theme: "New Year Planning", focus: "Resolution events" },
-            { month: "February", theme: "Valentine's Events", focus: "Wedding planning" },
-            { month: "March", theme: "Spring Construction", focus: "Outdoor projects" },
-            { month: "April", theme: "Easter Events", focus: "Religious celebrations" },
-            { month: "May", theme: "Wedding Season", focus: "Wedding planning" },
-            { month: "June", theme: "Summer Festivals", focus: "Outdoor events" },
-            { month: "July", theme: "Independence Day", focus: "Patriotic events" },
-            { month: "August", theme: "Back-to-School", focus: "School events" },
-            { month: "September", theme: "Fall Construction", focus: "Construction projects" },
-            { month: "October", theme: "Halloween Events", focus: "Spooky celebrations" },
-            { month: "November", theme: "Thanksgiving", focus: "Family gatherings" },
-            { month: "December", theme: "Holiday Parties", focus: "Christmas events" }
+            {
+              month: "January",
+              theme: "New Year Planning",
+              focus: "Resolution events",
+            },
+            {
+              month: "February",
+              theme: "Valentine's Events",
+              focus: "Wedding planning",
+            },
+            {
+              month: "March",
+              theme: "Spring Construction",
+              focus: "Outdoor projects",
+            },
+            {
+              month: "April",
+              theme: "Easter Events",
+              focus: "Religious celebrations",
+            },
+            {
+              month: "May",
+              theme: "Wedding Season",
+              focus: "Wedding planning",
+            },
+            {
+              month: "June",
+              theme: "Summer Festivals",
+              focus: "Outdoor events",
+            },
+            {
+              month: "July",
+              theme: "Independence Day",
+              focus: "Patriotic events",
+            },
+            {
+              month: "August",
+              theme: "Back-to-School",
+              focus: "School events",
+            },
+            {
+              month: "September",
+              theme: "Fall Construction",
+              focus: "Construction projects",
+            },
+            {
+              month: "October",
+              theme: "Halloween Events",
+              focus: "Spooky celebrations",
+            },
+            {
+              month: "November",
+              theme: "Thanksgiving",
+              focus: "Family gatherings",
+            },
+            {
+              month: "December",
+              theme: "Holiday Parties",
+              focus: "Christmas events",
+            },
           ].map((month, index) => (
             <div
               key={index}
               style={{
                 background: "white",
                 padding: "15px",
-                borderRadius: "8px",
-                border: "1px solid #ddd"
+                borderRadius: "0",
+                border: "1px solid #ddd",
               }}
             >
-              <h4 style={{ 
-                margin: "0 0 8px 0", 
-                color: "var(--primary-bg-color)",
-                fontSize: "1.1em"
-              }}>
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  color: "var(--primary-bg-color)",
+                  fontSize: "1.1em",
+                }}
+              >
                 {month.month}
               </h4>
-              <p style={{ 
-                margin: "0 0 5px 0", 
-                fontSize: "0.9em", 
-                fontWeight: "bold",
-                color: "#333"
-              }}>
+              <p
+                style={{
+                  margin: "0 0 5px 0",
+                  fontSize: "0.9em",
+                  fontWeight: "bold",
+                  color: "#333",
+                }}
+              >
                 {month.theme}
               </p>
-              <p style={{ 
-                margin: "0", 
-                fontSize: "0.8em", 
-                color: "#666"
-              }}>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.8em",
+                  color: "#666",
+                }}
+              >
                 {month.focus}
               </p>
             </div>
@@ -202,20 +292,30 @@ const BlogDashboard = () => {
         </div>
       </div>
 
-      <div style={{ 
-        background: "#fff3cd", 
-        padding: "30px", 
-        borderRadius: "10px",
-        textAlign: "center"
-      }}>
+      <div
+        style={{
+          background: "#fff3cd",
+          padding: "30px",
+          borderRadius: "0",
+          textAlign: "center",
+        }}
+      >
         <h2 style={{ marginBottom: "15px", color: "#333" }}>
           Ready to Start Blogging?
         </h2>
         <p style={{ margin: "0 0 20px 0", color: "#555" }}>
-          Use the blog post generator above to create your first SEO-optimized post, 
-          or follow the content strategy to plan your monthly blog calendar.
+          Use the blog post generator above to create your first SEO-optimized
+          post, or follow the content strategy to plan your monthly blog
+          calendar.
         </p>
-        <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "15px",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
           <a
             href="/blog"
             style={{
@@ -223,8 +323,8 @@ const BlogDashboard = () => {
               color: "white",
               padding: "12px 25px",
               textDecoration: "none",
-              borderRadius: "5px",
-              fontWeight: "bold"
+              borderRadius: "0",
+              fontWeight: "bold",
             }}
           >
             View All Blog Posts
@@ -232,12 +332,12 @@ const BlogDashboard = () => {
           <a
             href="/quote"
             style={{
-              background: "#28a745",
+              background: "var(--primary)",
               color: "white",
               padding: "12px 25px",
               textDecoration: "none",
-              borderRadius: "5px",
-              fontWeight: "bold"
+              borderRadius: "0",
+              fontWeight: "bold",
             }}
           >
             Get Free Quote

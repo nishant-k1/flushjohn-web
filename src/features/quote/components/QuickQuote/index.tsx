@@ -28,24 +28,16 @@ import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 
 const quickQuoteValidationSchema = Yup.object().shape({
-  usageType: Yup.string().required("Please select usage type"),
-  products: Yup.array()
-    .min(1, "Please select at least one portable unit")
-    .required("Please select at least one portable unit"),
-  deliveryDate: Yup.string().required("Delivery date is required"),
-  pickupDate: Yup.string().required("Pickup date is required"),
+  usageType: Yup.string().required("Required"),
+  products: Yup.array().min(1, "Required").required("Required"),
+  deliveryDate: Yup.string().required("Required"),
+  pickupDate: Yup.string().required("Required"),
   zip: Yup.string()
-    .matches(/^\d{5}$/, "Zip code must be 5 digits")
-    .required("Zip code is required"),
-  fName: Yup.string()
-    .min(2, "First name must be at least 2 characters")
-    .required("First name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  phone: Yup.string()
-    .min(10, "Phone number must be at least 10 digits")
-    .required("Phone number is required"),
+    .matches(/^\d{5}$/, "Required")
+    .required("Required"),
+  fName: Yup.string().min(2, "Required").required("Required"),
+  email: Yup.string().email("Required").required("Required"),
+  phone: Yup.string().min(10, "Required").required("Required"),
   lName: Yup.string(),
   instructions: Yup.string(),
 });
@@ -82,7 +74,7 @@ const UsageTypeField = () => {
 
   const handleSelect = async (value: string) => {
     await setFieldValue("usageType", value);
-    setFieldTouched("usageType", false);
+    setFieldTouched("usageType", true);
     setIsOpen(false);
   };
 
@@ -98,12 +90,17 @@ const UsageTypeField = () => {
         style={{ position: "relative", width: "100%" }}
       >
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            if (!isOpen) {
+              setFieldTouched("usageType", true);
+            }
+          }}
           className={hasError ? styles.error_field : ""}
           style={{
             padding: "0 12px",
-            border: hasError ? "2px solid red" : "1px solid #d9d9d9",
-            borderRadius: "4px",
+            border: hasError ? "1px solid #ff4444" : "1px solid #d9d9d9",
+            borderRadius: "0",
             cursor: "pointer",
             height: "2rem",
             display: "flex",
@@ -150,7 +147,7 @@ const UsageTypeField = () => {
               right: 0,
               background: "white",
               border: "1px solid #d9d9d9",
-              borderRadius: "6px",
+              borderRadius: "0",
               marginTop: "6px",
               maxHeight: "240px",
               overflowY: "auto",
@@ -223,8 +220,7 @@ const QuickQuote = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [isSubmittingLocal, setIsSubmittingLocal] = useState(false);
 
-  const handleClickOutside = (event: MouseEvent) => {
-  };
+  const handleClickOutside = (event: MouseEvent) => {};
 
   React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {
@@ -237,11 +233,11 @@ const QuickQuote = () => {
 
   const { API_BASE_URL } = apiBaseUrls;
   const socketRef = React.useRef<Socket | null>(null);
-  
+
   // Lazy load socket.io-client
   React.useEffect(() => {
     let mounted = true;
-    
+
     createSocket(`${API_BASE_URL}/leads`, {
       transports: ["websocket"],
       autoConnect: true,
@@ -264,7 +260,9 @@ const QuickQuote = () => {
   const submitInProgressRef = React.useRef(false);
   const socketSucceededRef = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-  const setSubmittingRef = React.useRef<((isSubmitting: boolean) => void) | null>(null);
+  const setSubmittingRef = React.useRef<
+    ((isSubmitting: boolean) => void) | null
+  >(null);
   const pendingLeadDataRef = React.useRef<any>(null);
 
   // Set up socket event listeners
@@ -388,7 +386,6 @@ const QuickQuote = () => {
         event_callback: callback,
       });
     } else {
-
     }
   };
 
@@ -420,14 +417,14 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             // Set local submitting state immediately to show spinner
             setIsSubmittingLocal(true);
-            
+
             // Store setSubmitting in ref so socket handlers can access it
             setSubmittingRef.current = setSubmitting;
-            
+
             // Set submitting to true immediately to show spinner
             setSubmitting(true);
             submitInProgressRef.current = true;
-            
+
             try {
               const finalData = { ...values, leadSource: "Web Quick Lead" };
 
@@ -448,7 +445,10 @@ const QuickQuote = () => {
                 // Set a timeout to fallback to HTTP if no response
                 timeoutRef.current = setTimeout(() => {
                   // Only fallback to HTTP if socket hasn't succeeded
-                  if (submitInProgressRef.current && !socketSucceededRef.current) {
+                  if (
+                    submitInProgressRef.current &&
+                    !socketSucceededRef.current
+                  ) {
                     // Socket didn't respond, try HTTP
                     createLeadViaHTTP(finalData)
                       .then(() => {
@@ -479,7 +479,10 @@ const QuickQuote = () => {
                     // Set timeout for HTTP fallback
                     const fallbackTimeout = setTimeout(() => {
                       // Only fallback to HTTP if socket hasn't succeeded
-                      if (submitInProgressRef.current && !socketSucceededRef.current) {
+                      if (
+                        submitInProgressRef.current &&
+                        !socketSucceededRef.current
+                      ) {
                         createLeadViaHTTP(finalData)
                           .then(() => {
                             setShowSuccessModal(true);
@@ -564,165 +567,165 @@ const QuickQuote = () => {
           }}
         >
           {({ isSubmitting }) => {
-          const showSpinner = isSubmittingLocal || isSubmitting;
-          return (
-            <div
-              className={styles.overlay}
-              style={{
-                display: quickQuoteViewStatus ? "flex" : "none",
-              }}
-            >
-              <Form>
-              <AnimationWrapper
-                effect={animations?.zoomOutAndZoomIn}
-                animationKey={String(quickQuoteViewStatus)}
-                className={styles.quickQuoteform}
+            const showSpinner = isSubmittingLocal || isSubmitting;
+            return (
+              <div
+                className={styles.overlay}
+                style={{
+                  display: quickQuoteViewStatus ? "flex" : "none",
+                }}
               >
-                <CloseIcon
-                  size={24}
-                  className={styles.closeIcon}
-                  onClick={() => {
-                    setQuickQuoteViewStatus(false);
-                    setQuickQuoteTitle("Quick Quote");
-                  }}
-                />
-                <div>
-                  <Grid
-                    container
-                    spacing={0.5}
+                <Form>
+                  <AnimationWrapper
+                    effect={animations?.zoomOutAndZoomIn}
+                    animationKey={String(quickQuoteViewStatus)}
+                    className={styles.quickQuoteform}
                   >
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <div>
-                        <h2>{quickQuoteTitle}</h2>
-                      </div>
-                    </Grid>
-                    <UsageTypeField />
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyMultipleSelectCheckmarks
-                        label="Select Portable Units"
-                        name="products"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                    >
-                      <MyDateField
-                        label="Delivery Date"
-                        className={styles.date}
-                        name="deliveryDate"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                    >
-                      <MyDateField
-                        className={styles.date}
-                        label="Pickup Date"
-                        name="pickupDate"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyZipTextField
-                        label="Zip"
-                        name="zip"
-                        placeholder="Zip"
-                        min={0}
-                        maxLength={5}
-                        inputMode="numeric"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyTextField
-                        label="Street Address"
-                        name="street"
-                        placeholder="Street Address (Optional)"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                    >
-                      <MyTextField
-                        label="First Name"
-                        name="fName"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                    >
-                      <MyTextField
-                        label="Last Name"
-                        name="lName"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyTextField
-                        label="Email"
-                        name="email"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyPhoneTextField
-                        label="Phone"
-                        name="phone"
-                        placeholder="Phone"
-                        type="tel"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                    >
-                      <MyMultilineTextField
-                        label="Instructions (if any)"
-                        name="instructions"
-                      />
-                    </Grid>
-                    <Grid
-                      item
-                      xs={3}
-                    >
-                      <Button
-                        variant="contained"
-                        style={{
-                          background: "var(--primary-bg-color)",
-                          borderRadius: 0,
-                        }}
-                        endIcon={<SendIcon size={18} />}
-                        type="submit"
-                        loading={showSpinner}
-                        disabled={showSpinner}
+                    <CloseIcon
+                      size={24}
+                      className={styles.closeIcon}
+                      onClick={() => {
+                        setQuickQuoteViewStatus(false);
+                        setQuickQuoteTitle("Quick Quote");
+                      }}
+                    />
+                    <div>
+                      <Grid
+                        container
+                        spacing={0.5}
                       >
-                        Send
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </div>
-              </AnimationWrapper>
-            </Form>
-          </div>
-          );
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <div>
+                            <h2>{quickQuoteTitle}</h2>
+                          </div>
+                        </Grid>
+                        <UsageTypeField />
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyMultipleSelectCheckmarks
+                            label="Select Portable Units"
+                            name="products"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={6}
+                        >
+                          <MyDateField
+                            label="Delivery Date"
+                            className={styles.date}
+                            name="deliveryDate"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={6}
+                        >
+                          <MyDateField
+                            className={styles.date}
+                            label="Pickup Date"
+                            name="pickupDate"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyZipTextField
+                            label="Zip"
+                            name="zip"
+                            placeholder="Zip"
+                            min={0}
+                            maxLength={5}
+                            inputMode="numeric"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyTextField
+                            label="Street Address"
+                            name="street"
+                            placeholder="Street Address (Optional)"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={6}
+                        >
+                          <MyTextField
+                            label="First Name"
+                            name="fName"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={6}
+                        >
+                          <MyTextField
+                            label="Last Name"
+                            name="lName"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyTextField
+                            label="Email"
+                            name="email"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyPhoneTextField
+                            label="Phone"
+                            name="phone"
+                            placeholder="Phone"
+                            type="tel"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                        >
+                          <MyMultilineTextField
+                            label="Instructions (if any)"
+                            name="instructions"
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={3}
+                        >
+                          <Button
+                            variant="contained"
+                            style={{
+                              background: "var(--primary-bg-color)",
+                              borderRadius: 0,
+                            }}
+                            endIcon={<SendIcon size={18} />}
+                            type="submit"
+                            loading={showSpinner}
+                            disabled={showSpinner}
+                          >
+                            Send
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  </AnimationWrapper>
+                </Form>
+              </div>
+            );
           }}
         </Formik>
       )}

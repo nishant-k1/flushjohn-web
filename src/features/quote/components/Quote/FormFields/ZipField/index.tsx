@@ -12,7 +12,10 @@ const ZipTextField = ({ label, ...props }: any) => {
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>
-        {label} <span style={{ color: "red", fontSize: "x-large" }}>*</span>
+        {label}{" "}
+        <span style={{ color: "var(--primary-dark)", fontSize: "x-large" }}>
+          *
+        </span>
       </label>
       <div className={styles.inputContainer}>
         <input

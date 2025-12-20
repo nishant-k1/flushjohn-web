@@ -167,6 +167,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        pathname: "/**",
+      },
     ],
     // Prioritize AVIF (better compression) then WebP, fallback to original
     formats: ["image/avif", "image/webp"],

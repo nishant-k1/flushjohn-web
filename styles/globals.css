@@ -37,98 +37,117 @@
     "Helvetica Neue", Arial, sans-serif;
   --font-merriweather: "Merriweather", Georgia, "Times New Roman", Times, serif;
 
-  /* Primary Brand Colors */
-  --primary: #a95d1f;
-  --primary-dark: #8a4d19;
-  --primary-light: #c77d3f;
-  --primary-lighter: #e09d5f;
+  /* Primary Brand Colors - Using #8c6f48 as main color */
+  --primary: #8c6f48;
+  --primary-dark: #6d5637; /* Darker variant for hover/active states */
+  --primary-light: #a5896a; /* Lighter variant for accents */
+  --primary-lighter: #bea38c; /* Even lighter for subtle highlights */
 
-  /* Secondary Colors */
-  --secondary: #021920;
-  --secondary-light: #032a35;
-  --secondary-lighter: #043b4a;
+  /* Secondary Colors - Same as primary for consistency */
+  --secondary: #8c6f48;
+  --secondary-light: #a5896a;
+  --secondary-lighter: #bea38c;
 
-  /* Accent Colors */
-  --accent-blue: #1a3d5f;
-  --accent-blue-light: #2a5d8f;
-  --accent-blue-dark: #0f2537;
-  --accent-green: #28a745;
-  --accent-green-dark: #218838;
-  --accent-gold: #ffd700;
+  /* Accent Colors - Harmonious with main color */
+  --accent-blue: #6d5637; /* Darker variant */
+  --accent-blue-light: #8c6f48; /* Main color */
+  --accent-blue-dark: #5a4630; /* Darkest variant for contrast */
+  --accent-green: #6d5637; /* Use theme color instead of vibrant green */
+  --accent-green-dark: #5a4630; /* Darker theme variant */
+  --accent-gold: #a5896a; /* Use primary-light instead of vibrant gold */
 
-  /* Neutral Colors */
-  --neutral-50: #f9fafb;
-  --neutral-100: #f4f8fb;
-  --neutral-200: #eef3f7;
-  --neutral-300: #e5eaed;
-  --neutral-400: #cccccc;
-  --neutral-500: #9aa0a6;
-  --neutral-600: #6c757d;
-  --neutral-700: #4a4a4a;
-  --neutral-800: #262626;
-  --neutral-900: #1a1a1a;
+  /* Neutral Colors - Based on main color with proper contrast */
+  --neutral-50: #f5f3f0;
+  --neutral-100: #ebe7e1;
+  --neutral-200: #d7cfc3;
+  --neutral-300: #c3b7a5;
+  --neutral-400: #af9f87;
+  --neutral-500: #8c6f48; /* Main color */
+  --neutral-600: #6d5637;
+  --neutral-700: #4e3d26;
+  --neutral-800: #2f2415;
+  --neutral-900: #1a1209;
 
-  /* Text Colors */
-  --text-primary: #262626;
-  --text-secondary: #4a4a4a;
-  --text-tertiary: #6c757d;
+  /* Text Colors - Optimized for #8c6f48 background (dark brown) */
+  --text-primary: #ffffff; /* White for headings - high contrast */
+  --text-secondary: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  --text-tertiary: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* More transparent for muted text */
   --text-inverse: #ffffff;
   --text-inverse-secondary: rgba(255, 255, 255, 0.9);
   --text-inverse-tertiary: rgba(255, 255, 255, 0.7);
 
-  /* Background Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f4f8fb;
-  --bg-tertiary: #eef3f7;
-  --bg-dark: #021920;
-  --bg-dark-alpha: rgba(2, 25, 32, 0.95);
+  /* Background Colors - Single consistent color scheme using #8c6f48 */
+  --bg-primary: #8c6f48; /* Main background - body, sections, everything */
+  --bg-secondary: #8c6f48; /* Same for consistency */
+  --bg-tertiary: #8c6f48; /* Same for consistency */
+  --bg-dark: #8c6f48; /* Same for consistency */
+  --bg-dark-alpha: rgba(
+    140,
+    111,
+    72,
+    0.95
+  ); /* For header/footer with backdrop */
   --bg-transparent: transparent;
 
-  /* Semantic Colors */
-  --success: #28a745;
-  --success-dark: #218838;
-  --error: #dc3545;
-  --error-dark: #c82333;
-  --warning: #ffc107;
-  --info: #17a2b8;
+  /* Semantic Colors - Using theme colors instead of vibrant colors */
+  --success: #6d5637; /* Use primary-dark instead of green */
+  --success-dark: #5a4630; /* Darker variant */
+  --error: #6d5637; /* Use primary-dark instead of red */
+  --error-dark: #5a4630; /* Darker variant */
+  --warning: #a5896a; /* Use primary-light */
+  --info: #8c6f48; /* Use primary */
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);
   --primary-text-color: var(--text-inverse);
-  --primary-error-color: var(--error);
+  --primary-error-color: var(
+    --primary-dark
+  ); /* Use theme color instead of red */
   --secondary-bg-color: var(--bg-dark-alpha);
   --secondary-text-color: var(--text-primary);
   --tertiary-bg-color: var(--bg-transparent);
   --neutral-bg-color: var(--neutral-400);
   --btn-text-color: var(--text-inverse);
 
-  /* Spacing Scale */
+  /* Spacing Scale - Reduced for tighter layout */
   --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 40px;
-  --spacing-3xl: 48px;
-  --spacing-4xl: 64px;
-  --spacing-5xl: 80px;
+  --spacing-sm: 6px;
+  --spacing-md: 12px;
+  --spacing-lg: 18px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 48px;
+  --spacing-5xl: 60px;
 
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
-  --radius-full: 9999px;
+  /* Section Spacing - Consistent vertical padding for all sections */
+  --spacing-section: 5rem; /* 80px - matches nexbaron-web */
 
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 8px 25px rgba(0, 0, 0, 0.15);
-  --shadow-2xl: 0 12px 30px rgba(0, 0, 0, 0.2);
-  --shadow-primary: 0 4px 12px rgba(169, 93, 31, 0.3);
-  --shadow-primary-lg: 0 8px 24px rgba(169, 93, 31, 0.4);
+  /* Grid Gaps - Consistent spacing between grid items */
+  --gap-sm: 1.5rem; /* 24px - gap-6 equivalent for smaller grids */
+  --gap-md: 2rem; /* 32px - gap-8 equivalent for larger grids */
+
+  /* Border Radius - All set to 0 for no rounded borders */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-full: 0;
+
+  /* Shadows - Refined for subtlety */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 6px 20px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 8px 30px rgba(0, 0, 0, 0.18);
+  --shadow-primary: 0 2px 8px rgba(169, 93, 31, 0.25);
+  --shadow-primary-lg: 0 4px 16px rgba(169, 93, 31, 0.3);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -144,12 +163,12 @@
   --z-popover: 400;
   --z-tooltip: 500;
 
-  /* Container Widths */
+  /* Container Widths - Match nexbaron-web */
   --container-sm: 640px;
   --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1100px;
-  --container-2xl: 1200px;
+  --container-lg: 980px; /* Updated to match nexbaron-web */
+  --container-xl: 980px; /* Updated to match nexbaron-web */
+  --container-2xl: 980px; /* Updated to match nexbaron-web */
 
   /* Breakpoints (for reference, use in media queries) */
   --breakpoint-sm: 640px;
@@ -173,7 +192,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-poppins); /* Primary font */
-  line-height: 1.6;
+  font-size: 14px; /* Reduced from default 16px */
+  line-height: 1.6; /* Improved readability */
+  background-color: var(--bg-primary); /* #8C6F48 */
+  color: var(--text-primary); /* White text for contrast */
 
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
@@ -188,8 +210,30 @@ h1,
 h2,
 h3 {
   font-family: var(--font-merriweather); /* Use Merriweather for headings */
+  font-weight: 400; /* Reduced from default (600-700) */
   line-height: 1.3;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary); /* White headings for contrast */
 }
+
+h1 {
+  font-size: 2rem; /* Reduced size */
+}
+
+h2 {
+  font-size: 1.5rem; /* Reduced size */
+}
+
+h3 {
+  font-size: 1.25rem; /* Reduced size */
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
 a {
   text-decoration: none;
 }
@@ -201,7 +245,7 @@ a {
   /* font-family: "Oswald", sans-serif; */
 }
 button {
-  text-transform: uppercase !important;
+  letter-spacing: 0.01em;
   /* color: var(--btn-text-color) !important;
   background-color: var(--primary-bg-color) !important; */
 }
@@ -265,12 +309,12 @@ button {
 
 ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1); /* Subtle track background */
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3); /* More visible on Windows */
-  border-radius: 4px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
 }
 
@@ -333,7 +377,7 @@ input[type="date"]::-webkit-datetime-edit-year-field {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--primary-light);
   outline-offset: 2px;
 }
 
@@ -345,7 +389,7 @@ input[type="radio"] {
   width: 20px !important;
   height: 20px !important;
   border: 2px solid var(--neutral-400) !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: 0 !important;
   background-color: var(--bg-primary) !important;
   cursor: pointer !important;
   position: relative !important;

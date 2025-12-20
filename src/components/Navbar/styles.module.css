@@ -1,9 +1,6 @@
 /* mobile device */
 .navbar {
-  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--bg-primary);
   position: fixed;
   top: 0;
   width: 100%;
@@ -14,10 +11,7 @@
 }
 
 .navbar_home {
-  background-color: var(--bg-transparent);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: rgba(140, 111, 72, 0.8);
   position: fixed;
   top: 0;
   width: 100%;
@@ -29,7 +23,7 @@
 
 .scrolled {
   background-color: var(--bg-dark-alpha);
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary-light);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }
@@ -65,7 +59,7 @@
 }
 
 .hamburger:hover {
-  color: var(--primary);
+  color: var(--primary-light);
 }
 
 .hamburger:focus-visible {
@@ -80,32 +74,18 @@
 
 .navLinks a {
   color: var(--text-inverse);
-  font-size: large;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
   transition: color var(--transition-base);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
-  position: relative;
-}
-
-.navLinks a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 80%;
-  height: 2px;
-  background: var(--primary);
-  transition: transform var(--transition-base);
+  text-decoration: none;
 }
 
 .navLinks a:hover {
-  color: var(--primary);
-}
-
-.navLinks a:hover::after {
-  transform: translateX(-50%) scaleX(1);
+  color: var(--text-primary);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .navLinks a:focus-visible {
@@ -115,12 +95,10 @@
 
 .activeLink,
 .activeLink a {
-  color: var(--primary) !important;
-  font-weight: 600;
-}
-
-.activeLink a::after {
-  transform: translateX(-50%) scaleX(1);
+  color: var(--text-primary) !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 /* tablet device breakpoint: 768px*/

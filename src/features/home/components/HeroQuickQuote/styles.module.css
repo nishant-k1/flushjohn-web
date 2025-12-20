@@ -11,7 +11,7 @@
 .quickQuoteform h2 {
   text-align: left;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .quickQuoteform .radio {
@@ -20,7 +20,7 @@
   width: 2rem;
   box-sizing: border-box;
   appearance: none;
-  border-radius: 50%;
+  border-radius: 0;
   border: 1px solid var(--primary-bg-color);
   border-color: var(--primary-bg-color);
 }
@@ -30,7 +30,7 @@
   border-color: var(--primary-bg-color);
 }
 .quickQuoteform .radio:hover {
-  border: 1px solid var(--primary-bg-color);
+  border: 1px solid var(--primary-light);
 }
 
 .quickQuoteform input:checked {
@@ -70,17 +70,19 @@
 
 .quickQuoteform input::placeholder,
 .quickQuoteform textarea::placeholder {
-  color: var(--primary-bg-color);
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  opacity: 1;
 }
 .quickQuoteform input:focus::placeholder,
 .quickQuoteform textarea:focus::placeholder {
-  color: rgb(19, 113, 255, 0.5);
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+  opacity: 1;
 }
 
 .error_field {
-  border: 1px solid red !important;
+  border: 1px solid #ff4444 !important;
 }
 
 .date {
@@ -103,13 +105,15 @@
   border: none;
 }
 .date input::placeholder {
-  color: var(--primary-bg-color) !important;
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-weight: 400;
+  opacity: 1 !important;
 }
 
 .date input:focus::placeholder {
-  color: rgb(19, 113, 255, 0.5) !important;
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.4) !important;
+  font-weight: 400;
+  opacity: 1 !important;
 }
 
 .error:before {
@@ -120,12 +124,14 @@
 .error {
   padding: 0 12px;
   margin: 0;
-  background-color: color(a98-rgb 0 0 0 / 0.39);
+  background-color: #ff4444;
   font-size: small; /* Smaller text size */
   margin-top: 0.25rem; /* Space between input and message */
-  font-weight: 200; /* Emphasized text */
-  color: var(--primary-error-color);
-  border-radius: 0 50px 100px 50px;
+  font-weight: 600; /* Emphasized text */
+  color: #ffffff;
+  border-radius: 0;
+  border-left: 3px solid #cc0000;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /*  Global Variables*/
@@ -151,7 +157,7 @@
 
 :where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled) {
-  font-weight: 600;
+  font-weight: 400;
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
 }
@@ -160,5 +166,5 @@
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled)
   svg {
   color: var(--primary-text-color);
-  font-weight: 600;
+  font-weight: 400;
 }

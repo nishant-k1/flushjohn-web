@@ -1,4 +1,3 @@
-
 export const G_TAG_ID: string = process.env.NEXT_PUBLIC_G_TAG_ID as string;
 
 export type apiBaseUrlsType = {
@@ -37,12 +36,12 @@ export type addressType = {
 };
 
 export const address: addressType = {
-  street: "1234 Main Street",
-  city: "Houston",
-  state: "TX",
-  zip: "77001",
+  street: "8 The Green STE R",
+  city: "Dover",
+  state: "DE",
+  zip: "19901",
   country: "United States",
-  full_address: "1234 Main Street, Houston, TX 77001, United States",
+  full_address: "8 The Green STE R, Dover, DE 19901, United States",
 };
 
 export const contact: contactType = {

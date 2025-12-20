@@ -14,6 +14,8 @@ const ReviewCollection = dynamic(
 );
 
 const cities = [
+  // Business location - Dover, DE (CRITICAL - must be first for local SEO)
+  { name: "dover", displayName: "Dover", state: "DE", population: "39K" },
   { name: "houston", displayName: "Houston", state: "TX", population: "2.3M" },
   { name: "dallas", displayName: "Dallas", state: "TX", population: "1.3M" },
   { name: "austin", displayName: "Austin", state: "TX", population: "965K" },
@@ -112,6 +114,42 @@ const cities = [
 
 const getServiceAreas = (state: string) => {
   const serviceAreas = {
+    DE: [
+      {
+        name: "State Capital Area",
+        description: "Porta potty rentals in Dover, Delaware's capital city",
+      },
+      {
+        name: "Construction Sites",
+        description: "Long-term porta potty rentals for Delaware construction",
+      },
+      {
+        name: "Government Facilities",
+        description:
+          "Porta potty services for government events and facilities",
+      },
+      {
+        name: "Event Venues",
+        description:
+          "Wedding and corporate event porta potty services in Dover",
+      },
+      {
+        name: "Parks & Recreation",
+        description: "Outdoor event porta potty rentals in Delaware",
+      },
+      {
+        name: "Military Bases",
+        description: "Porta potty services for military events and facilities",
+      },
+      {
+        name: "Historic Areas",
+        description: "Historic district porta potty rentals in Dover",
+      },
+      {
+        name: "Corporate Events",
+        description: "Professional porta potty services for business events",
+      },
+    ],
     TX: [
       {
         name: "Downtown Districts",
@@ -286,11 +324,12 @@ const getServiceAreas = (state: string) => {
     ],
   };
 
-  return serviceAreas[state as keyof typeof serviceAreas] || serviceAreas.TX;
+  return serviceAreas[state as keyof typeof serviceAreas] || serviceAreas.DE;
 };
 
 const getCityCoordinates = (cityName: string) => {
   const coordinates = {
+    dover: { lat: "39.1615", lng: "-75.5268" }, // Dover, DE coordinates
     houston: { lat: "29.7604", lng: "-95.3698" },
     dallas: { lat: "32.7767", lng: "-96.7970" },
     austin: { lat: "30.2672", lng: "-97.7431" },
@@ -591,7 +630,9 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
+      <div
+        style={{ maxWidth: "980px", margin: "0 auto", padding: "80px 18px" }}
+      >
         {/* Hero Section */}
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h1>Porta Potty Rentals in {cityTitle}</h1>
@@ -616,7 +657,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                 color: "white",
                 padding: "15px 30px",
                 textDecoration: "none",
-                borderRadius: "5px",
+                borderRadius: "0",
                 fontWeight: "bold",
                 fontSize: "1.1em",
               }}
@@ -626,11 +667,11 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
             <a
               href={phone_link}
               style={{
-                background: "#28a745",
+                background: "var(--primary)",
                 color: "white",
                 padding: "15px 30px",
                 textDecoration: "none",
-                borderRadius: "5px",
+                borderRadius: "0",
                 fontWeight: "bold",
                 fontSize: "1.1em",
               }}
@@ -656,7 +697,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                 style={{
                   padding: "15px",
                   border: "1px solid #ddd",
-                  borderRadius: "5px",
+                  borderRadius: "0",
                 }}
               >
                 <h3>{area.name}</h3>
@@ -736,7 +777,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                 style={{
                   padding: "20px",
                   border: "1px solid #ddd",
-                  borderRadius: "5px",
+                  borderRadius: "0",
                 }}
               >
                 <h3>{service.name}</h3>
@@ -787,7 +828,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                 style={{
                   padding: "20px",
                   background: "#f8f9fa",
-                  borderRadius: "5px",
+                  borderRadius: "0",
                 }}
               >
                 <p>"{testimonial.text}"</p>
@@ -826,7 +867,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                 style={{
                   padding: "20px",
                   border: "1px solid #ddd",
-                  borderRadius: "5px",
+                  borderRadius: "0",
                 }}
               >
                 <h3>{faq.q}</h3>
@@ -854,7 +895,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                   display: "block",
                   padding: "15px",
                   border: "1px solid #ddd",
-                  borderRadius: "8px",
+                  borderRadius: "0",
                   textDecoration: "none",
                   color: "inherit",
                   background: "white",
@@ -869,6 +910,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
                   {nearbyCity.displayName}, {nearbyCity.state}
                 </h4>
                 <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
+                  {/* Dark text on white card background - OK */}
                   Porta potty rental services →
                 </p>
               </Link>
@@ -880,53 +922,55 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
         <div
           style={{
             textAlign: "center",
-            padding: "40px",
+            padding: "80px 18px",
             background: "var(--primary-bg-color)",
             color: "white",
-            borderRadius: "10px",
+            borderRadius: "0",
           }}
         >
-          <h2>Ready to Rent Porta Potties in {cityTitle}?</h2>
-          <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
-            Join thousands of satisfied customers in {cityTitle}. Get your free
-            quote today!
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <Link
-              href="/quote"
+          <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+            <h2>Ready to Rent Porta Potties in {cityTitle}?</h2>
+            <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
+              Join thousands of satisfied customers in {cityTitle}. Get your
+              free quote today!
+            </p>
+            <div
               style={{
-                background: "white",
-                color: "var(--primary-bg-color)",
-                padding: "15px 30px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                fontSize: "1.1em",
+                display: "flex",
+                gap: "20px",
+                justifyContent: "center",
+                flexWrap: "wrap",
               }}
             >
-              Get Free Quote
-            </Link>
-            <a
-              href={phone_link}
-              style={{
-                background: "#28a745",
-                color: "white",
-                padding: "15px 30px",
-                textDecoration: "none",
-                borderRadius: "5px",
-                fontWeight: "bold",
-                fontSize: "1.1em",
-              }}
-            >
-              Call {phone_number}
-            </a>
+              <Link
+                href="/quote"
+                style={{
+                  background: "white",
+                  color: "var(--primary-bg-color)",
+                  padding: "15px 30px",
+                  textDecoration: "none",
+                  borderRadius: "0",
+                  fontWeight: "bold",
+                  fontSize: "1.1em",
+                }}
+              >
+                Get Free Quote
+              </Link>
+              <a
+                href={phone_link}
+                style={{
+                  background: "var(--primary)",
+                  color: "white",
+                  padding: "15px 30px",
+                  textDecoration: "none",
+                  borderRadius: "0",
+                  fontWeight: "bold",
+                  fontSize: "1.1em",
+                }}
+              >
+                Call {phone_number}
+              </a>
+            </div>
           </div>
         </div>
 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
@@ -51,8 +50,8 @@ export interface HomeData {
 
 export const home_data: HomeData = {
   hero: {
-    title: `Porta Potty Rentals for Events & Construction`,
-    subTitle: `Fast Delivery & Setup! Get an Instant Quote for Affordable, Hygienic Portable Toilet Rentals Near You.`,
+    title: `Porta Potty Rentals | Same-Day Delivery & Setup`,
+    subTitle: `Get an Instant Quote for Clean, Affordable Portable Toilet Rentals. Serving Houston, Dallas, Austin, Miami, LA & 50+ Cities Nationwide.`,
     image: {
       src: `https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp`,
       alt: "porta_potty",
@@ -69,7 +68,7 @@ export const home_data: HomeData = {
         id: 1,
         image: <FaTruckLoading />,
         title: "Customer Support",
-        body: "Our professional customer support ensures instant quote and bookings and are ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind. Looking for a porta potty rental for construction sites, weddings, or events? Get a Free Quote Now!",
+        body: "Our professional customer support ensures instant quote and bookings and are ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
       },
       {
         id: 2,
@@ -94,29 +93,28 @@ export const home_data: HomeData = {
         image: `${s3assets}/images/home-page-images/service-img-1.webp`,
         alt: "event_pic",
         title: "Event Porta John Rentals",
-        body: "Whether you're hosting a wedding, festival, or outdoor event, providing adequate sanitation is essential. Our wedding porta potty rental and festival portable toilets ensure cleanliness and convenience for all guests. This is where event purpose porta potty and hand wash station rentals come in. Event purpose porta potties and hand wash rentals are specially designed to meet the unique needs of events, such as outdoor weddings, concerts, festivals, and sporting events.",
+        body: "Perfect for weddings, festivals, and outdoor events. Clean, convenient portable toilets designed for guest comfort.",
       },
       {
         id: 2,
         image: `${s3assets}/images/home-page-images/service-img-4.webp`,
         alt: "construction_pic",
-        title: "Construction Porta Potty Rentals And Hand Wash Station Rentals",
-        body: "Construction sites require reliable sanitation. Our porta potty for construction sites is designed to keep workers safe and productive. Whether you need a long-term porta potty rental or a short-term solution, we've got you covered for the health and well-being of workers. This is where flushjohn Construction Porta Potty Rentals And Hand Wash Station Rentals come in. Worried about keeping your construction site compliant with OSHA regulations? Our porta potty rentals meet all safety standards, ensuring your workers have clean restrooms available 24/7.",
+        title: "Construction Porta Potty Rentals",
+        body: "Reliable sanitation for construction sites. OSHA-compliant units keep workers safe and productive. Long-term and short-term rentals available.",
       },
       {
         id: 3,
         image: `${s3assets}/images/home-page-images/service-img-2.webp`,
         alt: "renovation_pic",
-        title: "Portable Restroom Rentals For Renovations",
-        body: "Renovations can be messy and disruptive, but providing proper sanitation facilities is crucial for the comfort and well-being of homeowners and construction workers alike. Our porta potty rental near me service ensures quick delivery and setup.",
+        title: "Renovation Restroom Rentals",
+        body: "Essential sanitation during home renovations. Quick delivery and setup for homeowners and contractors.",
       },
       {
         id: 4,
         image: `${s3assets}/images/home-page-images/service-img-3.webp`,
         alt: "relief_pic",
-        title:
-          "Disaster Relief Porta Potty Rentals: Rapid Deployment and Reliable Support in Times of Crisis",
-        body: "Disasters such as hurricanes, earthquakes, and floods can leave communities devastated and in need of immediate assistance. Providing proper sanitation facilities is crucial in such situations.",
+        title: "Disaster Relief Rentals",
+        body: "Rapid deployment porta potty services for emergency situations and disaster relief efforts.",
       },
     ],
   },

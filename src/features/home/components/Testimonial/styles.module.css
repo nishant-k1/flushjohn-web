@@ -1,26 +1,22 @@
 /* Styles Update */
 .testimonials {
-  padding: 48px;
-  background-image:
-    linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)),
-    url("https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  padding: var(--spacing-section) var(--spacing-lg);
+  background-color: var(--bg-primary);
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 980px;
   margin: 0 auto;
   text-align: center;
 }
 
 .container h2 {
-  color: #ff6600;
-  padding-bottom: 4rem;
-  font-size: x-large;
-  font-weight: bold;
-  text-transform: uppercase;
+  color: var(--text-primary);
+  padding-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
 }
 
 .wrapper {
@@ -30,46 +26,76 @@
   align-items: start;
   justify-content: center;
   justify-items: center;
-  height: 480px;
-  width: fit-content;
+  min-height: 400px;
+  max-width: 800px;
+  margin: 0 auto;
   gap: 2rem;
-  padding: 24px;
-  background-color: var(--primary-text-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 3px solid var(--primary-bg-color);
-  border-radius: 10px;
+  padding: 3rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.wrapper:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .wrapper h3 {
-  font-size: large;
-  color: var(--primary-bg-color);
-  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.75rem 0;
+  text-align: center;
 }
 
 .wrapper p {
-  font-size: 1.1rem;
-  color: #333;
-  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+  font-style: italic;
+  text-align: center;
+  max-width: 600px;
 }
 
 .trustBadge {
-  margin-top: 24px;
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: #4caf50;
-  padding: 12px 24px;
-  border-radius: 5px;
+  margin-top: 3rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 0;
   display: inline-block;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .asSeenOn {
-  margin-top: 24px;
+  margin-top: 2.5rem;
 }
 
 .asSeenOn h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
 }
 
 .asSeenOn div {
@@ -86,32 +112,75 @@
 .yelpLogo {
   height: 40px;
   width: 80px;
-  background-color: #ff1744;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
 }
 
 .rating {
-  background-color: green;
-  padding: 12px;
-  margin: 0 auto;
-  /* width: fit-content; */
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--primary-light);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 /* Tablet Breakpoint */
 @media only screen and (min-width: 768px) {
   .wrapper {
-    height: fit-content;
-    width: 100%;
-    align-items: center;
+    min-height: 350px;
+    max-width: 900px;
     grid-template-columns: min-content 1fr;
-    justify-items: space-between;
-    grid-gap: 2.5rem;
+    align-items: center;
+    justify-items: start;
+    gap: 2.5rem;
+    padding: 3rem 2.5rem;
+  }
+
+  .wrapper h3 {
+    text-align: left;
+  }
+
+  .wrapper p {
+    text-align: left;
+  }
+
+  .ratingContainer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .rating {
+    justify-content: flex-start;
   }
 }

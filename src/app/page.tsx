@@ -1,4 +1,3 @@
-
 import React from "react";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, phone, contact, address } from "@/constants";
@@ -7,9 +6,10 @@ import Script from "next/script";
 import Home from "@/features/home/components/Home";
 
 export const metadata: Metadata = {
-  title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
+  title:
+    "Porta Potty Rentals Dover DE | Same-Day Delivery | FlushJohn | Serving Nationwide",
   description:
-    "FlushJohn offers affordable and reliable porta potty rental services for all types of events and construction sites. Same-day delivery available. Get your quote today!",
+    "Porta potty rentals in Dover, DE and nationwide. Same-day delivery for events, construction sites, and weddings. Licensed & insured. 24/7 service. Get your instant quote today!",
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
@@ -41,9 +41,10 @@ export const metadata: Metadata = {
   },
 };
 
+// ServiceAreaBusiness schema - better for delivery/service businesses without walk-in location
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "ServiceAreaBusiness", // Changed from LocalBusiness - better for service-area businesses
   name: "FlushJohn",
   url: websiteURL,
   logo: `${s3assets}/og-image-flushjonn-web.png`,
@@ -82,10 +83,51 @@ const jsonLd = {
       closes: "19:00",
     },
   },
-  areaServed: {
-    "@type": "Country",
-    name: "United States",
-  },
+  // ServiceAreaBusiness requires areaServed array with specific locations
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Dover",
+      containedIn: {
+        "@type": "State",
+        name: "Delaware",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Houston",
+      containedIn: {
+        "@type": "State",
+        name: "Texas",
+      },
+    },
+    {
+      "@type": "City",
+      name: "Dallas",
+      containedIn: {
+        "@type": "State",
+        name: "Texas",
+      },
+    },
+    {
+      "@type": "City",
+      name: "Los Angeles",
+      containedIn: {
+        "@type": "State",
+        name: "California",
+      },
+    },
+    // Note: Add all other cities you serve here for better local SEO
+    // For now, including major ones. Full list should be added based on actual service areas.
+    {
+      "@type": "Country",
+      name: "United States", // Fallback for nationwide coverage
+    },
+  ],
   serviceType: "Porta Potty Rental Services",
   priceRange: "$$",
   paymentAccepted: "Cash, Credit Card, Check",

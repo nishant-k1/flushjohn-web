@@ -44,6 +44,7 @@ const Footer = () => {
             </li>
             {/* social */}
             <li className={styles.social}>
+              <h2>Follow Us</h2>
               <ul>
                 {footerLinks?.social.map((item: itemType) => {
                   const { id, name, icon, href } = item;
@@ -61,6 +62,7 @@ const Footer = () => {
 
             {/* nav  */}
             <li className={styles.nav}>
+              <h2>Quick Links</h2>
               <ul>
                 {footerLinks?.nav.map((item: itemType) => {
                   const { id, name, icon, href } = item;
@@ -78,6 +80,7 @@ const Footer = () => {
 
             {/* contact */}
             <li className={styles.contact}>
+              <h2>Contact Us</h2>
               <ul>
                 {footerLinks?.contact.map((item: itemType) => {
                   const { id, name, href, icon } = item;

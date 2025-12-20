@@ -55,8 +55,9 @@
   justify-content: start;
 }
 .sidebar a:hover {
-  color: #ef648a;
-  transition: 0.3s;
+  color: var(--text-primary);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  transition: var(--transition-base);
 }
 
 /* tablet device breakpoint: 768px*/

@@ -9,17 +9,21 @@
 }
 
 .circle {
-  height: 1rem;
-  width: 1rem;
-  border: solid 1px var(--primary-bg-color);
+  height: 0.75rem;
+  width: 0.75rem;
+  border: solid 2px var(--primary-light);
   background-color: transparent;
   border-radius: 50%;
+  transition: all var(--transition-base);
 }
 
 .active {
-  background-color: var(--primary-bg-color);
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .inactive {
   background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
 }

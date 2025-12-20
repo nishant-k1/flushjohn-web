@@ -1,42 +1,46 @@
 .locations {
   display: flex;
-  /* background-color: var(--tertiary-bg-color); */
-  /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
-  /* background-color: #d9dce1; */
+  background-color: var(--bg-primary);
   background-size: cover;
   background-position: left;
   background-repeat: repeat;
-  padding: 32px 0 16px 0;
+  padding: var(--spacing-section) var(--spacing-lg);
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 980px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
 .container h2 {
-  color: var(--primary-text-color);
-  padding-bottom: 1rem;
-  font-size: medium;
+  color: var(--text-primary);
+  padding-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .container p {
-  line-height: 2rem;
-  font-weight: 100;
-  /* padding: 4px 0; */
-  font-size: 12px;
-  color: var(--primary-text-color);
+  line-height: 1.7;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
 }
 
 .container a {
-  color: var(--btn-text-color);
-  transition: 0.3s;
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-weight: 400;
+  transition: all 0.3s ease;
 }
 
 .container a:hover {
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
 }
 
 /* tablet device breakpoint: 768px*/

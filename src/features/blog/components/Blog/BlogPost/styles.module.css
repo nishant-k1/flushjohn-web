@@ -1,16 +1,15 @@
 /* utilities */
 .post {
-  background-color: var(--tertiary-bg-color);
-  /*  background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg"); */
+  background-color: var(--bg-primary);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 32px;
+  padding: var(--spacing-section) var(--spacing-lg);
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 980px;
 }
 
 .wrapper {
@@ -65,9 +64,10 @@
 
 .blogContent p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.8;
   padding: 12px 0;
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
+  opacity: 0.95;
 }
 
 @media screen and (min-width: 768px) {
@@ -90,27 +90,28 @@
 } */
 
 .wrapper h1 {
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
   margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 .wrapper h2 {
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
   margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
-/* .wrapper img {
-  max-width: 300px;
-  height: 100%;
-  padding-bottom: 2.5rem;
-} */
 .wrapper p {
   font-size: 16px;
-  color: var(--secondary-text-color);
+  color: var(--text-primary);
+  line-height: 1.8;
+  opacity: 0.95;
 }
 
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
   .post {
-    padding: 64px 32px;
+    padding: var(--spacing-section) var(--spacing-lg);
   }
   .wrapper div {
     grid-template-columns: 1fr 1fr;
