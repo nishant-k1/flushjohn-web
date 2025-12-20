@@ -138,6 +138,17 @@ const nextConfig = {
     // Enable modern JavaScript output
     esmExternals: true,
   },
+  // Target modern browsers to reduce polyfills
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === "production"
+        ? {
+            exclude: ["error", "warn"],
+          }
+        : false,
+  },
+  // Modern browser support - reduces polyfills
+  transpilePackages: [],
   serverExternalPackages: ["nodemailer"],
   // Enable HTTP/2 and modern protocols - requires HTTPS deployment
   // HTTP/2 is automatic on platforms like Vercel, Netlify
@@ -181,7 +192,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
     // Long cache TTL for optimized images
     minimumCacheTTL: 31536000,
-    // Enable image optimization
+    // Enable image optimization with better compression
     unoptimized: false,
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",

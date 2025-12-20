@@ -1,6 +1,6 @@
 import React from "react";
 import { s3assets, websiteURL } from "@/constants";
-// Import CSS at the top to ensure proper loading order
+// Import CSS - Next.js will optimize this automatically
 import "../../styles/globals.css";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
@@ -121,6 +121,7 @@ export default function RootLayout({
           as="font"
           type="font/truetype"
           crossOrigin="anonymous"
+          fetchPriority="high"
         />
         <link
           rel="preload"
@@ -128,6 +129,7 @@ export default function RootLayout({
           as="font"
           type="font/truetype"
           crossOrigin="anonymous"
+          fetchPriority="high"
         />
 
         {/* Inline critical @font-face declarations to break CSS dependency chain */}
@@ -139,7 +141,7 @@ export default function RootLayout({
                 src: url("https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
                 font-weight: 400;
                 font-style: normal;
-                font-display: optional;
+                font-display: swap;
                 ascent-override: 95%;
                 descent-override: 25%;
                 line-gap-override: 0%;
@@ -150,11 +152,16 @@ export default function RootLayout({
                 src: url("https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf") format("truetype");
                 font-weight: 400;
                 font-style: normal;
-                font-display: optional;
+                font-display: swap;
                 ascent-override: 105%;
                 descent-override: 30%;
                 line-gap-override: 0%;
                 size-adjust: 100%;
+              }
+              /* Critical hero styles to prevent CLS */
+              .heroTitle h1 {
+                min-height: 2.6em;
+                display: block;
               }
             `,
           }}
