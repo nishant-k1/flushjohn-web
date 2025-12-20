@@ -142,6 +142,8 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         }
         onClick={() => {
           setIsOpen(!isOpen);
+          // Hide error when field is focused/clicked
+          setShowError(false);
           // Mark as touched when user interacts with the field
           if (!touched) {
             setTouched(true);

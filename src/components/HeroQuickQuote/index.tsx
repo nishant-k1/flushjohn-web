@@ -113,6 +113,8 @@ const UsageTypeField = () => {
         <div
           onClick={() => {
             setIsOpen(!isOpen);
+            // Hide error when field is focused/clicked
+            setShowError(false);
             // Don't set touched on click - only on blur or after selection
           }}
           onBlur={() => {

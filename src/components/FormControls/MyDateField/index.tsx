@@ -84,6 +84,10 @@ const MyDateField = ({ label, ...props }: any) => {
               setValue("");
             }
           }}
+          onFocus={() => {
+            // Hide error when field is focused
+            setShowError(false);
+          }}
           onBlur={() => {
             setTouched(true);
           }}

@@ -1,10 +1,20 @@
 import { useField } from "formik";
 import styles from "./styles.module.css";
+import { useState, useEffect } from "react";
 
 const TextField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
 
   return (
     <div className={styles.fieldRow}>
@@ -27,12 +37,16 @@ const TextField = ({ label, ...props }: any) => {
           onChange={(e) => {
             setValue(e.target.value);
           }}
+          onFocus={() => {
+            // Hide error when field is focused
+            setShowError(false);
+          }}
           onBlur={() => {
             setTouched(true);
           }}
         />
-        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
-          {touched && error ? error : ""}
+        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

@@ -55,6 +55,10 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
           countryCallingCodeEditable={false}
           displayInitialValueAsLocalNumber={true}
           onChange={(value) => setValue(value)}
+          onFocus={() => {
+            // Hide error when field is focused
+            setShowError(false);
+          }}
           onBlur={() => {
             setTouched(true);
           }}

@@ -8,11 +8,22 @@ const NumberField = ({ label, ...props }: any) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
   const [isFocused, setIsFocused] = useState(false);
+  const [showError, setShowError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
 
   const handleFocus = useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);
+      // Hide error when field is focused
+      setShowError(false);
       if (e.target.value === "0") {
         setValue("");
       } else {
@@ -87,8 +98,8 @@ const NumberField = ({ label, ...props }: any) => {
           />
           <span className={styles.unitsText}>Units</span>
         </div>
-        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
-          {touched && error ? error : ""}
+        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

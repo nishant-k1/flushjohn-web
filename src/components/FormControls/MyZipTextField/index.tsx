@@ -60,6 +60,10 @@ const MyZipTextField = ({ label, ...props }: any) => {
           const value = e.target.value.replace(/\D/g, "").slice(0, 5);
           setValue(value);
         }}
+        onFocus={() => {
+          // Hide error when field is focused
+          setShowError(false);
+        }}
         onBlur={(e) => {
           field.onBlur(e); // Call Formik's onBlur to trigger validation
           setTouched(true);

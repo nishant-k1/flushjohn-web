@@ -52,6 +52,10 @@ const MyTextField = ({ label, ...props }: any) => {
         onChange={(e) => {
           setValue(e.target.value);
         }}
+        onFocus={() => {
+          // Hide error when field is focused
+          setShowError(false);
+        }}
         onBlur={(e) => {
           field.onBlur(e); // Call Formik's onBlur to trigger validation
           setTouched(true); // Mark the field as touched on blur

@@ -2,11 +2,21 @@ import { useField } from "formik";
 import styles from "./styles.module.css";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { useState, useEffect } from "react";
 
 const PhoneField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
 
   return (
     <div className={styles.fieldRow}>
@@ -26,6 +36,10 @@ const PhoneField = ({ label, ...props }: any) => {
             countryCallingCodeEditable={false}
             displayInitialValueAsLocalNumber={true}
             onChange={(value) => setValue(value)}
+            onFocus={() => {
+              // Hide error when field is focused
+              setShowError(false);
+            }}
             className={`${styles.phoneInput} ${touched && error ? "error_field" : ""}`}
             placeholder={props.placeholder || "Enter phone number"}
             limitMaxLength={true}
@@ -33,8 +47,8 @@ const PhoneField = ({ label, ...props }: any) => {
             inputMode="numeric"
           />
         </div>
-        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
-          {touched && error ? meta.error : ""}
+        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

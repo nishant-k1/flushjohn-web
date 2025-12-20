@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useField } from "formik";
 import styles from "./styles.module.css";
 
@@ -8,6 +8,15 @@ const ZipTextField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue } = helpers;
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
 
   return (
     <div className={styles.fieldRow}>
@@ -30,9 +39,13 @@ const ZipTextField = ({ label, ...props }: any) => {
             const value = e.target.value.replace(/\D/g, "").slice(0, 5);
             setValue(value);
           }}
+          onFocus={() => {
+            // Hide error when field is focused
+            setShowError(false);
+          }}
         />
-        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
-          {touched && error ? error : ""}
+        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

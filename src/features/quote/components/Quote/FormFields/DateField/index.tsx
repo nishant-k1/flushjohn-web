@@ -1,7 +1,7 @@
 "use client";
 
 import { useField } from "formik";
-import { ComponentType } from "react";
+import { ComponentType, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "./datepicker.css";
 import styles from "./styles.module.css";
@@ -33,6 +33,15 @@ const DateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
 
   const parseStoredDate = (value: any): Date | null => {
     if (!value) return null;
@@ -64,6 +73,10 @@ const DateField = ({ label, ...props }: any) => {
               setValue("");
             }
           }}
+          onFocus={() => {
+            // Hide error when field is focused
+            setShowError(false);
+          }}
           onBlur={() => setTouched(true)}
           minDate={new Date()}
           dateFormat="MMM d, yyyy"
@@ -74,8 +87,8 @@ const DateField = ({ label, ...props }: any) => {
           popperPlacement="bottom-start"
           showPopperArrow={false}
         />
-        <div className={`${styles.error} ${touched && error ? styles.errorVisible : styles.errorHidden}`}>
-          {touched && error ? meta.error : ""}
+        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

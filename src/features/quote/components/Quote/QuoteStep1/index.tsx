@@ -136,9 +136,7 @@ const QuoteStep1 = () => {
             </div>
             <ErrorMessage name="usageType">
               {(msg) => {
-                const errorText =
-                  typeof msg === "string" ? msg : "Please select a usage type";
-                return <div className={styles.error}>{errorText}</div>;
+                return <div className={styles.error}>Required</div>;
               }}
             </ErrorMessage>
           </div>
@@ -154,9 +152,7 @@ const QuoteStep1 = () => {
           <div style={{ position: "relative", minHeight: 0 }}>
           <ErrorMessage name="products">
             {(msg) => {
-              const errorText =
-                typeof msg === "string" ? msg : "Please fix the errors above";
-              return <div className={styles.error_message}>{errorText}</div>;
+              return <div className={styles.error_message}>Required</div>;
             }}
           </ErrorMessage>
           </div>
