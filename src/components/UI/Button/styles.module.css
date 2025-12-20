@@ -20,11 +20,11 @@
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .button:active {
-  transform: translateY(0);
+  transform: none;
 }
 
 .button:focus-visible {
@@ -79,7 +79,7 @@
     var(--primary) 100%
   );
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .contained.primary .spinner,
@@ -103,7 +103,7 @@
 .contained.secondary:active {
   background: var(--primary-dark);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .contained.success {
@@ -121,7 +121,7 @@
 .contained.success:active {
   background: var(--primary-dark);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .contained.error {
@@ -139,7 +139,7 @@
 .contained.error:active {
   background: var(--primary-dark);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Variants - Outlined */
@@ -164,7 +164,7 @@
   background: rgba(255, 255, 255, 0.25);
   border-color: var(--primary);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .outlined.secondary {
@@ -183,7 +183,7 @@
   background: rgba(255, 255, 255, 0.25);
   border-color: var(--primary);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .outlined.success {
@@ -202,7 +202,7 @@
   background: rgba(255, 255, 255, 0.25);
   border-color: var(--primary);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Variants - Text */
@@ -224,7 +224,7 @@
 .text.primary:active {
   background: rgba(255, 255, 255, 0.25);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 .text.secondary {
@@ -239,7 +239,7 @@
 .text.secondary:active {
   background: rgba(255, 255, 255, 0.25);
   color: var(--text-primary);
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Full Width */
