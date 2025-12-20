@@ -81,15 +81,15 @@
   --text-inverse-secondary: rgba(255, 255, 255, 0.9);
   --text-inverse-tertiary: rgba(255, 255, 255, 0.7);
 
-  /* Background Colors - Single consistent color scheme using #8c6f48 */
-  --bg-primary: #8c6f48; /* Main background - body, sections, everything */
-  --bg-secondary: #8c6f48; /* Same for consistency */
-  --bg-tertiary: #8c6f48; /* Same for consistency */
-  --bg-dark: #8c6f48; /* Same for consistency */
+  /* Background Colors - Single consistent color scheme using darker brown */
+  --bg-primary: #6d5637; /* Main background - body, sections, everything - darker brown */
+  --bg-secondary: #6d5637; /* Same for consistency */
+  --bg-tertiary: #6d5637; /* Same for consistency */
+  --bg-dark: #6d5637; /* Same for consistency */
   --bg-dark-alpha: rgba(
-    140,
-    111,
-    72,
+    109,
+    86,
+    55,
     0.95
   ); /* For header/footer with backdrop */
   --bg-transparent: transparent;
@@ -194,7 +194,7 @@ body {
   font-family: var(--font-poppins); /* Primary font */
   font-size: 14px; /* Reduced from default 16px */
   line-height: 1.6; /* Improved readability */
-  background-color: var(--bg-primary); /* #8C6F48 */
+  background-color: var(--bg-primary); /* #6d5637 - darker brown */
   color: var(--text-primary); /* White text for contrast */
 
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
