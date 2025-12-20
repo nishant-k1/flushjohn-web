@@ -31,12 +31,12 @@
 }
 
 .radio_inner_box {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   flex: 1;
   min-width: 0;
-  justify-content: flex-start;
+  align-items: center;
 }
 
 /* Radio button styling - override default within this form */
@@ -177,7 +177,8 @@
   .radio_inner_box {
     flex: none;
     width: 100%;
-    justify-content: flex-start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .error {

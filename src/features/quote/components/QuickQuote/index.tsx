@@ -52,6 +52,8 @@ const UsageTypeField = () => {
   const options = [
     { label: "Event", value: "event" },
     { label: "Construction", value: "construction" },
+    { label: "Emergency", value: "emergency" },
+    { label: "Renovation", value: "renovation" },
   ];
 
   React.useEffect(() => {

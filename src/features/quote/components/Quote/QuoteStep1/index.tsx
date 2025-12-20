@@ -120,6 +120,18 @@ const QuoteStep1 = () => {
                   value="construction"
                   className={styles.radio}
                 />
+                <RadioField
+                  label="Emergency"
+                  name="usageType"
+                  value="emergency"
+                  className={styles.radio}
+                />
+                <RadioField
+                  label="Renovation"
+                  name="usageType"
+                  value="renovation"
+                  className={styles.radio}
+                />
               </div>
             </div>
             <ErrorMessage name="usageType">
