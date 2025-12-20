@@ -15,6 +15,12 @@ const NumberField = ({ label, ...props }: any) => {
       setIsFocused(true);
       if (e.target.value === "0") {
         setValue("");
+      } else {
+        // Position cursor at the end when focusing
+        setTimeout(() => {
+          const length = e.target.value.length;
+          e.target.setSelectionRange(length, length);
+        }, 0);
       }
     },
     [setValue]
@@ -27,8 +33,8 @@ const NumberField = ({ label, ...props }: any) => {
   const handleClick = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
     const input = e.currentTarget;
     setTimeout(() => {
-      input.focus();
-      input.setSelectionRange(0, 0);
+      const length = input.value.length;
+      input.setSelectionRange(length, length);
     }, 0);
   }, []);
 
@@ -53,7 +59,8 @@ const NumberField = ({ label, ...props }: any) => {
     if (isFocused && inputRef.current) {
       const input = inputRef.current;
       setTimeout(() => {
-        input.setSelectionRange(0, 0);
+        const length = input.value.length;
+        input.setSelectionRange(length, length);
       }, 0);
     }
   }, [field.value, isFocused]);
