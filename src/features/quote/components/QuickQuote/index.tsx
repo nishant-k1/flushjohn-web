@@ -220,7 +220,7 @@ const UsageTypeField = () => {
           </div>
         )}
         <div className={`${styles.error} ${showError && hasError ? styles.errorVisible : styles.errorHidden}`}>
-          {hasError ? errors.usageType : ""}
+          {hasError ? (typeof errors.usageType === "string" ? errors.usageType : String(errors.usageType || "")) : ""}
         </div>
       </div>
     </Grid>

@@ -7,7 +7,7 @@ import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 const MyZipTextField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
-  const { setValue } = helpers;
+  const { setValue, setTouched } = helpers;
   const containerRef = useRef<HTMLDivElement>(null);
   const [showError, setShowError] = React.useState(false);
 
@@ -22,7 +22,10 @@ const MyZipTextField = ({ label, ...props }: any) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         // Only hide error if field is not touched yet
         // If field is touched and has error, keep showing it
         if (!touched) {
@@ -41,7 +44,11 @@ const MyZipTextField = ({ label, ...props }: any) => {
   }, [showError, touched]);
 
   return (
-    <div ref={containerRef} className={styles.inputWrapper} style={{ position: "relative" }}>
+    <div
+      ref={containerRef}
+      className={styles.inputWrapper}
+      style={{ position: "relative" }}
+    >
       <input
         {...field}
         {...props}
@@ -69,7 +76,9 @@ const MyZipTextField = ({ label, ...props }: any) => {
           setTouched(true);
         }}
       />
-      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+      <div
+        className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+      >
         {touched && error ? error : ""}
       </div>
     </div>
