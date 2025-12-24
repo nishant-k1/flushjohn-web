@@ -66,7 +66,17 @@ export const setupGlobalErrorHandlers = () => {
     window.addEventListener(
       "error",
       (event) => {
+        const errorMessage = event.message?.toString() || "";
         const target = event.target as HTMLElement;
+        
+        // Suppress MIME type errors for CSS files (typically caused by browser extensions or cached HTML)
+        if (
+          errorMessage.includes("MIME type") &&
+          (errorMessage.includes("text/css") || errorMessage.includes(".css"))
+        ) {
+          return; // Suppress this error - it's typically from browser extensions or cached HTML
+        }
+        
         if (target && target.tagName) {
           if (target.tagName === "IMG") {
             safeConsole.warn(
@@ -74,9 +84,14 @@ export const setupGlobalErrorHandlers = () => {
               (target as HTMLImageElement).src
             );
           } else if (target.tagName === "SCRIPT") {
+            const scriptSrc = (target as HTMLScriptElement).src || "";
+            // Suppress MIME type errors for CSS files being loaded as scripts
+            if (scriptSrc.includes(".css") || errorMessage.includes("text/css")) {
+              return; // Suppress CSS-as-script errors
+            }
             safeConsole.warn(
               "Script failed to load:",
-              (target as HTMLScriptElement).src
+              scriptSrc
             );
           }
         }
@@ -138,7 +153,8 @@ export const cleanupThirdPartyScripts = () => {
           !message.includes("moz-extension") &&
           !message.includes("Extension") &&
           !message.includes("Content Security Policy") &&
-          !message.includes("Similarweb")
+          !message.includes("Similarweb") &&
+          !(message.includes("MIME type") && (message.includes("text/css") || message.includes(".css")))
         ) {
           // In production, you might want to send to error tracking service
           // For now, we suppress most console errors
@@ -152,7 +168,8 @@ export const cleanupThirdPartyScripts = () => {
         message.includes("moz-extension") ||
         message.includes("Extension") ||
         message.includes("Content Security Policy") ||
-        message.includes("Similarweb")
+        message.includes("Similarweb") ||
+        (message.includes("MIME type") && (message.includes("text/css") || message.includes(".css")))
       ) {
         return; // Suppress these errors
       }

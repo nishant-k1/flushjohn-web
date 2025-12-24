@@ -102,7 +102,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes"
         />
 
-        {/* Preconnect to critical domains - highest priority */}
+        {/* Preconnect to critical domains - highest priority - MUST be first */}
         <link
           rel="preconnect"
           href="https://cdn.flushjohn.com"
@@ -114,25 +114,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Preload critical fonts IMMEDIATELY after preconnect - before CSS to break dependency chain */}
-        <link
-          rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
-          as="font"
-          type="font/truetype"
-          crossOrigin="anonymous"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
-          as="font"
-          type="font/truetype"
-          crossOrigin="anonymous"
-          fetchPriority="high"
-        />
-
-        {/* Inline critical @font-face declarations to break CSS dependency chain */}
+        {/* Inline critical @font-face declarations FIRST to break CSS dependency chain */}
+        {/* Using font-display: optional to prevent blocking - fonts load in background */}
         <style
           dangerouslySetInnerHTML={{
             __html: `
@@ -141,7 +124,7 @@ export default function RootLayout({
                 src: url("https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
                 font-weight: 400;
                 font-style: normal;
-                font-display: swap;
+                font-display: optional;
                 ascent-override: 95%;
                 descent-override: 25%;
                 line-gap-override: 0%;
@@ -152,7 +135,7 @@ export default function RootLayout({
                 src: url("https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf") format("truetype");
                 font-weight: 400;
                 font-style: normal;
-                font-display: swap;
+                font-display: optional;
                 ascent-override: 105%;
                 descent-override: 30%;
                 line-gap-override: 0%;
@@ -165,6 +148,25 @@ export default function RootLayout({
               }
             `,
           }}
+        />
+
+        {/* Preload fonts AFTER font-face declaration - non-blocking with optional display */}
+        {/* Note: CDN must send Cache-Control headers for these fonts.
+            See CDN_CACHE_CONFIGURATION.md for setup instructions */}
+        {/* Using lower priority to prevent blocking critical path */}
+        <link
+          rel="preload"
+          href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
+          as="font"
+          type="font/truetype"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
+          as="font"
+          type="font/truetype"
+          crossOrigin="anonymous"
         />
 
         {/* DNS prefetch for third-party domains - lower priority */}
@@ -194,6 +196,8 @@ export default function RootLayout({
         />
 
         {/* Preload critical hero image for LCP optimization */}
+        {/* Note: CDN must send Cache-Control headers for this image.
+            See CDN_CACHE_CONFIGURATION.md for setup instructions */}
         <link
           rel="preload"
           href="https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp"

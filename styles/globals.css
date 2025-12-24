@@ -1,30 +1,5 @@
-@font-face {
-  font-family: "Poppins";
-  src: url("https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  /* Prevent layout shift by matching fallback font metrics */
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-  size-adjust: 100%;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  /* Prevent layout shift by matching fallback font metrics */
-  ascent-override: 105%;
-  descent-override: 30%;
-  line-gap-override: 0%;
-  size-adjust: 100%;
-}
+/* Font-face declarations moved to inline styles in layout.tsx for critical path optimization */
+/* Using font-display: optional to prevent blocking render */
 
 :root {
   /* ============================================
