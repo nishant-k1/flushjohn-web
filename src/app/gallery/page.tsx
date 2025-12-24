@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "View images of our porta potty rentals in action. See our clean and high-quality units used at various events.",
     url: `${websiteURL}/gallery`,
-    type: "website", // ✅ Open Graph type should be "website"
+    type: "website", // Open Graph type should be "website"
     siteName: "FlushJohn",
     images: [
       {

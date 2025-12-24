@@ -1,4 +1,5 @@
 import React from "react";
+import { Check } from "lucide-react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { products_data } from "../../../constants";
@@ -81,11 +82,21 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
           <p>{desc}</p>
           <h2>Why Choose Our {title}?</h2>
           <ul>
-            <li>✅ Clean and sanitized before every use</li>
-            <li>✅ Durable and weather-resistant design</li>
-            <li>✅ Available for short-term and long-term rentals</li>
-            <li>
-              ✅ Perfect for events, construction sites, and outdoor gatherings
+            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Check size={18} />
+              Clean and sanitized before every use
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Check size={18} />
+              Durable and weather-resistant design
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Check size={18} />
+              Available for short-term and long-term rentals
+            </li>
+            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Check size={18} />
+              Perfect for events, construction sites, and outdoor gatherings
             </li>
           </ul>
           <p>

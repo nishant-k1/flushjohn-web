@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Check, Trophy, DollarSign, Truck, Sparkles, Phone } from "lucide-react";
 import styles from "./styles.module.css";
 
 const TrustSignals = () => {
@@ -29,27 +30,27 @@ const TrustSignals = () => {
 
         <div className={styles.trustBadges}>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>✅</span>
+            <span className={styles.badgeIcon}><Check size={20} /></span>
             <span>Licensed & Insured</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>🏆</span>
+            <span className={styles.badgeIcon}><Trophy size={20} /></span>
             <span>5-Star Rated</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>🚚</span>
+            <span className={styles.badgeIcon}><Truck size={20} /></span>
             <span>Same-Day Delivery</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>💰</span>
+            <span className={styles.badgeIcon}><DollarSign size={20} /></span>
             <span>Best Price Guarantee</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>🧹</span>
+            <span className={styles.badgeIcon}><Sparkles size={20} /></span>
             <span>Professionally Cleaned</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}>📞</span>
+            <span className={styles.badgeIcon}><Phone size={20} /></span>
             <span>24/7 Support</span>
           </div>
         </div>

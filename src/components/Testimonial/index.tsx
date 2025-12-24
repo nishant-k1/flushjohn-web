@@ -1,4 +1,5 @@
 import React from "react";
+import { Star } from "lucide-react";
 import Carousel from "@/components/UI/Carousel";
 import Image from "next/image";
 import styles from "./styles.module.css";
@@ -59,8 +60,12 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                   <div>
                     <h3>{item.title}</h3>
                     <div>
-                      <div className={styles.rating}>
-                        ⭐⭐⭐⭐⭐{/* {renderStars(5)} */}
+                      <div className={styles.rating} style={{ display: "flex", gap: "4px" }}>
+                        <Star size={18} fill="currentColor" />
+                        <Star size={18} fill="currentColor" />
+                        <Star size={18} fill="currentColor" />
+                        <Star size={18} fill="currentColor" />
+                        <Star size={18} fill="currentColor" />
                       </div>
                       {item.verified && (
                         <span className={styles.verifiedBadge}>

@@ -1,4 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { Construction, PartyPopper, Tent, Heart, AlertCircle, DollarSign, Phone, Home, FileText, HelpCircle, Toilet } from "lucide-react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { phone } from "@/constants";
@@ -29,23 +30,28 @@ export default function PortaPottyRentalCity({ city }: { city: string }) {
           </p>
           <ul>
             <li>
-              🚧 <strong>Construction Site Porta Potties</strong> – Durable &
+              <Construction size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <strong>Construction Site Porta Potties</strong> – Durable &
               OSHA-compliant
             </li>
             <li>
-              🎉 <strong>Event Porta Potties</strong> – Ideal for concerts,
+              <PartyPopper size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <strong>Event Porta Potties</strong> – Ideal for concerts,
               festivals, and fairs
             </li>
             <li>
-              🏕 <strong>Outdoor & Camping Toilets</strong> – Convenient for
+              <Tent size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <strong>Outdoor & Camping Toilets</strong> – Convenient for
               remote locations
             </li>
             <li>
-              💍 <strong>Luxury Restroom Trailers</strong> – Perfect for
+              <Heart size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <strong>Luxury Restroom Trailers</strong> – Perfect for
               weddings & VIP events
             </li>
             <li>
-              🆘 <strong>Emergency & Disaster Relief Toilets</strong> – Quick
+              <AlertCircle size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <strong>Emergency & Disaster Relief Toilets</strong> – Quick
               deployment in emergencies
             </li>
           </ul>
@@ -58,7 +64,8 @@ export default function PortaPottyRentalCity({ city }: { city: string }) {
           </p>
           <p>
             <strong>
-              💲 Get an Instant Quote:
+              <DollarSign size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+              Get an Instant Quote:
               <Link href="/quote">Request a Free Quote Now</Link>
             </strong>
           </p>
@@ -71,16 +78,19 @@ export default function PortaPottyRentalCity({ city }: { city: string }) {
           </p>
           <p>
             <Link href="/contact">
-              <strong>📞 Contact Us</strong>
+              <strong><Phone size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Contact Us</strong>
             </Link>
-            or
+            {" "}or{" "}
             <Link href="/quote">
               <strong>Get a Free Quote</strong>
             </Link>
-            now!
+            {" "}now!
           </p>
 
-          <h2>📞 Call Us for Porta Potty Rentals in {city}</h2>
+          <h2 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Phone size={24} />
+            Call Us for Porta Potty Rentals in {city}
+          </h2>
           <p>
             Need assistance? Call our porta potty rental experts now at{" "}
             <Link href={phone.phone_link}>
@@ -89,28 +99,28 @@ export default function PortaPottyRentalCity({ city }: { city: string }) {
             for fast service!
           </p>
 
-          <h3>🔗 Explore More:</h3>
+          <h3>Explore More:</h3>
           <ul>
             <li>
-              <Link href="/">🏠 Visit Homepage</Link>
+              <Link href="/"><Home size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> Visit Homepage</Link>
             </li>
             <li>
-              <Link href="/quote">💰 Get a Free Quote</Link>
+              <Link href="/quote"><DollarSign size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> Get a Free Quote</Link>
             </li>
             <li>
-              <Link href="/rental-products">🚽 View All Rental Services</Link>
+              <Link href="/rental-products"><Toilet size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> View All Rental Services</Link>
             </li>
             <li>
-              <Link href="/blog">📝 View Our Blog</Link>
+              <Link href="/blog"><FileText size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> View Our Blog</Link>
             </li>
             <li>
-              <Link href="/faq">❓ Porta Potty Rental FAQs</Link>
+              <Link href="/faq"><HelpCircle size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> Porta Potty Rental FAQs</Link>
             </li>
             <li>
-              <Link href="/contact">📞 Contact Us</Link>
+              <Link href="/contact"><Phone size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> Contact Us</Link>
             </li>
             <li>
-              <Link href={phone.phone_link}>📞 Call Us Now</Link>
+              <Link href={phone.phone_link}><Phone size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} /> Call Us Now</Link>
             </li>
           </ul>
         </div>

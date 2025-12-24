@@ -181,11 +181,11 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 fontSize: "1em",
               }}
             >
-              <option value={5}>⭐⭐⭐⭐⭐ Excellent (5 stars)</option>
-              <option value={4}>⭐⭐⭐⭐ Very Good (4 stars)</option>
-              <option value={3}>⭐⭐⭐ Good (3 stars)</option>
-              <option value={2}>⭐⭐ Fair (2 stars)</option>
-              <option value={1}>⭐ Poor (1 star)</option>
+              <option value={5}>Excellent (5 stars)</option>
+              <option value={4}>Very Good (4 stars)</option>
+              <option value={3}>Good (3 stars)</option>
+              <option value={2}>Fair (2 stars)</option>
+              <option value={1}>Poor (1 star)</option>
             </select>
           </div>
 

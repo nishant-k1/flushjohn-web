@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { DollarSign, Phone, Truck, Sparkles } from "lucide-react";
 import { s3assets, websiteURL } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -718,19 +719,31 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
             }}
           >
             <div>
-              <h3>🚚 Same-Day Delivery</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Truck size={20} />
+                Same-Day Delivery
+              </h3>
               <p>Fast delivery throughout {cityTitle} and surrounding areas</p>
             </div>
             <div>
-              <h3>💰 Competitive Pricing</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <DollarSign size={20} />
+                Competitive Pricing
+              </h3>
               <p>Best rates in {cityTitle} with transparent pricing</p>
             </div>
             <div>
-              <h3>🧹 Clean & Sanitized</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Sparkles size={20} />
+                Clean & Sanitized
+              </h3>
               <p>Professionally cleaned units before every rental</p>
             </div>
             <div>
-              <h3>📞 24/7 Support</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Phone size={20} />
+                24/7 Support
+              </h3>
               <p>Round-the-clock customer service for {cityTitle} customers</p>
             </div>
           </div>

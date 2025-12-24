@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { DollarSign, Building2, Toilet, HelpCircle } from "lucide-react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Image from "next/image";
@@ -202,28 +203,40 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     href="/porta-potty-rental"
                     className={styles.relatedLink}
                   >
-                    <h4>🏙️ City-Specific Services</h4>
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <Building2 size={18} />
+                      City-Specific Services
+                    </h4>
                     <p>Find porta potty rentals in your city</p>
                   </Link>
                   <Link
                     href="/rental-products"
                     className={styles.relatedLink}
                   >
-                    <h4>🚽 Product Catalog</h4>
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <Toilet size={18} />
+                      Product Catalog
+                    </h4>
                     <p>Browse our complete range of portable toilets</p>
                   </Link>
                   <Link
                     href="/quote"
                     className={styles.relatedLink}
                   >
-                    <h4>💰 Get a Quote</h4>
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <DollarSign size={18} />
+                      Get a Quote
+                    </h4>
                     <p>Request a free quote for your event or project</p>
                   </Link>
                   <Link
                     href="/faq"
                     className={styles.relatedLink}
                   >
-                    <h4>❓ FAQ</h4>
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <HelpCircle size={18} />
+                      FAQ
+                    </h4>
                     <p>Common questions about porta potty rentals</p>
                   </Link>
                 </div>

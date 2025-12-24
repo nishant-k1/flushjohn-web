@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Lightbulb } from "lucide-react";
 import { phone } from "@/constants";
 
 const SEOGuidelines = () => {
@@ -256,7 +257,10 @@ const SEOGuidelines = () => {
           textAlign: "center",
         }}
       >
-        <h3 style={{ margin: "0 0 10px 0", color: "#333" }}>💡 Pro Tip</h3>
+        <h3 style={{ margin: "0 0 10px 0", color: "#333", display: "flex", alignItems: "center", gap: "8px" }}>
+          <Lightbulb size={20} />
+          Pro Tip
+        </h3>
         <p style={{ margin: "0", color: "#555" }}>
           When creating blog posts in your CRM, focus on local content for your
           25 target cities. Each city-specific post can generate 2-5 leads per

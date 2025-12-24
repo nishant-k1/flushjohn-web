@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { Building2, Zap, DollarSign, Sparkles, FileText, HelpCircle, Camera } from "lucide-react";
 import { s3assets, websiteURL } from "@/constants";
 import Link from "next/link";
 
@@ -299,7 +300,10 @@ const PortaPottyRentalPage = () => {
                 borderRadius: "0",
               }}
             >
-              <h3>🏙️ City Coverage</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Building2 size={20} />
+                City Coverage
+              </h3>
               <p>
                 We serve all major US cities with reliable porta potty delivery
                 and pickup services.
@@ -312,7 +316,10 @@ const PortaPottyRentalPage = () => {
                 borderRadius: "0",
               }}
             >
-              <h3>⚡ Fast Delivery</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Zap size={20} />
+                Fast Delivery
+              </h3>
               <p>
                 Same-day delivery available in most cities. Quick setup and
                 professional service.
@@ -325,7 +332,10 @@ const PortaPottyRentalPage = () => {
                 borderRadius: "0",
               }}
             >
-              <h3>💰 Competitive Pricing</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <DollarSign size={20} />
+                Competitive Pricing
+              </h3>
               <p>
                 Best rates in every city with transparent, no-hidden-fees
                 pricing.
@@ -338,7 +348,10 @@ const PortaPottyRentalPage = () => {
                 borderRadius: "0",
               }}
             >
-              <h3>🧹 Clean & Sanitized</h3>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <Sparkles size={20} />
+                Clean & Sanitized
+              </h3>
               <p>
                 Professionally cleaned units before every rental in every city
                 we serve.
@@ -444,9 +457,13 @@ const PortaPottyRentalPage = () => {
                 style={{
                   color: "var(--primary-bg-color)",
                   margin: "0 0 10px 0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
-                📝 Blog & Guides
+                <FileText size={20} />
+                Blog & Guides
               </h3>
               <p style={{ margin: "0", color: "#666" }}>
                 Read our comprehensive guides on porta potty rentals, event
@@ -470,9 +487,13 @@ const PortaPottyRentalPage = () => {
                 style={{
                   color: "var(--primary-bg-color)",
                   margin: "0 0 10px 0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
-                ❓ Frequently Asked Questions
+                <HelpCircle size={20} />
+                Frequently Asked Questions
               </h3>
               <p style={{ margin: "0", color: "#666" }}>
                 Find answers to common questions about porta potty rentals,
@@ -496,9 +517,13 @@ const PortaPottyRentalPage = () => {
                 style={{
                   color: "var(--primary-bg-color)",
                   margin: "0 0 10px 0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
                 }}
               >
-                📸 Photo Gallery
+                <Camera size={20} />
+                Photo Gallery
               </h3>
               <p style={{ margin: "0", color: "#666" }}>
                 See our porta potty units in action at various events and
