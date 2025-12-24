@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Rocket } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import { websiteURL } from "@/constants";
 import dynamic from "next/dynamic";
 
@@ -38,7 +38,7 @@ const BlogDashboard = () => {
         }}
       >
         <h2 style={{ margin: "0 0 10px 0", color: "var(--primary)", display: "flex", alignItems: "center", gap: "8px" }}>
-          <Rocket size={24} />
+          <TrendingUp size={24} />
           Blog SEO Strategy for Lead Generation
         </h2>
         <p style={{ margin: "0", color: "#555" }}>

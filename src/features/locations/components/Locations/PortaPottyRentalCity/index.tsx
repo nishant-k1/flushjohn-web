@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { Construction, PartyPopper, Tent, Heart, AlertCircle, DollarSign, Phone, Home, FileText, HelpCircle, Toilet } from "lucide-react";
+import { Construction, Calendar, MapPin, Award, AlertCircle, DollarSign, Phone, Home, FileText, HelpCircle, Toilet } from "lucide-react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { phone } from "@/constants";
@@ -35,17 +35,17 @@ export default function PortaPottyRentalCity({ city }: { city: string }) {
               OSHA-compliant
             </li>
             <li>
-              <PartyPopper size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <Calendar size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
               <strong>Event Porta Potties</strong> – Ideal for concerts,
               festivals, and fairs
             </li>
             <li>
-              <Tent size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <MapPin size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
               <strong>Outdoor & Camping Toilets</strong> – Convenient for
               remote locations
             </li>
             <li>
-              <Heart size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
+              <Award size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
               <strong>Luxury Restroom Trailers</strong> – Perfect for
               weddings & VIP events
             </li>

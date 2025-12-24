@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { DollarSign, Phone, Truck, Sparkles } from "lucide-react";
+import { DollarSign, Phone, Truck, Droplet } from "lucide-react";
 import { s3assets, websiteURL } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -734,7 +734,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
             </div>
             <div>
               <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Sparkles size={20} />
+                <Droplet size={20} />
                 Clean & Sanitized
               </h3>
               <p>Professionally cleaned units before every rental</p>

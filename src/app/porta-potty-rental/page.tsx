@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Building2, Zap, DollarSign, Sparkles, FileText, HelpCircle, Camera } from "lucide-react";
+import { Building2, Zap, DollarSign, Droplet, FileText, HelpCircle, Camera } from "lucide-react";
 import { s3assets, websiteURL } from "@/constants";
 import Link from "next/link";
 
@@ -349,7 +349,7 @@ const PortaPottyRentalPage = () => {
               }}
             >
               <h3 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Sparkles size={20} />
+                <Droplet size={20} />
                 Clean & Sanitized
               </h3>
               <p>

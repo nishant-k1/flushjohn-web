@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Check, Trophy, DollarSign, Truck, Sparkles, Phone } from "lucide-react";
+import { Check, Award, DollarSign, Truck, Droplet, Phone } from "lucide-react";
 import styles from "./styles.module.css";
 
 const TrustSignals = () => {
@@ -34,7 +34,7 @@ const TrustSignals = () => {
             <span>Licensed & Insured</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}><Trophy size={20} /></span>
+            <span className={styles.badgeIcon}><Award size={20} /></span>
             <span>5-Star Rated</span>
           </div>
           <div className={styles.badge}>
@@ -46,7 +46,7 @@ const TrustSignals = () => {
             <span>Best Price Guarantee</span>
           </div>
           <div className={styles.badge}>
-            <span className={styles.badgeIcon}><Sparkles size={20} /></span>
+            <span className={styles.badgeIcon}><Droplet size={20} /></span>
             <span>Professionally Cleaned</span>
           </div>
           <div className={styles.badge}>

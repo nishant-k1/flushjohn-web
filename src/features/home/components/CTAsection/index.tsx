@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Rocket, Zap, DollarSign, Sparkles, Phone, PartyPopper } from "lucide-react";
+import { Zap, DollarSign, Droplet, Phone, Tag } from "lucide-react";
 import styles from "./styles.module.css";
 import { phone } from "@/constants";
 
@@ -50,9 +50,8 @@ const CTAsection = (props: Props) => {
           </div>
 
           <p className={styles.ctaOffer}>
-            <Rocket size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-            Claim $15 OFF on Your First Rental! Limited Time Offer!{" "}
-            <PartyPopper size={18} style={{ display: "inline", verticalAlign: "middle", marginLeft: "4px" }} />
+            <Tag size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+            Claim $15 OFF on Your First Rental! Limited Time Offer!
           </p>
 
           <div className={styles.trustElements}>
@@ -65,7 +64,7 @@ const CTAsection = (props: Props) => {
               <span>Best Price Guarantee</span>
             </div>
             <div className={styles.trustItem}>
-              <span className={styles.trustIcon}><Sparkles size={20} /></span>
+              <span className={styles.trustIcon}><Droplet size={20} /></span>
               <span>Professionally Cleaned</span>
             </div>
             <div className={styles.trustItem}>
