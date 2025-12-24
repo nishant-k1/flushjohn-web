@@ -96,120 +96,46 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                'use strict';
-                // Override console methods IMMEDIATELY before anything else can log
-                if (typeof console !== 'undefined') {
+                if (typeof window !== 'undefined') {
                   var originalError = console.error;
                   var originalWarn = console.warn;
-                  var originalLog = console.log;
                   
                   console.error = function() {
-                    var message = '';
-                    try {
-                      message = arguments[0] ? String(arguments[0]) : '';
-                    } catch(e) {}
-                    
-                    // Suppress CSS MIME type errors - match the exact error message pattern
-                    if (message && (
-                      (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) ||
-                      message.includes('Refused to execute script') && (message.includes('.css') || message.includes('text/css')) ||
-                      message.includes('strict MIME type checking')
-                    )) {
+                    var message = arguments[0] ? String(arguments[0]) : '';
+                    // Suppress CSS MIME type errors (typically from browser extensions or cached HTML)
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
                       return; // Suppress this error
                     }
-                    if (originalError) originalError.apply(console, arguments);
+                    originalError.apply(console, arguments);
                   };
                   
                   console.warn = function() {
-                    var message = '';
-                    try {
-                      message = arguments[0] ? String(arguments[0]) : '';
-                    } catch(e) {}
-                    
+                    var message = arguments[0] ? String(arguments[0]) : '';
                     // Suppress CSS MIME type warnings
-                    if (message && (
-                      (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) ||
-                      message.includes('Refused to execute script') && (message.includes('.css') || message.includes('text/css'))
-                    )) {
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
                       return; // Suppress this warning
                     }
-                    if (originalWarn) originalWarn.apply(console, arguments);
+                    originalWarn.apply(console, arguments);
                   };
                   
-                  console.log = function() {
-                    var message = '';
-                    try {
-                      message = arguments[0] ? String(arguments[0]) : '';
-                    } catch(e) {}
-                    
-                    // Also suppress in console.log (some browsers log here)
-                    if (message && (
-                      (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) ||
-                      message.includes('Refused to execute script') && (message.includes('.css') || message.includes('text/css'))
-                    )) {
-                      return; // Suppress
+                  // Also catch errors via global error handler
+                  window.addEventListener('error', function(event) {
+                    var message = event.message || '';
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      return false;
                     }
-                    if (originalLog) originalLog.apply(console, arguments);
-                  };
-                }
-                
-                // Set up error handlers IMMEDIATELY
-                if (typeof window !== 'undefined') {
-                  // Catch errors via global error handler with capture phase
-                  var errorHandler = function(event) {
-                    try {
-                      var message = event.message || event.filename || event.error || '';
-                      message = String(message);
-                      
-                      if (message && (
-                        (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) ||
-                        message.includes('Refused to execute script') && (message.includes('.css') || message.includes('text/css')) ||
-                        message.includes('strict MIME type checking')
-                      )) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        event.stopImmediatePropagation();
-                        return false;
-                      }
-                    } catch(e) {}
-                  };
-                  
-                  // Add with capture phase (true) to catch early
-                  window.addEventListener('error', errorHandler, true);
-                  
-                  // Also listen on document
-                  if (typeof document !== 'undefined') {
-                    document.addEventListener('error', errorHandler, true);
-                  }
+                  }, true);
                   
                   // Catch unhandled promise rejections
                   window.addEventListener('unhandledrejection', function(event) {
-                    try {
-                      var message = event.reason ? String(event.reason) : '';
-                      if (message && (
-                        (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) ||
-                        message.includes('Refused to execute script') && (message.includes('.css') || message.includes('text/css'))
-                      )) {
-                        event.preventDefault();
-                        return false;
-                      }
-                    } catch(e) {}
-                  }, true);
-                  
-                  // Prevent error from propagating
-                  window.onerror = function(message, source, lineno, colno, error) {
-                    try {
-                      var msg = String(message || '');
-                      if (msg && (
-                        (msg.includes('MIME type') && (msg.includes('text/css') || msg.includes('.css'))) ||
-                        msg.includes('Refused to execute script') && (msg.includes('.css') || msg.includes('text/css')) ||
-                        msg.includes('strict MIME type checking')
-                      )) {
-                        return true; // Suppress error
-                      }
-                    } catch(e) {}
-                    return false;
-                  };
+                    var message = event.reason ? String(event.reason) : '';
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      event.preventDefault();
+                      return false;
+                    }
+                  });
                 }
               })();
             `,
