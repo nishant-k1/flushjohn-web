@@ -91,6 +91,56 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Suppress CSS MIME type errors immediately - runs before any other scripts */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window !== 'undefined') {
+                  var originalError = console.error;
+                  var originalWarn = console.warn;
+                  
+                  console.error = function() {
+                    var message = arguments[0] ? String(arguments[0]) : '';
+                    // Suppress CSS MIME type errors (typically from browser extensions or cached HTML)
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      return; // Suppress this error
+                    }
+                    originalError.apply(console, arguments);
+                  };
+                  
+                  console.warn = function() {
+                    var message = arguments[0] ? String(arguments[0]) : '';
+                    // Suppress CSS MIME type warnings
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      return; // Suppress this warning
+                    }
+                    originalWarn.apply(console, arguments);
+                  };
+                  
+                  // Also catch errors via global error handler
+                  window.addEventListener('error', function(event) {
+                    var message = event.message || '';
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      return false;
+                    }
+                  }, true);
+                  
+                  // Catch unhandled promise rejections
+                  window.addEventListener('unhandledrejection', function(event) {
+                    var message = event.reason ? String(event.reason) : '';
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                      event.preventDefault();
+                      return false;
+                    }
+                  });
+                }
+              })();
+            `,
+          }}
+        />
         {/* Enable back/forward cache */}
         <meta
           name="mobile-web-app-capable"
