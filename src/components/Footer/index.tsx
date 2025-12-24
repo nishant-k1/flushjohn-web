@@ -29,8 +29,8 @@ const Footer = () => {
                 <Image
                   src={`${s3assets}/logo_white.svg`}
                   alt="brand-logo"
-                  height={80}
-                  width={128}
+                  height={501}
+                  width={1039}
                   priority={true}
                   placeholder="empty"
                   style={{

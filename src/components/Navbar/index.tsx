@@ -63,11 +63,11 @@ const Navbar = () => {
             <Image
               src={`${s3assets}/logo_white.svg`}
               alt="porta-potty"
-              height={64}
-              width={100}
+              height={501}
+              width={1039}
               priority={true}
               placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjY0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzOSIgaGVpZ2h0PSI1MDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMzkiIGhlaWdodD0iNTAxIiBmaWxsPSIjZmZmIi8+PC9zdmc+"
               style={{
                 height: "3rem",
                 width: "auto",

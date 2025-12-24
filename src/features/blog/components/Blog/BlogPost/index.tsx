@@ -38,11 +38,16 @@ const BlogPost = ({ blogPost, slug }: any) => {
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    // Use UTC to ensure consistent formatting between server and client
+    const date = new Date(dateString);
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const year = date.getUTCFullYear();
+    const month = months[date.getUTCMonth()];
+    const day = date.getUTCDate();
+    return `${month} ${day}, ${year}`;
   };
 
   const readingTime = Math.ceil((content?.length || 0) / 200);
@@ -128,7 +133,7 @@ const BlogPost = ({ blogPost, slug }: any) => {
                     By <strong>{author}</strong>
                   </span>
                 )}
-                {createdAt && <span>• {formatDate(createdAt)}</span>}
+                {createdAt && <span suppressHydrationWarning>• {formatDate(createdAt)}</span>}
                 <span>• {readingTime} min read</span>
               </div>
 

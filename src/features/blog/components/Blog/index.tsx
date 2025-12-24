@@ -118,7 +118,19 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                 createdAt,
                 content,
               } = item;
-              const blogDate = new Date(createdAt);
+              // Format date consistently using UTC to prevent hydration mismatches
+              const formatBlogDate = (dateString: string) => {
+                if (!dateString) return "";
+                const date = new Date(dateString);
+                const months = [
+                  "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"
+                ];
+                const year = date.getUTCFullYear();
+                const month = months[date.getUTCMonth()];
+                const day = date.getUTCDate();
+                return `${month} ${day}, ${year}`;
+              };
 
               // Prioritize S3 image over Unsplash, with fallback to legacy and default
               const imageSource =
@@ -161,12 +173,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                   </div>
                   <div className={styles.textContainer}>
                     <h2>{title || "Untitled"}</h2>
-                    <h3>
-                      {blogDate.toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+                    <h3 suppressHydrationWarning>
+                      {formatBlogDate(createdAt)}
                     </h3>
                     <p>{previewText || "No preview available."}</p>
                     <span className={styles.readMore}>Read More →</span>

@@ -36,14 +36,14 @@ const Sidebar = () => {
         <div className={styles.sidebar}>
           <Link href="/">
             <Image
-              height={800}
-              width={128}
+              height={501}
+              width={1039}
               onClick={handleClick}
               src={`${s3assets}/logo_white.svg`}
               alt="brand-logo"
               priority={true}
               placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwMCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=="
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAzOSIgaGVpZ2h0PSI1MDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMzkiIGhlaWdodD0iNTAxIiBmaWxsPSIjZmZmIi8+PC9zdmc+"
               style={{
                 height: "auto",
                 width: "8rem",

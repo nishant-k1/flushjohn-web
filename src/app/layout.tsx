@@ -215,7 +215,10 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        {/* Google Analytics - Load after interactive with defer for better performance */}
+        {/* Google Analytics / Google Ads Conversion Tracking
+            Note: Third-party cookie warnings from /ccm/collect are expected when using Google Ads conversion tracking.
+            These cookies are set by Google's domain and are necessary for conversion measurement.
+            The configuration below minimizes privacy impact by disabling ad personalization and anonymizing IPs. */}
         {process.env.NODE_ENV === "production" && (
           <>
             <Script
@@ -231,7 +234,13 @@ export default function RootLayout({
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'AW-11246929750', {
-                  'send_page_view': false
+                  'send_page_view': false,
+                  'cookie_domain': 'auto',
+                  'cookie_expires': 63072000,
+                  'anonymize_ip': true,
+                  'allow_google_signals': false,
+                  'allow_ad_personalization_signals': false,
+                  'restricted_data_processing': true
                 });
               `}
             </Script>
