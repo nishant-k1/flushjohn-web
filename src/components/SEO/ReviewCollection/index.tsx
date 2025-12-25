@@ -58,16 +58,17 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
   return (
     <div
       style={{
-        marginTop: "40px",
+        marginTop: "3rem",
         padding: "30px",
-        background: "#f8f9fa",
-        borderRadius: "10px",
+        background: "var(--bg-primary)",
+        borderRadius: "0",
+        border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
       }}
     >
-      <h2 style={{ marginBottom: "20px", color: "#333" }}>
+      <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
         Share Your Experience
       </h2>
-      <p style={{ marginBottom: "30px", color: "#666" }}>
+      <p style={{ marginBottom: "30px", color: "var(--text-primary)", opacity: 0.95 }}>
         {city
           ? `Help others in ${city}, ${state} by sharing your experience with FlushJohn porta potty rentals.`
           : "Help others by sharing your experience with FlushJohn porta potty rentals."}
@@ -109,7 +110,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 display: "block",
                 marginBottom: "5px",
                 fontWeight: "bold",
-                color: "#333",
+                color: "var(--text-primary)",
               }}
             >
               Your Name *
@@ -123,9 +124,11 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid #ddd",
+                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
+                background: "var(--bg-primary)",
+                color: "var(--text-primary)",
               }}
             />
           </div>
@@ -136,7 +139,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 display: "block",
                 marginBottom: "5px",
                 fontWeight: "bold",
-                color: "#333",
+                color: "var(--text-primary)",
               }}
             >
               Email Address *
@@ -150,9 +153,11 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid #ddd",
+                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
+                background: "var(--bg-primary)",
+                color: "var(--text-primary)",
               }}
             />
           </div>
@@ -163,7 +168,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 display: "block",
                 marginBottom: "5px",
                 fontWeight: "bold",
-                color: "#333",
+                color: "var(--text-primary)",
               }}
             >
               Rating *
@@ -176,9 +181,11 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid #ddd",
+                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
+                background: "var(--bg-primary)",
+                color: "var(--text-primary)",
               }}
             >
               <option value={5}>Excellent (5 stars)</option>
@@ -195,7 +202,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
                 display: "block",
                 marginBottom: "5px",
                 fontWeight: "bold",
-                color: "#333",
+                color: "var(--text-primary)",
               }}
             >
               Your Review *
@@ -210,10 +217,12 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid #ddd",
+                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
                 resize: "vertical",
+                background: "var(--bg-primary)",
+                color: "var(--text-primary)",
               }}
             />
           </div>
@@ -260,12 +269,12 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         style={{
           marginTop: "30px",
           padding: "20px",
-          background: "white",
-          borderRadius: "8px",
-          border: "1px solid #ddd",
+          background: "var(--bg-secondary, rgba(255, 255, 255, 0.05))",
+          borderRadius: "0",
+          border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
         }}
       >
-        <h3 style={{ margin: "0 0 15px 0", color: "#333" }}>
+        <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
           Why Reviews Matter
         </h3>
         <div
@@ -281,7 +290,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Help Others
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
+            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
               Your review helps other customers make informed decisions
             </p>
           </div>
@@ -291,7 +300,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Improve Service
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
+            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
               We use feedback to continuously improve our services
             </p>
           </div>
@@ -301,7 +310,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Build Trust
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "#666" }}>
+            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
               Honest reviews build trust in our porta potty rental services
             </p>
           </div>
