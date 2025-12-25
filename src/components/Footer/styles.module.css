@@ -201,6 +201,21 @@
   gap: 0.625rem;
 }
 
+.address {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.address p {
+  color: var(--text-primary);
+  opacity: 0.9;
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin: 0.25rem 0;
+  line-height: 1.5;
+}
+
 .bottomFooter {
   padding: 2rem 0 1rem;
   font-size: 0.8125rem;

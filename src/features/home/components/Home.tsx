@@ -6,6 +6,7 @@ const CombinedContactBar = dynamic(() => import("@/components/CombinedContactBar
 const Features = dynamic(() => import("./Features"));
 const Services = dynamic(() => import("./Services"));
 const TrustSignals = dynamic(() => import("./TrustSignals"));
+const ServiceAreas = dynamic(() => import("./ServiceAreas"));
 const CTAsection = dynamic(() => import("./CTAsection"));
 
 const Home = () => {
@@ -27,6 +28,9 @@ const Home = () => {
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <TrustSignals />
+      </React.Suspense>
+      <React.Suspense fallback={<div>...</div>}>
+        <ServiceAreas />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <CTAsection />

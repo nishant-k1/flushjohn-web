@@ -297,18 +297,18 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     );
   }
 
-  const formatBlogDate = (dateString: string) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-    const year = date.getUTCFullYear();
-    const month = months[date.getUTCMonth()];
-    const day = date.getUTCDate();
-    return `${month} ${day}, ${year}`;
-  };
+              const formatBlogDate = (dateString: string) => {
+                if (!dateString) return "";
+                const date = new Date(dateString);
+                const months = [
+                  "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"
+                ];
+                const year = date.getUTCFullYear();
+                const month = months[date.getUTCMonth()];
+                const day = date.getUTCDate();
+                return `${month} ${day}, ${year}`;
+              };
 
   return (
     <div className={styles.section}>
@@ -449,47 +449,47 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     content,
                   } = item;
 
-                  // Prioritize S3 image over Unsplash, with fallback to legacy and default
-                  const imageSource =
-                    coverImageS3?.src ||
-                    coverImageUnsplash?.src ||
-                    item.coverImage?.src ||
-                    `${s3assets}/og-image-flushjonn-web.png`;
+              // Prioritize S3 image over Unsplash, with fallback to legacy and default
+              const imageSource =
+                coverImageS3?.src ||
+                coverImageUnsplash?.src ||
+                item.coverImage?.src ||
+                `${s3assets}/og-image-flushjonn-web.png`;
                   
-                  const imageAlt =
-                    coverImageS3?.alt ||
-                    coverImageUnsplash?.alt ||
-                    item.coverImage?.alt ||
-                    title ||
-                    "Blog cover image";
+              const imageAlt =
+                coverImageS3?.alt ||
+                coverImageUnsplash?.alt ||
+                item.coverImage?.alt ||
+                title ||
+                "Blog cover image";
 
-                  const slug = generateSlug(title);
-                  const previewText = truncateText(content);
+              const slug = generateSlug(title);
+              const previewText = truncateText(content);
 
-                  return (
-                    <Link
-                      href={`/blog/${slug}`}
-                      key={_id}
-                      className={styles.blogItem}
-                    >
+              return (
+                <Link
+                  href={`/blog/${slug}`}
+                  key={_id}
+                  className={styles.blogItem}
+                >
                       <BlogImage 
-                        src={imageSource}
-                        alt={imageAlt}
+                      src={imageSource}
+                      alt={imageAlt}
                         blogId={_id}
-                      />
-                      <div className={styles.textContainer}>
-                        <h2>{title || "Untitled"}</h2>
-                        <h3 suppressHydrationWarning>
-                          {formatBlogDate(createdAt)}
-                        </h3>
-                        <p>{previewText || "No preview available."}</p>
-                        <span className={styles.readMore}>Read More →</span>
-                      </div>
-                    </Link>
-                  );
-                })}
+                    />
+                  <div className={styles.textContainer}>
+                    <h2>{title || "Untitled"}</h2>
+                    <h3 suppressHydrationWarning>
+                      {formatBlogDate(createdAt)}
+                    </h3>
+                    <p>{previewText || "No preview available."}</p>
+                    <span className={styles.readMore}>Read More →</span>
+                  </div>
+                </Link>
+              );
+            })}
               </div>
-            </div>
+          </div>
 
             {/* Sidebar */}
             <aside className={styles.sidebar}>
@@ -605,49 +605,49 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
 
           {/* Related Content Section - Show on last page */}
           {pagination.currentPage === pagination.totalPages && blogs.length > 0 && (
-            <div className={styles.relatedContent}>
-              <h3>Explore More Resources</h3>
-              <div className={styles.relatedLinks}>
-                <Link
-                  href="/porta-potty-rental"
-                  className={styles.relatedLink}
-                >
-                  <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <Building2 size={18} />
-                    City-Specific Services
-                  </h4>
-                  <p>Find porta potty rentals in your city</p>
-                </Link>
-                <Link
-                  href="/rental-products"
-                  className={styles.relatedLink}
-                >
-                  <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <Toilet size={18} />
-                    Product Catalog
-                  </h4>
-                  <p>Browse our complete range of portable toilets</p>
-                </Link>
-                <Link
-                  href="/quote"
-                  className={styles.relatedLink}
-                >
-                  <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <DollarSign size={18} />
-                    Get a Quote
-                  </h4>
-                  <p>Request a free quote for your event or project</p>
-                </Link>
-                <Link
-                  href="/faq"
-                  className={styles.relatedLink}
-                >
-                  <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <HelpCircle size={18} />
-                    FAQ
-                  </h4>
-                  <p>Common questions about porta potty rentals</p>
-                </Link>
+              <div className={styles.relatedContent}>
+                <h3>Explore More Resources</h3>
+                <div className={styles.relatedLinks}>
+                  <Link
+                    href="/porta-potty-rental"
+                    className={styles.relatedLink}
+                  >
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <Building2 size={18} />
+                      City-Specific Services
+                    </h4>
+                    <p>Find porta potty rentals in your city</p>
+                  </Link>
+                  <Link
+                    href="/rental-products"
+                    className={styles.relatedLink}
+                  >
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <Toilet size={18} />
+                      Product Catalog
+                    </h4>
+                    <p>Browse our complete range of portable toilets</p>
+                  </Link>
+                  <Link
+                    href="/quote"
+                    className={styles.relatedLink}
+                  >
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <DollarSign size={18} />
+                      Get a Quote
+                    </h4>
+                    <p>Request a free quote for your event or project</p>
+                  </Link>
+                  <Link
+                    href="/faq"
+                    className={styles.relatedLink}
+                  >
+                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                      <HelpCircle size={18} />
+                      FAQ
+                    </h4>
+                    <p>Common questions about porta potty rentals</p>
+                  </Link>
               </div>
             </div>
           )}

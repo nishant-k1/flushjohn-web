@@ -1,0 +1,390 @@
+.page {
+  padding: var(--spacing-section) var(--spacing-lg);
+  background-color: var(--bg-primary);
+  position: relative;
+  min-height: 100vh;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.02) 10px,
+      rgba(255, 255, 255, 0.02) 20px
+    ),
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 0, 0, 0.015) 1px,
+      transparent 0
+    ),
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(140, 111, 72, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(109, 86, 55, 0.1) 0%,
+      transparent 50%
+    );
+  background-size:
+    40px 40px,
+    40px 40px,
+    20px 20px,
+    100% 100%,
+    100% 100%;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+.subtitle strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.statesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.stateSection {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: var(--spacing-xl);
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stateNameLink {
+  text-decoration: none;
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.stateNameLink:hover {
+  transform: translateX(4px);
+}
+
+.stateName {
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--primary);
+  letter-spacing: 0.02em;
+  transition: color var(--transition-base);
+}
+
+.stateNameLink:hover .stateName {
+  color: var(--primary-light);
+  border-bottom-color: var(--primary-light);
+}
+
+.citiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--gap-md);
+}
+
+.cityCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: var(--spacing-lg);
+  border-radius: 0;
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  min-height: 180px;
+}
+
+.cityCard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cityName {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.02em;
+}
+
+.cityDescription {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+.viewLink {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
+  text-underline-offset: 3px;
+  transition: all var(--transition-base);
+  display: inline-block;
+  margin-top: auto;
+}
+
+.cityCard:hover .viewLink {
+  color: var(--text-primary);
+  text-decoration-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.contactSection {
+  background: linear-gradient(
+    135deg,
+    rgba(140, 111, 72, 0.15) 0%,
+    rgba(109, 86, 55, 0.15) 100%
+  );
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contactTitle {
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.02em;
+}
+
+.contactDescription {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contactItem {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.contactItem strong {
+  font-weight: 500;
+  margin-right: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.contactItem a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
+  text-underline-offset: 3px;
+  transition: all var(--transition-base);
+  font-weight: 500;
+}
+
+.contactItem a:hover {
+  color: var(--text-primary);
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quoteButton,
+.contactButton {
+  display: inline-block;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  letter-spacing: 0.01em;
+  min-width: 180px;
+  text-align: center;
+}
+
+.quoteButton {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--text-primary);
+  border: 1px solid var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.quoteButton:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-light) 0%,
+    var(--primary) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary-lg);
+  border-color: var(--primary-light);
+}
+
+.contactButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.contactButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  color: var(--text-primary);
+}
+
+@media only screen and (max-width: 1024px) {
+  .citiesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--gap-sm);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .page {
+    padding: var(--spacing-3xl) var(--spacing-md);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .stateSection {
+    padding: var(--spacing-lg);
+  }
+
+  .stateName {
+    font-size: 1.5rem;
+  }
+
+  .citiesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactSection {
+    padding: var(--spacing-xl);
+  }
+
+  .contactTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+  }
+
+  .quoteButton,
+  .contactButton {
+    width: 100%;
+  }
+}
+

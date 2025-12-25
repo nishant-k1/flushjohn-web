@@ -213,6 +213,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${websiteURL}/service-areas`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
       url: `${websiteURL}/faq`,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
@@ -271,6 +277,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: majorCities.includes(city.slug) ? 0.9 : 0.8,
   }));
 
+  const statePages = [
+    { slug: "texas", priority: 0.75 },
+    { slug: "florida", priority: 0.75 },
+    { slug: "california", priority: 0.75 },
+    { slug: "georgia", priority: 0.7 },
+    { slug: "illinois", priority: 0.7 },
+    { slug: "delaware", priority: 0.7 },
+  ].map((state) => ({
+    url: `${websiteURL}/service-areas/${state.slug}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: state.priority,
+  }));
+
   const productPages = productSlugs.map((product) => ({
     url: `${websiteURL}/rental-products/${product.slug}`,
     lastModified: currentDate,
@@ -326,5 +346,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: blog.priority,
   }));
 
-  return [...corePages, ...cityPages, ...productPages, ...blogPages];
+  return [...corePages, ...statePages, ...cityPages, ...productPages, ...blogPages];
 }

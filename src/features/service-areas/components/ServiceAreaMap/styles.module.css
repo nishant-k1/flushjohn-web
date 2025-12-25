@@ -1,0 +1,206 @@
+.mapContainer {
+  margin: var(--spacing-3xl) 0;
+  padding: var(--spacing-xl);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.mapTitle {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.mapDescription {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.mapDescription strong {
+  color: var(--primary-light);
+  font-weight: 600;
+}
+
+.statesVisualization {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.stateCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: var(--spacing-lg);
+  border-radius: 0;
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.stateCard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.stateHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--primary);
+}
+
+.stateTitle {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.cityCount {
+  color: var(--primary-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: rgba(140, 111, 72, 0.2);
+  padding: 4px 12px;
+  border-radius: 0;
+  border: 1px solid rgba(140, 111, 72, 0.3);
+}
+
+.citiesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.citiesList a {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 0;
+  transition: all var(--transition-base);
+  opacity: 0.9;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+}
+
+.citiesList a:hover {
+  color: var(--primary-light);
+  opacity: 1;
+  border-left-color: var(--primary-light);
+  background: rgba(140, 111, 72, 0.1);
+  transform: translateX(4px);
+}
+
+.viewStateLink {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
+  text-underline-offset: 3px;
+  transition: all var(--transition-base);
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewStateLink:hover {
+  color: var(--primary-light);
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+}
+
+.summaryStats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-3xl);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.statNumber {
+  color: var(--primary-light);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.statLabel {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media only screen and (max-width: 768px) {
+  .mapContainer {
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .mapTitle {
+    font-size: 1.25rem;
+  }
+
+  .mapDescription {
+    font-size: 0.8125rem;
+  }
+
+  .statesVisualization {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+
+  .summaryStats {
+    gap: var(--spacing-xl);
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+}

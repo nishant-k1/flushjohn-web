@@ -30,6 +30,10 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
       <div className={styles.container}>
         <div className={styles.heroWrapper}>
           <div className={styles.heroTitle}>
+            <div className={styles.serviceBadge}>
+              <span className={styles.badgeIcon}>✓</span>
+              <span>Serving 25+ Cities Across 6 States</span>
+            </div>
             <h1>{title}</h1>
             <h2>{subTitle}</h2>
             <div className={styles.heroCta}>

@@ -73,6 +73,12 @@ export const footerLinks = {
       icon: <ImagesIcon />,
     },
     {
+      id: "8.5",
+      name: "Service Areas",
+      href: "/service-areas",
+      icon: <LocalShippingIcon />,
+    },
+    {
       id: "9",
       name: "Contact",
       href: "/contact",
