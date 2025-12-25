@@ -27,6 +27,19 @@
   padding-top: 1rem;
 }
 
+.cityWrapper h1,
+.cityWrapper h2,
+.cityWrapper h3,
+.cityWrapper h4 {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cityWrapper p {
+  color: #f0f0f0;
+  font-weight: 400;
+}
+
 .cityWrapper ul {
   padding: 24px;
   list-style: none;
@@ -36,17 +49,20 @@
   padding: 8px 0;
   position: relative;
   padding-left: 24px;
+  color: #f0f0f0;
+  font-weight: 400;
 }
 
 .cityWrapper ul li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--primary-bg-color);
+  color: var(--primary-light);
   font-weight: bold;
+  font-size: 1.2em;
 }
 
-/* Typography */
+/* Typography - Theme Colors with Improved Contrast */
 .container h1 {
   color: var(--text-primary);
   font-size: 2.5rem;
@@ -85,29 +101,31 @@
 }
 
 .container p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .container li {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 0.75rem;
+  font-weight: 400;
 }
 
-/* Links */
+/* Links - Theme Colors */
 .container a {
-  color: var(--primary-bg-color);
+  color: var(--primary-light);
   text-decoration: none;
   transition: all var(--transition-base, 0.3s);
   font-weight: 500;
 }
 
 .container a:hover {
-  color: var(--primary);
+  color: var(--primary-lighter);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -130,17 +148,16 @@
 .heroSection h1 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-bg-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .heroSection p {
   font-size: 1.3rem;
   max-width: 800px;
   margin: 0 auto 2.5rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .ctaButtons {
@@ -221,56 +238,63 @@
   background: linear-gradient(90deg, transparent, var(--primary-bg-color), transparent);
 }
 
-/* Cards */
+/* Cards - Theme Colors */
 .card {
   padding: 2rem;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.card h3 {
-  color: var(--text-primary);
-}
-
-.card p {
-  color: var(--text-primary);
-}
-
-.card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
-  border-color: var(--primary-bg-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
   margin-bottom: 1rem;
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .card p {
   flex-grow: 1;
   margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.card a {
+  color: var(--primary-light);
+  font-weight: 500;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  background-color: var(--neutral-600);
 }
 
 .testimonialCard {
   padding: 2rem;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  background-color: var(--neutral-700);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  border-left: 4px solid var(--primary-bg-color);
+  border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .testimonialCard p {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.testimonialCard p:last-child {
   color: var(--text-primary);
+  font-weight: 500;
 }
 
 .testimonialCard:hover {
@@ -299,62 +323,63 @@
 
 .serviceCard {
   padding: 1.5rem;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .serviceCard h3 {
   color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
 .serviceCard p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .serviceCard:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
-  border-color: var(--primary-bg-color);
-}
-
-.serviceCard h3 {
-  color: var(--primary-bg-color);
-  margin-bottom: 0.75rem;
-  font-size: 1.3rem;
+  border-color: var(--primary);
+  background-color: var(--neutral-600);
 }
 
 .cityCard {
   display: block;
   padding: 1.5rem;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cityCard:hover {
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-600);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   text-decoration: none;
-  border-color: var(--primary-bg-color);
+  border-color: var(--primary);
 }
 
 .cityCard p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .cityCard h4 {
-  color: var(--primary-bg-color);
+  color: var(--primary-light);
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 /* Grids */
@@ -388,25 +413,28 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   border-radius: 8px;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all var(--transition-base, 0.3s);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .featureItem:hover {
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-600);
   transform: translateX(4px);
-  border-color: var(--primary-bg-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .featureContent h3 {
   color: var(--text-primary);
+  font-weight: 500;
 }
 
 .featureContent p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .featureIcon {
@@ -429,7 +457,7 @@
 .featureContent p {
   margin-bottom: 0;
   font-size: 1rem;
-  opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 /* Services List */
@@ -445,24 +473,27 @@
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   border-radius: 8px;
-  border-left: 4px solid var(--primary-bg-color);
+  border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .servicesList li:hover {
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-600);
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .servicesList li strong {
   color: var(--text-primary);
+  font-weight: 500;
 }
 
 .servicesList li p {
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .servicesList li svg {
@@ -539,23 +570,27 @@
 .exploreSection {
   margin-top: 4rem;
   padding: 2.5rem;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   border-radius: 12px;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .exploreLinks a {
-  color: var(--text-primary);
+  color: var(--primary-light);
+  font-weight: 500;
 }
 
 .exploreLinks a span {
-  color: var(--text-primary);
+  color: var(--primary-light);
+  font-weight: 500;
 }
 
 .exploreSection h3 {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .exploreLinks {
@@ -577,20 +612,22 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-800);
   border-radius: 8px;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition-base, 0.3s);
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--primary-light);
+  font-weight: 500;
 }
 
 .exploreLinks a:hover {
-  background-color: var(--bg-primary);
+  background-color: var(--neutral-700);
   transform: translateX(4px);
-  border-color: var(--primary-bg-color);
+  border-color: var(--primary);
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: var(--primary-lighter);
 }
 
 .exploreLinks a svg {

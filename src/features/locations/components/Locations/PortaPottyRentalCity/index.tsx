@@ -393,7 +393,7 @@ export default function PortaPottyRentalCity({
                   <Construction size={24} />
                   <div>
                     <strong>Construction Site Porta Potties</strong>
-                    <p style={{ margin: "0.5rem 0 0", opacity: 0.9 }}>
+                    <p style={{ margin: "0.5rem 0 0" }}>
                       Durable, OSHA-compliant units perfect for construction
                       sites and long-term projects
                     </p>
@@ -403,7 +403,7 @@ export default function PortaPottyRentalCity({
                   <Calendar size={24} />
                   <div>
                     <strong>Event Porta Potties</strong>
-                    <p style={{ margin: "0.5rem 0 0", opacity: 0.9 }}>
+                    <p style={{ margin: "0.5rem 0 0" }}>
                       Ideal for concerts, festivals, fairs, and large gatherings
                     </p>
                   </div>
@@ -412,7 +412,7 @@ export default function PortaPottyRentalCity({
                   <MapPin size={24} />
                   <div>
                     <strong>Outdoor & Camping Toilets</strong>
-                    <p style={{ margin: "0.5rem 0 0", opacity: 0.9 }}>
+                    <p style={{ margin: "0.5rem 0 0" }}>
                       Convenient portable solutions for remote locations and
                       outdoor events
                     </p>
@@ -422,7 +422,7 @@ export default function PortaPottyRentalCity({
                   <Award size={24} />
                   <div>
                     <strong>Luxury Restroom Trailers</strong>
-                    <p style={{ margin: "0.5rem 0 0", opacity: 0.9 }}>
+                    <p style={{ margin: "0.5rem 0 0" }}>
                       Premium facilities perfect for weddings, VIP events, and
                       upscale occasions
                     </p>
@@ -432,7 +432,7 @@ export default function PortaPottyRentalCity({
                   <AlertCircle size={24} />
                   <div>
                     <strong>Emergency & Disaster Relief Toilets</strong>
-                    <p style={{ margin: "0.5rem 0 0", opacity: 0.9 }}>
+                    <p style={{ margin: "0.5rem 0 0" }}>
                       Quick deployment solutions for emergencies and disaster
                       relief situations
                     </p>
@@ -610,9 +610,7 @@ export default function PortaPottyRentalCity({
                       >
                         {nearbyCity.displayName}, {nearbyCity.state}
                       </h4>
-                      <p
-                        style={{ margin: "0", fontSize: "0.9em", opacity: 0.8 }}
-                      >
+                      <p style={{ margin: "0", fontSize: "0.9em" }}>
                         Porta potty rental services →
                       </p>
                     </Link>

@@ -13,8 +13,8 @@
   opacity: 0.8;
 }
 .breadcrumb a {
-  display: grid;
-  padding: 0 4px;
+  display: inline-flex;
+  padding: 8px 4px;
   color: var(--text-primary);
   text-transform: capitalize;
   align-items: center;
@@ -22,6 +22,9 @@
   font-size: 12px;
   opacity: 0.9;
   transition: opacity var(--transition-base);
+  cursor: pointer;
+  min-height: 32px;
+  line-height: 1.5;
 }
 
 .breadcrumb a:hover {
@@ -29,7 +32,6 @@
   text-decoration: underline;
   text-decoration-color: var(--primary-light);
   text-decoration-thickness: 2px;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
   opacity: 1;
   transition: var(--transition-base);
 }
@@ -49,13 +51,17 @@
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .breadcrumb a {
-    display: grid;
+    display: inline-flex;
     color: var(--text-primary);
     text-transform: capitalize;
     align-items: center;
     font-weight: 500;
     font-size: large;
     opacity: 0.9;
+    padding: 8px 6px;
+    cursor: pointer;
+    min-height: 36px;
+    line-height: 1.5;
   }
 
   .breadcrumb a:hover {
@@ -63,7 +69,6 @@
     text-decoration: underline;
     text-decoration-color: var(--primary-light);
     text-decoration-thickness: 2px;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     opacity: 1;
   }
 
