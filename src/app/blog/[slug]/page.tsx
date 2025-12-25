@@ -98,6 +98,40 @@ const BlogPostPage = async ({
       ),
     };
 
+    // Fetch related posts (same tags, excluding current post)
+    let relatedPosts: any[] = [];
+    try {
+      const relatedRes = await fetch(
+        `${API_URL}?status=published&limit=12&sortBy=createdAt&sortOrder=desc`,
+        { cache: "no-store" }
+      );
+      if (relatedRes.ok) {
+        const relatedResult = await relatedRes.json();
+        if (relatedResult.success && relatedResult.data) {
+          // Filter posts with matching tags, exclude current post
+          if (blogPost.tags && Array.isArray(blogPost.tags) && blogPost.tags.length > 0) {
+            relatedPosts = relatedResult.data
+              .filter((post: any) => {
+                if (post._id === blogPost._id || post.slug === slug) return false;
+                if (!post.tags || !Array.isArray(post.tags)) return false;
+                return post.tags.some((tag: string) => blogPost.tags.includes(tag));
+              })
+              .slice(0, 3);
+          }
+          
+          // If not enough related posts, fill with recent posts
+          if (relatedPosts.length < 3) {
+            const recentPosts = relatedResult.data
+              .filter((post: any) => post._id !== blogPost._id && post.slug !== slug)
+              .slice(0, 3 - relatedPosts.length);
+            relatedPosts = [...relatedPosts, ...recentPosts].slice(0, 3);
+          }
+        }
+      }
+    } catch (error) {
+      // Error fetching related posts - continue without them
+    }
+
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -189,6 +223,7 @@ const BlogPostPage = async ({
         <BlogPost
           blogPost={blogPost}
           slug={slug}
+          relatedPosts={relatedPosts}
         />
       </>
     );

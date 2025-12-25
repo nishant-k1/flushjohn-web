@@ -47,7 +47,6 @@
     var(--primary-light) 0%,
     var(--primary) 100%
   );
-  opacity: 0.8;
 }
 
 .wrapper div {
@@ -79,14 +78,12 @@
   color: var(--text-primary);
   line-height: 1.7;
   margin-bottom: var(--spacing-md);
-  opacity: 0.95;
 }
 
 .wrapper ul {
   color: var(--text-primary);
   line-height: 1.8;
   margin-bottom: var(--spacing-md);
-  opacity: 0.95;
 }
 
 .wrapper ul li {
@@ -102,13 +99,11 @@
 .wrapper:hover h1,
 .wrapper:hover h2 {
   color: var(--text-primary);
-  opacity: 1;
 }
 
 .wrapper:hover p,
 .wrapper:hover ul {
   color: var(--text-primary);
-  opacity: 1;
 }
 
 .wrapper a:hover {

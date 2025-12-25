@@ -37,15 +37,21 @@ export const metadata: Metadata = {
   },
 };
 
-const BlogPage = async () => {
+const BlogPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) => {
   const { API_BASE_URL } = apiBaseUrls;
+  const params = await searchParams;
+  const currentPage = parseInt(params?.page || "1", 10) || 1;
 
   let initialBlogs: any[] = [];
   let initialPagination: any = null;
 
   try {
     const res = await fetch(
-      `${API_BASE_URL}/blogs?page=1&limit=12&status=published&sortBy=createdAt&sortOrder=desc`,
+      `${API_BASE_URL}/blogs?page=${currentPage}&limit=12&status=published&sortBy=createdAt&sortOrder=desc`,
       {
         next: { revalidate: 300 }, // Revalidate every 5 minutes
       }

@@ -18,12 +18,11 @@
   bottom: 0;
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(0, 0, 0, 0.01) 1px,
+    rgba(0, 0, 0, 0.02) 1px,
     transparent 0
   );
   background-size: 20px 20px;
   pointer-events: none;
-  opacity: 0.5;
 }
 
 .container {
@@ -187,15 +186,12 @@
 
 .wrapper:hover p {
   color: var(--text-primary);
-  opacity: 1;
 }
 
 .wrapper p {
   color: var(--text-primary);
   font-size: 0.8125rem;
-  transition:
-    color var(--transition-base),
-    opacity var(--transition-base);
+  transition: color var(--transition-base);
   margin: 0 0 var(--spacing-sm) 0;
   line-height: 1.6;
   display: -webkit-box;
@@ -203,7 +199,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: 0.95;
 }
 
 .wrapper > div:last-child {

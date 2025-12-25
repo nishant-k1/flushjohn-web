@@ -441,15 +441,15 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
 
   return (
     <PortaPottyRentalCity
-      city={displayName}
+          city={displayName}
       displayName={displayName}
-      state={state}
+          state={state}
       population={population}
       citySlug={normalizedCity}
       serviceAreas={serviceAreas}
       nearbyCities={nearbyCities}
       coordinates={coordinates}
-    />
+        />
   );
 };
 
