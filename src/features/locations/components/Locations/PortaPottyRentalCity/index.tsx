@@ -1119,7 +1119,7 @@ export default function PortaPottyRentalCity({
 
             {/* Final CTA */}
             <div className={styles.finalCTA}>
-              <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+              <div style={{ maxWidth: "960px", margin: "0 auto" }}>
                 <h2>Ready to Rent Porta Potties in {cityTitle}?</h2>
                 <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
                   Join thousands of satisfied customers in {cityTitle}. Get your

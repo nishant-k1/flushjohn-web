@@ -82,7 +82,7 @@ const PortaPottyRentalPage = () => {
       />
 
       <div
-        style={{ maxWidth: "980px", margin: "0 auto", padding: "80px 18px" }}
+        style={{ maxWidth: "960px", margin: "0 auto", padding: "80px 18px" }}
       >
         {/* Hero Section */}
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
@@ -446,7 +446,7 @@ const PortaPottyRentalPage = () => {
             borderRadius: "0",
           }}
         >
-          <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "960px", margin: "0 auto" }}>
             <h2>Ready to Rent Porta Potties in Your City?</h2>
             <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
               Get a free quote for porta potty rental services in your city

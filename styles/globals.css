@@ -61,12 +61,7 @@
   --bg-secondary: #5a4a3a; /* Same for consistency */
   --bg-tertiary: #5a4a3a; /* Same for consistency */
   --bg-dark: #5a4a3a; /* Same for consistency */
-  --bg-dark-alpha: rgba(
-    90,
-    74,
-    58,
-    0.95
-  ); /* For header/footer with backdrop */
+  --bg-dark-alpha: rgba(90, 74, 58, 0.95); /* For header/footer with backdrop */
   --bg-transparent: transparent;
 
   /* Semantic Colors - Using theme colors instead of vibrant colors */
@@ -138,12 +133,12 @@
   --z-popover: 400;
   --z-tooltip: 500;
 
-  /* Container Widths - Match nexbaron-web */
+  /* Container Widths - Modern standard 960px */
   --container-sm: 640px;
   --container-md: 768px;
-  --container-lg: 980px; /* Updated to match nexbaron-web */
-  --container-xl: 980px; /* Updated to match nexbaron-web */
-  --container-2xl: 980px; /* Updated to match nexbaron-web */
+  --container-lg: 960px;
+  --container-xl: 960px;
+  --container-2xl: 960px;
 
   /* Breakpoints (for reference, use in media queries) */
   --breakpoint-sm: 640px;

@@ -27,7 +27,7 @@
 
 .container {
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 960px;
   position: relative;
   z-index: 1;
 }
