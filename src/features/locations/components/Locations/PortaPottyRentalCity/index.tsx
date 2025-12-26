@@ -101,8 +101,6 @@ export default function PortaPottyRentalCity({
     email: contact.support_email,
     address: {
       "@type": "PostalAddress",
-      addressLocality: displayName,
-      addressRegion: state,
       addressCountry: "US",
     },
     geo: {
@@ -110,10 +108,63 @@ export default function PortaPottyRentalCity({
       latitude: coordinates.lat,
       longitude: coordinates.lng,
     },
-    openingHours: "Mo-Su 00:00-23:59",
+    hasMap: `https://www.google.com/maps/place/${encodeURIComponent(displayName)},+${state}`,
+    openingHours: "Mo-Su 08:00-20:00",
     priceRange: "$$",
-    paymentAccepted: "Cash, Credit Card, Check",
+    paymentAccepted: [
+      "Cash",
+      "Credit Card",
+      "Debit Card",
+      "Check",
+      "Online Payment",
+    ],
     currenciesAccepted: "USD",
+    amenityFeature: [
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "24/7 Availability",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Same-Day Delivery",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Emergency Service",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Regular Maintenance",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Professional Cleaning",
+        value: true,
+      },
+    ],
+    accessibilityFeature: [
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Wheelchair Accessible",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "ADA Compliant Units Available",
+        value: true,
+      },
+    ],
+    image: [
+      `${s3assets}/og-image-flushjonn-web.png`,
+      `${s3assets}/images/porta-potty-standard.jpg`,
+      `${s3assets}/images/porta-potty-deluxe.jpg`,
+      `${s3assets}/images/porta-potty-ada.jpg`,
+      `${s3assets}/images/luxury-restroom-trailer.jpg`,
+    ],
     areaServed: {
       "@type": "City",
       name: cityTitle,

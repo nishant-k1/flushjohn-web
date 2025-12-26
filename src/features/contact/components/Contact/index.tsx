@@ -237,23 +237,20 @@ const Contact = () => {
                 </h1>
               )}
 
-              {/* Google Maps Embed */}
+              {/* Service Areas Information */}
               <div className={styles.mapContainer}>
-                <h2 className={styles.mapTitle}>Our Location</h2>
-                <div className={styles.mapWrapper}>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.674!2d-75.5268!3d39.1615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDA5JzQxLjQiTiA3NcKwMzEnMzYuNSJX!5e0!3m2!1sen!2sus!4v1234567890&q=8+The+Green+STE+R,+Dover,+DE+19901"
-                    width="100%"
-                    height="450"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="FlushJohn Location - 8 The Green STE R, Dover, DE 19901"
-                  ></iframe>
-                </div>
-                <p className={styles.mapAddress}>
-                  8 The Green STE R, Dover, DE 19901, United States
+                <h2 className={styles.mapTitle}>Our Service Areas</h2>
+                <p className={styles.serviceAreasDescription}>
+                  FlushJohn provides porta potty rental services across 25+
+                  cities in 6 states: Texas, Florida, California, Georgia,
+                  Illinois, and Delaware. We deliver directly to your location -
+                  no physical storefront needed.
+                  <a
+                    href="/service-areas"
+                    className={styles.serviceAreasLink}
+                  >
+                    View all service areas →
+                  </a>
                 </p>
               </div>
             </div>

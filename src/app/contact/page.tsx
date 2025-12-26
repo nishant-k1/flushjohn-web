@@ -73,8 +73,8 @@ const jsonLd = {
             "Saturday",
             "Sunday",
           ],
-          opens: "07:00",
-          closes: "19:00",
+          opens: "08:00",
+          closes: "20:00",
         },
       },
       {
@@ -157,7 +157,8 @@ const reviewJsonLd = {
     bestRating: "5",
     worstRating: "1",
   },
-  reviewBody: "FlushJohn provides excellent porta potty rental services across the United States. Professional, reliable, and affordable portable toilet solutions for events and construction sites.",
+  reviewBody:
+    "FlushJohn provides excellent porta potty rental services across the United States. Professional, reliable, and affordable portable toilet solutions for events and construction sites.",
   datePublished: "2024-01-15",
 };
 
@@ -199,7 +200,9 @@ const ContactPage = () => {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreaBusinessJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
       />
       <Contact />
     </>

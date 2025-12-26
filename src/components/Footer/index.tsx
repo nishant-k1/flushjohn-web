@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Locations } from "@/features/locations/components";
 import { footerLinks } from "./data";
 import { home_data } from "@/features/home/constants";
-import { s3assets, address, phone, contact } from "@/constants";
+import { s3assets, phone, contact } from "@/constants";
 const { locations } = home_data;
 
 var date = new Date();
@@ -94,11 +94,6 @@ const Footer = () => {
                   );
                 })}
               </ul>
-              <div className={styles.address}>
-                <p>{address.street}</p>
-                <p>{address.city}, {address.state} {address.zip}</p>
-                <p>{address.country}</p>
-              </div>
             </li>
           </ul>
           <Locations {...locations} />

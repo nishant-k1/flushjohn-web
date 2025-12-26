@@ -58,8 +58,37 @@ const jsonLd = {
     "@type": "ContactAction",
     target: `${websiteURL}/quote`,
     name: "Get Porta Potty Rental Quote",
-    description: "Request a personalized quote for porta potty rentals in your city",
+    description:
+      "Request a personalized quote for porta potty rentals in your city",
   },
+  potentialAction: [
+    {
+      "@type": "ReservationAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${websiteURL}/quote`,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      result: {
+        "@type": "Reservation",
+        name: "Porta Potty Rental Quote",
+      },
+    },
+    {
+      "@type": "BookAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${websiteURL}/quote`,
+      },
+      result: {
+        "@type": "Book",
+        name: "Porta Potty Rental Booking",
+      },
+    },
+  ],
 };
 
 const QuotePage = () => {

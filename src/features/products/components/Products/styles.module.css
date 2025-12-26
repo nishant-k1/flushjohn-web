@@ -55,7 +55,7 @@
   );
   backdrop-filter: blur(10px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   column-gap: var(--spacing-lg);
   width: 100%;
   max-width: 100%;
@@ -169,6 +169,8 @@
   flex-direction: column;
   justify-content: center;
   min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .wrapper h3 {
@@ -207,6 +209,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-md);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 .moreLink {
   font-size: 0.8125rem;
@@ -255,7 +260,7 @@
     grid-gap: var(--gap-md); /* 32px - consistent gap */
   }
   .wrapper {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
   }
   .wrapper h3 {
     font-size: 1.125rem;

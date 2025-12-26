@@ -103,6 +103,65 @@ export default function EnhancedStructuredData({
       "OSHA Compliance",
       "Special Event Services",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Porta Potty Rental Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Standard Porta Potty Rental",
+            description:
+              "Basic portable toilet rental for events and construction sites",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Deluxe Porta Potty Rental",
+            description:
+              "Enhanced portable toilet with flushing and additional amenities",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "ADA Compliant Porta Potty",
+            description:
+              "Americans with Disabilities Act compliant portable toilet",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Luxury Restroom Trailer",
+            description:
+              "Premium multi-stall restroom trailer with air conditioning",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Hand Wash Station",
+            description: "Standalone hand washing station with soap and towels",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Construction Porta Potty",
+            description:
+              "Rugged portable toilet for construction site long-term rental",
+          },
+        },
+      ],
+    },
     sameAs: [
       "https://www.facebook.com/flushjohn",
       "https://www.twitter.com/flushjohn",
@@ -128,8 +187,8 @@ export default function EnhancedStructuredData({
             "Saturday",
             "Sunday",
           ],
-          opens: "00:00",
-          closes: "23:59",
+          opens: "08:00",
+          closes: "20:00",
         },
       },
       {
@@ -228,8 +287,8 @@ export default function EnhancedStructuredData({
         "Saturday",
         "Sunday",
       ],
-      opens: "00:00",
-      closes: "23:59",
+      opens: "08:00",
+      closes: "20:00",
     },
   };
 
@@ -244,12 +303,16 @@ export default function EnhancedStructuredData({
           url: `${websiteURL}/porta-potty-rental/${city}`,
           telephone: phone.phone_number,
           email: contact.support_email,
-          image: `${s3assets}/og-image-flushjonn-web.png`,
+          image: [
+            `${s3assets}/og-image-flushjonn-web.png`,
+            `${s3assets}/images/porta-potty-standard.jpg`,
+            `${s3assets}/images/porta-potty-deluxe.jpg`,
+            `${s3assets}/images/porta-potty-ada.jpg`,
+            `${s3assets}/images/luxury-restroom-trailer.jpg`,
+          ],
           priceRange: "$$",
           address: {
             "@type": "PostalAddress",
-            addressLocality: cityDisplayName || city,
-            addressRegion: state,
             addressCountry: "US",
           },
           geo:
@@ -259,6 +322,10 @@ export default function EnhancedStructuredData({
                   latitude: latitude,
                   longitude: longitude,
                 }
+              : undefined,
+          hasMap:
+            latitude && longitude
+              ? `https://www.google.com/maps/place/${encodeURIComponent(cityDisplayName || city)},+${state}`
               : undefined,
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
@@ -271,8 +338,8 @@ export default function EnhancedStructuredData({
               "Saturday",
               "Sunday",
             ],
-            opens: "00:00",
-            closes: "23:59",
+            opens: "08:00",
+            closes: "20:00",
           },
           paymentAccepted: [
             "Cash",
@@ -294,6 +361,45 @@ export default function EnhancedStructuredData({
                 : undefined,
             geoRadius: "50000",
           },
+          amenityFeature: [
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "24/7 Availability",
+              value: true,
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "Same-Day Delivery",
+              value: true,
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "Emergency Service",
+              value: true,
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "Regular Maintenance",
+              value: true,
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "Professional Cleaning",
+              value: true,
+            },
+          ],
+          accessibilityFeature: [
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "Wheelchair Accessible",
+              value: true,
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              name: "ADA Compliant Units Available",
+              value: true,
+            },
+          ],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.8",

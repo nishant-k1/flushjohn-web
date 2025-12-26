@@ -140,11 +140,7 @@ const StatePage = async ({ params }: PageProps) => {
     email: contact.support_email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: address.street,
-      addressLocality: address.city,
-      addressRegion: address.state,
-      postalCode: address.zip,
-      addressCountry: address.country,
+      addressCountry: "US",
     },
     areaServed: state.cities.map((city: { name: string }) => ({
       "@type": "City",

@@ -1,106 +1,164 @@
-.slider {
-  display: grid;
+.carouselContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carouselWrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(3, max-content);
-  padding-bottom: var(--spacing-md);
-  gap: var(--spacing-sm);
+  gap: 24px;
   width: 100%;
+  position: relative;
+  padding-bottom: var(--spacing-md);
 }
 
-.slider img {
-  /* Dimensions handled by Next.js Image component inline styles */
-  max-height: none;
-  max-width: none;
-  transition:
-    transform var(--transition-base),
-    filter var(--transition-base);
-  border-radius: 0;
-  object-fit: contain;
+.imageViewport {
+  position: relative;
+  width: 180px;
+  height: 144px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.slider:hover img {
-  transform: scale(1.02);
-  filter: brightness(1.05);
+.imageSlide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
 }
 
-.arrow {
-  height: 1.75rem;
-  width: 1.75rem;
+.imageSlide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.imageSlide.inactive {
+  opacity: 0;
+  z-index: 1;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer img,
+.productImage {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+.imageContainer img,
+.productImage {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+.navButton {
+  height: 2.5rem;
+  width: 2.5rem;
   color: var(--text-primary);
-  padding: 3px;
+  padding: 0;
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   cursor: pointer;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-base);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  line-height: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.arrow:hover {
-  color: var(--primary-light);
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.15);
+.navButton svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.2);
   border-color: var(--primary-light);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.arrow:active {
+.navButton:hover svg {
   transform: scale(1.1);
 }
 
-.arrow:focus-visible {
+.navButton:active {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navButton:focus-visible {
   outline: 2px solid var(--primary-light);
   outline-offset: 2px;
 }
 
-.imageContainer {
-  position: relative;
-  width: 200px;
-  height: 160px;
-  min-width: 200px;
-  min-height: 160px;
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Responsive image sizing */
 @media screen and (max-width: 767px) {
-  .slider {
-    gap: var(--spacing-xs);
+  .carouselWrapper {
+    gap: 20px;
   }
 
-  .arrow {
-    height: 1.5rem;
-    width: 1.5rem;
+  .navButton {
+    height: 2rem;
+    width: 2rem;
   }
 
-  .imageContainer {
+  .imageViewport {
     width: 150px;
     height: 120px;
-    min-width: 150px;
-    min-height: 120px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .slider {
-    gap: var(--spacing-sm);
+  .carouselWrapper {
+    gap: 24px;
   }
 
-  .imageContainer {
-    width: 220px;
-    height: 180px;
-    min-width: 220px;
-    min-height: 180px;
+  .imageViewport {
+    width: 200px;
+    height: 160px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .imageContainer {
-    width: 240px;
-    height: 200px;
-    min-width: 240px;
-    min-height: 200px;
+  .imageViewport {
+    width: 220px;
+    height: 176px;
   }
 }

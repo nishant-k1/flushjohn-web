@@ -1,6 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact, address, socialMedia } from "@/constants";
+import {
+  s3assets,
+  websiteURL,
+  phone,
+  contact,
+  address,
+  socialMedia,
+} from "@/constants";
 import Script from "next/script";
 
 import Home from "@/features/home/components/Home";
@@ -13,7 +20,8 @@ export const metadata: Metadata = {
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
-    title: "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities | FlushJohn",
+    title:
+      "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities | FlushJohn",
     description:
       "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Same-day delivery, competitive pricing, licensed & insured. Serving 25+ cities nationwide.",
     url: websiteURL,
@@ -50,15 +58,17 @@ const jsonLd = {
   logo: `${s3assets}/og-image-flushjonn-web.png`,
   description:
     "FlushJohn offers affordable and reliable porta potty rental services for all types of events across the United States.",
-  image: `${s3assets}/og-image-flushjonn-web.png`,
+  image: [
+    `${s3assets}/og-image-flushjonn-web.png`,
+    `${s3assets}/images/porta-potty-standard.jpg`,
+    `${s3assets}/images/porta-potty-deluxe.jpg`,
+    `${s3assets}/images/porta-potty-ada.jpg`,
+    `${s3assets}/images/luxury-restroom-trailer.jpg`,
+  ],
   foundingDate: "2020",
   address: {
     "@type": "PostalAddress",
-    streetAddress: address.street,
-    addressLocality: address.city,
-    addressRegion: address.state,
-    postalCode: address.zip,
-    addressCountry: address.country,
+    addressCountry: "US",
   },
   telephone: phone.phone_number,
   email: contact.email,
@@ -79,8 +89,8 @@ const jsonLd = {
         "Saturday",
         "Sunday",
       ],
-      opens: "07:00",
-      closes: "19:00",
+      opens: "08:00",
+      closes: "20:00",
     },
   },
   // ServiceAreaBusiness requires areaServed array with specific locations
@@ -411,8 +421,18 @@ const jsonLd = {
   ],
   serviceType: "Porta Potty Rental Services",
   priceRange: "$$",
-  paymentAccepted: "Cash, Credit Card, Check",
+  paymentAccepted: [
+    "Cash",
+    "Credit Card",
+    "Debit Card",
+    "Check",
+    "Online Payment",
+  ],
   currenciesAccepted: "USD",
+  serviceRadius: {
+    "@type": "GeoCircle",
+    geoRadius: "50 miles",
+  },
   knowsAbout: [
     "Porta Potty Rentals",
     "Portable Toilet Services",
@@ -590,7 +610,8 @@ const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   name: "How to Rent a Porta Potty",
-  description: "Step-by-step guide to renting a porta potty from FlushJohn for your event or construction site",
+  description:
+    "Step-by-step guide to renting a porta potty from FlushJohn for your event or construction site",
   totalTime: "PT15M",
   estimatedCost: {
     "@type": "MonetaryAmount",

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./styles.module.css";
-import { address, phone, contact } from "@/constants";
+import { phone, contact } from "@/constants";
 import { serviceAreasByState } from "@/features/locations/constants";
 
 const ServiceAreasPage = () => {
@@ -29,8 +29,14 @@ const ServiceAreasPage = () => {
           {Object.entries(serviceAreasByState).map(([state, cities]) => {
             const stateSlug = state.toLowerCase();
             return (
-              <div key={state} className={styles.stateSection}>
-                <Link href={`/service-areas/${stateSlug}`} className={styles.stateNameLink}>
+              <div
+                key={state}
+                className={styles.stateSection}
+              >
+                <Link
+                  href={`/service-areas/${stateSlug}`}
+                  className={styles.stateNameLink}
+                >
                   <h2 className={styles.stateName}>{state}</h2>
                 </Link>
                 <div className={styles.citiesGrid}>
@@ -42,10 +48,10 @@ const ServiceAreasPage = () => {
                       prefetch={true}
                     >
                       <h3 className={styles.cityName}>{city.name}</h3>
-                      <p className={styles.cityDescription}>{city.description}</p>
-                      <span className={styles.viewLink}>
-                        View Services →
-                      </span>
+                      <p className={styles.cityDescription}>
+                        {city.description}
+                      </p>
+                      <span className={styles.viewLink}>View Services →</span>
                     </Link>
                   ))}
                 </div>
@@ -70,15 +76,18 @@ const ServiceAreasPage = () => {
               <strong>Email:</strong>{" "}
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
             </div>
-            <div className={styles.contactItem}>
-              <strong>Address:</strong> {address.full_address}
-            </div>
           </div>
           <div className={styles.ctaButtons}>
-            <Link href="/quote" className={styles.quoteButton}>
+            <Link
+              href="/quote"
+              className={styles.quoteButton}
+            >
               Request a Quote
             </Link>
-            <Link href="/contact" className={styles.contactButton}>
+            <Link
+              href="/contact"
+              className={styles.contactButton}
+            >
               Contact Us
             </Link>
           </div>
@@ -88,7 +97,8 @@ const ServiceAreasPage = () => {
         <div className={styles.mapSection}>
           <h2 className={styles.mapTitle}>Our Service Coverage</h2>
           <p className={styles.mapDescription}>
-            FlushJohn serves 25+ cities across 6 states. Use the map below to see our service areas across the United States.
+            FlushJohn serves 25+ cities across 6 states. Use the map below to
+            see our service areas across the United States.
           </p>
           <div className={styles.mapWrapper}>
             <iframe
@@ -103,8 +113,9 @@ const ServiceAreasPage = () => {
             ></iframe>
           </div>
           <p className={styles.mapNote}>
-            Our service areas include major cities in Texas, Florida, California, Georgia, Illinois, and Delaware. 
-            Contact us to see if we can serve your specific location.
+            Our service areas include major cities in Texas, Florida,
+            California, Georgia, Illinois, and Delaware. Contact us to see if we
+            can serve your specific location.
           </p>
         </div>
       </div>
@@ -113,4 +124,3 @@ const ServiceAreasPage = () => {
 };
 
 export default ServiceAreasPage;
-
