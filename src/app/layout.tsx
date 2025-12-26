@@ -97,21 +97,23 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                // Suppress MIME type errors immediately before any other code runs
                 if (typeof window !== 'undefined') {
-                  var originalError = console.error;
-                  var originalWarn = console.warn;
+                  // Catch errors before they're logged
+                  const originalError = console.error;
+                  const originalWarn = console.warn;
                   
                   console.error = function() {
-                    var message = arguments[0] ? String(arguments[0]) : '';
+                    const message = arguments[0] ? String(arguments[0]) : '';
                     // Suppress CSS MIME type errors (typically from browser extensions or cached HTML)
-                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css') || message.includes('not executable'))) {
                       return; // Suppress this error
                     }
                     originalError.apply(console, arguments);
                   };
                   
                   console.warn = function() {
-                    var message = arguments[0] ? String(arguments[0]) : '';
+                    const message = arguments[0] ? String(arguments[0]) : '';
                     // Suppress CSS MIME type warnings
                     if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
                       return; // Suppress this warning
@@ -119,19 +121,23 @@ export default function RootLayout({
                     originalWarn.apply(console, arguments);
                   };
                   
-                  // Also catch errors via global error handler
+                  // Catch errors via global error handler (capture phase)
                   window.addEventListener('error', function(event) {
-                    var message = event.message || '';
-                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                    const message = event.message || '';
+                    const filename = event.filename || '';
+                    // Suppress MIME type errors for CSS files
+                    if ((message.includes('MIME type') || message.includes('not executable')) && 
+                        (filename.includes('.css') || message.includes('text/css'))) {
                       event.preventDefault();
                       event.stopPropagation();
+                      event.stopImmediatePropagation();
                       return false;
                     }
                   }, true);
                   
                   // Catch unhandled promise rejections
                   window.addEventListener('unhandledrejection', function(event) {
-                    var message = event.reason ? String(event.reason) : '';
+                    const message = event.reason ? String(event.reason) : '';
                     if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
                       event.preventDefault();
                       return false;
