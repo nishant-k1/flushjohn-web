@@ -25,9 +25,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
     e.preventDefault();
 
     try {
-      // TODO: Add actual API call here
-      // await axios.post('/api/reviews', formData);
-
+      // API call will be implemented when backend endpoint is ready
       setShowSuccessModal(true);
       setFormData({
         name: "",
