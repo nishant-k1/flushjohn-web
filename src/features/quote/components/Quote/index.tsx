@@ -6,6 +6,7 @@ import QuoteStep2 from "./QuoteStep2";
 import QuoteStep3 from "./QuoteStep3";
 import QuoteStep1 from "./QuoteStep1";
 import QuoteStep4 from "./QuoteStep4";
+import QuoteHero from "./QuoteHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import styles from "./styles.module.css";
 import { useContext } from "react";
@@ -25,6 +26,10 @@ const Quote = () => {
           className={styles.container}
         >
           <Breadcrumbs path={""} />
+          
+          {/* Hero Section - H1, Value Props, Trust Signals, Phone */}
+          {step === 1 && <QuoteHero />}
+          
           <div className={styles.quoteWrapper}>
             {/* Animated Progress Bar */}
             <div className={styles.progressBarContainer}>

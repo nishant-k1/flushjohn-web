@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Get a Quote - FlushJohn Porta Potty Rentals",
+  title: "Get Your Free Porta Potty Rental Quote in 60 Seconds | FlushJohn",
   description:
-    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing. Available in 25+ cities across 6 states.",
+    "Get your free porta potty rental quote in 60 seconds. No obligation, same-day delivery available. Starting at $150/unit. Serving 25+ cities across 6 states. Call (877) 790-7062 or fill out our quick form.",
   keywords:
     "get a quote, porta potty rental quote, portable toilet pricing, event rentals, porta potty quote near me, portable toilet quote Houston, porta potty quote Dallas, porta potty quote Miami, porta potty quote Los Angeles, porta potty pricing near me, portable toilet quote [city]",
   openGraph: {

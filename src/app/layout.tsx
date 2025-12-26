@@ -51,6 +51,7 @@ import Script from "next/script";
 
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
+import WebVitals from "@/components/SEO/WebVitals";
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
@@ -303,6 +304,9 @@ export default function RootLayout({
 
         {/* Facebook Pixel - Load after page is interactive */}
         <FacebookPixel />
+
+        {/* Web Vitals Tracking - Track Core Web Vitals */}
+        <WebVitals />
 
         {/* Final Optimizer - Suppresses console errors and optimizes performance */}
         <FinalOptimizer />

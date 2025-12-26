@@ -1,0 +1,100 @@
+.hero {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-xl);
+  margin-top: 5rem; /* Space after breadcrumbs (4rem top + 1rem spacing) */
+}
+
+/* H1 Heading - Clean and Simple */
+.h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.3;
+}
+
+/* Subheading */
+.subheading {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-xl) 0;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Phone Section - Clean and Simple */
+.phoneSection {
+  margin-bottom: var(--spacing-lg);
+}
+
+.phoneLink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity 0.2s ease;
+}
+
+.phoneLink:hover {
+  opacity: 0.8;
+}
+
+.phoneNumber {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.phoneLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Trust Badge - Minimal */
+.trustBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.stars {
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.trustText {
+  font-weight: 400;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 599px) {
+  .hero {
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .h1 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .subheading {
+    margin-bottom: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+  }
+
+  .phoneSection {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
