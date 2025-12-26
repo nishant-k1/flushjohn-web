@@ -52,10 +52,8 @@ export default function CarouselView() {
 
   return (
     <div
+      className={styles.container}
       style={{
-        height: "900px",
-        minHeight: "900px",
-        maxHeight: "900px",
         position: "relative",
         width: "100%",
         overflow: "hidden",

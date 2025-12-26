@@ -46,6 +46,15 @@
   will-change: transform;
 }
 
+/* Tablet: Match carousel height to viewport (like mobile) */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .carouselWrapper {
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+}
+
 .carouselWrapper::after {
   content: "";
   position: absolute;
@@ -165,7 +174,9 @@
   font-size: xx-large;
   font-weight: 400;
   color: #ffffff; /* Pure white for maximum contrast */
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4); /* Stronger shadow for better contrast */
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.4); /* Stronger shadow for better contrast */
   letter-spacing: 0.02em;
   line-height: 1.3;
   margin: 0;
@@ -182,7 +193,9 @@
   margin: 0;
   min-height: 3.2em; /* Reserve space for 2 lines to prevent layout shift */
   display: block;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow for better readability */
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow for better readability */
 }
 
 .heroCta {
