@@ -253,6 +253,30 @@ const ServiceAreasPage = () => {
             </Link>
           </div>
         </div>
+
+        {/* Service Areas Map */}
+        <div className={styles.mapSection}>
+          <h2 className={styles.mapTitle}>Our Service Coverage</h2>
+          <p className={styles.mapDescription}>
+            FlushJohn serves 25+ cities across 6 states. Use the map below to see our service areas across the United States.
+          </p>
+          <div className={styles.mapWrapper}>
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1xxxxxxxxxxxxx&hl=en&z=4"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="FlushJohn Service Areas Map"
+            ></iframe>
+          </div>
+          <p className={styles.mapNote}>
+            Our service areas include major cities in Texas, Florida, California, Georgia, Illinois, and Delaware. 
+            Contact us to see if we can serve your specific location.
+          </p>
+        </div>
       </div>
     </div>
   );

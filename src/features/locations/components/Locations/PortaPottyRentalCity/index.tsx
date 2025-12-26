@@ -19,6 +19,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { phone, contact, websiteURL, s3assets } from "@/constants";
 import { cityPageData } from "../../../constants";
+import { getCityEnhancement } from "../../../constants/cityEnhancements";
 import dynamic from "next/dynamic";
 
 const ContentMarketing = dynamic(
@@ -27,6 +28,7 @@ const ContentMarketing = dynamic(
 const ReviewCollection = dynamic(
   () => import("@/components/SEO/ReviewCollection")
 );
+const StickyCTA = dynamic(() => import("@/components/StickyCTA"));
 
 interface PortaPottyRentalCityProps {
   city: string;
@@ -51,6 +53,7 @@ export default function PortaPottyRentalCity({
 }: PortaPottyRentalCityProps) {
   const cityTitle = `${displayName}, ${state}`;
   const { phone_number, phone_link } = phone;
+  const enhancements = getCityEnhancement(citySlug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -195,6 +198,55 @@ export default function PortaPottyRentalCity({
     ],
   };
 
+  // ServiceAreaBusiness schema for better local SEO (service-area business model)
+  const serviceAreaBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ServiceAreaBusiness",
+    name: `FlushJohn - ${cityTitle}`,
+    description: `Professional porta potty rental services in ${cityTitle}. Same-day delivery, competitive pricing, and reliable service for events and construction sites.`,
+    url: `${websiteURL}/porta-potty-rental/${citySlug}`,
+    telephone: phone.phone_number,
+    email: contact.support_email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: displayName,
+      addressRegion: state,
+      addressCountry: "US",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: displayName,
+        containedIn: {
+          "@type": "State",
+          name: state,
+          containedIn: {
+            "@type": "Country",
+            name: "United States",
+          },
+        },
+      },
+      {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: coordinates.lat,
+          longitude: coordinates.lng,
+        },
+        geoRadius: "50000",
+      },
+    ],
+    serviceType: "Porta Potty Rental Services",
+    priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -235,6 +287,12 @@ export default function PortaPottyRentalCity({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
       />
 
       <div className={styles.city}>
@@ -451,26 +509,32 @@ export default function PortaPottyRentalCity({
                   {
                     name: "Construction Sites",
                     desc: "Long-term rentals for construction projects",
+                    link: "/rental-products/standard-porta-potty",
                   },
                   {
                     name: "Weddings",
                     desc: "Elegant portable toilets for special events",
+                    link: "/rental-products/luxury-restroom-trailer",
                   },
                   {
                     name: "Corporate Events",
                     desc: "Professional sanitation for business events",
+                    link: "/rental-products/deluxe-porta-potty",
                   },
                   {
                     name: "Festivals",
                     desc: "High-capacity solutions for large gatherings",
+                    link: "/rental-products/standard-porta-potty",
                   },
                   {
                     name: "Sports Events",
                     desc: "Durable units for athletic competitions",
+                    link: "/rental-products/standard-porta-potty",
                   },
                   {
                     name: "Concerts",
                     desc: "Heavy-duty porta potties for music events",
+                    link: "/rental-products/standard-porta-potty",
                   },
                 ].map((service) => (
                   <div
@@ -479,9 +543,70 @@ export default function PortaPottyRentalCity({
                   >
                     <h3>{service.name}</h3>
                     <p>{service.desc}</p>
-                    <Link href="/quote">Get Quote →</Link>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "0.75rem",
+                        marginTop: "0.5rem",
+                      }}
+                    >
+                      <Link
+                        href={service.link}
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--primary-light)",
+                        }}
+                      >
+                        View Products →
+                      </Link>
+                      <Link
+                        href="/quote"
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--primary-light)",
+                        }}
+                      >
+                        Get Quote →
+                      </Link>
+                    </div>
                   </div>
                 ))}
+              </div>
+              {/* Mid-content CTA */}
+              <div
+                style={{
+                  textAlign: "center",
+                  marginTop: "2rem",
+                  padding: "1.5rem",
+                  background: "rgba(255, 255, 255, 0.05)",
+                  borderRadius: "var(--radius-md)",
+                }}
+              >
+                <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
+                  Need porta potty rental services in {displayName}? Get a free
+                  quote today!
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "1rem",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Link
+                    href="/quote"
+                    className={styles.ctaButton}
+                  >
+                    Get Free Quote
+                  </Link>
+                  <a
+                    href={phone_link}
+                    className={styles.ctaButtonSecondary}
+                  >
+                    Call {phone_number}
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -614,6 +739,273 @@ export default function PortaPottyRentalCity({
                         Porta potty rental services →
                       </p>
                     </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Local Landmarks Section */}
+            {enhancements.landmarks.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionTitle}>
+                  <h2>
+                    Porta Potty Rentals Near Popular {displayName} Landmarks
+                  </h2>
+                </div>
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 1.5rem",
+                  }}
+                >
+                  We provide porta potty rental services throughout{" "}
+                  {displayName}, including areas near major landmarks and
+                  attractions. Whether you need{" "}
+                  <Link
+                    href="/rental-products/standard-porta-potty"
+                    style={{
+                      color: "var(--primary-light)",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    standard porta potties
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/rental-products/luxury-restroom-trailer"
+                    style={{
+                      color: "var(--primary-light)",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    luxury restroom trailers
+                  </Link>
+                  , or{" "}
+                  <Link
+                    href="/rental-products/ada-compliant-portable-toilet"
+                    style={{
+                      color: "var(--primary-light)",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    ADA-compliant units
+                  </Link>
+                  , we've got you covered.
+                </p>
+                <div className={`${styles.grid} ${styles.gridAutoFit}`}>
+                  {enhancements.landmarks.slice(0, 6).map((landmark) => (
+                    <div
+                      key={landmark}
+                      className={styles.card}
+                    >
+                      <MapPin
+                        size={24}
+                        style={{
+                          marginBottom: "0.5rem",
+                          color: "var(--primary-light)",
+                        }}
+                      />
+                      <h3>{landmark}</h3>
+                      <p>Porta potty rentals available in this area</p>
+                      <Link
+                        href="/quote"
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--primary-light)",
+                          marginTop: "0.5rem",
+                          display: "inline-block",
+                        }}
+                      >
+                        Get Quote →
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Local Events Section */}
+            {enhancements.events.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionTitle}>
+                  <h2>Porta Potty Rentals for {displayName} Events</h2>
+                </div>
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 1.5rem",
+                  }}
+                >
+                  We've provided porta potty rental services for major events
+                  and festivals in {displayName}. Let us help make your event a
+                  success! View our{" "}
+                  <Link
+                    href="/rental-products"
+                    style={{
+                      color: "var(--primary-light)",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    full range of portable toilet rental options
+                  </Link>{" "}
+                  or check out other cities we serve like{" "}
+                  {nearbyCities.length > 0
+                    ? nearbyCities.slice(0, 2).map((nc, idx) => (
+                        <React.Fragment key={nc.name}>
+                          <Link
+                            href={`/porta-potty-rental/${nc.name}`}
+                            style={{
+                              color: "var(--primary-light)",
+                              textDecoration: "underline",
+                            }}
+                          >
+                            {nc.displayName}
+                          </Link>
+                          {idx < Math.min(nearbyCities.length, 2) - 1
+                            ? ", "
+                            : ""}
+                        </React.Fragment>
+                      ))
+                    : ""}
+                  .
+                </p>
+                <div className={`${styles.grid} ${styles.gridAutoFit}`}>
+                  {enhancements.events.slice(0, 6).map((event) => (
+                    <div
+                      key={event}
+                      className={styles.card}
+                    >
+                      <Calendar
+                        size={24}
+                        style={{
+                          marginBottom: "0.5rem",
+                          color: "var(--primary-light)",
+                        }}
+                      />
+                      <h3>{event}</h3>
+                      <p>Professional porta potty services for this event</p>
+                      <Link
+                        href="/quote"
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--primary-light)",
+                          marginTop: "0.5rem",
+                          display: "inline-block",
+                        }}
+                      >
+                        Request Quote →
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Neighborhoods Section */}
+            {enhancements.neighborhoods.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionTitle}>
+                  <h2>Porta Potty Rentals in {displayName} Neighborhoods</h2>
+                </div>
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 1.5rem",
+                  }}
+                >
+                  We serve neighborhoods throughout {displayName} with reliable
+                  porta potty rental services.
+                </p>
+                <div className={`${styles.grid} ${styles.gridAutoFitNarrow}`}>
+                  {enhancements.neighborhoods.map((neighborhood) => (
+                    <div
+                      key={neighborhood}
+                      className={styles.card}
+                    >
+                      <Home
+                        size={20}
+                        style={{
+                          marginBottom: "0.5rem",
+                          color: "var(--primary-light)",
+                        }}
+                      />
+                      <h4>{neighborhood}</h4>
+                      <p style={{ fontSize: "0.9em", margin: 0 }}>
+                        Serving this area
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Regulations Section */}
+            {enhancements.regulations.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionTitle}>
+                  <h2>
+                    {displayName} Porta Potty Rental Regulations & Compliance
+                  </h2>
+                </div>
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 1.5rem",
+                  }}
+                >
+                  We ensure all porta potty rentals comply with local{" "}
+                  {displayName} and {state} regulations.
+                </p>
+                <div className={`${styles.grid} ${styles.gridAutoFit}`}>
+                  {enhancements.regulations.map((regulation, index) => (
+                    <div
+                      key={index}
+                      className={styles.card}
+                    >
+                      <FileText
+                        size={24}
+                        style={{
+                          marginBottom: "0.5rem",
+                          color: "var(--primary-light)",
+                        }}
+                      />
+                      <h3>Compliance Requirement</h3>
+                      <p>{regulation}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* City-Specific FAQs */}
+            {enhancements.faqs.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionTitle}>
+                  <h2>
+                    Frequently Asked Questions About Porta Potty Rentals in{" "}
+                    {displayName}
+                  </h2>
+                </div>
+                <div className={`${styles.grid} ${styles.gridAutoFit}`}>
+                  {enhancements.faqs.map((faq, index) => (
+                    <div
+                      key={index}
+                      className={styles.card}
+                    >
+                      <HelpCircle
+                        size={24}
+                        style={{
+                          marginBottom: "0.5rem",
+                          color: "var(--primary-light)",
+                        }}
+                      />
+                      <h3>{faq.question}</h3>
+                      <p>{faq.answer}</p>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -762,6 +1154,12 @@ export default function PortaPottyRentalCity({
           />
         </div>
       </div>
+
+      {/* Sticky CTA */}
+      <StickyCTA
+        city={displayName}
+        state={state}
+      />
     </>
   );
 }

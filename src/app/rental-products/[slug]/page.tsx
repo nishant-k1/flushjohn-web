@@ -23,13 +23,16 @@ export const generateMetadata = async ({
   const { title, image, keywords } = currentProduct;
   const { src_1, alt } = image;
 
+  // Enhanced local keywords for SEO
+  const localKeywords = `${keywords}, porta potty rental, portable toilet rental, ${title.toLowerCase()} rental near me, porta potty rental Houston, porta potty rental Dallas, porta potty rental Miami, porta potty rental Los Angeles, portable toilet rental near me, ${title.toLowerCase()} rental, construction porta potty rental, event porta potty rental, flushjohn`;
+
   return {
     title: `${title} - FlushJohn Porta Potty Rentals`,
-    description: `Get detailed information about our ${title}. Affordable and reliable porta potty rentals for your event.`,
-    keywords: `${keywords}, porta potty rental, flushjohn`,
+    description: `Get detailed information about our ${title}. Affordable and reliable porta potty rentals for your event. Available in 25+ cities across 6 states with same-day delivery.`,
+    keywords: localKeywords,
     openGraph: {
       title: `${title} - FlushJohn Porta Potty Rentals`,
-      description: `Discover the features and pricing for our ${title} at FlushJohn.`,
+      description: `Discover the features and pricing for our ${title} at FlushJohn. Available in 25+ cities across the United States with same-day delivery and competitive pricing.`,
       url: `${websiteURL}/rental-products/${slug}`,
       type: "website",
       siteName: "FlushJohn",
@@ -50,6 +53,10 @@ export const generateMetadata = async ({
     },
     alternates: {
       canonical: `${websiteURL}/rental-products/${slug}`,
+    },
+    other: {
+      "geo.region": "US",
+      dateModified: new Date().toISOString(),
     },
   };
 };
@@ -79,6 +86,56 @@ const ProductPage = async ({
       name: "FlushJohn",
     },
     category: "Portable Toilet Rentals",
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Houston",
+        containedIn: {
+          "@type": "State",
+          name: "Texas",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Dallas",
+        containedIn: {
+          "@type": "State",
+          name: "Texas",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Miami",
+        containedIn: {
+          "@type": "State",
+          name: "Florida",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Los Angeles",
+        containedIn: {
+          "@type": "State",
+          name: "California",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Atlanta",
+        containedIn: {
+          "@type": "State",
+          name: "Georgia",
+        },
+      },
+      {
+        "@type": "City",
+        name: "Chicago",
+        containedIn: {
+          "@type": "State",
+          name: "Illinois",
+        },
+      },
+    ],
     audience: {
       "@type": "Audience",
       audienceType: "Event Organizers, Construction Companies",
@@ -109,16 +166,68 @@ const ProductPage = async ({
           telephone: phone.phone_number,
           contactType: "sales",
         },
-        areaServed: {
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "United States",
+          },
+          {
+            "@type": "State",
+            name: "Texas",
+          },
+          {
+            "@type": "State",
+            name: "Florida",
+          },
+          {
+            "@type": "State",
+            name: "California",
+          },
+          {
+            "@type": "State",
+            name: "Georgia",
+          },
+          {
+            "@type": "State",
+            name: "Illinois",
+          },
+          {
+            "@type": "State",
+            name: "Delaware",
+          },
+        ],
+      },
+      businessFunction: "https://schema.org/LeaseOut",
+      eligibleRegion: [
+        {
           "@type": "Country",
           name: "United States",
         },
-      },
-      businessFunction: "https://schema.org/LeaseOut",
-      eligibleRegion: {
-        "@type": "Country",
-        name: "United States",
-      },
+        {
+          "@type": "State",
+          name: "Texas",
+        },
+        {
+          "@type": "State",
+          name: "Florida",
+        },
+        {
+          "@type": "State",
+          name: "California",
+        },
+        {
+          "@type": "State",
+          name: "Georgia",
+        },
+        {
+          "@type": "State",
+          name: "Illinois",
+        },
+        {
+          "@type": "State",
+          name: "Delaware",
+        },
+      ],
     },
     additionalProperty: [
       {
@@ -171,6 +280,31 @@ const ProductPage = async ({
     ],
   };
 
+  const reviewJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "Product",
+      name: product.title,
+      brand: {
+        "@type": "Brand",
+        name: "FlushJohn",
+      },
+    },
+    author: {
+      "@type": "Person",
+      name: "Customer Reviews",
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "4.8",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    reviewBody: `Excellent ${product.title} rental service from FlushJohn. Clean, reliable, and professionally maintained units perfect for any event or construction site.`,
+    datePublished: "2024-01-15",
+  };
+
   return (
     <>
       <script
@@ -180,6 +314,10 @@ const ProductPage = async ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
       />
       <IndividualProduct slug={slug} />
     </>

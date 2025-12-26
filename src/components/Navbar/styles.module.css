@@ -111,9 +111,44 @@
   }
   .navLinks {
     display: grid;
-    grid-template-columns: repeat(5, max-content);
+    grid-template-columns: repeat(6, max-content);
     align-items: center;
     column-gap: 22px;
+  }
+}
+
+.phoneLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-inverse);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-base);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.phoneLink:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  text-shadow: none;
+}
+
+.phoneLink:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: var(--spacing-xs);
+}
+
+@media only screen and (min-width: 768px) {
+  .phoneLink {
+    font-size: 0.875rem;
   }
 }
 

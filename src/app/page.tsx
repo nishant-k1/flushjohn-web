@@ -1,21 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact, address } from "@/constants";
+import { s3assets, websiteURL, phone, contact, address, socialMedia } from "@/constants";
 import Script from "next/script";
 
 import Home from "@/features/home/components/Home";
 
 export const metadata: Metadata = {
   title:
-    "Porta Potty Rentals Dover DE | Same-Day Delivery | FlushJohn | Serving Nationwide",
+    "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities Nationwide | FlushJohn",
   description:
-    "Porta potty rentals in Dover, DE and nationwide. Same-day delivery for events, construction sites, and weddings. Licensed & insured. 24/7 service. Get your instant quote today!",
+    "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Same-day delivery, competitive pricing, licensed & insured. Serving 25+ cities across TX, FL, CA, GA, IL, and DE. Get your free quote today!",
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
-    title: "FlushJohn - Porta Potty Rentals",
+    title: "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities | FlushJohn",
     description:
-      "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
+      "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Same-day delivery, competitive pricing, licensed & insured. Serving 25+ cities nationwide.",
     url: websiteURL,
     type: "website",
     siteName: "FlushJohn",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FlushJohn - Porta Potty Rentals",
+    title: "Porta Potty Rentals | Serving 25+ Cities Nationwide | FlushJohn",
     description:
-      "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
+      "Professional porta potty rentals in 25+ cities. Same-day delivery, competitive pricing, licensed & insured. Get your free quote today!",
     images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
   alternates: {
@@ -85,6 +85,7 @@ const jsonLd = {
   },
   // ServiceAreaBusiness requires areaServed array with specific locations
   areaServed: [
+    // Delaware
     {
       "@type": "City",
       name: "Dover",
@@ -97,12 +98,17 @@ const jsonLd = {
         },
       },
     },
+    // Texas
     {
       "@type": "City",
       name: "Houston",
       containedIn: {
         "@type": "State",
         name: "Texas",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
       },
     },
     {
@@ -111,21 +117,296 @@ const jsonLd = {
       containedIn: {
         "@type": "State",
         name: "Texas",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
       },
     },
+    {
+      "@type": "City",
+      name: "Austin",
+      containedIn: {
+        "@type": "State",
+        name: "Texas",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "San Antonio",
+      containedIn: {
+        "@type": "State",
+        name: "Texas",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Fort Worth",
+      containedIn: {
+        "@type": "State",
+        name: "Texas",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    // Florida
+    {
+      "@type": "City",
+      name: "Miami",
+      containedIn: {
+        "@type": "State",
+        name: "Florida",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Orlando",
+      containedIn: {
+        "@type": "State",
+        name: "Florida",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Tampa",
+      containedIn: {
+        "@type": "State",
+        name: "Florida",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Jacksonville",
+      containedIn: {
+        "@type": "State",
+        name: "Florida",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Fort Lauderdale",
+      containedIn: {
+        "@type": "State",
+        name: "Florida",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    // California
     {
       "@type": "City",
       name: "Los Angeles",
       containedIn: {
         "@type": "State",
         name: "California",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
       },
     },
-    // Note: Add all other cities you serve here for better local SEO
-    // For now, including major ones. Full list should be added based on actual service areas.
+    {
+      "@type": "City",
+      name: "San Diego",
+      containedIn: {
+        "@type": "State",
+        name: "California",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Sacramento",
+      containedIn: {
+        "@type": "State",
+        name: "California",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "San Jose",
+      containedIn: {
+        "@type": "State",
+        name: "California",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Fresno",
+      containedIn: {
+        "@type": "State",
+        name: "California",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    // Georgia
+    {
+      "@type": "City",
+      name: "Atlanta",
+      containedIn: {
+        "@type": "State",
+        name: "Georgia",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Savannah",
+      containedIn: {
+        "@type": "State",
+        name: "Georgia",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Augusta",
+      containedIn: {
+        "@type": "State",
+        name: "Georgia",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Macon",
+      containedIn: {
+        "@type": "State",
+        name: "Georgia",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Columbus",
+      containedIn: {
+        "@type": "State",
+        name: "Georgia",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    // Illinois
+    {
+      "@type": "City",
+      name: "Chicago",
+      containedIn: {
+        "@type": "State",
+        name: "Illinois",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Springfield",
+      containedIn: {
+        "@type": "State",
+        name: "Illinois",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Peoria",
+      containedIn: {
+        "@type": "State",
+        name: "Illinois",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Rockford",
+      containedIn: {
+        "@type": "State",
+        name: "Illinois",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    {
+      "@type": "City",
+      name: "Naperville",
+      containedIn: {
+        "@type": "State",
+        name: "Illinois",
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    },
+    // Fallback for nationwide coverage
     {
       "@type": "Country",
-      name: "United States", // Fallback for nationwide coverage
+      name: "United States",
     },
   ],
   serviceType: "Porta Potty Rental Services",
@@ -137,6 +418,12 @@ const jsonLd = {
     "Portable Toilet Services",
     "Event Sanitation",
     "Construction Site Services",
+  ],
+  sameAs: [
+    socialMedia.facebook,
+    socialMedia.twitter,
+    socialMedia.linkedin,
+    socialMedia.instagram,
   ],
 };
 
@@ -299,6 +586,79 @@ const reviewJsonLd = {
   },
 };
 
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Rent a Porta Potty",
+  description: "Step-by-step guide to renting a porta potty from FlushJohn for your event or construction site",
+  totalTime: "PT15M",
+  estimatedCost: {
+    "@type": "MonetaryAmount",
+    currency: "USD",
+    value: "100-500",
+  },
+  tool: [
+    {
+      "@type": "HowToTool",
+      name: "Internet connection",
+    },
+    {
+      "@type": "HowToTool",
+      name: "Event or project details",
+    },
+  ],
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Determine Your Needs",
+      text: "Calculate how many porta potties you need based on attendance, event duration, and whether alcohol is served. Use 1 unit per 50 people for short events, 1 per 35 for events with alcohol.",
+      url: `${websiteURL}/faq`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Choose Your Unit Type",
+      text: "Select from standard porta potties, deluxe flushing units, ADA compliant units, or luxury restroom trailers based on your event type and budget.",
+      url: `${websiteURL}/rental-products`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Request a Quote",
+      text: "Fill out our online quote form with your event details, location, dates, and unit requirements. We respond within 1 hour during business hours.",
+      url: `${websiteURL}/quote`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 4,
+      name: "Review and Confirm",
+      text: "Review the customized quote including delivery, setup, and pickup. Approve the quote and provide payment to confirm your reservation.",
+      url: `${websiteURL}/quote`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 5,
+      name: "Prepare Your Site",
+      text: "Ensure level ground, vehicle access within 50 feet, and 12 feet of clearance for delivery. Mark preferred placement locations.",
+      url: `${websiteURL}/faq`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 6,
+      name: "Delivery and Setup",
+      text: "Our team delivers and sets up the porta potties at your specified location. We handle all setup - you just need to provide access.",
+      url: `${websiteURL}/contact`,
+      image: `${s3assets}/og-image-flushjonn-web.png`,
+    },
+  ],
+};
+
 const HomePage = () => {
   return (
     <>
@@ -326,6 +686,12 @@ const HomePage = () => {
         type="application/ld+json"
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="howto-schema"
+        type="application/ld+json"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
 
       <Home />

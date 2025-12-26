@@ -99,7 +99,39 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
               Perfect for events, construction sites, and outdoor gatherings
             </li>
           </ul>
-          <p>
+          <div className={styles.serviceAreasSection}>
+            <h2>Available in 25+ Cities Across 6 States</h2>
+            <p className={styles.serviceAreasDescription}>
+              Our {title} is available for rental in major cities across the United States. Find porta potty rentals in your city:
+            </p>
+            <div className={styles.cityLinksContainer}>
+              <Link href="/porta-potty-rental/houston" className={styles.cityLink}>
+                Houston, TX
+              </Link>
+              <Link href="/porta-potty-rental/dallas" className={styles.cityLink}>
+                Dallas, TX
+              </Link>
+              <Link href="/porta-potty-rental/miami" className={styles.cityLink}>
+                Miami, FL
+              </Link>
+              <Link href="/porta-potty-rental/los-angeles" className={styles.cityLink}>
+                Los Angeles, CA
+              </Link>
+              <Link href="/porta-potty-rental/atlanta" className={styles.cityLink}>
+                Atlanta, GA
+              </Link>
+              <Link href="/porta-potty-rental/chicago" className={styles.cityLink}>
+                Chicago, IL
+              </Link>
+            </div>
+            <p className={styles.viewAllLink}>
+              <Link href="/service-areas">
+                View All 25+ Service Areas →
+              </Link>
+            </p>
+          </div>
+
+          <p style={{ marginTop: "2rem" }}>
             Need a {title}? <Link href="/quote">Get a free quote</Link> today or
             learn more about our{" "}
             <Link href="/rental-products">rental options</Link>.

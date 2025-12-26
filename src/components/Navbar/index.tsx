@@ -10,7 +10,8 @@ import dynamic from "next/dynamic";
 import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
-import { s3assets } from "@/constants";
+import { s3assets, phone } from "@/constants";
+import { PhoneIcon } from "@/components/UI/Icons";
 
 // Dynamically import hamburger-react to reduce initial bundle size
 const Hamburger = dynamic(
@@ -120,6 +121,26 @@ const Navbar = () => {
               className={pathname === "/contact" ? styles.activeLink : ""}
             >
               Contact
+            </Link>
+            <Link
+              href={phone.phone_link}
+              className={styles.phoneLink}
+              onClick={() => {
+                if (
+                  typeof window !== "undefined" &&
+                  typeof window.gtag === "function"
+                ) {
+                  window.gtag("event", "conversion", {
+                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    event_category: "Phone Call",
+                    event_label: "Navbar Phone Link",
+                    value: 1,
+                  });
+                }
+              }}
+            >
+              <PhoneIcon size={16} />
+              <span>{phone.phone_number}</span>
             </Link>
           </div>
         </div>

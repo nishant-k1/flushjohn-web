@@ -6,9 +6,9 @@ import { s3assets, websiteURL } from "@/constants";
 export const metadata: Metadata = {
   title: "Gallery - FlushJohn Porta Potty Rentals",
   description:
-    "Check out our gallery showcasing our high-quality porta potty rental units at various events.",
+    "Check out our gallery showcasing our high-quality porta potty rental units at various events across 25+ cities. See our clean, professional portable toilets in action.",
   keywords:
-    "porta potty gallery, portable toilet images, event rentals showcase",
+    "porta potty gallery, portable toilet images, event rentals showcase, porta potty gallery Houston, portable toilet gallery Dallas, event porta potty photos Miami, construction porta potty gallery Los Angeles, porta potty gallery [city]",
   openGraph: {
     title: "FlushJohn Gallery",
     description:
@@ -43,7 +43,7 @@ const jsonLd = {
   name: "FlushJohn Gallery",
   url: `${websiteURL}/gallery`,
   description:
-    "View images of our porta potty rentals in action. See our clean and high-quality units used at various events.",
+    "View images of our porta potty rentals in action. See our clean and high-quality units used at various events across 25+ cities in 6 states.",
   image: `${s3assets}/og-image-flushjonn-web.png`,
   provider: {
     "@type": "Organization",
@@ -53,6 +53,15 @@ const jsonLd = {
       "@type": "ImageObject",
       url: `${s3assets}/og-image-flushjonn-web.png`,
     },
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+  },
+  about: {
+    "@type": "Thing",
+    name: "Porta Potty Rental Services",
+    description: "Professional portable toilet rentals for events and construction sites",
   },
 };
 

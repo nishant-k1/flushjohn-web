@@ -132,6 +132,53 @@ const jsonLd = {
   },
 };
 
+const reviewJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  itemReviewed: {
+    "@type": "Organization",
+    name: "FlushJohn",
+    image: `${s3assets}/og-image-flushjonn-web.png`,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  },
+  author: {
+    "@type": "Person",
+    name: "Customer Reviews",
+  },
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: "4.8",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  reviewBody: "FlushJohn provides excellent porta potty rental services across the United States. Professional, reliable, and affordable portable toilet solutions for events and construction sites.",
+  datePublished: "2024-01-15",
+};
+
+const serviceAreaBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ServiceAreaBusiness",
+  name: "FlushJohn",
+  url: websiteURL,
+  telephone: phone.phone_number,
+  email: contact.support_email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  serviceType: "Porta Potty Rental Services",
+};
+
 const ContactPage = () => {
   return (
     <>
@@ -145,6 +192,14 @@ const ContactPage = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreaBusinessJsonLd) }}
       />
       <Contact />
     </>

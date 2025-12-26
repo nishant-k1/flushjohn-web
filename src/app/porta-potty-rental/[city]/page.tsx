@@ -391,11 +391,19 @@ export async function generateMetadata({
 
   const { displayName, state } = cityData;
   const cityTitle = `${displayName}, ${state}`;
+  const coordinates = getCityCoordinates(city);
 
   return {
-    title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
-    description: `Professional porta potty rental services in ${cityTitle}. Fast delivery, competitive pricing, and reliable service for events and construction sites. Get your free quote today!`,
-    keywords: `porta potty rental ${displayName}, portable toilet ${cityTitle}, event sanitation ${displayName}, construction porta potty ${cityTitle}, flushjohn ${displayName}`,
+    title: `Porta Potty Rentals in ${cityTitle} | Same-Day Delivery | FlushJohn`,
+    description: `Professional porta potty rental services in ${cityTitle}. Fast delivery, competitive pricing, and reliable service for events and construction sites. Serving ${displayName} with same-day porta potty delivery, portable toilet rentals near me, ADA-compliant units, and construction site sanitation. Get your free quote today!`,
+    keywords: `porta potty rental ${displayName}, portable toilet ${cityTitle}, event sanitation ${displayName}, construction porta potty ${cityTitle}, flushjohn ${displayName}, porta potty rental near me ${displayName}, portable toilet rental ${cityTitle}, ${displayName} porta potty, ${displayName} portable toilet, porta potty delivery ${cityTitle}, construction porta potty ${displayName}, event porta potty ${cityTitle}, wedding porta potty ${displayName}, ADA porta potty ${cityTitle}, portable restroom ${cityTitle}`,
+    other: {
+      "geo.region": `US-${state}`,
+      "geo.placename": displayName,
+      "geo.position": `${coordinates.lat};${coordinates.lng}`,
+      "ICBM": `${coordinates.lat}, ${coordinates.lng}`,
+      "dateModified": new Date().toISOString(),
+    },
     openGraph: {
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
       description: `Get reliable porta potty rentals in ${cityTitle}. Same-day delivery, competitive pricing, and professional service for all your event and construction needs.`,

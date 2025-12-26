@@ -6,6 +6,58 @@ import DOMPurify from "isomorphic-dompurify";
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
 
+// City coordinates mapping for geo-targeting
+const getCityCoordinates = (cityName: string | null, state: string | null) => {
+  if (!cityName || !state) return null;
+
+  const citySlug = cityName.toLowerCase().replace(/\s+/g, "-");
+  const coordinates: Record<string, { lat: string; lng: string }> = {
+    dover: { lat: "39.1582", lng: "-75.5244" },
+    houston: { lat: "29.7604", lng: "-95.3698" },
+    dallas: { lat: "32.7767", lng: "-96.7970" },
+    austin: { lat: "30.2672", lng: "-97.7431" },
+    "san-antonio": { lat: "29.4241", lng: "-98.4936" },
+    "fort-worth": { lat: "32.7555", lng: "-97.3308" },
+    miami: { lat: "25.7617", lng: "-80.1918" },
+    orlando: { lat: "28.5383", lng: "-81.3792" },
+    tampa: { lat: "27.9506", lng: "-82.4572" },
+    jacksonville: { lat: "30.3322", lng: "-81.6557" },
+    "fort-lauderdale": { lat: "26.1224", lng: "-80.1373" },
+    "los-angeles": { lat: "34.0522", lng: "-118.2437" },
+    "san-diego": { lat: "32.7157", lng: "-117.1611" },
+    sacramento: { lat: "38.5816", lng: "-121.4944" },
+    "san-jose": { lat: "37.3382", lng: "-121.8863" },
+    fresno: { lat: "36.7378", lng: "-119.7871" },
+    atlanta: { lat: "33.7490", lng: "-84.3880" },
+    savannah: { lat: "32.0835", lng: "-81.0998" },
+    augusta: { lat: "33.4735", lng: "-82.0105" },
+    macon: { lat: "32.8407", lng: "-83.6324" },
+    columbus: { lat: "32.4610", lng: "-84.9877" },
+    chicago: { lat: "41.8781", lng: "-87.6298" },
+    springfield: { lat: "39.7817", lng: "-89.6501" },
+    peoria: { lat: "40.6936", lng: "-89.5890" },
+    rockford: { lat: "42.2711", lng: "-89.0940" },
+    naperville: { lat: "41.7508", lng: "-88.1535" },
+  };
+
+  return coordinates[citySlug] || null;
+};
+
+// Normalize state abbreviation
+const normalizeState = (state: string | null): string | null => {
+  if (!state) return null;
+  const stateMap: Record<string, string> = {
+    texas: "TX",
+    florida: "FL",
+    california: "CA",
+    georgia: "GA",
+    illinois: "IL",
+    delaware: "DE",
+  };
+  const normalized = state.trim();
+  return stateMap[normalized.toLowerCase()] || normalized.toUpperCase().slice(0, 2);
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,7 +79,12 @@ export async function generateMetadata({
     if (!blog) {
       return { title: "Blog Post Not Found" };
     }
-    return {
+
+    const hasLocation = blog.city && blog.state;
+    const stateAbbr = hasLocation ? normalizeState(blog.state) : null;
+    const coordinates = hasLocation ? getCityCoordinates(blog.city, blog.state) : null;
+
+    const metadata: any = {
       title: `${blog?.title} | FlushJohn Blog`,
       description: blog?.excerpt || "Read our latest blog post on FlushJohn.",
       keywords: blog?.tags?.join(", ") || "blog, FlushJohn",
@@ -37,7 +94,7 @@ export async function generateMetadata({
         url: `${websiteURL}/blog/${slug}`,
         images: [
           {
-            url: blog?.coverImage?.src,
+            url: blog?.coverImageUnsplash?.src || blog?.coverImageS3?.src || blog?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
             height: 630,
             width: 1200,
             alt: blog?.title,
@@ -53,12 +110,24 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: blog?.title,
         description: blog?.excerpt || blog?.title,
-        images: [blog?.coverImage?.src],
+        images: [blog?.coverImageUnsplash?.src || blog?.coverImageS3?.src || blog?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`],
       },
       alternates: {
         canonical: `${websiteURL}/blog/${slug}`,
       },
     };
+
+    // Add geo-targeting meta tags for city-specific blog posts
+    if (hasLocation && stateAbbr && coordinates) {
+      metadata.other = {
+        "geo.region": `US-${stateAbbr}`,
+        "geo.placename": blog.city,
+        "geo.position": `${coordinates.lat};${coordinates.lng}`,
+        "ICBM": `${coordinates.lat}, ${coordinates.lng}`,
+      };
+    }
+
+    return metadata;
   } catch (error) {
     return { title: "FlushJohn Blog" };
   }
@@ -156,10 +225,15 @@ const BlogPostPage = async ({
         "@id": `${websiteURL}/blog/${slug}`,
       },
       image:
-        blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
+        blogPost?.coverImageUnsplash?.src || blogPost?.coverImageS3?.src || blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
     };
 
-    const enhancedJsonLd = {
+    // Enhanced JSON-LD with location data for city-specific posts
+    const hasLocation = blogPost.city && blogPost.state;
+    const stateAbbr = hasLocation ? normalizeState(blogPost.state) : null;
+    const coordinates = hasLocation ? getCityCoordinates(blogPost.city, blogPost.state) : null;
+
+    const enhancedJsonLd: any = {
       ...jsonLd,
       wordCount: Math.max(
         blogPost.content?.replace(/<[^>]*>/g, "").length || 0,
@@ -214,11 +288,74 @@ const BlogPostPage = async ({
       },
     };
 
+    // Add location data to JSON-LD for city-specific blog posts
+    if (hasLocation && stateAbbr && coordinates) {
+      enhancedJsonLd.contentLocation = {
+        "@type": "City",
+        name: blogPost.city,
+        addressRegion: stateAbbr,
+        addressCountry: "US",
+      };
+      enhancedJsonLd.spatialCoverage = {
+        "@type": "Place",
+        name: `${blogPost.city}, ${stateAbbr}`,
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: coordinates.lat,
+          longitude: coordinates.lng,
+        },
+      };
+    }
+
+    // Breadcrumb schema for blog post
+    const breadcrumbItems = [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: websiteURL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${websiteURL}/blog`,
+      },
+    ];
+
+    // Add city link if blog post is city-specific
+    if (hasLocation && blogPost.city) {
+      const citySlug = blogPost.city.toLowerCase().replace(/\s+/g, "-");
+      breadcrumbItems.push({
+        "@type": "ListItem",
+        position: 3,
+        name: `${blogPost.city} Porta Potty Rentals`,
+        item: `${websiteURL}/porta-potty-rental/${citySlug}`,
+      });
+    }
+
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: breadcrumbItems.length + 1,
+      name: blogPost.title,
+      item: `${websiteURL}/blog/${slug}`,
+    });
+
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
+    };
+
     return (
       <>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(enhancedJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
         <BlogPost
           blogPost={blogPost}

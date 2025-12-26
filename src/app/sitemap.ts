@@ -346,5 +346,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: blog.priority,
   }));
 
-  return [...corePages, ...statePages, ...cityPages, ...productPages, ...blogPages];
+  // Service-specific city pages (construction, events, weddings)
+  const services = ["construction", "events", "weddings"];
+  const serviceCityPages = targetCities
+    .filter((city) => majorCities.includes(city.slug))
+    .flatMap((city) =>
+      services.map((service) => ({
+        url: `${websiteURL}/porta-potty-rental/${city.slug}/${service}`,
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }))
+    );
+
+  return [...corePages, ...statePages, ...cityPages, ...productPages, ...blogPages, ...serviceCityPages];
 }

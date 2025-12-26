@@ -112,6 +112,64 @@
   text-decoration-color: var(--primary-light);
 }
 
+/* Service Areas Section */
+.serviceAreasSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.serviceAreasSection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.serviceAreasDescription {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+.cityLinksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cityLink {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cityLink:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.viewAllLink {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.viewAllLink a {
+  color: var(--primary-light);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.viewAllLink a:hover {
+  color: var(--primary);
+}
+
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
   .product {

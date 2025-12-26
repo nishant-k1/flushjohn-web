@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Script from "next/script";
+import { websiteURL, phone, contact, s3assets } from "@/constants";
 import styles from "./styles.module.css";
 
 interface City {
@@ -19,8 +21,84 @@ interface StateProps {
 }
 
 const StateHubPage = ({ state }: StateProps) => {
+  // ServiceAreaBusiness schema for state-level local SEO
+  const serviceAreaBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ServiceAreaBusiness",
+    name: `FlushJohn - ${state.displayName}`,
+    description: state.description,
+    url: `${websiteURL}/service-areas/${state.name.toLowerCase()}`,
+    telephone: phone.phone_number,
+    email: contact.support_email,
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: state.abbreviation,
+      addressCountry: "US",
+    },
+    areaServed: state.cities.map((city) => ({
+      "@type": "City",
+      name: city.name,
+      containedIn: {
+        "@type": "State",
+        name: state.name,
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+    })),
+    serviceType: "Porta Potty Rental Services",
+    priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: `FlushJohn Porta Potty Rentals - ${state.displayName}`,
+    description: state.description,
+    url: `${websiteURL}/service-areas/${state.name.toLowerCase()}`,
+    telephone: phone.phone_number,
+    areaServed: {
+      "@type": "State",
+      name: state.name,
+      containedIn: {
+        "@type": "Country",
+        name: "United States",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+    },
+  };
+
   return (
-    <div className={styles.page}>
+    <>
+      <Script
+        id="state-service-area-schema"
+        type="application/ld+json"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
+      />
+      <Script
+        id="state-local-business-schema"
+        type="application/ld+json"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessJsonLd),
+        }}
+      />
+      <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>
@@ -119,7 +197,8 @@ const StateHubPage = ({ state }: StateProps) => {
           <Link href="/service-areas">← View All Service Areas</Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

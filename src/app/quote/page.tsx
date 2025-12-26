@@ -6,9 +6,9 @@ import { s3assets, websiteURL } from "@/constants";
 export const metadata: Metadata = {
   title: "Get a Quote - FlushJohn Porta Potty Rentals",
   description:
-    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing.",
+    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing. Available in 25+ cities across 6 states.",
   keywords:
-    "get a quote, porta potty rental quote, portable toilet pricing, event rentals",
+    "get a quote, porta potty rental quote, portable toilet pricing, event rentals, porta potty quote near me, portable toilet quote Houston, porta potty quote Dallas, porta potty quote Miami, porta potty quote Los Angeles, porta potty pricing near me, portable toilet quote [city]",
   openGraph: {
     title: "Get a Quote for Porta Potty Rentals - FlushJohn",
     description:
@@ -43,7 +43,7 @@ const jsonLd = {
   name: "Get a Quote - FlushJohn",
   url: `${websiteURL}/quote`,
   description:
-    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing.",
+    "Fill out our simple form to get a personalized quote for porta potty rentals for your event. Quick, easy, and competitive pricing. Available in 25+ cities across 6 states.",
   image: `${s3assets}/og-image-flushjonn-web.png`,
   provider: {
     "@type": "Organization",
@@ -53,6 +53,12 @@ const jsonLd = {
       "@type": "ImageObject",
       url: `${s3assets}/og-image-flushjonn-web.png`,
     },
+  },
+  mainEntity: {
+    "@type": "ContactAction",
+    target: `${websiteURL}/quote`,
+    name: "Get Porta Potty Rental Quote",
+    description: "Request a personalized quote for porta potty rentals in your city",
   },
 };
 
