@@ -23,8 +23,8 @@
   position: relative;
 }
 
-/* Ensure the wrapper div takes full width */
-.inputContainer > div {
+/* Ensure the wrapper div takes full width (but not the error div) */
+.inputContainer > div:not(.error) {
   width: 100%;
 }
 
@@ -89,7 +89,7 @@
   right: 0;
   z-index: 1000;
   width: fit-content;
-  max-width: 100%;
+  max-width: none;
   color: #ffffff;
   font-size: 10px;
   background-color: rgba(255, 68, 68, 0.9);
@@ -103,7 +103,10 @@
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
 }
 
 .error::before {

@@ -149,14 +149,12 @@ const QuoteStep1 = () => {
               type="tel"
             />
           ))}
-          <div style={{ position: "relative", minHeight: 0 }}>
-          <ErrorMessage name="products">
-            {(msg) => {
-              return <div className={styles.error_message}>Required</div>;
-            }}
-          </ErrorMessage>
-          </div>
         </div>
+        <ErrorMessage name="products">
+          {(msg) => {
+            return <div className={styles.productsError}>Enter quantity for at least one item</div>;
+          }}
+        </ErrorMessage>
         <div className={styles.buttons}>
           <button
             className={styles.button}
