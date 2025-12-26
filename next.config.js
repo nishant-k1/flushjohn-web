@@ -39,14 +39,14 @@ const nextConfig = {
       config.optimization.splitChunks = {
         chunks: "all",
         minSize: 20000,
-        maxSize: 244000,
+        maxSize: 150000, // Reduced from 244KB to force more granular splitting
         maxAsyncRequests: 30,
-        maxInitialRequests: 30,
+        maxInitialRequests: 8, // Reduced from 30 to reduce initial bundle size
         cacheGroups: {
           default: false,
           vendors: false,
 
-          // React and core libraries - highest priority
+          // React and core libraries - highest priority (needed immediately)
           react: {
             name: "react",
             chunks: "all",
@@ -56,43 +56,67 @@ const nextConfig = {
             reuseExistingChunk: true,
           },
 
-          // MUI components
-          mui: {
-            name: "mui",
+          // Form libraries - separate chunk (loaded when forms render)
+          formik: {
+            name: "formik",
             chunks: "all",
-            test: /[\\/]node_modules[\\/]@mui[\\/]/,
+            test: /[\\/]node_modules[\\/](formik|yup)[\\/]/,
             priority: 35,
             enforce: true,
             reuseExistingChunk: true,
+            maxSize: 150000,
           },
 
-          // Ant Design components
-          antd: {
-            name: "antd",
+          // Date picker libraries - separate chunk (already lazy loaded in components)
+          datepicker: {
+            name: "datepicker",
             chunks: "all",
-            test: /[\\/]node_modules[\\/]antd[\\/]/,
+            test: /[\\/]node_modules[\\/](react-datepicker|dayjs)[\\/]/,
             priority: 34,
             enforce: true,
             reuseExistingChunk: true,
+            maxSize: 150000,
           },
 
-          // Large vendor libraries
+          // Large vendor libraries - force smaller chunks (animations, utilities)
           largeVendor: {
             name: "large-vendor",
             chunks: "all",
-            test: /[\\/]node_modules[\\/](framer-motion|date-fns|moment|lodash|dayjs)[\\/]/,
+            test: /[\\/]node_modules[\\/](framer-motion|date-fns|moment|lodash)[\\/]/,
             priority: 30,
-            maxSize: 150000,
+            maxSize: 100000, // Reduced from 150KB for better splitting
             reuseExistingChunk: true,
           },
 
-          // Other vendor libraries
+          // Socket.io and network libraries - separate chunk
+          network: {
+            name: "network",
+            chunks: "all",
+            test: /[\\/]node_modules[\\/](socket\.io-client|axios)[\\/]/,
+            priority: 28,
+            enforce: true,
+            reuseExistingChunk: true,
+            maxSize: 150000,
+          },
+
+          // Phone/input libraries - separate chunk
+          inputs: {
+            name: "inputs",
+            chunks: "all",
+            test: /[\\/]node_modules[\\/](react-phone-number-input|react-number-format)[\\/]/,
+            priority: 27,
+            enforce: true,
+            reuseExistingChunk: true,
+            maxSize: 150000,
+          },
+
+          // Other vendor libraries - split more granularly
           vendor: {
             name: "vendor",
             chunks: "all",
             test: /[\\/]node_modules[\\/]/,
             priority: 20,
-            maxSize: 200000,
+            maxSize: 150000, // Reduced from 200KB for better granularity
             reuseExistingChunk: true,
           },
 
@@ -104,6 +128,7 @@ const nextConfig = {
             priority: 10,
             reuseExistingChunk: true,
             enforce: true,
+            maxSize: 150000,
           },
         },
       };
@@ -246,7 +271,7 @@ const nextConfig = {
             key: "Cache-Control",
             value:
               process.env.NODE_ENV === "production"
-                ? "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400, immutable"
+                ? "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400"
                 : "no-store, must-revalidate",
           },
           {
@@ -287,18 +312,21 @@ const nextConfig = {
                   key: "Content-Security-Policy",
                   value: (() => {
                     // Check if this is a Vercel deployment (preview, development, or production)
-                    const isVercel = process.env.VERCEL === "1" || process.env.VERCEL_ENV;
+                    const isVercel =
+                      process.env.VERCEL === "1" || process.env.VERCEL_ENV;
                     // Base CSP policy
-                    let scriptSrc = "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net";
-                    let connectSrc = "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com";
-                    
+                    let scriptSrc =
+                      "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net";
+                    let connectSrc =
+                      "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com";
+
                     // Add Vercel Live scripts for Vercel deployments (preview/dev environments)
                     // Note: CSP doesn't support wildcards, so we allow the main domain
                     if (isVercel) {
                       scriptSrc += " https://vercel.live";
                       connectSrc += " https://vercel.live wss://vercel.live";
                     }
-                    
+
                     return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src ${connectSrc}; frame-src 'self' https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;`;
                   })(),
                 },

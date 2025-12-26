@@ -197,6 +197,16 @@ export default function RootLayout({
                 min-height: 2.6em;
                 display: block;
               }
+              .heroTitle h2 {
+                min-height: 3.2em;
+                display: block;
+              }
+              .serviceBadge {
+                min-height: 2rem;
+              }
+              .heroCta {
+                min-height: 3.5rem;
+              }
             `,
           }}
         />
