@@ -38,104 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-const cities = [
-  // Business location - Dover, DE (CRITICAL - must be first for local SEO)
-  { name: "dover", displayName: "Dover", state: "DE", population: "39K" },
-  { name: "houston", displayName: "Houston", state: "TX", population: "2.3M" },
-  { name: "dallas", displayName: "Dallas", state: "TX", population: "1.3M" },
-  { name: "austin", displayName: "Austin", state: "TX", population: "965K" },
-  {
-    name: "san-antonio",
-    displayName: "San Antonio",
-    state: "TX",
-    population: "1.5M",
-  },
-  {
-    name: "fort-worth",
-    displayName: "Fort Worth",
-    state: "TX",
-    population: "918K",
-  },
-
-  { name: "miami", displayName: "Miami", state: "FL", population: "467K" },
-  { name: "orlando", displayName: "Orlando", state: "FL", population: "307K" },
-  { name: "tampa", displayName: "Tampa", state: "FL", population: "399K" },
-  {
-    name: "jacksonville",
-    displayName: "Jacksonville",
-    state: "FL",
-    population: "950K",
-  },
-  {
-    name: "fort-lauderdale",
-    displayName: "Fort Lauderdale",
-    state: "FL",
-    population: "182K",
-  },
-
-  {
-    name: "los-angeles",
-    displayName: "Los Angeles",
-    state: "CA",
-    population: "4.0M",
-  },
-  {
-    name: "san-diego",
-    displayName: "San Diego",
-    state: "CA",
-    population: "1.4M",
-  },
-  {
-    name: "sacramento",
-    displayName: "Sacramento",
-    state: "CA",
-    population: "525K",
-  },
-  {
-    name: "san-jose",
-    displayName: "San Jose",
-    state: "CA",
-    population: "1.0M",
-  },
-  { name: "fresno", displayName: "Fresno", state: "CA", population: "542K" },
-
-  { name: "atlanta", displayName: "Atlanta", state: "GA", population: "498K" },
-  {
-    name: "savannah",
-    displayName: "Savannah",
-    state: "GA",
-    population: "147K",
-  },
-  { name: "augusta", displayName: "Augusta", state: "GA", population: "202K" },
-  { name: "macon", displayName: "Macon", state: "GA", population: "157K" },
-  {
-    name: "columbus",
-    displayName: "Columbus",
-    state: "GA",
-    population: "206K",
-  },
-
-  { name: "chicago", displayName: "Chicago", state: "IL", population: "2.7M" },
-  {
-    name: "springfield",
-    displayName: "Springfield",
-    state: "IL",
-    population: "114K",
-  },
-  { name: "peoria", displayName: "Peoria", state: "IL", population: "113K" },
-  {
-    name: "rockford",
-    displayName: "Rockford",
-    state: "IL",
-    population: "148K",
-  },
-  {
-    name: "naperville",
-    displayName: "Naperville",
-    state: "IL",
-    population: "149K",
-  },
-];
+import { citiesData, getCitiesByState } from "@/features/locations/constants";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -159,8 +62,8 @@ const jsonLd = {
     name: "US Cities with Porta Potty Rental Services",
     description:
       "Complete list of major US cities where FlushJohn provides porta potty rental services",
-    numberOfItems: cities.length,
-    itemListElement: cities.map((city, index) => ({
+    numberOfItems: citiesData.length,
+    itemListElement: citiesData.map((city, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: `${city.displayName}, ${city.state}`,
@@ -204,7 +107,7 @@ const PortaPottyRentalPage = () => {
           </p>
 
           {["TX", "FL", "CA", "GA", "IL"].map((state) => {
-            const stateCities = cities.filter((city) => city.state === state);
+            const stateCities = getCitiesByState(state);
             const stateName = {
               TX: "Texas",
               FL: "Florida",

@@ -6,42 +6,7 @@ import DOMPurify from "isomorphic-dompurify";
 const { API_BASE_URL } = apiBaseUrls;
 const API_URL = `${API_BASE_URL}/blogs`;
 
-// City coordinates mapping for geo-targeting
-const getCityCoordinates = (cityName: string | null, state: string | null) => {
-  if (!cityName || !state) return null;
-
-  const citySlug = cityName.toLowerCase().replace(/\s+/g, "-");
-  const coordinates: Record<string, { lat: string; lng: string }> = {
-    dover: { lat: "39.1582", lng: "-75.5244" },
-    houston: { lat: "29.7604", lng: "-95.3698" },
-    dallas: { lat: "32.7767", lng: "-96.7970" },
-    austin: { lat: "30.2672", lng: "-97.7431" },
-    "san-antonio": { lat: "29.4241", lng: "-98.4936" },
-    "fort-worth": { lat: "32.7555", lng: "-97.3308" },
-    miami: { lat: "25.7617", lng: "-80.1918" },
-    orlando: { lat: "28.5383", lng: "-81.3792" },
-    tampa: { lat: "27.9506", lng: "-82.4572" },
-    jacksonville: { lat: "30.3322", lng: "-81.6557" },
-    "fort-lauderdale": { lat: "26.1224", lng: "-80.1373" },
-    "los-angeles": { lat: "34.0522", lng: "-118.2437" },
-    "san-diego": { lat: "32.7157", lng: "-117.1611" },
-    sacramento: { lat: "38.5816", lng: "-121.4944" },
-    "san-jose": { lat: "37.3382", lng: "-121.8863" },
-    fresno: { lat: "36.7378", lng: "-119.7871" },
-    atlanta: { lat: "33.7490", lng: "-84.3880" },
-    savannah: { lat: "32.0835", lng: "-81.0998" },
-    augusta: { lat: "33.4735", lng: "-82.0105" },
-    macon: { lat: "32.8407", lng: "-83.6324" },
-    columbus: { lat: "32.4610", lng: "-84.9877" },
-    chicago: { lat: "41.8781", lng: "-87.6298" },
-    springfield: { lat: "39.7817", lng: "-89.6501" },
-    peoria: { lat: "40.6936", lng: "-89.5890" },
-    rockford: { lat: "42.2711", lng: "-89.0940" },
-    naperville: { lat: "41.7508", lng: "-88.1535" },
-  };
-
-  return coordinates[citySlug] || null;
-};
+import { getCityCoordinates } from "@/features/locations/constants";
 
 // Normalize state abbreviation
 const normalizeState = (state: string | null): string | null => {
@@ -82,7 +47,8 @@ export async function generateMetadata({
 
     const hasLocation = blog.city && blog.state;
     const stateAbbr = hasLocation ? normalizeState(blog.state) : null;
-    const coordinates = hasLocation ? getCityCoordinates(blog.city, blog.state) : null;
+    const citySlug = hasLocation ? blog.city?.toLowerCase().replace(/\s+/g, "-") : null;
+    const coordinates = hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
 
     const metadata: any = {
       title: `${blog?.title} | FlushJohn Blog`,
@@ -231,7 +197,8 @@ const BlogPostPage = async ({
     // Enhanced JSON-LD with location data for city-specific posts
     const hasLocation = blogPost.city && blogPost.state;
     const stateAbbr = hasLocation ? normalizeState(blogPost.state) : null;
-    const coordinates = hasLocation ? getCityCoordinates(blogPost.city, blogPost.state) : null;
+    const citySlug = hasLocation ? blogPost.city?.toLowerCase().replace(/\s+/g, "-") : null;
+    const coordinates = hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
 
     const enhancedJsonLd: any = {
       ...jsonLd,

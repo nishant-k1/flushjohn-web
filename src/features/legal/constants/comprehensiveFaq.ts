@@ -181,7 +181,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Booking & Reservations',
     question: 'How do I book a porta potty rental?',
     answer:
-      "Booking a porta potty with FlushJohn is easy. You can: (1) Fill out our online quote form at flushjohn.com/quote with your event or project details, (2) Call us directly - we're available 24/7, or (3) Email us at support@flushjohn.com. Once we receive your request, we'll respond within 1 hour during business hours (within 24 hours otherwise) with a customized quote. After you approve the quote and provide payment, we'll schedule your delivery and send confirmation details.",
+      "Booking a porta potty with FlushJohn is easy. You can: (1) Fill out our online quote form at flushjohn.com/quote with your event or project details, (2) Call us directly - we're available 24/7, or (3) Email us. Once we receive your request, we'll respond within 1 hour during business hours (within 24 hours otherwise) with a customized quote. After you approve the quote and provide payment, we'll schedule your delivery and send confirmation details.",
     keywords: ['how to book', 'booking process', 'reserve', 'rental process', 'how to rent'],
     relatedQuestions: ['booking-advance', 'booking-info', 'pricing-standard'],
   },
@@ -493,7 +493,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: 'Customer Support',
     question: 'How do I contact FlushJohn?',
     answer:
-      'You can contact FlushJohn through multiple channels: (1) Phone - call us directly for immediate assistance (available 24/7), (2) Online quote form at flushjohn.com/quote, (3) Email at support@flushjohn.com (responses within 1 hour during business hours), (4) Contact form on our website at flushjohn.com/contact, (5) For sales inquiries: support@flushjohn.com. Our phone number provides the fastest response for urgent needs, last-minute bookings, or emergency situations. For detailed project planning or non-urgent quote requests, the online form allows you to provide comprehensive information for accurate pricing.',
+      'You can contact FlushJohn through multiple channels: (1) Phone - call us directly for immediate assistance (available 24/7), (2) Online quote form at flushjohn.com/quote, (3) Email (responses within 1 hour during business hours), (4) Contact form on our website at flushjohn.com/contact. Our phone number provides the fastest response for urgent needs, last-minute bookings, or emergency situations. For detailed project planning or non-urgent quote requests, the online form allows you to provide comprehensive information for accurate pricing.',
     keywords: ['contact', 'phone number', 'email', 'how to reach', 'get in touch'],
     relatedQuestions: ['support-hours', 'booking-process', 'support-emergency'],
   },

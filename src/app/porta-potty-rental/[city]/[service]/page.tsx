@@ -3,68 +3,7 @@ import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 import Link from "next/link";
 import styles from "./styles.module.css";
-
-// Helper function to get city coordinates
-const getCityCoordinates = (cityName: string) => {
-  const coordinates: Record<string, { lat: string; lng: string }> = {
-    dover: { lat: "39.1615", lng: "-75.5268" },
-    houston: { lat: "29.7604", lng: "-95.3698" },
-    dallas: { lat: "32.7767", lng: "-96.7970" },
-    austin: { lat: "30.2672", lng: "-97.7431" },
-    "san-antonio": { lat: "29.4241", lng: "-98.4936" },
-    "fort-worth": { lat: "32.7555", lng: "-97.3308" },
-    miami: { lat: "25.7617", lng: "-80.1918" },
-    orlando: { lat: "28.5383", lng: "-81.3792" },
-    tampa: { lat: "27.9506", lng: "-82.4572" },
-    jacksonville: { lat: "30.3322", lng: "-81.6557" },
-    "fort-lauderdale": { lat: "26.1224", lng: "-80.1373" },
-    "los-angeles": { lat: "34.0522", lng: "-118.2437" },
-    "san-diego": { lat: "32.7157", lng: "-117.1611" },
-    sacramento: { lat: "38.5816", lng: "-121.4944" },
-    "san-jose": { lat: "37.3382", lng: "-121.8863" },
-    fresno: { lat: "36.7378", lng: "-119.7871" },
-    atlanta: { lat: "33.7490", lng: "-84.3880" },
-    savannah: { lat: "32.0835", lng: "-81.0998" },
-    augusta: { lat: "33.4735", lng: "-82.0105" },
-    macon: { lat: "32.8407", lng: "-83.6324" },
-    columbus: { lat: "32.4610", lng: "-84.9877" },
-    chicago: { lat: "41.8781", lng: "-87.6298" },
-    springfield: { lat: "39.7817", lng: "-89.6501" },
-    peoria: { lat: "40.6936", lng: "-89.5890" },
-    rockford: { lat: "42.2711", lng: "-89.0940" },
-    naperville: { lat: "41.7508", lng: "-88.1535" },
-  };
-  return coordinates[cityName] || { lat: "39.8283", lng: "-98.5795" };
-};
-
-const cities = [
-  { name: "dover", displayName: "Dover", state: "DE" },
-  { name: "houston", displayName: "Houston", state: "TX" },
-  { name: "dallas", displayName: "Dallas", state: "TX" },
-  { name: "austin", displayName: "Austin", state: "TX" },
-  { name: "san-antonio", displayName: "San Antonio", state: "TX" },
-  { name: "fort-worth", displayName: "Fort Worth", state: "TX" },
-  { name: "miami", displayName: "Miami", state: "FL" },
-  { name: "orlando", displayName: "Orlando", state: "FL" },
-  { name: "tampa", displayName: "Tampa", state: "FL" },
-  { name: "jacksonville", displayName: "Jacksonville", state: "FL" },
-  { name: "fort-lauderdale", displayName: "Fort Lauderdale", state: "FL" },
-  { name: "los-angeles", displayName: "Los Angeles", state: "CA" },
-  { name: "san-diego", displayName: "San Diego", state: "CA" },
-  { name: "sacramento", displayName: "Sacramento", state: "CA" },
-  { name: "san-jose", displayName: "San Jose", state: "CA" },
-  { name: "fresno", displayName: "Fresno", state: "CA" },
-  { name: "atlanta", displayName: "Atlanta", state: "GA" },
-  { name: "savannah", displayName: "Savannah", state: "GA" },
-  { name: "augusta", displayName: "Augusta", state: "GA" },
-  { name: "macon", displayName: "Macon", state: "GA" },
-  { name: "columbus", displayName: "Columbus", state: "GA" },
-  { name: "chicago", displayName: "Chicago", state: "IL" },
-  { name: "springfield", displayName: "Springfield", state: "IL" },
-  { name: "peoria", displayName: "Peoria", state: "IL" },
-  { name: "rockford", displayName: "Rockford", state: "IL" },
-  { name: "naperville", displayName: "Naperville", state: "IL" },
-];
+import { getCityCoordinatesWithFallback, citiesData } from "@/features/locations/constants";
 
 const services = {
   construction: {
@@ -105,7 +44,7 @@ const services = {
 export async function generateStaticParams() {
   const params: Array<{ city: string; service: string }> = [];
   
-  cities.forEach((city) => {
+  citiesData.forEach((city) => {
     Object.keys(services).forEach((service) => {
       params.push({ city: city.name, service });
     });
@@ -120,7 +59,7 @@ export async function generateMetadata({
   params: Promise<{ city: string; service: string }>;
 }): Promise<Metadata> {
   const { city, service } = await params;
-  const cityData = cities.find((c) => c.name === city);
+  const cityData = citiesData.find((c) => c.name === city);
   const serviceData = services[service as keyof typeof services];
 
   if (!cityData || !serviceData) {
@@ -131,7 +70,7 @@ export async function generateMetadata({
 
   const { displayName, state } = cityData;
   const cityTitle = `${displayName}, ${state}`;
-  const coordinates = getCityCoordinates(city);
+  const coordinates = getCityCoordinatesWithFallback(city);
 
   const metadata: Metadata = {
     title: `${serviceData.title} in ${cityTitle} | FlushJohn`,
@@ -173,7 +112,7 @@ const ServiceCityPage = async ({
   params: Promise<{ city: string; service: string }>;
 }) => {
   const { city, service } = await params;
-  const cityData = cities.find((c) => c.name === city);
+  const cityData = citiesData.find((c) => c.name === city);
   const serviceData = services[service as keyof typeof services];
 
   if (!cityData || !serviceData) {
@@ -182,7 +121,7 @@ const ServiceCityPage = async ({
 
   const { displayName, state } = cityData;
   const cityTitle = `${displayName}, ${state}`;
-  const coordinates = getCityCoordinates(city);
+  const coordinates = getCityCoordinatesWithFallback(city);
   const stateSlug = state.toLowerCase();
 
   // Breadcrumb schema

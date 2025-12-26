@@ -45,7 +45,7 @@ export const address: addressType = {
 };
 
 export const contact: contactType = {
-  email: "info@flushjohn.com",
+  email: "support@flushjohn.com", // Primary contact email
   support_email: "support@flushjohn.com",
   sales_email: "support@flushjohn.com",
 };
