@@ -285,14 +285,6 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3>Analytics</h3>
-              <p>
-                We may use third-party Service Providers to monitor and analyze
-                the use of our Service.
-              </p>
-            </div>
-
-            <div>
               <h3>Accounts</h3>
               <p>
                 When you create an account with us, you guarantee that the
