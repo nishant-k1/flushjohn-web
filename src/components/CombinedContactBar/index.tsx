@@ -59,78 +59,80 @@ const CombinedContactBar = () => {
   return (
     <div className={styles.combinedBar}>
       <div className={styles.container}>
-        {/* Zip Code Checker Section */}
-        <div
-          className={styles.zipSection}
-          ref={zipSectionRef}
-        >
-          <form
-            onSubmit={handleCheck}
-            className={styles.zipForm}
-          >
-            <label
-              htmlFor="zipCode"
-              className={styles.zipLabel}
-            >
-              Enter Delivery Zipcode:
-            </label>
-            <input
-              id="zipCode"
-              type="text"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={5}
-              value={zipCode}
-              onChange={handleZipChange}
-              placeholder="Zip Code"
-              className={styles.zipInput}
-            />
-            <button
-              type="submit"
-              className={styles.checkButton}
-              disabled={zipCode.length !== 5 || isChecking}
-            >
-              {isChecking ? "Checking..." : "Can I get it?"}
-            </button>
-          </form>
-
-          {/* Success message - positioned absolutely to prevent layout shift */}
+        <div className={styles.contentWrapper}>
+          {/* Zip Code Checker Section */}
           <div
-            className={`${styles.resultMessage} ${showResult ? styles.resultVisible : styles.resultHidden}`}
+            className={styles.zipSection}
+            ref={zipSectionRef}
           >
-            <div className={styles.successIcon}>✓</div>
-            <span className={styles.successText}>
-              Yes! We deliver to your area.
-            </span>
-          </div>
-        </div>
+            <form
+              onSubmit={handleCheck}
+              className={styles.zipForm}
+            >
+              <label
+                htmlFor="zipCode"
+                className={styles.zipLabel}
+              >
+                Enter Delivery Zipcode:
+              </label>
+              <input
+                id="zipCode"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={5}
+                value={zipCode}
+                onChange={handleZipChange}
+                placeholder="Zip Code"
+                className={styles.zipInput}
+              />
+              <button
+                type="submit"
+                className={styles.checkButton}
+                disabled={zipCode.length !== 5 || isChecking}
+              >
+                {isChecking ? "Checking..." : "Can I get it?"}
+              </button>
+            </form>
 
-        {/* Phone Number Section */}
-        <div className={styles.phoneSection}>
-          <span className={styles.phoneLabel}>Order By Phone:</span>
-          <Link
-            href={phone_link}
-            className={styles.phoneNumber}
-            onClick={() => {
-              if (
-                typeof window !== "undefined" &&
-                typeof window.gtag === "function"
-              ) {
-                window.gtag("event", "conversion", {
-                  send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
-                  event_category: "Phone Call",
-                  event_label: "Phone Bar Link",
-                  value: 1,
-                });
-              }
-            }}
-          >
-            <PhoneIcon
-              className={styles.phoneIcon}
-              size={16}
-            />
-            <span className={styles.phoneNumberText}>{phone_number}</span>
-          </Link>
+            {/* Success message */}
+            <div
+              className={`${styles.resultMessage} ${showResult ? styles.resultVisible : styles.resultHidden}`}
+            >
+              <div className={styles.successIcon}>✓</div>
+              <span className={styles.successText}>
+                Yes! We deliver to your area.
+              </span>
+            </div>
+          </div>
+
+          {/* Phone Number Section */}
+          <div className={styles.phoneSection}>
+            <span className={styles.phoneLabel}>Order By Phone:</span>
+            <Link
+              href={phone_link}
+              className={styles.phoneNumber}
+              onClick={() => {
+                if (
+                  typeof window !== "undefined" &&
+                  typeof window.gtag === "function"
+                ) {
+                  window.gtag("event", "conversion", {
+                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    event_category: "Phone Call",
+                    event_label: "Phone Bar Link",
+                    value: 1,
+                  });
+                }
+              }}
+            >
+              <PhoneIcon
+                className={styles.phoneIcon}
+                size={16}
+              />
+              <span className={styles.phoneNumberText}>{phone_number}</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

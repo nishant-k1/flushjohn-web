@@ -1,5 +1,5 @@
 .serviceAreas {
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
   background-color: var(--bg-primary);
   position: relative;
 }
@@ -57,7 +57,7 @@
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-lg);
   position: relative;
   z-index: 1;
 }
@@ -237,7 +237,7 @@
   }
 
   .serviceAreas {
-    padding: var(--spacing-3xl) var(--spacing-md);
+    padding: var(--spacing-3xl) 0;
   }
 
   .description {

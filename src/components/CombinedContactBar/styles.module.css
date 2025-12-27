@@ -1,48 +1,40 @@
 .combinedBar {
   width: 100%;
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  padding: var(--spacing-md) 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: relative;
-  z-index: 10;
   border-top: 2px solid var(--primary-light);
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .container {
-  width: 100%;
-  max-width: var(--container-xl);
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+}
+
+.contentWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-lg);
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .zipSection {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  padding-bottom: 0;
-  overflow: visible;
+  flex-direction: column;
+  gap: var(--spacing-sm);
   flex: 1;
   min-width: 0;
+  position: relative;
 }
 
 .zipForm {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: var(--spacing-sm);
-  flex-wrap: nowrap;
-  width: 100%;
-  flex: 1;
-  min-width: 0;
+  flex-wrap: wrap;
 }
 
 .zipLabel {
@@ -52,13 +44,10 @@
   white-space: nowrap;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;
 }
 
-
 .zipInput {
-  flex: 0 0 auto;
-  width: 100px;
+  width: 120px;
   height: 36px;
   padding: 8px 12px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -85,7 +74,7 @@
 
 .checkButton {
   height: 36px;
-  padding: 8px 16px;
+  padding: 8px 20px;
   background: linear-gradient(135deg, #5f3300 0%, #b45309 100%);
   color: white;
   border: 2px solid #7e4505;
@@ -100,7 +89,6 @@
     0 4px 12px rgba(217, 119, 6, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
-  flex-shrink: 0;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -110,14 +98,12 @@
 .checkButton:hover:not(:disabled) {
   background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
   border-color: #b45309;
-  transform: none;
   box-shadow:
     0 6px 20px rgba(217, 119, 6, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .checkButton:active:not(:disabled) {
-  transform: none;
   box-shadow:
     0 2px 8px rgba(217, 119, 6, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -126,7 +112,6 @@
 .checkButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
 }
 
 .checkButton:focus-visible {
@@ -137,90 +122,44 @@
 .resultMessage {
   position: absolute;
   top: 100%;
-  left: 0;
   right: 0;
   margin-top: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   padding: 12px 20px;
   background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
   border: 2px solid #28a745;
   border-radius: 0;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
-  z-index: 10;
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  min-width: 280px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
+  z-index: 100;
+  white-space: nowrap;
 }
 
-/* Comic-style dialogue pointer pointing up to zip input field */
 .resultMessage::before {
   content: "";
   position: absolute;
-  top: -12px;
-  left: 30%;
+  bottom: 100%;
+  right: 60px;
   width: 0;
   height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid #28a745;
-  z-index: 11;
-}
-
-.resultMessage::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 30%;
-  width: 0;
-  height: 0;
-  border-left: 11px solid transparent;
-  border-right: 11px solid transparent;
-  border-bottom: 11px solid #d4edda;
-  z-index: 12;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #28a745;
 }
 
 .resultVisible {
   opacity: 1;
   visibility: visible;
-  animation: slideDown 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.resultVisible::before,
-.resultVisible::after {
-  animation: fadeIn 0.4s ease 0.2s both;
 }
 
 .resultHidden {
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-15px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  display: none;
 }
 
 .successIcon {
@@ -249,7 +188,6 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  flex-wrap: nowrap;
   flex-shrink: 0;
 }
 
@@ -260,7 +198,6 @@
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .phoneNumber {
@@ -283,14 +220,12 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   border: 2px solid #4a7c59;
   white-space: nowrap;
-  flex-shrink: 0;
   box-sizing: border-box;
 }
 
 .phoneNumber:hover {
   background: linear-gradient(135deg, #2d4a35 0%, #1e3124 100%);
   border-color: #2d4a35;
-  transform: none;
   box-shadow:
     0 6px 20px rgba(45, 74, 53, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -298,7 +233,6 @@
 }
 
 .phoneNumber:active {
-  transform: none;
   box-shadow:
     0 2px 8px rgba(45, 74, 53, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -318,32 +252,39 @@
   font-weight: 700;
 }
 
-@media (max-width: 1024px) {
-  .container {
+@media (min-width: 768px) {
+  .combinedBar {
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 819px) {
+  .contentWrapper {
     flex-wrap: wrap;
     gap: var(--spacing-md);
-    padding: 0 var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
   }
 
   .zipSection {
     flex: 1 1 100%;
-    min-width: 100%;
+    width: 100%;
   }
 
   .phoneSection {
     flex: 1 1 100%;
     justify-content: center;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .combinedBar {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-3xl) 0;
   }
 
-  .container {
-    padding: 0 var(--spacing-md);
-    gap: var(--spacing-md);
+  .contentWrapper {
+    padding: var(--spacing-lg) 0;
+    gap: var(--spacing-lg);
     flex-direction: column;
   }
 
@@ -352,71 +293,69 @@
   }
 
   .zipForm {
-    flex-wrap: wrap;
-    gap: var(--spacing-xs);
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+    width: 100%;
   }
 
   .zipLabel {
-    font-size: 0.85rem;
-    flex: 1 1 100%;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
   }
 
   .zipInput {
-    flex: 1;
-    min-width: 80px;
-    height: 36px;
-    padding: 8px 10px;
-    font-size: 0.85rem;
+    width: 100%;
+    height: 44px;
+    padding: 10px 14px;
+    font-size: 1rem;
   }
 
   .checkButton {
-    height: 36px;
-    padding: 8px 12px;
-    font-size: 0.8rem;
+    width: 100%;
+    height: 44px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
 
   .phoneSection {
     width: 100%;
-    justify-content: center;
-    gap: var(--spacing-xs);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+    align-items: center;
   }
 
   .phoneLabel {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    width: 100%;
   }
 
   .phoneNumber {
-    height: 36px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    justify-content: center;
   }
 
   .resultMessage {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    transform: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
     margin-top: var(--spacing-sm);
-    padding: 10px 16px;
-    flex-direction: column;
-    text-align: center;
-    gap: var(--spacing-xs);
-    min-width: auto;
-    max-width: 100%;
+    padding: 12px 16px;
+    flex-direction: row;
+    text-align: left;
+    gap: var(--spacing-sm);
+    white-space: normal;
   }
 
-  .resultMessage::before,
-  .resultMessage::after {
-    display: none;
-  }
-
-  .resultVisible {
-    transform: none !important;
-  }
-
-  .resultHidden {
-    transform: none !important;
+  .resultMessage::before {
+    left: 20px;
   }
 
   .successText {

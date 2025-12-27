@@ -1,12 +1,13 @@
 /* Styles Update */
 .testimonials {
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
   background-color: var(--bg-primary);
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 var(--spacing-lg);
   text-align: center;
 }
 

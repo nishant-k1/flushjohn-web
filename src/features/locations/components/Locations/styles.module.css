@@ -4,12 +4,12 @@
   background-size: cover;
   background-position: left;
   background-repeat: repeat;
-  padding: var(--spacing-section) var(--spacing-lg);
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }

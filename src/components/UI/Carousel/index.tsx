@@ -14,6 +14,7 @@ interface CarouselProps {
   autoplay?: boolean;
   autoplaySpeed?: number;
   arrows?: boolean;
+  showDots?: boolean;
 }
 
 export default function Carousel({
@@ -21,6 +22,7 @@ export default function Carousel({
   autoplay = false,
   autoplaySpeed = 3000,
   arrows = false,
+  showDots = true,
 }: CarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = React.Children.count(children);
@@ -99,7 +101,7 @@ export default function Carousel({
         </>
       )}
 
-      {totalSlides > 1 && (
+      {showDots && totalSlides > 1 && (
         <div className={styles.dots}>
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button

@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: var(--spacing-md) var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0 0;
   overflow: hidden;
   contain: layout style paint; /* CSS containment */
   transform: translateZ(0); /* Force hardware acceleration */
@@ -31,6 +31,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 0 var(--spacing-lg);
 }
 
 .carouselWrapper {
@@ -353,7 +354,7 @@
   .container {
     height: fit-content;
     min-height: 100vh;
-    padding: var(--spacing-4xl) 0;
+    padding: var(--spacing-4xl) var(--spacing-lg);
   }
 
   .heroWrapper {

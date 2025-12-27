@@ -91,6 +91,7 @@ export default function CarouselView() {
           <Carousel
             autoplay
             autoplaySpeed={4000}
+            showDots={false}
           >
             {images.map((image, index) => (
               <div

@@ -1,6 +1,6 @@
 .ctaSection {
   margin-top: 0;
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
   background: linear-gradient(
     135deg,
     var(--primary-dark) 0%,
@@ -17,6 +17,7 @@
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .ctaSection::before {
@@ -174,7 +175,7 @@
 
 @media (max-width: 768px) {
   .ctaSection {
-    padding: var(--spacing-3xl) var(--spacing-md);
+    padding: var(--spacing-3xl) 0;
   }
 
   .ctaSection h3 {

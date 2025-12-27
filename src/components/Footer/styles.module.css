@@ -1,6 +1,6 @@
 .footer {
   background: var(--bg-primary);
-  padding: 4rem var(--spacing-xl) 2rem;
+  padding: 4rem 0 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
 }
@@ -10,6 +10,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 var(--spacing-lg);
 }
 
 /* Reduce spacing for Locations component inside footer */
@@ -314,13 +315,13 @@
   max-width: 800px;
   margin: 0 auto;
   font-style: italic;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
   .footer {
-    padding: 4rem var(--spacing-xl) 2rem;
+    padding: 4rem 0 2rem;
   }
 
   .ul {
@@ -361,7 +362,7 @@
 /* desktop device / breakpoint: 1024px */
 @media only screen and (min-width: 1024px) {
   .footer {
-    padding: 4.5rem var(--spacing-xl) 2.5rem;
+    padding: 4.5rem 0 2.5rem;
   }
 
   .ul {
