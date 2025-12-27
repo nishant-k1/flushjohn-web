@@ -14,7 +14,7 @@ const QuoteHero = () => {
       
       {/* Simple Subheading */}
       <p className={styles.subheading}>
-        Quick, easy, and no obligation. Same-day delivery available.
+        Quick, easy, and no obligation. Fast delivery typically within 24-48 hours.
       </p>
 
       {/* Phone Number - Clean CTA */}

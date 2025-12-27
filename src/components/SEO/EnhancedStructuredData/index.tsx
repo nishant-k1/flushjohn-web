@@ -43,7 +43,7 @@ export default function EnhancedStructuredData({
     "@type": "Organization",
     "@id": `${websiteURL}#organization`,
     name: "FlushJohn",
-    legalName: "FlushJohn LLC",
+    legalName: "Quengenesis, LLC",
     url: websiteURL,
     logo: {
       "@type": "ImageObject",

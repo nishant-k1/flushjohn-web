@@ -91,6 +91,12 @@ export const footerLinks = {
       icon: <FaBloggerB style={{ fontSize: "1.5rem" }} />,
     },
     {
+      id: "10.5",
+      name: "About Us",
+      href: "/about",
+      icon: <ArticleIcon />,
+    },
+    {
       id: "11",
       name: "FAQ",
       href: "/faq",

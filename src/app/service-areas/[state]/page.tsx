@@ -127,7 +127,7 @@ const StatePage = async ({ params }: PageProps) => {
     "@type": "Organization",
     "@id": `${websiteURL}#organization`,
     name: "FlushJohn",
-    legalName: "FlushJohn LLC",
+    legalName: "Quengenesis, LLC",
     url: websiteURL,
     logo: {
       "@type": "ImageObject",

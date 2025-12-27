@@ -16,7 +16,7 @@ export async function GET() {
   const businessInfo = {
     company: {
       name: 'FlushJohn',
-      legalName: 'FlushJohn LLC',
+      legalName: 'Quengenesis, LLC',
       established: '2020',
       website: websiteURL,
       description:

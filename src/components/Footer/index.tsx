@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Locations } from "@/features/locations/components";
 import { footerLinks } from "./data";
 import { home_data } from "@/features/home/constants";
-import { s3assets, phone, contact } from "@/constants";
+import { s3assets, phone, contact, address } from "@/constants";
 const { locations } = home_data;
 
 var date = new Date();
@@ -97,8 +97,34 @@ const Footer = () => {
             </li>
           </ul>
           <Locations {...locations} />
+          
+          {/* Business Information Section */}
+          <div className={styles.businessInfo}>
+            <div className={styles.businessInfoContent}>
+              <div className={styles.businessInfoItem}>
+                <h3>Business Address</h3>
+                <p>{address.full_address}</p>
+              </div>
+              <div className={styles.businessInfoItem}>
+                <h3>Established</h3>
+                <p>2020</p>
+              </div>
+              <div className={styles.businessInfoItem}>
+                <h3>Contact</h3>
+                <p>
+                  <a href={`tel:${phone.phone_number}`}>{phone.phone_number}</a>
+                  <br />
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          
           <div className={styles.bottomFooter}>
-            Copyright © {year} flushjohn.com
+            Copyright © {year} FlushJohn. All rights reserved. |{" "}
+            <Link href="/about">About Us</Link> |{" "}
+            <Link href="/privacy">Privacy Policy</Link> |{" "}
+            <Link href="/terms">Terms & Conditions</Link>
           </div>
         </div>
       </div>

@@ -11,20 +11,20 @@ const TrustSignals = () => {
 
         <div className={styles.statsGrid}>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>10,000+</div>
-            <div className={styles.statLabel}>Happy Customers</div>
-          </div>
-          <div className={styles.statItem}>
-            <div className={styles.statNumber}>50+</div>
+            <div className={styles.statNumber}>25+</div>
             <div className={styles.statLabel}>Cities Served</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>99%</div>
-            <div className={styles.statLabel}>Customer Satisfaction</div>
+            <div className={styles.statNumber}>6</div>
+            <div className={styles.statLabel}>States Covered</div>
           </div>
           <div className={styles.statItem}>
-            <div className={styles.statNumber}>24/7</div>
-            <div className={styles.statLabel}>Customer Support</div>
+            <div className={styles.statNumber}>2020</div>
+            <div className={styles.statLabel}>Established</div>
+          </div>
+          <div className={styles.statItem}>
+            <div className={styles.statNumber}>100%</div>
+            <div className={styles.statLabel}>Vendor Network</div>
           </div>
         </div>
 
@@ -35,24 +35,33 @@ const TrustSignals = () => {
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}><Award size={20} /></span>
-            <span>5-Star Rated</span>
+            <span>Vetted Vendor Network</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}><Truck size={20} /></span>
-            <span>Same-Day Delivery</span>
+            <span>Fast Delivery (24-48hrs typical)</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}><DollarSign size={20} /></span>
-            <span>Best Price Guarantee</span>
+            <span>Competitive Pricing</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}><Droplet size={20} /></span>
-            <span>Professionally Cleaned</span>
+            <span>Professionally Cleaned Units</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}><Phone size={20} /></span>
-            <span>24/7 Support</span>
+            <span>Responsive Support</span>
           </div>
+        </div>
+        
+        <div className={styles.businessInfo}>
+          <p>
+            <strong>FlushJohn</strong> | Established 2020 | Business Address: 8 The Green STE R, Dover, DE 19901
+          </p>
+          <p className={styles.transparency}>
+            Professional porta potty rental services through our network of trusted local partners across 25+ cities in 6 states.
+          </p>
         </div>
       </div>
     </div>

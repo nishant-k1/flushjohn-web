@@ -216,6 +216,57 @@
   line-height: 1.5;
 }
 
+.businessInfo {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.businessInfoContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.businessInfoItem {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color, #0066cc);
+}
+
+.businessInfoItem h3 {
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.businessInfoItem p {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.businessInfoItem a {
+  color: var(--text-primary);
+  text-decoration: none;
+  opacity: 0.95;
+  transition: opacity var(--transition-base);
+}
+
+.businessInfoItem a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 .bottomFooter {
   padding: 2rem 0 1rem;
   font-size: 0.8125rem;
@@ -228,6 +279,18 @@
   z-index: 1;
   letter-spacing: 0.02em;
   font-weight: 300;
+}
+
+.bottomFooter a {
+  color: var(--text-primary);
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity var(--transition-base);
+}
+
+.bottomFooter a:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 /* tablet device breakpoint: 768px*/
@@ -256,6 +319,10 @@
     padding: 1.5rem 0 0.75rem !important;
     margin-top: 1.5rem !important;
   }
+
+  .businessInfoContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* desktop device / breakpoint: 1024px */
@@ -266,5 +333,9 @@
 
   .ul {
     gap: 3rem;
+  }
+
+  .businessInfoContent {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -181,6 +181,34 @@
   flex-shrink: 0;
 }
 
+.businessInfo {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.businessInfo p {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+  opacity: 0.9;
+}
+
+.businessInfo strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+.transparency {
+  font-size: 0.8125rem !important;
+  font-style: italic;
+  opacity: 0.8 !important;
+  margin-top: 0.75rem !important;
+}
+
 @media only screen and (min-width: 768px) {
   .container h2 {
     font-size: 2rem;
