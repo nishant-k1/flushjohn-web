@@ -172,11 +172,13 @@ const UsageTypeField = () => {
               background: "#ffffff" /* White background for clean look */,
               border: "1px solid var(--primary-bg-color, #8c6f48)",
               borderRadius: "0",
-              marginTop: "0", /* No gap - dropdown appears directly below input */
+              marginTop:
+                "0" /* No gap - dropdown appears directly below input */,
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+              boxShadow:
+                "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
               padding: "4px 0",
             }}
           >
@@ -191,7 +193,8 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? "rgba(140, 111, 72, 0.12)" /* Subtle selected background */
                       : "#ffffff" /* White background for better contrast */,
-                  borderBottom: index < options.length - 1 ? "1px solid #e8e8e8" : "none",
+                  borderBottom:
+                    index < options.length - 1 ? "1px solid #e8e8e8" : "none",
                   borderLeft:
                     values.usageType === option.value
                       ? "4px solid var(--primary-bg-color, #8c6f48)"
@@ -205,17 +208,20 @@ const UsageTypeField = () => {
                       : "#1a1a1a",
                   margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                   borderRadius: "0",
-                  boxShadow: values.usageType === option.value
-                    ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
-                    : "none",
+                  boxShadow:
+                    values.usageType === option.value
+                      ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                      : "none",
                   lineHeight: "1.4",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
                     e.currentTarget.style.background = "#f8f9fa";
-                    e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
-                    e.currentTarget.style.boxShadow = "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
+                    e.currentTarget.style.borderLeft =
+                      "4px solid rgba(140, 111, 72, 0.3)";
+                    e.currentTarget.style.boxShadow =
+                      "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -231,8 +237,14 @@ const UsageTypeField = () => {
             ))}
           </div>
         )}
-        <div className={`${styles.error} ${showError && hasError ? styles.errorVisible : styles.errorHidden}`}>
-          {hasError ? (typeof errors.usageType === "string" ? errors.usageType : String(errors.usageType || "")) : ""}
+        <div
+          className={`${styles.error} ${showError && hasError ? styles.errorVisible : styles.errorHidden}`}
+        >
+          {hasError
+            ? typeof errors.usageType === "string"
+              ? errors.usageType
+              : String(errors.usageType || "")
+            : ""}
         </div>
       </div>
     </Grid>
@@ -320,21 +332,27 @@ const HeroQuickQuote = () => {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
           }
+
+          // Update all states immediately - React batches these but they process very fast
           setShowSuccessModal(true);
           setQuickQuoteRequested(true);
+          setIsSubmittingLocal(false);
           handleLeadConversion();
           submitInProgressRef.current = false;
-          httpCalledRef.current = false; // Reset for next submission
+          httpCalledRef.current = false;
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
-          setIsSubmittingLocal(false);
           pendingLeadDataRef.current = null;
         }
       });
 
       currentSocket.on("leadCreationError", (error) => {
-        if (submitInProgressRef.current && !socketSucceededRef.current && !httpCalledRef.current) {
+        if (
+          submitInProgressRef.current &&
+          !socketSucceededRef.current &&
+          !httpCalledRef.current
+        ) {
           // Socket failed, allow HTTP fallback (only if HTTP wasn't already called)
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -346,7 +364,10 @@ const HeroQuickQuote = () => {
             createLeadViaHTTP(pendingLeadDataRef.current)
               .then(() => {
                 // Only process HTTP success if socket hasn't already succeeded
-                if (!socketSucceededRef.current && submitInProgressRef.current) {
+                if (
+                  !socketSucceededRef.current &&
+                  submitInProgressRef.current
+                ) {
                   setShowSuccessModal(true);
                   setQuickQuoteRequested(true);
                   handleLeadConversion();
@@ -362,7 +383,10 @@ const HeroQuickQuote = () => {
               })
               .catch(() => {
                 // Only show error if socket hasn't already succeeded
-                if (!socketSucceededRef.current && submitInProgressRef.current) {
+                if (
+                  !socketSucceededRef.current &&
+                  submitInProgressRef.current
+                ) {
                   setShowErrorModal(true);
                   submitInProgressRef.current = false;
                   httpCalledRef.current = false; // Reset on error
@@ -455,7 +479,9 @@ const HeroQuickQuote = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           // CRITICAL: Early return if submission is already in progress (prevents duplicate submissions)
           if (submitInProgressRef.current) {
-            console.warn("Submission already in progress, ignoring duplicate submit");
+            console.warn(
+              "Submission already in progress, ignoring duplicate submit"
+            );
             return;
           }
 
@@ -502,7 +528,10 @@ const HeroQuickQuote = () => {
                   createLeadViaHTTP(finalData)
                     .then(() => {
                       // Only process HTTP success if socket hasn't already succeeded
-                      if (!socketSucceededRef.current && submitInProgressRef.current) {
+                      if (
+                        !socketSucceededRef.current &&
+                        submitInProgressRef.current
+                      ) {
                         setShowSuccessModal(true);
                         setQuickQuoteRequested(true);
                         handleLeadConversion();
@@ -517,7 +546,10 @@ const HeroQuickQuote = () => {
                     })
                     .catch(() => {
                       // Only show error if socket hasn't already succeeded
-                      if (!socketSucceededRef.current && submitInProgressRef.current) {
+                      if (
+                        !socketSucceededRef.current &&
+                        submitInProgressRef.current
+                      ) {
                         setShowErrorModal(true);
                         submitInProgressRef.current = false;
                         httpCalledRef.current = false; // Reset on error
@@ -528,7 +560,7 @@ const HeroQuickQuote = () => {
                       }
                     });
                 }
-              }, 5000); // 5 second timeout for socket
+              }, 1000); // Reduced to 1 second timeout for socket (was 5s) - socket responses are typically instant
             } else {
               // Socket not connected, try to connect and emit, or use HTTP
               socketRef.current?.connect();
@@ -549,7 +581,10 @@ const HeroQuickQuote = () => {
                       createLeadViaHTTP(finalData)
                         .then(() => {
                           // Only process HTTP success if socket hasn't already succeeded
-                          if (!socketSucceededRef.current && submitInProgressRef.current) {
+                          if (
+                            !socketSucceededRef.current &&
+                            submitInProgressRef.current
+                          ) {
                             setHeroQuickQuoteViewStatus(false);
                             setShowSuccessModal(true);
                             setQuickQuoteRequested(true);
@@ -564,7 +599,10 @@ const HeroQuickQuote = () => {
                         })
                         .catch(() => {
                           // Only show error if socket hasn't already succeeded
-                          if (!socketSucceededRef.current && submitInProgressRef.current) {
+                          if (
+                            !socketSucceededRef.current &&
+                            submitInProgressRef.current
+                          ) {
                             setShowErrorModal(true);
                             submitInProgressRef.current = false;
                             httpCalledRef.current = false; // Reset on error
@@ -575,7 +613,7 @@ const HeroQuickQuote = () => {
                           }
                         });
                     }
-                  }, 5000);
+                  }, 1000); // Reduced to 1 second (was 5s) - socket responses are typically instant
                   timeoutRef.current = fallbackTimeout;
                 } else {
                   // Socket failed, use HTTP (only if not already called)
@@ -585,7 +623,10 @@ const HeroQuickQuote = () => {
                     createLeadViaHTTP(finalData)
                       .then(() => {
                         // Only process HTTP success if socket hasn't already succeeded
-                        if (!socketSucceededRef.current && submitInProgressRef.current) {
+                        if (
+                          !socketSucceededRef.current &&
+                          submitInProgressRef.current
+                        ) {
                           setShowSuccessModal(true);
                           setQuickQuoteRequested(true);
                           handleLeadConversion();
@@ -600,7 +641,10 @@ const HeroQuickQuote = () => {
                       })
                       .catch(() => {
                         // Only show error if socket hasn't already succeeded
-                        if (!socketSucceededRef.current && submitInProgressRef.current) {
+                        if (
+                          !socketSucceededRef.current &&
+                          submitInProgressRef.current
+                        ) {
                           setShowErrorModal(true);
                           submitInProgressRef.current = false;
                           httpCalledRef.current = false; // Reset on error

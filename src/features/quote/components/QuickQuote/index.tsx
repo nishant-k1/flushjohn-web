@@ -171,11 +171,13 @@ const UsageTypeField = () => {
               background: "#ffffff" /* White background for clean look */,
               border: "1px solid var(--primary-bg-color, #8c6f48)",
               borderRadius: "0",
-              marginTop: "0", /* No gap - dropdown appears directly below input */
+              marginTop:
+                "0" /* No gap - dropdown appears directly below input */,
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+              boxShadow:
+                "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
               padding: "4px 0",
             }}
           >
@@ -190,7 +192,8 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? "rgba(140, 111, 72, 0.12)" /* Subtle selected background */
                       : "#ffffff" /* White background for better contrast */,
-                  borderBottom: index < options.length - 1 ? "1px solid #e8e8e8" : "none",
+                  borderBottom:
+                    index < options.length - 1 ? "1px solid #e8e8e8" : "none",
                   borderLeft:
                     values.usageType === option.value
                       ? "4px solid var(--primary-bg-color, #8c6f48)"
@@ -204,17 +207,20 @@ const UsageTypeField = () => {
                       : "#1a1a1a",
                   margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                   borderRadius: "0",
-                  boxShadow: values.usageType === option.value
-                    ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
-                    : "none",
+                  boxShadow:
+                    values.usageType === option.value
+                      ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                      : "none",
                   lineHeight: "1.4",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
                     e.currentTarget.style.background = "#f8f9fa";
-                    e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
-                    e.currentTarget.style.boxShadow = "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
+                    e.currentTarget.style.borderLeft =
+                      "4px solid rgba(140, 111, 72, 0.3)";
+                    e.currentTarget.style.boxShadow =
+                      "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -326,23 +332,28 @@ const QuickQuote = () => {
       });
 
       currentSocket.on("leadCreated", (response) => {
+        // Process socket response immediately - no delay
         if (submitInProgressRef.current) {
           // Socket ALWAYS wins - even if HTTP was called as fallback
           // Mark socket as succeeded to prevent HTTP from completing
           socketSucceededRef.current = true;
+
+          // Clear timeout immediately to prevent HTTP fallback
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
           }
+
+          // Update all states immediately - React batches these but they process very fast
           setShowSuccessModal(true);
           setQuickQuoteRequested(true);
+          setIsSubmittingLocal(false);
           handleLeadConversion();
           submitInProgressRef.current = false;
-          httpCalledRef.current = false; // Reset for next submission
+          httpCalledRef.current = false;
           if (setSubmittingRef.current) {
             setSubmittingRef.current(false);
           }
-          setIsSubmittingLocal(false);
           pendingLeadDataRef.current = null;
         }
       });
@@ -514,7 +525,8 @@ const QuickQuote = () => {
               if (socketRef.current && socketRef.current.connected) {
                 socketRef.current.emit("createLead", finalData);
                 // Wait for socket response (handled by event listeners)
-                // Set a timeout to fallback to HTTP if no response
+                // Set a shorter timeout to fallback to HTTP if no response
+                // Reduced from 5s to 2s since socket responses are typically instant
                 timeoutRef.current = setTimeout(() => {
                   // Only fallback to HTTP if socket hasn't succeeded
                   if (
@@ -559,7 +571,7 @@ const QuickQuote = () => {
                         }
                       });
                   }
-                }, 5000); // 5 second timeout for socket
+                }, 1000); // Reduced to 1 second timeout for socket (was 5s) - socket responses are typically instant
               } else {
                 // Socket not connected, try to connect and emit, or use HTTP
                 socketRef.current?.connect();
@@ -610,7 +622,7 @@ const QuickQuote = () => {
                             }
                           });
                       }
-                    }, 5000);
+                    }, 1000); // Reduced to 1 second (was 5s) - socket responses are typically instant
                     timeoutRef.current = fallbackTimeout;
                   } else {
                     // Socket failed, use HTTP (only if not already called)

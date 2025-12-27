@@ -102,12 +102,14 @@ const QuoteStep3 = () => {
             clearTimeout(timeoutRef.current);
             timeoutRef.current = null;
           }
+          
+          // Update all states immediately - React batches these but they process very fast
           setShowSuccessModal(true);
           setQuoteRequested(true);
+          setIsSubmittingLocal(false);
           handleLeadConversion();
           submitInProgressRef.current = false;
-          httpCalledRef.current = false; // Reset for next submission
-          setIsSubmittingLocal(false);
+          httpCalledRef.current = false;
           pendingLeadDataRef.current = null;
         }
       });
@@ -281,7 +283,7 @@ const QuoteStep3 = () => {
                       }
                     });
                 }
-              }, 5000); // 5 second timeout for socket
+              }, 1000); // Reduced to 1 second timeout for socket (was 5s) - socket responses are typically instant
             } else {
               // Socket not connected, try to connect and emit, or use HTTP
               socketRef.current?.connect();
@@ -321,7 +323,7 @@ const QuoteStep3 = () => {
                           }
                         });
                     }
-                  }, 5000);
+                  }, 1000); // Reduced to 1 second (was 5s) - socket responses are typically instant
                   timeoutRef.current = fallbackTimeout;
                 } else {
                     // Socket failed, use HTTP (only if not already called)
