@@ -55,3 +55,4 @@ If chat widget still doesn't appear after adding variables:
 3. **Redeploy**: Push a new commit or manually redeploy
 4. **Clear browser cache** and hard refresh (Ctrl+Shift+R / Cmd+Shift+R)
 5. **Check network tab** to see if Tawk.to script is loading
+

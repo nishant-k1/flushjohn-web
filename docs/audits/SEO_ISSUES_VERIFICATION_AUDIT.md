@@ -588,3 +588,4 @@ Allow: /
 - ⚠️ Blog content targeting needs verification
 
 **Overall SEO Health: 8.5/10** - The website is in much better shape than the report suggests.
+

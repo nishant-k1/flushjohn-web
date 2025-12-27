@@ -86,6 +86,7 @@ export const metadata = {
     "dns-prefetch": "https://cdn.flushjohn.com",
     preconnect: "https://cdn.flushjohn.com",
   },
+  metadataBase: new URL(websiteURL),
 };
 
 export default function RootLayout({
@@ -232,14 +233,14 @@ export default function RootLayout({
           rel="preload"
           href="https://cdn.flushjohn.com/fonts/Poppins/Poppins-Regular.ttf"
           as="font"
-          type="font/truetype"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
           href="https://cdn.flushjohn.com/fonts/Merriweather/Merriweather-Regular.ttf"
           as="font"
-          type="font/truetype"
+          type="font/ttf"
           crossOrigin="anonymous"
         />
 

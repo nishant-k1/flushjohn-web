@@ -245,6 +245,20 @@ const nextConfig = {
         ],
       },
       {
+        source: "/_next/static/css/(.*\\.css)$",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/css; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value:
+              "public, max-age=31536000, immutable, stale-while-revalidate=31536000",
+          },
+        ],
+      },
+      {
         source: "/_next/image(.*)",
         headers: [
           {
@@ -330,7 +344,7 @@ const nextConfig = {
                       frameSrc += " https://vercel.live";
                     }
 
-                    return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src ${connectSrc}; frame-src ${frameSrc}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;`;
+                    return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com https://embed.tawk.to; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src ${connectSrc}; frame-src ${frameSrc}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;`;
                   })(),
                 },
               ]

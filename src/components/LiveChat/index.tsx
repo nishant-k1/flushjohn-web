@@ -22,6 +22,37 @@ import Script from "next/script";
 type LiveChatProvider = "tawk" | "intercom" | "crisp" | "custom" | "none";
 
 const LiveChat = () => {
+  // TEMPORARILY DISABLED: Testing if Tawk.to causes React hydration error #418
+  // TODO: Remove this temporary disable after testing
+  const TEMPORARILY_DISABLED = true;
+
+  // Aggressively disable Tawk.to - prevent any scripts from loading
+  useEffect(() => {
+    if (TEMPORARILY_DISABLED) {
+      // Remove any existing Tawk.to scripts
+      const tawkScripts = document.querySelectorAll(
+        'script[src*="embed.tawk.to"], script[id*="tawk"]'
+      );
+      tawkScripts.forEach((script) => script.remove());
+
+      // Remove Tawk.to container if it exists
+      const tawkContainer = document.getElementById("tawkchat-container");
+      if (tawkContainer) {
+        tawkContainer.remove();
+      }
+
+      // Clear Tawk.to global if it exists
+      if (typeof window !== "undefined") {
+        (window as any).Tawk_API = undefined;
+        (window as any).Tawk_LoadStart = undefined;
+      }
+    }
+  }, []);
+
+  if (TEMPORARILY_DISABLED) {
+    return null;
+  }
+
   const provider: LiveChatProvider =
     (process.env.NEXT_PUBLIC_LIVE_CHAT_PROVIDER as LiveChatProvider) || "none";
 
