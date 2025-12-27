@@ -21,16 +21,16 @@
   width: 100%;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.05) 100%
   );
   backdrop-filter: blur(10px);
   padding: 3rem 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0;
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -59,11 +59,13 @@
 
 .wrapper h1 {
   color: var(--text-primary);
+  font-weight: 400;
   margin-bottom: var(--spacing-md);
 }
 
 .wrapper h2 {
   color: var(--text-primary);
+  font-weight: 400;
   margin-top: var(--spacing-xl);
   margin-bottom: var(--spacing-md);
 }
@@ -88,10 +90,12 @@
 }
 
 .wrapper ul li {
+  color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
 }
 
-.wrapper a {
+.wrapper > p > a,
+.wrapper a:not(.cityLink) {
   color: var(--primary-light);
   text-decoration: none;
   transition: color var(--transition-base);
@@ -107,7 +111,8 @@
   color: var(--text-primary);
 }
 
-.wrapper a:hover {
+.wrapper > p > a:hover,
+.wrapper a:not(.cityLink):hover {
   color: var(--text-primary);
   text-decoration: underline;
   text-decoration-color: var(--primary-light);
@@ -117,7 +122,7 @@
 .serviceAreasSection {
   margin-top: 2rem;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -125,12 +130,12 @@
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
+  font-weight: 400;
 }
 
 .serviceAreasDescription {
   margin-bottom: 1rem;
   color: var(--text-primary);
-  opacity: 0.9;
 }
 
 .cityLinksContainer {
@@ -140,18 +145,21 @@
   margin-bottom: 1rem;
 }
 
-.cityLink {
+.serviceAreasSection .cityLink {
   padding: 0.5rem 1rem;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-decoration: none;
-  color: var(--text-primary);
+  color: #ffffff !important;
+  font-weight: 500;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
-.cityLink:hover {
+.serviceAreasSection .cityLink:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
   text-decoration: none;
 }
@@ -161,14 +169,15 @@
   margin-bottom: 0.5rem;
 }
 
-.viewAllLink a {
-  color: var(--primary-light);
+.serviceAreasSection .viewAllLink a {
+  color: #ffffff !important;
   text-decoration: underline;
   font-weight: 500;
 }
 
-.viewAllLink a:hover {
-  color: var(--primary);
+.serviceAreasSection .viewAllLink a:hover {
+  color: #ffffff !important;
+  opacity: 0.9;
 }
 
 /* tablet device breakpoint: 768px*/

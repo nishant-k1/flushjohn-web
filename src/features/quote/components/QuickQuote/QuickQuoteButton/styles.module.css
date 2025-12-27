@@ -10,7 +10,7 @@
 
 .quickQuoteBtnWrapper {
   position: fixed;
-  right: 20px;
+  left: 20px;
   bottom: 20px;
 }
 
@@ -22,12 +22,12 @@
 
 .quickQuoteBtn {
   position: fixed;
-  right: 20px;
+  left: 20px;
   bottom: 92px;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary);
-  border-radius: 0;
+  border-radius: 50%;
   border: 2px solid var(--primary);
   color: var(--text-primary);
   cursor: pointer;
@@ -53,9 +53,8 @@
   left: 0;
   width: 92%;
   height: 92%;
-  border-radius: 0;
+  border-radius: 50%;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-  border-radius: 0;
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -84,12 +83,12 @@
 
 .phoneBtn {
   position: fixed;
-  right: 20px;
+  left: 20px;
   bottom: 20px;
   height: 4rem;
   width: 4rem;
   background-color: var(--primary);
-  border-radius: 0;
+  border-radius: 50%;
   border: 2px solid var(--primary);
   color: var(--text-primary);
   cursor: pointer;
@@ -116,10 +115,9 @@
   left: 0;
   width: 92%;
   height: 92%;
-  border-radius: 0;
+  border-radius: 50%;
   background-color: initial;
   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-  border-radius: 0;
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -148,7 +146,7 @@
 
 .callout {
   position: fixed;
-  right: 100px;
+  left: 100px;
   bottom: 20px;
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   color: white;
@@ -167,26 +165,26 @@
 .callout::after {
   content: "";
   position: absolute;
-  right: -12px;
+  left: -12px;
   bottom: 20px;
   width: 0;
   height: 0;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 12px solid var(--primary-light);
+  border-right: 12px solid var(--primary-light);
   z-index: 10000;
 }
 
 .callout::before {
   content: "";
   position: absolute;
-  right: -10px;
+  left: -10px;
   bottom: 22px;
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #2c3e50;
+  border-right: 10px solid #2c3e50;
   z-index: 10001;
 }
 
@@ -223,7 +221,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
@@ -233,7 +231,7 @@
 
 @media (max-width: 768px) {
   .callout {
-    right: 90px;
+    left: 90px;
     bottom: 20px;
     max-width: 150px;
     padding: 10px 16px;
@@ -241,18 +239,20 @@
   }
 
   .callout::after {
-    right: -10px;
+    left: -10px;
     bottom: 18px;
-    border-left-width: 10px;
+    border-right-width: 10px;
     border-top-width: 10px;
     border-bottom-width: 10px;
+    border-left-width: 0;
   }
 
   .callout::before {
-    right: -8px;
+    left: -8px;
     bottom: 20px;
-    border-left-width: 8px;
+    border-right-width: 8px;
     border-top-width: 8px;
     border-bottom-width: 8px;
+    border-left-width: 0;
   }
 }

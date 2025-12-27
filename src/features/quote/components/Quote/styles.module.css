@@ -219,7 +219,7 @@
 .stepLabel {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap;

@@ -80,7 +80,7 @@
 
 .description {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.6;
   text-align: center;
   margin-bottom: var(--spacing-xl);
@@ -148,7 +148,7 @@
 }
 
 .cityLink {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 300;
   text-decoration: none;

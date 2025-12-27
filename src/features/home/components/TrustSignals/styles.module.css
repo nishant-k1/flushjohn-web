@@ -121,7 +121,7 @@
 
 .statLabel {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
   line-height: 1.6;
 }

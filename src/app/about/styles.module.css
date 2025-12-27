@@ -28,7 +28,7 @@
 
 .subtitle {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -83,7 +83,7 @@
 .processStep p {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -151,7 +151,7 @@
 .benefit p {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -210,7 +210,7 @@
 .cta p {
   font-size: 1.2rem;
   margin-bottom: var(--spacing-2xl);
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .ctaButtons {

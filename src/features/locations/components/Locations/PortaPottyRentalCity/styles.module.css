@@ -102,7 +102,7 @@
 }
 
 .container p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
@@ -110,7 +110,7 @@
 }
 
 .container li {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 0.75rem;
@@ -157,7 +157,7 @@
   font-size: 1.3rem;
   max-width: 800px;
   margin: 0 auto 2.5rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -266,7 +266,7 @@
 .card p {
   flex-grow: 1;
   margin-bottom: 1.5rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -294,7 +294,7 @@
 }
 
 .testimonialCard p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -345,7 +345,7 @@
 }
 
 .serviceCard p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -378,7 +378,7 @@
 }
 
 .cityCard p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -439,7 +439,7 @@
 }
 
 .featureContent p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -463,7 +463,7 @@
 .featureContent p {
   margin-bottom: 0;
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 /* Services List */
@@ -498,7 +498,7 @@
 }
 
 .servicesList li p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 

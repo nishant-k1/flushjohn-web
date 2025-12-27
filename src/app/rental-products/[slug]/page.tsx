@@ -1,7 +1,9 @@
 import React from "react";
+import { notFound } from "next/navigation";
 import { IndividualProduct } from "@/features/products/components";
 import { s3assets, websiteURL, phone } from "@/constants";
 import { products_data } from "@/features/products/constants";
+import { findProductBySlug } from "@/utils/slug";
 
 export const generateMetadata = async ({
   params,
@@ -11,13 +13,10 @@ export const generateMetadata = async ({
   const { slug } = await params;
   if (!slug) return { title: "FlushJohn Products" };
 
-  const currentProduct = products_data.product_list.find((product) => {
-    const formattedSlug = product.title.toLowerCase().replace(/\s+/g, "-");
-    return formattedSlug === slug;
-  });
+  const currentProduct = findProductBySlug(slug, products_data.product_list);
 
   if (!currentProduct) {
-    throw new Error(`Invalid slug: ${slug}`);
+    notFound();
   }
 
   const { title, image, keywords } = currentProduct;
@@ -69,9 +68,7 @@ const ProductPage = async ({
   const { slug } = await params;
   if (!slug) return;
 
-  const product = products_data.product_list.find((p) => {
-    return p.title.toLowerCase().replace(/\s+/g, "-") === slug;
-  });
+  const product = findProductBySlug(slug, products_data.product_list);
 
   if (!product) return <p>Product not found</p>;
 

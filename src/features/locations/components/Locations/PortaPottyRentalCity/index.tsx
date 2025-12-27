@@ -834,7 +834,7 @@ export default function PortaPottyRentalCity({
                   </Link>
                   , or{" "}
                   <Link
-                    href="/rental-products/ada-compliant-portable-toilet"
+                    href="/rental-products/ada-compliant-porta-potty"
                     style={{
                       color: "var(--primary-light)",
                       textDecoration: "underline",

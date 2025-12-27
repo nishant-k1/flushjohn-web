@@ -25,13 +25,14 @@ export const metadata: Metadata = {
 const BlogDashboard = () => {
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
-      <h1 style={{ marginBottom: "30px", color: "#333" }}>
+      <h1 style={{ marginBottom: "30px", color: "var(--text-primary)" }}>
         Blog SEO Dashboard
       </h1>
 
       <div
         style={{
-          background: "#e8f5e8",
+          background: "var(--neutral-700)",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
           padding: "20px",
           borderRadius: "0",
           marginBottom: "30px",
@@ -41,7 +42,7 @@ const BlogDashboard = () => {
           <TrendingUp size={24} />
           Blog SEO Strategy for Lead Generation
         </h2>
-        <p style={{ margin: "0", color: "#555" }}>
+        <p style={{ margin: "0", color: "var(--text-primary)" }}>
           Use these guidelines when creating blog posts in your CRM to maximize
           SEO impact and lead generation. Each blog post can generate 2-5 leads
           per month when properly optimized.
@@ -49,14 +50,14 @@ const BlogDashboard = () => {
       </div>
 
       <div style={{ marginBottom: "40px" }}>
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           SEO Guidelines for CRM Blog Posts
         </h2>
         <SEOGuidelines />
       </div>
 
       <div style={{ marginBottom: "40px" }}>
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Content Strategy & Ideas
         </h2>
         <ContentStrategy />
@@ -64,13 +65,14 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "#f8f9fa",
+          background: "var(--neutral-700)",
           padding: "30px",
           borderRadius: "0",
           marginBottom: "30px",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Blog SEO Best Practices
         </h2>
 
@@ -83,18 +85,18 @@ const BlogDashboard = () => {
         >
           <div
             style={{
-              background: "white",
+              background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid #ddd",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             <h3
-              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
             >
               Title Optimization
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Include primary keyword</li>
               <li>Keep under 60 characters</li>
               <li>Use power words (Guide, Tips, Complete)</li>
@@ -105,18 +107,18 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "white",
+              background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid #ddd",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             <h3
-              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
             >
               Content Structure
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>1000+ words minimum</li>
               <li>Use H2, H3 headings</li>
               <li>Include bullet points</li>
@@ -127,18 +129,18 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "white",
+              background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid #ddd",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             <h3
-              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
             >
               Internal Linking
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Link to city pages</li>
               <li>Link to service pages</li>
               <li>Link to related posts</li>
@@ -149,18 +151,18 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "white",
+              background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid #ddd",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             <h3
-              style={{ margin: "0 0 10px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
             >
               Call-to-Actions
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Include quote CTA</li>
               <li>Add phone number</li>
               <li>Link to contact page</li>
@@ -173,13 +175,14 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "#d1ecf1",
+          background: "var(--neutral-700)",
           padding: "30px",
           borderRadius: "0",
           marginBottom: "30px",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Content Calendar Template
         </h2>
 
@@ -255,16 +258,17 @@ const BlogDashboard = () => {
             <div
               key={index}
               style={{
-                background: "white",
+                background: "var(--neutral-600)",
                 padding: "15px",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
                 borderRadius: "0",
-                border: "1px solid #ddd",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
               }}
             >
               <h4
                 style={{
                   margin: "0 0 8px 0",
-                  color: "var(--primary-bg-color)",
+                  color: "var(--text-primary)",
                   fontSize: "1.1em",
                 }}
               >
@@ -275,7 +279,7 @@ const BlogDashboard = () => {
                   margin: "0 0 5px 0",
                   fontSize: "0.9em",
                   fontWeight: "bold",
-                  color: "#333",
+                  color: "var(--text-primary)",
                 }}
               >
                 {month.theme}
@@ -284,7 +288,7 @@ const BlogDashboard = () => {
                 style={{
                   margin: "0",
                   fontSize: "0.8em",
-                  color: "#666",
+                  color: "var(--text-primary)",
                 }}
               >
                 {month.focus}
@@ -296,16 +300,17 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "#fff3cd",
+          background: "var(--neutral-700)",
           padding: "30px",
           borderRadius: "0",
           textAlign: "center",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h2 style={{ marginBottom: "15px", color: "#333" }}>
+        <h2 style={{ marginBottom: "15px", color: "var(--text-primary)" }}>
           Ready to Start Blogging?
         </h2>
-        <p style={{ margin: "0 0 20px 0", color: "#555" }}>
+        <p style={{ margin: "0 0 20px 0", color: "var(--text-primary)" }}>
           Use the blog post generator above to create your first SEO-optimized
           post, or follow the content strategy to plan your monthly blog
           calendar.

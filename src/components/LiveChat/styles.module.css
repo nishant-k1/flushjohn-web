@@ -1,0 +1,30 @@
+/**
+ * LiveChat Component Styles
+ * Handles z-index management and alignment to ensure proper layering
+ * 
+ * UX Best Practices Applied:
+ * - Chat widget aligned with QuickQuote/Phone buttons on same vertical line
+ * - QuickQuote/Phone buttons moved up to avoid overlap
+ * - Proper z-index hierarchy (buttons: 9998, chat: 9997)
+ */
+
+/* Tawk.to widget z-index and alignment - below buttons but above most content */
+:global(#tawkchat-container) {
+  z-index: 9997 !important; /* Below QuickQuote buttons (9998) but above most content */
+  left: 20px !important; /* Aligned with QuickQuote and Phone buttons */
+  bottom: 20px !important; /* Positioned at bottom */
+}
+
+/* Tawk.to widget when minimized - ensure proper alignment */
+:global(#tawkchat-container iframe) {
+  z-index: 9997 !important;
+}
+
+/* Ensure Tawk.to button is same size as other buttons for perfect alignment */
+:global(#tawkchat-container .tawk-button) {
+  width: 4rem !important;
+  height: 4rem !important;
+  min-width: 4rem !important;
+  max-width: 4rem !important;
+  border-radius: 50% !important;
+}

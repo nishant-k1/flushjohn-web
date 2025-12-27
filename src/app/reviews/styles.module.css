@@ -28,7 +28,7 @@
 
 .subtitle {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   max-width: 800px;
   margin: 0 auto var(--spacing-2xl);
 }
@@ -67,7 +67,7 @@
 
 .ratingText span {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .reviewsSection {
@@ -173,7 +173,7 @@
 .reviewBody {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
   font-style: italic;
 }
@@ -199,7 +199,7 @@
 .ctaSection p {
   font-size: 1.1rem;
   margin-bottom: var(--spacing-2xl);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;

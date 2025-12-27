@@ -316,18 +316,21 @@ const nextConfig = {
                       process.env.VERCEL === "1" || process.env.VERCEL_ENV;
                     // Base CSP policy
                     let scriptSrc =
-                      "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net";
+                      "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net https://embed.tawk.to";
                     let connectSrc =
-                      "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com";
+                      "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com https://embed.tawk.to wss://embed.tawk.to";
+                    let frameSrc =
+                      "'self' https://www.googletagmanager.com https://embed.tawk.to";
 
                     // Add Vercel Live scripts for Vercel deployments (preview/dev environments)
                     // Note: CSP doesn't support wildcards, so we allow the main domain
                     if (isVercel) {
                       scriptSrc += " https://vercel.live";
                       connectSrc += " https://vercel.live wss://vercel.live";
+                      frameSrc += " https://vercel.live";
                     }
 
-                    return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src ${connectSrc}; frame-src 'self' https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;`;
+                    return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.flushjohn.com; font-src 'self' https://fonts.gstatic.com https://cdn.flushjohn.com data:; img-src 'self' data: https: blob: https://images.unsplash.com; connect-src ${connectSrc}; frame-src ${frameSrc}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;`;
                   })(),
                 },
               ]

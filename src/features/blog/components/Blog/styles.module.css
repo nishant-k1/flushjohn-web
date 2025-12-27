@@ -40,7 +40,7 @@
 .searchIcon {
   position: absolute;
   left: 12px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   pointer-events: none;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .searchInput::placeholder {
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .clearButton {
@@ -70,7 +70,7 @@
   right: 8px;
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -127,7 +127,7 @@
 .filterRemove {
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   cursor: pointer;
   padding: 2px;
   display: flex;
@@ -223,7 +223,7 @@
 }
 
 .featuredExcerpt {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;
@@ -233,7 +233,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
   flex-wrap: wrap;
 }
@@ -273,7 +273,7 @@
   background-color: var(--neutral-600);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
   text-align: left;
   cursor: pointer;
@@ -307,7 +307,7 @@
   background-color: var(--neutral-600);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 14px;
   transition: all var(--transition-base);
@@ -423,7 +423,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 48px;
 }
 
@@ -457,7 +457,7 @@
 
 .textContainer h3 {
   font-size: 13px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   text-transform: none !important;
@@ -514,14 +514,14 @@
 
 @media screen and (min-width: 1024px) {
   .blogWrapper {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Blog Stats */
 .blogStats {
   margin-bottom: 1.5rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
 }
 
@@ -554,7 +554,7 @@
 }
 
 .loadingContainer p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 16px;
   margin: 0;
 }
@@ -695,7 +695,7 @@
 
 .ellipsis {
   padding: 0 8px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
   user-select: none;
 }
@@ -782,7 +782,7 @@
 
 .relatedLink p {
   margin: 0;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 0.9rem;
   transition: color var(--transition-base);
 }

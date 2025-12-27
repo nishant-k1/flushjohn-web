@@ -114,14 +114,14 @@ const SEOGuidelines = () => {
   return (
     <div
       style={{
-        background: "white",
+        background: "var(--neutral-700)",
         padding: "30px",
         borderRadius: "0",
-        border: "1px solid #ddd",
+        border: "1px solid rgba(255, 255, 255, 0.15)",
         marginBottom: "30px",
       }}
     >
-      <h2 style={{ marginBottom: "30px", color: "#333", textAlign: "center" }}>
+      <h2 style={{ marginBottom: "30px", color: "var(--text-primary)", textAlign: "center" }}>
         SEO Guidelines for CRM Blog Posts
       </h2>
 
@@ -137,16 +137,16 @@ const SEOGuidelines = () => {
           <div
             key={index}
             style={{
-              background: "#f8f9fa",
+              background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid #ddd",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             <h3
               style={{
                 margin: "0 0 15px 0",
-                color: "var(--primary-bg-color)",
+                color: "var(--text-primary)",
                 fontSize: "1.2em",
               }}
             >
@@ -159,7 +159,7 @@ const SEOGuidelines = () => {
                   style={{
                     marginBottom: "8px",
                     fontSize: "0.9em",
-                    color: "#555",
+                    color: "var(--text-primary)",
                   }}
                 >
                   {item}
@@ -171,7 +171,7 @@ const SEOGuidelines = () => {
       </div>
 
       <div style={{ marginBottom: "40px" }}>
-        <h2 style={{ marginBottom: "20px", color: "#333" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Content Ideas by Category
         </h2>
         <div
@@ -185,16 +185,16 @@ const SEOGuidelines = () => {
             <div
               key={index}
               style={{
-                background: "#f8f9fa",
+                background: "var(--neutral-600)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid #ddd",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
               <h3
                 style={{
                   margin: "0 0 15px 0",
-                  color: "var(--primary-bg-color)",
+                  color: "var(--text-primary)",
                   fontSize: "1.2em",
                 }}
               >
@@ -207,7 +207,7 @@ const SEOGuidelines = () => {
                     style={{
                       marginBottom: "8px",
                       fontSize: "0.9em",
-                      color: "#555",
+                      color: "var(--text-primary)",
                     }}
                   >
                     {idea}
@@ -221,16 +221,17 @@ const SEOGuidelines = () => {
 
       <div
         style={{
-          background: "#e8f5e8",
+          background: "var(--neutral-600)",
           padding: "20px",
-          borderRadius: "8px",
+          borderRadius: "0",
           marginBottom: "30px",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h3 style={{ margin: "0 0 15px 0", color: "var(--primary)" }}>
+        <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
           Call-to-Action Examples
         </h3>
-        <p style={{ margin: "0 0 15px 0", color: "#555" }}>
+        <p style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
           Include these CTAs in your blog posts to drive conversions:
         </p>
         <ul style={{ margin: "0", paddingLeft: "20px" }}>
@@ -240,7 +241,7 @@ const SEOGuidelines = () => {
               style={{
                 marginBottom: "8px",
                 fontSize: "0.9em",
-                color: "#555",
+                color: "var(--text-primary)",
               }}
             >
               "{cta}"
@@ -251,17 +252,18 @@ const SEOGuidelines = () => {
 
       <div
         style={{
-          background: "#fff3cd",
+          background: "var(--neutral-600)",
           padding: "20px",
-          borderRadius: "8px",
+          borderRadius: "0",
           textAlign: "center",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h3 style={{ margin: "0 0 10px 0", color: "#333", display: "flex", alignItems: "center", gap: "8px" }}>
+        <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "8px" }}>
           <Lightbulb size={20} />
           Pro Tip
         </h3>
-        <p style={{ margin: "0", color: "#555" }}>
+        <p style={{ margin: "0", color: "var(--text-primary)" }}>
           When creating blog posts in your CRM, focus on local content for your
           25 target cities. Each city-specific post can generate 2-5 leads per
           month when properly optimized!

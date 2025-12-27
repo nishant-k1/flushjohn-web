@@ -245,7 +245,7 @@
 
 .wrapper p {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-align: center;
   line-height: 1.6;
   margin: 0; /* Remove default margins for consistent spacing */

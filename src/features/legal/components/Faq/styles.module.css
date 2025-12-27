@@ -86,13 +86,13 @@
 
 .faqItem p {
   color: var(--text-primary);
-  opacity: 0.95;
+  opacity: 1;
   line-height: 1.8;
   margin-bottom: 0.5rem;
 }
 
 .faqItem small {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 0.875rem;
 }
 
@@ -194,7 +194,7 @@
 
 .ctaBox p {
   color: var(--text-primary);
-  opacity: 0.95;
+  opacity: 1;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   line-height: 1.8;

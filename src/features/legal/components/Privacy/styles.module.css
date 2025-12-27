@@ -31,7 +31,7 @@
 .container li {
   color: var(--text-primary);
   padding-bottom: 1rem;
-  opacity: 0.95;
+  opacity: 1;
   line-height: 1.8;
 }
 

@@ -64,7 +64,7 @@
 
 .wrapper p {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.8;
   margin: 0;
   font-style: italic;

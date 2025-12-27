@@ -62,7 +62,7 @@
 
 .unitsText {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   white-space: nowrap;
   margin: 0;
   padding: 0;

@@ -254,14 +254,15 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                 <Link
                   href="/quote"
                   style={{
-                    background: "white",
-                    color: "var(--primary-bg-color)",
+                    background: "var(--text-primary)",
+                    color: "var(--bg-primary)",
                     padding: "12px 25px",
                     textDecoration: "none",
                     borderRadius: "0",
                     fontSize: "1em",
                     fontWeight: "bold",
                     display: "inline-block",
+                    transition: "all 0.3s ease",
                   }}
                 >
                   Get Free Quote

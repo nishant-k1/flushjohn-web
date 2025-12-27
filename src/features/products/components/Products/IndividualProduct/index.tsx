@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { products_data } from "../../../constants";
 import Image from "next/image";
 import Link from "next/link";
+import { findProductBySlug } from "@/utils/slug";
 
 interface IndividualProductProps {
   slug: string;
@@ -13,13 +14,18 @@ interface IndividualProductProps {
 const IndividualProduct = ({ slug }: IndividualProductProps) => {
   if (!slug) return null; // Return null if slug is not provided
 
-  const currentProduct = products_data.product_list.find((product) => {
-    const formattedSlug = product.title.toLowerCase().replace(/\s+/g, "-");
-    return formattedSlug === slug;
-  });
+  const currentProduct = findProductBySlug(slug, products_data.product_list);
 
   if (!currentProduct) {
-    throw new Error(`Invalid slug: ${slug}`);
+    return (
+      <div className={styles.product}>
+        <div className={styles.container}>
+          <h1>Product Not Found</h1>
+          <p>The product you're looking for doesn't exist.</p>
+          <Link href="/rental-products">View All Products</Link>
+        </div>
+      </div>
+    );
   }
 
   const { title, image, desc } = currentProduct;
@@ -31,7 +37,7 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
         <Breadcrumbs path={`/rental-products/${slug}`} />
         <div className={styles.wrapper}>
           <h1>{title} - Porta Potty Rentals Nearby</h1>
-          <p>
+          <p style={{ color: "var(--text-primary)" }}>
             Reliable, hygienic, and affordable portable toilet rentals for your
             event or job site.
           </p>
@@ -82,20 +88,20 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
           <p>{desc}</p>
           <h2>Why Choose Our {title}?</h2>
           <ul>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Check size={18} />
+            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+              <Check size={18} color="var(--primary-light)" />
               Clean and sanitized before every use
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Check size={18} />
+            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+              <Check size={18} color="var(--primary-light)" />
               Durable and weather-resistant design
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Check size={18} />
+            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+              <Check size={18} color="var(--primary-light)" />
               Available for short-term and long-term rentals
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Check size={18} />
+            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+              <Check size={18} color="var(--primary-light)" />
               Perfect for events, construction sites, and outdoor gatherings
             </li>
           </ul>
@@ -131,15 +137,15 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             </p>
           </div>
 
-          <p style={{ marginTop: "2rem" }}>
-            Need a {title}? <Link href="/quote">Get a free quote</Link> today or
+          <p style={{ marginTop: "2rem", color: "var(--text-primary)" }}>
+            Need a {title}? <Link href="/quote" style={{ color: "#ffffff" }}>Get a free quote</Link> today or
             learn more about our{" "}
-            <Link href="/rental-products">rental options</Link>.
+            <Link href="/rental-products" style={{ color: "#ffffff" }}>rental options</Link>.
           </p>
-          <p>
-            <Link href="/">Back to Homepage</Link> |{" "}
-            <Link href="/faq">Frequently Asked Questions</Link> |{" "}
-            <Link href="/contact">Contact Us</Link>
+          <p style={{ color: "var(--text-primary)" }}>
+            <Link href="/" style={{ color: "#ffffff" }}>Back to Homepage</Link> |{" "}
+            <Link href="/faq" style={{ color: "#ffffff" }}>Frequently Asked Questions</Link> |{" "}
+            <Link href="/contact" style={{ color: "#ffffff" }}>Contact Us</Link>
           </p>
         </div>
       </div>

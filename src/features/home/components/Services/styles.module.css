@@ -90,7 +90,7 @@
 
 .description {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.6;
   max-width: 100%;
 }
@@ -239,7 +239,7 @@
 
 .cardBody {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.6;
   margin-bottom: 0;
   display: -webkit-box;

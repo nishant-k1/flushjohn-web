@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Slider from "./Slider";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Link from "next/link";
+import { generateProductSlug } from "@/utils/slug";
 
 const Products = () => {
   const { product_list } = products_data;
@@ -15,11 +16,7 @@ const Products = () => {
           <div className={styles.productsWrapper}>
             {product_list.map((item, index) => {
               const { id, image, title, desc } = item;
-              const slug = title
-                .toLowerCase()
-                .replace(/ /g, "-")
-                .replace(/\/+/g, "/")
-                .replace(/^-|-$/g, "");
+              const slug = generateProductSlug(title);
               return (
                 <div
                   className={styles.wrapper}

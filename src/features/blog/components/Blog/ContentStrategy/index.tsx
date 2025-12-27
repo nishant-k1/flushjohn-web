@@ -147,19 +147,20 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
   return (
     <div
       style={{
-        background: "#f8f9fa",
+        background: "var(--neutral-700)",
         padding: "30px",
         borderRadius: "0",
         marginTop: "40px",
+        border: "1px solid rgba(255, 255, 255, 0.15)",
       }}
     >
-      <h2 style={{ marginBottom: "30px", color: "#333", textAlign: "center" }}>
+      <h2 style={{ marginBottom: "30px", color: "var(--text-primary)", textAlign: "center" }}>
         Blog Content Strategy for Maximum SEO Impact
       </h2>
 
       {/* Content Ideas by Category */}
       <div style={{ marginBottom: "40px" }}>
-        <h3 style={{ marginBottom: "20px", color: "var(--primary-bg-color)" }}>
+        <h3 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Content Ideas by Category
         </h3>
         <div
@@ -173,16 +174,16 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "white",
+                background: "var(--neutral-600)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid #ddd",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
               <h4
                 style={{
                   margin: "0 0 15px 0",
-                  color: "var(--primary-bg-color)",
+                  color: "var(--text-primary)",
                   fontSize: "1.2em",
                 }}
               >
@@ -195,7 +196,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                     style={{
                       marginBottom: "8px",
                       fontSize: "0.9em",
-                      color: "#555",
+                      color: "var(--text-primary)",
                     }}
                   >
                     {idea}
@@ -209,7 +210,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
 
       {/* Keyword Suggestions */}
       <div style={{ marginBottom: "40px" }}>
-        <h3 style={{ marginBottom: "20px", color: "var(--primary-bg-color)" }}>
+        <h3 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           Keyword Strategy
         </h3>
         <div
@@ -223,18 +224,18 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "white",
+                background: "var(--neutral-600)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid #ddd",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
               <h4
-                style={{ margin: "0 0 10px 0", fontSize: "1em", color: "#333" }}
+                style={{ margin: "0 0 10px 0", fontSize: "1em", color: "var(--text-primary)" }}
               >
                 Keyword Group {index + 1}
               </h4>
-              <div style={{ fontSize: "0.9em" }}>
+              <div style={{ fontSize: "0.9em", color: "var(--text-primary)" }}>
                 <div style={{ marginBottom: "5px" }}>
                   <strong>Primary:</strong> {keywordSet.primary}
                 </div>
@@ -255,7 +256,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
 
       {/* Content Calendar */}
       <div style={{ marginBottom: "40px" }}>
-        <h3 style={{ marginBottom: "20px", color: "var(--primary-bg-color)" }}>
+        <h3 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
           12-Month Content Calendar
         </h3>
         <div
@@ -269,16 +270,16 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "white",
+                background: "var(--neutral-600)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid #ddd",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
               <h4
                 style={{
                   margin: "0 0 8px 0",
-                  color: "var(--primary-bg-color)",
+                  color: "var(--text-primary)",
                   fontSize: "1.1em",
                 }}
               >
@@ -289,7 +290,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                   margin: "0 0 5px 0",
                   fontSize: "0.9em",
                   fontWeight: "bold",
-                  color: "#333",
+                  color: "var(--text-primary)",
                 }}
               >
                 {month.theme}
@@ -298,7 +299,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                 style={{
                   margin: "0",
                   fontSize: "0.8em",
-                  color: "#666",
+                  color: "var(--text-primary)",
                 }}
               >
                 {month.focus}
@@ -311,13 +312,13 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
       {/* SEO Best Practices */}
       <div
         style={{
-          background: "white",
+          background: "var(--neutral-600)",
           padding: "20px",
-          borderRadius: "8px",
-          border: "1px solid #ddd",
+          borderRadius: "0",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h3 style={{ marginBottom: "15px", color: "var(--primary-bg-color)" }}>
+        <h3 style={{ marginBottom: "15px", color: "var(--text-primary)" }}>
           SEO Best Practices for Blog Posts
         </h3>
         <div
@@ -328,10 +329,10 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
           }}
         >
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "#333" }}>
+            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
               Title Optimization
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Include primary keyword</li>
               <li>Keep under 60 characters</li>
               <li>Use power words</li>
@@ -339,10 +340,10 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "#333" }}>
+            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
               Content Structure
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>1000+ words minimum</li>
               <li>Use H2, H3 headings</li>
               <li>Include bullet points</li>
@@ -350,10 +351,10 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "#333" }}>
+            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
               Internal Linking
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Link to city pages</li>
               <li>Link to service pages</li>
               <li>Link to related posts</li>
@@ -361,10 +362,10 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "#333" }}>
+            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
               Call-to-Actions
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em" }}>
+            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
               <li>Include quote CTA</li>
               <li>Add phone number</li>
               <li>Link to contact page</li>
