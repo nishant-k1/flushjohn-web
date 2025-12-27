@@ -10,6 +10,9 @@ export interface Testimonial {
   image: Image;
   title: string;
   body: string;
+  date?: string;
+  rating?: number;
+  verified?: boolean;
 }
 
 export interface TestimonialsData {
@@ -27,6 +30,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Terry Miles - Construction Site Manager, Houston, TX",
       body: "We've been using FlushJohn for our construction projects in Houston for over a year. Their vendor network is reliable, and the units are always clean and well-maintained. The pricing is competitive, and they handle all the coordination for us.",
+      date: "March 15, 2024",
+      rating: 5,
+      verified: true,
     },
     {
       image: {
@@ -35,6 +41,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Dean Lacey - Homeowner, Dallas, TX",
       body: "Needed a hand wash station during my home renovation. FlushJohn connected me with a local vendor quickly, and the service was professional. The unit was delivered on time and picked up promptly when we were done.",
+      date: "April 22, 2024",
+      rating: 5,
+      verified: true,
     },
     {
       image: {
@@ -43,6 +52,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Christine Barnes - Event Coordinator, Los Angeles, CA",
       body: "Organized a family reunion in LA and needed portable restrooms. FlushJohn made it easy to get quotes and the booking process was smooth. The units were clean and delivered on time. Great experience overall.",
+      date: "May 8, 2024",
+      rating: 5,
+      verified: true,
     },
     {
       image: {
@@ -51,6 +63,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Janet Estremera - Wedding Planner, Miami, FL",
       body: "Used FlushJohn for a wedding event in Miami. They coordinated with a local vendor who delivered luxury restroom trailers. The service was excellent, and the units were perfect for our outdoor wedding venue. Highly recommend for event planners.",
+      date: "June 12, 2024",
+      rating: 5,
+      verified: true,
     },
     {
       image: {
@@ -59,6 +74,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Michael Chen - Project Manager, Atlanta, GA",
       body: "Managing multiple construction sites across Atlanta, we rely on FlushJohn to connect us with reliable vendors. Their network covers all our locations, and the service has been consistent. The quote process is straightforward, and pricing is transparent.",
+      date: "July 3, 2024",
+      rating: 5,
+      verified: true,
     },
     {
       image: {
@@ -67,6 +85,9 @@ export const testimonials: TestimonialsData = {
       },
       title: "Sarah Johnson - Festival Organizer, Chicago, IL",
       body: "Organized a music festival in Chicago and needed multiple units. FlushJohn helped us find a vendor who could handle the volume and timing. The units were well-maintained throughout the event, and the vendor was responsive to our needs.",
+      date: "August 19, 2024",
+      rating: 5,
+      verified: true,
     },
   ],
 };

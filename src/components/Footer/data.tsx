@@ -97,6 +97,12 @@ export const footerLinks = {
       icon: <ArticleIcon />,
     },
     {
+      id: "10.6",
+      name: "How It Works",
+      href: "/how-it-works",
+      icon: <ArticleIcon />,
+    },
+    {
       id: "11",
       name: "FAQ",
       href: "/faq",

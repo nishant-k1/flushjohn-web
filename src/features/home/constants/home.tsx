@@ -2,6 +2,7 @@ import React from "react";
 import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
+import { MdLocationOn } from "react-icons/md";
 
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
@@ -81,6 +82,12 @@ export const home_data: HomeData = {
         image: <GiVacuumCleaner />,
         title: "Cleanliness",
         body: "We ensure that all our porta potties and handwash stations are thoroughly cleaned and sanitized before and after each use, using high-quality cleaning products and equipment.",
+      },
+      {
+        id: 4,
+        image: <MdLocationOn />,
+        title: "Wide Coverage",
+        body: "Through our network of trusted local partners, we serve 25+ cities across 6 states, ensuring you can find reliable porta potty rental service wherever you need it.",
       },
     ],
   },

@@ -57,7 +57,7 @@ const CTAsection = (props: Props) => {
           <div className={styles.trustElements}>
             <div className={styles.trustItem}>
               <span className={styles.trustIcon}><Zap size={20} /></span>
-              <span>Same-Day Delivery</span>
+              <span>Fast Delivery (24-48hrs)</span>
             </div>
             <div className={styles.trustItem}>
               <span className={styles.trustIcon}><DollarSign size={20} /></span>

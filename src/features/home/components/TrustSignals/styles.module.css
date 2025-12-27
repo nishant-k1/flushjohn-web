@@ -128,7 +128,7 @@
 
 .trustBadges {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap-md); /* 32px - matches nexbaron-web gap-8 for 3-column grids */
   margin-bottom: var(--spacing-3xl);
 }
@@ -245,9 +245,10 @@
     gap: var(--gap-sm); /* 24px - consistent gap */
     margin-bottom: var(--spacing-2xl);
   }
+}
 
-  .badge {
-    padding: var(--spacing-sm) var(--spacing-xs);
-    font-size: 0.8125rem;
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+  .trustBadges {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

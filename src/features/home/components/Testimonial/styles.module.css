@@ -154,6 +154,14 @@
   letter-spacing: 0.01em;
 }
 
+.testimonialDate {
+  font-size: 0.875rem !important;
+  color: var(--text-tertiary) !important;
+  margin-top: 0.75rem !important;
+  font-style: normal !important;
+  opacity: 0.8;
+}
+
 /* Tablet Breakpoint */
 @media only screen and (min-width: 768px) {
   .wrapper {

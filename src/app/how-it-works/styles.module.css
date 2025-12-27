@@ -1,0 +1,254 @@
+.howItWorksPage {
+  padding: var(--spacing-section) var(--spacing-xl);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 60vh;
+}
+
+.container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.hero {
+  text-align: center;
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-family: var(--font-merriweather);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.processSection {
+  margin-bottom: var(--spacing-4xl);
+}
+
+.processSteps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  position: relative;
+}
+
+.processSteps::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  opacity: 0.3;
+}
+
+.step {
+  display: flex;
+  gap: var(--spacing-xl);
+  position: relative;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: var(--spacing-sm);
+}
+
+.stepContent h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  font-family: var(--font-merriweather);
+}
+
+.stepContent p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.benefitsSection {
+  margin-bottom: var(--spacing-4xl);
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.benefitsSection h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-2xl);
+  color: var(--text-primary);
+  text-align: center;
+  font-family: var(--font-merriweather);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap-md);
+}
+
+.benefitCard {
+  padding: var(--spacing-xl);
+  background: var(--neutral-700);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.benefitCard h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  font-family: var(--font-merriweather);
+}
+
+.benefitCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ctaSection {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  margin-top: var(--spacing-4xl);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-family: var(--font-merriweather);
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-2xl);
+  color: var(--text-secondary);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  display: inline-block;
+  padding: var(--spacing-lg) var(--spacing-3xl);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 400;
+  font-size: 1.1rem;
+  transition: all var(--transition-base);
+  border: 2px solid var(--text-primary);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.secondaryButton {
+  display: inline-block;
+  padding: var(--spacing-lg) var(--spacing-3xl);
+  background: transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 400;
+  font-size: 1.1rem;
+  border: 2px solid var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.secondaryButton:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .processSteps::before {
+    left: 1.25rem;
+  }
+
+  .stepNumber {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  .stepContent h3 {
+    font-size: 1.25rem;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+

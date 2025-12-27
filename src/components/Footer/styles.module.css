@@ -269,28 +269,44 @@
 
 .bottomFooter {
   padding: 2rem 0 1rem;
-  font-size: 0.8125rem;
-  color: var(--text-primary);
-  opacity: 0.8;
-  text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   margin-top: 2rem;
   position: relative;
   z-index: 1;
-  letter-spacing: 0.02em;
-  font-weight: 300;
 }
 
-.bottomFooter a {
+.copyright {
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  opacity: 0.8;
+  text-align: center;
+  letter-spacing: 0.02em;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.copyright a {
   color: var(--text-primary);
   text-decoration: none;
   opacity: 0.9;
   transition: opacity var(--transition-base);
 }
 
-.bottomFooter a:hover {
+.copyright a:hover {
   opacity: 1;
   text-decoration: underline;
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+  font-style: italic;
+  padding: 0 1rem;
 }
 
 /* tablet device breakpoint: 768px*/

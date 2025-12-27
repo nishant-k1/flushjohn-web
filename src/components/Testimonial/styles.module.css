@@ -126,6 +126,14 @@
   color: #ccc;
 }
 
+.testimonialDate {
+  font-size: 0.875rem !important;
+  color: #666 !important;
+  margin-top: 0.75rem !important;
+  font-style: normal !important;
+  opacity: 0.8;
+}
+
 /* Tablet Breakpoint */
 @media only screen and (min-width: 768px) {
   .wrapper {

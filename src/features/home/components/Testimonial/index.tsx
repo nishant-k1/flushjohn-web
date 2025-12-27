@@ -14,6 +14,7 @@ type TestimonialProps = {
     };
     rating?: number;
     verified?: boolean;
+    date?: string;
   }[];
 };
 
@@ -80,6 +81,9 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                       )}
                     </div>
                     <p>{item.body}</p>
+                    {item.date && (
+                      <p className={styles.testimonialDate}>{item.date}</p>
+                    )}
                   </div>
                 </div>
               </div>

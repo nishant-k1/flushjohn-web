@@ -14,16 +14,16 @@ import Home from "@/features/home/components/Home";
 
 export const metadata: Metadata = {
   title:
-    "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities Nationwide | FlushJohn",
+    "Porta Potty Rentals | Fast Delivery | Serving 25+ Cities Nationwide | FlushJohn",
   description:
-    "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Same-day delivery, competitive pricing, licensed & insured. Serving 25+ cities across TX, FL, CA, GA, IL, and DE. Get your free quote today!",
+    "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Serving 25+ cities across TX, FL, CA, GA, IL, and DE. Get your free quote today!",
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
     title:
-      "Porta Potty Rentals | Same-Day Delivery | Serving 25+ Cities | FlushJohn",
+      "Porta Potty Rentals | Fast Delivery | Serving 25+ Cities | FlushJohn",
     description:
-      "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Same-day delivery, competitive pricing, licensed & insured. Serving 25+ cities nationwide.",
+      "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Serving 25+ cities nationwide.",
     url: websiteURL,
     type: "website",
     siteName: "FlushJohn",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Porta Potty Rentals | Serving 25+ Cities Nationwide | FlushJohn",
     description:
-      "Professional porta potty rentals in 25+ cities. Same-day delivery, competitive pricing, licensed & insured. Get your free quote today!",
+      "Professional porta potty rentals in 25+ cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Get your free quote today!",
     images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
   alternates: {
@@ -521,7 +521,7 @@ const faqJsonLd = {
       name: "Do you provide same-day porta potty delivery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, we offer same-day delivery for urgent porta potty rental needs when inventory is available. Contact us to check availability in your area for emergency portable toilet delivery.",
+        text: "We offer fast delivery, typically within 24-48 hours. Same-day delivery may be available in select locations when inventory permits. Contact us to check availability in your area for urgent portable toilet delivery needs.",
       },
     },
     {
