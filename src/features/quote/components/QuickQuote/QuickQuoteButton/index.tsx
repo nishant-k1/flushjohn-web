@@ -40,15 +40,23 @@ export default function QuickQuoteButton() {
         className={styles.phoneBtn}
         aria-label="Call Us"
         onClick={() => {
-          window.gtag("event", "conversion", {
-            send_to: "AW-11248564671/OTFxCOSso6oaEL_z3fMp",
-            event_category: "Phone Call",
-            event_label: "Quick Phone Link",
-            value: 1,
-          });
+          if (
+            typeof window !== "undefined" &&
+            typeof window.gtag === "function"
+          ) {
+            window.gtag("event", "conversion", {
+              send_to: "AW-11248564671/OTFxCOSso6oaEL_z3fMp",
+              event_category: "Phone Call",
+              event_label: "Quick Phone Link",
+              value: 1,
+            });
+          }
         }}
       >
-        <PhoneIcon className={styles.icon} size={24} />
+        <PhoneIcon
+          className={styles.icon}
+          size={24}
+        />
       </Link>
     </div>
   );
