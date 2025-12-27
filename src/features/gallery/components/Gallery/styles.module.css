@@ -1,6 +1,6 @@
 .gallery {
   background-color: var(--bg-primary);
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
 }
 
 .container {

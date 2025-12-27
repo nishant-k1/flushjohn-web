@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
   position: relative;
 }
 
@@ -30,6 +30,7 @@
   max-width: 960px;
   position: relative;
   z-index: 1;
+  padding: 0 var(--spacing-lg);
 }
 
 .productsWrapper {
@@ -253,7 +254,10 @@
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
   .products {
-    padding: var(--spacing-section) var(--spacing-lg);
+    padding: var(--spacing-section) 0;
+  }
+  .container {
+    padding: 0 var(--spacing-lg);
   }
   .productsWrapper {
     grid-template-columns: repeat(2, 1fr);

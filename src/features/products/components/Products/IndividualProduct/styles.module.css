@@ -4,12 +4,13 @@
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
 }
 
 .container {
   margin: 0 auto;
   max-width: 960px;
+  padding: 0 var(--spacing-lg);
 }
 
 .wrapper {
@@ -173,7 +174,10 @@
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
   .product {
-    padding: var(--spacing-section) var(--spacing-lg);
+    padding: var(--spacing-section) 0;
+  }
+  .container {
+    padding: 0 var(--spacing-lg);
   }
   .wrapper div {
     grid-template-columns: 1fr 1fr;

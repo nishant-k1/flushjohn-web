@@ -3,13 +3,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: var(--spacing-section, 60px) var(--spacing-lg, 24px);
+  padding: var(--spacing-section, 60px) 0;
   min-height: 100vh;
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .breadcrumbWrapper {
@@ -235,7 +236,12 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--primary-bg-color), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-bg-color),
+    transparent
+  );
 }
 
 /* Cards - Theme Colors */
@@ -505,7 +511,11 @@
 .finalCTA {
   text-align: center;
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, var(--primary-bg-color) 0%, var(--primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-bg-color) 0%,
+    var(--primary) 100%
+  );
   color: white;
   border-radius: 12px;
   margin-top: 4rem;
@@ -521,7 +531,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 

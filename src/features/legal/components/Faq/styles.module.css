@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: var(--spacing-section) var(--spacing-lg);
+  padding: var(--spacing-section) 0;
 }
 
 .container {
