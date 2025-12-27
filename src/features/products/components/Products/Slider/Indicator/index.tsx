@@ -9,11 +9,11 @@ type IndicatorProps = {
   currentSlide?: number;
 };
 
-const Indicator = ({ 
-  toggle, 
-  onIndicatorClick, 
-  totalSlides = 2, 
-  currentSlide = 0 
+const Indicator = ({
+  toggle,
+  onIndicatorClick,
+  totalSlides = 2,
+  currentSlide = 0,
 }: IndicatorProps) => {
   return (
     <div className={styles.indicator}>

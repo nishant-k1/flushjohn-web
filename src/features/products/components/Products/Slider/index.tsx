@@ -12,13 +12,13 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
   const images = [src_1, src_2];
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -80,7 +80,7 @@ const Slider = ({ src_1, src_2, alt }: ProductImage) => {
       </div>
 
       {/* Indicators */}
-      <Indicator 
+      <Indicator
         totalSlides={images.length}
         currentSlide={currentIndex}
         onIndicatorClick={goToSlide}
