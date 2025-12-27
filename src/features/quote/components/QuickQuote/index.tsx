@@ -168,50 +168,61 @@ const UsageTypeField = () => {
               top: "100%",
               left: 0,
               right: 0,
-              background: "white",
-              border: "1px solid #d9d9d9",
+              background: "#ffffff" /* White background for clean look */,
+              border: "1px solid var(--primary-bg-color, #8c6f48)",
               borderRadius: "0",
-              marginTop: "6px",
-              maxHeight: "240px",
+              marginTop: "0", /* No gap - dropdown appears directly below input */
+              maxHeight: "280px",
               overflowY: "auto",
-              zIndex: 1000,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              zIndex: 10000,
+              boxShadow: "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+              padding: "4px 0",
             }}
           >
-            {options.map((option) => (
+            {options.map((option, index) => (
               <div
                 key={option.value}
                 onClick={() => handleSelect(option.value)}
                 style={{
-                  padding: "10px 12px",
+                  padding: "14px 16px",
                   cursor: "pointer",
                   background:
                     values.usageType === option.value
-                      ? "rgba(169, 93, 31, 0.1)"
-                      : "white",
-                  borderBottom: "1px solid #f0f0f0",
-                  transition: "all 0.2s",
+                      ? "rgba(140, 111, 72, 0.12)" /* Subtle selected background */
+                      : "#ffffff" /* White background for better contrast */,
+                  borderBottom: index < options.length - 1 ? "1px solid #e8e8e8" : "none",
                   borderLeft:
                     values.usageType === option.value
-                      ? "3px solid var(--primary-bg-color)"
-                      : "3px solid transparent",
-                  fontSize: "14px",
-                  fontWeight: values.usageType === option.value ? 600 : 400,
+                      ? "4px solid var(--primary-bg-color, #8c6f48)"
+                      : "4px solid transparent",
+                  transition: "all 0.15s ease",
+                  fontSize: "15px",
+                  fontWeight: values.usageType === option.value ? 600 : 500,
                   color:
                     values.usageType === option.value
-                      ? "var(--primary-bg-color)"
-                      : "#333",
+                      ? "var(--primary-bg-color, #8c6f48)"
+                      : "#1a1a1a",
+                  margin: index < options.length - 1 ? "0 0 2px 0" : "0",
+                  borderRadius: "0",
+                  boxShadow: values.usageType === option.value
+                    ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                    : "none",
+                  lineHeight: "1.4",
+                  letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
-                    e.currentTarget.style.background = "#fafafa";
+                    e.currentTarget.style.background = "#f8f9fa";
+                    e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
+                    e.currentTarget.style.boxShadow = "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    values.usageType === option.value
-                      ? "rgba(169, 93, 31, 0.1)"
-                      : "white";
+                  if (values.usageType !== option.value) {
+                    e.currentTarget.style.background = "#ffffff";
+                    e.currentTarget.style.borderLeft = "4px solid transparent";
+                    e.currentTarget.style.boxShadow = "none";
+                  }
                 }}
               >
                 {option.label}

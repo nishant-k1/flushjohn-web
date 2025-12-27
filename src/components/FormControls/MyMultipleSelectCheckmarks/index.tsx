@@ -25,6 +25,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         v.item === optionValue || v.type === optionValue || v === optionValue
     );
 
+    // Mark as touched when user makes a selection/deselection
+    if (!touched) {
+      setTouched(true);
+    }
+
     if (existingItem) {
       setValue(
         value.filter((v: any) => (v.item || v.type || v) !== optionValue)
@@ -142,14 +147,12 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         }
         onClick={() => {
           setIsOpen(!isOpen);
-          // Hide error when field is focused/clicked
+          // Hide error when field is focused/clicked (but don't mark as touched yet)
           setShowError(false);
-          // Mark as touched when user interacts with the field
-          if (!touched) {
-            setTouched(true);
-          }
+          // Don't mark as touched on click - only on blur or after selection
         }}
         onBlur={() => {
+          // Only mark as touched on blur (when user clicks away)
           setTouched(true);
         }}
         style={{
@@ -225,17 +228,19 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             top: "100%",
             left: 0,
             right: 0,
-            background: "white",
-            border: "1px solid #d9d9d9",
-            borderRadius: "6px",
-            marginTop: "6px",
-            maxHeight: "240px",
+            background: "#ffffff" /* White background for clean look */,
+            border: "1px solid var(--primary-bg-color, #8c6f48)",
+            borderRadius: "0",
+            marginTop: "0" /* No gap - dropdown appears directly below input */,
+            maxHeight: "280px",
             overflowY: "auto",
-            zIndex: 1000,
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            zIndex: 10000,
+            boxShadow:
+              "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+            padding: "4px 0",
           }}
         >
-          {options.map((option) => (
+          {options.map((option, index) => (
             <div
               key={option.value}
               onClick={(e) => {
@@ -243,28 +248,41 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                 toggleOption(option.value);
               }}
               style={{
-                padding: "10px 12px",
+                padding: "14px 16px",
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "12px",
                 background: isSelected(option.value)
-                  ? "rgba(169, 93, 31, 0.1)"
-                  : "white",
-                borderBottom: "1px solid #f0f0f0",
-                transition: "all 0.2s",
+                  ? "rgba(140, 111, 72, 0.12)" /* Subtle selected background */
+                  : "#ffffff" /* White background for better contrast */,
+                borderBottom:
+                  index < options.length - 1 ? "1px solid #e8e8e8" : "none",
                 borderLeft: isSelected(option.value)
-                  ? "3px solid var(--primary-bg-color)"
-                  : "3px solid transparent",
+                  ? "4px solid var(--primary-bg-color, #8c6f48)"
+                  : "4px solid transparent",
+                transition: "all 0.15s ease",
+                cursor: "pointer",
+                margin: index < options.length - 1 ? "0 0 2px 0" : "0",
+                borderRadius: "0",
+                boxShadow: isSelected(option.value)
+                  ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                  : "none",
               }}
               onMouseEnter={(e) => {
                 if (!isSelected(option.value)) {
-                  e.currentTarget.style.background = "#fafafa";
+                  e.currentTarget.style.background = "#f8f9fa";
+                  e.currentTarget.style.borderLeft =
+                    "4px solid rgba(140, 111, 72, 0.3)";
+                  e.currentTarget.style.boxShadow =
+                    "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
                 }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = isSelected(option.value)
-                  ? "rgba(169, 93, 31, 0.1)"
-                  : "white";
+                if (!isSelected(option.value)) {
+                  e.currentTarget.style.background = "#ffffff";
+                  e.currentTarget.style.borderLeft = "4px solid transparent";
+                  e.currentTarget.style.boxShadow = "none";
+                }
               }}
             >
               <div
@@ -273,30 +291,35 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   toggleOption(option.value);
                 }}
                 style={{
-                  width: "18px",
-                  height: "18px",
+                  width: "20px",
+                  height: "20px",
+                  minWidth: "20px",
                   border: `2px solid ${
                     isSelected(option.value)
-                      ? "var(--primary-bg-color)"
-                      : "#d9d9d9"
+                      ? "var(--primary-bg-color, #8c6f48)"
+                      : "#c0c0c0"
                   }`,
-                  borderRadius: "3px",
+                  borderRadius: "4px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   background: isSelected(option.value)
-                    ? "var(--primary-bg-color)"
-                    : "white",
-                  transition: "all 0.2s",
+                    ? "var(--primary-bg-color, #8c6f48)"
+                    : "#ffffff",
+                  transition: "all 0.15s ease",
                   cursor: "pointer",
+                  boxShadow: isSelected(option.value)
+                    ? "0 1px 3px rgba(140, 111, 72, 0.2)"
+                    : "0 1px 2px rgba(0, 0, 0, 0.05)",
                 }}
               >
                 {isSelected(option.value) && (
                   <span
                     style={{
                       color: "white",
-                      fontSize: "12px",
+                      fontSize: "14px",
                       fontWeight: "bold",
+                      lineHeight: "1",
                     }}
                   >
                     ✓
@@ -305,13 +328,15 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
               </div>
               <span
                 style={{
-                  fontSize: "14px",
-                  fontWeight: isSelected(option.value) ? 600 : 400,
+                  fontSize: "15px",
+                  fontWeight: isSelected(option.value) ? 600 : 500,
                   color: isSelected(option.value)
-                    ? "var(--primary-bg-color, #a95d1f)"
-                    : "#333",
+                    ? "var(--primary-bg-color, #8c6f48)"
+                    : "#1a1a1a",
                   flex: 1,
                   cursor: "pointer",
+                  lineHeight: "1.4",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {option.label}
@@ -404,7 +429,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         </div>
       )}
 
-      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+      <div
+        className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+      >
         {touched && error ? "Required" : ""}
       </div>
     </div>

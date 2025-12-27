@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
 interface ErrorModalProps {
@@ -19,18 +20,33 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
   submessage = "If the problem persists, please contact our support team.",
 }) => {
   const [showContent, setShowContent] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
+      // Lock body scroll when modal is open
+      document.body.style.overflow = "hidden";
       setTimeout(() => setShowContent(true), 100);
     } else {
       setShowContent(false);
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = "";
     }
+
+    // Cleanup function to restore scroll if component unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  const modalContent = (
     <div
       className={styles.overlay}
       onClick={onClose}
@@ -82,6 +98,8 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ErrorModal;
