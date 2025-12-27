@@ -52,6 +52,7 @@ import Script from "next/script";
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
+import LiveChat from "@/components/LiveChat";
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
@@ -329,6 +330,9 @@ export default function RootLayout({
 
         {/* Final Optimizer - Suppresses console errors and optimizes performance */}
         <FinalOptimizer />
+
+        {/* Live Chat Support - Loads lazily to not block page rendering */}
+        <LiveChat />
 
         <Layout>
           <ClientWidthContextProvider>
