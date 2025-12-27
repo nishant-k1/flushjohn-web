@@ -318,7 +318,7 @@ const nextConfig = {
                     let scriptSrc =
                       "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://cdn.flushjohn.com https://connect.facebook.net https://embed.tawk.to";
                     let connectSrc =
-                      "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com https://embed.tawk.to wss://embed.tawk.to";
+                      "'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://api.flushjohn.com wss://api.flushjohn.com https://connect.facebook.net https://www.google.com https://www.gstatic.com https://embed.tawk.to wss://embed.tawk.to https://va.tawk.to";
                     let frameSrc =
                       "'self' https://www.googletagmanager.com https://embed.tawk.to";
 
