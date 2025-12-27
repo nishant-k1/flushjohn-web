@@ -52,7 +52,7 @@ export interface HomeData {
 export const home_data: HomeData = {
   hero: {
     title: `Portable Restroom Rentals Delivered Fast and Hassle-Free`,
-    subTitle: `Events • Construction • Emergency`,
+    subTitle: `Events • Construction • Emergency • Renovation`,
     image: {
       src: `https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp`,
       alt: "porta_potty",
