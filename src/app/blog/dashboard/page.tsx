@@ -260,9 +260,8 @@ const BlogDashboard = () => {
               style={{
                 background: "var(--neutral-600)",
                 padding: "15px",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                borderRadius: "0",
                 border: "1px solid rgba(0, 0, 0, 0.1)",
+                borderRadius: "0",
               }}
             >
               <h4

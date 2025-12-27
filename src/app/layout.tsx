@@ -43,6 +43,10 @@ const Sidebar = dynamic(() => import("@/components/Sidebar"), {
   ssr: true,
 });
 
+// Lazy load LiveChat - chat widget is non-critical and loads after page is interactive
+// Note: LiveChat is a client component, so it won't be SSR'd anyway
+const LiveChat = dynamic(() => import("@/components/LiveChat"));
+
 import { ClientWidthContextProvider } from "@/contexts/ClientWidthContext";
 import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
@@ -52,7 +56,6 @@ import Script from "next/script";
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
-import LiveChat from "@/components/LiveChat";
 
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
