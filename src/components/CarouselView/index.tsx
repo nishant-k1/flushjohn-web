@@ -63,11 +63,6 @@ export default function CarouselView() {
       <div
         className={styles.imageWrapper}
         style={{
-          aspectRatio: `${firstImage.width} / ${firstImage.height}`,
-          width: "100%",
-          height: "900px",
-          minHeight: "900px",
-          maxHeight: "900px",
           position: "absolute",
           top: 0,
           left: 0,
@@ -101,13 +96,6 @@ export default function CarouselView() {
               <div
                 key={index}
                 className={styles.imageWrapper}
-                style={{
-                  aspectRatio: `${image.width} / ${image.height}`,
-                  width: "100%",
-                  height: "900px",
-                  minHeight: "900px",
-                  maxHeight: "900px",
-                }}
               >
                 <Image
                   src={image.src}
