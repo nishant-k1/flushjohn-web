@@ -1,7 +1,7 @@
 .combinedBar {
   width: 100%;
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
   z-index: 10;
@@ -15,65 +15,62 @@
   width: 100%;
   max-width: var(--container-xl);
   margin: 0 auto;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: nowrap;
 }
 
 .zipSection {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
+  flex-direction: row;
+  align-items: center;
   position: relative;
   padding-bottom: 0;
   overflow: visible;
-  height: 100%;
-  min-height: 80px;
-  justify-content: center;
-  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
 }
 
 .zipForm {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   flex-wrap: nowrap;
   width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .zipLabel {
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
-.zipInputGroup {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  flex: 1;
-  min-width: 200px;
-  flex-wrap: nowrap;
-}
 
 .zipInput {
-  flex: 1;
-  min-width: 120px;
-  padding: 12px 18px;
+  flex: 0 0 auto;
+  width: 100px;
+  height: 36px;
+  padding: 8px 12px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 0;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
   font-family: inherit;
   background: white;
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .zipInput:focus {
@@ -87,12 +84,13 @@
 }
 
 .checkButton {
-  padding: 14px 28px;
+  height: 36px;
+  padding: 8px 16px;
   background: linear-gradient(135deg, #5f3300 0%, #b45309 100%);
   color: white;
-  border: 1px solid #7e4505;
+  border: 2px solid #7e4505;
   border-radius: 0;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -102,7 +100,11 @@
     0 4px 12px rgba(217, 119, 6, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
-  min-width: 160px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .checkButton:hover:not(:disabled) {
@@ -246,32 +248,32 @@
 .phoneSection {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: var(--spacing-lg);
-  flex-wrap: wrap;
-  height: 100%;
-  min-height: 80px;
+  gap: var(--spacing-sm);
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .phoneLabel {
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .phoneNumber {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 6px;
+  height: 36px;
   background: linear-gradient(135deg, #4a7c59 0%, #2d4a35 100%);
   color: white;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: 8px 14px;
   border-radius: 0;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   transition: all var(--transition-base);
@@ -281,6 +283,8 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   border: 2px solid #4a7c59;
   white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .phoneNumber:hover {
@@ -316,16 +320,18 @@
 
 @media (max-width: 1024px) {
   .container {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    padding: 0 var(--spacing-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-lg);
+  }
+
+  .zipSection {
+    flex: 1 1 100%;
+    min-width: 100%;
   }
 
   .phoneSection {
-    justify-content: center;
-  }
-
-  .zipForm {
+    flex: 1 1 100%;
     justify-content: center;
   }
 }
@@ -338,50 +344,51 @@
   .container {
     padding: 0 var(--spacing-md);
     gap: var(--spacing-md);
+    flex-direction: column;
+  }
+
+  .zipSection {
+    width: 100%;
   }
 
   .zipForm {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
   }
 
   .zipLabel {
-    text-align: center;
-    font-size: 1rem;
-  }
-
-  .zipInputGroup {
-    flex-direction: column;
-    width: 100%;
-    gap: var(--spacing-sm);
+    font-size: 0.85rem;
+    flex: 1 1 100%;
   }
 
   .zipInput {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 1rem;
+    flex: 1;
+    min-width: 80px;
+    height: 36px;
+    padding: 8px 10px;
+    font-size: 0.85rem;
   }
 
   .checkButton {
-    width: 100%;
-    padding: 14px 24px;
-    font-size: 0.95rem;
+    height: 36px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
   .phoneSection {
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    text-align: center;
+    width: 100%;
+    justify-content: center;
+    gap: var(--spacing-xs);
   }
 
   .phoneLabel {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .phoneNumber {
-    font-size: 1.25rem;
-    padding: var(--spacing-sm) var(--spacing-md);
+    height: 36px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
   }
 
   .resultMessage {

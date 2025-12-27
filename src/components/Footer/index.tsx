@@ -97,7 +97,7 @@ const Footer = () => {
             </li>
           </ul>
           <Locations {...locations} />
-          
+
           {/* Business Information Section */}
           <div className={styles.businessInfo}>
             <div className={styles.businessInfoContent}>
@@ -119,7 +119,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <div className={styles.bottomFooter}>
             <div className={styles.copyright}>
               Copyright © {year} FlushJohn. All rights reserved. |{" "}
@@ -128,8 +128,9 @@ const Footer = () => {
               <Link href="/terms">Terms & Conditions</Link>
             </div>
             <div className={styles.disclaimer}>
-              FlushJohn coordinates portable restroom rentals through licensed local service providers. 
-              Service delivery and fulfillment handled by vetted local partners in your area.
+              FlushJohn coordinates portable restroom rentals through licensed
+              local service providers. Service delivery and fulfillment handled
+              by vetted local partners in your area.
             </div>
           </div>
         </div>

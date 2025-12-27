@@ -74,26 +74,24 @@ const CombinedContactBar = () => {
             >
               Enter Delivery Zipcode:
             </label>
-            <div className={styles.zipInputGroup}>
-              <input
-                id="zipCode"
-                type="text"
-                inputMode="numeric"
-                pattern="[0-9]*"
-                maxLength={5}
-                value={zipCode}
-                onChange={handleZipChange}
-                placeholder="Zip Code"
-                className={styles.zipInput}
-              />
-              <button
-                type="submit"
-                className={styles.checkButton}
-                disabled={zipCode.length !== 5 || isChecking}
-              >
-                {isChecking ? "Checking..." : "Can I get it?"}
-              </button>
-            </div>
+            <input
+              id="zipCode"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={5}
+              value={zipCode}
+              onChange={handleZipChange}
+              placeholder="Zip Code"
+              className={styles.zipInput}
+            />
+            <button
+              type="submit"
+              className={styles.checkButton}
+              disabled={zipCode.length !== 5 || isChecking}
+            >
+              {isChecking ? "Checking..." : "Can I get it?"}
+            </button>
           </form>
 
           {/* Success message - positioned absolutely to prevent layout shift */}
@@ -129,7 +127,7 @@ const CombinedContactBar = () => {
           >
             <PhoneIcon
               className={styles.phoneIcon}
-              size={20}
+              size={16}
             />
             <span className={styles.phoneNumberText}>{phone_number}</span>
           </Link>
