@@ -35,28 +35,35 @@ const MyDateField = ({ label, ...props }: any) => {
   const { setValue, setTouched } = helpers;
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [showError, setShowError] = useState(false);
+  const isSelectingRef = useRef(false);
 
   useEffect(() => {
     // Show error only after field is touched (blurred) and there's an error
-    if (touched && error) {
+    // But don't show error if a date is selected (field has a value)
+    if (touched && error && !field.value) {
       setShowError(true);
     } else {
       setShowError(false);
     }
-  }, [touched, error]);
+  }, [touched, error, field.value]);
 
   // Parse the date value
   const parseDate = (value: any): Date | null => {
     if (!value) return null;
     if (value instanceof Date) return value;
+    // Try to parse the formatted date string (e.g., "Jan 15, 2024")
     const parsed = new Date(value);
-    return isNaN(parsed.getTime()) ? null : parsed;
+    if (!isNaN(parsed.getTime())) {
+      return parsed;
+    }
+    return null;
   };
 
   const selectedDate = parseDate(field.value);
 
   const handleDateChange = (date: Date | null) => {
     if (date) {
+      isSelectingRef.current = true;
       const formatted = date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
@@ -65,6 +72,12 @@ const MyDateField = ({ label, ...props }: any) => {
       setValue(formatted);
       // Mark as touched when a date is selected
       setTouched(true);
+      // Clear error state when date is selected
+      setShowError(false);
+      // Reset the flag after a short delay to allow calendar to close
+      setTimeout(() => {
+        isSelectingRef.current = false;
+      }, 300);
     } else {
       setValue("");
     }
@@ -79,14 +92,32 @@ const MyDateField = ({ label, ...props }: any) => {
       onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     }
   >(({ value, onClick, onChange }, ref) => {
-    const handleMouseDown = (e: React.MouseEvent<HTMLInputElement>) => {
-      e.stopPropagation(); // Prevent dropdown click-outside handlers from firing
+    const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+      // Don't open if we just selected a date
+      if (isSelectingRef.current) {
+        return;
+      }
+      // Don't prevent default - let react-datepicker handle the click
       if (onClick) {
         onClick();
       }
     };
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      // Don't open if we just selected a date
+      if (isSelectingRef.current) {
+        return;
+      }
+      // Prevent keyboard on mobile by blurring immediately
+      if (ref && typeof ref !== "function" && ref.current) {
+        ref.current.setAttribute("inputmode", "none");
+        // Blur immediately to prevent keyboard
+        setTimeout(() => {
+          if (ref && typeof ref !== "function" && ref.current) {
+            ref.current.blur();
+          }
+        }, 0);
+      }
       if (onClick) {
         onClick();
       }
@@ -97,28 +128,24 @@ const MyDateField = ({ label, ...props }: any) => {
       setTouched(true);
     };
 
-    const handleWrapperMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-      e.stopPropagation(); // Prevent dropdown click-outside handlers from firing
-      if (onClick) {
-        onClick();
-      }
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      // Prevent keyboard from opening
+      e.preventDefault();
     };
 
     return (
-      <div
-        style={{ position: "relative" }}
-        onMouseDown={handleWrapperMouseDown}
-      >
+      <div style={{ position: "relative" }}>
         <input
           ref={ref}
           type="text"
           value={value || ""}
-          onMouseDown={handleMouseDown}
+          onClick={handleClick}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           onChange={onChange}
-          readOnly
           placeholder={label}
+          inputMode="none"
           className={`custom-datepicker ${props.className || ""} ${
             touched && error ? "datepicker-error" : ""
           }`}
@@ -189,6 +216,11 @@ const MyDateField = ({ label, ...props }: any) => {
         customInput={<CustomInput />}
         wrapperClassName="date-picker-wrapper"
         calendarClassName="date-picker-calendar"
+        shouldCloseOnSelect={true}
+        onCalendarClose={() => {
+          // Mark as touched when calendar closes
+          setTouched(true);
+        }}
         popperProps={{
           positionFixed: true,
           modifiers: [
@@ -208,10 +240,6 @@ const MyDateField = ({ label, ...props }: any) => {
         }}
         portalId="root"
         onBlur={() => {
-          setTouched(true);
-        }}
-        onCalendarClose={() => {
-          // Mark as touched when calendar closes
           setTouched(true);
         }}
       />
