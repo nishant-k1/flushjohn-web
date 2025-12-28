@@ -63,6 +63,8 @@ const MyDateField = ({ label, ...props }: any) => {
         day: "numeric",
       });
       setValue(formatted);
+      // Mark as touched when a date is selected
+      setTouched(true);
     } else {
       setValue("");
     }
@@ -90,6 +92,11 @@ const MyDateField = ({ label, ...props }: any) => {
       }
     };
 
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      // Mark as touched when input loses focus
+      setTouched(true);
+    };
+
     const handleWrapperMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
       e.stopPropagation(); // Prevent dropdown click-outside handlers from firing
       if (onClick) {
@@ -108,6 +115,7 @@ const MyDateField = ({ label, ...props }: any) => {
           value={value || ""}
           onMouseDown={handleMouseDown}
           onFocus={handleFocus}
+          onBlur={handleBlur}
           onChange={onChange}
           readOnly
           placeholder={label}
@@ -200,6 +208,10 @@ const MyDateField = ({ label, ...props }: any) => {
         }}
         portalId="root"
         onBlur={() => {
+          setTouched(true);
+        }}
+        onCalendarClose={() => {
+          // Mark as touched when calendar closes
           setTouched(true);
         }}
       />
