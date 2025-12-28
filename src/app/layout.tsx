@@ -43,10 +43,6 @@ const Sidebar = dynamic(() => import("@/components/Sidebar"), {
   ssr: true,
 });
 
-// Lazy load LiveChat - chat widget is non-critical and loads after page is interactive
-// Note: LiveChat is a client component, so it won't be SSR'd anyway
-const LiveChat = dynamic(() => import("@/components/LiveChat"));
-
 import { ClientWidthContextProvider } from "@/contexts/ClientWidthContext";
 import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
@@ -335,9 +331,6 @@ export default function RootLayout({
         {/* Final Optimizer - Suppresses console errors and optimizes performance */}
         <FinalOptimizer />
 
-        {/* Live Chat Support - Loads lazily to not block page rendering */}
-        <LiveChat />
-
         <Layout>
           <ClientWidthContextProvider>
             <SidebarContextProvider>
@@ -354,6 +347,8 @@ export default function RootLayout({
             </SidebarContextProvider>
           </ClientWidthContextProvider>
         </Layout>
+        {/* Portal root for datepicker and other portals */}
+        <div id="root" />
       </body>
     </html>
   );

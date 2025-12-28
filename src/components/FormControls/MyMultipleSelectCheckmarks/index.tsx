@@ -2,6 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import styles from "@/features/quote/components/QuickQuote/styles.module.css";
 import { formatInputValue } from "@/utils/displayFormatting";
+import "./dropdown.css";
 
 const options = [
   { label: "Standard Portable Restroom", value: "Standard Portable Restroom" },
@@ -111,6 +112,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      // Don't close if clicking on a datepicker input
+      if (target.closest('.custom-datepicker') || target.closest('.react-datepicker-popper')) {
+        return;
+      }
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
@@ -158,7 +164,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         style={{
           padding: "0 12px",
           border: `1px solid ${touched && error ? "#ff4444" : "#d9d9d9"}`,
-          borderRadius: "4px",
+          borderRadius: "0",
           cursor: "pointer",
           height: "2rem",
           display: "flex",
@@ -228,16 +234,16 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             top: "100%",
             left: 0,
             right: 0,
-            background: "#ffffff" /* White background for clean look */,
-            border: "1px solid var(--primary-bg-color, #8c6f48)",
+            background: "#f7fafc",
+            border: "2px solid var(--primary-bg-color, #8c6f48)",
             borderRadius: "0",
-            marginTop: "0" /* No gap - dropdown appears directly below input */,
+            marginTop: "8px",
             maxHeight: "280px",
             overflowY: "auto",
             zIndex: 10000,
-            boxShadow:
-              "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+            boxShadow: "0 4px 16px rgba(140, 111, 72, 0.15)",
             padding: "4px 0",
+            animation: "dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
           {options.map((option, index) => (
@@ -253,28 +259,28 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                 alignItems: "center",
                 gap: "12px",
                 background: isSelected(option.value)
-                  ? "rgba(140, 111, 72, 0.12)" /* Subtle selected background */
-                  : "#ffffff" /* White background for better contrast */,
+                  ? "rgba(140, 111, 72, 0.12)"
+                  : "#ffffff",
                 borderBottom:
                   index < options.length - 1 ? "1px solid #e8e8e8" : "none",
                 borderLeft: isSelected(option.value)
                   ? "4px solid var(--primary-bg-color, #8c6f48)"
                   : "4px solid transparent",
-                transition: "all 0.15s ease",
+                transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 cursor: "pointer",
                 margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                 borderRadius: "0",
                 boxShadow: isSelected(option.value)
-                  ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                  ? "0 0 12px rgba(140, 111, 72, 0.2)"
                   : "none",
+                transform: isSelected(option.value) ? "scale(1.05)" : "scale(1)",
               }}
               onMouseEnter={(e) => {
                 if (!isSelected(option.value)) {
-                  e.currentTarget.style.background = "#f8f9fa";
-                  e.currentTarget.style.borderLeft =
-                    "4px solid rgba(140, 111, 72, 0.3)";
-                  e.currentTarget.style.boxShadow =
-                    "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
+                  e.currentTarget.style.background = "linear-gradient(90deg, rgba(140, 111, 72, 0.12) 0%, rgba(140, 111, 72, 0.06) 100%)";
+                  e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
+                  e.currentTarget.style.boxShadow = "0 2px 10px rgba(140, 111, 72, 0.1)";
+                  e.currentTarget.style.transform = "scale(1.1)";
                 }
               }}
               onMouseLeave={(e) => {
@@ -282,6 +288,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   e.currentTarget.style.background = "#ffffff";
                   e.currentTarget.style.borderLeft = "4px solid transparent";
                   e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.transform = "scale(1)";
                 }
               }}
             >
@@ -306,7 +313,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   background: isSelected(option.value)
                     ? "var(--primary-bg-color, #8c6f48)"
                     : "#ffffff",
-                  transition: "all 0.15s ease",
+                  transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
                   cursor: "pointer",
                   boxShadow: isSelected(option.value)
                     ? "0 1px 3px rgba(140, 111, 72, 0.2)"

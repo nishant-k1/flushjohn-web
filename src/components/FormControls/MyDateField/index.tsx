@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ComponentType, useRef, useEffect } from "react";
+import React, { ComponentType, useRef, useEffect, useState } from "react";
 import { useField } from "formik";
 import dynamic from "next/dynamic";
 import "./datepicker.css";
@@ -15,7 +15,14 @@ const DatePicker = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div style={{ padding: "8px", minHeight: "40px", display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          padding: "8px",
+          minHeight: "40px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         Loading date picker...
       </div>
     ),
@@ -26,8 +33,8 @@ const MyDateField = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
   const { setValue, setTouched } = helpers;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [showError, setShowError] = React.useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     // Show error only after field is touched (blurred) and there's an error
@@ -38,67 +45,80 @@ const MyDateField = ({ label, ...props }: any) => {
     }
   }, [touched, error]);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        // Only hide error if field is not touched yet
-        // If field is touched and has error, keep showing it
-        if (!touched) {
-          setShowError(false);
-        }
-      }
-    };
-
-    if (showError) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showError, touched]);
-
-  const parseStoredDate = (value: any): Date | null => {
+  // Parse the date value
+  const parseDate = (value: any): Date | null => {
     if (!value) return null;
     if (value instanceof Date) return value;
     const parsed = new Date(value);
     return isNaN(parsed.getTime()) ? null : parsed;
   };
 
-  const selectedDate = parseStoredDate(field.value);
+  const selectedDate = parseDate(field.value);
 
-  return (
-    <div ref={containerRef} style={{ position: "relative" }}>
-      <div style={{ position: "relative" }}>
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date: Date | null) => {
-            if (date) {
-              const formatted = date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              });
-              setValue(formatted);
-            } else {
-              setValue("");
-            }
-          }}
-          onFocus={() => {
-            // Hide error when field is focused
-            setShowError(false);
-          }}
-          onBlur={() => {
-            setTouched(true);
-          }}
-          minDate={new Date()}
-          dateFormat="MMM d, yyyy"
-          placeholderText={label}
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      const formatted = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+      setValue(formatted);
+    } else {
+      setValue("");
+    }
+  };
+
+  // Custom input component to prevent keyboard on mobile
+  const CustomInput = React.forwardRef<
+    HTMLInputElement,
+    {
+      value?: string;
+      onClick?: () => void;
+      onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    }
+  >(({ value, onClick, onChange }, ref) => {
+    const handleMouseDown = (e: React.MouseEvent<HTMLInputElement>) => {
+      e.stopPropagation(); // Prevent dropdown click-outside handlers from firing
+      if (onClick) {
+        onClick();
+      }
+    };
+
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      if (onClick) {
+        onClick();
+      }
+    };
+
+    const handleWrapperMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation(); // Prevent dropdown click-outside handlers from firing
+      if (onClick) {
+        onClick();
+      }
+    };
+
+    return (
+      <div
+        style={{ position: "relative" }}
+        onMouseDown={handleWrapperMouseDown}
+      >
+        <input
+          ref={ref}
+          type="text"
+          value={value || ""}
+          onMouseDown={handleMouseDown}
+          onFocus={handleFocus}
+          onChange={onChange}
+          readOnly
+          placeholder={label}
           className={`custom-datepicker ${props.className || ""} ${
             touched && error ? "datepicker-error" : ""
           }`}
-          popperPlacement="bottom-start"
-          showPopperArrow={false}
+          style={{
+            width: "100%",
+            paddingRight: "32px",
+            cursor: "pointer",
+          }}
         />
         <svg
           className="calendar-icon"
@@ -146,7 +166,46 @@ const MyDateField = ({ label, ...props }: any) => {
           />
         </svg>
       </div>
-      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+    );
+  });
+
+  CustomInput.displayName = "CustomInput";
+
+  return (
+    <div style={{ position: "relative" }}>
+      <DatePicker
+        selected={selectedDate}
+        onChange={handleDateChange}
+        minDate={new Date()}
+        dateFormat="MMM d, yyyy"
+        customInput={<CustomInput />}
+        wrapperClassName="date-picker-wrapper"
+        calendarClassName="date-picker-calendar"
+        popperProps={{
+          positionFixed: true,
+          modifiers: [
+            {
+              name: "preventOverflow",
+              options: {
+                boundary: "viewport",
+              },
+            },
+            {
+              name: "flip",
+              options: {
+                fallbackPlacements: ["top", "bottom", "left", "right"],
+              },
+            },
+          ],
+        }}
+        portalId="root"
+        onBlur={() => {
+          setTouched(true);
+        }}
+      />
+      <div
+        className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+      >
         {touched && error ? `Required` : ""}
       </div>
     </div>
