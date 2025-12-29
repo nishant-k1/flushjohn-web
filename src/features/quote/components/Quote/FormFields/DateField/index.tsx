@@ -129,27 +129,75 @@ const DateField = ({ label, ...props }: any) => {
     };
 
     return (
-      <input
-        ref={ref}
-        type="text"
-        value={value || ""}
-        onClick={handleClick}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-        onChange={onChange}
-        placeholder={props.placeholder || label}
-        inputMode="none"
-        className={`full-form-datepicker ${styles.dateInput} ${props.className || ""} ${
-          touched && error ? "error_field" : ""
-        }`}
-        style={{
-          width: "100%",
-          cursor: "pointer",
-          caretColor: "transparent",
-          userSelect: "none",
-        }}
-      />
+      <div style={{ position: "relative" }}>
+        <input
+          ref={ref}
+          type="text"
+          value={value || ""}
+          onClick={handleClick}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+          onChange={onChange}
+          placeholder={props.placeholder || label}
+          inputMode="none"
+          className={`full-form-datepicker ${styles.dateInput} ${props.className || ""} ${
+            touched && error ? "error_field" : ""
+          }`}
+          style={{
+            width: "100%",
+            paddingRight: "32px",
+            cursor: "pointer",
+            caretColor: "transparent",
+            userSelect: "none",
+          }}
+        />
+        <svg
+          className="calendar-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            position: "absolute",
+            right: "8px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            pointerEvents: "none",
+            opacity: 0.6,
+          }}
+        >
+          <path
+            d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16 2V6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 2V6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M3 10H21"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
     );
   });
 
@@ -168,13 +216,14 @@ const DateField = ({ label, ...props }: any) => {
           minDate={new Date()}
           dateFormat="MMM d, yyyy"
           customInput={<CustomInput />}
+          wrapperClassName="date-picker-wrapper"
+          calendarClassName="date-picker-calendar"
           shouldCloseOnSelect={true}
           onCalendarClose={() => {
             // Mark as touched when calendar closes
             setTouched(true);
           }}
           popperPlacement="bottom-start"
-          showPopperArrow={false}
           portalId="root"
           popperProps={{
             positionFixed: true,
