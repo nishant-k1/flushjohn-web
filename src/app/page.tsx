@@ -13,17 +13,15 @@ import Script from "next/script";
 import Home from "@/features/home/components/Home";
 
 export const metadata: Metadata = {
-  title:
-    "Porta Potty Rentals | Fast Delivery | Serving 25+ Cities Nationwide | FlushJohn",
+  title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
   description:
-    "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Serving 25+ cities across TX, FL, CA, GA, IL, and DE. Get your free quote today!",
+    "Professional porta potty rentals in 25+ cities: Houston, Dallas, LA, Miami & more. Fast delivery, competitive pricing, licensed & insured. Free quote!",
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
-    title:
-      "Porta Potty Rentals | Fast Delivery | Serving 25+ Cities | FlushJohn",
+    title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
     description:
-      "Professional porta potty rentals in Dover DE, Houston TX, Dallas TX, Los Angeles CA, and 22+ more cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Serving 25+ cities nationwide.",
+      "Professional porta potty rentals in 25+ cities: Houston, Dallas, LA, Miami & more. Fast delivery, competitive pricing, licensed & insured. Free quote!",
     url: websiteURL,
     type: "website",
     siteName: "FlushJohn",
@@ -39,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Porta Potty Rentals | Serving 25+ Cities Nationwide | FlushJohn",
+    title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
     description:
-      "Professional porta potty rentals in 25+ cities. Fast delivery (24-48hrs typical), competitive pricing, licensed & insured. Get your free quote today!",
+      "Professional porta potty rentals in 25+ cities. Fast delivery, competitive pricing, licensed & insured. Get your free quote today!",
     images: [`${s3assets}/og-image-flushjonn-web.png`],
   },
   alternates: {
@@ -683,35 +681,40 @@ const howToJsonLd = {
 const HomePage = () => {
   return (
     <>
-      {/* Existing Structured Data - Load only essential JSON-LD */}
+      {/* Critical Structured Data - Load before page interactive for SEO */}
+      {/* ServiceAreaBusiness schema - most important for local SEO */}
       <Script
         id="local-business-schema"
         type="application/ld+json"
-        strategy="lazyOnload"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
+      {/* Organization/Website schema - critical for brand recognition */}
       <Script
         id="website-schema"
         type="application/ld+json"
-        strategy="lazyOnload"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
+      {/* Service schema - important for service-based business */}
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      {/* FAQ schema - can load later as it's less critical */}
       <Script
         id="faq-schema"
         type="application/ld+json"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      {/* HowTo schema - can load later as it's less critical */}
       <Script
         id="howto-schema"
         type="application/ld+json"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
 
