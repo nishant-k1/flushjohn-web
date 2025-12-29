@@ -221,7 +221,7 @@
   color: var(--text-inverse);
 }
 
-.wrapper h2 {
+.wrapper h3 {
   letter-spacing: 0.02em;
   font-size: 1rem;
   color: var(--text-primary);
@@ -234,7 +234,7 @@
   z-index: 1; /* Ensures text is above texture */
 }
 
-.wrapper:hover h2 {
+.wrapper:hover h3 {
   color: var(--text-primary);
 }
 

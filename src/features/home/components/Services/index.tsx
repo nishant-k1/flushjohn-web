@@ -60,7 +60,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                   <div className={styles.imageCard}>
                     <Image
                       src="https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                      alt="Porta potty rental service"
+                      alt="Professional portable toilet unit at outdoor event - FlushJohn porta potty rental services"
                       height={200}
                       width={300}
                       priority={false}
