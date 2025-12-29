@@ -24,6 +24,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "How It Works | FlushJohn - Simple Porta Potty Rental Process",
+    description:
+      "Learn how FlushJohn makes porta potty rentals simple. From quote request to delivery, we coordinate everything for you.",
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
+  },
   alternates: {
     canonical: `${websiteURL}/how-it-works`,
   },

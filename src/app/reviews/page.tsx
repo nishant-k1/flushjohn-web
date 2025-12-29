@@ -27,6 +27,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Customer Reviews | FlushJohn Porta Potty Rentals",
+    description:
+      "Read real customer reviews and testimonials from FlushJohn porta potty rental customers across the United States.",
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
+  },
   alternates: {
     canonical: `${websiteURL}/reviews`,
   },

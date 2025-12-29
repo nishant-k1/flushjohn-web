@@ -24,6 +24,29 @@ const normalizeState = (state: string | null): string | null => {
   return stateMap[normalized.toLowerCase()] || normalized.toUpperCase().slice(0, 2);
 };
 
+// Validate blog post quality for SEO
+function validateBlogPost(blog: any): boolean {
+  if (!blog) return false;
+  
+  // Check required fields
+  if (!blog.title || !blog.content || !blog.slug) return false;
+  
+  // Check minimum word count (500 words minimum for SEO)
+  const plainText = blog.content?.replace(/<[^>]*>/g, "") || "";
+  const wordCount = plainText.split(/\s+/).filter((word: string) => word.length > 0).length;
+  if (wordCount < 500) return false;
+  
+  // Check for proper structure (has headings)
+  const hasHeadings = /<h[1-6][^>]*>/i.test(blog.content);
+  if (!hasHeadings) return false;
+  
+  // Check for minimum paragraphs (at least 3)
+  const paragraphCount = (blog.content.match(/<p[^>]*>/gi) || []).length;
+  if (paragraphCount < 3) return false;
+  
+  return true;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -34,7 +57,7 @@ export async function generateMetadata({
 
   try {
     const res = await fetch(`${API_URL}?slug=${slug}&status=published`, {
-      cache: "no-store",
+      next: { revalidate: 300 }, // Consistent with blog listing page
     });
     const { data: blogs } = (await res.json()) || {};
     if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
@@ -44,6 +67,17 @@ export async function generateMetadata({
     const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
       return { title: "Blog Post Not Found" };
+    }
+    
+    // Validate blog post quality - don't index low-quality content
+    if (!validateBlogPost(blog)) {
+      return {
+        title: blog.title || "Blog Post",
+        robots: {
+          index: false,
+          follow: false,
+        },
+      };
     }
 
     const hasLocation = blog.city && blog.state;
@@ -110,7 +144,7 @@ const BlogPostPage = async ({
 
   try {
     const res = await fetch(`${API_URL}?slug=${slug}&status=published`, {
-      cache: "no-store",
+      next: { revalidate: 300 }, // Consistent with blog listing page
     });
     const { data: blogs } = (await res.json()) || {};
     if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
@@ -119,6 +153,11 @@ const BlogPostPage = async ({
 
     const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
+      notFound();
+    }
+    
+    // Validate blog post quality - don't render low-quality content
+    if (!validateBlogPost(blog)) {
       notFound();
     }
 
@@ -139,7 +178,7 @@ const BlogPostPage = async ({
     try {
       const relatedRes = await fetch(
         `${API_URL}?status=published&limit=12&sortBy=createdAt&sortOrder=desc`,
-        { cache: "no-store" }
+        { next: { revalidate: 300 } } // Consistent cache strategy
       );
       if (relatedRes.ok) {
         const relatedResult = await relatedRes.json();

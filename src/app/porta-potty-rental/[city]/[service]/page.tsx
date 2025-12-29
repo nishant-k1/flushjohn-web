@@ -13,6 +13,7 @@ import {
   servicesData,
   SERVICES,
 } from "@/features/locations/constants/services";
+import { getStateSlugFromAbbreviation } from "@/utils";
 
 export async function generateStaticParams() {
   const params: Array<{ city: string; service: string }> = [];
@@ -95,7 +96,7 @@ const ServiceCityPage = async ({
   const { displayName, state } = cityData;
   const cityTitle = `${displayName}, ${state}`;
   const coordinates = getCityCoordinatesWithFallback(city);
-  const stateSlug = state.toLowerCase();
+  const stateSlug = getStateSlugFromAbbreviation(state);
 
   // Breadcrumb schema
   const breadcrumbJsonLd = {
@@ -118,7 +119,7 @@ const ServiceCityPage = async ({
         "@type": "ListItem",
         position: 3,
         name: `${state} Porta Potty Rentals`,
-        item: `${websiteURL}/service-areas/${stateSlug === "de" ? "delaware" : stateSlug === "tx" ? "texas" : stateSlug === "fl" ? "florida" : stateSlug === "ca" ? "california" : stateSlug === "ga" ? "georgia" : "illinois"}`,
+        item: `${websiteURL}/service-areas/${stateSlug}`,
       },
       {
         "@type": "ListItem",

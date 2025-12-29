@@ -23,6 +23,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | FlushJohn - Professional Porta Potty Rental Company",
+    description:
+      "Learn about FlushJohn, a trusted porta potty rental company serving 25+ cities across the United States since 2020.",
+    images: [`${s3assets}/og-image-flushjonn-web.png`],
+  },
   alternates: {
     canonical: `${websiteURL}/about`,
   },

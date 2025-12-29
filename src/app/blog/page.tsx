@@ -2,6 +2,7 @@ import React from "react";
 import { Blog } from "@/features/blog/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL, apiBaseUrls } from "@/constants";
+import { generateSlug } from "@/utils";
 
 export const metadata: Metadata = {
   title: "Blog - FlushJohn Porta Potty Rentals",
@@ -83,21 +84,25 @@ const BlogPage = async ({
         url: `${s3assets}/og-image-flushjonn-web.png`,
       },
     },
-    blogPost: initialBlogs.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.excerpt || post.title,
-      datePublished: post.createdAt,
-      author: {
-        "@type": "Person",
-        name: post.author || "FlushJohn Team",
-      },
-      image: post.coverImage?.src,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${websiteURL}/blog/${post._id}`,
-      },
-    })),
+    blogPost: initialBlogs.map((post) => {
+      // Use slug from API, fallback to generated slug from title
+      const postSlug = post.slug || generateSlug(post.title);
+      return {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt || post.title,
+        datePublished: post.createdAt,
+        author: {
+          "@type": "Person",
+          name: post.author || "FlushJohn Team",
+        },
+        image: post.coverImage?.src || post.coverImageS3?.src || post.coverImageUnsplash?.src,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${websiteURL}/blog/${postSlug}`,
+        },
+      };
+    }),
   };
 
   const breadcrumbJsonLd = {

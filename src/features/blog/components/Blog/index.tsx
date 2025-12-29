@@ -430,7 +430,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               {/* Featured Post */}
               {featuredPost && (
                 <Link
-                  href={`/blog/${generateSlug(featuredPost.title)}`}
+                  href={`/blog/${featuredPost.slug || generateSlug(featuredPost.title)}`}
                   className={styles.featuredPost}
                 >
                   <div className={styles.featuredImageContainer}>
@@ -490,6 +490,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     title,
                     createdAt,
                     content,
+                    slug: apiSlug,
                   } = item;
 
                   // Prioritize S3 image over Unsplash, with fallback to legacy and default
@@ -506,7 +507,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     title ||
                     "Blog cover image";
 
-                  const slug = generateSlug(title);
+                  // Use slug from API, fallback to generated slug from title
+                  const slug = apiSlug || generateSlug(title);
                   const previewText = truncateText(content);
 
                   return (
