@@ -28,7 +28,10 @@ export function generateStateServices(
       description: uniqueContent.constructionOverview,
     });
   } else {
-    const majorCities = state.cities.slice(0, 2).map((c) => c.name).join(" and ");
+    const majorCities = state.cities
+      .slice(0, 2)
+      .map((c) => c.name)
+      .join(" and ");
     services.push({
       title: "Construction Sites",
       description: `Long-term porta potty rentals for construction projects throughout ${state.displayName}. We serve major construction sites in ${majorCities} and across ${state.displayName} with OSHA-compliant units and regular servicing. Our units are designed for ${state.displayName}'s climate and regulatory requirements.`,
@@ -72,7 +75,10 @@ export function generateStateFeatures(
   state: StateData
 ): Array<{ title: string; description: string }> {
   const cityCount = state.cities.length;
-  const majorCities = state.cities.slice(0, 3).map((c) => c.name).join(", ");
+  const majorCities = state.cities
+    .slice(0, 3)
+    .map((c) => c.name)
+    .join(", ");
   const totalCities = state.cities.length;
 
   return [
@@ -100,8 +106,11 @@ export function generateStateFeatures(
  */
 export function generateStateCTADescription(state: StateData): string {
   const cityCount = state.cities.length;
-  const majorCities = state.cities.slice(0, 2).map((c) => c.name).join(" and ");
-  
+  const majorCities = state.cities
+    .slice(0, 2)
+    .map((c) => c.name)
+    .join(" and ");
+
   return `Get an instant quote for porta potty rentals in ${state.displayName}. We serve ${cityCount} major cities including ${majorCities}${cityCount > 2 ? ` and ${cityCount - 2} more` : ""} with reliable, professional porta potty rental service throughout ${state.displayName}.`;
 }
 
@@ -116,4 +125,3 @@ export function generateStateStats(state: StateData) {
     citiesLabel: state.cities.length === 1 ? "City" : "Cities",
   };
 }
-
