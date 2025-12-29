@@ -62,14 +62,14 @@ const MyDateField = ({ label, ...props }: any) => {
   const selectedDate = parseDate(field.value);
 
   const handleDateChange = (date: Date | null) => {
-    if (date) {
+            if (date) {
       isSelectingRef.current = true;
-      const formatted = date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-      setValue(formatted);
+              const formatted = date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              });
+              setValue(formatted);
       // Mark as touched when a date is selected
       setTouched(true);
       // Clear error state when date is selected
@@ -78,9 +78,9 @@ const MyDateField = ({ label, ...props }: any) => {
       setTimeout(() => {
         isSelectingRef.current = false;
       }, 300);
-    } else {
-      setValue("");
-    }
+            } else {
+              setValue("");
+            }
   };
 
   // Custom input component to prevent keyboard on mobile
@@ -125,7 +125,7 @@ const MyDateField = ({ label, ...props }: any) => {
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
       // Mark as touched when input loses focus
-      setTouched(true);
+            setTouched(true);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
