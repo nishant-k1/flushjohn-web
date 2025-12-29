@@ -20,6 +20,7 @@ import Link from "next/link";
 import { phone, contact, websiteURL, s3assets } from "@/constants";
 import { cityPageData } from "../../../constants";
 import { getCityEnhancement } from "../../../constants/cityEnhancements";
+import { getCityUniqueContent } from "../../../constants/cityUniqueContent";
 import dynamic from "next/dynamic";
 
 const ContentMarketing = dynamic(
@@ -54,6 +55,7 @@ export default function PortaPottyRentalCity({
   const cityTitle = `${displayName}, ${state}`;
   const { phone_number, phone_link } = phone;
   const enhancements = getCityEnhancement(citySlug);
+  const uniqueContent = getCityUniqueContent(citySlug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -387,7 +389,21 @@ export default function PortaPottyRentalCity({
             {/* Introduction */}
             <div className={styles.section}>
               <h1>{cityPageData?.title.replace("{city}", displayName)}</h1>
-              <p>{cityPageData?.description.replace("{city}", displayName)}</p>
+              {uniqueContent ? (
+                <p
+                  style={{
+                    fontSize: "1.1rem",
+                    lineHeight: "1.8",
+                    marginTop: "1rem",
+                  }}
+                >
+                  {uniqueContent.introduction}
+                </p>
+              ) : (
+                <p>
+                  {cityPageData?.description.replace("{city}", displayName)}
+                </p>
+              )}
             </div>
 
             {/* Why Choose Us - Features Grid */}
@@ -397,6 +413,19 @@ export default function PortaPottyRentalCity({
                   Why Choose FlushJohn for Porta Potty Rentals in {displayName}?
                 </h2>
               </div>
+              {uniqueContent?.whyChooseUs && (
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "900px",
+                    margin: "0 auto 2rem",
+                    fontSize: "1.05rem",
+                    lineHeight: "1.7",
+                  }}
+                >
+                  {uniqueContent.whyChooseUs}
+                </p>
+              )}
               <div className={styles.featureGrid}>
                 <div className={styles.featureItem}>
                   <div className={styles.featureIcon}>
@@ -487,16 +516,30 @@ export default function PortaPottyRentalCity({
               <div className={styles.sectionTitle}>
                 <h2>Our Portable Toilet Rental Services in {displayName}</h2>
               </div>
-              <p
-                style={{
-                  textAlign: "center",
-                  maxWidth: "800px",
-                  margin: "0 auto 2rem",
-                }}
-              >
-                At FlushJohn, we offer a comprehensive range of portable toilet
-                rental solutions tailored to your needs:
-              </p>
+              {uniqueContent?.serviceOverview ? (
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "900px",
+                    margin: "0 auto 2rem",
+                    fontSize: "1.05rem",
+                    lineHeight: "1.7",
+                  }}
+                >
+                  {uniqueContent.serviceOverview}
+                </p>
+              ) : (
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 2rem",
+                  }}
+                >
+                  At FlushJohn, we offer a comprehensive range of portable
+                  toilet rental solutions tailored to your needs:
+                </p>
+              )}
               <ul className={styles.servicesList}>
                 <li>
                   <Construction size={24} />
@@ -668,18 +711,32 @@ export default function PortaPottyRentalCity({
                   How Much Does a Porta Potty Rental Cost in {displayName}?
                 </h2>
               </div>
-              <p
-                style={{
-                  textAlign: "center",
-                  maxWidth: "800px",
-                  margin: "0 auto 2rem",
-                }}
-              >
-                Porta potty rental prices in {displayName} vary based on the
-                rental duration, unit type, and location. We provide competitive
-                pricing for both short-term and long-term rentals with
-                transparent, no-hidden-fee pricing.
-              </p>
+              {uniqueContent?.pricingNote ? (
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "900px",
+                    margin: "0 auto 2rem",
+                    fontSize: "1.05rem",
+                    lineHeight: "1.7",
+                  }}
+                >
+                  {uniqueContent.pricingNote}
+                </p>
+              ) : (
+                <p
+                  style={{
+                    textAlign: "center",
+                    maxWidth: "800px",
+                    margin: "0 auto 2rem",
+                  }}
+                >
+                  Porta potty rental prices in {displayName} vary based on the
+                  rental duration, unit type, and location. We provide
+                  competitive pricing for both short-term and long-term rentals
+                  with transparent, no-hidden-fee pricing.
+                </p>
+              )}
               <div style={{ textAlign: "center" }}>
                 <Link
                   href="/quote"
