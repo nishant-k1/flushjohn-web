@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { websiteURL, phone, contact, s3assets } from "@/constants";
-import { getStateUniqueContent } from "@/features/locations/constants";
+import {
+  getStateUniqueContent,
+  generateStateServices,
+  generateStateFeatures,
+  generateStateCTADescription,
+} from "@/features/locations/constants";
 import styles from "./styles.module.css";
 
 interface City {
@@ -23,6 +28,11 @@ interface StateProps {
 
 const StateHubPage = ({ state }: StateProps) => {
   const uniqueContent = getStateUniqueContent(state.name.toLowerCase());
+  
+  // Generate state-specific content
+  const stateServices = generateStateServices(state, uniqueContent);
+  const stateFeatures = generateStateFeatures(state);
+  const ctaDescription = generateStateCTADescription(state);
   // ServiceAreaBusiness schema for state-level local SEO
   const serviceAreaBusinessJsonLd = {
     "@context": "https://schema.org",
@@ -117,16 +127,16 @@ const StateHubPage = ({ state }: StateProps) => {
             <div className={styles.statItem}>
               <span className={styles.statNumber}>{state.cities.length}</span>
               <span className={styles.statLabel}>
-                {state.cities.length === 1 ? "City" : "Cities"} Served
+                {state.cities.length === 1 ? "City" : "Cities"} in {state.displayName}
               </span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statNumber}>50+</span>
-              <span className={styles.statLabel}>Mile Radius</span>
+              <span className={styles.statLabel}>Mile Coverage in {state.abbreviation}</span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statNumber}>24/7</span>
-              <span className={styles.statLabel}>Service</span>
+              <span className={styles.statLabel}>Service in {state.displayName}</span>
             </div>
           </div>
         </div>
@@ -172,40 +182,19 @@ const StateHubPage = ({ state }: StateProps) => {
             </div>
           )}
           <div className={styles.servicesGrid}>
-            <div className={styles.serviceCard}>
-              <h3>Construction Sites</h3>
-              <p>
-                {uniqueContent?.constructionOverview || `Long-term porta potty rentals for construction projects throughout ${state.displayName}. OSHA-compliant units with regular servicing.`}
-              </p>
-            </div>
-            <div className={styles.serviceCard}>
-              <h3>Events & Festivals</h3>
-              <p>
-                {uniqueContent?.eventsOverview || `Clean, reliable portable toilets for weddings, festivals, concerts, and special events in ${state.displayName}.`}
-              </p>
-            </div>
-            <div className={styles.serviceCard}>
-              <h3>Emergency Service</h3>
-              <p>
-                Same-day delivery available for urgent porta potty needs in{" "}
-                {state.displayName} cities.
-              </p>
-            </div>
-            <div className={styles.serviceCard}>
-              <h3>Long-term Rentals</h3>
-              <p>
-                Weekly and monthly porta potty rental options with regular maintenance
-                and cleaning throughout {state.displayName}.
-              </p>
-            </div>
+            {stateServices.map((service, index) => (
+              <div key={index} className={styles.serviceCard}>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className={styles.ctaSection}>
           <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
           <p className={styles.ctaDescription}>
-            Get an instant quote for porta potty rentals in {state.displayName}. 
-            We serve {state.cities.length} major cities with reliable, professional service.
+            {ctaDescription}
           </p>
           <div className={styles.ctaButtons}>
             <Link href="/quote" className={styles.quoteButton}>

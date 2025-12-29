@@ -66,7 +66,7 @@ export default function PortaPottyRentalCity({
   const { phone_number, phone_link } = phone;
   const enhancements = getCityEnhancement(citySlug);
   const uniqueContent = getCityUniqueContent(citySlug);
-  
+
   // Generate city-specific content
   const cityFeatures = generateCityFeatures(
     displayName,
@@ -491,15 +491,36 @@ export default function PortaPottyRentalCity({
               <div className={styles.featureGrid}>
                 {cityFeatures.map((feature, index) => {
                   const icons = [
-                    <Truck key="truck" size={24} />,
-                    <Droplet key="droplet" size={24} />,
-                    <DollarSign key="dollar" size={24} />,
-                    <Calendar key="calendar" size={24} />,
-                    <Award key="award" size={24} />,
-                    <Phone key="phone" size={24} />,
+                    <Truck
+                      key="truck"
+                      size={24}
+                    />,
+                    <Droplet
+                      key="droplet"
+                      size={24}
+                    />,
+                    <DollarSign
+                      key="dollar"
+                      size={24}
+                    />,
+                    <Calendar
+                      key="calendar"
+                      size={24}
+                    />,
+                    <Award
+                      key="award"
+                      size={24}
+                    />,
+                    <Phone
+                      key="phone"
+                      size={24}
+                    />,
                   ];
                   return (
-                    <div key={index} className={styles.featureItem}>
+                    <div
+                      key={index}
+                      className={styles.featureItem}
+                    >
                       <div className={styles.featureIcon}>{icons[index]}</div>
                       <div className={styles.featureContent}>
                         <h3>{feature.title}</h3>
@@ -561,11 +582,26 @@ export default function PortaPottyRentalCity({
               <ul className={styles.servicesList}>
                 {cityServices.map((service, index) => {
                   const icons = [
-                    <Construction key="construction" size={24} />,
-                    <Calendar key="calendar" size={24} />,
-                    <MapPin key="mappin" size={24} />,
-                    <Award key="award" size={24} />,
-                    <AlertCircle key="alert" size={24} />,
+                    <Construction
+                      key="construction"
+                      size={24}
+                    />,
+                    <Calendar
+                      key="calendar"
+                      size={24}
+                    />,
+                    <MapPin
+                      key="mappin"
+                      size={24}
+                    />,
+                    <Award
+                      key="award"
+                      size={24}
+                    />,
+                    <AlertCircle
+                      key="alert"
+                      size={24}
+                    />,
                   ];
                   return (
                     <li key={index}>
@@ -862,7 +898,9 @@ export default function PortaPottyRentalCity({
                         }}
                       />
                       <h3>{event}</h3>
-                      <p>{generateEventDescription(event, displayName, state)}</p>
+                      <p>
+                        {generateEventDescription(event, displayName, state)}
+                      </p>
                       <Link
                         href="/quote"
                         style={{
