@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { DollarSign, Building2, Toilet, HelpCircle, ChevronLeft, ChevronRight, Search, X, Tag } from "lucide-react";
+import {
+  DollarSign,
+  Building2,
+  Toilet,
+  HelpCircle,
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  X,
+  Tag,
+} from "lucide-react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Image from "next/image";
@@ -12,13 +22,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { s3assets } from "@/constants";
 
 // Component to handle image loading with error fallback
-const BlogImage = ({ 
-  src, 
-  alt, 
-  blogId 
-}: { 
-  src: string; 
-  alt: string; 
+const BlogImage = ({
+  src,
+  alt,
+  blogId,
+}: {
+  src: string;
+  alt: string;
   blogId: string;
 }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -59,16 +69,19 @@ const BlogImage = ({
 
 const truncateText = (html: string, maxLength = 150) => {
   const plainText = convert(html, { wordwrap: false });
-  const truncated = plainText.length > maxLength
-    ? plainText.substring(0, maxLength).trim() + "..."
-    : plainText;
-  
+  const truncated =
+    plainText.length > maxLength
+      ? plainText.substring(0, maxLength).trim() + "..."
+      : plainText;
+
   // Convert to proper case (first letter uppercase, rest lowercase)
   // Only if the text is ALL CAPS (more than 3 consecutive uppercase letters)
   if (truncated.length > 3 && /[A-Z]{4,}/.test(truncated)) {
-    return truncated.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+    return truncated
+      .toLowerCase()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
   }
-  
+
   return truncated;
 };
 
@@ -89,7 +102,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
   const currentPage = parseInt(searchParams.get("page") || "1", 10) || 1;
   const searchQuery = searchParams.get("search") || "";
   const selectedTag = searchParams.get("tag") || "";
-  
+
   const [blogs, setBlogs] = useState(initialBlogs);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -138,7 +151,9 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
       setError(null);
 
       try {
-        const { API_BASE_URL } = await import("@/constants").then(m => m.apiBaseUrls);
+        const { API_BASE_URL } = await import("@/constants").then(
+          (m) => m.apiBaseUrls
+        );
         const params = new URLSearchParams({
           page: currentPage.toString(),
           limit: "12",
@@ -157,11 +172,14 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
           const result = await res.json();
           if (result.success) {
             let filteredBlogs = result.data || [];
-            
+
             // Filter by tag if selected
             if (selectedTag) {
-              filteredBlogs = filteredBlogs.filter((blog: any) => 
-                blog.tags && Array.isArray(blog.tags) && blog.tags.includes(selectedTag)
+              filteredBlogs = filteredBlogs.filter(
+                (blog: any) =>
+                  blog.tags &&
+                  Array.isArray(blog.tags) &&
+                  blog.tags.includes(selectedTag)
               );
             }
 
@@ -190,7 +208,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     if (searchQuery) params.set("search", searchQuery);
     if (selectedTag) params.set("tag", selectedTag);
     router.push(`/blog?${params.toString()}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -202,6 +220,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     if (selectedTag) params.set("tag", selectedTag);
     params.set("page", "1");
     router.push(`/blog?${params.toString()}`);
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleTagClick = (tag: string) => {
@@ -212,11 +231,13 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     }
     params.set("page", "1");
     router.push(`/blog?${params.toString()}`);
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const clearFilters = () => {
     setSearchInput("");
     router.push("/blog?page=1");
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const generatePageNumbers = () => {
@@ -297,18 +318,28 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
     );
   }
 
-              const formatBlogDate = (dateString: string) => {
-                if (!dateString) return "";
-                const date = new Date(dateString);
-                const months = [
-                  "January", "February", "March", "April", "May", "June",
-                  "July", "August", "September", "October", "November", "December"
-                ];
-                const year = date.getUTCFullYear();
-                const month = months[date.getUTCMonth()];
-                const day = date.getUTCDate();
-                return `${month} ${day}, ${year}`;
-              };
+  const formatBlogDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const year = date.getUTCFullYear();
+    const month = months[date.getUTCMonth()];
+    const day = date.getUTCDate();
+    return `${month} ${day}, ${year}`;
+  };
 
   return (
     <div className={styles.section}>
@@ -316,11 +347,17 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
         <Breadcrumbs path="" />
         <div className={styles.wrapper}>
           <h1>Our Blog</h1>
-          
+
           {/* Search Bar */}
-          <form onSubmit={handleSearch} className={styles.searchForm}>
+          <form
+            onSubmit={handleSearch}
+            className={styles.searchForm}
+          >
             <div className={styles.searchInputWrapper}>
-              <Search size={20} className={styles.searchIcon} />
+              <Search
+                size={20}
+                className={styles.searchIcon}
+              />
               <input
                 type="text"
                 placeholder="Search blog posts..."
@@ -339,7 +376,10 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                 </button>
               )}
             </div>
-            <button type="submit" className={styles.searchButton}>
+            <button
+              type="submit"
+              className={styles.searchButton}
+            >
               Search
             </button>
           </form>
@@ -356,6 +396,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                       if (selectedTag) params.set("tag", selectedTag);
                       params.set("page", "1");
                       router.push(`/blog?${params.toString()}`);
+                      window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                     className={styles.filterRemove}
                   >
@@ -372,6 +413,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                       if (searchQuery) params.set("search", searchQuery);
                       params.set("page", "1");
                       router.push(`/blog?${params.toString()}`);
+                      window.scrollTo({ top: 0, behavior: "instant" });
                     }}
                     className={styles.filterRemove}
                   >
@@ -433,7 +475,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               {/* Blog Stats */}
               <div className={styles.blogStats}>
                 <p>
-                  Page {pagination.currentPage} of {pagination.totalPages} • Showing {blogs.length} of {pagination.totalItems} blog posts
+                  Page {pagination.currentPage} of {pagination.totalPages} •
+                  Showing {blogs.length} of {pagination.totalItems} blog posts
                 </p>
               </div>
 
@@ -449,47 +492,47 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     content,
                   } = item;
 
-              // Prioritize S3 image over Unsplash, with fallback to legacy and default
-              const imageSource =
-                coverImageS3?.src ||
-                coverImageUnsplash?.src ||
-                item.coverImage?.src ||
-                `${s3assets}/og-image-flushjonn-web.png`;
-                  
-              const imageAlt =
-                coverImageS3?.alt ||
-                coverImageUnsplash?.alt ||
-                item.coverImage?.alt ||
-                title ||
-                "Blog cover image";
+                  // Prioritize S3 image over Unsplash, with fallback to legacy and default
+                  const imageSource =
+                    coverImageS3?.src ||
+                    coverImageUnsplash?.src ||
+                    item.coverImage?.src ||
+                    `${s3assets}/og-image-flushjonn-web.png`;
 
-              const slug = generateSlug(title);
-              const previewText = truncateText(content);
+                  const imageAlt =
+                    coverImageS3?.alt ||
+                    coverImageUnsplash?.alt ||
+                    item.coverImage?.alt ||
+                    title ||
+                    "Blog cover image";
 
-              return (
-                <Link
-                  href={`/blog/${slug}`}
-                  key={_id}
-                  className={styles.blogItem}
-                >
-                      <BlogImage 
-                      src={imageSource}
-                      alt={imageAlt}
+                  const slug = generateSlug(title);
+                  const previewText = truncateText(content);
+
+                  return (
+                    <Link
+                      href={`/blog/${slug}`}
+                      key={_id}
+                      className={styles.blogItem}
+                    >
+                      <BlogImage
+                        src={imageSource}
+                        alt={imageAlt}
                         blogId={_id}
-                    />
-                  <div className={styles.textContainer}>
-                    <h2>{title || "Untitled"}</h2>
-                    <h3 suppressHydrationWarning>
-                      {formatBlogDate(createdAt)}
-                    </h3>
-                    <p>{previewText || "No preview available."}</p>
-                    <span className={styles.readMore}>Read More →</span>
-                  </div>
-                </Link>
-              );
-            })}
+                      />
+                      <div className={styles.textContainer}>
+                        <h2>{title || "Untitled"}</h2>
+                        <h3 suppressHydrationWarning>
+                          {formatBlogDate(createdAt)}
+                        </h3>
+                        <p>{previewText || "No preview available."}</p>
+                        <span className={styles.readMore}>Read More →</span>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
-          </div>
+            </div>
 
             {/* Sidebar */}
             <aside className={styles.sidebar}>
@@ -507,6 +550,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                         if (searchQuery) params.set("search", searchQuery);
                         params.set("page", "1");
                         router.push(`/blog?${params.toString()}`);
+                        window.scrollTo({ top: 0, behavior: "instant" });
                       }}
                       className={`${styles.tagButton} ${!selectedTag ? styles.tagButtonActive : ""}`}
                     >
@@ -529,19 +573,31 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               <div className={styles.sidebarSection}>
                 <h3 className={styles.sidebarTitle}>Quick Links</h3>
                 <div className={styles.quickLinks}>
-                  <Link href="/porta-potty-rental" className={styles.quickLink}>
+                  <Link
+                    href="/porta-potty-rental"
+                    className={styles.quickLink}
+                  >
                     <Building2 size={16} />
                     City Services
                   </Link>
-                  <Link href="/rental-products" className={styles.quickLink}>
+                  <Link
+                    href="/rental-products"
+                    className={styles.quickLink}
+                  >
                     <Toilet size={16} />
                     Products
                   </Link>
-                  <Link href="/quote" className={styles.quickLink}>
+                  <Link
+                    href="/quote"
+                    className={styles.quickLink}
+                  >
                     <DollarSign size={16} />
                     Get Quote
                   </Link>
-                  <Link href="/faq" className={styles.quickLink}>
+                  <Link
+                    href="/faq"
+                    className={styles.quickLink}
+                  >
                     <HelpCircle size={16} />
                     FAQ
                   </Link>
@@ -567,7 +623,10 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                 {generatePageNumbers().map((page, index) => {
                   if (page === "...") {
                     return (
-                      <span key={`ellipsis-${index}`} className={styles.ellipsis}>
+                      <span
+                        key={`ellipsis-${index}`}
+                        className={styles.ellipsis}
+                      >
                         ...
                       </span>
                     );
@@ -604,7 +663,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
           )}
 
           {/* Related Content Section - Show on last page */}
-          {pagination.currentPage === pagination.totalPages && blogs.length > 0 && (
+          {pagination.currentPage === pagination.totalPages &&
+            blogs.length > 0 && (
               <div className={styles.relatedContent}>
                 <h3>Explore More Resources</h3>
                 <div className={styles.relatedLinks}>
@@ -612,7 +672,13 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     href="/porta-potty-rental"
                     className={styles.relatedLink}
                   >
-                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <h4
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
                       <Building2 size={18} />
                       City-Specific Services
                     </h4>
@@ -622,7 +688,13 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     href="/rental-products"
                     className={styles.relatedLink}
                   >
-                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <h4
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
                       <Toilet size={18} />
                       Product Catalog
                     </h4>
@@ -632,7 +704,13 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     href="/quote"
                     className={styles.relatedLink}
                   >
-                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <h4
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
                       <DollarSign size={18} />
                       Get a Quote
                     </h4>
@@ -642,15 +720,21 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     href="/faq"
                     className={styles.relatedLink}
                   >
-                    <h4 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <h4
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
                       <HelpCircle size={18} />
                       FAQ
                     </h4>
                     <p>Common questions about porta potty rentals</p>
                   </Link>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     </div>

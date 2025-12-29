@@ -11,6 +11,7 @@ import {
 import "../../styles/globals.css";
 import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
+import ScrollToTop from "@/components/ScrollToTop";
 import dynamic from "next/dynamic";
 
 // Critical above-the-fold components - SSR enabled
@@ -377,6 +378,7 @@ export default function RootLayout({
             <SidebarContextProvider>
               <QuickQuoteContextProvider>
                 <QuoteContextProvider>
+                  <ScrollToTop />
                   <Sidebar />
                   <Navbar />
                   {children}

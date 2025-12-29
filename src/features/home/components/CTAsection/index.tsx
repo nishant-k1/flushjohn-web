@@ -24,7 +24,10 @@ const CTAsection = (props: Props) => {
           <div className={styles.ctaButtons}>
             <button
               className={styles.ctaButton}
-              onClick={() => router.push("/quote")}
+              onClick={() => {
+                router.push("/quote");
+                window.scrollTo({ top: 0, behavior: "instant" });
+              }}
             >
               Get My Free Quote
             </button>
@@ -50,25 +53,40 @@ const CTAsection = (props: Props) => {
           </div>
 
           <p className={styles.ctaOffer}>
-            <Tag size={18} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+            <Tag
+              size={18}
+              style={{
+                display: "inline",
+                verticalAlign: "middle",
+                marginRight: "4px",
+              }}
+            />
             Claim $15 OFF on Your First Rental! Limited Time Offer!
           </p>
 
           <div className={styles.trustElements}>
             <div className={styles.trustItem}>
-              <span className={styles.trustIcon}><Zap size={20} /></span>
+              <span className={styles.trustIcon}>
+                <Zap size={20} />
+              </span>
               <span>Fast Delivery (24-48hrs)</span>
             </div>
             <div className={styles.trustItem}>
-              <span className={styles.trustIcon}><DollarSign size={20} /></span>
+              <span className={styles.trustIcon}>
+                <DollarSign size={20} />
+              </span>
               <span>Best Price Guarantee</span>
             </div>
             <div className={styles.trustItem}>
-              <span className={styles.trustIcon}><Droplet size={20} /></span>
+              <span className={styles.trustIcon}>
+                <Droplet size={20} />
+              </span>
               <span>Professionally Cleaned</span>
             </div>
             <div className={styles.trustItem}>
-              <span className={styles.trustIcon}><Phone size={20} /></span>
+              <span className={styles.trustIcon}>
+                <Phone size={20} />
+              </span>
               <span>24/7 Support</span>
             </div>
           </div>
