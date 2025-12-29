@@ -21,7 +21,16 @@ import { phone, contact, websiteURL, s3assets } from "@/constants";
 import { cityPageData } from "../../../constants";
 import { getCityEnhancement } from "../../../constants/cityEnhancements";
 import { getCityUniqueContent } from "../../../constants/cityUniqueContent";
-import { getCityH1Heading, getCityH2Heading } from "../../../constants/cityHeadings";
+import {
+  getCityH1Heading,
+  getCityH2Heading,
+} from "../../../constants/cityHeadings";
+import {
+  generateCityFeatures,
+  generateCityServices,
+  generateCityFAQs,
+  generateEventDescription,
+} from "../../../constants/cityContentHelpers";
 import dynamic from "next/dynamic";
 
 const ContentMarketing = dynamic(
@@ -57,6 +66,16 @@ export default function PortaPottyRentalCity({
   const { phone_number, phone_link } = phone;
   const enhancements = getCityEnhancement(citySlug);
   const uniqueContent = getCityUniqueContent(citySlug);
+  
+  // Generate city-specific content
+  const cityFeatures = generateCityFeatures(
+    displayName,
+    state,
+    enhancements,
+    enhancements.events.length > 2
+  );
+  const cityServices = generateCityServices(displayName, state, enhancements);
+  const cityFAQs = generateCityFAQs(displayName, state, enhancements);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -454,9 +473,7 @@ export default function PortaPottyRentalCity({
             {/* Why Choose Us - Features Grid */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
-                <h2>
-                  {getCityH2Heading(displayName, "why-choose")}
-                </h2>
+                <h2>{getCityH2Heading(displayName, "why-choose")}</h2>
               </div>
               {uniqueContent?.whyChooseUs && (
                 <p
@@ -472,69 +489,25 @@ export default function PortaPottyRentalCity({
                 </p>
               )}
               <div className={styles.featureGrid}>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <Truck size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>Fast & Reliable Same-Day Delivery</h3>
-                    <p>
-                      Quick delivery throughout {displayName} and surrounding
-                      areas
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <Droplet size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>Clean & Sanitized</h3>
-                    <p>
-                      Professionally cleaned portable toilets before every
-                      rental
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <DollarSign size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>Affordable Pricing</h3>
-                    <p>Competitive rates with no hidden fees or surprises</p>
-                  </div>
-                </div>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <Calendar size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>Flexible Plans</h3>
-                    <p>Short-term and long-term rental options available</p>
-                  </div>
-                </div>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <Award size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>Multiple Options</h3>
-                    <p>Events, construction, weddings, and more</p>
-                  </div>
-                </div>
-                <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>
-                    <Phone size={24} />
-                  </div>
-                  <div className={styles.featureContent}>
-                    <h3>24/7 Support</h3>
-                    <p>
-                      Round-the-clock customer service for {displayName}{" "}
-                      customers
-                    </p>
-                  </div>
-                </div>
+                {cityFeatures.map((feature, index) => {
+                  const icons = [
+                    <Truck key="truck" size={24} />,
+                    <Droplet key="droplet" size={24} />,
+                    <DollarSign key="dollar" size={24} />,
+                    <Calendar key="calendar" size={24} />,
+                    <Award key="award" size={24} />,
+                    <Phone key="phone" size={24} />,
+                  ];
+                  return (
+                    <div key={index} className={styles.featureItem}>
+                      <div className={styles.featureIcon}>{icons[index]}</div>
+                      <div className={styles.featureContent}>
+                        <h3>{feature.title}</h3>
+                        <p>{feature.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -559,7 +532,7 @@ export default function PortaPottyRentalCity({
             {/* Our Services */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
-                  <h2>{getCityH2Heading(displayName, "services")}</h2>
+                <h2>{getCityH2Heading(displayName, "services")}</h2>
               </div>
               {uniqueContent?.serviceOverview ? (
                 <p
@@ -586,175 +559,70 @@ export default function PortaPottyRentalCity({
                 </p>
               )}
               <ul className={styles.servicesList}>
-                <li>
-                  <Construction size={24} />
-                  <div>
-                    <strong>Construction Site Porta Potties</strong>
-                    <p style={{ margin: "0.5rem 0 0" }}>
-                      Durable, OSHA-compliant units perfect for construction
-                      sites and long-term projects
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <Calendar size={24} />
-                  <div>
-                    <strong>Event Porta Potties</strong>
-                    <p style={{ margin: "0.5rem 0 0" }}>
-                      Ideal for concerts, festivals, fairs, and large gatherings
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <MapPin size={24} />
-                  <div>
-                    <strong>Outdoor & Camping Toilets</strong>
-                    <p style={{ margin: "0.5rem 0 0" }}>
-                      Convenient portable solutions for remote locations and
-                      outdoor events
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <Award size={24} />
-                  <div>
-                    <strong>Luxury Restroom Trailers</strong>
-                    <p style={{ margin: "0.5rem 0 0" }}>
-                      Premium facilities perfect for weddings, VIP events, and
-                      upscale occasions
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <AlertCircle size={24} />
-                  <div>
-                    <strong>Emergency & Disaster Relief Toilets</strong>
-                    <p style={{ margin: "0.5rem 0 0" }}>
-                      Quick deployment solutions for emergencies and disaster
-                      relief situations
-                    </p>
-                  </div>
-                </li>
+                {cityServices.map((service, index) => {
+                  const icons = [
+                    <Construction key="construction" size={24} />,
+                    <Calendar key="calendar" size={24} />,
+                    <MapPin key="mappin" size={24} />,
+                    <Award key="award" size={24} />,
+                    <AlertCircle key="alert" size={24} />,
+                  ];
+                  return (
+                    <li key={index}>
+                      {icons[index]}
+                      <div>
+                        <strong>{service.title}</strong>
+                        <p style={{ margin: "0.5rem 0 0" }}>
+                          {service.description}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
-            {/* Popular Services */}
-            <div className={styles.section}>
-              <div className={styles.sectionTitle}>
-                <h2>Popular Porta Potty Services in {cityTitle}</h2>
-              </div>
-              <div className={`${styles.grid} ${styles.gridAutoFit}`}>
-                {[
-                  {
-                    name: "Construction Sites",
-                    desc: "Long-term rentals for construction projects",
-                    link: "/rental-products/standard-porta-potty",
-                  },
-                  {
-                    name: "Weddings",
-                    desc: "Elegant portable toilets for special events",
-                    link: "/rental-products/luxury-restroom-trailer",
-                  },
-                  {
-                    name: "Corporate Events",
-                    desc: "Professional sanitation for business events",
-                    link: "/rental-products/deluxe-porta-potty",
-                  },
-                  {
-                    name: "Festivals",
-                    desc: "High-capacity solutions for large gatherings",
-                    link: "/rental-products/standard-porta-potty",
-                  },
-                  {
-                    name: "Sports Events",
-                    desc: "Durable units for athletic competitions",
-                    link: "/rental-products/standard-porta-potty",
-                  },
-                  {
-                    name: "Concerts",
-                    desc: "Heavy-duty porta potties for music events",
-                    link: "/rental-products/standard-porta-potty",
-                  },
-                ].map((service) => (
-                  <div
-                    key={service.name}
-                    className={styles.card}
-                  >
-                    <h3>{service.name}</h3>
-                    <p>{service.desc}</p>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "0.75rem",
-                        marginTop: "0.5rem",
-                      }}
-                    >
-                      <Link
-                        href={service.link}
-                        style={{
-                          fontSize: "0.875rem",
-                          color: "var(--primary-light)",
-                        }}
-                      >
-                        View Products →
-                      </Link>
-                      <Link
-                        href="/quote"
-                        style={{
-                          fontSize: "0.875rem",
-                          color: "var(--primary-light)",
-                        }}
-                      >
-                        Get Quote →
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {/* Mid-content CTA */}
+            {/* Mid-content CTA */}
+            <div
+              style={{
+                textAlign: "center",
+                marginTop: "2rem",
+                padding: "1.5rem",
+                background: "rgba(255, 255, 255, 0.05)",
+                borderRadius: "var(--radius-md)",
+              }}
+            >
+              <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
+                Need porta potty rental services in {displayName}, {state}? Get
+                a free quote today!
+              </p>
               <div
                 style={{
-                  textAlign: "center",
-                  marginTop: "2rem",
-                  padding: "1.5rem",
-                  background: "rgba(255, 255, 255, 0.05)",
-                  borderRadius: "var(--radius-md)",
+                  display: "flex",
+                  gap: "1rem",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
                 }}
               >
-                <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
-                  Need porta potty rental services in {displayName}? Get a free
-                  quote today!
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1rem",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                  }}
+                <Link
+                  href="/quote"
+                  className={styles.ctaButton}
                 >
-                  <Link
-                    href="/quote"
-                    className={styles.ctaButton}
-                  >
-                    Get Free Quote
-                  </Link>
-                  <a
-                    href={phone_link}
-                    className={styles.ctaButtonSecondary}
-                  >
-                    Call {phone_number}
-                  </a>
-                </div>
+                  Get Free Quote
+                </Link>
+                <a
+                  href={phone_link}
+                  className={styles.ctaButtonSecondary}
+                >
+                  Call {phone_number}
+                </a>
               </div>
             </div>
 
             {/* Pricing Section */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
-                <h2>
-                  {getCityH2Heading(displayName, "pricing")}
-                </h2>
+                <h2>{getCityH2Heading(displayName, "pricing")}</h2>
               </div>
               {uniqueContent?.pricingNote ? (
                 <p
@@ -811,24 +679,7 @@ export default function PortaPottyRentalCity({
                 <h2>Frequently Asked Questions - {cityTitle}</h2>
               </div>
               <div className={styles.grid}>
-                {[
-                  {
-                    q: `How much does porta potty rental cost in ${cityTitle}?`,
-                    a: `Our porta potty rental prices in ${cityTitle} vary based on location, duration, and unit type. Contact us for a personalized quote.`,
-                  },
-                  {
-                    q: `Do you deliver to all areas in ${cityTitle}?`,
-                    a: `Yes! We provide porta potty delivery throughout ${cityTitle} and surrounding areas. Same-day delivery available.`,
-                  },
-                  {
-                    q: `How often are the porta potties cleaned?`,
-                    a: `We clean and service our porta potties regularly, typically weekly, with additional cleaning available upon request.`,
-                  },
-                  {
-                    q: `What types of events do you serve in ${cityTitle}?`,
-                    a: `We serve all types of events in ${cityTitle}: weddings, construction sites, festivals, corporate events, and more.`,
-                  },
-                ].map((faq, index) => (
+                {cityFAQs.slice(0, 4).map((faq, index) => (
                   <div
                     key={index}
                     className={styles.card}
@@ -1011,7 +862,7 @@ export default function PortaPottyRentalCity({
                         }}
                       />
                       <h3>{event}</h3>
-                      <p>Professional porta potty services for this event</p>
+                      <p>{generateEventDescription(event, displayName, state)}</p>
                       <Link
                         href="/quote"
                         style={{
