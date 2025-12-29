@@ -3,7 +3,13 @@ import { notFound } from "next/navigation";
 import { IndividualProduct } from "@/features/products/components";
 import { s3assets, websiteURL, phone } from "@/constants";
 import { products_data } from "@/features/products/constants";
-import { findProductBySlug } from "@/utils/slug";
+import { findProductBySlug, generateProductSlug } from "@/utils/slug";
+
+export async function generateStaticParams() {
+  return products_data.product_list.map((product) => ({
+    slug: generateProductSlug(product.title),
+  }));
+}
 
 export const generateMetadata = async ({
   params,

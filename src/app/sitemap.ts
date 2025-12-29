@@ -1,46 +1,49 @@
 import { MetadataRoute } from "next";
-import { websiteURL } from "@/constants";
-import { getCitiesForSitemap } from "@/features/locations/constants";
+import { websiteURL, apiBaseUrls } from "@/constants";
+import { getCitiesForSitemap, statesData, SERVICES } from "@/features/locations/constants";
+import { products_data } from "@/features/products/constants";
+import { generateProductSlug } from "@/utils/slug";
 
 const targetCities = getCitiesForSitemap();
 
-const productSlugs = [
-  {
-    slug: "standard-porta-potty",
-    name: "Standard Porta Potty",
-    description:
-      "Basic portable toilet rental for events and construction sites",
-  },
-  {
-    slug: "deluxe-porta-potty",
-    name: "Deluxe Flushing Porta Potty",
-    description: "Upgraded porta potty with flushing toilet and sink",
-  },
-  {
-    slug: "ada-compliant-porta-potty",
-    name: "ADA Compliant Porta Potty",
-    description: "Wheelchair accessible portable toilet meeting ADA standards",
-  },
-  {
-    slug: "luxury-restroom-trailer",
-    name: "Luxury Restroom Trailer",
-    description: "Premium multi-stall restroom trailer with air conditioning",
-  },
-  {
-    slug: "hand-wash-station",
-    name: "Portable Hand Wash Station",
-    description: "Standalone hand washing station with soap and towels",
-  },
-  {
-    slug: "construction-porta-potty",
-    name: "Construction Porta Potty",
-    description:
-      "Rugged portable toilet for construction site long-term rental",
-  },
-];
+// Fetch all published blog posts from API
+async function getAllPublishedBlogs() {
+  try {
+    const { API_BASE_URL } = apiBaseUrls;
+    // Fetch all published blogs (use high limit to get all)
+    const res = await fetch(
+      `${API_BASE_URL}/blogs?page=1&limit=1000&status=published&sortBy=createdAt&sortOrder=desc`,
+      {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      }
+    );
 
-export default function sitemap(): MetadataRoute.Sitemap {
+    if (res.ok) {
+      const result = await res.json();
+      if (result.success && result.data) {
+        return result.data.map((blog: any) => ({
+          slug: blog.slug || blog._id,
+          lastModified: blog.updatedAt || blog.createdAt || new Date().toISOString(),
+          priority: 0.7,
+        }));
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching blogs for sitemap:", error);
+  }
+  
+  // Fallback to empty array if fetch fails
+  return [];
+}
+
+// Generate product slugs dynamically from actual products data
+// This ensures sitemap always matches what's actually available
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date().toISOString();
+  
+  // Fetch all published blog posts dynamically
+  const publishedBlogs = await getAllPublishedBlogs();
 
   const corePages = [
     {
@@ -120,81 +123,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: majorCities.includes(city.slug) ? 0.9 : 0.8,
   }));
 
-  const statePages = [
-    { slug: "texas", priority: 0.75 },
-    { slug: "florida", priority: 0.75 },
-    { slug: "california", priority: 0.75 },
-    { slug: "georgia", priority: 0.7 },
-    { slug: "illinois", priority: 0.7 },
-    { slug: "delaware", priority: 0.7 },
-  ].map((state) => ({
-    url: `${websiteURL}/service-areas/${state.slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: state.priority,
-  }));
+  // Derive state pages dynamically from statesData
+  const statePages = Object.keys(statesData).map((stateSlug) => {
+    const state = statesData[stateSlug as keyof typeof statesData];
+    // Set priority based on number of cities (more cities = higher priority)
+    const cityCount = state.cities.length;
+    const priority = cityCount >= 5 ? 0.75 : cityCount >= 3 ? 0.7 : 0.65;
+    
+    return {
+      url: `${websiteURL}/service-areas/${stateSlug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority,
+    };
+  });
 
-  const productPages = productSlugs.map((product) => ({
-    url: `${websiteURL}/rental-products/${product.slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }));
-
-  const blogPages = [
-    {
-      slug: "porta-potty-rental-guide",
-      title: "Complete Porta Potty Rental Guide 2025",
-      priority: 0.7,
-    },
-    {
-      slug: "event-sanitation-best-practices",
-      title: "Event Sanitation Best Practices",
-      priority: 0.65,
-    },
-    {
-      slug: "construction-site-sanitation-requirements",
-      title: "OSHA Construction Site Sanitation Requirements",
-      priority: 0.7,
-    },
-    {
-      slug: "wedding-porta-potty-solutions",
-      title: "Luxury Porta Potty Solutions for Weddings",
-      priority: 0.65,
-    },
-    {
-      slug: "festival-bathroom-planning",
-      title: "Festival Bathroom Planning Guide",
-      priority: 0.65,
-    },
-    {
-      slug: "how-many-porta-potties-needed",
-      title: "Porta Potty Calculator - How Many Do You Need?",
-      priority: 0.7,
-    },
-    {
-      slug: "ada-compliant-porta-potty-requirements",
-      title: "ADA Compliant Porta Potty Requirements",
-      priority: 0.7,
-    },
-    {
-      slug: "porta-potty-rental-cost-breakdown",
-      title: "Porta Potty Rental Cost Breakdown 2025",
+  // Generate product pages dynamically from actual products data
+  const productPages = products_data.product_list.map((product) => {
+    const slug = generateProductSlug(product.title);
+    return {
+      url: `${websiteURL}/rental-products/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
       priority: 0.75,
-    },
-  ].map((blog) => ({
+    };
+  });
+
+  // Use dynamically fetched blog posts instead of hardcoded list
+  const blogPages = publishedBlogs.map((blog: { slug: string; lastModified: string; priority: number }) => ({
     url: `${websiteURL}/blog/${blog.slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
+    lastModified: blog.lastModified,
+    changeFrequency: "weekly" as const, // Blog posts change more frequently
     priority: blog.priority,
   }));
 
   // Service-specific city pages (construction, events, weddings)
-  const services = ["construction", "events", "weddings"];
+  // Use SERVICES constant to ensure consistency
   const serviceCityPages = targetCities
     .filter((city) => majorCities.includes(city.slug))
     .flatMap((city) =>
-      services.map((service) => ({
+      SERVICES.map((service) => ({
         url: `${websiteURL}/porta-potty-rental/${city.slug}/${service}`,
         lastModified: currentDate,
         changeFrequency: "monthly" as const,

@@ -15,13 +15,13 @@ import Home from "@/features/home/components/Home";
 export const metadata: Metadata = {
   title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
   description:
-    "Professional porta potty rentals in 25+ cities: Houston, Dallas, LA, Miami & more. Fast delivery, competitive pricing, licensed & insured. Free quote!",
+    "Porta potty rentals, portable toilet rental & porta john rental in 25+ cities. Fast delivery, competitive pricing, licensed & insured. Free quote!",
   keywords:
     "porta potty rentals, portable toilet rental service, construction site porta potty, wedding porta potty rental, event sanitation services, ADA compliant portable toilets, luxury restroom trailer rental, emergency porta potty delivery, construction site sanitation, outdoor event portable toilets, festival porta potty rental, corporate event sanitation, sports event porta potty, long-term porta potty rental, same-day porta potty delivery, affordable portable toilet rental, professional porta potty service, construction porta potty rental, event porta potty rental, portable restroom rental, construction site toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate event portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets, construction portable toilets, event portable toilets, wedding portable toilets, festival portable toilets, corporate portable toilets, sports portable toilets, emergency portable toilets, luxury portable toilets, ADA portable toilets",
   openGraph: {
     title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
     description:
-      "Professional porta potty rentals in 25+ cities: Houston, Dallas, LA, Miami & more. Fast delivery, competitive pricing, licensed & insured. Free quote!",
+      "Porta potty rentals, portable toilet rental & porta john rental in 25+ cities. Fast delivery, competitive pricing, licensed & insured. Free quote!",
     url: websiteURL,
     type: "website",
     siteName: "FlushJohn",

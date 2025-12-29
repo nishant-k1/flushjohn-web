@@ -10,3 +10,4 @@ export * from "./stateCoordinates";
 export * from "./serviceAreas";
 export * from "./cityEnhancements";
 export * from "./cities";
+export * from "./services";

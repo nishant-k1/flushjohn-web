@@ -4,48 +4,13 @@ import { s3assets, websiteURL } from "@/constants";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { getCityCoordinatesWithFallback, citiesData } from "@/features/locations/constants";
-
-const services = {
-  construction: {
-    title: "Construction Site Porta Potty Rentals",
-    description: "Professional porta potty rentals for construction sites",
-    productLink: "/rental-products/standard-porta-potty",
-    features: [
-      "OSHA-compliant units",
-      "Long-term rental options",
-      "Regular maintenance & servicing",
-      "Durable construction-grade units",
-    ],
-  },
-  events: {
-    title: "Event Porta Potty Rentals",
-    description: "Portable toilet rentals for festivals, concerts, and large gatherings",
-    productLink: "/rental-products/deluxe-porta-potty",
-    features: [
-      "High-capacity units",
-      "Fast setup & delivery",
-      "Event-grade sanitation",
-      "Multiple unit options",
-    ],
-  },
-  weddings: {
-    title: "Wedding Porta Potty Rentals",
-    description: "Elegant portable restroom solutions for weddings",
-    productLink: "/rental-products/luxury-restroom-trailer",
-    features: [
-      "Luxury restroom trailers",
-      "Elegant interior design",
-      "Climate-controlled units",
-      "Premium amenities",
-    ],
-  },
-};
+import { servicesData, SERVICES } from "@/features/locations/constants/services";
 
 export async function generateStaticParams() {
   const params: Array<{ city: string; service: string }> = [];
   
   citiesData.forEach((city) => {
-    Object.keys(services).forEach((service) => {
+    SERVICES.forEach((service) => {
       params.push({ city: city.name, service });
     });
   });
@@ -60,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { city, service } = await params;
   const cityData = citiesData.find((c) => c.name === city);
-  const serviceData = services[service as keyof typeof services];
+  const serviceData = servicesData[service as keyof typeof servicesData];
 
   if (!cityData || !serviceData) {
     return {
@@ -113,7 +78,7 @@ const ServiceCityPage = async ({
 }) => {
   const { city, service } = await params;
   const cityData = citiesData.find((c) => c.name === city);
-  const serviceData = services[service as keyof typeof services];
+  const serviceData = servicesData[service as keyof typeof servicesData];
 
   if (!cityData || !serviceData) {
     return <div>Page not found</div>;
