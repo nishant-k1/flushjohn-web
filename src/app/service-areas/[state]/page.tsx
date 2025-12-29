@@ -30,8 +30,8 @@ export async function generateMetadata({
 
   return {
     title: `Porta Potty Rentals ${state.displayName} | ${state.cities.length} Cities Served | FlushJohn`,
-    description: `${state.description} Serving ${state.cities.length} major cities including ${state.cities.map((c) => c.name).join(", ")}. Same-day delivery available.`,
-    keywords: `porta potty rental ${state.name}, portable toilet ${state.name}, ${state.abbreviation} porta potty rental, construction porta potty ${state.name}, event porta potty ${state.name}, ${state.cities.map((c) => `${c.name} porta potty`).join(", ")}`,
+    description: `Porta potty rental, portable toilet rental, porta john & portable restroom in ${state.displayName}. Serving ${state.cities.length} cities. Same-day delivery available.`,
+    keywords: `porta potty rental ${state.name}, porta potty rentals ${state.name}, rent a porta potty ${state.name}, porta potties for rent ${state.name}, portable toilet rental ${state.name}, portable toilet rentals ${state.name}, portable toilets for rent ${state.name}, portable restroom rental ${state.name}, portable restrooms ${state.name}, porta john rental ${state.name}, hand wash station rental ${state.name}, hand washing sink station rental ${state.name}, portable sink rental ${state.name}, handwash station rental ${state.name}, rent porta potty ${state.name}, rent portable toilet ${state.name}, rent hand wash station ${state.name}, rent a porta potty ${state.name}, porta potties for rent ${state.name}, ${state.abbreviation} porta potty rental, ${state.abbreviation} portable toilet rental, ${state.abbreviation} hand wash station rental, porta potty rental near me ${state.name}, portable toilet rental near me ${state.name}, hand wash station rental near me ${state.name}, rent porta potty for event ${state.name}, porta potty for construction site ${state.name}, portable restroom rental for wedding ${state.name}, porta potty rental prices ${state.name}, event porta potty rental ${state.name}, luxury porta potty rental ${state.name}, ADA portable toilet rental ${state.name}, hand washing station rental ${state.name}, restroom trailer rental ${state.name}, portable bathroom rental ${state.name}, toilet rental for events ${state.name}, construction porta potty ${state.name}, porta potty for wedding ${state.name}, porta potty rental service ${state.name}, portable toilet rental service ${state.name}, hand wash station rental service ${state.name}, porta potty rental company ${state.name}, portable toilet rental company ${state.name}, porta potty rental cost ${state.name}, portable toilet rental cost ${state.name}, hand wash station rental cost ${state.name}, porta potty rental price ${state.name}, portable toilet rental price ${state.name}, porta potty rental delivery ${state.name}, portable toilet rental delivery ${state.name}, hand wash station rental delivery ${state.name}, construction porta potty rental ${state.name}, event porta potty rental ${state.name}, wedding porta potty rental ${state.name}, ADA porta potty rental ${state.name}, luxury porta potty rental ${state.name}, emergency porta potty rental ${state.name}, same day porta potty rental ${state.name}, long term porta potty rental ${state.name}, porta potty rental for construction ${state.name}, portable toilet rental for construction ${state.name}, hand wash station rental for construction ${state.name}, porta potty rental for events ${state.name}, portable toilet rental for events ${state.name}, hand wash station rental for events ${state.name}, porta potty rental for wedding ${state.name}, portable toilet rental for wedding ${state.name}, how much does porta potty rental cost ${state.name}, how much to rent porta potty ${state.name}, porta potty rental quote ${state.name}, portable toilet rental quote ${state.name}, hand wash station rental quote ${state.name}, best porta potty rental ${state.name}, affordable porta potty rental ${state.name}, professional porta potty rental ${state.name}`,
     other: {
       "geo.region": `US-${state.abbreviation}`,
       "geo.placename": state.displayName,
@@ -41,7 +41,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `Porta Potty Rentals ${state.displayName} | FlushJohn`,
-      description: state.description,
+      description: `${state.description} Offering porta potty rental, portable toilet rental, porta john, and portable restroom services across ${state.displayName}.`,
       url: `${websiteURL}/service-areas/${stateParam}`,
       type: "website",
       siteName: "FlushJohn",
@@ -58,7 +58,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `Porta Potty Rentals ${state.displayName} | FlushJohn`,
-      description: state.description,
+      description: `${state.description} Offering porta potty rental, portable toilet rental, porta john, and portable restroom services across ${state.displayName}.`,
       images: [`${s3assets}/og-image-flushjonn-web.png`],
     },
     alternates: {

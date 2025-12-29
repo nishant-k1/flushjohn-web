@@ -28,16 +28,16 @@ export const generateMetadata = async ({
   const { title, image, keywords } = currentProduct;
   const { src_1, alt } = image;
 
-  // Enhanced local keywords for SEO
-  const localKeywords = `${keywords}, porta potty rental, portable toilet rental, ${title.toLowerCase()} rental near me, porta potty rental Houston, porta potty rental Dallas, porta potty rental Miami, porta potty rental Los Angeles, portable toilet rental near me, ${title.toLowerCase()} rental, construction porta potty rental, event porta potty rental, flushjohn`;
+  // Enhanced local keywords for SEO - focused on rental intent and lead generation
+  const localKeywords = `${keywords}, ${title.toLowerCase()} rental, rent ${title.toLowerCase()}, ${title.toLowerCase()} rental near me, ${title.toLowerCase()} rental service, ${title.toLowerCase()} rental company, ${title.toLowerCase()} rental cost, ${title.toLowerCase()} rental price, ${title.toLowerCase()} rental delivery, ${title.toLowerCase()} rental quote, porta potty rental, portable toilet rental, porta john rental, portable restroom rental, hand wash station rental, hand washing sink station rental, portable sink rental, handwash station rental, rent porta potty, rent portable toilet, rent hand wash station, porta potty rental Houston, porta potty rental Dallas, porta potty rental Miami, porta potty rental Los Angeles, portable toilet rental near me, hand wash station rental near me, construction porta potty rental, event porta potty rental, wedding porta potty rental, ADA porta potty rental, luxury porta potty rental, emergency porta potty rental, same day porta potty rental, long term porta potty rental, porta potty rental for construction, portable toilet rental for construction, hand wash station rental for construction, porta potty rental for events, portable toilet rental for events, hand wash station rental for events, porta potty rental for wedding, portable toilet rental for wedding, how much does porta potty rental cost, how much to rent porta potty, porta potty rental quote, portable toilet rental quote, hand wash station rental quote, best porta potty rental, affordable porta potty rental, professional porta potty rental, flushjohn`;
 
   return {
     title: `${title} - FlushJohn Porta Potty Rentals`,
-    description: `Get detailed information about our ${title}. Affordable and reliable porta potty rentals for your event. Available in 25+ cities across 6 states with same-day delivery.`,
+    description: `Get detailed info about our ${title}. Affordable porta potty, portable toilet, porta john & portable restroom rentals. Available in 25+ cities with same-day delivery.`,
     keywords: localKeywords,
     openGraph: {
       title: `${title} - FlushJohn Porta Potty Rentals`,
-      description: `Discover the features and pricing for our ${title} at FlushJohn. Available in 25+ cities across the United States with same-day delivery and competitive pricing.`,
+      description: `Discover the features and pricing for our ${title} at FlushJohn. Available in 25+ cities across the United States with same-day delivery and competitive pricing. Perfect for porta potty, portable toilet, porta john, and portable restroom rental needs.`,
       url: `${websiteURL}/rental-products/${slug}`,
       type: "website",
       siteName: "FlushJohn",

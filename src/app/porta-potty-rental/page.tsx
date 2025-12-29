@@ -15,13 +15,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Porta Potty Rentals by City - FlushJohn",
   description:
-    "Find porta potty rental services in your city. Professional, reliable, and affordable portable toilet rentals across the United States.",
+    "Find porta potty rental, portable toilet rental, porta john & portable restroom services in your city. Professional, reliable & affordable across the US.",
   keywords:
-    "porta potty rental by city, portable toilet rental locations, event sanitation services, construction porta potty",
+    "porta potty rental by city, portable toilet rental by city, porta john rental by city, portable restroom rental by city, hand wash station rental by city, hand washing sink station rental by city, portable sink rental by city, rent porta potty by city, rent portable toilet by city, rent hand wash station by city, porta potty rental locations, portable toilet rental locations, hand wash station rental locations, porta potty rental service, portable toilet rental service, hand wash station rental service, porta potty rental company, portable toilet rental company, porta potty rental quote, portable toilet rental quote, hand wash station rental quote, construction porta potty rental, event porta potty rental, wedding porta potty rental",
   openGraph: {
     title: "Porta Potty Rentals by City - FlushJohn",
     description:
-      "Professional porta potty rental services in major US cities. Fast delivery, competitive pricing, and reliable service.",
+      "Professional porta potty rental, portable toilet rental, porta john, and portable restroom services in major US cities. Fast delivery, competitive pricing, and reliable service.",
     url: `${websiteURL}/porta-potty-rental`,
     type: "website",
     siteName: "FlushJohn",

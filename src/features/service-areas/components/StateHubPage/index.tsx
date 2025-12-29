@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { websiteURL, phone, contact, s3assets } from "@/constants";
+import { getStateUniqueContent } from "@/features/locations/constants";
 import styles from "./styles.module.css";
 
 interface City {
@@ -21,6 +22,7 @@ interface StateProps {
 }
 
 const StateHubPage = ({ state }: StateProps) => {
+  const uniqueContent = getStateUniqueContent(state.name.toLowerCase());
   // ServiceAreaBusiness schema for state-level local SEO
   const serviceAreaBusinessJsonLd = {
     "@context": "https://schema.org",
@@ -104,7 +106,13 @@ const StateHubPage = ({ state }: StateProps) => {
           <h1 className={styles.title}>
             Porta Potty Rentals in {state.displayName}
           </h1>
-          <p className={styles.description}>{state.description}</p>
+          {uniqueContent ? (
+            <p className={styles.description} style={{ fontSize: '1.1rem', lineHeight: '1.8', marginTop: '1rem' }}>
+              {uniqueContent.expandedDescription}
+            </p>
+          ) : (
+            <p className={styles.description}>{state.description}</p>
+          )}
           <div className={styles.stats}>
             <div className={styles.statItem}>
               <span className={styles.statNumber}>{state.cities.length}</span>
@@ -145,19 +153,35 @@ const StateHubPage = ({ state }: StateProps) => {
 
         <div className={styles.servicesSection}>
           <h2 className={styles.sectionTitle}>Our Services in {state.displayName}</h2>
+          {uniqueContent && (
+            <div style={{ marginBottom: '2rem', fontSize: '1.05rem', lineHeight: '1.7', maxWidth: '900px', margin: '0 auto 2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h3 style={{ marginBottom: '0.5rem' }}>Construction Site Rentals</h3>
+                <p>{uniqueContent.constructionOverview}</p>
+              </div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h3 style={{ marginBottom: '0.5rem' }}>Event & Festival Rentals</h3>
+                <p>{uniqueContent.eventsOverview}</p>
+              </div>
+              {uniqueContent.localRegulations && (
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h3 style={{ marginBottom: '0.5rem' }}>Local Regulations & Compliance</h3>
+                  <p>{uniqueContent.localRegulations}</p>
+                </div>
+              )}
+            </div>
+          )}
           <div className={styles.servicesGrid}>
             <div className={styles.serviceCard}>
               <h3>Construction Sites</h3>
               <p>
-                Long-term porta potty rentals for construction projects throughout{" "}
-                {state.displayName}. OSHA-compliant units with regular servicing.
+                {uniqueContent?.constructionOverview || `Long-term porta potty rentals for construction projects throughout ${state.displayName}. OSHA-compliant units with regular servicing.`}
               </p>
             </div>
             <div className={styles.serviceCard}>
               <h3>Events & Festivals</h3>
               <p>
-                Clean, reliable portable toilets for weddings, festivals, concerts, and
-                special events in {state.displayName}.
+                {uniqueContent?.eventsOverview || `Clean, reliable portable toilets for weddings, festivals, concerts, and special events in ${state.displayName}.`}
               </p>
             </div>
             <div className={styles.serviceCard}>

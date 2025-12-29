@@ -87,7 +87,7 @@ export const home_data: HomeData = {
         id: 4,
         image: <MdLocationOn />,
         title: "Wide Coverage",
-        body: "Through our network of trusted local partners, we serve 25+ cities across 6 states, ensuring you can find reliable porta potty rental service wherever you need it.",
+        body: "Through our network of trusted local partners, we serve 25+ cities across 6 states, ensuring you can find reliable porta potty rental, portable toilet rental, porta john, and portable restroom service wherever you need it.",
       },
     ],
   },

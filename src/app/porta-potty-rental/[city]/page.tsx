@@ -2,7 +2,11 @@ import React from "react";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 import { PortaPottyRentalCity } from "@/features/locations/components";
-import { citiesData, getCityCoordinatesWithFallback, getCitiesByState } from "@/features/locations/constants";
+import {
+  citiesData,
+  getCityCoordinatesWithFallback,
+  getCitiesByState,
+} from "@/features/locations/constants";
 
 const getServiceAreas = (state: string) => {
   const serviceAreas = {
@@ -251,18 +255,18 @@ export async function generateMetadata({
 
   return {
     title: `Porta Potty Rentals in ${cityTitle} | Same-Day Delivery | FlushJohn`,
-    description: `Professional porta potty rental services in ${cityTitle}. Fast delivery, competitive pricing, and reliable service for events and construction sites. Serving ${displayName} with same-day porta potty delivery, portable toilet rentals near me, ADA-compliant units, and construction site sanitation. Get your free quote today!`,
-    keywords: `porta potty rental ${displayName}, portable toilet ${cityTitle}, event sanitation ${displayName}, construction porta potty ${cityTitle}, flushjohn ${displayName}, porta potty rental near me ${displayName}, portable toilet rental ${cityTitle}, ${displayName} porta potty, ${displayName} portable toilet, porta potty delivery ${cityTitle}, construction porta potty ${displayName}, event porta potty ${cityTitle}, wedding porta potty ${displayName}, ADA porta potty ${cityTitle}, portable restroom ${cityTitle}`,
+    description: `Affordable porta potty rental & portable toilet services in ${cityTitle}. Professional porta john & portable restroom rentals. Same-day delivery. Free quote!`,
+    keywords: `porta potty rental ${displayName}, porta potty rentals ${cityTitle}, rent a porta potty ${displayName}, porta potties for rent ${cityTitle}, porta potty rental ${cityTitle}, portable toilet rental ${cityTitle}, portable toilet rentals ${displayName}, portable toilets for rent ${cityTitle}, portable restroom rental ${cityTitle}, portable restrooms ${displayName}, porta john rental ${displayName}, hand wash station rental ${displayName}, hand washing sink station rental ${cityTitle}, portable sink rental ${displayName}, standalone portable sink station rental ${cityTitle}, handwash station rental ${displayName}, rent portable toilets ${cityTitle}, rent portable toilet ${displayName}, rent a porta potty ${cityTitle}, porta potties for rent ${displayName}, temporary restroom rental ${cityTitle}, temporary restroom rental services ${displayName}, rent porta potty ${displayName}, rent portable toilet ${cityTitle}, rent hand wash station ${displayName}, porta potty rental near me ${displayName}, portable toilet rental near me ${cityTitle}, hand wash station rental near me ${displayName}, rent porta potty for event ${cityTitle}, porta potty for construction site ${displayName}, portable restroom rental for wedding ${cityTitle}, porta potty rental prices ${displayName}, event porta potty rental ${cityTitle}, luxury porta potty rental ${displayName}, ADA portable toilet rental ${cityTitle}, hand washing station rental ${displayName}, restroom trailer rental ${cityTitle}, portable bathroom rental ${displayName}, toilet rental for events ${cityTitle}, construction porta potty ${displayName}, porta potty for wedding ${cityTitle}, porta potty rental service ${cityTitle}, portable toilet rental service ${displayName}, hand wash station rental service ${cityTitle}, temporary restroom rental service ${displayName}, porta potty rental company ${cityTitle}, portable toilet rental company ${displayName}, porta potty rental cost ${cityTitle}, portable toilet rental cost ${displayName}, hand wash station rental cost ${cityTitle}, porta potty rental price ${displayName}, portable toilet rental price ${cityTitle}, porta potty rental delivery ${displayName}, portable toilet rental delivery ${cityTitle}, hand wash station rental delivery ${displayName}, construction porta potty rental ${cityTitle}, event porta potty rental ${displayName}, wedding porta potty rental ${cityTitle}, home renovation porta potty rental ${displayName}, home renovation portable toilet rental ${cityTitle}, disaster relief porta potty rental ${displayName}, disaster relief portable toilet rental ${cityTitle}, renovation porta potty rental ${displayName}, renovation portable toilet rental ${cityTitle}, ADA porta potty rental ${cityTitle}, deluxe portable restroom rental ${displayName}, flushing portable restroom rental ${cityTitle}, flushable restroom rental ${displayName}, standard portable restroom rental ${cityTitle}, ADA compliant portable restroom rental ${displayName}, emergency porta potty rental ${cityTitle}, same day porta potty rental ${displayName}, long term porta potty rental ${cityTitle}, porta potty rental for construction ${displayName}, portable toilet rental for construction ${cityTitle}, hand wash station rental for construction ${displayName}, porta potty rental for events ${cityTitle}, portable toilet rental for events ${displayName}, hand wash station rental for events ${cityTitle}, porta potty rental for wedding ${displayName}, portable toilet rental for wedding ${cityTitle}, porta potty rental for home renovation ${displayName}, portable toilet rental for home renovation ${cityTitle}, porta potty rental for disaster relief ${displayName}, portable toilet rental for disaster relief ${cityTitle}, how much does porta potty rental cost ${displayName}, how much to rent porta potty ${cityTitle}, porta potty rental quote ${displayName}, portable toilet rental quote ${cityTitle}, hand wash station rental quote ${displayName}, best porta potty rental ${cityTitle}, affordable porta potty rental ${displayName}, professional porta potty rental ${cityTitle}`,
     other: {
       "geo.region": `US-${state}`,
       "geo.placename": displayName,
       "geo.position": `${coordinates.lat};${coordinates.lng}`,
-      "ICBM": `${coordinates.lat}, ${coordinates.lng}`,
-      "dateModified": new Date().toISOString(),
+      ICBM: `${coordinates.lat}, ${coordinates.lng}`,
+      dateModified: new Date().toISOString(),
     },
     openGraph: {
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
-      description: `Get reliable porta potty rentals in ${cityTitle}. Same-day delivery, competitive pricing, and professional service for all your event and construction needs.`,
+      description: `Get reliable porta potty rental, portable toilet rental, porta john, and portable restroom services in ${cityTitle}. Same-day delivery, competitive pricing, and professional service for all your event and construction needs.`,
       url: `${websiteURL}/porta-potty-rental/${city}`,
       type: "website",
       siteName: "FlushJohn",
@@ -278,7 +282,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
-      description: `Professional porta potty rental services in ${cityTitle}. Fast delivery and competitive pricing.`,
+      description: `Professional porta potty rental & portable toilet services in ${cityTitle}. Porta john & portable restroom rentals. Fast delivery, competitive pricing.`,
       images: [`${s3assets}/og-image-flushjonn-web.png`],
     },
     alternates: {
@@ -289,10 +293,12 @@ export async function generateMetadata({
 
 const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
   const { city } = await params;
-  
+
   // Handle URLs with state suffix (e.g., "fort-worth-tx" -> "fort-worth")
   const normalizedCity = city.replace(/-(tx|fl|ca|ga|il|de)$/i, "");
-  const cityData = citiesData.find((c) => c.name === normalizedCity || c.name === city);
+  const cityData = citiesData.find(
+    (c) => c.name === normalizedCity || c.name === city
+  );
 
   if (!cityData) {
     return <div>City not found</div>;
@@ -306,15 +312,15 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
 
   return (
     <PortaPottyRentalCity
-          city={displayName}
+      city={displayName}
       displayName={displayName}
-          state={state}
+      state={state}
       population={population}
       citySlug={normalizedCity}
       serviceAreas={serviceAreas}
       nearbyCities={nearbyCities}
       coordinates={coordinates}
-        />
+    />
   );
 };
 

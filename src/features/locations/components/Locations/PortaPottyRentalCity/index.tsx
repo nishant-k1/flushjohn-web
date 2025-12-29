@@ -21,6 +21,7 @@ import { phone, contact, websiteURL, s3assets } from "@/constants";
 import { cityPageData } from "../../../constants";
 import { getCityEnhancement } from "../../../constants/cityEnhancements";
 import { getCityUniqueContent } from "../../../constants/cityUniqueContent";
+import { getCityH1Heading, getCityH2Heading } from "../../../constants/cityHeadings";
 import dynamic from "next/dynamic";
 
 const ContentMarketing = dynamic(
@@ -388,7 +389,7 @@ export default function PortaPottyRentalCity({
           <div className={styles.cityWrapper}>
             {/* Introduction */}
             <div className={styles.section}>
-              <h1>{cityPageData?.title.replace("{city}", displayName)}</h1>
+              <h1>{getCityH1Heading(displayName)}</h1>
               {uniqueContent ? (
                 <p
                   style={{
@@ -410,7 +411,7 @@ export default function PortaPottyRentalCity({
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
                 <h2>
-                  Why Choose FlushJohn for Porta Potty Rentals in {displayName}?
+                  {getCityH2Heading(displayName, "why-choose")}
                 </h2>
               </div>
               {uniqueContent?.whyChooseUs && (
@@ -514,7 +515,7 @@ export default function PortaPottyRentalCity({
             {/* Our Services */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
-                <h2>Our Portable Toilet Rental Services in {displayName}</h2>
+                  <h2>{getCityH2Heading(displayName, "services")}</h2>
               </div>
               {uniqueContent?.serviceOverview ? (
                 <p
@@ -708,7 +709,7 @@ export default function PortaPottyRentalCity({
             <div className={styles.section}>
               <div className={styles.sectionTitle}>
                 <h2>
-                  How Much Does a Porta Potty Rental Cost in {displayName}?
+                  {getCityH2Heading(displayName, "pricing")}
                 </h2>
               </div>
               {uniqueContent?.pricingNote ? (

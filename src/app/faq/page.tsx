@@ -4,15 +4,15 @@ import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "FAQ - FlushJohn Porta Potty Rentals",
+  title: "FAQ - Porta Potty Rental Questions & Answers | FlushJohn",
   description:
-    "Find answers to the most frequently asked questions about our porta potty rental services, pricing, and more.",
+    "FAQ about porta potty rental, portable toilet rental, porta john & portable restroom services, pricing & more. Get answers to common questions.",
   keywords:
-    "FAQ, porta potty questions, flushjohn faq, rental questions, portable toilet help",
+    "FAQ, porta potty rental questions, portable toilet rental questions, porta john rental questions, portable restroom rental questions, hand wash station rental questions, hand washing sink station rental questions, portable sink rental questions, rent porta potty questions, rent portable toilet questions, rent hand wash station questions, flushjohn faq, porta potty rental FAQ, portable toilet rental FAQ, hand wash station rental FAQ, porta potty rental help, portable toilet rental help, hand wash station rental help, porta potty rental cost questions, portable toilet rental cost questions, hand wash station rental cost questions",
   openGraph: {
     title: "FlushJohn FAQ - Porta Potty Rentals",
     description:
-      "Get answers to common questions about porta potty rentals, pricing, delivery, and more with FlushJohn.",
+      "Get answers to common questions about porta potty rental, portable toilet rental, porta john, and portable restroom services, pricing, delivery, and more with FlushJohn.",
     url: `${websiteURL}/faq`,
     type: "website",
     siteName: "FlushJohn",
@@ -37,16 +37,31 @@ export const metadata: Metadata = {
   },
 };
 
-import { comprehensiveFaqData, generateFAQSchema } from "@/features/legal/constants/comprehensiveFaq";
+import {
+  comprehensiveFaqData,
+  generateFAQSchema,
+} from "@/features/legal/constants/comprehensiveFaq";
 import Script from "next/script";
 
 const topFAQs = [
-  ...comprehensiveFaqData.filter(f => f.category === "Pricing & Costs").slice(0, 5),
-  ...comprehensiveFaqData.filter(f => f.category === "Service Areas & Delivery").slice(0, 4),
-  ...comprehensiveFaqData.filter(f => f.category === "Product Types & Options").slice(0, 4),
-  ...comprehensiveFaqData.filter(f => f.category === "Booking & Reservations").slice(0, 3),
-  ...comprehensiveFaqData.filter(f => f.category === "Events & Occasions").slice(0, 2),
-  ...comprehensiveFaqData.filter(f => f.category === "Construction Sites").slice(0, 2),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Pricing & Costs")
+    .slice(0, 5),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Service Areas & Delivery")
+    .slice(0, 4),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Product Types & Options")
+    .slice(0, 4),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Booking & Reservations")
+    .slice(0, 3),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Events & Occasions")
+    .slice(0, 2),
+  ...comprehensiveFaqData
+    .filter((f) => f.category === "Construction Sites")
+    .slice(0, 2),
 ];
 
 const jsonLd = generateFAQSchema(topFAQs, websiteURL);
@@ -55,7 +70,8 @@ const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   name: "How to Rent a Porta Potty - Complete Guide",
-  description: "Learn how to rent a porta potty with our step-by-step guide. From calculating your needs to final delivery, we'll walk you through the entire process.",
+  description:
+    "Learn how to rent a porta potty with our step-by-step guide. From calculating your needs to final delivery, we'll walk you through the entire process.",
   totalTime: "PT15M",
   estimatedCost: {
     "@type": "MonetaryAmount",

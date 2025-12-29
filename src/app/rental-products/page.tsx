@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Explore a wide variety of porta potty rental units for all types of events. Affordable, clean, and delivered to your location.",
   keywords:
-    "porta potty rental, portable toilet products, event hygiene, rental service",
+    "porta potty rental, porta potty rentals, rent a porta potty, porta potties for rent, portable toilet rental, portable toilet rentals, portable toilets for rent, portable restroom rental, portable restrooms, hand wash station rental, standard portable restroom rental, ADA compliant portable restroom rental, flushable restroom rental, deluxe portable restroom rental, flushing portable restroom rental, standalone portable sink station rental, portable toilet products, event hygiene, rental service, rent portable toilets, temporary restroom rental, home renovation porta potty rental, disaster relief porta potty rental, rent porta potty for event, porta potty for construction site, portable restroom rental for wedding, porta potty rental prices, event porta potty rental, luxury porta potty rental, ADA portable toilet rental, hand washing station rental, restroom trailer rental, portable bathroom rental, toilet rental for events, construction porta potty, porta potty for wedding",
   openGraph: {
     title: "FlushJohn Rental Products",
     description:
