@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { s3assets, websiteURL } from "@/constants";
 import Link from "next/link";
 import styles from "./styles.module.css";
@@ -88,7 +89,7 @@ const ServiceCityPage = async ({
   const serviceData = servicesData[service as keyof typeof servicesData];
 
   if (!cityData || !serviceData) {
-    return <div>Page not found</div>;
+    notFound();
   }
 
   const { displayName, state } = cityData;

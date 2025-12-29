@@ -1,5 +1,12 @@
 import React from "react";
-import { s3assets, websiteURL } from "@/constants";
+import {
+  s3assets,
+  websiteURL,
+  phone,
+  contact,
+  address,
+  socialMedia,
+} from "@/constants";
 // Import CSS - Next.js will optimize this automatically
 import "../../styles/globals.css";
 import { testimonials } from "@/features/home/constants";
@@ -96,6 +103,40 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Critical Schema Markup - Inline for SEO audit tools that don't execute JavaScript */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "FlushJohn",
+              url: websiteURL,
+              logo: `${s3assets}/og-image-flushjonn-web.png`,
+              description:
+                "Professional porta potty rental and portable toilet rental services across 25+ cities in the United States",
+              telephone: phone.phone_number,
+              email: contact.support_email,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: address.city,
+                addressRegion: address.state,
+                postalCode: address.zip,
+                addressCountry: "US",
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "United States",
+              },
+              sameAs: [
+                socialMedia.facebook,
+                socialMedia.twitter,
+                socialMedia.linkedin,
+                socialMedia.instagram,
+              ],
+            }),
+          }}
+        />
         {/* Suppress CSS MIME type errors immediately - runs before any other scripts */}
         <script
           dangerouslySetInnerHTML={{

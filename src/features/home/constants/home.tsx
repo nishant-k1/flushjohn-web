@@ -51,7 +51,7 @@ export interface HomeData {
 
 export const home_data: HomeData = {
   hero: {
-    title: `Portable Restroom Rentals Delivered Fast and Hassle-Free`,
+    title: `Portable Toilet Rentals & Portable Restroom Rentals Delivered Fast and Hassle-Free`,
     subTitle: `Events • Construction • Emergency • Renovation`,
     image: {
       src: `https://cdn.flushjohn.com/images/home-page-images/hero-img-1.webp`,
@@ -69,19 +69,19 @@ export const home_data: HomeData = {
         id: 1,
         image: <FaTruckLoading />,
         title: "Customer Support",
-        body: "Our professional customer support ensures instant quote and bookings and are ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
+        body: "Our professional customer support ensures instant quote and bookings for portable toilet rental and porta potty rental services. We're ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
       },
       {
         id: 2,
         image: <RiTimeFill />,
         title: "Delivery and Setup",
-        body: "Our experienced yard manager and driver facilitates hassle-free delivery and setup services for your porta potties and handwash stations, saving your time and effort.",
+        body: "Our experienced yard manager and driver facilitates hassle-free delivery and setup services for your portable toilet rentals, porta potties, and handwash stations, saving your time and effort.",
       },
       {
         id: 3,
         image: <GiVacuumCleaner />,
         title: "Cleanliness",
-        body: "We ensure that all our porta potties and handwash stations are thoroughly cleaned and sanitized before and after each use, using high-quality cleaning products and equipment.",
+        body: "We ensure that all our portable toilet rentals, porta potties, and handwash stations are thoroughly cleaned and sanitized before and after each use, using high-quality cleaning products and equipment.",
       },
       {
         id: 4,
@@ -93,7 +93,7 @@ export const home_data: HomeData = {
   },
   services: {
     heading:
-      "Our Comprehensive Porta Potty and Handwash Station Rental Services",
+      "Our Comprehensive Portable Toilet Rental, Porta Potty, and Handwash Station Services",
     content: [
       {
         id: 1,

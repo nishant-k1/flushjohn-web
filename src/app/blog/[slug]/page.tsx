@@ -1,4 +1,5 @@
 import React from "react";
+import { notFound } from "next/navigation";
 import { BlogPost } from "@/features/blog/components";
 import { apiBaseUrls, s3assets, websiteURL, socialMedia } from "@/constants";
 import DOMPurify from "isomorphic-dompurify";
@@ -113,12 +114,12 @@ const BlogPostPage = async ({
     });
     const { data: blogs } = (await res.json()) || {};
     if (!blogs || !Array.isArray(blogs) || blogs.length === 0) {
-      return <div>Blog Post Not Found</div>;
+      notFound();
     }
 
     const blog = blogs.find((b: any) => b.slug === slug);
     if (!blog) {
-      return <div>Blog Post Not Found</div>;
+      notFound();
     }
 
     const blogPost = {

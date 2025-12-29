@@ -1,11 +1,15 @@
 import React from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { s3assets, websiteURL } from "@/constants";
 import { PortaPottyRentalCity } from "@/features/locations/components";
 import {
   citiesData,
   getCityCoordinatesWithFallback,
   getCitiesByState,
+  getCityUniqueContent,
+  getCityH1Heading,
+  getCityHeadingVariant,
 } from "@/features/locations/constants";
 
 const getServiceAreas = (state: string) => {
@@ -301,7 +305,7 @@ const CityPage = async ({ params }: { params: Promise<{ city: string }> }) => {
   );
 
   if (!cityData) {
-    return <div>City not found</div>;
+    notFound();
   }
 
   const { displayName, state, population } = cityData;
