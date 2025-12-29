@@ -101,6 +101,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     },
     {
+      url: `${websiteURL}/about`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${websiteURL}/reviews`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
+    },
+    {
+      url: `${websiteURL}/how-it-works`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
       url: `${websiteURL}/api/business-info`,
       lastModified: currentDate,
       changeFrequency: "daily" as const,
@@ -158,17 +176,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Service-specific city pages (construction, events, weddings)
+  // Include ALL cities, not just major ones, for better SEO coverage
   // Use SERVICES constant to ensure consistency
-  const serviceCityPages = targetCities
-    .filter((city) => majorCities.includes(city.slug))
-    .flatMap((city) =>
-      SERVICES.map((service) => ({
-        url: `${websiteURL}/porta-potty-rental/${city.slug}/${service}`,
-        lastModified: currentDate,
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-      }))
-    );
+  const serviceCityPages = targetCities.flatMap((city) =>
+    SERVICES.map((service) => ({
+      url: `${websiteURL}/porta-potty-rental/${city.slug}/${service}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      // Higher priority for major cities, lower for others
+      priority: majorCities.includes(city.slug) ? 0.7 : 0.6,
+    }))
+  );
 
   return [...corePages, ...statePages, ...cityPages, ...productPages, ...blogPages, ...serviceCityPages];
 }
