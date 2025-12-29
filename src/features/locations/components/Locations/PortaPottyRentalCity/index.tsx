@@ -772,14 +772,21 @@ export default function PortaPottyRentalCity({
                 <p
                   style={{
                     textAlign: "center",
-                    maxWidth: "800px",
+                    maxWidth: "900px",
                     margin: "0 auto 2rem",
+                    fontSize: "1.05rem",
+                    lineHeight: "1.7",
                   }}
                 >
-                  Porta potty rental prices in {displayName} vary based on the
-                  rental duration, unit type, and location. We provide
-                  competitive pricing for both short-term and long-term rentals
-                  with transparent, no-hidden-fee pricing.
+                  Porta potty rental pricing in {displayName}, {state} is
+                  determined by several factors including the type of unit
+                  selected, rental duration, delivery location within the city,
+                  and seasonal demand. Our pricing structure is designed to be
+                  competitive for both short-term event rentals and long-term
+                  construction site needs. We provide transparent, no-hidden-fee
+                  pricing with quotes customized to your specific requirements
+                  in {displayName}. Contact us for a detailed quote tailored to
+                  your project or event needs.
                 </p>
               )}
               <div style={{ textAlign: "center" }}>
@@ -796,41 +803,7 @@ export default function PortaPottyRentalCity({
               </div>
             </div>
 
-            {/* Local Testimonials */}
-            <div className={styles.section}>
-              <div className={styles.sectionTitle}>
-                <h2>What {cityTitle} Customers Say</h2>
-              </div>
-              <div className={`${styles.grid} ${styles.gridAutoFitWide}`}>
-                {[
-                  {
-                    name: "Sarah M.",
-                    location: "Downtown",
-                    text: `FlushJohn provided excellent service for our wedding in downtown ${cityTitle}. Clean, professional, and affordable!`,
-                  },
-                  {
-                    name: "Mike R.",
-                    location: "Construction Site",
-                    text: `We've been using FlushJohn for our construction projects in ${cityTitle} for 2 years. Reliable and cost-effective.`,
-                  },
-                  {
-                    name: "Jennifer L.",
-                    location: "Event Venue",
-                    text: "Great porta potty service for our corporate event. The team was professional and the units were spotless.",
-                  },
-                ].map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className={styles.testimonialCard}
-                  >
-                    <p>"{testimonial.text}"</p>
-                    <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-                      - {testimonial.name}, {testimonial.location}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Testimonials removed - using ReviewCollection component instead to avoid duplicate content */}
 
             {/* FAQ Section */}
             <div className={styles.section}>
