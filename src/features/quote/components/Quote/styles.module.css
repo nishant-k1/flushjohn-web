@@ -47,11 +47,14 @@
   align-items: start;
   grid-template-columns: 1fr;
   background: rgba(255, 255, 255, 0.05);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-md);
   border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 700px; /* Constrain form width for better focus and readability */
+  width: 100%;
   margin: 0 auto; /* Center the form container */
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Animated Progress Bar Container */
@@ -61,6 +64,17 @@
   max-width: 700px; /* Match form width for alignment */
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Breadcrumb wrapper - add bottom margin when hero is hidden */
+.breadcrumbWrapper {
+  margin-bottom: 2rem;
+}
+
+/* Add top margin when hero is hidden (step 2+) */
+/* Match the hero's margin-top (5rem) to account for breadcrumbs positioning */
+.progressBarWithMargin {
+  margin-top: 3rem;
 }
 
 .progressBar {

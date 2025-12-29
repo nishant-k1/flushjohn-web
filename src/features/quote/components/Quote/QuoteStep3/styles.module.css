@@ -4,11 +4,13 @@
   flex-direction: column;
   gap: 0;
   width: 100%;
+  max-width: 100%;
   margin-bottom: 24px;
   background: transparent;
   padding: 0;
   border-radius: 0;
   border: none;
+  box-sizing: border-box;
 }
 
 /* Buttons container */
@@ -18,15 +20,25 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 24px;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .buttons button {
-  display: flex;
+  display: inline-flex;
   padding: 12px 24px;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-width: 120px;
+  width: auto;
+  max-width: 200px;
   height: 48px;
   font-size: large;
   font-weight: 500;
@@ -34,6 +46,10 @@
   transition: 0.3s;
   border: 2px solid var(--primary-bg-color);
   cursor: pointer;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .next {
@@ -41,6 +57,9 @@
   background-color: var(--primary);
   border-color: var(--primary);
   transition: var(--transition-base);
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
 }
 
 .next:hover {
@@ -94,25 +113,37 @@
 /* Section and container wrappers */
 .section {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .outerBox {
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .spinner {
   display: inline-block !important;
-  width: 18px;
-  height: 18px;
-  border: 3px solid rgba(255, 255, 255, 0.9);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 0;
   border-top-color: transparent;
   animation: spin 0.8s linear infinite;
-  margin-right: 10px;
+  margin-right: 6px;
   flex-shrink: 0;
   vertical-align: middle;
   opacity: 1 !important;
@@ -131,12 +162,20 @@
   background-color: var(--primary-dark) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
+  transform: none !important;
+  box-shadow: none !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
 }
 
 .buttons button:disabled:hover {
-  transform: none;
-  box-shadow: none;
+  transform: none !important;
+  box-shadow: none !important;
   background-color: var(--primary-dark) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
 }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -25,22 +24,26 @@ const Quote = () => {
           effect={animations.fadeWithScale}
           className={styles.container}
         >
-          <Breadcrumbs path={""} />
-          
+          <div className={step !== 1 ? styles.breadcrumbWrapper : ""}>
+            <Breadcrumbs path={""} />
+          </div>
+
           {/* Hero Section - H1, Value Props, Trust Signals, Phone */}
           {step === 1 && <QuoteHero />}
-          
+
           <div className={styles.quoteWrapper}>
             {/* Animated Progress Bar */}
-            <div className={styles.progressBarContainer}>
+            <div
+              className={`${styles.progressBarContainer} ${step !== 1 ? styles.progressBarWithMargin : ""}`}
+            >
               <div className={styles.progressBar}>
                 {/* Progress Line Background */}
                 <div className={styles.progressLine}>
-                  <div 
+                  <div
                     className={styles.progressFill}
                     style={{
-                      width: `${step === 1 ? '0%' : step === 2 ? '33%' : step === 3 && quoteRequested ? '100%' : step === 3 ? '67%' : '100%'}`,
-                      transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                      width: `${step === 1 ? "0%" : step === 2 ? "33%" : step === 3 && quoteRequested ? "100%" : step === 3 ? "67%" : "100%"}`,
+                      transition: "width 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   />
                 </div>
@@ -49,11 +52,16 @@ const Quote = () => {
                 <div className={styles.stepWrapper}>
                   <div
                     className={`${styles.stepIndicator} ${
-                      step >= 2 ? styles.completed : ''
-                    } ${step === 1 ? styles.current : ''}`}
+                      step >= 2 ? styles.completed : ""
+                    } ${step === 1 ? styles.current : ""}`}
                   >
                     {step >= 2 ? (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
                         <path
                           d="M16.6667 5L7.50004 14.1667L3.33337 10"
                           stroke="currentColor"
@@ -66,7 +74,9 @@ const Quote = () => {
                       <span className={styles.stepNumber}>1</span>
                     )}
                   </div>
-                  <span className={`${styles.stepLabel} ${step >= 2 ? styles.activeLabel : step === 1 ? styles.activeLabel : ''}`}>
+                  <span
+                    className={`${styles.stepLabel} ${step >= 2 ? styles.activeLabel : step === 1 ? styles.activeLabel : ""}`}
+                  >
                     Requirement Details
                   </span>
                 </div>
@@ -75,11 +85,16 @@ const Quote = () => {
                 <div className={styles.stepWrapper}>
                   <div
                     className={`${styles.stepIndicator} ${
-                      step >= 3 ? styles.completed : ''
-                    } ${step === 2 ? styles.current : ''}`}
+                      step >= 3 ? styles.completed : ""
+                    } ${step === 2 ? styles.current : ""}`}
                   >
                     {step >= 3 ? (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
                         <path
                           d="M16.6667 5L7.50004 14.1667L3.33337 10"
                           stroke="currentColor"
@@ -92,7 +107,9 @@ const Quote = () => {
                       <span className={styles.stepNumber}>2</span>
                     )}
                   </div>
-                  <span className={`${styles.stepLabel} ${step >= 3 ? styles.activeLabel : step === 2 ? styles.activeLabel : ''}`}>
+                  <span
+                    className={`${styles.stepLabel} ${step >= 3 ? styles.activeLabel : step === 2 ? styles.activeLabel : ""}`}
+                  >
                     Delivery Details
                   </span>
                 </div>
@@ -101,11 +118,16 @@ const Quote = () => {
                 <div className={styles.stepWrapper}>
                   <div
                     className={`${styles.stepIndicator} ${
-                      step === 3 && quoteRequested ? styles.completed : ''
-                    } ${step === 3 && !quoteRequested ? styles.current : ''}`}
+                      step === 3 && quoteRequested ? styles.completed : ""
+                    } ${step === 3 && !quoteRequested ? styles.current : ""}`}
                   >
                     {step === 3 && quoteRequested ? (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
                         <path
                           d="M16.6667 5L7.50004 14.1667L3.33337 10"
                           stroke="currentColor"
@@ -118,16 +140,27 @@ const Quote = () => {
                       <span className={styles.stepNumber}>3</span>
                     )}
                   </div>
-                  <span className={`${styles.stepLabel} ${step === 3 && quoteRequested ? styles.activeLabel : step === 3 ? styles.activeLabel : ''}`}>
+                  <span
+                    className={`${styles.stepLabel} ${step === 3 && quoteRequested ? styles.activeLabel : step === 3 ? styles.activeLabel : ""}`}
+                  >
                     Personal Details
                   </span>
                 </div>
               </div>
-              
+
               {/* Progress Percentage */}
               <div className={styles.progressPercentage}>
                 <span className={styles.percentageText}>
-                  {step === 1 ? '0%' : step === 2 ? '33%' : step === 3 && quoteRequested ? '100%' : step === 3 ? '67%' : '100%'} Complete
+                  {step === 1
+                    ? "0%"
+                    : step === 2
+                      ? "33%"
+                      : step === 3 && quoteRequested
+                        ? "100%"
+                        : step === 3
+                          ? "67%"
+                          : "100%"}{" "}
+                  Complete
                 </span>
               </div>
             </div>

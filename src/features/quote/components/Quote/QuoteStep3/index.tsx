@@ -439,7 +439,7 @@ const QuoteStep3 = () => {
                   {showSpinner ? (
                     <>
                       <span className={styles.spinner}></span>
-                      SUBMITTING...
+                      SUBMIT
                     </>
                   ) : (
                     "SUBMIT"
