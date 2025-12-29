@@ -89,6 +89,24 @@ const ProductPage = async ({
       name: "FlushJohn",
     },
     category: "Portable Toilet Rentals",
+    material: "High-quality plastic and steel construction",
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Rental Duration",
+        value: "Daily, Weekly, Monthly",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Delivery Included",
+        value: "Yes",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Setup Service",
+        value: "Professional Installation",
+      },
+    ],
     areaServed: [
       {
         "@type": "City",
@@ -232,23 +250,6 @@ const ProductPage = async ({
         },
       ],
     },
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Rental Duration",
-        value: "Daily, Weekly, Monthly",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Delivery Included",
-        value: "Yes",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Setup Service",
-        value: "Professional Installation",
-      },
-    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
@@ -308,6 +309,25 @@ const ProductPage = async ({
     datePublished: "2024-01-15",
   };
 
+  // AggregateOffer schema for better pricing information
+  const aggregateOfferJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AggregateOffer",
+    name: `${product.title} Rental - Price Range`,
+    description: `Competitive pricing for ${product.title} rentals`,
+    priceCurrency: "USD",
+    lowPrice: "100",
+    highPrice: "500",
+    offerCount: "6",
+    availability: "https://schema.org/InStock",
+    url: `${websiteURL}/quote`,
+    seller: {
+      "@type": "Organization",
+      name: "FlushJohn",
+      url: websiteURL,
+    },
+  };
+
   return (
     <>
       <script
@@ -321,6 +341,10 @@ const ProductPage = async ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateOfferJsonLd) }}
       />
       <IndividualProduct slug={slug} />
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Quote } from "@/features/quote/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL } from "@/constants";
+import { s3assets, websiteURL, phone, contact } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Get Your Free Porta Potty Rental Quote in 60 Seconds | FlushJohn",
@@ -91,12 +91,39 @@ const jsonLd = {
   ],
 };
 
+// ServiceAreaBusiness schema for local context
+const serviceAreaBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ServiceAreaBusiness",
+  name: "FlushJohn - Porta Potty Rental Quotes",
+  description: "Get free porta potty rental quotes across 25+ cities in 6 states. Same-day delivery available.",
+  url: `${websiteURL}/quote`,
+  telephone: phone.phone_number,
+  email: contact.support_email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  serviceType: "Porta Potty Rental Services",
+  priceRange: "$$",
+};
+
 const QuotePage = () => {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
       />
       <Quote />
     </>

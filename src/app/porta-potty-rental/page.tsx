@@ -9,7 +9,7 @@ import {
   HelpCircle,
   Camera,
 } from "lucide-react";
-import { s3assets, websiteURL } from "@/constants";
+import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -81,12 +81,68 @@ const jsonLd = {
   },
 };
 
+// ServiceAreaBusiness schema for main landing page
+const serviceAreaBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ServiceAreaBusiness",
+  name: "FlushJohn - Porta Potty Rentals",
+  description: "Professional porta potty rental services across 25+ cities in 6 states. Same-day delivery, competitive pricing.",
+  url: `${websiteURL}/porta-potty-rental`,
+  telephone: phone.phone_number,
+  email: contact.support_email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  serviceType: "Porta Potty Rental Services",
+  priceRange: "$$",
+};
+
+// Service schema for main service page
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Porta Potty Rental Services",
+  description: "Professional porta potty rental services for events, construction sites, and special occasions across the United States.",
+  provider: {
+    "@type": "Organization",
+    name: "FlushJohn",
+    url: websiteURL,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  serviceType: "Portable Toilet Rental Services",
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "USD",
+    lowPrice: "100",
+    highPrice: "500",
+    availability: "https://schema.org/InStock",
+  },
+};
+
 const PortaPottyRentalPage = () => {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
 
       <div

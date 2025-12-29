@@ -326,6 +326,46 @@ export default function PortaPottyRentalCity({
     ],
   };
 
+  // FAQ Schema for city pages
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `How much does porta potty rental cost in ${cityTitle}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Our porta potty rental prices in ${cityTitle} vary based on location, duration, and unit type. Contact us for a personalized quote.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Do you deliver to all areas in ${cityTitle}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Yes! We provide porta potty delivery throughout ${cityTitle} and surrounding areas. Same-day delivery available.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How often are the porta potties cleaned?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We clean and service our porta potties regularly, typically weekly, with additional cleaning available upon request.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: `What types of events do you serve in ${cityTitle}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `We serve all types of events in ${cityTitle}: weddings, construction sites, festivals, corporate events, and more.`,
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -347,6 +387,10 @@ export default function PortaPottyRentalCity({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(serviceAreaBusinessJsonLd),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className={styles.city}>

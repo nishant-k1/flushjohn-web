@@ -186,6 +186,35 @@ const collectionPageJsonLd = {
   },
 };
 
+// ServiceAreaBusiness schema for service areas page
+const serviceAreaBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ServiceAreaBusiness",
+  name: "FlushJohn - Porta Potty Rental Service Areas",
+  description: "Professional porta potty rental services across 25+ cities in 6 states: Delaware, Texas, Florida, California, Georgia, and Illinois.",
+  url: `${websiteURL}/service-areas`,
+  telephone: phone.phone_number,
+  email: contact.support_email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "US",
+  },
+  areaServed: allCities.map((city) => ({
+    "@type": "City",
+    name: city.name,
+    containedIn: {
+      "@type": "State",
+      name: city.state,
+      containedIn: {
+        "@type": "Country",
+        name: "United States",
+      },
+    },
+  })),
+  serviceType: "Porta Potty Rental Services",
+  priceRange: "$$",
+};
+
 const ServiceAreasPageRoute = () => {
   return (
     <>
@@ -201,6 +230,12 @@ const ServiceAreasPageRoute = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(collectionPageJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
         }}
       />
       <ServiceAreasPage />

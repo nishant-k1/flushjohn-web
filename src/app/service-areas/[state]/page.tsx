@@ -156,6 +156,58 @@ const StatePage = async ({ params }: PageProps) => {
     })),
   };
 
+  // ServiceAreaBusiness schema for state-level local SEO
+  const serviceAreaBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ServiceAreaBusiness",
+    name: `FlushJohn - Porta Potty Rentals ${state.displayName}`,
+    description: `Professional porta potty rental services across ${state.displayName}. Serving ${state.cities.length} major cities.`,
+    url: `${websiteURL}/service-areas/${stateParam}`,
+    telephone: phone.phone_number,
+    email: contact.support_email,
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: state.abbreviation,
+      addressCountry: "US",
+    },
+    areaServed: [
+      {
+        "@type": "State",
+        name: state.name,
+        containedIn: {
+          "@type": "Country",
+          name: "United States",
+        },
+      },
+      ...state.cities.map((city: { name: string }) => ({
+        "@type": "City",
+        name: city.name,
+        containedIn: {
+          "@type": "State",
+          name: state.name,
+        },
+      })),
+    ],
+    serviceType: "Porta Potty Rental Services",
+    priceRange: "$$",
+  };
+
+  // Enhanced ItemList schema for cities in state
+  const cityItemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Porta Potty Rental Cities in ${state.displayName}`,
+    description: `Complete list of cities in ${state.displayName} where FlushJohn provides porta potty rental services`,
+    numberOfItems: state.cities.length,
+    itemListElement: state.cities.map((city: { name: string }, index: number) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: `${city.name}, ${state.abbreviation}`,
+      description: `Porta potty rental services in ${city.name}, ${state.displayName}`,
+      url: `${websiteURL}/porta-potty-rental/${city.name.toLowerCase().replace(/\s+/g, "-")}`,
+    })),
+  };
+
   return (
     <>
       <script
@@ -165,6 +217,16 @@ const StatePage = async ({ params }: PageProps) => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(cityItemListJsonLd) }}
       />
       <StateHubPage state={state} />
     </>

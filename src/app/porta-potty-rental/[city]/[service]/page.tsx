@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { s3assets, websiteURL } from "@/constants";
+import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import {
@@ -256,6 +256,55 @@ const ServiceCityPage = async ({
     ],
   };
 
+  // ServiceAreaBusiness schema for better local SEO
+  const serviceAreaBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ServiceAreaBusiness",
+    name: `FlushJohn - ${serviceData.title} in ${cityTitle}`,
+    description: `${serviceData.description} in ${cityTitle}. Professional porta potty rental services with same-day delivery.`,
+    url: `${websiteURL}/porta-potty-rental/${city}/${service}`,
+    telephone: phone.phone_number,
+    email: contact.support_email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: displayName,
+      addressRegion: state,
+      addressCountry: "US",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: displayName,
+        containedIn: {
+          "@type": "State",
+          name: state,
+          containedIn: {
+            "@type": "Country",
+            name: "United States",
+          },
+        },
+      },
+      {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: coordinates.lat,
+          longitude: coordinates.lng,
+        },
+        geoRadius: "50000",
+      },
+    ],
+    serviceType: `${serviceData.title} - Porta Potty Rental Services`,
+    priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "127",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  };
+
   return (
     <>
       <script
@@ -265,6 +314,12 @@ const ServiceCityPage = async ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceAreaBusinessJsonLd),
+        }}
       />
       {eventJsonLd && (
         <script

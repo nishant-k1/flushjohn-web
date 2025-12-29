@@ -2,6 +2,8 @@ import React from "react";
 import { Products } from "@/features/products/components";
 import type { Metadata } from "next";
 import { s3assets, websiteURL } from "@/constants";
+import { products_data } from "@/features/products/constants";
+import { generateProductSlug } from "@/utils/slug";
 
 export const metadata: Metadata = {
   title: "Rental Products - FlushJohn Porta Potty Rentals",
@@ -62,27 +64,14 @@ const jsonLd = {
     "@type": "ItemList",
     name: "Porta Potty Rental Products",
     description: "Complete selection of portable toilet rental units available across the United States",
-    numberOfItems: "10+",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Standard Porta Potty",
-        description: "Basic portable toilet unit for events and construction sites"
-      },
-      {
-        "@type": "ListItem", 
-        position: 2,
-        name: "Deluxe Porta Potty",
-        description: "Enhanced portable toilet with additional amenities"
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "ADA Compliant Porta Potty",
-        description: "Americans with Disabilities Act compliant portable toilet"
-      }
-    ]
+    numberOfItems: products_data.product_list.length,
+    itemListElement: products_data.product_list.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.title,
+      description: product.desc.length > 150 ? `${product.desc.substring(0, 150)}...` : product.desc,
+      url: `${websiteURL}/rental-products/${generateProductSlug(product.title)}`,
+    })),
   }
 };
 
