@@ -14,7 +14,7 @@
 }
 
 .labelText {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
   color: var(--text-primary);
   cursor: pointer;
