@@ -70,7 +70,10 @@ const UsageTypeField = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       // Don't close if clicking on a datepicker input
-      if (target.closest('.custom-datepicker') || target.closest('.react-datepicker-popper')) {
+      if (
+        target.closest(".custom-datepicker") ||
+        target.closest(".react-datepicker-popper")
+      ) {
         return;
       }
       if (
@@ -182,7 +185,8 @@ const UsageTypeField = () => {
               zIndex: 10000,
               boxShadow: "0 4px 16px rgba(140, 111, 72, 0.15)",
               padding: "4px 0",
-              animation: "dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              animation:
+                "dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
             {options.map((option, index) => (
@@ -215,15 +219,21 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? "0 0 12px rgba(140, 111, 72, 0.2)"
                       : "none",
-                  transform: values.usageType === option.value ? "scale(1.05)" : "scale(1)",
+                  transform:
+                    values.usageType === option.value
+                      ? "scale(1.05)"
+                      : "scale(1)",
                   lineHeight: "1.4",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
-                    e.currentTarget.style.background = "linear-gradient(90deg, rgba(140, 111, 72, 0.12) 0%, rgba(140, 111, 72, 0.06) 100%)";
-                    e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
-                    e.currentTarget.style.boxShadow = "0 2px 10px rgba(140, 111, 72, 0.1)";
+                    e.currentTarget.style.background =
+                      "linear-gradient(90deg, rgba(140, 111, 72, 0.12) 0%, rgba(140, 111, 72, 0.06) 100%)";
+                    e.currentTarget.style.borderLeft =
+                      "4px solid rgba(140, 111, 72, 0.3)";
+                    e.currentTarget.style.boxShadow =
+                      "0 2px 10px rgba(140, 111, 72, 0.1)";
                     e.currentTarget.style.transform = "scale(1.1)";
                   }
                 }}
@@ -353,7 +363,11 @@ const QuickQuote = () => {
 
       currentSocket.on("leadCreationError", (error) => {
         // Socket explicitly failed - use HTTP as fallback (no duplicate since socket failed)
-        if (submitInProgressRef.current && !socketSucceededRef.current && !httpCalledRef.current) {
+        if (
+          submitInProgressRef.current &&
+          !socketSucceededRef.current &&
+          !httpCalledRef.current
+        ) {
           if (pendingLeadDataRef.current) {
             httpCalledRef.current = true;
             createLeadViaHTTP(pendingLeadDataRef.current)

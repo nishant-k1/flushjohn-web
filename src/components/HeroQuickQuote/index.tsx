@@ -340,7 +340,11 @@ const HeroQuickQuote = () => {
 
       currentSocket.on("leadCreationError", (error) => {
         // Socket explicitly failed - use HTTP as fallback (no duplicate since socket failed)
-        if (submitInProgressRef.current && !socketSucceededRef.current && !httpCalledRef.current) {
+        if (
+          submitInProgressRef.current &&
+          !socketSucceededRef.current &&
+          !httpCalledRef.current
+        ) {
           if (pendingLeadDataRef.current) {
             httpCalledRef.current = true;
             createLeadViaHTTP(pendingLeadDataRef.current)

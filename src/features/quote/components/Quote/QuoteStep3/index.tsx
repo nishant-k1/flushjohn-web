@@ -29,11 +29,11 @@ const QuoteStep3 = () => {
 
   const { API_BASE_URL } = apiBaseUrls;
   const socketRef = React.useRef<Socket | null>(null);
-  
+
   // Lazy load socket.io-client
   React.useEffect(() => {
     let mounted = true;
-    
+
     createSocket(`${API_BASE_URL}/leads`, {
       transports: ["websocket"],
       autoConnect: true,
@@ -72,24 +72,17 @@ const QuoteStep3 = () => {
         event_callback: callback,
       });
     } else {
-
     }
   }, []);
 
   React.useEffect(() => {
     const currentSocket = socketRef.current;
     if (currentSocket) {
-      currentSocket.on("connect", () => {
+      currentSocket.on("connect", () => {});
 
-      });
+      currentSocket.on("disconnect", () => {});
 
-      currentSocket.on("disconnect", () => {
-
-      });
-
-      currentSocket.on("connect_error", (error) => {
-
-      });
+      currentSocket.on("connect_error", (error) => {});
 
       currentSocket.on("leadCreated", (response) => {
         if (submitInProgressRef.current && !httpCalledRef.current) {
@@ -106,7 +99,11 @@ const QuoteStep3 = () => {
 
       currentSocket.on("leadCreationError", (error) => {
         // Socket explicitly failed - use HTTP as fallback (no duplicate since socket failed)
-        if (submitInProgressRef.current && !socketSucceededRef.current && !httpCalledRef.current) {
+        if (
+          submitInProgressRef.current &&
+          !socketSucceededRef.current &&
+          !httpCalledRef.current
+        ) {
           if (pendingLeadDataRef.current) {
             httpCalledRef.current = true;
             createLeadViaHTTP(pendingLeadDataRef.current)
@@ -194,13 +191,15 @@ const QuoteStep3 = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           // CRITICAL: Early return if submission is already in progress (prevents duplicate submissions)
           if (submitInProgressRef.current) {
-            console.warn("Submission already in progress, ignoring duplicate submit");
+            console.warn(
+              "Submission already in progress, ignoring duplicate submit"
+            );
             return;
           }
 
           // Set local submitting state immediately to show spinner
           setIsSubmittingLocal(true);
-          
+
           const finalData = {
             ...formValues,
             ...values,
@@ -253,87 +252,87 @@ const QuoteStep3 = () => {
           const showSpinner = isSubmittingLocal || isSubmitting;
           // Use a key to force re-render when state changes
           return (
-          <div className={styles.section}>
-            <div className={styles.container}>
-              <Form noValidate>
-              <div className={styles.form}>
-                <TextField
-                  label="First Name"
-                  name="fName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="given-name"
-                  placeholder="Enter first name"
-                />
-                <TextField
-                  label="Last Name"
-                  name="lName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="family-name"
-                  placeholder="Enter last name"
-                />
-                <TextField
-                  label="Company Name (If any)"
-                  name="cName"
-                  type="text"
-                  maxLength="120"
-                  autoComplete="organization"
-                  placeholder="Enter company name (optional)"
-                />
-                <TextField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Enter email address"
-                />
-                <PhoneField
-                  label="Phone"
-                  name="phone"
-                  placeholder="Enter phone number"
-                />
-                <TextField
-                  label="Onsite Contact Person Name"
-                  name="contactPersonName"
-                  placeholder="Enter contact person name"
-                />
-                <PhoneField
-                  label="Onsite Contact Person Phone"
-                  name="contactPersonPhone"
-                  autoComplete="off"
-                  placeholder="Enter contact phone number"
-                />
+            <div className={styles.section}>
+              <div className={styles.container}>
+                <Form noValidate>
+                  <div className={styles.form}>
+                    <TextField
+                      label="First Name"
+                      name="fName"
+                      type="text"
+                      maxLength="50"
+                      autoComplete="given-name"
+                      placeholder="Enter first name"
+                    />
+                    <TextField
+                      label="Last Name"
+                      name="lName"
+                      type="text"
+                      maxLength="50"
+                      autoComplete="family-name"
+                      placeholder="Enter last name"
+                    />
+                    <TextField
+                      label="Company Name (If any)"
+                      name="cName"
+                      type="text"
+                      maxLength="120"
+                      autoComplete="organization"
+                      placeholder="Enter company name (optional)"
+                    />
+                    <TextField
+                      label="Email Address"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="Enter email address"
+                    />
+                    <PhoneField
+                      label="Phone"
+                      name="phone"
+                      placeholder="Enter phone number"
+                    />
+                    <TextField
+                      label="Onsite Contact Person Name"
+                      name="contactPersonName"
+                      placeholder="Enter contact person name"
+                    />
+                    <PhoneField
+                      label="Onsite Contact Person Phone"
+                      name="contactPersonPhone"
+                      autoComplete="off"
+                      placeholder="Enter contact phone number"
+                    />
+                  </div>
+                  <div className={`${styles.outerBox} ${styles.buttons}`}>
+                    <button
+                      type="submit"
+                      className={styles.next}
+                      disabled={showSpinner}
+                    >
+                      {showSpinner ? (
+                        <>
+                          <span className={styles.spinner}></span>
+                          SUBMIT
+                        </>
+                      ) : (
+                        "SUBMIT"
+                      )}
+                    </button>
+                    <button
+                      className={styles.previous}
+                      onClick={() => {
+                        setStep(2);
+                        window.scrollTo(0, 0);
+                      }}
+                    >
+                      PREVIOUS
+                    </button>
+                  </div>
+                </Form>
               </div>
-              <div className={`${styles.outerBox} ${styles.buttons}`}>
-                <button
-                  type="submit"
-                  className={styles.next}
-                  disabled={showSpinner}
-                >
-                  {showSpinner ? (
-                    <>
-                      <span className={styles.spinner}></span>
-                      SUBMIT
-                    </>
-                  ) : (
-                    "SUBMIT"
-                  )}
-                </button>
-                <button
-                  className={styles.previous}
-                  onClick={() => {
-                    setStep(2);
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  PREVIOUS
-                </button>
-              </div>
-            </Form>
-          </div>
-        </div>
-        );
+            </div>
+          );
         }}
       </Formik>
 
