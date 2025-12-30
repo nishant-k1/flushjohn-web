@@ -119,9 +119,7 @@ const Contact = () => {
               const res = await axios.post(`${API_BASE_URL}/contact`, values);
               if (res.status === 200) {
                 setState(true);
-                setTimeout(() => {
-                  setShowSuccessModal(true);
-                }, 2000);
+                setShowSuccessModal(true);
                 try {
                   if (typeof window !== "undefined" && window.gtag) {
                     window.gtag("event", "button_click", {
