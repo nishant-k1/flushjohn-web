@@ -57,7 +57,6 @@ const QuoteStep3 = () => {
   const submitInProgressRef = React.useRef(false);
   const socketSucceededRef = React.useRef(false);
   const httpCalledRef = React.useRef(false); // Track if HTTP was called to prevent socket duplicate
-  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const pendingLeadDataRef = React.useRef<any>(null);
 
   const handleLeadConversion = React.useCallback((url?: string) => {
@@ -93,61 +92,39 @@ const QuoteStep3 = () => {
       });
 
       currentSocket.on("leadCreated", (response) => {
-        if (submitInProgressRef.current) {
-          // Socket ALWAYS wins - even if HTTP was called as fallback
-          // Mark socket as succeeded to prevent HTTP from completing
+        if (submitInProgressRef.current && !httpCalledRef.current) {
+          // Socket succeeded - mark as done
           socketSucceededRef.current = true;
-          // Clear timeout since we got a response
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-          }
-          
-          // Update all states immediately - React batches these but they process very fast
           setShowSuccessModal(true);
           setQuoteRequested(true);
-          setIsSubmittingLocal(false);
           handleLeadConversion();
           submitInProgressRef.current = false;
-          httpCalledRef.current = false;
+          setIsSubmittingLocal(false);
           pendingLeadDataRef.current = null;
         }
       });
 
       currentSocket.on("leadCreationError", (error) => {
+        // Socket explicitly failed - use HTTP as fallback (no duplicate since socket failed)
         if (submitInProgressRef.current && !socketSucceededRef.current && !httpCalledRef.current) {
-          // Socket failed, allow HTTP fallback (only if HTTP wasn't already called)
-          // Clear timeout since we got an error
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-          }
-          // Try HTTP fallback if we have pending data
           if (pendingLeadDataRef.current) {
-            httpCalledRef.current = true; // Mark HTTP as called
+            httpCalledRef.current = true;
             createLeadViaHTTP(pendingLeadDataRef.current)
               .then(() => {
-                // Only process HTTP success if socket hasn't already succeeded
-                if (!socketSucceededRef.current && submitInProgressRef.current) {
-                  setShowSuccessModal(true);
-                  setQuoteRequested(true);
-                  handleLeadConversion();
-                  submitInProgressRef.current = false;
-                  httpCalledRef.current = false; // Reset for next submission
-                  setIsSubmittingLocal(false);
-                  pendingLeadDataRef.current = null;
-                }
-                // If socket succeeded, ignore HTTP result (socket wins)
+                setShowSuccessModal(true);
+                setQuoteRequested(true);
+                handleLeadConversion();
+                submitInProgressRef.current = false;
+                httpCalledRef.current = false;
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
               })
               .catch(() => {
-                // Only show error if socket hasn't already succeeded
-                if (!socketSucceededRef.current && submitInProgressRef.current) {
-                  setShowErrorModal(true);
-                  submitInProgressRef.current = false;
-                  httpCalledRef.current = false; // Reset on error
-                  setIsSubmittingLocal(false);
-                  pendingLeadDataRef.current = null;
-                }
+                setShowErrorModal(true);
+                submitInProgressRef.current = false;
+                httpCalledRef.current = false;
+                setIsSubmittingLocal(false);
+                pendingLeadDataRef.current = null;
               });
           }
         }
@@ -224,48 +201,50 @@ const QuoteStep3 = () => {
           // Set local submitting state immediately to show spinner
           setIsSubmittingLocal(true);
           
-          try {
-            const finalData = {
-              ...formValues,
-              ...values,
-              leadSource: "Web Lead",
-            };
+          const finalData = {
+            ...formValues,
+            ...values,
+            leadSource: "Web Lead",
+          };
 
-            // Reset flags for new submission
-            socketSucceededRef.current = false;
-            httpCalledRef.current = false;
-            pendingLeadDataRef.current = finalData;
+          // Reset flags for new submission
+          socketSucceededRef.current = false;
+          httpCalledRef.current = false;
+          pendingLeadDataRef.current = finalData;
 
-            // Clear any existing timeout
-            if (timeoutRef.current) {
-              clearTimeout(timeoutRef.current);
-              timeoutRef.current = null;
+          submitInProgressRef.current = true;
+          setSubmitting(true);
+
+          // Socket-first approach: Use socket if connected, otherwise HTTP fallback
+          // NO timeouts - socket events will handle success/failure
+          if (socketRef.current && socketRef.current.connected) {
+            // Socket is connected - emit and let event listeners handle response
+            socketRef.current.emit("createLead", finalData);
+            // Success/failure handled by "leadCreated" and "leadCreationError" event listeners
+          } else {
+            // Socket not connected - use HTTP immediately (no duplicate possible)
+            httpCalledRef.current = true;
+            try {
+              await createLeadViaHTTP(finalData);
+              setShowSuccessModal(true);
+              setQuoteRequested(true);
+              handleLeadConversion();
+              submitInProgressRef.current = false;
+              httpCalledRef.current = false;
+              setIsSubmittingLocal(false);
+              pendingLeadDataRef.current = null;
+              setSubmitting(false);
+            } catch (err) {
+              if (process.env.NODE_ENV === "development") {
+                console.error("Error submitting lead via HTTP:", err);
+              }
+              setShowErrorModal(true);
+              submitInProgressRef.current = false;
+              httpCalledRef.current = false;
+              setSubmitting(false);
+              setIsSubmittingLocal(false);
+              pendingLeadDataRef.current = null;
             }
-
-            submitInProgressRef.current = true;
-            setSubmitting(true);
-
-            // Use HTTP directly - more reliable than socket fallback pattern
-            // This prevents duplicate lead creation from socket + HTTP race condition
-            await createLeadViaHTTP(finalData);
-
-            setShowSuccessModal(true);
-            setQuoteRequested(true);
-            handleLeadConversion();
-            submitInProgressRef.current = false;
-            setIsSubmittingLocal(false);
-            pendingLeadDataRef.current = null;
-            setSubmitting(false);
-          } catch (err) {
-            if (process.env.NODE_ENV === "development") {
-              console.error("Error submitting lead:", err);
-            }
-            setShowErrorModal(true);
-            submitInProgressRef.current = false;
-            httpCalledRef.current = false;
-            setSubmitting(false);
-            setIsSubmittingLocal(false);
-            pendingLeadDataRef.current = null;
           }
         }}
       >
