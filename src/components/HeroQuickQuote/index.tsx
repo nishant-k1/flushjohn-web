@@ -500,7 +500,7 @@ const HeroQuickQuote = () => {
 
             // Reset flags for new submission
             socketSucceededRef.current = false;
-            httpCalledRef.current = false; // Reset HTTP flag
+            httpCalledRef.current = false;
             pendingLeadDataRef.current = finalData;
 
             // Clear any existing timeout
@@ -509,171 +509,30 @@ const HeroQuickQuote = () => {
               timeoutRef.current = null;
             }
 
-            // Try socket first
-            if (socketRef.current && socketRef.current.connected) {
-              socketRef.current.emit("createLead", finalData);
-              // Wait for socket response (handled by event listeners)
-              // Set a timeout to fallback to HTTP if no response
-              timeoutRef.current = setTimeout(() => {
-                // Only fallback to HTTP if socket hasn't succeeded
-                if (
-                  submitInProgressRef.current &&
-                  !socketSucceededRef.current &&
-                  !httpCalledRef.current
-                ) {
-                  // Mark HTTP as called to prevent socket from creating duplicate
-                  // Mark HTTP as called (but socket can still win if it responds)
-                  httpCalledRef.current = true;
-                  // Socket didn't respond, try HTTP as fallback
-                  createLeadViaHTTP(finalData)
-                    .then(() => {
-                      // Only process HTTP success if socket hasn't already succeeded
-                      if (
-                        !socketSucceededRef.current &&
-                        submitInProgressRef.current
-                      ) {
-                        setShowSuccessModal(true);
-                        setQuickQuoteRequested(true);
-                        handleLeadConversion();
-                        submitInProgressRef.current = false;
-                        httpCalledRef.current = false; // Reset for next submission
-                        timeoutRef.current = null;
-                        setSubmitting(false);
-                        setIsSubmittingLocal(false);
-                        pendingLeadDataRef.current = null;
-                      }
-                      // If socket succeeded, ignore HTTP result (socket wins)
-                    })
-                    .catch(() => {
-                      // Only show error if socket hasn't already succeeded
-                      if (
-                        !socketSucceededRef.current &&
-                        submitInProgressRef.current
-                      ) {
-                        setShowErrorModal(true);
-                        submitInProgressRef.current = false;
-                        httpCalledRef.current = false; // Reset on error
-                        timeoutRef.current = null;
-                        setSubmitting(false);
-                        setIsSubmittingLocal(false);
-                        pendingLeadDataRef.current = null;
-                      }
-                    });
-                }
-              }, 1000); // Reduced to 1 second timeout for socket (was 5s) - socket responses are typically instant
-            } else {
-              // Socket not connected, try to connect and emit, or use HTTP
-              socketRef.current?.connect();
-              timeoutRef.current = setTimeout(() => {
-                if (socketRef.current?.connected) {
-                  socketRef.current.emit("createLead", finalData);
-                  // Set timeout for HTTP fallback
-                  const fallbackTimeout = setTimeout(() => {
-                    // Only fallback to HTTP if socket hasn't succeeded
-                    if (
-                      submitInProgressRef.current &&
-                      !socketSucceededRef.current &&
-                      !httpCalledRef.current
-                    ) {
-                      // Mark HTTP as called to prevent socket from creating duplicate
-                      // Mark HTTP as called (but socket can still win if it responds)
-                      httpCalledRef.current = true;
-                      createLeadViaHTTP(finalData)
-                        .then(() => {
-                          // Only process HTTP success if socket hasn't already succeeded
-                          if (
-                            !socketSucceededRef.current &&
-                            submitInProgressRef.current
-                          ) {
-                            setHeroQuickQuoteViewStatus(false);
-                            setShowSuccessModal(true);
-                            setQuickQuoteRequested(true);
-                            handleLeadConversion();
-                            submitInProgressRef.current = false;
-                            httpCalledRef.current = false; // Reset for next submission
-                            timeoutRef.current = null;
-                            setIsSubmittingLocal(false);
-                            pendingLeadDataRef.current = null;
-                          }
-                          // If socket succeeded, ignore HTTP result (socket wins)
-                        })
-                        .catch(() => {
-                          // Only show error if socket hasn't already succeeded
-                          if (
-                            !socketSucceededRef.current &&
-                            submitInProgressRef.current
-                          ) {
-                            setShowErrorModal(true);
-                            submitInProgressRef.current = false;
-                            httpCalledRef.current = false; // Reset on error
-                            timeoutRef.current = null;
-                            setSubmitting(false);
-                            setIsSubmittingLocal(false);
-                            pendingLeadDataRef.current = null;
-                          }
-                        });
-                    }
-                  }, 1000); // Reduced to 1 second (was 5s) - socket responses are typically instant
-                  timeoutRef.current = fallbackTimeout;
-                } else {
-                  // Socket failed, use HTTP (only if not already called)
-                  if (!httpCalledRef.current) {
-                    // Mark HTTP as called (but socket can still win if it responds)
-                    httpCalledRef.current = true;
-                    createLeadViaHTTP(finalData)
-                      .then(() => {
-                        // Only process HTTP success if socket hasn't already succeeded
-                        if (
-                          !socketSucceededRef.current &&
-                          submitInProgressRef.current
-                        ) {
-                          setShowSuccessModal(true);
-                          setQuickQuoteRequested(true);
-                          handleLeadConversion();
-                          submitInProgressRef.current = false;
-                          httpCalledRef.current = false; // Reset for next submission
-                          timeoutRef.current = null;
-                          setSubmitting(false);
-                          setIsSubmittingLocal(false);
-                          pendingLeadDataRef.current = null;
-                        }
-                        // If socket succeeded, ignore HTTP result (socket wins)
-                      })
-                      .catch(() => {
-                        // Only show error if socket hasn't already succeeded
-                        if (
-                          !socketSucceededRef.current &&
-                          submitInProgressRef.current
-                        ) {
-                          setShowErrorModal(true);
-                          submitInProgressRef.current = false;
-                          httpCalledRef.current = false; // Reset on error
-                          timeoutRef.current = null;
-                          setSubmitting(false);
-                          setIsSubmittingLocal(false);
-                          pendingLeadDataRef.current = null;
-                        }
-                      });
-                  }
-                }
-              }, 1000);
-            }
+            // Use HTTP directly - more reliable than socket fallback pattern
+            // This prevents duplicate lead creation from socket + HTTP race condition
+            await createLeadViaHTTP(finalData);
+
+            setShowSuccessModal(true);
+            setQuickQuoteRequested(true);
+            handleLeadConversion();
+            submitInProgressRef.current = false;
+            setIsSubmittingLocal(false);
+            pendingLeadDataRef.current = null;
+            setSubmitting(false);
           } catch (err) {
             if (process.env.NODE_ENV === "development") {
               console.error("Error submitting lead:", err);
             }
             setShowErrorModal(true);
             submitInProgressRef.current = false;
-            httpCalledRef.current = false; // Reset on error
+            httpCalledRef.current = false;
             setSubmitting(false);
+            setIsSubmittingLocal(false);
             pendingLeadDataRef.current = null;
           } finally {
             // Clear the ref
             setSubmittingRef.current = null;
-            // Reset submitting if not already handled by async operations
-            if (!submitInProgressRef.current) {
-              setSubmitting(false);
-            }
             resetForm({
               values: {
                 usageType: "",
