@@ -23,6 +23,7 @@ import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
+import { normalizeContactData } from "@/utils/dataNormalization";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Required"),
@@ -319,13 +320,16 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             try {
+              // Normalize data before sending to API
+              const normalizedData = normalizeContactData({
+                ...values,
+                leadSource: "Web Quick Lead",
+              });
+
               const response = await fetch(`${API_BASE_URL}/leads`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  ...values,
-                  leadSource: "Web Quick Lead",
-                }),
+                body: JSON.stringify(normalizedData),
               });
 
               if (response.ok) {

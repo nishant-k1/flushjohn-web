@@ -12,6 +12,7 @@ import TextField from "../FormFields/TextField";
 import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
+import { normalizeContactData } from "@/utils/dataNormalization";
 
 const QuoteStep3 = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
@@ -67,10 +68,13 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             };
 
+            // Normalize data before sending to API
+            const normalizedData = normalizeContactData(finalData);
+
             const response = await fetch(`${API_BASE_URL}/leads`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(finalData),
+              body: JSON.stringify(normalizedData),
             });
 
             if (response.ok) {

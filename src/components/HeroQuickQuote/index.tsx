@@ -18,6 +18,7 @@ import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
+import { normalizeContactData } from "@/utils/dataNormalization";
 import {
   QuickQuoteContext,
   QuickQuoteContextType,
@@ -295,13 +296,16 @@ const HeroQuickQuote = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
           try {
+            // Normalize contact data before sending to API
+            const normalizedData = normalizeContactData({
+              ...values,
+              leadSource: "Web Hero Quick Lead",
+            });
+
             const response = await fetch(`${API_BASE_URL}/leads`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                ...values,
-                leadSource: "Web Hero Quick Lead",
-              }),
+              body: JSON.stringify(normalizedData),
             });
 
             if (response.ok) {

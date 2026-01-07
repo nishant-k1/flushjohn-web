@@ -2,7 +2,8 @@
 
 import { Formik, Form, useField, FieldHookConfig } from "formik";
 import * as Yup from "yup";
-import { NumericFormat } from "react-number-format";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import styles from "./styles.module.css";
 import axios from "axios";
 import React, { useState } from "react";
@@ -14,6 +15,7 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { apiBaseUrls } from "@/constants";
+import { normalizeContactData } from "@/utils/dataNormalization";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -37,8 +39,11 @@ const MyTextField = ({ label, ...props }: any) => {
   );
 };
 
-const MyMaskedTextInput = ({ label, ...props }: any) => {
-  const [field, meta] = useField(props);
+const MyPhoneField = ({ label, ...props }: any) => {
+  const [field, meta, helpers] = useField(props);
+  const { touched, error } = meta;
+  const { setValue } = helpers;
+
   return (
     <div>
       <label
@@ -47,14 +52,19 @@ const MyMaskedTextInput = ({ label, ...props }: any) => {
       >
         {label}
       </label>
-      <NumericFormat
-        className={styles.input}
+      <PhoneInput
         {...field}
-        {...props}
+        defaultCountry="US"
+        countries={["US"]}
+        addInternationalOption={false}
+        countryCallingCodeEditable={false}
+        onChange={(value) => setValue(value)}
+        className={styles.input}
+        placeholder="Enter phone number"
+        limitMaxLength={true}
+        maxLength={14}
       />
-      {meta.touched && meta.error ? (
-        <div className={styles.error}>{meta.error}</div>
-      ) : null}
+      {touched && error ? <div className={styles.error}>{error}</div> : null}
     </div>
   );
 };
@@ -116,7 +126,12 @@ const Contact = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               setSubmitting(true);
-              const res = await axios.post(`${API_BASE_URL}/contact`, values);
+              // Normalize data before sending to API
+              const normalizedData = normalizeContactData(values);
+              const res = await axios.post(
+                `${API_BASE_URL}/contact`,
+                normalizedData
+              );
               if (res.status === 200) {
                 setState(true);
                 setShowSuccessModal(true);
@@ -198,11 +213,10 @@ const Contact = () => {
                   </div>
 
                   <div className={styles.phone}>
-                    <MyMaskedTextInput
+                    <MyPhoneField
                       label="Phone"
                       name="phone"
-                      mask="(999) 999-9999"
-                      autoComplete="tel-national"
+                      autoComplete="tel"
                     />
                   </div>
 
