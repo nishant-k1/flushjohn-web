@@ -172,20 +172,20 @@
 .ctaButton {
   background: var(--primary-bg-color);
   color: white !important;
-  padding: 18px 36px;
+  padding: 8px 20px;
   text-decoration: none !important;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
+  min-height: 36px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 2px solid var(--primary-bg-color);
 }
 
 .ctaButton:hover {
   background: var(--primary);
-  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   text-decoration: none !important;
   color: white !important;
@@ -195,20 +195,20 @@
 .ctaButtonSecondary {
   background: var(--primary);
   color: white !important;
-  padding: 18px 36px;
+  padding: 8px 20px;
   text-decoration: none !important;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
+  min-height: 36px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 2px solid var(--primary);
 }
 
 .ctaButtonSecondary:hover {
   background: var(--primary-light);
-  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   text-decoration: none !important;
   color: white !important;

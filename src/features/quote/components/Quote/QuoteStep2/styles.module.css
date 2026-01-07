@@ -22,12 +22,12 @@
 
 .buttons button {
   display: flex;
-  padding: 12px 24px;
+  padding: 8px 20px;
   align-items: center;
   justify-content: center;
-  min-width: 120px;
-  height: 48px;
-  font-size: large;
+  min-width: 100px;
+  height: 36px;
+  font-size: 14px;
   font-weight: 500;
   border-radius: 0;
   transition: 0.3s;
@@ -46,7 +46,6 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-primary-lg);
   transition: var(--transition-base);
 }
@@ -74,7 +73,6 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: translateY(-2px);
   transition: var(--transition-base);
 }
 

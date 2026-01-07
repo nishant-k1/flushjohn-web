@@ -46,9 +46,9 @@
 }
 
 .large {
-  padding: 8px 22px;
+  padding: 8px 20px;
   font-size: 0.9375rem;
-  min-height: 42px;
+  min-height: 36px;
 }
 
 /* Variants - Contained */

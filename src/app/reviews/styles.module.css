@@ -215,31 +215,32 @@
 
 .primaryButton {
   display: inline-block;
-  padding: var(--spacing-lg) var(--spacing-3xl);
+  padding: 8px 20px;
   background: var(--text-primary);
   color: var(--bg-primary);
   text-decoration: none;
   border-radius: var(--radius-md);
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  min-height: 36px;
   transition: all var(--transition-base);
   border: 2px solid var(--text-primary);
 }
 
 .primaryButton:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
 .secondaryButton {
   display: inline-block;
-  padding: var(--spacing-lg) var(--spacing-3xl);
+  padding: 8px 20px;
   background: transparent;
   color: var(--text-primary);
   text-decoration: none;
   border-radius: var(--radius-md);
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  min-height: 36px;
   border: 2px solid var(--text-primary);
   transition: all var(--transition-base);
 }

@@ -127,7 +127,6 @@
 .primaryButton:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
-  transform: translateY(-2px);
 }
 
 .secondaryButton {

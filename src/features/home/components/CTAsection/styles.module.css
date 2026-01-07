@@ -68,8 +68,8 @@
   background-color: rgba(255, 255, 255, 0.95);
   color: var(--primary);
   border: 2px solid rgba(255, 255, 255, 0.95);
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: 1.2rem;
+  padding: 8px 20px;
+  font-size: 1rem;
   font-weight: 500;
   border-radius: 0;
   cursor: pointer;
@@ -77,13 +77,13 @@
   text-decoration: none;
   display: inline-block;
   min-width: 180px;
+  min-height: 36px;
   box-shadow: var(--shadow-md);
 }
 
 .ctaButton:hover {
   background-color: var(--text-primary);
   color: var(--primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   border-color: var(--text-primary);
 }
@@ -103,8 +103,8 @@
   background-color: var(--primary-light);
   color: var(--text-primary);
   border: 2px solid var(--primary-light);
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: 1.2rem;
+  padding: 8px 20px;
+  font-size: 1rem;
   font-weight: 500;
   border-radius: 0;
   cursor: pointer;
@@ -112,13 +112,13 @@
   text-decoration: none;
   display: inline-block;
   min-width: 180px;
+  min-height: 36px;
   box-shadow: var(--shadow-md);
 }
 
 .phoneButton:hover {
   background-color: var(--primary);
   border-color: var(--primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   color: var(--text-primary);
 }

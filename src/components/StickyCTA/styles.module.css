@@ -83,7 +83,6 @@
 .quoteButton:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(140, 111, 72, 0.4);
 }
 
@@ -96,7 +95,6 @@
 .phoneButton:hover {
   background: var(--primary);
   border-color: var(--primary);
-  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

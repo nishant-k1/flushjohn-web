@@ -214,7 +214,8 @@
   text-align: center;
   flex: 1;
   min-width: 0;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 8px 20px;
+  min-height: 36px;
   cursor: pointer;
   text-decoration: none;
   box-shadow:
@@ -288,7 +289,8 @@
   backdrop-filter: blur(10px);
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: 8px 20px;
+  min-height: 36px;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 0;

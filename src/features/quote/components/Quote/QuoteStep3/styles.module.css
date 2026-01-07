@@ -32,15 +32,15 @@
 
 .buttons button {
   display: inline-flex;
-  padding: 12px 24px;
+  padding: 8px 20px;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 120px;
+  min-width: 100px;
   width: auto;
-  max-width: 200px;
-  height: 48px;
-  font-size: large;
+  max-width: 180px;
+  height: 36px;
+  font-size: 14px;
   font-weight: 500;
   border-radius: 0;
   transition: 0.3s;
@@ -57,16 +57,15 @@
   background-color: var(--primary);
   border-color: var(--primary);
   transition: var(--transition-base);
-  width: 140px !important;
-  min-width: 140px !important;
-  max-width: 140px !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
 }
 
 .next:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-primary-lg);
   transition: var(--transition-base);
 }
@@ -94,7 +93,6 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: translateY(-2px);
   transition: var(--transition-base);
 }
 
@@ -162,9 +160,9 @@
   color: var(--text-primary) !important;
   transform: none !important;
   box-shadow: none !important;
-  width: 140px !important;
-  min-width: 140px !important;
-  max-width: 140px !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
 }
 
 .buttons button:disabled:hover {
@@ -173,7 +171,7 @@
   background-color: var(--primary-dark) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  width: 140px !important;
-  min-width: 140px !important;
-  max-width: 140px !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
 }
