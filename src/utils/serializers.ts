@@ -11,7 +11,7 @@
  * @param phone - Phone number in any format
  * @returns E.164 format (+1XXXXXXXXXX) or null if invalid
  */
-export const normalizePhoneNumber = (
+export const serializePhoneNumber = (
   phone: string | null | undefined
 ): string | null => {
   if (!phone) return null;
@@ -179,21 +179,21 @@ export const normalizeLongText = (
  * @returns Object with normalized contact data
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const normalizeContactData = (data: any): any => {
+export const serializeContactData = (data: any): any => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const normalized: any = { ...data };
 
   // Normalize phone fields
   if (data.phone) {
-    normalized.phone = normalizePhoneNumber(data.phone);
+    normalized.phone = serializePhoneNumber(data.phone);
   }
   if (data.contactPersonPhone) {
-    normalized.contactPersonPhone = normalizePhoneNumber(
+    normalized.contactPersonPhone = serializePhoneNumber(
       data.contactPersonPhone
     );
   }
   if (data.fax) {
-    normalized.fax = normalizePhoneNumber(data.fax);
+    normalized.fax = serializePhoneNumber(data.fax);
   }
 
   // Normalize email

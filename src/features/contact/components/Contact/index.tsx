@@ -15,7 +15,7 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { apiBaseUrls } from "@/constants";
-import { normalizeContactData } from "@/utils/dataNormalization";
+import { serializeContactData } from "@/utils/serializers";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -127,7 +127,7 @@ const Contact = () => {
             try {
               setSubmitting(true);
               // Normalize data before sending to API
-              const normalizedData = normalizeContactData(values);
+              const normalizedData = serializeContactData(values);
               const res = await axios.post(
                 `${API_BASE_URL}/contact`,
                 normalizedData
