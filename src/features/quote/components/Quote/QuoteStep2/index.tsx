@@ -9,7 +9,7 @@ import { Form, Formik } from "formik";
 import TextField from "../FormFields/TextField";
 import MultilineTextField from "../FormFields/MultilineTextField";
 import ZipTextField from "../FormFields/ZipField";
-import DateField from "../FormFields/DateField";
+import DateInput from "@/components/FormControls/DateInput";
 
 const step2ValidationSchema = Yup.object({
   deliveryDate: Yup.string().required("Delivery date is required"),
@@ -49,15 +49,17 @@ const QuoteStep2 = () => {
     >
       <Form noValidate>
         <div className={styles.form}>
-          <DateField
+          <DateInput
             label="Delivery Date"
             name="deliveryDate"
             placeholder="Select delivery date"
+            required
           />
-          <DateField
+          <DateInput
             label="Pickup Date"
             name="pickupDate"
             placeholder="Select pickup date"
+            required
           />
           <TextField
             label="Street"

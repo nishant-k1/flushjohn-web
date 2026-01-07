@@ -1,0 +1,116 @@
+/* Global DatePicker Animations - Applied via style tag injection */
+
+/* Calendar popup slide-in animation */
+@keyframes datePickerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Apply animations to react-datepicker elements globally */
+.react-datepicker {
+  animation: datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.react-datepicker__day {
+  transition: all 0.2s ease !important;
+}
+
+.react-datepicker__day:hover {
+  transition: all 0.2s ease !important;
+  transform: scale(1.05) !important;
+}
+
+.react-datepicker__day--selected {
+  transition: all 0.2s ease !important;
+}
+
+.react-datepicker__day--selected:hover {
+  transition: all 0.2s ease !important;
+  transform: scale(1.08) !important;
+}
+
+.react-datepicker__navigation {
+  transition: all 0.2s ease !important;
+}
+
+.react-datepicker__navigation:hover {
+  transition: all 0.2s ease !important;
+  transform: scale(1.05) !important;
+}
+
+/* Ensure calendar in portal root appears above overlay */
+#root .react-datepicker-popper {
+  z-index: 10002 !important;
+  position: fixed !important;
+}
+
+#root .react-datepicker {
+  z-index: 10002 !important;
+  position: relative !important;
+}
+
+/* Override any overlay styles that might block the calendar */
+.overlay ~ #root .react-datepicker-popper,
+body > #root .react-datepicker-popper {
+  z-index: 10002 !important;
+  position: fixed !important;
+}
+
+/* DatePicker Header Theme - Match navbar background */
+.react-datepicker__header,
+.react-datepicker .react-datepicker__header,
+body .react-datepicker__header {
+  background: #5a4a3a !important;
+  background: var(--bg-primary, #5a4a3a) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 !important;
+  padding: 12px !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker .react-datepicker__current-month,
+body .react-datepicker__current-month {
+  color: #ffffff !important;
+  color: var(--text-inverse, #ffffff) !important;
+  font-weight: 300 !important;
+  font-size: 14px !important;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+  text-shadow: none !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker .react-datepicker__day-name,
+body .react-datepicker__day-name {
+  color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--text-inverse-secondary, rgba(255, 255, 255, 0.9)) !important;
+  font-weight: 300 !important;
+  font-size: 14px !important;
+  width: 32px !important;
+  line-height: 32px !important;
+  cursor: default;
+}
+
+.react-datepicker__navigation-icon::before,
+.react-datepicker .react-datepicker__navigation-icon::before,
+body .react-datepicker__navigation-icon::before {
+  border-color: #ffffff !important;
+  border-color: var(--text-inverse, #ffffff) !important;
+  border-width: 2px 2px 0 0;
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+}
+
+.react-datepicker__navigation:hover,
+.react-datepicker .react-datepicker__navigation:hover,
+body .react-datepicker__navigation:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: scale(1.05);
+}

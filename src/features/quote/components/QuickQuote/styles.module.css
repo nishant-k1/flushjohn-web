@@ -35,6 +35,7 @@
   overflow: hidden;
 }
 
+
 .closeIcon {
   position: absolute;
   top: 0.5rem;
@@ -172,53 +173,13 @@
   border: 1px solid #ff4444 !important;
 }
 
+/* Date field styles - now handled by DateInput component */
 .date {
   width: 100%;
 }
 
-.date input,
-.date input.custom-datepicker,
-.date .custom-datepicker,
-.react-datepicker__input-container input.custom-datepicker {
-  transition: 0.3s;
-  width: 100%;
-  border: none;
-  padding: 0 32px 0 12px !important;
-  font-size: 14px !important;
-  border-radius: 0;
-  color: black !important;
-  cursor: pointer;
-  height: 2rem !important;
-  margin: 0 !important;
-}
-.date input:hover {
-  border: none;
-}
-.date input:focus {
-  border: none;
-}
-.date input::placeholder,
-.date input.custom-datepicker::placeholder,
-.date .custom-datepicker::placeholder,
-.react-datepicker__input-container input.custom-datepicker::placeholder {
-  color: rgba(0, 0, 0, 0.6) !important;
-  font-size: 14px !important;
-}
-
-.date input:focus::placeholder,
-.date input.custom-datepicker:focus::placeholder,
-.date .custom-datepicker:focus::placeholder,
-.react-datepicker__input-container input.custom-datepicker:focus::placeholder {
-  color: rgba(0, 0, 0, 0.4) !important;
-  font-size: 14px !important;
-}
-
-/* Date field error state */
-.date input.datepicker-error,
-.date input.datepicker-error:hover,
-.date input.datepicker-error:focus {
-  border: 1px solid #ff4444 !important;
-}
+/* Remove old datepicker styles that conflict with new DateInput component */
+/* These are now handled by the DateInput component's own styles */
 
 /* Style the calendar picker dropdown */
 .date input[type="date"]::-webkit-calendar-picker-indicator {

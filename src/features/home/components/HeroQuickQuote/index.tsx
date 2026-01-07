@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import React, { useContext, useState } from "react";
 import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
 import MyTextField from "@/components/FormControls/MyTextField";
-import MyDateField from "@/components/FormControls/MyDateField";
+import DateInput from "@/components/FormControls/DateInput";
 import MyPhoneTextField from "@/components/FormControls/MyPhoneTextField";
 import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField";
 import Button from "@/components/UI/Button";
@@ -178,20 +178,22 @@ const HeroQuickQuote = () => {
                     item
                     xs={6}
                   >
-                    <MyDateField
+                    <DateInput
                       label="Delivery Date"
-                      className={styles.date}
                       name="deliveryDate"
+                      required
+                      variant="quickquote"
                     />
                   </Grid>
                   <Grid
                     item
                     xs={6}
                   >
-                    <MyDateField
-                      className={styles.date}
+                    <DateInput
                       label="Pickup Date"
                       name="pickupDate"
+                      required
+                      variant="quickquote"
                     />
                   </Grid>
                   <Grid
