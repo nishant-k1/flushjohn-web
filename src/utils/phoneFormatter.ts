@@ -57,25 +57,8 @@ export const formatPhoneForDisplayWithCountryCode = (phone: string | null | unde
 };
 
 /**
- * Parse phone number from display format to E.164
+ * Note: For converting phone input to E.164 format, use serializePhoneNumber()
+ * from @/utils/serializers instead of this file.
  * 
- * @param phone - Phone number in any format
- * @returns E.164 format +1XXXXXXXXXX
+ * This file is for DISPLAY formatting only (E.164 → human-readable format).
  */
-export const parsePhoneToE164 = (phone: string | null | undefined): string | null => {
-  if (!phone) return null;
-
-  // Remove all non-digit characters
-  const digits = phone.replace(/\D/g, '');
-
-  // Validate: must have 10 digits, or 11 digits starting with 1
-  if (digits.length === 10) {
-    return `+1${digits}`;
-  } else if (digits.length === 11 && digits.startsWith('1')) {
-    return `+${digits}`;
-  }
-
-  // Invalid phone number
-  return null;
-};
-
