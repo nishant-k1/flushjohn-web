@@ -110,10 +110,9 @@
   outline-offset: 2px;
 }
 
-/* Section and container wrappers */
+/* Section and container wrappers - removed constraints to allow parent control */
 .section {
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -121,7 +120,6 @@
 
 .container {
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

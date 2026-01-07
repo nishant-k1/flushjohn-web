@@ -234,16 +234,17 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             top: "100%",
             left: 0,
             right: 0,
-            background: "#f7fafc",
-            border: "2px solid var(--primary-bg-color, #8c6f48)",
+            background: "#ffffff",
+            border: "1px solid var(--primary-bg-color, #8c6f48)",
             borderRadius: "0",
-            marginTop: "8px",
+            marginTop: "0",
             maxHeight: "280px",
             overflowY: "auto",
             zIndex: 10000,
-            boxShadow: "0 4px 16px rgba(140, 111, 72, 0.15)",
+            boxShadow:
+              "0 12px 48px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(140, 111, 72, 0.2)",
             padding: "4px 0",
-            animation: "dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            animation: "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
           {options.map((option, index) => (
@@ -254,10 +255,10 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                 toggleOption(option.value);
               }}
               style={{
-                padding: "14px 16px",
+                padding: "6px 16px",
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "10px",
                 background: isSelected(option.value)
                   ? "rgba(140, 111, 72, 0.12)"
                   : "#ffffff",
@@ -266,21 +267,21 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                 borderLeft: isSelected(option.value)
                   ? "4px solid var(--primary-bg-color, #8c6f48)"
                   : "4px solid transparent",
-                transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transition: "all 0.15s ease",
                 cursor: "pointer",
                 margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                 borderRadius: "0",
                 boxShadow: isSelected(option.value)
-                  ? "0 0 12px rgba(140, 111, 72, 0.2)"
+                  ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
                   : "none",
-                transform: isSelected(option.value) ? "scale(1.05)" : "scale(1)",
               }}
               onMouseEnter={(e) => {
                 if (!isSelected(option.value)) {
-                  e.currentTarget.style.background = "linear-gradient(90deg, rgba(140, 111, 72, 0.12) 0%, rgba(140, 111, 72, 0.06) 100%)";
-                  e.currentTarget.style.borderLeft = "4px solid rgba(140, 111, 72, 0.3)";
-                  e.currentTarget.style.boxShadow = "0 2px 10px rgba(140, 111, 72, 0.1)";
-                  e.currentTarget.style.transform = "scale(1.1)";
+                  e.currentTarget.style.background = "#f8f9fa";
+                  e.currentTarget.style.borderLeft =
+                    "4px solid rgba(140, 111, 72, 0.3)";
+                  e.currentTarget.style.boxShadow =
+                    "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
                 }
               }}
               onMouseLeave={(e) => {
@@ -288,7 +289,6 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   e.currentTarget.style.background = "#ffffff";
                   e.currentTarget.style.borderLeft = "4px solid transparent";
                   e.currentTarget.style.boxShadow = "none";
-                  e.currentTarget.style.transform = "scale(1)";
                 }
               }}
             >
@@ -313,11 +313,8 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   background: isSelected(option.value)
                     ? "var(--primary-bg-color, #8c6f48)"
                     : "#ffffff",
-                  transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transition: "all 0.15s ease",
                   cursor: "pointer",
-                  boxShadow: isSelected(option.value)
-                    ? "0 1px 3px rgba(140, 111, 72, 0.2)"
-                    : "0 1px 2px rgba(0, 0, 0, 0.05)",
                 }}
               >
                 {isSelected(option.value) && (
@@ -335,14 +332,14 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
               </div>
               <span
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: isSelected(option.value) ? 600 : 500,
                   color: isSelected(option.value)
                     ? "var(--primary-bg-color, #8c6f48)"
                     : "#1a1a1a",
                   flex: 1,
                   cursor: "pointer",
-                  lineHeight: "1.4",
+                  lineHeight: "1.2",
                   letterSpacing: "-0.01em",
                 }}
               >

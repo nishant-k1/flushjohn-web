@@ -59,7 +59,7 @@ const CustomInput = React.memo(
             placeholder={placeholder || ""}
             readOnly
             onClick={onClick}
-            className={`${className || ""} ${error ? styles.error : ""}`}
+            className={className || ""}
             style={{
               transition: "all 0.3s ease-in-out",
               willChange: "border-color, box-shadow",
@@ -123,6 +123,49 @@ const DateInput: React.FC<DateInputProps> = ({
   const [field, meta] = useField(name);
   const { error, touched } = meta;
   const hasError = touched && !!error;
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Force datepicker wrapper to full width and prevent library from overriding
+  React.useEffect(() => {
+    if (!containerRef.current) return;
+
+    const forceWidth = () => {
+      if (containerRef.current) {
+        const wrapper = containerRef.current.querySelector('.react-datepicker-wrapper');
+        if (wrapper instanceof HTMLElement) {
+          wrapper.style.setProperty('width', '100%', 'important');
+          wrapper.style.setProperty('display', 'inline-block', 'important');
+        }
+        const inputContainer = containerRef.current.querySelector('.react-datepicker__input-container');
+        if (inputContainer instanceof HTMLElement) {
+          inputContainer.style.setProperty('width', '100%', 'important');
+          inputContainer.style.setProperty('display', 'block', 'important');
+        }
+      }
+    };
+
+    // Apply immediately
+    forceWidth();
+
+    // Apply after a short delay to override library's initialization
+    const timeoutId = setTimeout(forceWidth, 0);
+
+    // Set up MutationObserver to catch any style changes
+    const observer = new MutationObserver(forceWidth);
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current, {
+        attributes: true,
+        attributeFilter: ['style'],
+        subtree: true,
+      });
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, [hasError, touched, error]); // Re-run when error state changes
 
   // For quickquote variant, use label as placeholder if no placeholder provided
   const finalPlaceholder =
@@ -161,7 +204,7 @@ const DateInput: React.FC<DateInputProps> = ({
   if (variant === "quickquote") {
     return (
       <div className={`${styles.quickQuoteContainer} ${className || ""}`}>
-        <div className={styles.quickQuoteInputWrapper}>
+        <div className={styles.quickQuoteInputWrapper} ref={containerRef}>
           <DatePicker
             customInput={
               <CustomInput
@@ -216,7 +259,7 @@ const DateInput: React.FC<DateInputProps> = ({
           )}
         </label>
       )}
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainer} ref={containerRef}>
         <DatePicker
           customInput={
             <CustomInput

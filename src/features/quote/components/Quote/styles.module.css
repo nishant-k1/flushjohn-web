@@ -43,25 +43,33 @@
 
 .innerSection {
   display: grid;
-  justify-content: center;
+  justify-content: stretch;
   align-items: start;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   background: rgba(255, 255, 255, 0.05);
   padding: var(--spacing-lg) var(--spacing-md);
   border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  max-width: 700px; /* Constrain form width for better focus and readability */
+  max-width: 500px; /* Constrain form width for better focus and readability */
+  min-width: 500px; /* Force minimum width */
   width: 100%;
   margin: 0 auto; /* Center the form container */
   box-sizing: border-box;
   overflow: hidden;
 }
 
+@media screen and (max-width: 550px) {
+  .innerSection {
+    min-width: auto; /* Remove min-width on smaller screens */
+    max-width: 100%;
+  }
+}
+
 /* Animated Progress Bar Container */
 .progressBarContainer {
   margin-bottom: 2rem;
   width: 100%;
-  max-width: 700px; /* Match form width for alignment */
+  max-width: 500px; /* Match form width for alignment */
   margin-left: auto;
   margin-right: auto;
 }

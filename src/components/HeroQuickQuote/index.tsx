@@ -169,8 +169,10 @@ const UsageTypeField = () => {
               overflowY: "auto",
               zIndex: 10000,
               boxShadow:
-                "0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(140, 111, 72, 0.15)",
+                "0 12px 48px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(140, 111, 72, 0.2)",
               padding: "4px 0",
+              animation:
+                "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
             {options.map((option, index) => (
@@ -178,7 +180,7 @@ const UsageTypeField = () => {
                 key={option.value}
                 onClick={() => handleSelect(option.value)}
                 style={{
-                  padding: "14px 16px",
+                  padding: "6px 16px",
                   cursor: "pointer",
                   background:
                     values.usageType === option.value
@@ -191,7 +193,7 @@ const UsageTypeField = () => {
                       ? "4px solid var(--primary-bg-color, #8c6f48)"
                       : "4px solid transparent",
                   transition: "all 0.15s ease",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: values.usageType === option.value ? 600 : 500,
                   color:
                     values.usageType === option.value
@@ -203,7 +205,7 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
                       : "none",
-                  lineHeight: "1.4",
+                  lineHeight: "1.2",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
