@@ -54,6 +54,7 @@ const MyPhoneField = ({ label, ...props }: any) => {
       </label>
       <PhoneInput
         {...field}
+        {...props}
         defaultCountry="US"
         countries={["US"]}
         addInternationalOption={false}

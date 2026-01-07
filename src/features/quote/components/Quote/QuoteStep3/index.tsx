@@ -143,7 +143,7 @@ const QuoteStep3 = () => {
                   <PhoneField
                     label="Onsite Contact Person Phone"
                     name="contactPersonPhone"
-                    autoComplete="off"
+                    autoComplete="tel"
                     placeholder="Enter contact phone number"
                   />
                 </div>
