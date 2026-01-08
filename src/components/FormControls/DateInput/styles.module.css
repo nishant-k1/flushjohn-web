@@ -316,17 +316,6 @@
   width: 100%;
 }
 
-/* Force react-datepicker wrappers to always take full width */
-:global(.react-datepicker-wrapper) {
-  width: 100% !important;
-  display: inline-block !important;
-}
-
-:global(.react-datepicker__input-container) {
-  width: 100% !important;
-  display: block !important;
-}
-
 /* Additional specific overrides for fullform variant */
 .dateInputContainer :global(.react-datepicker-wrapper),
 .inputContainer :global(.react-datepicker-wrapper) {
