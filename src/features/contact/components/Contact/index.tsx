@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import styles from "./styles.module.css";
-import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SuccessModal from "@/components/SuccessModal";
@@ -15,7 +14,7 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { apiBaseUrls } from "@/constants";
-import { serializeContactData } from "@/utils/serializers";
+import { api } from "@/utils/apiClient";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -127,15 +126,11 @@ const Contact = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               setSubmitting(true);
-              // Normalize data before sending to API
-              const normalizedData = serializeContactData(values);
-              const res = await axios.post(
-                `${API_BASE_URL}/contact`,
-                normalizedData
-              );
-              if (res.status === 200) {
-                setState(true);
-                setShowSuccessModal(true);
+              // Data is automatically serialized by apiClient
+              await api.post(`${API_BASE_URL}/contact`, values);
+              
+              setState(true);
+              setShowSuccessModal(true);
                 try {
                   if (typeof window !== "undefined" && window.gtag) {
                     window.gtag("event", "button_click", {
@@ -163,9 +158,6 @@ const Contact = () => {
                   }
                 }
                 resetForm();
-              } else {
-                setShowErrorModal(true);
-              }
             } catch (err) {
               if (process.env.NODE_ENV === "development") {
                 console.error("Contact form error:", err);

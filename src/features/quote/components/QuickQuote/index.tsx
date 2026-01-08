@@ -23,7 +23,7 @@ import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
-import { serializeContactData } from "@/utils/serializers";
+import { api } from "@/utils/apiClient";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Required"),
@@ -320,26 +320,18 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             try {
-              // Normalize data before sending to API
-              const normalizedData = serializeContactData({
+              // Data is automatically serialized by apiClient
+              const finalData = {
                 ...values,
                 leadSource: "Web Quick Lead",
-              });
+              };
 
-              const response = await fetch(`${API_BASE_URL}/leads`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(normalizedData),
-              });
+              await api.post(`${API_BASE_URL}/leads`, finalData);
 
-              if (response.ok) {
-                setShowSuccessModal(true);
-                setQuickQuoteRequested(true);
-                handleLeadConversion();
-                resetForm();
-              } else {
-                setShowErrorModal(true);
-              }
+              setShowSuccessModal(true);
+              setQuickQuoteRequested(true);
+              handleLeadConversion();
+              resetForm();
             } catch (err) {
               if (process.env.NODE_ENV === "development") {
                 console.error("Error submitting lead:", err);

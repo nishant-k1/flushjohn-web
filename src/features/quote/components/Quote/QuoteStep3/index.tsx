@@ -12,7 +12,7 @@ import TextField from "../FormFields/TextField";
 import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
-import { serializeContactData } from "@/utils/serializers";
+import { api } from "@/utils/apiClient";
 
 const QuoteStep3 = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
@@ -68,22 +68,12 @@ const QuoteStep3 = () => {
               leadSource: "Web Lead",
             };
 
-            // Normalize data before sending to API
-            const normalizedData = serializeContactData(finalData);
+            // Data is automatically serialized by apiClient
+            await api.post(`${API_BASE_URL}/leads`, finalData);
 
-            const response = await fetch(`${API_BASE_URL}/leads`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(normalizedData),
-            });
-
-            if (response.ok) {
-              setShowSuccessModal(true);
-              setQuoteRequested(true);
-              handleLeadConversion();
-            } else {
-              setShowErrorModal(true);
-            }
+            setShowSuccessModal(true);
+            setQuoteRequested(true);
+            handleLeadConversion();
           } catch (err) {
             if (process.env.NODE_ENV === "development") {
               console.error("Error submitting lead:", err);

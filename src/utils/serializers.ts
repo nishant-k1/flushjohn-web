@@ -175,7 +175,7 @@ export const deserializeDate = (
   // Try to parse ISO string or any date string
   try {
     const dateObj = new Date(date);
-    
+
     // Check if valid date
     if (isNaN(dateObj.getTime())) {
       return null;
