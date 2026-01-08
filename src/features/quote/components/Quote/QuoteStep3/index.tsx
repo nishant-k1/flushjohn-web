@@ -61,6 +61,12 @@ const QuoteStep3 = () => {
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
+
+          // ✅ OPTIMISTIC: Show success immediately (before API response)
+          setShowSuccessModal(true);
+          setQuoteRequested(true);
+          handleLeadConversion();
+
           try {
             const finalData = {
               ...formValues,
@@ -69,16 +75,18 @@ const QuoteStep3 = () => {
             };
 
             // Data is automatically serialized by apiClient
+            // API request in background (non-blocking)
             await api.post(`${API_BASE_URL}/leads`, finalData);
-
-            setShowSuccessModal(true);
-            setQuoteRequested(true);
-            handleLeadConversion();
+            // If successful, success modal is already shown ✅
           } catch (err) {
             if (process.env.NODE_ENV === "development") {
               console.error("Error submitting lead:", err);
             }
+            // ✅ ROLLBACK: Revert optimistic updates on error
+            setShowSuccessModal(false);
+            setQuoteRequested(false);
             setShowErrorModal(true);
+            // Could optionally restore form with values if needed
           } finally {
             setSubmitting(false);
           }

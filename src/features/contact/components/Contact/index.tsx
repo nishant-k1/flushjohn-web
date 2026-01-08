@@ -106,45 +106,55 @@ const Contact = () => {
               .required("Required"),
           })}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
-            try {
-              setSubmitting(true);
-              // Data is automatically serialized by apiClient
-              await api.post(`${API_BASE_URL}/contact`, values);
+            setSubmitting(true);
 
-              setState(true);
-              setShowSuccessModal(true);
-              try {
-                if (typeof window !== "undefined" && window.gtag) {
-                  window.gtag("event", "button_click", {
-                    event_category: "Button",
-                    event_label: "Contact Email Button Clicked",
-                  });
-                }
-              } catch (gtagError) {
-                if (process.env.NODE_ENV === "development") {
-                  console.warn("GTag error:", gtagError);
-                }
-              }
-              try {
-                logEvent({
-                  category: "Button",
-                  action: "Contact Email Form submit",
-                  label: "Contact Email Button",
-                  value: undefined,
-                  nonInteraction: undefined,
-                  transport: "beacon",
+            // ✅ OPTIMISTIC: Show success immediately (before API response)
+            setState(true);
+            setShowSuccessModal(true);
+            resetForm();
+
+            // Analytics tracking (non-blocking)
+            try {
+              if (typeof window !== "undefined" && window.gtag) {
+                window.gtag("event", "button_click", {
+                  event_category: "Button",
+                  event_label: "Contact Email Button Clicked",
                 });
-              } catch (logError) {
-                if (process.env.NODE_ENV === "development") {
-                  console.warn("Log event error:", logError);
-                }
               }
-              resetForm();
+            } catch (gtagError) {
+              if (process.env.NODE_ENV === "development") {
+                console.warn("GTag error:", gtagError);
+              }
+            }
+            try {
+              logEvent({
+                category: "Button",
+                action: "Contact Email Form submit",
+                label: "Contact Email Button",
+                value: undefined,
+                nonInteraction: undefined,
+                transport: "beacon",
+              });
+            } catch (logError) {
+              if (process.env.NODE_ENV === "development") {
+                console.warn("Log event error:", logError);
+              }
+            }
+
+            try {
+              // Data is automatically serialized by apiClient
+              // API request in background (non-blocking)
+              await api.post(`${API_BASE_URL}/contact`, values);
+              // If successful, success modal is already shown ✅
             } catch (err) {
               if (process.env.NODE_ENV === "development") {
                 console.error("Contact form error:", err);
               }
+              // ✅ ROLLBACK: Revert optimistic updates on error
+              setState(false);
+              setShowSuccessModal(false);
               setShowErrorModal(true);
+              // Could optionally restore form with values if needed
             } finally {
               setSubmitting(false);
             }

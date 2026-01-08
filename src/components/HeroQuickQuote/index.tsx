@@ -294,6 +294,13 @@ const HeroQuickQuote = () => {
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
+
+          // ✅ OPTIMISTIC: Show success immediately (before API response)
+          setShowSuccessModal(true);
+          setQuickQuoteRequested(true);
+          handleLeadConversion();
+          resetForm();
+
           try {
             // Data is automatically serialized by apiClient
             const finalData = {
@@ -301,17 +308,18 @@ const HeroQuickQuote = () => {
               leadSource: "Web Hero Quick Lead",
             };
 
+            // API request in background (non-blocking)
             await api.post(`${API_BASE_URL}/leads`, finalData);
-
-            setShowSuccessModal(true);
-            setQuickQuoteRequested(true);
-            handleLeadConversion();
-            resetForm();
+            // If successful, success modal is already shown ✅
           } catch (err) {
             if (process.env.NODE_ENV === "development") {
               console.error("Error submitting lead:", err);
             }
+            // ✅ ROLLBACK: Revert optimistic updates on error
+            setShowSuccessModal(false);
+            setQuickQuoteRequested(false);
             setShowErrorModal(true);
+            // Could optionally restore form with values if needed
           } finally {
             setSubmitting(false);
           }
