@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker-animations.css";
 import { Calendar } from "lucide-react";
 import styles from "./styles.module.css";
+import quickQuoteStyles from "@/features/quote/components/QuickQuote/styles.module.css";
 
 const MIN_DATE = dayjs().startOf("day").toDate();
 
@@ -120,10 +121,49 @@ const DateInput: React.FC<DateInputProps> = ({
   variant = "fullform",
   ...props
 }) => {
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
   const { error, touched } = meta;
+  const { setTouched } = helpers;
   const hasError = touched && !!error;
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
+
+  // Show error only after field is touched (blurred) and there's an error
+  React.useEffect(() => {
+    if (touched && error) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [touched, error]);
+
+  // Handle click outside to trigger validation when calendar is open
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        // Mark field as touched when clicking outside
+        setTouched(true);
+        // Trigger validation
+        field.onBlur({
+          target: {
+            name: field.name,
+          },
+        } as React.FocusEvent<HTMLInputElement>);
+      }
+    };
+
+    if (isCalendarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isCalendarOpen, field, setTouched]);
 
   // Force datepicker wrapper to full width and prevent library from overriding
   React.useEffect(() => {
@@ -131,15 +171,19 @@ const DateInput: React.FC<DateInputProps> = ({
 
     const forceWidth = () => {
       if (containerRef.current) {
-        const wrapper = containerRef.current.querySelector('.react-datepicker-wrapper');
+        const wrapper = containerRef.current.querySelector(
+          ".react-datepicker-wrapper"
+        );
         if (wrapper instanceof HTMLElement) {
-          wrapper.style.setProperty('width', '100%', 'important');
-          wrapper.style.setProperty('display', 'inline-block', 'important');
+          wrapper.style.setProperty("width", "100%", "important");
+          wrapper.style.setProperty("display", "inline-block", "important");
         }
-        const inputContainer = containerRef.current.querySelector('.react-datepicker__input-container');
+        const inputContainer = containerRef.current.querySelector(
+          ".react-datepicker__input-container"
+        );
         if (inputContainer instanceof HTMLElement) {
-          inputContainer.style.setProperty('width', '100%', 'important');
-          inputContainer.style.setProperty('display', 'block', 'important');
+          inputContainer.style.setProperty("width", "100%", "important");
+          inputContainer.style.setProperty("display", "block", "important");
         }
       }
     };
@@ -152,11 +196,11 @@ const DateInput: React.FC<DateInputProps> = ({
 
     // Set up MutationObserver to catch any style changes
     const observer = new MutationObserver(forceWidth);
-    
+
     if (containerRef.current) {
       observer.observe(containerRef.current, {
         attributes: true,
-        attributeFilter: ['style'],
+        attributeFilter: ["style"],
         subtree: true,
       });
     }
@@ -200,21 +244,54 @@ const DateInput: React.FC<DateInputProps> = ({
     });
   };
 
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    field.onBlur(e);
+    setTouched(true);
+  };
+
+  const handleCalendarOpen = () => {
+    setIsCalendarOpen(true);
+  };
+
+  const handleCalendarClose = () => {
+    setIsCalendarOpen(false);
+    // Mark field as touched when calendar closes
+    setTouched(true);
+    // Trigger validation by calling onBlur
+    field.onBlur({
+      target: {
+        name: field.name,
+      },
+    } as React.FocusEvent<HTMLInputElement>);
+  };
+
+  const handleFocus = () => {
+    // Hide error when field is focused
+    setShowError(false);
+  };
+
   // Render based on variant
   if (variant === "quickquote") {
     return (
       <div className={`${styles.quickQuoteContainer} ${className || ""}`}>
-        <div className={styles.quickQuoteInputWrapper} ref={containerRef}>
+        <div
+          className={`${styles.quickQuoteInputWrapper} ${hasError ? styles.hasError : ""}`}
+          ref={containerRef}
+        >
           <DatePicker
             customInput={
               <CustomInput
                 error={hasError}
-                className={`${styles.quickQuoteInput} ${hasError ? styles.quickQuoteError : ""} ${props.inputClassName || ""}`}
+                className={`${styles.quickQuoteInput} ${hasError ? quickQuoteStyles.error_field : ""} ${props.inputClassName || ""}`}
                 placeholder={finalPlaceholder}
               />
             }
             selected={selectedDate}
             onChange={handleDateChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            onCalendarOpen={handleCalendarOpen}
+            onCalendarClose={handleCalendarClose}
             minDate={minDate}
             dateFormat={dateFormat}
             disabled={disabled}
@@ -234,13 +311,11 @@ const DateInput: React.FC<DateInputProps> = ({
             }}
             {...props}
           />
-          {hasError && (
-            <div
-              className={`${styles.quickQuoteError} ${styles.quickQuoteErrorVisible}`}
-            >
-              Required
-            </div>
-          )}
+          <div
+            className={`${quickQuoteStyles.error} ${showError && touched && error ? quickQuoteStyles.errorVisible : quickQuoteStyles.errorHidden}`}
+          >
+            {touched && error ? error || "Required" : ""}
+          </div>
         </div>
       </div>
     );
@@ -259,17 +334,24 @@ const DateInput: React.FC<DateInputProps> = ({
           )}
         </label>
       )}
-      <div className={styles.inputContainer} ref={containerRef}>
+      <div
+        className={styles.inputContainer}
+        ref={containerRef}
+      >
         <DatePicker
           customInput={
             <CustomInput
               error={hasError}
-              className={`${styles.fullFormInput} ${hasError ? styles.error_field : ""} ${props.inputClassName || ""}`}
+              className={`${styles.fullFormInput} ${hasError ? quickQuoteStyles.error_field : ""} ${props.inputClassName || ""}`}
               placeholder={finalPlaceholder}
             />
           }
           selected={selectedDate}
           onChange={handleDateChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          onCalendarOpen={handleCalendarOpen}
+          onCalendarClose={handleCalendarClose}
           minDate={minDate}
           dateFormat={dateFormat}
           disabled={disabled}
@@ -289,11 +371,11 @@ const DateInput: React.FC<DateInputProps> = ({
           }}
           {...props}
         />
-        {hasError && (
-          <div className={`${styles.error} ${styles.errorVisible}`}>
-            {error || "Required"}
-          </div>
-        )}
+        <div
+          className={`${quickQuoteStyles.error} ${showError && touched && error ? quickQuoteStyles.errorVisible : quickQuoteStyles.errorHidden}`}
+        >
+          {touched && error ? error || "Required" : ""}
+        </div>
       </div>
     </div>
   );

@@ -129,6 +129,19 @@
   border: 1px solid #ff4444 !important;
 }
 
+/* Error field styling for quickquote variant - must override border: none */
+.quickQuoteInputWrapper.hasError input,
+.quickQuoteInputWrapper.hasError .quickQuoteInput {
+  border: 1px solid #ff4444 !important;
+}
+
+.quickQuoteInputWrapper.hasError input:hover,
+.quickQuoteInputWrapper.hasError input:focus,
+.quickQuoteInputWrapper.hasError .quickQuoteInput:hover,
+.quickQuoteInputWrapper.hasError .quickQuoteInput:focus {
+  border: 1px solid #ff4444 !important;
+}
+
 .quickQuoteInput::placeholder {
   color: rgba(0, 0, 0, 0.6) !important;
   font-size: 14px !important;
