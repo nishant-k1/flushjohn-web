@@ -1,6 +1,6 @@
 /**
  * Data Transformers - Centralized Serialization/Deserialization
- * 
+ *
  * Routes to correct serializer based on API endpoint
  * Single source of truth for data transformation
  */
@@ -13,7 +13,7 @@ import { serializeContactData } from "./serializers";
  */
 export const serializeDataForApi = (url: string, data: any): any => {
   // Determine which routes need contact data serialization
-  const needsContactSerialization = 
+  const needsContactSerialization =
     url.includes("/leads") ||
     url.includes("/customers") ||
     url.includes("/quotes") ||
@@ -67,7 +67,11 @@ export const deserializeDataFromApi = (url: string, data: any): any => {
 
     // Recursively process nested objects
     Object.keys(result).forEach((key) => {
-      if (result[key] && typeof result[key] === "object" && !(result[key] instanceof Date)) {
+      if (
+        result[key] &&
+        typeof result[key] === "object" &&
+        !(result[key] instanceof Date)
+      ) {
         result[key] = deserializeDates(result[key]);
       }
     });
@@ -77,4 +81,3 @@ export const deserializeDataFromApi = (url: string, data: any): any => {
 
   return deserializeDates(data);
 };
-

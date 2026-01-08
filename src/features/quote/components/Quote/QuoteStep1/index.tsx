@@ -152,14 +152,15 @@ const QuoteStep1 = () => {
         </div>
         <ErrorMessage name="products">
           {(msg) => {
-            return <div className={styles.productsError}>Enter quantity for at least one item</div>;
+            return (
+              <div className={styles.productsError}>
+                Enter quantity for at least one item
+              </div>
+            );
           }}
         </ErrorMessage>
         <div className={styles.buttons}>
-          <button
-            className={styles.button}
-            type="submit"
-          >
+          <button className={styles.button} type="submit">
             NEXT
           </button>
         </div>

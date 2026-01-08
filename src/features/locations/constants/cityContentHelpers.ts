@@ -85,7 +85,9 @@ export function generateCityServices(
   );
   const hasMajorEvents = enhancements.events.length > 2;
   const hasWeddings = enhancements.events.some(
-    (e) => e.toLowerCase().includes("wedding") || e.toLowerCase().includes("festival")
+    (e) =>
+      e.toLowerCase().includes("wedding") ||
+      e.toLowerCase().includes("festival")
   );
 
   return [
@@ -169,7 +171,7 @@ export function generateEventDescription(
   state: string
 ): string {
   const eventLower = eventName.toLowerCase();
-  
+
   if (eventLower.includes("festival")) {
     return `Professional porta potty services for ${eventName} in ${displayName}. High-capacity solutions for festival attendees.`;
   }
@@ -185,7 +187,6 @@ export function generateEventDescription(
   if (eventLower.includes("corporate") || eventLower.includes("business")) {
     return `Professional porta potty services for ${eventName} in ${displayName}. Corporate event sanitation solutions.`;
   }
-  
+
   return `Porta potty rental services for ${eventName} in ${displayName}, ${state}. Professional sanitation solutions for ${displayName} events.`;
 }
-

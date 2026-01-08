@@ -3,7 +3,7 @@
  * Step 4: API Request Payload with proper types
  */
 
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export interface ProductRequest {
   id: string;

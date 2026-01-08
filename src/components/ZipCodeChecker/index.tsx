@@ -10,13 +10,13 @@ const ZipCodeChecker = () => {
 
   const handleCheck = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!zipCode || zipCode.length !== 5) {
       return;
     }
 
     setIsChecking(true);
-    
+
     // Simulate a brief check (always returns yes)
     setTimeout(() => {
       setIsChecking(false);
@@ -58,11 +58,13 @@ const ZipCodeChecker = () => {
             </button>
           </div>
         </form>
-        
+
         {showResult && (
           <div className={styles.resultMessage}>
             <div className={styles.successIcon}>✓</div>
-            <span className={styles.successText}>Yes! We deliver to your area.</span>
+            <span className={styles.successText}>
+              Yes! We deliver to your area.
+            </span>
           </div>
         )}
       </div>
@@ -71,4 +73,3 @@ const ZipCodeChecker = () => {
 };
 
 export default ZipCodeChecker;
-

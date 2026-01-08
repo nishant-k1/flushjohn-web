@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Script from "next/script";
-import { websiteURL, phone, contact, s3assets } from "@/constants";
+import { websiteURL, phone, contact } from "@/constants";
 import {
   getStateUniqueContent,
   generateStateServices,
@@ -213,10 +213,7 @@ const StateHubPage = ({ state }: StateProps) => {
             )}
             <div className={styles.servicesGrid}>
               {stateServices.map((service, index) => (
-                <div
-                  key={index}
-                  className={styles.serviceCard}
-                >
+                <div key={index} className={styles.serviceCard}>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
                 </div>
@@ -228,16 +225,10 @@ const StateHubPage = ({ state }: StateProps) => {
             <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
             <p className={styles.ctaDescription}>{ctaDescription}</p>
             <div className={styles.ctaButtons}>
-              <Link
-                href="/quote"
-                className={styles.quoteButton}
-              >
+              <Link href="/quote" className={styles.quoteButton}>
                 Request a Quote
               </Link>
-              <Link
-                href="/contact"
-                className={styles.contactButton}
-              >
+              <Link href="/contact" className={styles.contactButton}>
                 Contact Us
               </Link>
             </div>

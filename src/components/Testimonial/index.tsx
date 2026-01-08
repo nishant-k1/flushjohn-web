@@ -39,10 +39,7 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
     <div className={styles.testimonials}>
       <div className={styles.container}>
         <h2>{heading}</h2>
-        <Carousel
-          autoplay
-          arrows
-        >
+        <Carousel autoplay arrows>
           {content &&
             content.map((item, index) => (
               <div key={index}>
@@ -61,7 +58,10 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                   <div>
                     <h3>{item.title}</h3>
                     <div>
-                      <div className={styles.rating} style={{ display: "flex", gap: "4px" }}>
+                      <div
+                        className={styles.rating}
+                        style={{ display: "flex", gap: "4px" }}
+                      >
                         <Star size={18} fill="currentColor" />
                         <Star size={18} fill="currentColor" />
                         <Star size={18} fill="currentColor" />

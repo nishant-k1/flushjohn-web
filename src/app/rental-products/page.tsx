@@ -57,22 +57,26 @@ const jsonLd = {
     },
     areaServed: {
       "@type": "Country",
-      name: "United States"
-    }
+      name: "United States",
+    },
   },
   mainEntity: {
     "@type": "ItemList",
     name: "Porta Potty Rental Products",
-    description: "Complete selection of portable toilet rental units available across the United States",
+    description:
+      "Complete selection of portable toilet rental units available across the United States",
     numberOfItems: products_data.product_list.length,
     itemListElement: products_data.product_list.map((product, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: product.title,
-      description: product.desc.length > 150 ? `${product.desc.substring(0, 150)}...` : product.desc,
+      description:
+        product.desc.length > 150
+          ? `${product.desc.substring(0, 150)}...`
+          : product.desc,
       url: `${websiteURL}/rental-products/${generateProductSlug(product.title)}`,
     })),
-  }
+  },
 };
 
 const ProductsPage = () => {

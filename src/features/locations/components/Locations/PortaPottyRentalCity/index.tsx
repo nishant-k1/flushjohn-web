@@ -434,16 +434,10 @@ export default function PortaPottyRentalCity({
 
             {/* CTA Buttons */}
             <div className={styles.ctaButtons}>
-              <Link
-                href="/quote"
-                className={styles.ctaButton}
-              >
+              <Link href="/quote" className={styles.ctaButton}>
                 Get Free Quote
               </Link>
-              <a
-                href={phone_link}
-                className={styles.ctaButtonSecondary}
-              >
+              <a href={phone_link} className={styles.ctaButtonSecondary}>
                 Call {phone_number}
               </a>
             </div>
@@ -491,36 +485,15 @@ export default function PortaPottyRentalCity({
               <div className={styles.featureGrid}>
                 {cityFeatures.map((feature, index) => {
                   const icons = [
-                    <Truck
-                      key="truck"
-                      size={24}
-                    />,
-                    <Droplet
-                      key="droplet"
-                      size={24}
-                    />,
-                    <DollarSign
-                      key="dollar"
-                      size={24}
-                    />,
-                    <Calendar
-                      key="calendar"
-                      size={24}
-                    />,
-                    <Award
-                      key="award"
-                      size={24}
-                    />,
-                    <Phone
-                      key="phone"
-                      size={24}
-                    />,
+                    <Truck key="truck" size={24} />,
+                    <Droplet key="droplet" size={24} />,
+                    <DollarSign key="dollar" size={24} />,
+                    <Calendar key="calendar" size={24} />,
+                    <Award key="award" size={24} />,
+                    <Phone key="phone" size={24} />,
                   ];
                   return (
-                    <div
-                      key={index}
-                      className={styles.featureItem}
-                    >
+                    <div key={index} className={styles.featureItem}>
                       <div className={styles.featureIcon}>{icons[index]}</div>
                       <div className={styles.featureContent}>
                         <h3>{feature.title}</h3>
@@ -539,10 +512,7 @@ export default function PortaPottyRentalCity({
               </div>
               <div className={`${styles.grid} ${styles.gridAutoFit}`}>
                 {serviceAreas.map((area) => (
-                  <div
-                    key={area.name}
-                    className={styles.serviceCard}
-                  >
+                  <div key={area.name} className={styles.serviceCard}>
                     <h3>{area.name}</h3>
                     <p>{area.description}</p>
                   </div>
@@ -582,26 +552,11 @@ export default function PortaPottyRentalCity({
               <ul className={styles.servicesList}>
                 {cityServices.map((service, index) => {
                   const icons = [
-                    <Construction
-                      key="construction"
-                      size={24}
-                    />,
-                    <Calendar
-                      key="calendar"
-                      size={24}
-                    />,
-                    <MapPin
-                      key="mappin"
-                      size={24}
-                    />,
-                    <Award
-                      key="award"
-                      size={24}
-                    />,
-                    <AlertCircle
-                      key="alert"
-                      size={24}
-                    />,
+                    <Construction key="construction" size={24} />,
+                    <Calendar key="calendar" size={24} />,
+                    <MapPin key="mappin" size={24} />,
+                    <Award key="award" size={24} />,
+                    <AlertCircle key="alert" size={24} />,
                   ];
                   return (
                     <li key={index}>
@@ -640,16 +595,10 @@ export default function PortaPottyRentalCity({
                   flexWrap: "wrap",
                 }}
               >
-                <Link
-                  href="/quote"
-                  className={styles.ctaButton}
-                >
+                <Link href="/quote" className={styles.ctaButton}>
                   Get Free Quote
                 </Link>
-                <a
-                  href={phone_link}
-                  className={styles.ctaButtonSecondary}
-                >
+                <a href={phone_link} className={styles.ctaButtonSecondary}>
                   Call {phone_number}
                 </a>
               </div>
@@ -694,10 +643,7 @@ export default function PortaPottyRentalCity({
                 </p>
               )}
               <div style={{ textAlign: "center" }}>
-                <Link
-                  href="/quote"
-                  className={styles.ctaButton}
-                >
+                <Link href="/quote" className={styles.ctaButton}>
                   <DollarSign
                     size={20}
                     style={{ marginRight: "8px", verticalAlign: "middle" }}
@@ -716,10 +662,7 @@ export default function PortaPottyRentalCity({
               </div>
               <div className={styles.grid}>
                 {cityFAQs.slice(0, 4).map((faq, index) => (
-                  <div
-                    key={index}
-                    className={styles.card}
-                  >
+                  <div key={index} className={styles.card}>
                     <h3>{faq.q}</h3>
                     <p>{faq.a}</p>
                   </div>
@@ -808,10 +751,7 @@ export default function PortaPottyRentalCity({
                 </p>
                 <div className={`${styles.grid} ${styles.gridAutoFit}`}>
                   {enhancements.landmarks.slice(0, 6).map((landmark) => (
-                    <div
-                      key={landmark}
-                      className={styles.card}
-                    >
+                    <div key={landmark} className={styles.card}>
                       <MapPin
                         size={24}
                         style={{
@@ -886,10 +826,7 @@ export default function PortaPottyRentalCity({
                 </p>
                 <div className={`${styles.grid} ${styles.gridAutoFit}`}>
                   {enhancements.events.slice(0, 6).map((event) => (
-                    <div
-                      key={event}
-                      className={styles.card}
-                    >
+                    <div key={event} className={styles.card}>
                       <Calendar
                         size={24}
                         style={{
@@ -936,10 +873,7 @@ export default function PortaPottyRentalCity({
                 </p>
                 <div className={`${styles.grid} ${styles.gridAutoFitNarrow}`}>
                   {enhancements.neighborhoods.map((neighborhood) => (
-                    <div
-                      key={neighborhood}
-                      className={styles.card}
-                    >
+                    <div key={neighborhood} className={styles.card}>
                       <Home
                         size={20}
                         style={{
@@ -977,10 +911,7 @@ export default function PortaPottyRentalCity({
                 </p>
                 <div className={`${styles.grid} ${styles.gridAutoFit}`}>
                   {enhancements.regulations.map((regulation, index) => (
-                    <div
-                      key={index}
-                      className={styles.card}
-                    >
+                    <div key={index} className={styles.card}>
                       <FileText
                         size={24}
                         style={{
@@ -1007,10 +938,7 @@ export default function PortaPottyRentalCity({
                 </div>
                 <div className={`${styles.grid} ${styles.gridAutoFit}`}>
                   {enhancements.faqs.map((faq, index) => (
-                    <div
-                      key={index}
-                      className={styles.card}
-                    >
+                    <div key={index} className={styles.card}>
                       <HelpCircle
                         size={24}
                         style={{
@@ -1052,20 +980,14 @@ export default function PortaPottyRentalCity({
                     flexWrap: "wrap",
                   }}
                 >
-                  <Link
-                    href="/contact"
-                    className={styles.ctaButton}
-                  >
+                  <Link href="/contact" className={styles.ctaButton}>
                     <Phone
                       size={20}
                       style={{ marginRight: "8px", verticalAlign: "middle" }}
                     />
                     Contact Us
                   </Link>
-                  <Link
-                    href="/quote"
-                    className={styles.ctaButtonSecondary}
-                  >
+                  <Link href="/quote" className={styles.ctaButtonSecondary}>
                     Get a Free Quote
                   </Link>
                 </div>
@@ -1090,16 +1012,10 @@ export default function PortaPottyRentalCity({
                   free quote today!
                 </p>
                 <div className={styles.ctaButtons}>
-                  <Link
-                    href="/quote"
-                    className={styles.finalCTAButton}
-                  >
+                  <Link href="/quote" className={styles.finalCTAButton}>
                     Get Free Quote
                   </Link>
-                  <a
-                    href={phone_link}
-                    className={styles.ctaButtonSecondary}
-                  >
+                  <a href={phone_link} className={styles.ctaButtonSecondary}>
                     Call {phone_number}
                   </a>
                 </div>
@@ -1157,24 +1073,15 @@ export default function PortaPottyRentalCity({
           </div>
 
           {/* Content Marketing Section */}
-          <ContentMarketing
-            city={displayName}
-            state={state}
-          />
+          <ContentMarketing city={displayName} state={state} />
 
           {/* Review Collection Section */}
-          <ReviewCollection
-            city={displayName}
-            state={state}
-          />
+          <ReviewCollection city={displayName} state={state} />
         </div>
       </div>
 
       {/* Sticky CTA */}
-      <StickyCTA
-        city={displayName}
-        state={state}
-      />
+      <StickyCTA city={displayName} state={state} />
     </>
   );
 }

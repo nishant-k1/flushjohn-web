@@ -29,10 +29,7 @@ const ServiceAreasPage = () => {
           {Object.entries(serviceAreasByState).map(([state, cities]) => {
             const stateSlug = state.toLowerCase();
             return (
-              <div
-                key={state}
-                className={styles.stateSection}
-              >
+              <div key={state} className={styles.stateSection}>
                 <Link
                   href={`/service-areas/${stateSlug}`}
                   className={styles.stateNameLink}
@@ -78,16 +75,10 @@ const ServiceAreasPage = () => {
             </div>
           </div>
           <div className={styles.ctaButtons}>
-            <Link
-              href="/quote"
-              className={styles.quoteButton}
-            >
+            <Link href="/quote" className={styles.quoteButton}>
               Request a Quote
             </Link>
-            <Link
-              href="/contact"
-              className={styles.contactButton}
-            >
+            <Link href="/contact" className={styles.contactButton}>
               Contact Us
             </Link>
           </div>

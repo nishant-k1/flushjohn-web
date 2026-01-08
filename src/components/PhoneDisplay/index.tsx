@@ -1,12 +1,12 @@
 /**
  * PhoneDisplay Component
- * 
+ *
  * Displays phone numbers in formatted style: (713) 555-1234
  * Input: E.164 format from database (+17135551234)
  * Output: Formatted display (713) 555-1234
  */
 
-import { formatPhoneForDisplay } from '@/utils/phoneFormatter';
+import { formatPhoneForDisplay } from "@/utils/phoneFormatter";
 
 interface PhoneDisplayProps {
   phone: string | null | undefined;
@@ -14,10 +14,10 @@ interface PhoneDisplayProps {
   className?: string;
 }
 
-const PhoneDisplay = ({ 
-  phone, 
+const PhoneDisplay = ({
+  phone,
   clickable = false,
-  className = ''
+  className = "",
 }: PhoneDisplayProps) => {
   if (!phone) {
     return <span className={className}>—</span>;
@@ -27,10 +27,10 @@ const PhoneDisplay = ({
 
   if (clickable) {
     return (
-      <a 
-        href={`tel:${phone}`} 
+      <a
+        href={`tel:${phone}`}
         className={className}
-        style={{ textDecoration: 'none', color: 'inherit' }}
+        style={{ textDecoration: "none", color: "inherit" }}
       >
         {formattedPhone}
       </a>
@@ -41,4 +41,3 @@ const PhoneDisplay = ({
 };
 
 export default PhoneDisplay;
-

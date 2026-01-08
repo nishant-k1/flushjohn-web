@@ -20,7 +20,10 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         // Only hide error if field is not touched yet
         // If field is touched and has error, keep showing it
         if (!touched) {
@@ -61,7 +64,9 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
           setTouched(true);
         }}
       />
-      <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+      <div
+        className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+      >
         {touched && error ? `Required` : ""}
       </div>
     </div>

@@ -17,10 +17,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
         <div className={styles.featuresWrapper}>
           {content &&
             content.map((item: Feature) => (
-              <div
-                key={item.id}
-                className={styles.wrapper}
-              >
+              <div key={item.id} className={styles.wrapper}>
                 <div style={{ marginBottom: "1rem" }}>
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>

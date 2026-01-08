@@ -417,7 +417,10 @@ export default function EnhancedStructuredData({
     ? {
         "@context": "https://schema.org",
         "@type": "Product",
-        "@id": `${websiteURL}/rental-products/${productName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}#product`,
+        "@id": `${websiteURL}/rental-products/${productName
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")}#product`,
         name: productName,
         description:
           productDescription || `Professional ${productName} rental services`,

@@ -31,14 +31,14 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
     coverImageUnsplash?.src ||
     coverImage?.src ||
     `${s3assets}/og-image-flushjonn-web.png`;
-    
+
   const imageAlt =
     coverImageS3?.alt ||
     coverImageUnsplash?.alt ||
     coverImage?.alt ||
     title ||
     "Blog cover image";
-  
+
   const [imageError, setImageError] = useState(false);
   const fallbackImage = `${s3assets}/og-image-flushjonn-web.png`;
   const finalImageSource = imageError ? fallbackImage : imageSource;
@@ -48,8 +48,18 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
     // Use UTC to ensure consistent formatting between server and client
     const date = new Date(dateString);
     const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const year = date.getUTCFullYear();
     const month = months[date.getUTCMonth()];
@@ -143,7 +153,11 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                     By <strong>{author}</strong>
                   </span>
                 )}
-                {createdAt && <span suppressHydrationWarning>• {formatDate(createdAt)}</span>}
+                {createdAt && (
+                  <span suppressHydrationWarning>
+                    • {formatDate(createdAt)}
+                  </span>
+                )}
                 <span>• {readingTime} min read</span>
               </div>
 
@@ -295,7 +309,9 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                 border: "1px solid rgba(255, 255, 255, 0.15)",
               }}
             >
-              <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
+              <h3
+                style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
+              >
                 About {author || "FlushJohn Team"}
               </h3>
               <p style={{ margin: "0", color: "var(--text-secondary)" }}>
@@ -308,7 +324,9 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
 
             {/* Social Sharing */}
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
-              <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
+              <h3
+                style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}
+              >
                 Share This Article
               </h3>
               <div
@@ -379,14 +397,27 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                       post.coverImage?.src ||
                       `${s3assets}/og-image-flushjonn-web.png`;
                     const postExcerpt = post.excerpt
-                      ? post.excerpt.replace(/<[^>]*>/g, "").substring(0, 120) + "..."
-                      : convert(post.content || "", { wordwrap: false }).substring(0, 120) + "...";
+                      ? post.excerpt.replace(/<[^>]*>/g, "").substring(0, 120) +
+                        "..."
+                      : convert(post.content || "", {
+                          wordwrap: false,
+                        }).substring(0, 120) + "...";
                     const formatDate = (dateString: string) => {
                       if (!dateString) return "";
                       const date = new Date(dateString);
                       const months = [
-                        "January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
                       ];
                       return `${months[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getUTCFullYear()}`;
                     };
@@ -408,8 +439,13 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                         </div>
                         <div className={styles.relatedPostContent}>
                           <h3>{post.title || "Untitled"}</h3>
-                          <p className={styles.relatedPostExcerpt}>{postExcerpt}</p>
-                          <span className={styles.relatedPostDate} suppressHydrationWarning>
+                          <p className={styles.relatedPostExcerpt}>
+                            {postExcerpt}
+                          </p>
+                          <span
+                            className={styles.relatedPostDate}
+                            suppressHydrationWarning
+                          >
                             {formatDate(post.createdAt)}
                           </span>
                         </div>

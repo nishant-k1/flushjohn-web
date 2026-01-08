@@ -1,15 +1,15 @@
 /**
  * State Unique Content
- * 
+ *
  * Provides unique, SEO-optimized content for each state page
  * (6 states: Texas, Florida, California, Georgia, Illinois, Delaware)
- * 
+ *
  * Each entry contains:
  * - expandedDescription: 200-300 word expanded unique description
  * - constructionOverview: State-specific construction service overview
  * - eventsOverview: State-specific events service overview
  * - localRegulations: State-specific regulations or requirements
- * 
+ *
  * Last Updated: 2025
  */
 
@@ -68,4 +68,3 @@ export function getStateUniqueContent(
   const normalizedSlug = stateSlug.toLowerCase();
   return stateUniqueContent[normalizedSlug] || null;
 }
-

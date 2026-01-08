@@ -32,10 +32,7 @@ const PhoneNumberBar = () => {
             }
           }}
         >
-          <PhoneIcon
-            className={styles.phoneIcon}
-            size={20}
-          />
+          <PhoneIcon className={styles.phoneIcon} size={20} />
           <span className={styles.phoneNumberText}>{phone_number}</span>
         </Link>
       </div>

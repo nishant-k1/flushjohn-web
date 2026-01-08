@@ -1,4 +1,3 @@
-
 /**
  * Facebook Pixel Component
  *

@@ -693,12 +693,7 @@ export const cityEnhancements: Record<string, CityEnhancement> = {
       "Bragg Jam",
       "Macon Pops Concert Series",
     ],
-    neighborhoods: [
-      "Downtown Macon",
-      "Ingleside",
-      "Wesleyan",
-      "North Macon",
-    ],
+    neighborhoods: ["Downtown Macon", "Ingleside", "Wesleyan", "North Macon"],
     regulations: [
       "Bibb County health permits",
       "City event permits",
@@ -858,12 +853,7 @@ export const cityEnhancements: Record<string, CityEnhancement> = {
       "Stroll on State",
       "Rockford Pride",
     ],
-    neighborhoods: [
-      "Downtown Rockford",
-      "Midtown",
-      "Edgewater",
-      "North End",
-    ],
+    neighborhoods: ["Downtown Rockford", "Midtown", "Edgewater", "North End"],
     regulations: [
       "Winnebago County health permits",
       "City event permits",
@@ -915,12 +905,13 @@ export const cityEnhancements: Record<string, CityEnhancement> = {
  */
 export function getCityEnhancement(citySlug: string): CityEnhancement {
   const normalizedSlug = citySlug.toLowerCase().replace(/\s+/g, "-");
-  return cityEnhancements[normalizedSlug] || {
-    landmarks: [],
-    events: [],
-    neighborhoods: [],
-    regulations: [],
-    faqs: [],
-  };
+  return (
+    cityEnhancements[normalizedSlug] || {
+      landmarks: [],
+      events: [],
+      neighborhoods: [],
+      regulations: [],
+      faqs: [],
+    }
+  );
 }
-

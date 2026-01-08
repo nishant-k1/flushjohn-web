@@ -15,10 +15,7 @@ const MultilineTextField = ({ label, ...props }: any) => {
   }, [meta.touched, meta.error]);
   return (
     <div className={styles.fieldRow}>
-      <label
-        className={styles.fieldLabel}
-        htmlFor={props.id || props.name}
-      >
+      <label className={styles.fieldLabel} htmlFor={props.id || props.name}>
         {label}
       </label>
       <div className={styles.inputContainer}>
@@ -32,7 +29,9 @@ const MultilineTextField = ({ label, ...props }: any) => {
             setShowError(false);
           }}
         />
-        <div className={`${styles.error} ${showError && meta.touched && meta.error ? styles.errorVisible : styles.errorHidden}`}>
+        <div
+          className={`${styles.error} ${showError && meta.touched && meta.error ? styles.errorVisible : styles.errorHidden}`}
+        >
           {meta.touched && meta.error ? "Required" : ""}
         </div>
       </div>

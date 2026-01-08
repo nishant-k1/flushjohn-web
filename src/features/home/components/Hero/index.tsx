@@ -37,10 +37,7 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
             <h1>{title}</h1>
             <h2>{subTitle}</h2>
             <div className={styles.heroCta}>
-              <Link
-                href="/quote"
-                className={styles.ctaQuoteBtn}
-              >
+              <Link href="/quote" className={styles.ctaQuoteBtn}>
                 GET A QUOTE
               </Link>
               <Link
@@ -61,10 +58,7 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 }}
               >
                 <div>{phone_number}</div>
-                <PhoneIcon
-                  className={styles.flippedIcon}
-                  size={20}
-                />
+                <PhoneIcon className={styles.flippedIcon} size={20} />
               </Link>
             </div>
           </div>

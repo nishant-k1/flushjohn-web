@@ -67,20 +67,9 @@ const QuoteStep2 = () => {
             placeholder="Enter street address"
             required
           />
-          <ZipTextField
-            label="Zip Code"
-            name="zip"
-          />
-          <TextField
-            label="City"
-            name="city"
-            placeholder="Enter city"
-          />
-          <TextField
-            label="State"
-            name="state"
-            placeholder="Enter state"
-          />
+          <ZipTextField label="Zip Code" name="zip" />
+          <TextField label="City" name="city" placeholder="Enter city" />
+          <TextField label="State" name="state" placeholder="Enter state" />
           <MultilineTextField
             label="Placement Instructions"
             name="instructions"
@@ -88,10 +77,7 @@ const QuoteStep2 = () => {
           />
         </div>
         <div className={styles.buttons}>
-          <button
-            type="submit"
-            className={styles.next}
-          >
+          <button type="submit" className={styles.next}>
             NEXT
           </button>
           <button

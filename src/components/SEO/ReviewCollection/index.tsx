@@ -66,7 +66,13 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
       <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
         Share Your Experience
       </h2>
-      <p style={{ marginBottom: "30px", color: "var(--text-primary)", opacity: 0.95 }}>
+      <p
+        style={{
+          marginBottom: "30px",
+          color: "var(--text-primary)",
+          opacity: 0.95,
+        }}
+      >
         {city
           ? `Help others in ${city}, ${state} by sharing your experience with FlushJohn porta potty rentals.`
           : "Help others by sharing your experience with FlushJohn porta potty rentals."}
@@ -122,7 +128,8 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border:
+                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -151,7 +158,8 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border:
+                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -179,7 +187,8 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border:
+                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -215,7 +224,8 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border: "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border:
+                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
                 borderRadius: "5px",
                 fontSize: "1em",
                 resize: "vertical",
@@ -288,7 +298,14 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Help Others
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
+            <p
+              style={{
+                margin: "0",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+                opacity: 0.9,
+              }}
+            >
               Your review helps other customers make informed decisions
             </p>
           </div>
@@ -298,7 +315,14 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Improve Service
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
+            <p
+              style={{
+                margin: "0",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+                opacity: 0.9,
+              }}
+            >
               We use feedback to continuously improve our services
             </p>
           </div>
@@ -308,7 +332,14 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             >
               Build Trust
             </h4>
-            <p style={{ margin: "0", fontSize: "0.9em", color: "var(--text-primary)", opacity: 0.9 }}>
+            <p
+              style={{
+                margin: "0",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+                opacity: 0.9,
+              }}
+            >
               Honest reviews build trust in our porta potty rental services
             </p>
           </div>

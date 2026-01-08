@@ -88,4 +88,3 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
 };
 
 export default StickyCTA;
-

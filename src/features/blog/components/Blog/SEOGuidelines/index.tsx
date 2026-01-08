@@ -121,7 +121,13 @@ const SEOGuidelines = () => {
         marginBottom: "30px",
       }}
     >
-      <h2 style={{ marginBottom: "30px", color: "var(--text-primary)", textAlign: "center" }}>
+      <h2
+        style={{
+          marginBottom: "30px",
+          color: "var(--text-primary)",
+          textAlign: "center",
+        }}
+      >
         SEO Guidelines for CRM Blog Posts
       </h2>
 
@@ -259,7 +265,15 @@ const SEOGuidelines = () => {
           border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "8px" }}>
+        <h3
+          style={{
+            margin: "0 0 10px 0",
+            color: "var(--text-primary)",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
           <Lightbulb size={20} />
           Pro Tip
         </h3>

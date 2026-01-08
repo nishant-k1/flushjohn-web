@@ -1,7 +1,7 @@
 /**
  * City Coordinates - Single source of truth for city geographic coordinates
  * Used for geo-targeting meta tags and location-based features
- * 
+ *
  * Last Updated: 2025
  */
 
@@ -44,7 +44,9 @@ export const cityCoordinates: Record<string, CityCoordinates> = {
  * @param cityName - City slug/name (e.g., "houston", "san-antonio")
  * @returns Coordinates object with lat/lng or null if not found
  */
-export const getCityCoordinates = (cityName: string | null): CityCoordinates | null => {
+export const getCityCoordinates = (
+  cityName: string | null
+): CityCoordinates | null => {
   if (!cityName) return null;
   const normalizedCity = cityName.toLowerCase().trim();
   return cityCoordinates[normalizedCity] || null;
@@ -55,8 +57,9 @@ export const getCityCoordinates = (cityName: string | null): CityCoordinates | n
  * @param cityName - City slug/name (e.g., "houston", "san-antonio")
  * @returns Coordinates object with lat/lng or default US center
  */
-export const getCityCoordinatesWithFallback = (cityName: string | null): CityCoordinates => {
+export const getCityCoordinatesWithFallback = (
+  cityName: string | null
+): CityCoordinates => {
   const coords = getCityCoordinates(cityName);
   return coords || { lat: "39.8283", lng: "-98.5795" }; // Default: US center
 };
-

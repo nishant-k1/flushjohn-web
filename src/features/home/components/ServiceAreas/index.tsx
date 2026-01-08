@@ -3,9 +3,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 
 const serviceAreasByState = {
-  Delaware: [
-    { name: "Dover", slug: "dover", state: "DE" },
-  ],
+  Delaware: [{ name: "Dover", slug: "dover", state: "DE" }],
   Texas: [
     { name: "Houston", slug: "houston", state: "TX" },
     { name: "Dallas", slug: "dallas", state: "TX" },
@@ -51,8 +49,9 @@ const ServiceAreas = () => {
           Nationwide Porta Potty Rental Service Areas
         </h2>
         <p className={styles.description}>
-          We provide reliable porta potty rental services across multiple states. 
-          Click on any city below to learn more about our services in that area.
+          We provide reliable porta potty rental services across multiple
+          states. Click on any city below to learn more about our services in
+          that area.
         </p>
         <div className={styles.statesGrid}>
           {Object.entries(serviceAreasByState).map(([state, cities]) => (
@@ -85,4 +84,3 @@ const ServiceAreas = () => {
 };
 
 export default ServiceAreas;
-

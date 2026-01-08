@@ -435,10 +435,7 @@ const ServiceCityPage = async ({
                         {serviceData.title.toLowerCase()} in {cityTitle}.
                       </p>
                       <div className={styles.buttons}>
-                        <Link
-                          href="/quote"
-                          className={styles.primaryButton}
-                        >
+                        <Link href="/quote" className={styles.primaryButton}>
                           Get Free Quote
                         </Link>
                         <Link
@@ -477,10 +474,7 @@ const ServiceCityPage = async ({
                       {serviceData.title.toLowerCase()} in {cityTitle}.
                     </p>
                     <div className={styles.buttons}>
-                      <Link
-                        href="/quote"
-                        className={styles.primaryButton}
-                      >
+                      <Link href="/quote" className={styles.primaryButton}>
                         Get Free Quote
                       </Link>
                       <Link

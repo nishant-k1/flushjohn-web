@@ -88,19 +88,47 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
           <p>{desc}</p>
           <h2>Why Choose Our {title}?</h2>
           <ul>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "var(--text-primary)",
+              }}
+            >
               <Check size={18} color="var(--primary-light)" />
               Clean and sanitized before every use
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "var(--text-primary)",
+              }}
+            >
               <Check size={18} color="var(--primary-light)" />
               Durable and weather-resistant design
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "var(--text-primary)",
+              }}
+            >
               <Check size={18} color="var(--primary-light)" />
               Available for short-term and long-term rentals
             </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)" }}>
+            <li
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "var(--text-primary)",
+              }}
+            >
               <Check size={18} color="var(--primary-light)" />
               Perfect for events, construction sites, and outdoor gatherings
             </li>
@@ -108,44 +136,75 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
           <div className={styles.serviceAreasSection}>
             <h2>Available in 25+ Cities Across 6 States</h2>
             <p className={styles.serviceAreasDescription}>
-              Our {title} is available for rental in major cities across the United States. Find porta potty rentals in your city:
+              Our {title} is available for rental in major cities across the
+              United States. Find porta potty rentals in your city:
             </p>
             <div className={styles.cityLinksContainer}>
-              <Link href="/porta-potty-rental/houston" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/houston"
+                className={styles.cityLink}
+              >
                 Houston, TX
               </Link>
-              <Link href="/porta-potty-rental/dallas" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/dallas"
+                className={styles.cityLink}
+              >
                 Dallas, TX
               </Link>
-              <Link href="/porta-potty-rental/miami" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/miami"
+                className={styles.cityLink}
+              >
                 Miami, FL
               </Link>
-              <Link href="/porta-potty-rental/los-angeles" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/los-angeles"
+                className={styles.cityLink}
+              >
                 Los Angeles, CA
               </Link>
-              <Link href="/porta-potty-rental/atlanta" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/atlanta"
+                className={styles.cityLink}
+              >
                 Atlanta, GA
               </Link>
-              <Link href="/porta-potty-rental/chicago" className={styles.cityLink}>
+              <Link
+                href="/porta-potty-rental/chicago"
+                className={styles.cityLink}
+              >
                 Chicago, IL
               </Link>
             </div>
             <p className={styles.viewAllLink}>
-              <Link href="/service-areas">
-                View All 25+ Service Areas →
-              </Link>
+              <Link href="/service-areas">View All 25+ Service Areas →</Link>
             </p>
           </div>
 
           <p style={{ marginTop: "2rem", color: "var(--text-primary)" }}>
-            Need a {title}? <Link href="/quote" style={{ color: "#ffffff" }}>Get a free quote</Link> today or
-            learn more about our{" "}
-            <Link href="/rental-products" style={{ color: "#ffffff" }}>rental options</Link>.
+            Need a {title}?{" "}
+            <Link href="/quote" style={{ color: "#ffffff" }}>
+              Get a free quote
+            </Link>{" "}
+            today or learn more about our{" "}
+            <Link href="/rental-products" style={{ color: "#ffffff" }}>
+              rental options
+            </Link>
+            .
           </p>
           <p style={{ color: "var(--text-primary)" }}>
-            <Link href="/" style={{ color: "#ffffff" }}>Back to Homepage</Link> |{" "}
-            <Link href="/faq" style={{ color: "#ffffff" }}>Frequently Asked Questions</Link> |{" "}
-            <Link href="/contact" style={{ color: "#ffffff" }}>Contact Us</Link>
+            <Link href="/" style={{ color: "#ffffff" }}>
+              Back to Homepage
+            </Link>{" "}
+            |{" "}
+            <Link href="/faq" style={{ color: "#ffffff" }}>
+              Frequently Asked Questions
+            </Link>{" "}
+            |{" "}
+            <Link href="/contact" style={{ color: "#ffffff" }}>
+              Contact Us
+            </Link>
           </p>
         </div>
       </div>

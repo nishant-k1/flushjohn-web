@@ -186,10 +186,7 @@ const ContactPage = () => {
       {/* Enhanced Structured Data for Contact Page */}
       <EnhancedStructuredData pageType="contact" />
 
-      <link
-        rel="canonical"
-        href={`${websiteURL}/contact`}
-      />
+      <link rel="canonical" href={`${websiteURL}/contact`} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

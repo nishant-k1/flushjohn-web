@@ -21,29 +21,33 @@ const normalizeState = (state: string | null): string | null => {
     delaware: "DE",
   };
   const normalized = state.trim();
-  return stateMap[normalized.toLowerCase()] || normalized.toUpperCase().slice(0, 2);
+  return (
+    stateMap[normalized.toLowerCase()] || normalized.toUpperCase().slice(0, 2)
+  );
 };
 
 // Validate blog post quality for SEO
 function validateBlogPost(blog: any): boolean {
   if (!blog) return false;
-  
+
   // Check required fields
   if (!blog.title || !blog.content || !blog.slug) return false;
-  
+
   // Check minimum word count (500 words minimum for SEO)
   const plainText = blog.content?.replace(/<[^>]*>/g, "") || "";
-  const wordCount = plainText.split(/\s+/).filter((word: string) => word.length > 0).length;
+  const wordCount = plainText
+    .split(/\s+/)
+    .filter((word: string) => word.length > 0).length;
   if (wordCount < 500) return false;
-  
+
   // Check for proper structure (has headings)
   const hasHeadings = /<h[1-6][^>]*>/i.test(blog.content);
   if (!hasHeadings) return false;
-  
+
   // Check for minimum paragraphs (at least 3)
   const paragraphCount = (blog.content.match(/<p[^>]*>/gi) || []).length;
   if (paragraphCount < 3) return false;
-  
+
   return true;
 }
 
@@ -68,7 +72,7 @@ export async function generateMetadata({
     if (!blog) {
       return { title: "Blog Post Not Found" };
     }
-    
+
     // Validate blog post quality - don't index low-quality content
     if (!validateBlogPost(blog)) {
       return {
@@ -82,8 +86,11 @@ export async function generateMetadata({
 
     const hasLocation = blog.city && blog.state;
     const stateAbbr = hasLocation ? normalizeState(blog.state) : null;
-    const citySlug = hasLocation ? blog.city?.toLowerCase().replace(/\s+/g, "-") : null;
-    const coordinates = hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
+    const citySlug = hasLocation
+      ? blog.city?.toLowerCase().replace(/\s+/g, "-")
+      : null;
+    const coordinates =
+      hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
 
     const metadata: any = {
       title: `${blog?.title} | FlushJohn Blog`,
@@ -95,7 +102,11 @@ export async function generateMetadata({
         url: `${websiteURL}/blog/${slug}`,
         images: [
           {
-            url: blog?.coverImageUnsplash?.src || blog?.coverImageS3?.src || blog?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
+            url:
+              blog?.coverImageUnsplash?.src ||
+              blog?.coverImageS3?.src ||
+              blog?.coverImage?.src ||
+              `${s3assets}/og-image-flushjonn-web.png`,
             height: 630,
             width: 1200,
             alt: blog?.title,
@@ -111,7 +122,12 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: blog?.title,
         description: blog?.excerpt || blog?.title,
-        images: [blog?.coverImageUnsplash?.src || blog?.coverImageS3?.src || blog?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`],
+        images: [
+          blog?.coverImageUnsplash?.src ||
+            blog?.coverImageS3?.src ||
+            blog?.coverImage?.src ||
+            `${s3assets}/og-image-flushjonn-web.png`,
+        ],
       },
       alternates: {
         canonical: `${websiteURL}/blog/${slug}`,
@@ -124,7 +140,7 @@ export async function generateMetadata({
         "geo.region": `US-${stateAbbr}`,
         "geo.placename": blog.city,
         "geo.position": `${coordinates.lat};${coordinates.lng}`,
-        "ICBM": `${coordinates.lat}, ${coordinates.lng}`,
+        ICBM: `${coordinates.lat}, ${coordinates.lng}`,
       };
     }
 
@@ -155,7 +171,7 @@ const BlogPostPage = async ({
     if (!blog) {
       notFound();
     }
-    
+
     // Validate blog post quality - don't render low-quality content
     if (!validateBlogPost(blog)) {
       notFound();
@@ -184,20 +200,29 @@ const BlogPostPage = async ({
         const relatedResult = await relatedRes.json();
         if (relatedResult.success && relatedResult.data) {
           // Filter posts with matching tags, exclude current post
-          if (blogPost.tags && Array.isArray(blogPost.tags) && blogPost.tags.length > 0) {
+          if (
+            blogPost.tags &&
+            Array.isArray(blogPost.tags) &&
+            blogPost.tags.length > 0
+          ) {
             relatedPosts = relatedResult.data
               .filter((post: any) => {
-                if (post._id === blogPost._id || post.slug === slug) return false;
+                if (post._id === blogPost._id || post.slug === slug)
+                  return false;
                 if (!post.tags || !Array.isArray(post.tags)) return false;
-                return post.tags.some((tag: string) => blogPost.tags.includes(tag));
+                return post.tags.some((tag: string) =>
+                  blogPost.tags.includes(tag)
+                );
               })
               .slice(0, 3);
           }
-          
+
           // If not enough related posts, fill with recent posts
           if (relatedPosts.length < 3) {
             const recentPosts = relatedResult.data
-              .filter((post: any) => post._id !== blogPost._id && post.slug !== slug)
+              .filter(
+                (post: any) => post._id !== blogPost._id && post.slug !== slug
+              )
               .slice(0, 3 - relatedPosts.length);
             relatedPosts = [...relatedPosts, ...recentPosts].slice(0, 3);
           }
@@ -231,14 +256,20 @@ const BlogPostPage = async ({
         "@id": `${websiteURL}/blog/${slug}`,
       },
       image:
-        blogPost?.coverImageUnsplash?.src || blogPost?.coverImageS3?.src || blogPost?.coverImage?.src || `${s3assets}/og-image-flushjonn-web.png`,
+        blogPost?.coverImageUnsplash?.src ||
+        blogPost?.coverImageS3?.src ||
+        blogPost?.coverImage?.src ||
+        `${s3assets}/og-image-flushjonn-web.png`,
     };
 
     // Enhanced JSON-LD with location data for city-specific posts
     const hasLocation = blogPost.city && blogPost.state;
     const stateAbbr = hasLocation ? normalizeState(blogPost.state) : null;
-    const citySlug = hasLocation ? blogPost.city?.toLowerCase().replace(/\s+/g, "-") : null;
-    const coordinates = hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
+    const citySlug = hasLocation
+      ? blogPost.city?.toLowerCase().replace(/\s+/g, "-")
+      : null;
+    const coordinates =
+      hasLocation && citySlug ? getCityCoordinates(citySlug) : null;
 
     const enhancedJsonLd: any = {
       ...jsonLd,
@@ -364,11 +395,7 @@ const BlogPostPage = async ({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
-        <BlogPost
-          blogPost={blogPost}
-          slug={slug}
-          relatedPosts={relatedPosts}
-        />
+        <BlogPost blogPost={blogPost} slug={slug} relatedPosts={relatedPosts} />
       </>
     );
   } catch (error) {

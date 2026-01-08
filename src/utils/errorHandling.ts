@@ -68,7 +68,7 @@ export const setupGlobalErrorHandlers = () => {
       (event) => {
         const errorMessage = event.message?.toString() || "";
         const target = event.target as HTMLElement;
-        
+
         // Suppress MIME type errors for CSS files (typically caused by browser extensions or cached HTML)
         if (
           errorMessage.includes("MIME type") &&
@@ -76,7 +76,7 @@ export const setupGlobalErrorHandlers = () => {
         ) {
           return; // Suppress this error - it's typically from browser extensions or cached HTML
         }
-        
+
         if (target && target.tagName) {
           if (target.tagName === "IMG") {
             safeConsole.warn(
@@ -86,13 +86,13 @@ export const setupGlobalErrorHandlers = () => {
           } else if (target.tagName === "SCRIPT") {
             const scriptSrc = (target as HTMLScriptElement).src || "";
             // Suppress MIME type errors for CSS files being loaded as scripts
-            if (scriptSrc.includes(".css") || errorMessage.includes("text/css")) {
+            if (
+              scriptSrc.includes(".css") ||
+              errorMessage.includes("text/css")
+            ) {
               return; // Suppress CSS-as-script errors
             }
-            safeConsole.warn(
-              "Script failed to load:",
-              scriptSrc
-            );
+            safeConsole.warn("Script failed to load:", scriptSrc);
           }
         }
       },
@@ -124,8 +124,13 @@ export const setupPolyfills = () => {
 
     // IntersectionObserver and ResizeObserver are widely supported
     // Only warn if truly missing (very old browsers)
-    if (!window.IntersectionObserver && process.env.NODE_ENV === "development") {
-      safeConsole.warn("IntersectionObserver not supported - consider polyfill");
+    if (
+      !window.IntersectionObserver &&
+      process.env.NODE_ENV === "development"
+    ) {
+      safeConsole.warn(
+        "IntersectionObserver not supported - consider polyfill"
+      );
     }
 
     if (!window.ResizeObserver && process.env.NODE_ENV === "development") {
@@ -154,14 +159,17 @@ export const cleanupThirdPartyScripts = () => {
           !message.includes("Extension") &&
           !message.includes("Content Security Policy") &&
           !message.includes("Similarweb") &&
-          !(message.includes("MIME type") && (message.includes("text/css") || message.includes(".css")))
+          !(
+            message.includes("MIME type") &&
+            (message.includes("text/css") || message.includes(".css"))
+          )
         ) {
           // In production, you might want to send to error tracking service
           // For now, we suppress most console errors
         }
         return; // Suppress all console errors in production
       }
-      
+
       // In development, filter out extension-related errors
       if (
         message.includes("chrome-extension") ||
@@ -169,7 +177,8 @@ export const cleanupThirdPartyScripts = () => {
         message.includes("Extension") ||
         message.includes("Content Security Policy") ||
         message.includes("Similarweb") ||
-        (message.includes("MIME type") && (message.includes("text/css") || message.includes(".css")))
+        (message.includes("MIME type") &&
+          (message.includes("text/css") || message.includes(".css")))
       ) {
         return; // Suppress these errors
       }
@@ -182,7 +191,7 @@ export const cleanupThirdPartyScripts = () => {
       if (process.env.NODE_ENV === "production") {
         return; // Suppress all console warnings in production
       }
-      
+
       // In development, filter out known warnings
       if (
         message.includes("deprecated") ||

@@ -60,7 +60,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ status: "Success" }, { status: 200 });
   } catch (err) {
-
     return NextResponse.json(
       { error: "Failed to send quote" },
       { status: 500 }

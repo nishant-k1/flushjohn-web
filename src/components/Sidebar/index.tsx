@@ -52,24 +52,15 @@ const Sidebar = () => {
               }}
             />
           </Link>
-          <Link
-            href="/"
-            onClick={handleClick}
-          >
+          <Link href="/" onClick={handleClick}>
             <HomeIcon size={20} />
             Home
           </Link>
-          <Link
-            href="/rental-products"
-            onClick={handleClick}
-          >
+          <Link href="/rental-products" onClick={handleClick}>
             <LocalShippingIcon size={20} />
             Rental Products
           </Link>
-          <Link
-            href="/quote"
-            onClick={handleClick}
-          >
+          <Link href="/quote" onClick={handleClick}>
             <RequestQuoteIcon size={20} />
             Request Quote
           </Link>

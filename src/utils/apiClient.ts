@@ -1,13 +1,16 @@
 /**
  * Centralized API Client with Automatic Serialization/Deserialization
- * 
+ *
  * Wraps fetch API with interceptors-like functionality
  * Automatically serializes requests and deserializes responses
- * 
+ *
  * Single Source of Truth: Uses utils/dataTransformers.ts
  */
 
-import { serializeDataForApi, deserializeDataFromApi } from "./dataTransformers";
+import {
+  serializeDataForApi,
+  deserializeDataFromApi,
+} from "./dataTransformers";
 
 /**
  * API Client Configuration
@@ -21,7 +24,7 @@ interface ApiClientConfig extends RequestInit {
 
 /**
  * Centralized fetch wrapper with automatic serialization/deserialization
- * 
+ *
  * @example
  * const response = await apiClient({
  *   url: '/api/leads',
@@ -57,9 +60,12 @@ export const apiClient = async <T = any>(
   };
 
   // Add body if data is provided
-  if (serializedData && (fetchConfig.method === "POST" || 
-                         fetchConfig.method === "PUT" || 
-                         fetchConfig.method === "PATCH")) {
+  if (
+    serializedData &&
+    (fetchConfig.method === "POST" ||
+      fetchConfig.method === "PUT" ||
+      fetchConfig.method === "PATCH")
+  ) {
     fetchConfig.body = JSON.stringify(serializedData);
   }
 
@@ -69,7 +75,9 @@ export const apiClient = async <T = any>(
   // Handle errors
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+    throw new Error(
+      errorData.message || `HTTP ${response.status}: ${response.statusText}`
+    );
   }
 
   // Parse response
@@ -96,19 +104,31 @@ export const apiClient = async <T = any>(
  * Convenience methods for common HTTP methods
  */
 export const api = {
-  get: <T = any>(url: string, config?: Omit<ApiClientConfig, "url" | "method" | "data">): Promise<T> =>
-    apiClient<T>({ ...config, url, method: "GET" }),
+  get: <T = any>(
+    url: string,
+    config?: Omit<ApiClientConfig, "url" | "method" | "data">
+  ): Promise<T> => apiClient<T>({ ...config, url, method: "GET" }),
 
-  post: <T = any>(url: string, data?: any, config?: Omit<ApiClientConfig, "url" | "method" | "data">): Promise<T> =>
-    apiClient<T>({ ...config, url, method: "POST", data }),
+  post: <T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<ApiClientConfig, "url" | "method" | "data">
+  ): Promise<T> => apiClient<T>({ ...config, url, method: "POST", data }),
 
-  put: <T = any>(url: string, data?: any, config?: Omit<ApiClientConfig, "url" | "method" | "data">): Promise<T> =>
-    apiClient<T>({ ...config, url, method: "PUT", data }),
+  put: <T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<ApiClientConfig, "url" | "method" | "data">
+  ): Promise<T> => apiClient<T>({ ...config, url, method: "PUT", data }),
 
-  patch: <T = any>(url: string, data?: any, config?: Omit<ApiClientConfig, "url" | "method" | "data">): Promise<T> =>
-    apiClient<T>({ ...config, url, method: "PATCH", data }),
+  patch: <T = any>(
+    url: string,
+    data?: any,
+    config?: Omit<ApiClientConfig, "url" | "method" | "data">
+  ): Promise<T> => apiClient<T>({ ...config, url, method: "PATCH", data }),
 
-  delete: <T = any>(url: string, config?: Omit<ApiClientConfig, "url" | "method" | "data">): Promise<T> =>
-    apiClient<T>({ ...config, url, method: "DELETE" }),
+  delete: <T = any>(
+    url: string,
+    config?: Omit<ApiClientConfig, "url" | "method" | "data">
+  ): Promise<T> => apiClient<T>({ ...config, url, method: "DELETE" }),
 };
-

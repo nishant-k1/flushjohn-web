@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useField } from "formik";
 import DatePicker from "react-datepicker";
 import dayjs from "dayjs";
@@ -321,10 +321,7 @@ const DateInput: React.FC<DateInputProps> = ({
           )}
         </label>
       )}
-      <div
-        className={styles.inputContainer}
-        ref={containerRef}
-      >
+      <div className={styles.inputContainer} ref={containerRef}>
         <DatePicker
           customInput={
             <CustomInput

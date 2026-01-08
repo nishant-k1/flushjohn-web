@@ -349,15 +349,9 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
           <h1>Our Blog</h1>
 
           {/* Search Bar */}
-          <form
-            onSubmit={handleSearch}
-            className={styles.searchForm}
-          >
+          <form onSubmit={handleSearch} className={styles.searchForm}>
             <div className={styles.searchInputWrapper}>
-              <Search
-                size={20}
-                className={styles.searchIcon}
-              />
+              <Search size={20} className={styles.searchIcon} />
               <input
                 type="text"
                 placeholder="Search blog posts..."
@@ -376,10 +370,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                 </button>
               )}
             </div>
-            <button
-              type="submit"
-              className={styles.searchButton}
-            >
+            <button type="submit" className={styles.searchButton}>
               Search
             </button>
           </form>
@@ -575,31 +566,19 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               <div className={styles.sidebarSection}>
                 <h3 className={styles.sidebarTitle}>Quick Links</h3>
                 <div className={styles.quickLinks}>
-                  <Link
-                    href="/porta-potty-rental"
-                    className={styles.quickLink}
-                  >
+                  <Link href="/porta-potty-rental" className={styles.quickLink}>
                     <Building2 size={16} />
                     City Services
                   </Link>
-                  <Link
-                    href="/rental-products"
-                    className={styles.quickLink}
-                  >
+                  <Link href="/rental-products" className={styles.quickLink}>
                     <Toilet size={16} />
                     Products
                   </Link>
-                  <Link
-                    href="/quote"
-                    className={styles.quickLink}
-                  >
+                  <Link href="/quote" className={styles.quickLink}>
                     <DollarSign size={16} />
                     Get Quote
                   </Link>
-                  <Link
-                    href="/faq"
-                    className={styles.quickLink}
-                  >
+                  <Link href="/faq" className={styles.quickLink}>
                     <HelpCircle size={16} />
                     FAQ
                   </Link>
@@ -686,10 +665,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     </h4>
                     <p>Find porta potty rentals in your city</p>
                   </Link>
-                  <Link
-                    href="/rental-products"
-                    className={styles.relatedLink}
-                  >
+                  <Link href="/rental-products" className={styles.relatedLink}>
                     <h4
                       style={{
                         display: "flex",
@@ -702,10 +678,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     </h4>
                     <p>Browse our complete range of portable toilets</p>
                   </Link>
-                  <Link
-                    href="/quote"
-                    className={styles.relatedLink}
-                  >
+                  <Link href="/quote" className={styles.relatedLink}>
                     <h4
                       style={{
                         display: "flex",
@@ -718,10 +691,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     </h4>
                     <p>Request a free quote for your event or project</p>
                   </Link>
-                  <Link
-                    href="/faq"
-                    className={styles.relatedLink}
-                  >
+                  <Link href="/faq" className={styles.relatedLink}>
                     <h4
                       style={{
                         display: "flex",

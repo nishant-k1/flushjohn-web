@@ -61,18 +61,9 @@ const CombinedContactBar = () => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           {/* Zip Code Checker Section */}
-          <div
-            className={styles.zipSection}
-            ref={zipSectionRef}
-          >
-            <form
-              onSubmit={handleCheck}
-              className={styles.zipForm}
-            >
-              <label
-                htmlFor="zipCode"
-                className={styles.zipLabel}
-              >
+          <div className={styles.zipSection} ref={zipSectionRef}>
+            <form onSubmit={handleCheck} className={styles.zipForm}>
+              <label htmlFor="zipCode" className={styles.zipLabel}>
                 Enter Delivery Zipcode:
               </label>
               <input
@@ -126,10 +117,7 @@ const CombinedContactBar = () => {
                 }
               }}
             >
-              <PhoneIcon
-                className={styles.phoneIcon}
-                size={16}
-              />
+              <PhoneIcon className={styles.phoneIcon} size={16} />
               <span className={styles.phoneNumberText}>{phone_number}</span>
             </Link>
           </div>

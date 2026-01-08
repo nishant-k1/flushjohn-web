@@ -1,7 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
 import { TrendingUp } from "lucide-react";
-import { websiteURL } from "@/constants";
 import dynamic from "next/dynamic";
 
 const SEOGuidelines = dynamic(() =>
@@ -38,7 +37,15 @@ const BlogDashboard = () => {
           marginBottom: "30px",
         }}
       >
-        <h2 style={{ margin: "0 0 10px 0", color: "var(--primary)", display: "flex", alignItems: "center", gap: "8px" }}>
+        <h2
+          style={{
+            margin: "0 0 10px 0",
+            color: "var(--primary)",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
           <TrendingUp size={24} />
           Blog SEO Strategy for Lead Generation
         </h2>
@@ -91,12 +98,17 @@ const BlogDashboard = () => {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            <h3
-              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
-            >
+            <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
               Title Optimization
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Include primary keyword</li>
               <li>Keep under 60 characters</li>
               <li>Use power words (Guide, Tips, Complete)</li>
@@ -113,12 +125,17 @@ const BlogDashboard = () => {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            <h3
-              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
-            >
+            <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
               Content Structure
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>1000+ words minimum</li>
               <li>Use H2, H3 headings</li>
               <li>Include bullet points</li>
@@ -135,12 +152,17 @@ const BlogDashboard = () => {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            <h3
-              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
-            >
+            <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
               Internal Linking
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Link to city pages</li>
               <li>Link to service pages</li>
               <li>Link to related posts</li>
@@ -157,12 +179,17 @@ const BlogDashboard = () => {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            <h3
-              style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}
-            >
+            <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
               Call-to-Actions
             </h3>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Include quote CTA</li>
               <li>Add phone number</li>
               <li>Link to contact page</li>

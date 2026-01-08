@@ -6,7 +6,6 @@ const CoreWebVitals = () => {
   useEffect(() => {
     const reportWebVitals = (metric: any) => {
       if (process.env.NODE_ENV === "development") {
-
       }
 
       if (
@@ -43,9 +42,7 @@ const CoreWebVitals = () => {
         if (webVitals.onTTFB) webVitals.onTTFB(reportWebVitals);
         if (webVitals.onINP) webVitals.onINP(reportWebVitals);
       })
-      .catch((error) => {
-
-      });
+      .catch((error) => {});
   }, []);
 
   return null; // This component doesn't render anything

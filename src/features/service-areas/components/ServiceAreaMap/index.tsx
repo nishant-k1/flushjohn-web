@@ -9,10 +9,11 @@ const ServiceAreaMap = () => {
     <div className={styles.mapContainer}>
       <h3 className={styles.mapTitle}>Our Service Coverage</h3>
       <p className={styles.mapDescription}>
-        We provide porta potty rental services across <strong>25 cities</strong> in <strong>6 states</strong>. 
-        Click on any state below to see all cities we serve in that state.
+        We provide porta potty rental services across <strong>25 cities</strong>{" "}
+        in <strong>6 states</strong>. Click on any state below to see all cities
+        we serve in that state.
       </p>
-      
+
       <div className={styles.statesVisualization}>
         <div className={styles.stateCard}>
           <div className={styles.stateHeader}>
@@ -41,7 +42,9 @@ const ServiceAreaMap = () => {
             <Link href="/porta-potty-rental/orlando">Orlando</Link>
             <Link href="/porta-potty-rental/tampa">Tampa</Link>
             <Link href="/porta-potty-rental/jacksonville">Jacksonville</Link>
-            <Link href="/porta-potty-rental/fort-lauderdale">Fort Lauderdale</Link>
+            <Link href="/porta-potty-rental/fort-lauderdale">
+              Fort Lauderdale
+            </Link>
           </div>
           <Link href="/service-areas/florida" className={styles.viewStateLink}>
             View All Florida Cities →
@@ -60,7 +63,10 @@ const ServiceAreaMap = () => {
             <Link href="/porta-potty-rental/san-jose">San Jose</Link>
             <Link href="/porta-potty-rental/fresno">Fresno</Link>
           </div>
-          <Link href="/service-areas/california" className={styles.viewStateLink}>
+          <Link
+            href="/service-areas/california"
+            className={styles.viewStateLink}
+          >
             View All California Cities →
           </Link>
         </div>

@@ -1,4 +1,3 @@
-
 /**
  * Display Formatting Utilities - Enterprise Form Data Pipeline
  * Step 11: Convert to strings for display ONLY

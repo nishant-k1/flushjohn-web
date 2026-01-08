@@ -344,7 +344,9 @@ const ProductPage = async ({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateOfferJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aggregateOfferJsonLd),
+        }}
       />
       <IndividualProduct slug={slug} />
     </>

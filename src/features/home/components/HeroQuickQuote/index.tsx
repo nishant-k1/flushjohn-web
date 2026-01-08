@@ -127,22 +127,13 @@ const HeroQuickQuote = () => {
                 animationKey={String(heroQuickQuoteViewStatus)}
                 className={styles.quickQuoteform}
               >
-                <Grid
-                  container
-                  spacing={0.5}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                  >
+                <Grid container spacing={0.5}>
+                  <Grid item xs={12}>
                     <div>
                       <h2>Get My Free Quote</h2>
                     </div>
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
+                  <Grid item xs={6}>
                     <MyRadioField
                       label="Event"
                       name="usageType"
@@ -150,10 +141,7 @@ const HeroQuickQuote = () => {
                       className={styles.radio}
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
+                  <Grid item xs={6}>
                     <MyRadioField
                       label="Construction"
                       name="usageType"
@@ -161,19 +149,13 @@ const HeroQuickQuote = () => {
                       className={styles.radio}
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
+                  <Grid item xs={12}>
                     <MyMultipleSelectCheckmarks
                       label="Portable Units"
                       name="products"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
+                  <Grid item xs={6}>
                     <DateInput
                       label="Delivery Date"
                       name="deliveryDate"
@@ -181,10 +163,7 @@ const HeroQuickQuote = () => {
                       variant="quickquote"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
+                  <Grid item xs={6}>
                     <DateInput
                       label="Pickup Date"
                       name="pickupDate"
@@ -192,10 +171,7 @@ const HeroQuickQuote = () => {
                       variant="quickquote"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
+                  <Grid item xs={12}>
                     <MyZipTextField
                       label="Zip"
                       name="zip"
@@ -205,37 +181,16 @@ const HeroQuickQuote = () => {
                       inputMode="numeric"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyTextField
-                      label="First Name"
-                      name="fName"
-                    />
+                  <Grid item xs={6}>
+                    <MyTextField label="First Name" name="fName" />
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                  >
-                    <MyTextField
-                      label="Last Name"
-                      name="lName"
-                    />
+                  <Grid item xs={6}>
+                    <MyTextField label="Last Name" name="lName" />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <MyTextField
-                      label="Email"
-                      name="email"
-                    />
+                  <Grid item xs={12}>
+                    <MyTextField label="Email" name="email" />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
+                  <Grid item xs={12}>
                     <MyPhoneTextField
                       label="Phone"
                       name="phone"
@@ -243,19 +198,13 @@ const HeroQuickQuote = () => {
                       type="tel"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
+                  <Grid item xs={12}>
                     <MyMultilineTextField
                       label="Instructions (if any)"
                       name="instructions"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={3}
-                  >
+                  <Grid item xs={3}>
                     <Button
                       variant="contained"
                       style={{

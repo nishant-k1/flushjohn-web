@@ -88,16 +88,9 @@ export default function CarouselView() {
       {/* Carousel - only becomes visible after delay to ensure LCP measurement */}
       {showCarousel && (
         <div style={{ position: "relative", zIndex: 2 }}>
-          <Carousel
-            autoplay
-            autoplaySpeed={4000}
-            showDots={false}
-          >
+          <Carousel autoplay autoplaySpeed={4000} showDots={false}>
             {images.map((image, index) => (
-              <div
-                key={index}
-                className={styles.imageWrapper}
-              >
+              <div key={index} className={styles.imageWrapper}>
                 <Image
                   src={image.src}
                   fill={true}

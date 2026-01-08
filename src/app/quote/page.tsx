@@ -96,7 +96,8 @@ const serviceAreaBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ServiceAreaBusiness",
   name: "FlushJohn - Porta Potty Rental Quotes",
-  description: "Get free porta potty rental quotes across 25+ cities in 6 states. Same-day delivery available.",
+  description:
+    "Get free porta potty rental quotes across 25+ cities in 6 states. Same-day delivery available.",
   url: `${websiteURL}/quote`,
   telephone: phone.phone_number,
   email: contact.support_email,

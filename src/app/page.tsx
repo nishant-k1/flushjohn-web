@@ -1,13 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import {
-  s3assets,
-  websiteURL,
-  phone,
-  contact,
-  address,
-  socialMedia,
-} from "@/constants";
+import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
 import Script from "next/script";
 
 import Home from "@/features/home/components/Home";

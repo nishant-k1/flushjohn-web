@@ -217,9 +217,8 @@ export const normalizeLongText = (
  * @param data - Object containing contact information
  * @returns Object with normalized contact data
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export const serializeContactData = (data: any): any => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const normalized: any = { ...data };
 
   // Normalize phone fields

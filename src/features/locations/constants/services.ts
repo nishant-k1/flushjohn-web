@@ -1,13 +1,13 @@
 /**
  * Services Constants - Single source of truth for service types
  * Used across sitemap, page generation, and routing
- * 
+ *
  * Last Updated: 2025
  */
 
 export const SERVICES = ["construction", "events", "weddings"] as const;
 
-export type ServiceType = typeof SERVICES[number];
+export type ServiceType = (typeof SERVICES)[number];
 
 export interface ServiceData {
   title: string;
@@ -30,7 +30,8 @@ export const servicesData: Record<ServiceType, ServiceData> = {
   },
   events: {
     title: "Event Porta Potty Rentals",
-    description: "Portable toilet rentals for festivals, concerts, and large gatherings",
+    description:
+      "Portable toilet rentals for festivals, concerts, and large gatherings",
     productLink: "/rental-products/deluxe-porta-potty",
     features: [
       "High-capacity units",
@@ -51,4 +52,3 @@ export const servicesData: Record<ServiceType, ServiceData> = {
     ],
   },
 };
-

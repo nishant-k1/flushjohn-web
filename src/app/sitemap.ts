@@ -1,6 +1,10 @@
 import { MetadataRoute } from "next";
 import { websiteURL, apiBaseUrls } from "@/constants";
-import { getCitiesForSitemap, statesData, SERVICES } from "@/features/locations/constants";
+import {
+  getCitiesForSitemap,
+  statesData,
+  SERVICES,
+} from "@/features/locations/constants";
 import { products_data } from "@/features/products/constants";
 import { generateProductSlug } from "@/utils/slug";
 
@@ -23,7 +27,8 @@ async function getAllPublishedBlogs() {
       if (result.success && result.data) {
         return result.data.map((blog: any) => ({
           slug: blog.slug || blog._id,
-          lastModified: blog.updatedAt || blog.createdAt || new Date().toISOString(),
+          lastModified:
+            blog.updatedAt || blog.createdAt || new Date().toISOString(),
           priority: 0.7,
         }));
       }
@@ -31,7 +36,7 @@ async function getAllPublishedBlogs() {
   } catch (error) {
     console.error("Error fetching blogs for sitemap:", error);
   }
-  
+
   // Fallback to empty array if fetch fails
   return [];
 }
@@ -41,7 +46,7 @@ async function getAllPublishedBlogs() {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date().toISOString();
-  
+
   // Fetch all published blog posts dynamically
   const publishedBlogs = await getAllPublishedBlogs();
 
@@ -147,7 +152,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Set priority based on number of cities (more cities = higher priority)
     const cityCount = state.cities.length;
     const priority = cityCount >= 5 ? 0.75 : cityCount >= 3 ? 0.7 : 0.65;
-    
+
     return {
       url: `${websiteURL}/service-areas/${stateSlug}`,
       lastModified: currentDate,
@@ -168,12 +173,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // Use dynamically fetched blog posts instead of hardcoded list
-  const blogPages = publishedBlogs.map((blog: { slug: string; lastModified: string; priority: number }) => ({
-    url: `${websiteURL}/blog/${blog.slug}`,
-    lastModified: blog.lastModified,
-    changeFrequency: "weekly" as const, // Blog posts change more frequently
-    priority: blog.priority,
-  }));
+  const blogPages = publishedBlogs.map(
+    (blog: { slug: string; lastModified: string; priority: number }) => ({
+      url: `${websiteURL}/blog/${blog.slug}`,
+      lastModified: blog.lastModified,
+      changeFrequency: "weekly" as const, // Blog posts change more frequently
+      priority: blog.priority,
+    })
+  );
 
   // Service-specific city pages (construction, events, weddings)
   // Include ALL cities, not just major ones, for better SEO coverage
@@ -188,5 +195,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...corePages, ...statePages, ...cityPages, ...productPages, ...blogPages, ...serviceCityPages];
+  return [
+    ...corePages,
+    ...statePages,
+    ...cityPages,
+    ...productPages,
+    ...blogPages,
+    ...serviceCityPages,
+  ];
 }

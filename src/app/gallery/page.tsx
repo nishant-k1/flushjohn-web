@@ -61,7 +61,8 @@ const jsonLd = {
   about: {
     "@type": "Thing",
     name: "Porta Potty Rental Services",
-    description: "Professional portable toilet rentals for events and construction sites",
+    description:
+      "Professional portable toilet rentals for events and construction sites",
   },
 };
 

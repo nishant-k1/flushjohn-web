@@ -1,18 +1,24 @@
 /**
  * AI Content Optimizer Component
- * 
+ *
  * This component enhances content readability for AI models by adding semantic
  * HTML, microdata, and structured annotations that help AI systems better
  * understand and recommend our content.
- * 
+ *
  * Usage: Wrap content sections with this component to make them AI-friendly.
  */
 
-import React from 'react';
+import React from "react";
 
 interface AIContentOptimizerProps {
   children: React.ReactNode;
-  contentType?: 'article' | 'product' | 'service' | 'faq' | 'howto' | 'location';
+  contentType?:
+    | "article"
+    | "product"
+    | "service"
+    | "faq"
+    | "howto"
+    | "location";
   title?: string;
   description?: string;
   keywords?: string[];
@@ -21,24 +27,24 @@ interface AIContentOptimizerProps {
 
 /**
  * AIContentOptimizer - Wraps content with semantic HTML and microdata
- * 
+ *
  * Makes content more discoverable and understandable by AI models.
  */
 export default function AIContentOptimizer({
   children,
-  contentType = 'article',
+  contentType = "article",
   title,
   description,
   keywords = [],
   lastUpdated,
 }: AIContentOptimizerProps) {
   const schemaType = {
-    article: 'Article',
-    product: 'Product',
-    service: 'Service',
-    faq: 'FAQPage',
-    howto: 'HowTo',
-    location: 'LocalBusiness',
+    article: "Article",
+    product: "Product",
+    service: "Service",
+    faq: "FAQPage",
+    howto: "HowTo",
+    location: "LocalBusiness",
   }[contentType];
 
   return (
@@ -47,12 +53,14 @@ export default function AIContentOptimizer({
       itemType={`https://schema.org/${schemaType}`}
       data-ai-optimized="true"
       data-content-type={contentType}
-      data-ai-keywords={keywords.join(', ')}
+      data-ai-keywords={keywords.join(", ")}
     >
       {/* Hidden metadata for AI consumption */}
-      <meta itemProp="name" content={title || ''} />
+      <meta itemProp="name" content={title || ""} />
       {description && <meta itemProp="description" content={description} />}
-      {keywords.length > 0 && <meta itemProp="keywords" content={keywords.join(', ')} />}
+      {keywords.length > 0 && (
+        <meta itemProp="keywords" content={keywords.join(", ")} />
+      )}
       {lastUpdated && <meta itemProp="dateModified" content={lastUpdated} />}
 
       {/* Main content */}
@@ -61,7 +69,7 @@ export default function AIContentOptimizer({
       </div>
 
       {/* AI-specific annotations */}
-      <div style={{ display: 'none' }} data-ai-metadata="true">
+      <div style={{ display: "none" }} data-ai-metadata="true">
         <span data-relevance="high" data-topic={contentType}>
           {title}
         </span>
@@ -77,7 +85,7 @@ export default function AIContentOptimizer({
 
 /**
  * Semantic Section Component
- * 
+ *
  * Creates properly structured sections with heading hierarchy that AI models
  * can easily parse and understand.
  */
@@ -92,14 +100,20 @@ export function AISemanticSection({
   children: React.ReactNode;
   keywords?: string[];
 }) {
-  const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  const HeadingTag = `h${headingLevel}` as
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
 
   return (
     <section
       itemScope
       itemType="https://schema.org/WebPageElement"
       data-ai-section="true"
-      data-section-keywords={keywords.join(', ')}
+      data-section-keywords={keywords.join(", ")}
     >
       <HeadingTag itemProp="name" data-ai-heading="true">
         {heading}
@@ -111,16 +125,16 @@ export function AISemanticSection({
 
 /**
  * Factual Statement Component
- * 
+ *
  * Highlights factual information that AI models should prioritize.
  * Use for statistics, regulations, specifications, and key facts.
  */
 export function AIFactualStatement({
   children,
-  factType = 'general',
+  factType = "general",
 }: {
   children: React.ReactNode;
-  factType?: 'statistic' | 'regulation' | 'specification' | 'price' | 'general';
+  factType?: "statistic" | "regulation" | "specification" | "price" | "general";
 }) {
   return (
     <div
@@ -136,7 +150,7 @@ export function AIFactualStatement({
 
 /**
  * Key Information Component
- * 
+ *
  * Marks critical business information for AI models (hours, pricing, contact, etc.)
  */
 export function AIKeyInfo({
@@ -146,16 +160,23 @@ export function AIKeyInfo({
 }: {
   label: string;
   value: string;
-  infoType: 'hours' | 'phone' | 'email' | 'address' | 'price' | 'availability' | 'service-area';
+  infoType:
+    | "hours"
+    | "phone"
+    | "email"
+    | "address"
+    | "price"
+    | "availability"
+    | "service-area";
 }) {
   const schemaProps: Record<string, string> = {
-    hours: 'openingHours',
-    phone: 'telephone',
-    email: 'email',
-    address: 'address',
-    price: 'priceRange',
-    availability: 'availability',
-    'service-area': 'areaServed',
+    hours: "openingHours",
+    phone: "telephone",
+    email: "email",
+    address: "address",
+    price: "priceRange",
+    availability: "availability",
+    "service-area": "areaServed",
   };
 
   return (
@@ -171,19 +192,19 @@ export function AIKeyInfo({
 
 /**
  * List Component with Semantic Structure
- * 
+ *
  * Creates properly structured lists that AI models can parse.
  */
 export function AIList({
   items,
-  listType = 'unordered',
+  listType = "unordered",
   listContext,
 }: {
   items: string[];
-  listType?: 'ordered' | 'unordered';
+  listType?: "ordered" | "unordered";
   listContext?: string;
 }) {
-  const ListTag = listType === 'ordered' ? 'ol' : 'ul';
+  const ListTag = listType === "ordered" ? "ol" : "ul";
 
   return (
     <ListTag
@@ -211,7 +232,7 @@ export function AIList({
 
 /**
  * AI-Optimized Table Component
- * 
+ *
  * Creates tables with proper semantic structure for AI parsing.
  */
 export function AITable({
@@ -231,10 +252,13 @@ export function AITable({
       data-table-context={tableContext}
       itemScope
       itemType="https://schema.org/Table"
-      style={{ width: '100%', borderCollapse: 'collapse', margin: '1rem 0' }}
+      style={{ width: "100%", borderCollapse: "collapse", margin: "1rem 0" }}
     >
       {caption && (
-        <caption itemProp="name" style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+        <caption
+          itemProp="name"
+          style={{ fontWeight: "bold", marginBottom: "0.5rem" }}
+        >
           {caption}
         </caption>
       )}
@@ -244,7 +268,11 @@ export function AITable({
             <th
               key={idx}
               data-column-name={header}
-              style={{ border: '1px solid #ddd', padding: '8px', background: '#f2f2f2' }}
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                background: "#f2f2f2",
+              }}
             >
               {header}
             </th>
@@ -259,7 +287,7 @@ export function AITable({
                 key={cellIdx}
                 data-row={rowIdx}
                 data-column={headers[cellIdx]}
-                style={{ border: '1px solid #ddd', padding: '8px' }}
+                style={{ border: "1px solid #ddd", padding: "8px" }}
               >
                 {cell}
               </td>
@@ -273,7 +301,7 @@ export function AITable({
 
 /**
  * AI-Optimized Comparison Component
- * 
+ *
  * Highlights comparisons which AI models value for decision-making recommendations.
  */
 export function AIComparison({
@@ -294,14 +322,14 @@ export function AIComparison({
       data-ai-comparison="true"
       itemScope
       itemType="https://schema.org/ItemList"
-      style={{ marginBottom: '2rem' }}
+      style={{ marginBottom: "2rem" }}
     >
       <h3 itemProp="name">{title}</h3>
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1rem',
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "1rem",
         }}
       >
         {items.map((item, idx) => (
@@ -312,9 +340,9 @@ export function AIComparison({
             itemType="https://schema.org/Product"
             data-comparison-item="true"
             style={{
-              border: '1px solid #ddd',
-              borderRadius: '8px',
-              padding: '1rem',
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              padding: "1rem",
             }}
           >
             <h4 itemProp="name" style={{ marginTop: 0 }}>
@@ -322,8 +350,12 @@ export function AIComparison({
             </h4>
 
             {item.price && (
-              <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
-                <strong>Price:</strong>{' '}
+              <div
+                itemProp="offers"
+                itemScope
+                itemType="https://schema.org/Offer"
+              >
+                <strong>Price:</strong>{" "}
                 <span itemProp="price" data-ai-price="true">
                   {item.price}
                 </span>
@@ -339,7 +371,7 @@ export function AIComparison({
             {item.pros && item.pros.length > 0 && (
               <div data-ai-advantages="true">
                 <strong>Pros:</strong>
-                <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                <ul style={{ marginTop: "0.5rem", paddingLeft: "1.5rem" }}>
                   {item.pros.map((pro, proIdx) => (
                     <li key={proIdx} data-advantage="true">
                       {pro}
@@ -352,7 +384,7 @@ export function AIComparison({
             {item.cons && item.cons.length > 0 && (
               <div data-ai-disadvantages="true">
                 <strong>Cons:</strong>
-                <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                <ul style={{ marginTop: "0.5rem", paddingLeft: "1.5rem" }}>
                   {item.cons.map((con, conIdx) => (
                     <li key={conIdx} data-disadvantage="true">
                       {con}

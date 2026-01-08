@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, phone, contact, address } from "@/constants";
+import { websiteURL, s3assets, phone, contact } from "@/constants";
 import StateHubPage from "@/features/service-areas/components/StateHubPage";
 import {
   statesData,
@@ -199,13 +199,15 @@ const StatePage = async ({ params }: PageProps) => {
     name: `Porta Potty Rental Cities in ${state.displayName}`,
     description: `Complete list of cities in ${state.displayName} where FlushJohn provides porta potty rental services`,
     numberOfItems: state.cities.length,
-    itemListElement: state.cities.map((city: { name: string }, index: number) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: `${city.name}, ${state.abbreviation}`,
-      description: `Porta potty rental services in ${city.name}, ${state.displayName}`,
-      url: `${websiteURL}/porta-potty-rental/${city.name.toLowerCase().replace(/\s+/g, "-")}`,
-    })),
+    itemListElement: state.cities.map(
+      (city: { name: string }, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${city.name}, ${state.abbreviation}`,
+        description: `Porta potty rental services in ${city.name}, ${state.displayName}`,
+        url: `${websiteURL}/porta-potty-rental/${city.name.toLowerCase().replace(/\s+/g, "-")}`,
+      })
+    ),
   };
 
   return (

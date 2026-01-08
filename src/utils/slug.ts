@@ -5,17 +5,17 @@
 /**
  * Generates a URL-friendly slug from a product title
  * Handles hyphens, spaces, and special characters properly
- * 
+ *
  * @param title - The product title to convert to a slug
  * @returns A normalized slug string
- * 
+ *
  * @example
  * generateProductSlug("ADA-Compliant Portable Restroom")
  * // Returns: "ada-compliant-portable-restroom"
  */
 export function generateProductSlug(title: string): string {
   if (!title) return "";
-  
+
   return title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-") // Replace any non-alphanumeric with hyphen
@@ -38,7 +38,7 @@ export const productSlugMapping: Record<string, string> = {
 
 /**
  * Finds a product by slug, handling both direct matches and mapped variations
- * 
+ *
  * @param slug - The URL slug to search for
  * @param products - Array of products to search
  * @returns The matching product or undefined
@@ -66,11 +66,12 @@ export function findProductBySlug<T extends { title: string }>(
     const normalizedSearchSlug = searchSlug.toLowerCase();
     product = products.find((product) => {
       const formattedSlug = generateProductSlug(product.title);
-      return formattedSlug.includes(normalizedSearchSlug) || 
-             normalizedSearchSlug.includes(formattedSlug);
+      return (
+        formattedSlug.includes(normalizedSearchSlug) ||
+        normalizedSearchSlug.includes(formattedSlug)
+      );
     });
   }
 
   return product;
 }
-

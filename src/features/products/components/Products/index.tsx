@@ -18,10 +18,7 @@ const Products = () => {
               const { id, image, title, desc } = item;
               const slug = generateProductSlug(title);
               return (
-                <div
-                  className={styles.wrapper}
-                  key={id}
-                >
+                <div className={styles.wrapper} key={id}>
                   <div>
                     <h3>{title}</h3>
                     <p>
@@ -38,10 +35,7 @@ const Products = () => {
                   </div>
                   <div>
                     <Slider {...image} />
-                    <Link
-                      className={styles.quoteLink}
-                      href="/quote"
-                    >
+                    <Link className={styles.quoteLink} href="/quote">
                       Request Quote
                     </Link>
                   </div>

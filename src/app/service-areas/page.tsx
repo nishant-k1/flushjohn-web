@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, phone, contact, address } from "@/constants";
+import { websiteURL, s3assets, phone, contact } from "@/constants";
 import ServiceAreasPage from "@/features/service-areas/components/ServiceAreasPage";
 
 export const metadata: Metadata = {
@@ -131,7 +131,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   "@id": `${websiteURL}#organization`,
   name: "FlushJohn",
-    legalName: "Quengenesis, LLC",
+  legalName: "Quengenesis, LLC",
   url: websiteURL,
   logo: {
     "@type": "ImageObject",
@@ -191,7 +191,8 @@ const serviceAreaBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ServiceAreaBusiness",
   name: "FlushJohn - Porta Potty Rental Service Areas",
-  description: "Professional porta potty rental services across 25+ cities in 6 states: Delaware, Texas, Florida, California, Georgia, and Illinois.",
+  description:
+    "Professional porta potty rental services across 25+ cities in 6 states: Delaware, Texas, Florida, California, Georgia, and Illinois.",
   url: `${websiteURL}/service-areas`,
   telephone: phone.phone_number,
   email: contact.support_email,

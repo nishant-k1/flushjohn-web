@@ -151,16 +151,10 @@ const Faq = () => {
                 help 24/7.
               </p>
               <div className={styles.ctaButtons}>
-                <a
-                  href="/quote"
-                  className={styles.ctaLink}
-                >
+                <a href="/quote" className={styles.ctaLink}>
                   Get a Quote
                 </a>
-                <a
-                  href="/contact"
-                  className={styles.ctaLink}
-                >
+                <a href="/contact" className={styles.ctaLink}>
                   Contact Us
                 </a>
               </div>

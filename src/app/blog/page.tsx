@@ -96,7 +96,10 @@ const BlogPage = async ({
           "@type": "Person",
           name: post.author || "FlushJohn Team",
         },
-        image: post.coverImage?.src || post.coverImageS3?.src || post.coverImageUnsplash?.src,
+        image:
+          post.coverImage?.src ||
+          post.coverImageS3?.src ||
+          post.coverImageUnsplash?.src,
         mainEntityOfPage: {
           "@type": "WebPage",
           "@id": `${websiteURL}/blog/${postSlug}`,
@@ -134,10 +137,7 @@ const BlogPage = async ({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <Blog
-        initialBlogs={initialBlogs}
-        initialPagination={initialPagination}
-      />
+      <Blog initialBlogs={initialBlogs} initialPagination={initialPagination} />
     </>
   );
 };

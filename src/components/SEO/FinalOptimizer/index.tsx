@@ -6,20 +6,25 @@ import {
   cleanupThirdPartyScripts,
   manageCookies,
 } from "@/utils/errorHandling";
-import { optimizeLongTasks, deferNonCriticalInit } from "@/utils/longTaskOptimizer";
+import {
+  optimizeLongTasks,
+  deferNonCriticalInit,
+} from "@/utils/longTaskOptimizer";
 
 const FinalOptimizer = () => {
   useEffect(() => {
     // Suppress console errors immediately (before any other code runs)
     cleanupThirdPartyScripts();
-    
+
     const timer = setTimeout(() => {
       const removeDeprecatedAPIs = () => {
         // Modern browsers support requestAnimationFrame natively
         // webkitRequestAnimationFrame is deprecated and no longer needed
         // Only add fallback for very old browsers (pre-2012)
         if (!window.requestAnimationFrame) {
-          window.requestAnimationFrame = function (callback: FrameRequestCallback) {
+          window.requestAnimationFrame = function (
+            callback: FrameRequestCallback
+          ) {
             return window.setTimeout(() => callback(Date.now()), 1000 / 60);
           };
         }
@@ -73,7 +78,7 @@ const FinalOptimizer = () => {
 
       removeDeprecatedAPIs();
       optimizeThirdPartyScripts();
-      
+
       // Optimize long tasks to reduce TBT
       optimizeLongTasks();
 

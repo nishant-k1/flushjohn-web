@@ -7,9 +7,6 @@ import {
   citiesData,
   getCityCoordinatesWithFallback,
   getCitiesByState,
-  getCityUniqueContent,
-  getCityH1Heading,
-  getCityHeadingVariant,
 } from "@/features/locations/constants";
 
 const getServiceAreas = (state: string) => {

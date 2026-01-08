@@ -212,8 +212,8 @@ export default function HowItWorksPage() {
               <div className={styles.benefitCard}>
                 <h3>Fast Response</h3>
                 <p>
-                  Get quotes quickly, usually within hours. We understand
-                  events and construction projects need fast decisions.
+                  Get quotes quickly, usually within hours. We understand events
+                  and construction projects need fast decisions.
                 </p>
               </div>
               <div className={styles.benefitCard}>
@@ -237,7 +237,8 @@ export default function HowItWorksPage() {
           <section className={styles.ctaSection}>
             <h2>Ready to Get Started?</h2>
             <p>
-              Request your free quote today and experience our simple, hassle-free process.
+              Request your free quote today and experience our simple,
+              hassle-free process.
             </p>
             <div className={styles.ctaButtons}>
               <Link href="/quote" className={styles.primaryButton}>
@@ -253,4 +254,3 @@ export default function HowItWorksPage() {
     </>
   );
 }
-

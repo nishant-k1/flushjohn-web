@@ -44,7 +44,9 @@ const ZipTextField = ({ label, ...props }: any) => {
             setShowError(false);
           }}
         />
-        <div className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}>
+        <div
+          className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+        >
           {touched && error ? "Required" : ""}
         </div>
       </div>

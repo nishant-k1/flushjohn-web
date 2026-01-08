@@ -16,4 +16,3 @@ export const createSocket = async (url: string, options?: any) => {
   const { io } = await getSocketIo();
   return io(url, options);
 };
-

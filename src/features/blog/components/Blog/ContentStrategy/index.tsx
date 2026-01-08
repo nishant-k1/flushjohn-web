@@ -154,7 +154,13 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
         border: "1px solid rgba(255, 255, 255, 0.15)",
       }}
     >
-      <h2 style={{ marginBottom: "30px", color: "var(--text-primary)", textAlign: "center" }}>
+      <h2
+        style={{
+          marginBottom: "30px",
+          color: "var(--text-primary)",
+          textAlign: "center",
+        }}
+      >
         Blog Content Strategy for Maximum SEO Impact
       </h2>
 
@@ -231,7 +237,11 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
               }}
             >
               <h4
-                style={{ margin: "0 0 10px 0", fontSize: "1em", color: "var(--text-primary)" }}
+                style={{
+                  margin: "0 0 10px 0",
+                  fontSize: "1em",
+                  color: "var(--text-primary)",
+                }}
               >
                 Keyword Group {index + 1}
               </h4>
@@ -329,10 +339,23 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
           }}
         >
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
+            <h4
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: "1em",
+                color: "var(--text-primary)",
+              }}
+            >
               Title Optimization
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Include primary keyword</li>
               <li>Keep under 60 characters</li>
               <li>Use power words</li>
@@ -340,10 +363,23 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
+            <h4
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: "1em",
+                color: "var(--text-primary)",
+              }}
+            >
               Content Structure
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>1000+ words minimum</li>
               <li>Use H2, H3 headings</li>
               <li>Include bullet points</li>
@@ -351,10 +387,23 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
+            <h4
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: "1em",
+                color: "var(--text-primary)",
+              }}
+            >
               Internal Linking
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Link to city pages</li>
               <li>Link to service pages</li>
               <li>Link to related posts</li>
@@ -362,10 +411,23 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             </ul>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1em", color: "var(--text-primary)" }}>
+            <h4
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: "1em",
+                color: "var(--text-primary)",
+              }}
+            >
               Call-to-Actions
             </h4>
-            <ul style={{ margin: "0", paddingLeft: "20px", fontSize: "0.9em", color: "var(--text-primary)" }}>
+            <ul
+              style={{
+                margin: "0",
+                paddingLeft: "20px",
+                fontSize: "0.9em",
+                color: "var(--text-primary)",
+              }}
+            >
               <li>Include quote CTA</li>
               <li>Add phone number</li>
               <li>Link to contact page</li>

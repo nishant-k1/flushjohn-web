@@ -114,7 +114,10 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       // Don't close if clicking on a datepicker input
-      if (target.closest('.custom-datepicker') || target.closest('.react-datepicker-popper')) {
+      if (
+        target.closest(".custom-datepicker") ||
+        target.closest(".react-datepicker-popper")
+      ) {
         return;
       }
       if (
@@ -141,10 +144,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   }, [isOpen, showError, touched, setTouched]);
 
   return (
-    <div
-      ref={dropdownRef}
-      style={{ position: "relative", width: "100%" }}
-    >
+    <div ref={dropdownRef} style={{ position: "relative", width: "100%" }}>
       <div
         className={
           touched && error
@@ -244,7 +244,8 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             boxShadow:
               "0 12px 48px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(140, 111, 72, 0.2)",
             padding: "4px 0",
-            animation: "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            animation:
+              "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
           {options.map((option, index) => (

@@ -23,10 +23,7 @@ const PageTranisition = ({ children }: { children: React.ReactNode }) => {
   return (
     <div style={{ overflow: "hidden" }}>
       <AnimatePresence>
-        <AnimationWrapper
-          effect={animations?.fadeWithScale}
-          animationKey={key}
-        >
+        <AnimationWrapper effect={animations?.fadeWithScale} animationKey={key}>
           {children}
         </AnimationWrapper>
       </AnimatePresence>

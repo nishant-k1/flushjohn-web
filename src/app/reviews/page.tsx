@@ -151,8 +151,8 @@ export default function ReviewsPage() {
               </Link>
             </div>
             <p className={styles.ctaNote}>
-              After your rental, we'll send you a follow-up email with a link
-              to leave a review on Google Business Profile.
+              After your rental, we'll send you a follow-up email with a link to
+              leave a review on Google Business Profile.
             </p>
           </section>
         </div>
@@ -160,4 +160,3 @@ export default function ReviewsPage() {
     </>
   );
 }
-

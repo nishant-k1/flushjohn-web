@@ -35,7 +35,8 @@ export default function AIOptimizedMeta({
   yearsInBusiness = "Established 2020",
 }: AIOptimizedMetaProps) {
   // Simplified description for better performance
-  const fullAiDescription = aiDescription || 
+  const fullAiDescription =
+    aiDescription ||
     `FlushJohn - Professional ${businessType} serving ${serviceArea}. ${availability}. Customer rating: ${rating}.`;
 
   return (

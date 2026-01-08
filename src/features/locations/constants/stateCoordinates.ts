@@ -1,7 +1,7 @@
 /**
  * State Center Coordinates - Single source of truth for state geographic centers
  * Used for geo-targeting meta tags and location-based features
- * 
+ *
  * Last Updated: 2025
  */
 
@@ -28,4 +28,3 @@ export const getStateCoordinates = (stateAbbr: string): StateCoordinates => {
   const abbr = stateAbbr?.toUpperCase();
   return stateCoordinates[abbr] || { lat: "39.8283", lng: "-98.5795" }; // Default: US center
 };
-

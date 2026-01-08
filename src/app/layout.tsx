@@ -99,10 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Critical Schema Markup - Inline for SEO audit tools that don't execute JavaScript */}
         <script
@@ -195,10 +192,7 @@ export default function RootLayout({
           }}
         />
         {/* Enable back/forward cache */}
-        <meta
-          name="mobile-web-app-capable"
-          content="yes"
-        />
+        <meta name="mobile-web-app-capable" content="yes" />
         {/* Viewport meta tag with proper mobile scaling */}
         <meta
           name="viewport"
@@ -283,30 +277,12 @@ export default function RootLayout({
         />
 
         {/* DNS prefetch for third-party domains - lower priority */}
-        <link
-          rel="dns-prefetch"
-          href="https://www.googletagmanager.com"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://www.google-analytics.com"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://googleads.g.doubleclick.net"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://connect.facebook.net"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://fonts.gstatic.com"
-        />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
         {/* Preload critical hero image for LCP optimization */}
         {/* Note: CDN must send Cache-Control headers for this image.
@@ -342,10 +318,7 @@ export default function RootLayout({
               src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
               strategy="afterInteractive"
             />
-            <Script
-              id="google-analytics"
-              strategy="afterInteractive"
-            >
+            <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}

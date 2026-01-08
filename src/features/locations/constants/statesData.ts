@@ -1,7 +1,7 @@
 /**
  * State Data - Single source of truth for state information
  * Includes state name, abbreviation, cities, and descriptions
- * 
+ *
  * Last Updated: 2025
  */
 
@@ -31,7 +31,8 @@ export const statesData: Record<string, StateData> = {
       { name: "San Antonio", slug: "san-antonio", population: "1.5M" },
       { name: "Fort Worth", slug: "fort-worth", population: "918K" },
     ],
-    description: "FlushJohn provides reliable porta potty rental services across major Texas cities. From construction sites in Houston to events in Austin, we serve Texas with professional portable toilet solutions.",
+    description:
+      "FlushJohn provides reliable porta potty rental services across major Texas cities. From construction sites in Houston to events in Austin, we serve Texas with professional portable toilet solutions.",
   },
   florida: {
     name: "Florida",
@@ -44,7 +45,8 @@ export const statesData: Record<string, StateData> = {
       { name: "Jacksonville", slug: "jacksonville", population: "950K" },
       { name: "Fort Lauderdale", slug: "fort-lauderdale", population: "182K" },
     ],
-    description: "Professional porta potty rental services throughout Florida. We serve major cities from Miami to Orlando, providing clean, reliable portable toilets for events, construction, and special occasions.",
+    description:
+      "Professional porta potty rental services throughout Florida. We serve major cities from Miami to Orlando, providing clean, reliable portable toilets for events, construction, and special occasions.",
   },
   california: {
     name: "California",
@@ -57,7 +59,8 @@ export const statesData: Record<string, StateData> = {
       { name: "San Jose", slug: "san-jose", population: "1.0M" },
       { name: "Fresno", slug: "fresno", population: "542K" },
     ],
-    description: "Comprehensive porta potty rental services across California. From Los Angeles entertainment events to San Diego beach gatherings, we provide professional portable toilet solutions statewide.",
+    description:
+      "Comprehensive porta potty rental services across California. From Los Angeles entertainment events to San Diego beach gatherings, we provide professional portable toilet solutions statewide.",
   },
   georgia: {
     name: "Georgia",
@@ -70,7 +73,8 @@ export const statesData: Record<string, StateData> = {
       { name: "Macon", slug: "macon", population: "153K" },
       { name: "Columbus", slug: "columbus", population: "206K" },
     ],
-    description: "Reliable porta potty rental services throughout Georgia. We serve major cities including Atlanta, Savannah, and Augusta, providing professional portable toilet solutions for all your needs.",
+    description:
+      "Reliable porta potty rental services throughout Georgia. We serve major cities including Atlanta, Savannah, and Augusta, providing professional portable toilet solutions for all your needs.",
   },
   illinois: {
     name: "Illinois",
@@ -83,23 +87,25 @@ export const statesData: Record<string, StateData> = {
       { name: "Rockford", slug: "rockford", population: "148K" },
       { name: "Naperville", slug: "naperville", population: "149K" },
     ],
-    description: "Professional porta potty rental services across Illinois. From Chicago events to construction sites in Springfield, we provide reliable portable toilet solutions throughout the state.",
+    description:
+      "Professional porta potty rental services across Illinois. From Chicago events to construction sites in Springfield, we provide reliable portable toilet solutions throughout the state.",
   },
   delaware: {
     name: "Delaware",
     abbreviation: "DE",
     displayName: "Delaware",
-    cities: [
-      { name: "Dover", slug: "dover", population: "39K" },
-    ],
-    description: "Porta potty rental services in Delaware's capital city. FlushJohn provides professional portable toilet solutions for Dover events, construction projects, and special occasions.",
+    cities: [{ name: "Dover", slug: "dover", population: "39K" }],
+    description:
+      "Porta potty rental services in Delaware's capital city. FlushJohn provides professional portable toilet solutions for Dover events, construction projects, and special occasions.",
   },
 };
 
 /**
  * Get all cities across all states as a flat array
  */
-export const getAllCities = (): Array<StateCity & { state: string; stateAbbr: string }> => {
+export const getAllCities = (): Array<
+  StateCity & { state: string; stateAbbr: string }
+> => {
   const cities: Array<StateCity & { state: string; stateAbbr: string }> = [];
   Object.values(statesData).forEach((state) => {
     state.cities.forEach((city) => {
@@ -112,4 +118,3 @@ export const getAllCities = (): Array<StateCity & { state: string; stateAbbr: st
   });
   return cities;
 };
-

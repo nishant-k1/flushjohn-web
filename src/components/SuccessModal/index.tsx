@@ -47,10 +47,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
   if (!isOpen || !mounted) return null;
 
   const modalContent = (
-    <div
-      className={styles.overlay}
-      onClick={onClose}
-    >
+    <div className={styles.overlay} onClick={onClose}>
       <div
         className={`${styles.modal} ${showContent ? styles.modalShow : ""}`}
         onClick={(e) => e.stopPropagation()}
@@ -89,10 +86,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
         </div>
 
         {/* Close Button */}
-        <button
-          className={styles.closeButton}
-          onClick={onClose}
-        >
+        <button className={styles.closeButton} onClick={onClose}>
           Got it!
         </button>
       </div>

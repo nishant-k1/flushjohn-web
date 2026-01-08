@@ -47,10 +47,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
   if (!isOpen || !mounted) return null;
 
   const modalContent = (
-    <div
-      className={styles.overlay}
-      onClick={onClose}
-    >
+    <div className={styles.overlay} onClick={onClose}>
       <div
         className={`${styles.modal} ${showContent ? styles.modalShow : ""}`}
         onClick={(e) => e.stopPropagation()}
@@ -89,10 +86,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
         </div>
 
         {/* Close Button */}
-        <button
-          className={styles.closeButton}
-          onClick={onClose}
-        >
+        <button className={styles.closeButton} onClick={onClose}>
           Try Again
         </button>
       </div>
@@ -103,4 +97,3 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
 };
 
 export default ErrorModal;
-

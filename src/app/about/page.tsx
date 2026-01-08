@@ -81,8 +81,8 @@ export default function AboutPage() {
           <section className={styles.hero}>
             <h1>About FlushJohn</h1>
             <p className={styles.subtitle}>
-              Professional porta potty rental services delivered fast and hassle-free
-              across the United States
+              Professional porta potty rental services delivered fast and
+              hassle-free across the United States
             </p>
           </section>
 
@@ -91,10 +91,10 @@ export default function AboutPage() {
             <h2>Who We Are</h2>
             <div className={styles.content}>
               <p>
-                FlushJohn is a professional porta potty rental company founded in
-                2020. Through our network of trusted local partners, we provide
-                reliable, clean, and affordable portable toilet services across
-                25+ cities in 6 states throughout the United States.
+                FlushJohn is a professional porta potty rental company founded
+                in 2020. Through our network of trusted local partners, we
+                provide reliable, clean, and affordable portable toilet services
+                across 25+ cities in 6 states throughout the United States.
               </p>
               <p>
                 Our mission is to make porta potty rentals simple, affordable,
@@ -163,9 +163,7 @@ export default function AboutPage() {
               <div className={styles.infoCard}>
                 <h3>Phone</h3>
                 <p>
-                  <a href={`tel:${phone.phone_number}`}>
-                    {phone.phone_number}
-                  </a>
+                  <a href={`tel:${phone.phone_number}`}>{phone.phone_number}</a>
                 </p>
               </div>
               <div className={styles.infoCard}>
@@ -205,8 +203,8 @@ export default function AboutPage() {
                 <h3>Easy Booking</h3>
                 <p>
                   Simple online quote system or phone booking. We coordinate
-                  with our local partners to handle all the details so you
-                  don't have to.
+                  with our local partners to handle all the details so you don't
+                  have to.
                 </p>
               </div>
               <div className={styles.benefit}>
@@ -282,4 +280,3 @@ export default function AboutPage() {
     </>
   );
 }
-

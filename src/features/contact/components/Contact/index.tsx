@@ -5,8 +5,7 @@ import * as Yup from "yup";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import styles from "./styles.module.css";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -20,17 +19,10 @@ const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
   return (
     <div>
-      <label
-        className={styles.label}
-        htmlFor={props.id || props.name}
-      >
+      <label className={styles.label} htmlFor={props.id || props.name}>
         {label}
       </label>
-      <input
-        className={styles.input}
-        {...field}
-        {...props}
-      />
+      <input className={styles.input} {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className={styles.error}>{meta.error}</div>
       ) : null}
@@ -45,10 +37,7 @@ const MyPhoneField = ({ label, ...props }: any) => {
 
   return (
     <div>
-      <label
-        className={styles.label}
-        htmlFor={props.id || props.name}
-      >
+      <label className={styles.label} htmlFor={props.id || props.name}>
         {label}
       </label>
       <PhoneInput
@@ -73,17 +62,10 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
   return (
     <div>
-      <label
-        className={styles.label}
-        htmlFor={props.id || props.name}
-      >
+      <label className={styles.label} htmlFor={props.id || props.name}>
         {label}
       </label>
-      <textarea
-        className={styles.textarea}
-        {...field}
-        {...props}
-      />
+      <textarea className={styles.textarea} {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className={styles.error}>{meta.error}</div>
       ) : null}
@@ -128,36 +110,36 @@ const Contact = () => {
               setSubmitting(true);
               // Data is automatically serialized by apiClient
               await api.post(`${API_BASE_URL}/contact`, values);
-              
+
               setState(true);
               setShowSuccessModal(true);
-                try {
-                  if (typeof window !== "undefined" && window.gtag) {
-                    window.gtag("event", "button_click", {
-                      event_category: "Button",
-                      event_label: "Contact Email Button Clicked",
-                    });
-                  }
-                } catch (gtagError) {
-                  if (process.env.NODE_ENV === "development") {
-                    console.warn("GTag error:", gtagError);
-                  }
-                }
-                try {
-                  logEvent({
-                    category: "Button",
-                    action: "Contact Email Form submit",
-                    label: "Contact Email Button",
-                    value: undefined,
-                    nonInteraction: undefined,
-                    transport: "beacon",
+              try {
+                if (typeof window !== "undefined" && window.gtag) {
+                  window.gtag("event", "button_click", {
+                    event_category: "Button",
+                    event_label: "Contact Email Button Clicked",
                   });
-                } catch (logError) {
-                  if (process.env.NODE_ENV === "development") {
-                    console.warn("Log event error:", logError);
-                  }
                 }
-                resetForm();
+              } catch (gtagError) {
+                if (process.env.NODE_ENV === "development") {
+                  console.warn("GTag error:", gtagError);
+                }
+              }
+              try {
+                logEvent({
+                  category: "Button",
+                  action: "Contact Email Form submit",
+                  label: "Contact Email Button",
+                  value: undefined,
+                  nonInteraction: undefined,
+                  transport: "beacon",
+                });
+              } catch (logError) {
+                if (process.env.NODE_ENV === "development") {
+                  console.warn("Log event error:", logError);
+                }
+              }
+              resetForm();
             } catch (err) {
               if (process.env.NODE_ENV === "development") {
                 console.error("Contact form error:", err);
@@ -250,10 +232,7 @@ const Contact = () => {
                   cities in 6 states: Texas, Florida, California, Georgia,
                   Illinois, and Delaware. We deliver directly to your location -
                   no physical storefront needed.
-                  <a
-                    href="/service-areas"
-                    className={styles.serviceAreasLink}
-                  >
+                  <a href="/service-areas" className={styles.serviceAreasLink}>
                     View all service areas →
                   </a>
                 </p>

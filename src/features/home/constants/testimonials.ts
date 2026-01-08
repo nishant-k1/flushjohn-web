@@ -1,4 +1,3 @@
-
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
 export interface Image {

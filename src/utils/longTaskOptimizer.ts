@@ -37,10 +37,14 @@ export const optimizeLongTasks = (): void => {
   // Use scheduler API if available (Chrome 68+)
   if ("scheduler" in window && "postTask" in (window as any).scheduler) {
     const scheduler = (window as any).scheduler;
-    
+
     // Wrap heavy operations in postTask for better scheduling
     const originalSetTimeout = window.setTimeout;
-    window.setTimeout = function(callback: Function, delay: number, ...args: any[]) {
+    window.setTimeout = function (
+      callback: Function,
+      delay: number,
+      ...args: any[]
+    ) {
       if (delay === 0 && typeof callback === "function") {
         // Use scheduler for immediate tasks
         return scheduler.postTask(callback, { priority: "background" });
@@ -55,7 +59,9 @@ export const optimizeLongTasks = (): void => {
       if (entry.entryType === "measure" && entry.duration > 50) {
         // Log long tasks for monitoring
         if (process.env.NODE_ENV === "development") {
-          console.warn(`Long task detected: ${entry.name} took ${entry.duration}ms`);
+          console.warn(
+            `Long task detected: ${entry.name} took ${entry.duration}ms`
+          );
         }
       }
     }
@@ -80,4 +86,3 @@ export const deferNonCriticalInit = (callback: () => void): void => {
     setTimeout(callback, 100);
   }
 };
-

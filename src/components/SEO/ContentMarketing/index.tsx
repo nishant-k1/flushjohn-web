@@ -102,12 +102,14 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
             onMouseOver={(e) => {
               e.currentTarget.style.transform = "translateY(-2px)";
               e.currentTarget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
-              e.currentTarget.style.background = "var(--bg-secondary, rgba(255, 255, 255, 0.1))";
+              e.currentTarget.style.background =
+                "var(--bg-secondary, rgba(255, 255, 255, 0.1))";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.background = "var(--bg-secondary, rgba(255, 255, 255, 0.05))";
+              e.currentTarget.style.background =
+                "var(--bg-secondary, rgba(255, 255, 255, 0.05))";
             }}
           >
             <div

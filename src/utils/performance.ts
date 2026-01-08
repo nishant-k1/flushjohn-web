@@ -1,4 +1,3 @@
-
 /**
  * Debounce function to reduce excessive function calls
  */

@@ -1,7 +1,7 @@
 /**
  * Web Vitals Tracking Component
  * Tracks Core Web Vitals and sends to Google Analytics
- * 
+ *
  * Core Web Vitals:
  * - LCP (Largest Contentful Paint): < 2.5s (good)
  * - INP (Interaction to Next Paint): < 200ms (good) - replaces FID
@@ -60,4 +60,3 @@ export default function WebVitals() {
 
   return null;
 }
-

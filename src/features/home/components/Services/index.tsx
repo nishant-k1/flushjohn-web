@@ -29,10 +29,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
             // Render first 2 cards
             if (index < 2) {
               return (
-                <div
-                  className={styles.serviceCard}
-                  key={id}
-                >
+                <div className={styles.serviceCard} key={id}>
                   <div className={styles.imageWrapper}>
                     <Image
                       src={image}
@@ -73,10 +70,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     />
                   </div>
                   {/* Then render the current card */}
-                  <div
-                    className={styles.serviceCard}
-                    key={id}
-                  >
+                  <div className={styles.serviceCard} key={id}>
                     <div className={styles.imageWrapper}>
                       <Image
                         src={image}
@@ -99,10 +93,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
 
             // Render remaining cards
             return (
-              <div
-                className={styles.serviceCard}
-                key={id}
-              >
+              <div className={styles.serviceCard} key={id}>
                 <div className={styles.imageWrapper}>
                   <Image
                     src={image}

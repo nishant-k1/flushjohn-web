@@ -4,25 +4,26 @@
  * Savings: ~25 KB
  */
 
-import React from 'react';
-import Button from '../Button';
+import React from "react";
+import Button from "../Button";
 
-interface LoadingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface LoadingButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
-  variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'secondary' | 'success' | 'error';
-  size?: 'small' | 'medium' | 'large';
+  variant?: "contained" | "outlined" | "text";
+  color?: "primary" | "secondary" | "success" | "error";
+  size?: "small" | "medium" | "large";
   fullWidth?: boolean;
   endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
-  loadingPosition?: 'start' | 'end' | 'center';
+  loadingPosition?: "start" | "end" | "center";
 }
 
 export default function LoadingButton({
   loading = false,
   endIcon,
   startIcon,
-  loadingPosition = 'center',
+  loadingPosition = "center",
   children,
   ...props
 }: LoadingButtonProps) {
@@ -30,8 +31,10 @@ export default function LoadingButton({
     <Button
       {...props}
       loading={loading}
-      endIcon={!loading || loadingPosition !== 'end' ? endIcon : undefined}
-      startIcon={!loading || loadingPosition !== 'start' ? startIcon : undefined}
+      endIcon={!loading || loadingPosition !== "end" ? endIcon : undefined}
+      startIcon={
+        !loading || loadingPosition !== "start" ? startIcon : undefined
+      }
       disabled={props.disabled || loading}
     >
       {children}

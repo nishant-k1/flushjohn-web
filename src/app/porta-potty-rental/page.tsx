@@ -86,7 +86,8 @@ const serviceAreaBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ServiceAreaBusiness",
   name: "FlushJohn - Porta Potty Rentals",
-  description: "Professional porta potty rental services across 25+ cities in 6 states. Same-day delivery, competitive pricing.",
+  description:
+    "Professional porta potty rental services across 25+ cities in 6 states. Same-day delivery, competitive pricing.",
   url: `${websiteURL}/porta-potty-rental`,
   telephone: phone.phone_number,
   email: contact.support_email,
@@ -107,7 +108,8 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Porta Potty Rental Services",
-  description: "Professional porta potty rental services for events, construction sites, and special occasions across the United States.",
+  description:
+    "Professional porta potty rental services for events, construction sites, and special occasions across the United States.",
   provider: {
     "@type": "Organization",
     name: "FlushJohn",
@@ -195,10 +197,7 @@ const PortaPottyRentalPage = () => {
               }[state];
 
               return (
-                <div
-                  key={state}
-                  style={{ marginBottom: "40px" }}
-                >
+                <div key={state} style={{ marginBottom: "40px" }}>
                   <h3
                     style={{
                       color: "var(--text-primary)",

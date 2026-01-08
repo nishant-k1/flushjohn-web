@@ -53,10 +53,7 @@ export default function QuickQuoteButton() {
           }
         }}
       >
-        <PhoneIcon
-          className={styles.icon}
-          size={24}
-        />
+        <PhoneIcon className={styles.icon} size={24} />
       </Link>
     </div>
   );
