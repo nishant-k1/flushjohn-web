@@ -149,6 +149,45 @@ export const normalizeDate = (
 };
 
 /**
+ * Deserialize date from API format to Date object for form inputs
+ *
+ * Converts API format (ISO 8601 string) to Date object for editing forms.
+ * This is the reverse of serializeDate/normalizeDate.
+ *
+ * @param date - Date from API (ISO 8601 string) or Date object
+ * @returns Date object or null if invalid
+ *
+ * @example
+ * deserializeDate("2024-01-15T00:00:00.000Z") // Returns: Date object
+ * deserializeDate(null) // Returns: null
+ */
+export const deserializeDate = (
+  date: string | Date | null | undefined
+): Date | null => {
+  if (!date) return null;
+
+  // If already a Date object, return it
+  if (date instanceof Date) {
+    // Check if valid
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  // Try to parse ISO string or any date string
+  try {
+    const dateObj = new Date(date);
+    
+    // Check if valid date
+    if (isNaN(dateObj.getTime())) {
+      return null;
+    }
+
+    return dateObj;
+  } catch {
+    return null;
+  }
+};
+
+/**
  * Normalize long text fields
  *
  * @param text - Text to normalize

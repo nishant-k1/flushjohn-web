@@ -9,6 +9,7 @@ import "./datepicker-animations.css";
 import { Calendar } from "lucide-react";
 import styles from "./styles.module.css";
 import quickQuoteStyles from "@/features/quote/components/QuickQuote/styles.module.css";
+import { deserializeDate } from "@/utils/serializers";
 
 const MIN_DATE = dayjs().startOf("day").toDate();
 
@@ -215,23 +216,9 @@ const DateInput: React.FC<DateInputProps> = ({
   const finalPlaceholder =
     placeholder || (variant === "quickquote" ? label : "Select date");
 
-  // Parse the date value - handle ISO strings, formatted dates, and Date objects
-  const parseDate = (value: any): Date | null => {
-    if (!value) return null;
-    if (value instanceof Date) return value;
-
-    // Try parsing with dayjs first (handles ISO strings and various formats)
-    const parsed = dayjs(value);
-    if (parsed.isValid()) {
-      return parsed.toDate();
-    }
-
-    // Fallback to native Date parsing
-    const nativeDate = new Date(value);
-    return isNaN(nativeDate.getTime()) ? null : nativeDate;
-  };
-
-  const selectedDate = parseDate(field.value);
+  // Deserialize date from API format (ISO string) to Date object for date picker
+  // This handles ISO strings, formatted dates, and Date objects
+  const selectedDate = deserializeDate(field.value);
 
   const handleDateChange = (date: Date | null) => {
     // Store as ISO string for API compatibility
