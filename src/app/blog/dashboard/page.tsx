@@ -40,7 +40,7 @@ const BlogDashboard = () => {
         <h2
           style={{
             margin: "0 0 10px 0",
-            color: "var(--primary)",
+            color: "var(--text-primary)",
             display: "flex",
             alignItems: "center",
             gap: "8px",

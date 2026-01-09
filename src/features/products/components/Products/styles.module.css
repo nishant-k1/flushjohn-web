@@ -219,7 +219,7 @@
   color: var(--text-primary) !important;
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-underline-offset: 3px;
   display: inline-flex;
   align-items: center;
@@ -236,7 +236,7 @@
 
 .moreLink:hover {
   color: var(--text-primary) !important;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-decoration-thickness: 2px;
   transform: translateX(2px);
 }

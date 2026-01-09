@@ -25,9 +25,9 @@ const renderStars = (rating: number) => {
       <span
         key={i}
         style={{
-          color: i < rating ? "#FFD700" : "rgba(255, 255, 255, 0.25)",
+          color: i < rating ? "var(--rating-active)" : "var(--rating-inactive)",
           fontSize: "1.25rem",
-          textShadow: i < rating ? "0 0 4px rgba(255, 215, 0, 0.5)" : "none",
+          textShadow: i < rating ? `0 0 4px var(--rating-glow)` : "none",
         }}
       >
         ★
@@ -59,9 +59,9 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
                         height: 120,
                         width: 120,
                         borderRadius: "0",
-                        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.2)",
+                        boxShadow: `0 6px 20px var(--black-alpha-20)`,
                         objectFit: "cover",
-                        border: "2px solid rgba(255, 255, 255, 0.3)",
+                        border: `2px solid var(--white-alpha-30)`,
                       }}
                     />
                   </div>

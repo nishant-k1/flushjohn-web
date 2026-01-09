@@ -32,8 +32,8 @@
 .cityWrapper h2,
 .cityWrapper h3,
 .cityWrapper h4 {
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+  text-shadow: 0 1px 3px var(--black-alpha-15);
 }
 
 .cityWrapper p {
@@ -58,7 +58,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -119,14 +119,14 @@
 
 /* Links - Theme Colors */
 .container a {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: none;
   transition: all var(--transition-base, 0.3s);
   font-weight: 500;
 }
 
 .container a:hover {
-  color: var(--primary-lighter);
+  color: var(--text-primary);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -180,13 +180,13 @@
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
   min-height: 36px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--black-alpha-15);
   border: 2px solid var(--primary-bg-color);
 }
 
 .ctaButton:hover {
   background: var(--primary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px var(--black-alpha-20);
   text-decoration: none !important;
   color: white !important;
   border-color: var(--primary);
@@ -203,13 +203,13 @@
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
   min-height: 36px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--black-alpha-15);
   border: 2px solid var(--primary);
 }
 
 .ctaButtonSecondary:hover {
   background: var(--primary-light);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px var(--black-alpha-20);
   text-decoration: none !important;
   color: white !important;
   border-color: var(--primary-light);
@@ -247,7 +247,7 @@
 /* Cards - Theme Colors */
 .card {
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 8px;
   background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
@@ -271,7 +271,7 @@
 }
 
 .card a {
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -285,7 +285,7 @@
 .testimonialCard {
   padding: 2rem;
   background-color: var(--neutral-700);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
@@ -322,14 +322,14 @@
   left: 0;
   top: -0.5rem;
   font-size: 3rem;
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
   opacity: 0.3;
   font-family: Georgia, serif;
 }
 
 .serviceCard {
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 8px;
   background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
@@ -359,7 +359,7 @@
 .cityCard {
   display: block;
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
@@ -383,7 +383,7 @@
 }
 
 .cityCard h4 {
-  color: var(--primary-light);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -421,7 +421,7 @@
   padding: 1.5rem;
   background-color: var(--neutral-700);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   transition: all var(--transition-base, 0.3s);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -504,7 +504,7 @@
 
 .servicesList li svg {
   flex-shrink: 0;
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
 }
 
 /* Final CTA */
@@ -559,7 +559,7 @@
 
 .finalCTAButton {
   background: white;
-  color: var(--primary-bg-color) !important;
+  color: var(--primary-bg-color, var(--primary)) !important;
   padding: 18px 36px;
   text-decoration: none !important;
   border-radius: 4px;
@@ -576,7 +576,7 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   text-decoration: none !important;
-  color: var(--primary-bg-color) !important;
+  color: var(--text-primary) !important;
   border-color: var(--bg-primary);
 }
 
@@ -586,17 +586,17 @@
   padding: 2.5rem;
   background-color: var(--neutral-700);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .exploreLinks a {
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .exploreLinks a span {
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -631,7 +631,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition-base, 0.3s);
   text-decoration: none;
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -641,12 +641,12 @@
   border-color: var(--primary);
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  color: var(--primary-lighter);
+  color: var(--text-primary);
 }
 
 .exploreLinks a svg {
   flex-shrink: 0;
-  color: var(--primary-bg-color);
+  color: var(--text-primary);
 }
 
 /* Responsive Design */

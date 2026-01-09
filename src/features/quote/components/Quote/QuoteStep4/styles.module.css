@@ -29,7 +29,7 @@
   margin: 0;
   height: 6rem;
   width: 6rem;
-  color: var(--primary-light);
+  color: var(--text-primary);
 }
 
 .confirmation {

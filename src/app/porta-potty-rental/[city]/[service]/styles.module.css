@@ -17,7 +17,7 @@
 }
 
 .breadcrumbs a {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -78,7 +78,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-weight: bold;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .linkButton {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: underline;
   border: none;
   background: transparent;
@@ -149,7 +149,7 @@
 }
 
 .linkButton:hover {
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

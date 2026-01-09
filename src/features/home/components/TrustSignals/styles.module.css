@@ -5,47 +5,20 @@
   position: relative;
 }
 
-.trustSignals::after {
+.trustSignals::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.03) 10px,
-      rgba(255, 255, 255, 0.03) 20px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.02) 10px,
-      rgba(255, 255, 255, 0.02) 20px
-    ),
-    radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.015) 1px, transparent 0),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(140, 111, 72, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(109, 86, 55, 0.1) 0%,
-      transparent 50%
-    );
-  background-size:
-    40px 40px,
-    40px 40px,
-    20px 20px,
-    100% 100%,
-    100% 100%;
+  background-image: url("/images/image.png");
+  background-size: auto; /* Use original image size for tiling */
+  background-position: 0 0;
+  background-repeat: repeat; /* Tile the image for seamless pattern */
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.4; /* Adjust to control texture visibility */
+  mix-blend-mode: overlay; /* Blends naturally with dark background */
 }
 
 .container {
@@ -76,16 +49,16 @@
 .statItem {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   padding: 2rem 1.5rem;
   border-radius: 0;
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
+  border: 1px solid var(--white-alpha-20);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
@@ -99,13 +72,13 @@
 .statItem:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 8px 28px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
 }
 
@@ -116,7 +89,7 @@
   margin-bottom: var(--spacing-xs);
   line-height: 1.2;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px var(--black-alpha-10);
 }
 
 .statLabel {
@@ -140,15 +113,15 @@
   gap: var(--spacing-xs);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   padding: 1rem 1.25rem;
   border-radius: 0;
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 16px var(--black-alpha-10),
+    inset 0 1px 0 var(--white-alpha-20);
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 300;
   color: var(--text-primary);
@@ -164,13 +137,13 @@
 .badge:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 6px 20px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
 }
 
@@ -184,9 +157,9 @@
 .businessInfo {
   margin-top: var(--spacing-2xl);
   padding: var(--spacing-lg);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--white-alpha-05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--white-alpha-10);
 }
 
 .businessInfo p {

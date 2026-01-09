@@ -85,9 +85,9 @@
   min-height: 500px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 25%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.1) 75%
+    var(--white-alpha-10) 25%,
+    var(--white-alpha-20) 50%,
+    var(--white-alpha-10) 75%
   );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
@@ -142,12 +142,12 @@
     rgba(90, 74, 58, 0.4) 100%
   ); /* Darker background for better contrast */
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Lighter border for better visibility */
+  border: 1px solid var(--white-alpha-30); /* Lighter border for better visibility */
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 0;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #ffffff; /* Pure white for maximum contrast */
+  color: var(--text-primary); /* Pure white for maximum contrast */
   margin-bottom: var(--spacing-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Darker shadow for better contrast */
   letter-spacing: 0.01em;
@@ -166,7 +166,7 @@
 .heroTitle h1 {
   font-size: xx-large;
   font-weight: 400;
-  color: #ffffff; /* Pure white for maximum contrast */
+  color: var(--text-primary); /* Pure white for maximum contrast */
   text-shadow:
     0 2px 8px rgba(0, 0, 0, 0.6),
     0 1px 3px rgba(0, 0, 0, 0.4); /* Stronger shadow for better contrast */
@@ -181,7 +181,7 @@
   font-size: large;
   font-weight: 300;
   line-height: 1.6;
-  color: #ffffff; /* Pure white for maximum contrast */
+  color: var(--text-primary); /* Pure white for maximum contrast */
   opacity: 1; /* Changed from 0.95 to 1 for full opacity */
   margin: 0;
   min-height: 3.2em; /* Reserve space for 2 lines to prevent layout shift */
@@ -220,7 +220,7 @@
   text-decoration: none;
   box-shadow:
     0 4px 16px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 var(--white-alpha-10);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -257,7 +257,7 @@
   transform: none;
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 var(--white-alpha-15);
 }
 
 .ctaQuoteBtn:active {
@@ -283,12 +283,12 @@
   gap: var(--spacing-sm);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   padding: 8px 20px;
   min-height: 36px;
   font-size: 1rem;
@@ -325,7 +325,7 @@
   transform: none;
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 var(--white-alpha-15);
 }
 
 .ctaPhoneBtn:active {

@@ -112,20 +112,20 @@ const UsageTypeField = () => {
           className={hasError ? styles.error_field : ""}
           style={{
             padding: "0 12px",
-            border: hasError ? "1px solid #ff4444" : "1px solid #d9d9d9",
+            border: hasError ? `1px solid var(--error-border)` : `1px solid var(--border-light)`,
             borderRadius: "0",
             cursor: "pointer",
             height: "2rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: "var(--bg-white)",
             transition: "border-color 0.2s",
           }}
         >
           <span
             style={{
-              color: values.usageType ? "#333" : "rgba(0, 0, 0, 0.6)",
+              color: values.usageType ? "var(--text-form-value)" : "var(--text-form-placeholder)",
               fontSize: "14px",
               fontWeight: 500,
               flex: 1,
@@ -158,15 +158,15 @@ const UsageTypeField = () => {
               top: "100%",
               left: 0,
               right: 0,
-              background: "#ffffff",
-              border: "1px solid var(--primary-bg-color, #8c6f48)",
+              background: "var(--bg-white)",
+              border: `1px solid var(--primary-bg-color, var(--primary))`,
               borderRadius: "0",
               marginTop: "0",
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
               boxShadow:
-                "0 12px 48px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(140, 111, 72, 0.2)",
+                `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
               padding: "4px 0",
               animation:
                 "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -181,42 +181,40 @@ const UsageTypeField = () => {
                   cursor: "pointer",
                   background:
                     values.usageType === option.value
-                      ? "rgba(140, 111, 72, 0.12)"
-                      : "#ffffff",
+                      ? "var(--primary-alpha-12)"
+                      : "var(--bg-white)",
                   borderBottom:
-                    index < options.length - 1 ? "1px solid #e8e8e8" : "none",
+                    index < options.length - 1 ? `1px solid var(--border-lighter)` : "none",
                   borderLeft:
                     values.usageType === option.value
-                      ? "4px solid var(--primary-bg-color, #8c6f48)"
+                      ? `4px solid var(--primary-bg-color, var(--primary))`
                       : "4px solid transparent",
                   transition: "all 0.15s ease",
                   fontSize: "14px",
                   fontWeight: values.usageType === option.value ? 600 : 500,
                   color:
                     values.usageType === option.value
-                      ? "var(--primary-bg-color, #8c6f48)"
-                      : "#1a1a1a",
+                      ? "var(--primary-bg-color, var(--primary))"
+                      : "var(--text-dark)",
                   margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                   borderRadius: "0",
                   boxShadow:
                     values.usageType === option.value
-                      ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                      ? `inset 0 0 0 1px var(--primary-alpha-10)`
                       : "none",
                   lineHeight: "1.2",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
-                    e.currentTarget.style.background = "#f8f9fa";
-                    e.currentTarget.style.borderLeft =
-                      "4px solid rgba(140, 111, 72, 0.3)";
-                    e.currentTarget.style.boxShadow =
-                      "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
+                    e.currentTarget.style.background = "var(--bg-lighter)";
+                    e.currentTarget.style.borderLeft = `4px solid var(--primary-alpha-30)`;
+                    e.currentTarget.style.boxShadow = `inset 0 0 0 1px var(--primary-alpha-08)`;
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (values.usageType !== option.value) {
-                    e.currentTarget.style.background = "#ffffff";
+                    e.currentTarget.style.background = "var(--bg-white)";
                     e.currentTarget.style.borderLeft = "4px solid transparent";
                     e.currentTarget.style.boxShadow = "none";
                   }

@@ -30,7 +30,7 @@
 .breadcrumb a:hover {
   color: var(--text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-decoration-thickness: 2px;
   opacity: 1;
   transition: var(--transition-base);
@@ -67,7 +67,7 @@
   .breadcrumb a:hover {
     color: var(--text-primary);
     text-decoration: underline;
-    text-decoration-color: var(--primary-light);
+    text-decoration-color: var(--text-primary);
     text-decoration-thickness: 2px;
     opacity: 1;
   }

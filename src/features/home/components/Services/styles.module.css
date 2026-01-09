@@ -4,54 +4,20 @@
   position: relative;
 }
 
-.servicesSection::after {
+.servicesSection::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    /* Subtle diagonal texture pattern */
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.03) 10px,
-      rgba(255, 255, 255, 0.03) 20px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.02) 10px,
-      rgba(255, 255, 255, 0.02) 20px
-    ),
-    /* Subtle dot pattern */
-      radial-gradient(
-        circle at 1px 1px,
-        rgba(0, 0, 0, 0.015) 1px,
-        transparent 0
-      ),
-    /* Brand-colored accent gradients */
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(140, 111, 72, 0.1) 0%,
-        transparent 50%
-      ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(109, 86, 55, 0.1) 0%,
-      transparent 50%
-    );
-  background-size:
-    40px 40px,
-    40px 40px,
-    20px 20px,
-    100% 100%,
-    100% 100%;
+  background-image: url("/images/image.png");
+  background-size: auto; /* Use original image size for tiling */
+  background-position: 0 0;
+  background-repeat: repeat; /* Tile the image for seamless pattern */
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.4; /* Adjust to control texture visibility */
+  mix-blend-mode: overlay; /* Blends naturally with dark background */
 }
 
 .container {
@@ -98,15 +64,15 @@
 .serviceCard {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   padding: 2rem 1.5rem;
   border-radius: 0; /* No rounded borders */
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -116,7 +82,7 @@
     box-shadow var(--transition-base),
     background var(--transition-base),
     border-color var(--transition-base);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   overflow: hidden;
   position: relative;
   min-height: auto;
@@ -146,25 +112,25 @@
 .serviceCard:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 10px 32px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
 }
 
 .imageCard {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-alpha-10);
   padding: 0;
   border-radius: 0;
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   overflow: hidden;
   position: relative;
   min-height: 100%;

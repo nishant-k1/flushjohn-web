@@ -67,7 +67,7 @@
 }
 
 .hamburger:hover {
-  color: var(--primary-light);
+  color: var(--text-primary);
 }
 
 .hamburger:focus-visible {

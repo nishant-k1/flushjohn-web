@@ -100,7 +100,7 @@
 }
 
 .statNumber {
-  color: var(--primary-light);
+  color: var(--text-primary);
   font-size: 2.5rem;
   font-weight: 600;
   line-height: 1;
@@ -184,7 +184,7 @@
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-underline-offset: 3px;
   transition: all var(--transition-base);
   display: inline-block;
@@ -192,7 +192,7 @@
 }
 
 .cityCard:hover .viewLink {
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--text-primary);
   transform: translateX(4px);
 }
 
@@ -329,7 +329,7 @@
 }
 
 .backLink a {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -337,7 +337,7 @@
 }
 
 .backLink a:hover {
-  color: var(--primary);
+  color: var(--text-primary);
   text-decoration: underline;
 }
 

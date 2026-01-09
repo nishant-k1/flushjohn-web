@@ -146,7 +146,7 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
             <Link
               href={topic.url}
               style={{
-                color: "var(--primary-bg-color)",
+                color: "var(--text-primary)",
                 textDecoration: "none",
                 fontWeight: "bold",
                 fontSize: "0.9em",

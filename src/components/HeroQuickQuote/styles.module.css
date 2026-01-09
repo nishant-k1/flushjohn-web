@@ -40,7 +40,7 @@
 .usageTypeLabel {
   font-size: 14px !important;
   font-weight: 400 !important;
-  color: var(--primary-bg-color) !important;
+  color: var(--text-dark) !important;
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
@@ -107,12 +107,12 @@
 }
 .quickQuoteform input:focus::placeholder,
 .quickQuoteform textarea:focus::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--text-form-placeholder);
   font-size: 14px;
 }
 
 .error_field {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 .date {
@@ -126,7 +126,7 @@
   padding: 0 8px 0 12px !important;
   font-size: 14px;
   border-radius: 0;
-  color: black !important;
+  color: var(--text-dark) !important;
   height: 2rem !important;
   margin: 0 !important;
   overflow: hidden;
@@ -139,12 +139,12 @@
   border: none;
 }
 .date input::placeholder {
-  color: rgba(0, 0, 0, 0.6) !important;
+  color: var(--text-form-placeholder) !important;
   font-size: 14px;
 }
 
 .date input:focus::placeholder {
-  color: rgba(0, 0, 0, 0.4) !important;
+  color: var(--text-form-placeholder) !important;
   font-size: 14px;
 }
 
@@ -152,7 +152,7 @@
 .date input.datepicker-error,
 .date input.datepicker-error:hover,
 .date input.datepicker-error:focus {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 .usageTypeContainer {
@@ -180,7 +180,10 @@
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
 }
 
 .error::before {
@@ -253,7 +256,7 @@
   border-radius: 4px !important;
   font-size: 14px !important;
   background: white !important;
-  color: black !important;
+  color: var(--text-dark) !important;
   box-sizing: border-box !important;
 }
 
@@ -276,7 +279,7 @@
 
 /* Error state for PhoneInput */
 .quickQuoteform :global(.PhoneInput.error_field) {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-picker {

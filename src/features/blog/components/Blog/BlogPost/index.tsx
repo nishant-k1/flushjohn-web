@@ -341,7 +341,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: "#3b5998",
+                    background: "var(--social-facebook)",
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
@@ -356,7 +356,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: "#1da1f2",
+                    background: "var(--social-twitter)",
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
@@ -371,7 +371,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: "#0077b5",
+                    background: "var(--social-linkedin)",
                     color: "white",
                     padding: "8px 15px",
                     textDecoration: "none",
@@ -461,7 +461,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               <Link
                 href="/blog"
                 style={{
-                  color: "var(--primary-light)",
+                  color: "var(--text-primary)",
                   textDecoration: "none",
                   fontWeight: "500",
                   fontSize: "1.1em",

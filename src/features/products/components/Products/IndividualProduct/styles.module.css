@@ -96,7 +96,7 @@
 
 .wrapper > p > a,
 .wrapper a:not(.cityLink) {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -115,7 +115,7 @@
 .wrapper a:not(.cityLink):hover {
   color: var(--text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
 }
 
 /* Service Areas Section */

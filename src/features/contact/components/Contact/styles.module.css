@@ -170,7 +170,7 @@
   margin: 0;
   color: #ffffff;
   font-size: small;
-  background-color: #ff4444;
+  background-color: var(--error-border);
   padding: 4px 8px;
   border-radius: 4px;
   border-left: 3px solid #cc0000;
@@ -497,7 +497,7 @@
 }
 
 .serviceAreasLink {
-  color: var(--primary-light);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   margin-left: 0.5rem;
@@ -505,7 +505,7 @@
 }
 
 .serviceAreasLink:hover {
-  color: var(--primary-lighter);
+  color: var(--text-primary);
   text-decoration: underline;
 }
 

@@ -163,20 +163,20 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
         }}
         style={{
           padding: "0 12px",
-          border: `1px solid ${touched && error ? "#ff4444" : "#d9d9d9"}`,
+          border: `1px solid ${touched && error ? "var(--error-border)" : "var(--border-light)"}`,
           borderRadius: "0",
           cursor: "pointer",
           height: "2rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "white",
+          backgroundColor: "var(--bg-white)",
           transition: "border-color 0.2s",
         }}
       >
         <span
           style={{
-            color: value.length === 0 ? "rgba(0, 0, 0, 0.6)" : "#333",
+            color: value.length === 0 ? "var(--text-form-placeholder)" : "var(--text-form-value)",
             fontSize: "14px",
             fontWeight: 500,
             whiteSpace: "nowrap",
@@ -234,15 +234,15 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             top: "100%",
             left: 0,
             right: 0,
-            background: "#ffffff",
-            border: "1px solid var(--primary-bg-color, #8c6f48)",
+            background: "var(--bg-white)",
+            border: `1px solid var(--primary-bg-color, var(--primary))`,
             borderRadius: "0",
             marginTop: "0",
             maxHeight: "280px",
             overflowY: "auto",
             zIndex: 10000,
             boxShadow:
-              "0 12px 48px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(140, 111, 72, 0.2)",
+              `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
             padding: "4px 0",
             animation:
               "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -261,33 +261,31 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                 alignItems: "center",
                 gap: "10px",
                 background: isSelected(option.value)
-                  ? "rgba(140, 111, 72, 0.12)"
-                  : "#ffffff",
+                  ? "var(--primary-alpha-12)"
+                  : "var(--bg-white)",
                 borderBottom:
-                  index < options.length - 1 ? "1px solid #e8e8e8" : "none",
+                  index < options.length - 1 ? `1px solid var(--border-lighter)` : "none",
                 borderLeft: isSelected(option.value)
-                  ? "4px solid var(--primary-bg-color, #8c6f48)"
+                  ? `4px solid var(--primary-bg-color, var(--primary))`
                   : "4px solid transparent",
                 transition: "all 0.15s ease",
                 cursor: "pointer",
                 margin: index < options.length - 1 ? "0 0 2px 0" : "0",
                 borderRadius: "0",
                 boxShadow: isSelected(option.value)
-                  ? "inset 0 0 0 1px rgba(140, 111, 72, 0.1)"
+                  ? `inset 0 0 0 1px var(--primary-alpha-10)`
                   : "none",
               }}
               onMouseEnter={(e) => {
                 if (!isSelected(option.value)) {
-                  e.currentTarget.style.background = "#f8f9fa";
-                  e.currentTarget.style.borderLeft =
-                    "4px solid rgba(140, 111, 72, 0.3)";
-                  e.currentTarget.style.boxShadow =
-                    "inset 0 0 0 1px rgba(140, 111, 72, 0.08)";
+                  e.currentTarget.style.background = "var(--bg-lighter)";
+                  e.currentTarget.style.borderLeft = `4px solid var(--primary-alpha-30)`;
+                  e.currentTarget.style.boxShadow = `inset 0 0 0 1px var(--primary-alpha-08)`;
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isSelected(option.value)) {
-                  e.currentTarget.style.background = "#ffffff";
+                  e.currentTarget.style.background = "var(--bg-white)";
                   e.currentTarget.style.borderLeft = "4px solid transparent";
                   e.currentTarget.style.boxShadow = "none";
                 }
@@ -304,16 +302,16 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   minWidth: "20px",
                   border: `2px solid ${
                     isSelected(option.value)
-                      ? "var(--primary-bg-color, #8c6f48)"
-                      : "#c0c0c0"
+                      ? "var(--primary-bg-color, var(--primary))"
+                      : "var(--border-checkbox)"
                   }`,
                   borderRadius: "4px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   background: isSelected(option.value)
-                    ? "var(--primary-bg-color, #8c6f48)"
-                    : "#ffffff",
+                    ? "var(--primary-bg-color, var(--primary))"
+                    : "var(--bg-white)",
                   transition: "all 0.15s ease",
                   cursor: "pointer",
                 }}
@@ -336,8 +334,8 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   fontSize: "14px",
                   fontWeight: isSelected(option.value) ? 600 : 500,
                   color: isSelected(option.value)
-                    ? "var(--primary-bg-color, #8c6f48)"
-                    : "#1a1a1a",
+                    ? "var(--primary-bg-color, var(--primary))"
+                    : "var(--text-dark)",
                   flex: 1,
                   cursor: "pointer",
                   lineHeight: "1.2",
@@ -352,8 +350,8 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                     display: "flex",
                     alignItems: "center",
                     gap: "4px",
-                    background: "white",
-                    border: "1px solid #d9d9d9",
+                    background: "var(--bg-white)",
+                    border: `1px solid var(--border-light)`,
                     borderRadius: "4px",
                     padding: "2px",
                   }}
@@ -372,11 +370,11 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                       width: "24px",
                       height: "24px",
                       border: "none",
-                      background: "#f0f0f0",
+                      background: "var(--bg-button-light)",
                       cursor: "pointer",
                       fontSize: "14px",
                       fontWeight: "bold",
-                      color: "#666",
+                      color: "var(--gray-text)",
                       borderRadius: "2px",
                     }}
                   >

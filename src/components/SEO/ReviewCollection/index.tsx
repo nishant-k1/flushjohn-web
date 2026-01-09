@@ -294,7 +294,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         >
           <div>
             <h4
-              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 5px 0", color: "var(--text-primary)" }}
             >
               Help Others
             </h4>
@@ -311,7 +311,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
           </div>
           <div>
             <h4
-              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 5px 0", color: "var(--text-primary)" }}
             >
               Improve Service
             </h4>
@@ -328,7 +328,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
           </div>
           <div>
             <h4
-              style={{ margin: "0 0 5px 0", color: "var(--primary-bg-color)" }}
+              style={{ margin: "0 0 5px 0", color: "var(--text-primary)" }}
             >
               Build Trust
             </h4>

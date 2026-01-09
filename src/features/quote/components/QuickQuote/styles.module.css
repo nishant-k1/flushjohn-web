@@ -98,7 +98,7 @@
 .usageTypeLabel {
   font-size: 14px !important;
   font-weight: 400 !important;
-  color: var(--primary-bg-color) !important;
+  color: var(--text-dark) !important;
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
@@ -170,7 +170,7 @@
 }
 
 .error_field {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 /* Date field styles - now handled by DateInput component */
@@ -342,7 +342,7 @@
 
 /* Error state for PhoneInput */
 .quickQuoteform :global(.PhoneInput.error_field) {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-picker {

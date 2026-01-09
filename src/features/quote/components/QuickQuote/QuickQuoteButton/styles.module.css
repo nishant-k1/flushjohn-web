@@ -214,7 +214,7 @@
 }
 
 .calloutClose:hover {
-  color: var(--primary-light);
+  color: var(--text-primary);
   transform: scale(1.2);
 }
 

@@ -579,7 +579,7 @@ export default function PortaPottyRentalCity({
                 textAlign: "center",
                 marginTop: "2rem",
                 padding: "1.5rem",
-                background: "rgba(255, 255, 255, 0.05)",
+                background: "var(--white-alpha-05)",
                 borderRadius: "var(--radius-md)",
               }}
             >
@@ -686,7 +686,7 @@ export default function PortaPottyRentalCity({
                       <h4
                         style={{
                           margin: "0 0 5px 0",
-                          color: "var(--primary-bg-color)",
+                          color: "var(--text-primary)",
                         }}
                       >
                         {nearbyCity.displayName}, {nearbyCity.state}
@@ -721,7 +721,7 @@ export default function PortaPottyRentalCity({
                   <Link
                     href="/rental-products/standard-porta-potty"
                     style={{
-                      color: "var(--primary-light)",
+                      color: "var(--text-primary)",
                       textDecoration: "underline",
                     }}
                   >
@@ -731,7 +731,7 @@ export default function PortaPottyRentalCity({
                   <Link
                     href="/rental-products/luxury-restroom-trailer"
                     style={{
-                      color: "var(--primary-light)",
+                      color: "var(--text-primary)",
                       textDecoration: "underline",
                     }}
                   >
@@ -741,7 +741,7 @@ export default function PortaPottyRentalCity({
                   <Link
                     href="/rental-products/ada-compliant-porta-potty"
                     style={{
-                      color: "var(--primary-light)",
+                      color: "var(--text-primary)",
                       textDecoration: "underline",
                     }}
                   >
@@ -756,7 +756,7 @@ export default function PortaPottyRentalCity({
                         size={24}
                         style={{
                           marginBottom: "0.5rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                         }}
                       />
                       <h3>{landmark}</h3>
@@ -765,7 +765,7 @@ export default function PortaPottyRentalCity({
                         href="/quote"
                         style={{
                           fontSize: "0.875rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                           marginTop: "0.5rem",
                           display: "inline-block",
                         }}
@@ -797,7 +797,7 @@ export default function PortaPottyRentalCity({
                   <Link
                     href="/rental-products"
                     style={{
-                      color: "var(--primary-light)",
+                      color: "var(--text-primary)",
                       textDecoration: "underline",
                     }}
                   >
@@ -810,7 +810,7 @@ export default function PortaPottyRentalCity({
                           <Link
                             href={`/porta-potty-rental/${nc.name}`}
                             style={{
-                              color: "var(--primary-light)",
+                              color: "var(--text-primary)",
                               textDecoration: "underline",
                             }}
                           >
@@ -831,7 +831,7 @@ export default function PortaPottyRentalCity({
                         size={24}
                         style={{
                           marginBottom: "0.5rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                         }}
                       />
                       <h3>{event}</h3>
@@ -842,7 +842,7 @@ export default function PortaPottyRentalCity({
                         href="/quote"
                         style={{
                           fontSize: "0.875rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                           marginTop: "0.5rem",
                           display: "inline-block",
                         }}
@@ -878,7 +878,7 @@ export default function PortaPottyRentalCity({
                         size={20}
                         style={{
                           marginBottom: "0.5rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                         }}
                       />
                       <h4>{neighborhood}</h4>
@@ -916,7 +916,7 @@ export default function PortaPottyRentalCity({
                         size={24}
                         style={{
                           marginBottom: "0.5rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                         }}
                       />
                       <h3>Compliance Requirement</h3>
@@ -943,7 +943,7 @@ export default function PortaPottyRentalCity({
                         size={24}
                         style={{
                           marginBottom: "0.5rem",
-                          color: "var(--primary-light)",
+                          color: "var(--text-primary)",
                         }}
                       />
                       <h3>{faq.question}</h3>

@@ -132,7 +132,7 @@
 }
 
 .stateNameLink:hover .stateName {
-  color: var(--primary-light);
+  color: var(--text-primary);
   border-bottom-color: var(--primary-light);
 }
 
@@ -196,7 +196,7 @@
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-underline-offset: 3px;
   transition: all var(--transition-base);
   display: inline-block;
@@ -205,7 +205,7 @@
 
 .cityCard:hover .viewLink {
   color: var(--text-primary);
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--text-primary);
   transform: translateX(4px);
 }
 
@@ -270,7 +270,7 @@
 .contactItem a {
   color: var(--text-primary);
   text-decoration: underline;
-  text-decoration-color: var(--primary-light);
+  text-decoration-color: var(--text-primary);
   text-underline-offset: 3px;
   transition: all var(--transition-base);
   font-weight: 500;
@@ -278,7 +278,7 @@
 
 .contactItem a:hover {
   color: var(--text-primary);
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--text-primary);
   text-decoration-thickness: 2px;
 }
 

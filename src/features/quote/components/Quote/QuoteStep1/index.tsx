@@ -102,7 +102,7 @@ const QuoteStep1 = () => {
             <div className={styles.usage_type_row}>
               <label className={styles.field_label}>
                 Usage Type
-                <span style={{ color: "#ff4444", fontSize: "x-large" }}>
+                <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>
                   {" "}
                   *
                 </span>

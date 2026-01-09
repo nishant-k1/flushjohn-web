@@ -74,11 +74,11 @@
 }
 
 .inputContainer :global(.PhoneInputInput.error_field) {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 .error_field {
-  border: 1px solid #ff4444 !important;
+  border: 1px solid var(--error-border) !important;
 }
 
 .error {

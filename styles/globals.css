@@ -69,8 +69,73 @@
   --success-dark: #5a4630; /* Darker variant */
   --error: #6d5637; /* Use primary-dark instead of red */
   --error-dark: #5a4630; /* Darker variant */
+  --error-red: #ff4444; /* Error/validation red */
+  --error-border: #ff4444; /* Error border color */
   --warning: #a5896a; /* Use primary-light */
   --info: #8c6f48; /* Use primary */
+
+  /* Border Colors - Light borders for forms and dividers */
+  --border-light: #d9d9d9; /* Light border default */
+  --border-lighter: #e8e8e8; /* Even lighter border */
+  --border-checkbox: #c0c0c0; /* Checkbox border */
+  --border-default: var(--border-light); /* Default border */
+
+  /* Form Text Colors - Text colors for form inputs */
+  --text-form-placeholder: rgba(0, 0, 0, 0.6); /* Placeholder text */
+  --text-form-value: #333; /* Form input value text */
+  --text-dark: #1a1a1a; /* Dark text for light backgrounds */
+
+  /* Background Colors - White and light backgrounds */
+  --bg-white: #ffffff; /* Pure white */
+  --bg-light: #f7fafc; /* Light background */
+  --bg-lighter: #f8f9fa; /* Even lighter background */
+  --bg-input: #ffffff; /* Input background */
+  --bg-button-light: #f0f0f0; /* Light button background */
+  --bg-gray-light: #f2f2f2; /* Light gray background */
+  --bg-gray: #ddd; /* Medium gray background */
+
+  /* Primary Color with Opacity Variants */
+  --primary-alpha-05: rgba(140, 111, 72, 0.05);
+  --primary-alpha-06: rgba(140, 111, 72, 0.06);
+  --primary-alpha-08: rgba(140, 111, 72, 0.08);
+  --primary-alpha-10: rgba(140, 111, 72, 0.1);
+  --primary-alpha-12: rgba(140, 111, 72, 0.12);
+  --primary-alpha-15: rgba(140, 111, 72, 0.15);
+  --primary-alpha-20: rgba(140, 111, 72, 0.2);
+  --primary-alpha-30: rgba(140, 111, 72, 0.3);
+
+  /* White Overlay Variants */
+  --white-alpha-05: rgba(255, 255, 255, 0.05);
+  --white-alpha-08: rgba(255, 255, 255, 0.08);
+  --white-alpha-10: rgba(255, 255, 255, 0.1);
+  --white-alpha-12: rgba(255, 255, 255, 0.12);
+  --white-alpha-15: rgba(255, 255, 255, 0.15);
+  --white-alpha-18: rgba(255, 255, 255, 0.18);
+  --white-alpha-20: rgba(255, 255, 255, 0.2);
+  --white-alpha-25: rgba(255, 255, 255, 0.25);
+  --white-alpha-30: rgba(255, 255, 255, 0.3);
+
+  /* Black/Dark Overlay Variants */
+  --black-alpha-10: rgba(0, 0, 0, 0.1);
+  --black-alpha-12: rgba(0, 0, 0, 0.12);
+  --black-alpha-15: rgba(0, 0, 0, 0.15);
+  --black-alpha-18: rgba(0, 0, 0, 0.18);
+  --black-alpha-20: rgba(0, 0, 0, 0.2);
+  --black-alpha-25: rgba(0, 0, 0, 0.25);
+
+  /* Rating/Star Colors */
+  --rating-active: #FFD700; /* Gold for active stars */
+  --rating-inactive: rgba(255, 255, 255, 0.25); /* Inactive star color */
+  --rating-glow: rgba(255, 215, 0, 0.5); /* Star glow effect */
+
+  /* Social Media Colors */
+  --social-facebook: #3b5998;
+  --social-twitter: #1da1f2;
+  --social-linkedin: #0077b5;
+
+  /* Additional Gray Colors */
+  --gray-medium: #6c757d;
+  --gray-text: #666;
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);

@@ -22,7 +22,7 @@ const PhoneField = ({ label, ...props }: any) => {
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel}>
         {label}
-        <span style={{ color: "#ff4444", fontSize: "x-large" }}>*</span>
+        <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>*</span>
       </label>
       <div className={styles.inputContainer}>
         <div title="Enter 10-digit phone number">
