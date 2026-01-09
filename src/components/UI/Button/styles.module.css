@@ -84,20 +84,20 @@
 
 .contained.primary .spinner,
 .contained .spinner {
-  border-color: rgba(255, 255, 255, 0.9);
+  border-color: var(--white-alpha-90);
   border-top-color: transparent;
 }
 
 .contained.secondary {
   background: var(--primary);
   color: var(--text-primary);
-  box-shadow: 0 2px 4px rgba(140, 111, 72, 0.3);
+  box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.secondary:hover {
   background: var(--primary-light);
   color: var(--text-primary);
-  box-shadow: 0 4px 8px rgba(140, 111, 72, 0.4);
+  box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.secondary:active {
@@ -109,13 +109,13 @@
 .contained.success {
   background: var(--primary);
   color: var(--text-primary);
-  box-shadow: 0 2px 4px rgba(140, 111, 72, 0.3);
+  box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.success:hover {
   background: var(--primary-light);
   color: var(--text-primary);
-  box-shadow: 0 4px 8px rgba(140, 111, 72, 0.4);
+  box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.success:active {
@@ -127,13 +127,13 @@
 .contained.error {
   background: var(--primary-dark);
   color: var(--text-primary);
-  box-shadow: 0 2px 4px rgba(140, 111, 72, 0.3);
+  box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.error:hover {
   background: var(--primary);
   color: var(--text-primary);
-  box-shadow: 0 4px 8px rgba(140, 111, 72, 0.4);
+  box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.error:active {
@@ -150,18 +150,18 @@
 
 .outlined.primary {
   color: var(--text-primary);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--white-alpha-30);
   background: transparent;
 }
 
 .outlined.primary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.primary:active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
@@ -169,18 +169,18 @@
 
 .outlined.secondary {
   color: var(--text-primary);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--white-alpha-30);
   background: transparent;
 }
 
 .outlined.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.secondary:active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
@@ -188,18 +188,18 @@
 
 .outlined.success {
   color: var(--text-primary);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--white-alpha-30);
   background: transparent;
 }
 
 .outlined.success:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.success:active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
@@ -217,12 +217,12 @@
 }
 
 .text.primary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   color: var(--text-primary);
 }
 
 .text.primary:active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   color: var(--text-primary);
   transform: none;
 }
@@ -232,12 +232,12 @@
 }
 
 .text.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   color: var(--text-primary);
 }
 
 .text.secondary:active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   color: var(--text-primary);
   transform: none;
 }
@@ -267,7 +267,7 @@
   display: inline-block !important;
   width: 18px;
   height: 18px;
-  border: 3px solid rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--white-alpha-90);
   border-radius: 0;
   border-top-color: transparent;
   animation: spin 0.8s linear infinite;

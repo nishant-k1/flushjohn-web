@@ -17,8 +17,8 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(44, 62, 80, 0.3) 0%,
-    rgba(52, 73, 94, 0.3) 100%
+    var(--hero-overlay-gradient-start) 0%,
+    var(--hero-overlay-gradient-end) 100%
   );
   z-index: 0;
   pointer-events: none;
@@ -56,8 +56,8 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(44, 62, 80, 0.25) 0%,
-    rgba(52, 73, 94, 0.25) 100%
+    var(--hero-overlay-gradient-start-light) 0%,
+    var(--hero-overlay-gradient-end-light) 100%
   );
   z-index: 0;
   pointer-events: none;
@@ -138,9 +138,9 @@
   gap: var(--spacing-sm);
   background: linear-gradient(
     135deg,
-    rgba(90, 74, 58, 0.5) 0%,
-    rgba(90, 74, 58, 0.4) 100%
-  ); /* Darker background for better contrast */
+    var(--bg-dark-alpha-50) 0%,
+    var(--bg-dark-alpha-40) 100%
+  );
   backdrop-filter: blur(10px);
   border: 1px solid var(--white-alpha-30); /* Lighter border for better visibility */
   padding: var(--spacing-sm) var(--spacing-md);
@@ -149,18 +149,18 @@
   font-weight: 500;
   color: var(--text-primary); /* Pure white for maximum contrast */
   margin-bottom: var(--spacing-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Darker shadow for better contrast */
+  box-shadow: 0 2px 8px var(--black-alpha-30);
   letter-spacing: 0.01em;
   min-height: 2rem; /* Reserve space to prevent layout shift */
   line-height: 1.5;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); /* Add text shadow for better readability */
+  text-shadow: 0 1px 2px var(--black-alpha-40);
 }
 
 .badgeIcon {
-  color: #ffffff; /* Pure white for maximum contrast instead of primary-light */
+  color: var(--text-primary);
   font-weight: 700;
   font-size: 1rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px var(--black-alpha-40);
 }
 
 .heroTitle h1 {
@@ -168,8 +168,8 @@
   font-weight: 400;
   color: var(--text-primary); /* Pure white for maximum contrast */
   text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.6),
-    0 1px 3px rgba(0, 0, 0, 0.4); /* Stronger shadow for better contrast */
+    0 2px 8px var(--black-alpha-60),
+    0 1px 3px var(--black-alpha-40);
   letter-spacing: 0.02em;
   line-height: 1.3;
   margin: 0;
@@ -187,8 +187,8 @@
   min-height: 3.2em; /* Reserve space for 2 lines to prevent layout shift */
   display: block;
   text-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.5),
-    0 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow for better readability */
+    0 1px 4px var(--black-alpha-50),
+    0 1px 2px var(--black-alpha-30);
 }
 
 .heroCta {
@@ -219,9 +219,9 @@
   cursor: pointer;
   text-decoration: none;
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 4px 16px var(--black-alpha-15),
     inset 0 1px 0 var(--white-alpha-10);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px var(--black-alpha-10);
 }
 
 .heroImage {
@@ -256,7 +256,7 @@
   color: var(--text-primary);
   transform: none;
   box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.2),
+    0 6px 20px var(--black-alpha-20),
     inset 0 1px 0 var(--white-alpha-15);
 }
 
@@ -324,7 +324,7 @@
   color: var(--text-primary);
   transform: none;
   box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.2),
+    0 6px 20px var(--black-alpha-20),
     inset 0 1px 0 var(--white-alpha-15);
 }
 

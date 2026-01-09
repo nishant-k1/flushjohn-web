@@ -12,7 +12,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   border-right: 1px solid var(--primary-text-color);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: var(--black-alpha-25) 0px 5px 15px;
   z-index: 250;
   transition: 0.3s;
 }
@@ -56,7 +56,7 @@
 }
 .sidebar a:hover {
   color: var(--text-primary);
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 6px var(--white-alpha-30);
   transition: var(--transition-base);
 }
 

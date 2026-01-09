@@ -7,7 +7,7 @@
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--black-alpha-60);
   z-index: 10000;
   animation: fadeIn 0.2s ease-out;
   display: flex;
@@ -37,8 +37,8 @@
   max-width: 500px;
   width: calc(100% - 40px);
   box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
+    0 24px 48px var(--black-alpha-25),
+    0 0 0 1px var(--black-alpha-05);
   text-align: center;
   position: relative;
   transform: scale(0.95) translateY(-10px);
@@ -102,7 +102,7 @@
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  stroke: #fff;
+  stroke: var(--text-primary);
   stroke-width: 3;
   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
@@ -137,7 +137,7 @@
 .title {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a; /* Slightly darker for better contrast */
+  color: var(--gray-darker);
   margin: 0 0 12px 0;
   font-family: var(--font-poppins);
   line-height: 1.3;
@@ -145,7 +145,7 @@
 
 .message {
   font-size: 16px;
-  color: #4a4a4a; /* Softer gray for readability */
+  color: var(--gray-dark);
   margin: 0 0 8px 0;
   line-height: 1.5;
   font-family: var(--font-poppins);
@@ -154,7 +154,7 @@
 
 .submessage {
   font-size: 14px;
-  color: #666;
+  color: var(--gray-text);
   margin: 0;
   line-height: 1.5;
   font-family: var(--font-poppins);
@@ -166,7 +166,7 @@
   width: 100%;
   padding: 14px 24px;
   background-color: var(--primary);
-  color: #ffffff;
+  color: var(--text-primary);
   border: none; /* Remove border for cleaner look */
   border-radius: 6px; /* Subtle rounded corners */
   font-size: 16px;
@@ -180,14 +180,14 @@
 .closeButton:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: #ffffff;
+  color: var(--text-primary);
   box-shadow: var(--shadow-primary-lg);
 }
 
 .closeButton:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-  color: #ffffff;
+  color: var(--text-primary);
   transform: translateY(0);
 }
 

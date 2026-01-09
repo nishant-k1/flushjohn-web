@@ -151,7 +151,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
         padding: "30px",
         borderRadius: "0",
         marginTop: "40px",
-        border: "1px solid rgba(255, 255, 255, 0.15)",
+        border: "1px solid var(--white-alpha-15)",
       }}
     >
       <h2
@@ -183,7 +183,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                 background: "var(--neutral-600)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                border: "1px solid var(--white-alpha-15)",
               }}
             >
               <h4
@@ -233,7 +233,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                 background: "var(--neutral-600)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                border: "1px solid var(--white-alpha-15)",
               }}
             >
               <h4
@@ -283,7 +283,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
                 background: "var(--neutral-600)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                border: "1px solid var(--white-alpha-15)",
               }}
             >
               <h4
@@ -325,7 +325,7 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
           background: "var(--neutral-600)",
           padding: "20px",
           borderRadius: "0",
-          border: "1px solid rgba(255, 255, 255, 0.15)",
+          border: "1px solid var(--white-alpha-15)",
         }}
       >
         <h3 style={{ marginBottom: "15px", color: "var(--text-primary)" }}>

@@ -45,16 +45,16 @@
 .faqItem {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   padding: 1.5rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
   margin-bottom: 1.5rem;
   transition:
     transform var(--transition-base),
@@ -66,13 +66,13 @@
 .faqItem:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 8px 28px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
 }
 
@@ -102,11 +102,11 @@
   font-size: 1rem;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   color: var(--text-primary);
   outline: none;
@@ -114,30 +114,30 @@
 }
 
 .searchInput::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-alpha-30);
   opacity: 1;
 }
 
 .searchInput:focus {
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 16px var(--black-alpha-10),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .categoryButton {
   padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   color: var(--text-primary);
@@ -150,10 +150,10 @@
 .categoryButton:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--white-alpha-30);
   transform: translateY(-1px);
 }
 
@@ -173,15 +173,15 @@
   padding: 2.5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 8px 32px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-20);
   text-align: center;
 }
 
@@ -220,7 +220,7 @@
   font-weight: 500;
   border: 1px solid var(--primary-light);
   transition: all var(--transition-base);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px var(--black-alpha-10);
 }
 
 .ctaLink:hover {
@@ -230,6 +230,6 @@
     var(--primary-dark) 100%
   );
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px var(--black-alpha-15);
   border-color: var(--primary);
 }

@@ -306,7 +306,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                 padding: "20px",
                 borderRadius: "0",
                 marginBottom: "40px",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                border: "1px solid var(--white-alpha-15)",
               }}
             >
               <h3

@@ -26,7 +26,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+  border-bottom: solid 2px var(--white-alpha-30);
   background-color: transparent;
   outline: none;
   height: 2rem;
@@ -39,7 +39,7 @@
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus,
 .input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px rgba(140, 111, 72, 0.3) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-alpha-30) inset !important;
   -webkit-text-fill-color: var(--text-primary) !important;
 }
 
@@ -61,12 +61,12 @@
 }
 
 .input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-alpha-30);
   opacity: 1;
 }
 
 .input:focus::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-alpha-20);
 }
 
 .form input {
@@ -77,7 +77,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+  border-bottom: solid 2px var(--white-alpha-30);
   background-color: transparent;
   outline: none;
   height: 2rem;
@@ -90,7 +90,7 @@
 .form input:-webkit-autofill:hover,
 .form input:-webkit-autofill:focus,
 .form input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px rgba(140, 111, 72, 0.3) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-alpha-30) inset !important;
   -webkit-text-fill-color: var(--text-primary) !important;
 }
 
@@ -112,12 +112,12 @@
 }
 
 .form input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-alpha-30);
   opacity: 1;
 }
 
 .form input:focus::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-alpha-20);
 }
 
 .textarea {
@@ -128,7 +128,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+  border-bottom: solid 2px var(--white-alpha-30);
   background-color: transparent;
   outline: none;
   height: 100px;
@@ -157,25 +157,25 @@
 }
 
 .textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-alpha-30);
   opacity: 1;
 }
 
 .textarea:focus::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-alpha-20);
 }
 
 .error {
   padding: 0;
   margin: 0;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: small;
   background-color: var(--error-border);
   padding: 4px 8px;
   border-radius: 4px;
-  border-left: 3px solid #cc0000;
+  border-left: 3px solid var(--error-dark);
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
 }
 
 .form {
@@ -247,8 +247,8 @@
   border-radius: 0;
   cursor: pointer;
   transition: var(--transition-base);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  box-shadow: 0 2px 8px var(--black-alpha-30);
 }
 
 .button:hover {
@@ -259,9 +259,9 @@
   );
   border-color: var(--primary-lighter);
   color: var(--text-primary) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px var(--black-alpha-40);
   transition: var(--transition-base);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 3px var(--black-alpha-40);
 }
 
 .button:active {
@@ -273,8 +273,8 @@
   border-color: var(--primary);
   color: var(--text-primary) !important;
   transform: translateY(0);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  box-shadow: 0 1px 4px var(--black-alpha-30);
 }
 
 .button:focus-visible {
@@ -292,13 +292,13 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  box-shadow: 0 1px 4px var(--black-alpha-20);
 }
 
 .button:disabled:hover {
   transform: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 4px var(--black-alpha-20) !important;
   background: linear-gradient(
     135deg,
     var(--primary-dark) 0%,
@@ -306,7 +306,7 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
 }
 
 .button * {
@@ -329,7 +329,7 @@
   font-size: medium;
   font-weight: 900;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
 .notSubmitted {
@@ -425,7 +425,7 @@
   }
 
   .message {
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid var(--white-alpha-30);
     padding: 0;
     margin: 0;
   }
@@ -449,7 +449,7 @@
 .mapContainer {
   margin-top: var(--spacing-3xl);
   padding-top: var(--spacing-3xl);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid var(--white-alpha-15);
 }
 
 .mapTitle {
@@ -466,8 +466,8 @@
   margin-bottom: var(--spacing-lg);
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 24px var(--black-alpha-12);
+  border: 1px solid var(--white-alpha-15);
 }
 
 .mapWrapper iframe {

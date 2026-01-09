@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   /* background-color: rgba(0 0 0 / 0.86); */
-  background-color: rgba(44, 38, 30, 0.85);
+  background-color: var(--black-alpha-60);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,15 +23,15 @@
   width: 300px;
   background: linear-gradient(
     135deg,
-    rgba(90, 74, 58, 0.95) 0%,
-    rgba(74, 62, 50, 0.95) 100%
+    var(--bg-dark-alpha) 0%,
+    var(--primary-dark) 100%
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 0;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px var(--black-alpha-25),
+    inset 0 1px 0 var(--white-alpha-10);
   overflow: hidden;
 }
 
@@ -50,10 +50,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 0;
-  background-color: rgba(90, 74, 58, 0.8);
+  background-color: var(--primary-dark);
   transition: all 0.2s ease;
   z-index: 10000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--black-alpha-30);
 }
 
 @media (max-width: 400px) {
@@ -74,7 +74,7 @@
 
 .quickQuoteform h2 {
   text-align: left;
-  color: white;
+  color: var(--text-primary);
   font-weight: 400;
   padding-right: 40px;
   margin: 0 0 1rem 0;
@@ -87,7 +87,7 @@
   flex-direction: column;
   gap: 6px;
   width: 100%;
-  background: white;
+  background: var(--bg-white);
   padding: 8px 12px;
   margin-bottom: 4px;
   border-radius: 0;
@@ -134,7 +134,7 @@
   border: none;
   padding-left: 12px;
   font-size: 14px;
-  color: black;
+  color: var(--text-form-value);
   border-radius: 0;
   transition:
     color 0.5s,
@@ -158,12 +158,12 @@
 
 .quickQuoteform input::placeholder,
 .quickQuoteform textarea::placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-form-placeholder);
   font-size: 14px;
 }
 .quickQuoteform input:focus::placeholder,
 .quickQuoteform textarea:focus::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--text-form-placeholder);
   font-size: 14px;
 }
 
@@ -213,14 +213,14 @@
   padding: 6px 10px;
   margin: 0;
   margin-bottom: 6px;
-  background-color: rgba(255, 68, 68, 0.9);
+  background-color: var(--error-red-alpha-90);
   font-size: 10px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   border-radius: 6px;
-  border-left: 3px solid #cc0000;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-left: 3px solid var(--error-dark);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  box-shadow: 0 4px 12px var(--black-alpha-25);
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
@@ -233,8 +233,8 @@
   top: 100%;
   right: 16px;
   border: 6px solid transparent;
-  border-top-color: rgba(255, 68, 68, 0.9);
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+  border-top-color: var(--error-red-alpha-90);
+  filter: drop-shadow(0 2px 2px var(--black-alpha-10));
 }
 
 .errorVisible {
@@ -316,8 +316,8 @@
   border: none !important;
   border-radius: 4px !important;
   font-size: 14px !important;
-  background: white !important;
-  color: black !important;
+  background: var(--bg-white) !important;
+  color: var(--text-form-value) !important;
   box-sizing: border-box !important;
 }
 

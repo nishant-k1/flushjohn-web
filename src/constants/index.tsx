@@ -68,3 +68,6 @@ export const s3assets: string = process.env
   .NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
 export const websiteURL: string = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
+
+// Theme exports
+export { theme, type Theme, type ThemeColors, type ThemeSpacing } from "./theme";

@@ -18,7 +18,7 @@
   bottom: 0;
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgba(0, 0, 0, 0.02) 1px,
+    var(--black-alpha-10) 1px,
     transparent 0
   );
   background-size: 20px 20px;
@@ -45,14 +45,14 @@
   padding: 2rem 1.5rem;
   margin: 0;
   border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-alpha-20);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   display: grid;
@@ -94,13 +94,13 @@
 
 .wrapper:hover {
   box-shadow:
-    0 10px 32px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.18) 0%,
-    rgba(255, 255, 255, 0.12) 100%
+    var(--white-alpha-18) 0%,
+    var(--white-alpha-12) 100%
   );
 }
 
@@ -134,7 +134,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    var(--white-alpha-20),
     transparent
   );
   transition: left 0.5s ease;

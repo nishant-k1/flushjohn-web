@@ -14,7 +14,7 @@
 .hero {
   text-align: center;
   padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid var(--white-alpha-15);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -42,7 +42,7 @@
   font-weight: 400;
   margin-bottom: var(--spacing-xl);
   color: var(--text-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid var(--white-alpha-15);
   padding-bottom: var(--spacing-md);
   font-family: var(--font-merriweather);
 }
@@ -68,7 +68,7 @@
   padding: var(--spacing-xl);
   background: var(--neutral-700);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-left: 4px solid var(--primary);
 }
 
@@ -98,7 +98,7 @@
   padding: var(--spacing-xl);
   background: var(--neutral-700);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
 }
 
 .infoCard h3 {
@@ -137,7 +137,7 @@
   padding: var(--spacing-xl);
   background: var(--neutral-700);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
 }
 
 .benefit h3 {
@@ -163,7 +163,7 @@
 
 .stateList li {
   padding: var(--spacing-md) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid var(--white-alpha-15);
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -194,7 +194,7 @@
   border-radius: var(--radius-md);
   color: var(--text-primary);
   margin-top: var(--spacing-4xl);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
 }
 
 .cta h2 {

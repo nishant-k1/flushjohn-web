@@ -37,11 +37,11 @@ const CustomInput = React.memo(
           if (isHovered) {
             iconRef.current.style.opacity = "0.8";
             iconRef.current.style.filter =
-              "drop-shadow(0 0 6px rgba(140, 111, 72, 0.3))";
+              `drop-shadow(0 0 6px var(--primary-alpha-30))`;
           } else {
             iconRef.current.style.opacity = "0.6";
             iconRef.current.style.filter =
-              "drop-shadow(0 0 4px rgba(140, 111, 72, 0.2))";
+              `drop-shadow(0 0 4px var(--primary-alpha-20))`;
           }
         }
       }, [isHovered]);
@@ -73,20 +73,20 @@ const CustomInput = React.memo(
             onClick={onClick}
             style={{
               transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              filter: "drop-shadow(0 0 4px rgba(140, 111, 72, 0.2))",
+              filter: "drop-shadow(0 0 4px var(--primary-alpha-20))",
               opacity: "0.6",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.opacity = "1";
               e.currentTarget.style.filter =
-                "drop-shadow(0 0 8px rgba(140, 111, 72, 0.4))";
+                "drop-shadow(0 0 8px var(--primary-alpha-40))";
               e.currentTarget.style.transform = "translateY(-50%)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.opacity = isHovered ? "0.8" : "0.6";
               e.currentTarget.style.filter = isHovered
-                ? "drop-shadow(0 0 6px rgba(140, 111, 72, 0.3))"
-                : "drop-shadow(0 0 4px rgba(140, 111, 72, 0.2))";
+                ? "drop-shadow(0 0 6px var(--primary-alpha-30))"
+                : "drop-shadow(0 0 4px var(--primary-alpha-20))";
               e.currentTarget.style.transform = "translateY(-50%)";
             }}
           >

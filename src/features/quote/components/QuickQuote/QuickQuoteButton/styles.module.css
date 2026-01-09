@@ -42,9 +42,9 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: var(--black-alpha-50) 0px 22px 70px 4px;
   z-index: 9998;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 3px var(--black-alpha-50);
   letter-spacing: 0.05em;
 }
 
@@ -54,7 +54,7 @@
   width: 92%;
   height: 92%;
   border-radius: 50%;
-  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(var(--text-primary) 0, transparent 100%);
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -65,7 +65,7 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  box-shadow: rgba(0, 0, 0, 0.6) 0px 22px 70px 4px;
+  box-shadow: var(--black-alpha-60) 0px 22px 70px 4px;
 }
 
 .quickQuoteBtn:active {
@@ -101,7 +101,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 20px;
+  box-shadow: var(--black-alpha-40) 0px 8px 20px;
   z-index: 9998;
 }
 
@@ -115,7 +115,7 @@
   height: 92%;
   border-radius: 50%;
   background-color: initial;
-  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(var(--text-primary) 0, transparent 100%);
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -126,7 +126,7 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 20px;
+  box-shadow: var(--black-alpha-50) 0px 8px 20px;
 }
 
 .phoneBtn:active {
@@ -144,11 +144,11 @@
   position: fixed;
   left: 100px;
   bottom: 20px;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: var(--text-primary);
   padding: 12px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--black-alpha-30);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -180,7 +180,7 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #2c3e50;
+  border-right: 10px solid var(--primary-dark);
   z-index: 10001;
 }
 
@@ -188,13 +188,13 @@
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
 .calloutClose {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;

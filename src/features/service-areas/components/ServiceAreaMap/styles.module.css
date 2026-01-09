@@ -3,13 +3,13 @@
   padding: var(--spacing-xl);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    var(--white-alpha-08) 0%,
+    var(--white-alpha-05) 100%
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 0;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 24px var(--black-alpha-12);
 }
 
 .mapTitle {
@@ -45,16 +45,16 @@
 .stateCard {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   padding: var(--spacing-lg);
   border-radius: 0;
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
+  border: 1px solid var(--white-alpha-20);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
@@ -65,9 +65,9 @@
 
 .stateCard:hover {
   box-shadow:
-    0 10px 32px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
 }
 
 .stateHeader {
@@ -91,10 +91,10 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 500;
-  background: rgba(140, 111, 72, 0.2);
+  background: var(--primary-alpha-20);
   padding: 4px 12px;
   border-radius: 0;
-  border: 1px solid rgba(140, 111, 72, 0.3);
+  border: 1px solid var(--primary-alpha-30);
 }
 
 .citiesList {
@@ -121,7 +121,7 @@
   color: var(--text-primary);
   opacity: 1;
   border-left-color: var(--primary-light);
-  background: rgba(140, 111, 72, 0.1);
+  background: var(--primary-alpha-10);
   transform: translateX(4px);
 }
 
@@ -135,7 +135,7 @@
   transition: all var(--transition-base);
   margin-top: auto;
   padding-top: var(--spacing-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--white-alpha-10);
 }
 
 .viewStateLink:hover {
@@ -150,7 +150,7 @@
   gap: var(--spacing-3xl);
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-xl);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid var(--white-alpha-15);
   flex-wrap: wrap;
 }
 

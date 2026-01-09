@@ -6,7 +6,7 @@
   z-index: 1000;
   background: var(--bg-primary);
   border-top: 2px solid var(--primary);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -4px 20px var(--black-alpha-30);
   padding: 1rem;
   animation: slideUp 0.3s ease-out;
 }
@@ -83,7 +83,7 @@
 .quoteButton:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(140, 111, 72, 0.4);
+  box-shadow: 0 4px 12px var(--primary-alpha-40);
 }
 
 .phoneButton {

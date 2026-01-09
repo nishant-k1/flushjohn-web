@@ -1,7 +1,7 @@
 .combinedBar {
   width: 100%;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  box-shadow: 0 4px 12px var(--black-alpha-15);
   border-top: 2px solid var(--primary-light);
 }
 
@@ -38,27 +38,27 @@
 }
 
 .zipLabel {
-  color: white;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
   letter-spacing: 0.01em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
 .zipInput {
   width: 120px;
   height: 36px;
   padding: 8px 12px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--white-alpha-30);
   border-radius: 0;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
   font-family: inherit;
-  background: white;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--bg-white);
+  color: var(--text-form-value);
+  box-shadow: 0 2px 4px var(--black-alpha-10);
   box-sizing: border-box;
 }
 
@@ -68,16 +68,16 @@
 }
 
 .zipInput::placeholder {
-  color: #999;
+  color: var(--gray-text);
   font-weight: 400;
 }
 
 .checkButton {
   height: 36px;
   padding: 8px 20px;
-  background: linear-gradient(135deg, #5f3300 0%, #b45309 100%);
-  color: white;
-  border: 2px solid #7e4505;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: var(--text-primary);
+  border: 2px solid var(--primary-dark);
   border-radius: 0;
   font-size: 0.85rem;
   font-weight: 700;
@@ -86,8 +86,8 @@
   transition: all 0.3s ease;
   white-space: nowrap;
   box-shadow:
-    0 4px 12px rgba(217, 119, 6, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 12px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-20);
   text-transform: uppercase;
   box-sizing: border-box;
   display: flex;
@@ -96,17 +96,17 @@
 }
 
 .checkButton:hover:not(:disabled) {
-  background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
-  border-color: #b45309;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border-color: var(--primary);
   box-shadow:
-    0 6px 20px rgba(217, 119, 6, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 6px 20px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-25);
 }
 
 .checkButton:active:not(:disabled) {
   box-shadow:
-    0 2px 8px rgba(217, 119, 6, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 2px 8px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-10);
 }
 
 .checkButton:disabled {
@@ -115,7 +115,7 @@
 }
 
 .checkButton:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline: 3px solid var(--white-alpha-30);
   outline-offset: 2px;
 }
 
@@ -128,10 +128,10 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding: 12px 20px;
-  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-  border: 2px solid #28a745;
+  background: var(--success-bg);
+  border: 2px solid var(--success);
   border-radius: 0;
-  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+  box-shadow: 0 4px 12px var(--success-bg);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
@@ -148,7 +148,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid #28a745;
+  border-bottom: 8px solid var(--success);
 }
 
 .resultVisible {
@@ -163,22 +163,22 @@
 }
 
 .successIcon {
-  color: #28a745;
+  color: var(--success);
   font-size: 1.5rem;
   font-weight: bold;
-  background: white;
+  background: var(--bg-white);
   width: 32px;
   height: 32px;
   border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 2px 6px var(--success-bg);
   flex-shrink: 0;
 }
 
 .successText {
-  color: #155724;
+  color: var(--success-dark);
   font-weight: 600;
   font-size: 1.05rem;
   letter-spacing: 0.01em;
@@ -192,11 +192,11 @@
 }
 
 .phoneLabel {
-  color: white;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-20);
   white-space: nowrap;
 }
 
@@ -205,8 +205,8 @@
   align-items: center;
   gap: 6px;
   height: 36px;
-  background: linear-gradient(135deg, #4a7c59 0%, #2d4a35 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-primary);
   padding: 8px 14px;
   border-radius: 0;
   text-decoration: none;
@@ -215,31 +215,31 @@
   letter-spacing: 0.05em;
   transition: all var(--transition-base);
   box-shadow:
-    0 4px 12px rgba(45, 74, 53, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  border: 2px solid #4a7c59;
+    0 4px 12px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-15);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  border: 2px solid var(--primary);
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, #2d4a35 0%, #1e3124 100%);
-  border-color: #2d4a35;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  border-color: var(--primary-dark);
   box-shadow:
-    0 6px 20px rgba(45, 74, 53, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  color: white;
+    0 6px 20px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-20);
+  color: var(--text-primary);
 }
 
 .phoneNumber:active {
   box-shadow:
-    0 2px 8px rgba(45, 74, 53, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 2px 8px var(--primary-alpha-40),
+    inset 0 1px 0 var(--white-alpha-10);
 }
 
 .phoneNumber:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline: 3px solid var(--white-alpha-30);
   outline-offset: 2px;
 }
 

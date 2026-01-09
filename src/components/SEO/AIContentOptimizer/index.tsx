@@ -269,9 +269,9 @@ export function AITable({
               key={idx}
               data-column-name={header}
               style={{
-                border: "1px solid #ddd",
+                border: "1px solid var(--border-light)",
                 padding: "8px",
-                background: "#f2f2f2",
+                background: "var(--neutral-100)",
               }}
             >
               {header}
@@ -287,7 +287,7 @@ export function AITable({
                 key={cellIdx}
                 data-row={rowIdx}
                 data-column={headers[cellIdx]}
-                style={{ border: "1px solid #ddd", padding: "8px" }}
+                style={{ border: "1px solid var(--border-light)", padding: "8px" }}
               >
                 {cell}
               </td>
@@ -340,7 +340,7 @@ export function AIComparison({
             itemType="https://schema.org/Product"
             data-comparison-item="true"
             style={{
-              border: "1px solid #ddd",
+              border: "1px solid var(--border-light)",
               borderRadius: "8px",
               padding: "1rem",
             }}

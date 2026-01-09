@@ -44,7 +44,7 @@
   font-weight: 500;
   border-radius: 0;
   transition: 0.3s;
-  border: 2px solid var(--primary-bg-color);
+  border: 2px solid var(--primary);
   cursor: pointer;
   flex-shrink: 0 !important;
   flex-grow: 0 !important;
@@ -84,20 +84,20 @@
 
 .previous {
   color: var(--text-primary);
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--white-alpha-10);
+  border-color: var(--white-alpha-30);
   transition: var(--transition-base);
 }
 
 .previous:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--white-alpha-20);
   border-color: var(--primary-light);
   color: var(--text-primary);
   transition: var(--transition-base);
 }
 
 .previous:active {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--white-alpha-25);
   border-color: var(--primary);
   color: var(--text-primary);
   transform: translateY(0);
@@ -135,7 +135,7 @@
   display: inline-block !important;
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--white-alpha-90);
   border-radius: 0;
   border-top-color: transparent;
   animation: spin 0.8s linear infinite;

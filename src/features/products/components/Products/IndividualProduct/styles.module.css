@@ -21,16 +21,16 @@
   width: 100%;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    var(--white-alpha-08) 0%,
+    var(--white-alpha-05) 100%
   );
   backdrop-filter: blur(10px);
   padding: 3rem 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-alpha-15);
   border-radius: 0;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 8px 32px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-15);
   position: relative;
   overflow: hidden;
 }
@@ -122,8 +122,8 @@
 .serviceAreasSection {
   margin-top: 2rem;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--white-alpha-05);
+  border: 1px solid var(--white-alpha-10);
 }
 
 .serviceAreasSection h2 {
@@ -147,19 +147,19 @@
 
 .serviceAreasSection .cityLink {
   padding: 0.5rem 1rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--white-alpha-10);
+  border: 1px solid var(--white-alpha-20);
   text-decoration: none;
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   font-weight: 500;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
 .serviceAreasSection .cityLink:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.4);
+  background-color: var(--white-alpha-20);
+  color: var(--text-primary) !important;
+  border-color: var(--white-alpha-30);
   text-decoration: none;
 }
 
@@ -169,13 +169,13 @@
 }
 
 .serviceAreasSection .viewAllLink a {
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   text-decoration: underline;
   font-weight: 500;
 }
 
 .serviceAreasSection .viewAllLink a:hover {
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   opacity: 0.9;
 }
 

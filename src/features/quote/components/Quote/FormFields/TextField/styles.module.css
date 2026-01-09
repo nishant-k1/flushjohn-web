@@ -26,26 +26,26 @@
 .textInput {
   width: 100%;
   padding: 4px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-light);
   border-radius: 0;
   font-size: 14px;
-  background: white;
-  color: #333;
+  background: var(--bg-white);
+  color: var(--text-form-value);
   box-sizing: border-box;
 }
 
 .textInput:focus {
   outline: none;
-  border-color: var(--primary-bg-color, #a95d1f);
+  border-color: var(--primary);
 }
 
 .textInput::placeholder {
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--text-form-placeholder);
   opacity: 1;
 }
 
 .textInput:focus::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--text-form-placeholder);
   opacity: 1;
 }
 
@@ -60,15 +60,15 @@
   z-index: 1000;
   width: fit-content;
   max-width: 100%;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 10px;
-  background-color: rgba(255, 68, 68, 0.9);
+  background-color: var(--error-red-alpha-90);
   padding: 6px 10px;
   border-radius: 6px;
-  border-left: 3px solid #cc0000;
+  border-left: 3px solid var(--error-dark);
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 2px var(--black-alpha-30);
+  box-shadow: 0 4px 12px var(--black-alpha-25);
   margin-bottom: 6px;
   white-space: nowrap;
   pointer-events: none;
@@ -82,8 +82,8 @@
   top: 100%;
   right: 16px;
   border: 6px solid transparent;
-  border-top-color: rgba(255, 68, 68, 0.9);
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+  border-top-color: var(--error-red-alpha-90);
+  filter: drop-shadow(0 2px 2px var(--black-alpha-10));
 }
 
 .errorVisible {

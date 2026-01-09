@@ -69,7 +69,7 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
         padding: "30px",
         background: "var(--bg-primary)",
         borderRadius: "0",
-        border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
+        border: "1px solid var(--white-alpha-10)",
       }}
     >
       <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
@@ -94,20 +94,18 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
             key={index}
             style={{
               padding: "20px",
-              background: "var(--bg-secondary, rgba(255, 255, 255, 0.05))",
+              background: "var(--white-alpha-05)",
               borderRadius: "0",
-              border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
+              border: "1px solid var(--white-alpha-10)",
               transition: "transform 0.2s, box-shadow 0.2s, background 0.2s",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.1)";
-              e.currentTarget.style.background =
-                "var(--bg-secondary, rgba(255, 255, 255, 0.1))";
+              e.currentTarget.style.boxShadow = "0 4px 8px var(--black-alpha-10)";
+              e.currentTarget.style.background = "var(--white-alpha-10)";
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.background =
-                "var(--bg-secondary, rgba(255, 255, 255, 0.05))";
+              e.currentTarget.style.background = "var(--white-alpha-05)";
             }}
           >
             <div
@@ -115,7 +113,7 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
                 display: "inline-block",
                 padding: "4px 8px",
                 background: "var(--primary-bg-color)",
-                color: "white",
+                color: "var(--text-inverse)",
                 borderRadius: "4px",
                 fontSize: "0.8em",
                 marginBottom: "10px",
@@ -161,9 +159,9 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
           textAlign: "center",
           marginTop: "30px",
           padding: "20px",
-          background: "var(--bg-secondary, rgba(255, 255, 255, 0.05))",
+          background: "var(--white-alpha-05)",
           borderRadius: "0",
-          border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
+          border: "1px solid var(--white-alpha-10)",
         }}
       >
         <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>

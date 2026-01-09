@@ -117,7 +117,7 @@ const SEOGuidelines = () => {
         background: "var(--neutral-700)",
         padding: "30px",
         borderRadius: "0",
-        border: "1px solid rgba(255, 255, 255, 0.15)",
+        border: "1px solid var(--white-alpha-15)",
         marginBottom: "30px",
       }}
     >
@@ -146,7 +146,7 @@ const SEOGuidelines = () => {
               background: "var(--neutral-600)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
+              border: "1px solid var(--white-alpha-15)",
             }}
           >
             <h3
@@ -194,7 +194,7 @@ const SEOGuidelines = () => {
                 background: "var(--neutral-600)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                border: "1px solid var(--white-alpha-15)",
               }}
             >
               <h3
@@ -231,7 +231,7 @@ const SEOGuidelines = () => {
           padding: "20px",
           borderRadius: "0",
           marginBottom: "30px",
-          border: "1px solid rgba(255, 255, 255, 0.15)",
+          border: "1px solid var(--white-alpha-15)",
         }}
       >
         <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
@@ -262,7 +262,7 @@ const SEOGuidelines = () => {
           padding: "20px",
           borderRadius: "0",
           textAlign: "center",
-          border: "1px solid rgba(255, 255, 255, 0.15)",
+          border: "1px solid var(--white-alpha-15)",
         }}
       >
         <h3

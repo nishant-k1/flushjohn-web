@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlushJohn Web - Color Palette Options</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f5f5f5;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .option-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .option-card h2 {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        color: #1a1a1a;
+      }
+
+      .option-card .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .badge.recommended {
+        background: #10b981;
+        color: white;
+      }
+
+      .badge.professional {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .badge.modern {
+        background: #8b5cf6;
+        color: white;
+      }
+
+      .badge.bold {
+        background: #f59e0b;
+        color: white;
+      }
+
+      .color-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .color-group h3 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #666;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.05em;
+      }
+
+      .color-swatch {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid #e5e5e5;
+      }
+
+      .color-box {
+        width: 60px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+
+      .color-info {
+        padding: 0.5rem 0.75rem;
+        flex: 1;
+      }
+
+      .color-name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 0.125rem;
+      }
+
+      .color-value {
+        font-size: 0.75rem;
+        font-family: "Monaco", "Courier New", monospace;
+        color: #666;
+      }
+
+      /* Option 1 Colors */
+      .option-1 .primary {
+        background: #947a5f;
+      }
+      .option-1 .primary-dark {
+        background: #6d5637;
+      }
+      .option-1 .primary-light {
+        background: #b5a088;
+      }
+      .option-1 .bg-primary {
+        background: #4a3d2e;
+      }
+      .option-1 .bg-secondary {
+        background: #5a4a3a;
+      }
+      .option-1 .success {
+        background: #5a8a4a;
+      }
+      .option-1 .error {
+        background: #d85a42;
+      }
+      .option-1 .warning {
+        background: #e0b574;
+      }
+
+      /* Option 2 Colors */
+      .option-2 .primary {
+        background: #8c6f48;
+      }
+      .option-2 .primary-dark {
+        background: #6d5637;
+      }
+      .option-2 .accent-blue {
+        background: #3b6fa8;
+      }
+      .option-2 .bg-primary {
+        background: #5a4a3a;
+      }
+      .option-2 .success {
+        background: #4a8a5a;
+      }
+      .option-2 .error {
+        background: #d85a42;
+      }
+      .option-2 .warning {
+        background: #e0b574;
+      }
+
+      /* Option 3 Colors */
+      .option-3 .primary {
+        background: #9d8568;
+      }
+      .option-3 .primary-dark {
+        background: #7a6348;
+      }
+      .option-3 .bg-primary {
+        background: #2d2a26;
+      }
+      .option-3 .bg-secondary {
+        background: #3a3630;
+      }
+      .option-3 .success {
+        background: #4a7c59;
+      }
+      .option-3 .error {
+        background: #d6654f;
+      }
+      .option-3 .warning {
+        background: #d4a574;
+      }
+
+      /* Option 4 Colors */
+      .option-4 .primary {
+        background: #b8946a;
+      }
+      .option-4 .primary-dark {
+        background: #8f7048;
+      }
+      .option-4 .accent {
+        background: #e69c5c;
+      }
+      .option-4 .bg-primary {
+        background: #3d2f1f;
+      }
+      .option-4 .success {
+        background: #5ea366;
+      }
+      .option-4 .error {
+        background: #e05a47;
+      }
+      .option-4 .warning {
+        background: #e6a85c;
+      }
+
+      .description {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .comparison-table {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+      }
+
+      .comparison-table h2 {
+        margin-bottom: 1.5rem;
+        color: #1a1a1a;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      th {
+        background: #f9fafb;
+        font-weight: 600;
+        color: #1a1a1a;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      td {
+        font-size: 0.875rem;
+      }
+
+      .color-preview-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .mini-swatch {
+        width: 40px;
+        height: 24px;
+        border-radius: 4px;
+        border: 1px solid #e5e5e5;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 768px) {
+        .options-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>FlushJohn Web - Color Palette Recommendations</h1>
+      <p class="subtitle">
+        Four distinct palette options with visual previews and comparison
+      </p>
+
+      <div class="options-grid">
+        <!-- Option 1 -->
+        <div class="option-card option-1">
+          <span class="badge recommended">Recommended</span>
+          <h2>Option 1: Enhanced Earth Tones</h2>
+          <p class="description">
+            Minimal changes to your current palette with improved contrast
+            ratios and accessibility. Best for maintaining brand identity while
+            enhancing usability.
+          </p>
+
+          <div class="color-group">
+            <h3>Primary Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box primary"></div>
+              <div class="color-info">
+                <div class="color-name">Primary</div>
+                <div class="color-value">#947a5f</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box primary-dark"></div>
+              <div class="color-info">
+                <div class="color-name">Primary Dark</div>
+                <div class="color-value">#6d5637</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box primary-light"></div>
+              <div class="color-info">
+                <div class="color-name">Primary Light</div>
+                <div class="color-value">#b5a088</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Backgrounds</h3>
+            <div class="color-swatch">
+              <div class="color-box bg-primary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Primary</div>
+                <div class="color-value">#4a3d2e</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box bg-secondary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Secondary</div>
+                <div class="color-value">#5a4a3a</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Semantic Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box success"></div>
+              <div class="color-info">
+                <div class="color-name">Success</div>
+                <div class="color-value">#5a8a4a</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box error"></div>
+              <div class="color-info">
+                <div class="color-name">Error</div>
+                <div class="color-value">#d85a42</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box warning"></div>
+              <div class="color-info">
+                <div class="color-name">Warning</div>
+                <div class="color-value">#e0b574</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 2 -->
+        <div class="option-card option-2">
+          <span class="badge professional">Professional</span>
+          <h2>Option 2: Blue-Brown Hybrid</h2>
+          <p class="description">
+            Adds professional blue accents while keeping brown as primary. Great
+            for conveying trust and professionalism with clear call-to-action
+            distinction.
+          </p>
+
+          <div class="color-group">
+            <h3>Primary Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box primary"></div>
+              <div class="color-info">
+                <div class="color-name">Primary</div>
+                <div class="color-value">#8c6f48</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box primary-dark"></div>
+              <div class="color-info">
+                <div class="color-name">Primary Dark</div>
+                <div class="color-value">#6d5637</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box accent-blue"></div>
+              <div class="color-info">
+                <div class="color-name">Accent Blue</div>
+                <div class="color-value">#3b6fa8</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Backgrounds</h3>
+            <div class="color-swatch">
+              <div class="color-box bg-primary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Primary</div>
+                <div class="color-value">#5a4a3a</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Semantic Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box success"></div>
+              <div class="color-info">
+                <div class="color-name">Success</div>
+                <div class="color-value">#4a8a5a</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box error"></div>
+              <div class="color-info">
+                <div class="color-name">Error</div>
+                <div class="color-value">#d85a42</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box warning"></div>
+              <div class="color-info">
+                <div class="color-name">Warning</div>
+                <div class="color-value">#e0b574</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 3 -->
+        <div class="option-card option-3">
+          <span class="badge modern">Modern</span>
+          <h2>Option 3: Modern Neutral</h2>
+          <p class="description">
+            Contemporary approach with neutral gray-brown tones and strategic
+            color accents. Excellent readability with a professional yet
+            approachable feel.
+          </p>
+
+          <div class="color-group">
+            <h3>Primary Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box primary"></div>
+              <div class="color-info">
+                <div class="color-name">Primary</div>
+                <div class="color-value">#9d8568</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box primary-dark"></div>
+              <div class="color-info">
+                <div class="color-name">Primary Dark</div>
+                <div class="color-value">#7a6348</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Backgrounds</h3>
+            <div class="color-swatch">
+              <div class="color-box bg-primary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Primary</div>
+                <div class="color-value">#2d2a26</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box bg-secondary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Secondary</div>
+                <div class="color-value">#3a3630</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Semantic Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box success"></div>
+              <div class="color-info">
+                <div class="color-name">Success</div>
+                <div class="color-value">#4a7c59</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box error"></div>
+              <div class="color-info">
+                <div class="color-name">Error</div>
+                <div class="color-value">#d6654f</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box warning"></div>
+              <div class="color-info">
+                <div class="color-name">Warning</div>
+                <div class="color-value">#d4a574</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 4 -->
+        <div class="option-card option-4">
+          <span class="badge bold">Bold</span>
+          <h2>Option 4: Bold & Distinctive</h2>
+          <p class="description">
+            More vibrant palette while staying professional. Great for standing
+            out from competitors with an energetic and engaging feel.
+          </p>
+
+          <div class="color-group">
+            <h3>Primary Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box primary"></div>
+              <div class="color-info">
+                <div class="color-name">Primary</div>
+                <div class="color-value">#b8946a</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box primary-dark"></div>
+              <div class="color-info">
+                <div class="color-name">Primary Dark</div>
+                <div class="color-value">#8f7048</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box accent"></div>
+              <div class="color-info">
+                <div class="color-name">Accent Orange</div>
+                <div class="color-value">#e69c5c</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Backgrounds</h3>
+            <div class="color-swatch">
+              <div class="color-box bg-primary"></div>
+              <div class="color-info">
+                <div class="color-name">Background Primary</div>
+                <div class="color-value">#3d2f1f</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="color-group">
+            <h3>Semantic Colors</h3>
+            <div class="color-swatch">
+              <div class="color-box success"></div>
+              <div class="color-info">
+                <div class="color-name">Success</div>
+                <div class="color-value">#5ea366</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box error"></div>
+              <div class="color-info">
+                <div class="color-name">Error</div>
+                <div class="color-value">#e05a47</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-box warning"></div>
+              <div class="color-info">
+                <div class="color-name">Warning</div>
+                <div class="color-value">#e6a85c</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="comparison-table">
+        <h2>Quick Comparison</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Option 1 (Recommended)</th>
+              <th>Option 2 (Professional)</th>
+              <th>Option 3 (Modern)</th>
+              <th>Option 4 (Bold)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primary</strong></td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #947a5f"></div>
+                  <span>#947a5f</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #8c6f48"></div>
+                  <span>#8c6f48</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #9d8568"></div>
+                  <span>#9d8568</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #b8946a"></div>
+                  <span>#b8946a</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Background</strong></td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #4a3d2e"></div>
+                  <span>#4a3d2e</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #5a4a3a"></div>
+                  <span>#5a4a3a</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #2d2a26"></div>
+                  <span>#2d2a26</span>
+                </div>
+              </td>
+              <td>
+                <div class="color-preview-cell">
+                  <div class="mini-swatch" style="background: #3d2f1f"></div>
+                  <span>#3d2f1f</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td>Minimal changes, better contrast</td>
+              <td>Professional blue accents</td>
+              <td>Contemporary modern look</td>
+              <td>Standing out from competitors</td>
+            </tr>
+            <tr>
+              <td><strong>Migration Effort</strong></td>
+              <td>Low</td>
+              <td>Medium</td>
+              <td>Medium</td>
+              <td>Medium-High</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

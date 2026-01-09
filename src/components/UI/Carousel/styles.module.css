@@ -23,10 +23,10 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-alpha-15);
   backdrop-filter: blur(10px);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--white-alpha-30);
   width: 48px;
   height: 48px;
   border-radius: 0;
@@ -38,14 +38,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--black-alpha-10);
 }
 
 .arrow:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--white-alpha-25);
   border-color: var(--primary-light);
   transform: translateY(-50%);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px var(--black-alpha-15);
 }
 
 .arrow:active {
@@ -86,7 +86,7 @@
   gap: 12px; /* Increased from 10px for better spacing between touch targets */
   z-index: 10;
   padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--black-alpha-20);
   backdrop-filter: blur(10px);
   border-radius: 0;
   align-items: center; /* Ensure proper vertical alignment */
@@ -99,8 +99,8 @@
   width: 48px;
   height: 48px;
   border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--white-alpha-30);
+  background: var(--white-alpha-30);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -123,7 +123,7 @@
 }
 
 .dot:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-alpha-30);
   border-color: var(--primary-light);
 }
 
@@ -133,7 +133,7 @@
 }
 
 .activeDot {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-alpha-30);
   border-color: var(--text-primary);
 }
 
@@ -142,7 +142,7 @@
   border-color: var(--text-primary);
   width: 24px;
   height: 8px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px var(--white-alpha-30);
 }
 
 /* Ensure proper spacing on mobile */

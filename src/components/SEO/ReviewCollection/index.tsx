@@ -60,7 +60,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         padding: "30px",
         background: "var(--bg-primary)",
         borderRadius: "0",
-        border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
+        border: "1px solid var(--white-alpha-10)",
       }}
     >
       <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
@@ -84,7 +84,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
             onClick={() => setShowForm(true)}
             style={{
               background: "var(--primary-bg-color)",
-              color: "white",
+              color: "var(--text-inverse)",
               padding: "15px 30px",
               border: "none",
               borderRadius: "8px",
@@ -128,8 +128,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border:
-                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border: "1px solid var(--white-alpha-20)",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -158,8 +157,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border:
-                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border: "1px solid var(--white-alpha-20)",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -187,8 +185,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border:
-                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border: "1px solid var(--white-alpha-20)",
                 borderRadius: "5px",
                 fontSize: "1em",
                 background: "var(--bg-primary)",
@@ -224,8 +221,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               style={{
                 width: "100%",
                 padding: "10px",
-                border:
-                  "1px solid var(--border-color, rgba(255, 255, 255, 0.2))",
+                border: "1px solid var(--white-alpha-20)",
                 borderRadius: "5px",
                 fontSize: "1em",
                 resize: "vertical",
@@ -242,7 +238,7 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               type="submit"
               style={{
                 background: "var(--primary-bg-color)",
-                color: "white",
+                color: "var(--text-inverse)",
                 padding: "12px 25px",
                 border: "none",
                 borderRadius: "5px",
@@ -257,8 +253,8 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
               type="button"
               onClick={() => setShowForm(false)}
               style={{
-                background: "#6c757d",
-                color: "white",
+                background: "var(--neutral-500)",
+                color: "var(--text-inverse)",
                 padding: "12px 25px",
                 border: "none",
                 borderRadius: "5px",
@@ -277,9 +273,9 @@ const ReviewCollection = ({ city, state }: ReviewCollectionProps) => {
         style={{
           marginTop: "30px",
           padding: "20px",
-          background: "var(--bg-secondary, rgba(255, 255, 255, 0.05))",
+          background: "var(--white-alpha-05)",
           borderRadius: "0",
-          border: "1px solid var(--border-color, rgba(255, 255, 255, 0.1))",
+          border: "1px solid var(--white-alpha-10)",
         }}
       >
         <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>

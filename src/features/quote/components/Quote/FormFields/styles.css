@@ -6,15 +6,15 @@
   align-self: stretch;
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-light);
   border-right: 0;
   margin-right: 0;
-  background: white;
+  background: var(--bg-white);
 }
 
 /* Placeholder text styling */
 input::placeholder,
 textarea::placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-form-placeholder);
   font-size: 14px;
 }

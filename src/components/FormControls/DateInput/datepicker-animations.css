@@ -63,9 +63,8 @@ body > #root .react-datepicker-popper {
 .react-datepicker__header,
 .react-datepicker .react-datepicker__header,
 body .react-datepicker__header {
-  background: #5a4a3a !important;
-  background: var(--bg-primary, #5a4a3a) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: var(--bg-primary) !important;
+  border-bottom: 1px solid var(--white-alpha-10) !important;
   border-radius: 0 !important;
   padding: 12px !important;
 }
@@ -73,8 +72,7 @@ body .react-datepicker__header {
 .react-datepicker__current-month,
 .react-datepicker .react-datepicker__current-month,
 body .react-datepicker__current-month {
-  color: #ffffff !important;
-  color: var(--text-inverse, #ffffff) !important;
+  color: var(--text-inverse) !important;
   font-weight: 300 !important;
   font-size: 14px !important;
   padding-bottom: 10px;
@@ -85,8 +83,7 @@ body .react-datepicker__current-month {
 .react-datepicker__day-name,
 .react-datepicker .react-datepicker__day-name,
 body .react-datepicker__day-name {
-  color: rgba(255, 255, 255, 0.9) !important;
-  color: var(--text-inverse-secondary, rgba(255, 255, 255, 0.9)) !important;
+  color: var(--text-inverse-secondary) !important;
   font-weight: 300 !important;
   font-size: 14px !important;
   width: 32px !important;
@@ -97,8 +94,7 @@ body .react-datepicker__day-name {
 .react-datepicker__navigation-icon::before,
 .react-datepicker .react-datepicker__navigation-icon::before,
 body .react-datepicker__navigation-icon::before {
-  border-color: #ffffff !important;
-  border-color: var(--text-inverse, #ffffff) !important;
+  border-color: var(--text-inverse) !important;
   border-width: 2px 2px 0 0;
   width: 8px;
   height: 8px;
@@ -108,5 +104,5 @@ body .react-datepicker__navigation-icon::before {
 .react-datepicker__navigation:hover,
 .react-datepicker .react-datepicker__navigation:hover,
 body .react-datepicker__navigation:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: var(--white-alpha-10) !important;
 }

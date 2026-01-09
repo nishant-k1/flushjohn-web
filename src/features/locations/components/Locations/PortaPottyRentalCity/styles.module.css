@@ -37,7 +37,7 @@
 }
 
 .cityWrapper p {
-  color: #f0f0f0;
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -50,7 +50,7 @@
   padding: 8px 0;
   position: relative;
   padding-left: 24px;
-  color: #f0f0f0;
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -170,7 +170,7 @@
 }
 
 .ctaButton {
-  background: var(--primary-bg-color);
+  background: var(--primary);
   color: white !important;
   padding: 8px 20px;
   text-decoration: none !important;
@@ -254,7 +254,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .card h3 {
@@ -276,7 +276,7 @@
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -289,7 +289,7 @@
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .testimonialCard p {
@@ -303,7 +303,7 @@
 }
 
 .testimonialCard:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px var(--black-alpha-12);
 }
 
 .testimonialCard p:first-child {
@@ -332,7 +332,7 @@
   background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .serviceCard h3 {
@@ -348,7 +348,7 @@
 }
 
 .serviceCard:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px var(--black-alpha-30);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -363,12 +363,12 @@
   background-color: var(--neutral-700);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .cityCard:hover {
   background-color: var(--neutral-600);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px var(--black-alpha-30);
   text-decoration: none;
   border-color: var(--primary);
 }
@@ -419,14 +419,14 @@
   border-radius: 8px;
   border: 1px solid var(--white-alpha-15);
   transition: all var(--transition-base, 0.3s);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .featureItem:hover {
   background-color: var(--neutral-600);
   transform: translateX(4px);
   border-color: var(--primary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px var(--black-alpha-30);
 }
 
 .featureContent h3 {
@@ -446,9 +446,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-bg-color), var(--primary));
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border-radius: 8px;
-  color: white;
+  color: var(--text-inverse);
 }
 
 .featureContent h3 {
@@ -479,13 +479,13 @@
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .servicesList li:hover {
   background-color: var(--neutral-600);
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--black-alpha-30);
 }
 
 .servicesList li strong {
@@ -509,15 +509,15 @@
   padding: 5rem 2rem;
   background: linear-gradient(
     135deg,
-    var(--primary-bg-color) 0%,
-    var(--primary) 100%
+    var(--primary) 0%,
+    var(--primary-dark) 100%
   );
-  color: white;
+  color: var(--text-inverse);
   border-radius: 12px;
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px var(--black-alpha-20);
 }
 
 .finalCTA::before {
@@ -529,7 +529,7 @@
   bottom: 0;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(255, 255, 255, 0.1) 0%,
+    var(--white-alpha-10) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -541,21 +541,21 @@
 }
 
 .finalCTA h2 {
-  color: white;
+  color: var(--text-inverse);
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
 .finalCTA p {
-  color: white;
+  color: var(--text-inverse);
   opacity: 0.95;
   font-size: 1.3rem;
   margin-bottom: 2.5rem;
 }
 
 .finalCTAButton {
-  background: white;
-  color: var(--primary-bg-color, var(--primary)) !important;
+  background: var(--bg-white);
+  color: var(--primary) !important;
   padding: 18px 36px;
   text-decoration: none !important;
   border-radius: 4px;
@@ -563,13 +563,13 @@
   font-size: 1.1rem;
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--black-alpha-20);
   border: 2px solid white;
 }
 
 .finalCTAButton:hover {
   background: var(--bg-primary);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px var(--black-alpha-30);
   text-decoration: none !important;
   color: var(--text-primary) !important;
   border-color: var(--bg-primary);
@@ -582,7 +582,7 @@
   background-color: var(--neutral-700);
   border-radius: 12px;
   border: 1px solid var(--white-alpha-15);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
 }
 
 .exploreLinks a {
@@ -623,7 +623,7 @@
   padding: 1rem;
   background-color: var(--neutral-800);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--white-alpha-10);
   transition: all var(--transition-base, 0.3s);
   text-decoration: none;
   color: var(--text-primary);
@@ -635,7 +635,7 @@
   transform: translateX(4px);
   border-color: var(--primary);
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--black-alpha-30);
   color: var(--text-primary);
 }
 

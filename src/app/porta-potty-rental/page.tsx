@@ -223,7 +223,7 @@ const PortaPottyRentalPage = () => {
                         style={{
                           display: "block",
                           padding: "15px",
-                          border: "1px solid rgba(255, 255, 255, 0.15)",
+                          border: "1px solid var(--white-alpha-15)",
                           borderRadius: "0",
                           textDecoration: "none",
                           color: "inherit",
@@ -282,7 +282,7 @@ const PortaPottyRentalPage = () => {
                   padding: "20px",
                   background: "var(--neutral-700)",
                   borderRadius: "0",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -307,7 +307,7 @@ const PortaPottyRentalPage = () => {
                   padding: "20px",
                   background: "var(--neutral-700)",
                   borderRadius: "0",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -332,7 +332,7 @@ const PortaPottyRentalPage = () => {
                   padding: "20px",
                   background: "var(--neutral-700)",
                   borderRadius: "0",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -357,7 +357,7 @@ const PortaPottyRentalPage = () => {
                   padding: "20px",
                   background: "var(--neutral-700)",
                   borderRadius: "0",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -425,7 +425,7 @@ const PortaPottyRentalPage = () => {
                   href={service.link}
                   style={{
                     padding: "15px",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    border: "1px solid var(--white-alpha-15)",
                     borderRadius: "0",
                     textAlign: "center",
                     textDecoration: "none",
@@ -472,7 +472,7 @@ const PortaPottyRentalPage = () => {
                 href="/blog"
                 style={{
                   padding: "20px",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   borderRadius: "0",
                   textDecoration: "none",
                   color: "inherit",
@@ -502,7 +502,7 @@ const PortaPottyRentalPage = () => {
                 href="/faq"
                 style={{
                   padding: "20px",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   borderRadius: "0",
                   textDecoration: "none",
                   color: "inherit",
@@ -532,7 +532,7 @@ const PortaPottyRentalPage = () => {
                 href="/gallery"
                 style={{
                   padding: "20px",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--white-alpha-15)",
                   borderRadius: "0",
                   textDecoration: "none",
                   color: "inherit",

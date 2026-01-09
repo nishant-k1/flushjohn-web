@@ -34,23 +34,23 @@
   padding: 3rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%
+    var(--white-alpha-12) 0%,
+    var(--white-alpha-08) 100%
   );
   backdrop-filter: blur(10px);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    0 8px 32px var(--black-alpha-15),
+    inset 0 1px 0 var(--white-alpha-20);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   transition: all 0.3s ease;
 }
 
 .wrapper:hover {
   box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+    0 12px 40px var(--black-alpha-20),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
 }
 
 .wrapper h3 {
@@ -76,14 +76,14 @@
   margin-top: 3rem;
   font-size: 1rem;
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-10);
+  border: 1px solid var(--white-alpha-20);
   padding: 1rem 2rem;
   border-radius: 0;
   display: inline-block;
   font-weight: 300;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
 .asSeenOn {
@@ -113,8 +113,8 @@
 .yelpLogo {
   height: 40px;
   width: 80px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-10);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -147,8 +147,8 @@
   align-items: center;
   gap: 4px;
   padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-10);
+  border: 1px solid var(--white-alpha-20);
   color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 400;

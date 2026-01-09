@@ -188,21 +188,21 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
               Get a free quote
             </Link>{" "}
             today or learn more about our{" "}
-            <Link href="/rental-products" style={{ color: "#ffffff" }}>
+            <Link href="/rental-products" style={{ color: "var(--text-primary)" }}>
               rental options
             </Link>
             .
           </p>
           <p style={{ color: "var(--text-primary)" }}>
-            <Link href="/" style={{ color: "#ffffff" }}>
+            <Link href="/" style={{ color: "var(--text-primary)" }}>
               Back to Homepage
             </Link>{" "}
             |{" "}
-            <Link href="/faq" style={{ color: "#ffffff" }}>
+            <Link href="/faq" style={{ color: "var(--text-primary)" }}>
               Frequently Asked Questions
             </Link>{" "}
             |{" "}
-            <Link href="/contact" style={{ color: "#ffffff" }}>
+            <Link href="/contact" style={{ color: "var(--text-primary)" }}>
               Contact Us
             </Link>
           </p>

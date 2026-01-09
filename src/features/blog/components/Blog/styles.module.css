@@ -99,7 +99,7 @@
 .searchButton:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--black-alpha-20);
 }
 
 /* Active Filters */
@@ -168,7 +168,7 @@
 }
 
 .featuredPost:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -364,7 +364,7 @@
   background-color: var(--neutral-700);
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--black-alpha-20);
   border: 1px solid var(--white-alpha-15);
   transition:
     transform 0.3s ease,
@@ -381,7 +381,7 @@
 }
 
 .blogItem:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -413,8 +413,8 @@
   height: 180px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    var(--white-alpha-10) 0%,
+    var(--white-alpha-05) 100%
   );
   display: flex;
   flex-direction: column;
@@ -633,7 +633,7 @@
 .paginationButton:hover:not(:disabled) {
   background-color: var(--neutral-600);
   border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--black-alpha-20);
 }
 
 .paginationButton:disabled {
@@ -720,7 +720,7 @@
 .relatedContent {
   margin-top: 3rem;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-alpha-10);
   border-radius: 0;
   text-align: left;
 }
@@ -740,8 +740,8 @@
 .relatedLink {
   display: block;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--white-alpha-15);
+  border: 1px solid var(--white-alpha-30);
   border-radius: 0;
   text-decoration: none;
   color: var(--text-primary);
@@ -753,7 +753,7 @@
 
 .relatedLink:hover {
   box-shadow: var(--shadow-md);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-20);
   border-color: var(--primary-light);
 }
 

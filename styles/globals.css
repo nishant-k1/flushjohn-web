@@ -4,6 +4,10 @@
 :root {
   /* ============================================
      DESIGN TOKENS - Unified Design System
+     ============================================
+     ⚠️  IMPORTANT: This file should match src/constants/theme.ts
+     All color values should come from theme.ts as the single source of truth.
+     When updating colors, update theme.ts first, then sync this file.
      ============================================ */
 
   /* Typography */
@@ -62,6 +66,8 @@
   --bg-tertiary: #5a4a3a; /* Same for consistency */
   --bg-dark: #5a4a3a; /* Same for consistency */
   --bg-dark-alpha: rgba(90, 74, 58, 0.95); /* For header/footer with backdrop */
+  --bg-dark-alpha-50: rgba(90, 74, 58, 0.5); /* For overlays */
+  --bg-dark-alpha-40: rgba(90, 74, 58, 0.4); /* For overlays */
   --bg-transparent: transparent;
 
   /* Semantic Colors - Earth-toned but functional */
@@ -76,6 +82,7 @@
   --error-dark: #b04a35; /* Darker variant for hover/active */
   --error-light: #d8725f; /* Lighter variant */
   --error-red: #ff4444; /* Bright red for form validation (keep for visibility) */
+  --error-red-alpha-90: rgba(255, 68, 68, 0.9); /* Error red with 0.9 opacity for messages */
   --error-border: #ff4444; /* Error border color */
   --error-bg: rgba(200, 93, 71, 0.15); /* Subtle error background */
   
@@ -120,6 +127,7 @@
   --primary-alpha-15: rgba(140, 111, 72, 0.15);
   --primary-alpha-20: rgba(140, 111, 72, 0.2);
   --primary-alpha-30: rgba(140, 111, 72, 0.3);
+  --primary-alpha-40: rgba(140, 111, 72, 0.4);
 
   /* White Overlay Variants */
   --white-alpha-05: rgba(255, 255, 255, 0.05);
@@ -131,14 +139,20 @@
   --white-alpha-20: rgba(255, 255, 255, 0.2);
   --white-alpha-25: rgba(255, 255, 255, 0.25);
   --white-alpha-30: rgba(255, 255, 255, 0.3);
+  --white-alpha-90: rgba(255, 255, 255, 0.9);
 
   /* Black/Dark Overlay Variants */
+  --black-alpha-05: rgba(0, 0, 0, 0.05);
   --black-alpha-10: rgba(0, 0, 0, 0.1);
   --black-alpha-12: rgba(0, 0, 0, 0.12);
   --black-alpha-15: rgba(0, 0, 0, 0.15);
   --black-alpha-18: rgba(0, 0, 0, 0.18);
   --black-alpha-20: rgba(0, 0, 0, 0.2);
   --black-alpha-25: rgba(0, 0, 0, 0.25);
+  --black-alpha-30: rgba(0, 0, 0, 0.3);
+  --black-alpha-40: rgba(0, 0, 0, 0.4);
+  --black-alpha-50: rgba(0, 0, 0, 0.5);
+  --black-alpha-60: rgba(0, 0, 0, 0.6);
 
   /* Rating/Star Colors */
   --rating-active: #FFD700; /* Gold for active stars */
@@ -153,6 +167,15 @@
   /* Additional Gray Colors */
   --gray-medium: #6c757d;
   --gray-text: #666;
+  --gray-dark: #4a4a4a;
+  --gray-darker: #1a1a1a;
+
+  /* Hero Section Overlay Colors */
+  --hero-overlay-dark-blue: rgba(0, 28, 58, 0.8); /* Dark blue overlay on carousel images */
+  --hero-overlay-gradient-start: rgba(44, 62, 80, 0.3); /* Dark blue-gray gradient start */
+  --hero-overlay-gradient-end: rgba(52, 73, 94, 0.3); /* Dark blue-gray gradient end */
+  --hero-overlay-gradient-start-light: rgba(44, 62, 80, 0.25); /* Lighter gradient start */
+  --hero-overlay-gradient-end-light: rgba(52, 73, 94, 0.25); /* Lighter gradient end */
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);

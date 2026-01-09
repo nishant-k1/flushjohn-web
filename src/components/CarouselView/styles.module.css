@@ -48,7 +48,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background: rgba(0 28 58 / 0.8);
+  background: var(--hero-overlay-dark-blue);
   z-index: 2;
   pointer-events: none;
 }
