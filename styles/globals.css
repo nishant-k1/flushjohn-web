@@ -64,15 +64,32 @@
   --bg-dark-alpha: rgba(90, 74, 58, 0.95); /* For header/footer with backdrop */
   --bg-transparent: transparent;
 
-  /* Semantic Colors - Using theme colors instead of vibrant colors */
-  --success: #6d5637; /* Use primary-dark instead of green */
-  --success-dark: #5a4630; /* Darker variant */
-  --error: #6d5637; /* Use primary-dark instead of red */
-  --error-dark: #5a4630; /* Darker variant */
-  --error-red: #ff4444; /* Error/validation red */
+  /* Semantic Colors - Earth-toned but functional */
+  /* Success: Muted green that harmonizes with brown theme */
+  --success: #6b8e5a; /* Muted forest green - works with brown */
+  --success-dark: #556b47; /* Darker variant for hover/active */
+  --success-light: #7fa366; /* Lighter variant for backgrounds */
+  --success-bg: rgba(107, 142, 90, 0.15); /* Subtle success background */
+  
+  /* Error: Muted red/orange that's distinct but not jarring */
+  --error: #c85d47; /* Muted terracotta red - distinct but earth-toned */
+  --error-dark: #b04a35; /* Darker variant for hover/active */
+  --error-light: #d8725f; /* Lighter variant */
+  --error-red: #ff4444; /* Bright red for form validation (keep for visibility) */
   --error-border: #ff4444; /* Error border color */
-  --warning: #a5896a; /* Use primary-light */
-  --info: #8c6f48; /* Use primary */
+  --error-bg: rgba(200, 93, 71, 0.15); /* Subtle error background */
+  
+  /* Warning: Warm amber that complements brown */
+  --warning: #d4a574; /* Warm amber - harmonious with brown */
+  --warning-dark: #b8905a; /* Darker variant */
+  --warning-light: #e6b890; /* Lighter variant */
+  --warning-bg: rgba(212, 165, 116, 0.15); /* Subtle warning background */
+  
+  /* Info: Cooler brown-tone or teal that stands out */
+  --info: #8c6f48; /* Use primary for consistency */
+  --info-dark: #6d5637; /* Darker variant */
+  --info-light: #a5896a; /* Lighter variant */
+  --info-bg: rgba(140, 111, 72, 0.15); /* Subtle info background */
 
   /* Border Colors - Light borders for forms and dividers */
   --border-light: #d9d9d9; /* Light border default */
