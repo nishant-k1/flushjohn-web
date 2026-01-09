@@ -35,7 +35,6 @@
   overflow: hidden;
 }
 
-
 .closeIcon {
   position: absolute;
   top: 0.5rem;
@@ -76,9 +75,13 @@
   text-align: left;
   color: var(--text-primary);
   font-weight: 400;
+  font-size: 1.2rem;
   padding-right: 40px;
   margin: 0 0 1rem 0;
-  line-height: 1.4;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Usage Type Row - Responsive Layout */
@@ -134,7 +137,7 @@
   border: none;
   padding-left: 12px;
   font-size: 14px;
-  color: var(--text-form-value);
+  color: var(--text-dark);
   border-radius: 0;
   transition:
     color 0.5s,
@@ -219,12 +222,15 @@
   color: var(--text-primary);
   border-radius: 6px;
   border-left: 3px solid var(--error-dark);
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: 0 1px 2px var(--black-alpha-25);
   box-shadow: 0 4px 12px var(--black-alpha-25);
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
 }
 
 .error::before {
@@ -317,7 +323,7 @@
   border-radius: 4px !important;
   font-size: 14px !important;
   background: var(--bg-white) !important;
-  color: var(--text-form-value) !important;
+  color: var(--text-dark) !important;
   box-sizing: border-box !important;
 }
 

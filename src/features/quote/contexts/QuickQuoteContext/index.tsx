@@ -68,7 +68,7 @@ export const QuickQuoteContextProvider = ({
         window.location.pathname !== "/quote"
       ) {
         setQuickQuoteViewStatus(true);
-        setQuickQuoteTitle("Wait! Get an instant quote before you go!");
+        setQuickQuoteTitle("Get a Quote Before You Go!");
         setExitTriggered(true);
       }
     };

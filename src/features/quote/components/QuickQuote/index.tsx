@@ -164,17 +164,18 @@ const UsageTypeField = () => {
               top: "100%",
               left: 0,
               right: 0,
-              background: "var(--bg-light)",
-              border: `2px solid var(--primary-bg-color, var(--primary))`,
+              background: "var(--bg-white)",
+              border: `1px solid var(--primary-bg-color, var(--primary))`,
               borderRadius: "0",
-              marginTop: "8px",
+              marginTop: "0",
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
-              boxShadow: `0 4px 16px var(--primary-alpha-15)`,
+              boxShadow:
+                `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
               padding: "4px 0",
               animation:
-                "dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
             {options.map((option, index) => (
@@ -182,7 +183,7 @@ const UsageTypeField = () => {
                 key={option.value}
                 onClick={() => handleSelect(option.value)}
                 style={{
-                  padding: "14px 16px",
+                  padding: "6px 16px",
                   cursor: "pointer",
                   background:
                     values.usageType === option.value
@@ -194,8 +195,8 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? `4px solid var(--primary-bg-color, var(--primary))`
                       : "4px solid transparent",
-                  transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                  fontSize: "15px",
+                  transition: "all 0.15s ease",
+                  fontSize: "14px",
                   fontWeight: values.usageType === option.value ? 600 : 500,
                   color:
                     values.usageType === option.value
@@ -205,17 +206,16 @@ const UsageTypeField = () => {
                   borderRadius: "0",
                   boxShadow:
                     values.usageType === option.value
-                      ? `0 0 12px var(--primary-alpha-20)`
+                      ? `inset 0 0 0 1px var(--primary-alpha-10)`
                       : "none",
-                  lineHeight: "1.4",
+                  lineHeight: "1.2",
                   letterSpacing: "-0.01em",
                 }}
                 onMouseEnter={(e) => {
                   if (values.usageType !== option.value) {
-                    e.currentTarget.style.background =
-                      `linear-gradient(90deg, var(--primary-alpha-12) 0%, var(--primary-alpha-06) 100%)`;
+                    e.currentTarget.style.background = "var(--bg-lighter)";
                     e.currentTarget.style.borderLeft = `4px solid var(--primary-alpha-30)`;
-                    e.currentTarget.style.boxShadow = `0 2px 10px var(--primary-alpha-10)`;
+                    e.currentTarget.style.boxShadow = `inset 0 0 0 1px var(--primary-alpha-08)`;
                   }
                 }}
                 onMouseLeave={(e) => {
