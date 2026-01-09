@@ -4,21 +4,6 @@
   position: relative;
 }
 
-.serviceAreas::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/images/image.png");
-  background-size: auto; /* Use original image size for tiling */
-  background-position: 0 0;
-  background-repeat: repeat; /* Tile the image for seamless pattern */
-  pointer-events: none;
-  opacity: 0.4; /* Adjust to control texture visibility */
-  mix-blend-mode: overlay; /* Blends naturally with dark background */
-}
 
 .container {
   max-width: 960px;
@@ -82,7 +67,6 @@
 }
 
 .stateCard:hover {
-  transform: translateY(-4px);
   box-shadow:
     0 10px 32px var(--black-alpha-18),
     inset 0 1px 0 var(--white-alpha-25);
@@ -177,7 +161,6 @@
     var(--primary) 100%
   );
   color: var(--text-primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-primary-lg);
   border-color: var(--primary-light);
 }

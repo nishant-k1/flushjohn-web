@@ -5,21 +5,6 @@
   position: relative;
 }
 
-.trustSignals::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/images/image.png");
-  background-size: auto; /* Use original image size for tiling */
-  background-position: 0 0;
-  background-repeat: repeat; /* Tile the image for seamless pattern */
-  pointer-events: none;
-  opacity: 0.4; /* Adjust to control texture visibility */
-  mix-blend-mode: overlay; /* Blends naturally with dark background */
-}
 
 .container {
   max-width: 960px;
@@ -70,7 +55,6 @@
 }
 
 .statItem:hover {
-  transform: translateY(-3px);
   box-shadow:
     0 8px 28px var(--black-alpha-15),
     inset 0 1px 0 var(--white-alpha-25);
@@ -135,7 +119,6 @@
 }
 
 .badge:hover {
-  transform: translateY(-2px);
   box-shadow:
     0 6px 20px var(--black-alpha-15),
     inset 0 1px 0 var(--white-alpha-25);

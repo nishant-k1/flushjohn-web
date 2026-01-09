@@ -277,7 +277,6 @@
 
 .card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -305,7 +304,6 @@
 
 .testimonialCard:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
 }
 
 .testimonialCard p:first-child {
@@ -351,7 +349,6 @@
 
 .serviceCard:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transform: translateY(-3px);
   border-color: var(--primary);
   background-color: var(--neutral-600);
 }
@@ -371,7 +368,6 @@
 
 .cityCard:hover {
   background-color: var(--neutral-600);
-  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   text-decoration: none;
   border-color: var(--primary);
@@ -573,7 +569,6 @@
 
 .finalCTAButton:hover {
   background: var(--bg-primary);
-  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   text-decoration: none !important;
   color: var(--text-primary) !important;

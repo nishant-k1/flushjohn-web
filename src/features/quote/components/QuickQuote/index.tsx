@@ -207,10 +207,6 @@ const UsageTypeField = () => {
                     values.usageType === option.value
                       ? `0 0 12px var(--primary-alpha-20)`
                       : "none",
-                  transform:
-                    values.usageType === option.value
-                      ? "scale(1.05)"
-                      : "scale(1)",
                   lineHeight: "1.4",
                   letterSpacing: "-0.01em",
                 }}
@@ -220,7 +216,6 @@ const UsageTypeField = () => {
                       `linear-gradient(90deg, var(--primary-alpha-12) 0%, var(--primary-alpha-06) 100%)`;
                     e.currentTarget.style.borderLeft = `4px solid var(--primary-alpha-30)`;
                     e.currentTarget.style.boxShadow = `0 2px 10px var(--primary-alpha-10)`;
-                    e.currentTarget.style.transform = "scale(1.1)";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -228,7 +223,6 @@ const UsageTypeField = () => {
                     e.currentTarget.style.background = "var(--bg-white)";
                     e.currentTarget.style.borderLeft = "4px solid transparent";
                     e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.transform = "scale(1)";
                   }
                 }}
               >

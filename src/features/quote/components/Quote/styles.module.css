@@ -224,7 +224,6 @@
 .stepIndicator.current {
   border-color: var(--primary-light);
   background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  transform: scale(1.1);
   box-shadow:
     0 0 0 3px rgba(140, 111, 72, 0.2),
     0 3px 12px rgba(140, 111, 72, 0.5),

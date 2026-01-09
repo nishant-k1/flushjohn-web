@@ -44,12 +44,12 @@
 .arrow:hover {
   background: rgba(255, 255, 255, 0.25);
   border-color: var(--primary-light);
-  transform: translateY(-50%) scale(1.05);
+  transform: translateY(-50%);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .arrow:active {
-  transform: translateY(-50%) scale(0.95);
+  transform: translateY(-50%);
 }
 
 .prevArrow {
@@ -130,7 +130,6 @@
 .dot:hover::before {
   background: var(--primary-light);
   border-color: var(--primary-light);
-  transform: scale(1.3);
 }
 
 .activeDot {

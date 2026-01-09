@@ -62,7 +62,6 @@
 }
 
 .quickQuoteBtn:hover {
-  transform: scale(1.05);
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
@@ -73,7 +72,6 @@
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
   color: var(--text-primary);
-  transform: scale(1);
 }
 
 .quickQuoteBtn:focus-visible {
@@ -128,7 +126,6 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: scale(1.05);
   box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 20px;
 }
 
@@ -136,7 +133,6 @@
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
   color: var(--text-primary);
-  transform: scale(1);
 }
 
 .phoneBtn:focus-visible {
@@ -215,7 +211,6 @@
 
 .calloutClose:hover {
   color: var(--text-primary);
-  transform: scale(1.2);
 }
 
 @keyframes slideIn {

@@ -4,21 +4,6 @@
   position: relative;
 }
 
-.features::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/images/image.png");
-  background-size: auto; /* Use original image size for tiling */
-  background-position: 0 0;
-  background-repeat: repeat; /* Tile the image for seamless pattern */
-  pointer-events: none;
-  opacity: 0.4; /* Adjust to control texture visibility */
-  mix-blend-mode: overlay; /* Blends naturally with dark background */
-}
 
 .container {
   max-width: 960px;
@@ -73,43 +58,6 @@
   height: 100%; /* Ensures cards stretch to fill grid cell */
 }
 
-/* Subtle texture overlay for depth */
-.wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      var(--black-alpha-10) 2px,
-      var(--black-alpha-10) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      var(--black-alpha-10) 2px,
-      var(--black-alpha-10) 4px
-    ),
-    radial-gradient(
-      circle at 20% 50%,
-      var(--primary-alpha-05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      var(--primary-alpha-05) 0%,
-      transparent 50%
-    );
-  pointer-events: none;
-  opacity: 0.6;
-  z-index: 0;
-}
 
 .wrapper::before {
   content: "";
@@ -132,7 +80,6 @@
 }
 
 .wrapper:hover {
-  transform: translateY(-6px);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -177,7 +124,7 @@
 }
 
 .wrapper:hover .iconContainer {
-  transform: scale(1.08) rotate(3deg);
+  transform: rotate(3deg);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 

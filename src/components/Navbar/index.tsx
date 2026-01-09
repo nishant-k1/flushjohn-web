@@ -73,12 +73,8 @@ const Navbar = () => {
                 width: "auto",
                 transition: "transform 0.3s ease-in-out",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "scale(0.96)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "scale(1)")
-              }
+              onMouseEnter={(e) => {}}
+              onMouseLeave={(e) => {}}
             />
           </Link>
           <div className={styles.hamburger}>

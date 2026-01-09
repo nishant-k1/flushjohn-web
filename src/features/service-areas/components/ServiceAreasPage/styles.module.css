@@ -166,7 +166,6 @@
 }
 
 .cityCard:hover {
-  transform: translateY(-4px);
   box-shadow:
     0 10px 32px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -320,7 +319,6 @@
     var(--primary-light) 0%,
     var(--primary) 100%
   );
-  transform: translateY(-2px);
   box-shadow: var(--shadow-primary-lg);
   border-color: var(--primary-light);
 }
@@ -334,7 +332,6 @@
 .contactButton:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
   color: var(--text-primary);
 }
 

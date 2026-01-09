@@ -52,7 +52,6 @@
   transition: transform var(--transition-base);
 }
 .logo:hover {
-  transform: scale(0.96);
 }
 
 .logo:focus-visible {

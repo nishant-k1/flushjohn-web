@@ -80,14 +80,14 @@ const CustomInput = React.memo(
               e.currentTarget.style.opacity = "1";
               e.currentTarget.style.filter =
                 "drop-shadow(0 0 8px rgba(140, 111, 72, 0.4))";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+              e.currentTarget.style.transform = "translateY(-50%)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.opacity = isHovered ? "0.8" : "0.6";
               e.currentTarget.style.filter = isHovered
                 ? "drop-shadow(0 0 6px rgba(140, 111, 72, 0.3))"
                 : "drop-shadow(0 0 4px rgba(140, 111, 72, 0.2))";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+              e.currentTarget.style.transform = "translateY(-50%)";
             }}
           >
             <Calendar size={18} />

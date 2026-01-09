@@ -99,7 +99,6 @@
 .searchButton:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -169,7 +168,6 @@
 }
 
 .featuredPost:hover {
-  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   border-color: var(--primary);
   background-color: var(--neutral-600);
@@ -383,7 +381,6 @@
 }
 
 .blogItem:hover {
-  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   border-color: var(--primary);
   background-color: var(--neutral-600);
@@ -592,7 +589,6 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-primary-lg);
 }
 
@@ -637,7 +633,6 @@
 .paginationButton:hover:not(:disabled) {
   background-color: var(--neutral-600);
   border-color: var(--primary);
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -678,7 +673,6 @@
 .pageNumber:hover:not(.active) {
   background-color: var(--neutral-600);
   border-color: var(--primary);
-  transform: translateY(-2px);
 }
 
 .pageNumber.active {
@@ -758,7 +752,6 @@
 }
 
 .relatedLink:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--primary-light);

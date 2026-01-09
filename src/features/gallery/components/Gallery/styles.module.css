@@ -57,7 +57,6 @@
   box-shadow:
     0 10px 36px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.25);
 }
 
@@ -71,5 +70,4 @@
 }
 
 .imagesWrapper div:hover img {
-  transform: scale(1.05); /* Slightly enlarge the image on hover */
 }
