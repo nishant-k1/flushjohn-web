@@ -1,5 +1,5 @@
 .phoneBar {
-  background: linear-gradient(135deg, var(--phone-bar-background-start) 0%, var(--phone-bar-background-end) 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   padding: var(--spacing-md) var(--spacing-xl);
   box-shadow: 0 4px 12px var(--black-alpha-15);
   position: relative;
