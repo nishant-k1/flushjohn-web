@@ -100,8 +100,9 @@ export const preloadCriticalResources = (): void => {
 
 /**
  * Optimize scroll performance
+ * Returns cleanup function to remove event listener
  */
-export const optimizeScrollPerformance = (): void => {
+export const optimizeScrollPerformance = (): (() => void) => {
   let ticking = false;
 
   const handleScroll = () => {
@@ -114,4 +115,9 @@ export const optimizeScrollPerformance = (): void => {
   };
 
   window.addEventListener("scroll", handleScroll, { passive: true });
+  
+  // Return cleanup function
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
 };

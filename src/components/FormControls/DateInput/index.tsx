@@ -193,13 +193,14 @@ const DateInput: React.FC<DateInputProps> = ({
     forceWidth();
 
     // Apply after a short delay to override library's initialization
-    const timeoutId = setTimeout(forceWidth, 0);
+    let timeoutId: NodeJS.Timeout | null = setTimeout(forceWidth, 0);
 
     // Set up MutationObserver to catch any style changes
-    const observer = new MutationObserver(forceWidth);
+    let observer: MutationObserver | null = new MutationObserver(forceWidth);
+    const currentContainer = containerRef.current; // Store reference
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current, {
+    if (currentContainer) {
+      observer.observe(currentContainer, {
         attributes: true,
         attributeFilter: ["style"],
         subtree: true,
@@ -207,8 +208,16 @@ const DateInput: React.FC<DateInputProps> = ({
     }
 
     return () => {
-      clearTimeout(timeoutId);
-      observer.disconnect();
+      // Always clean up timeout
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      // Always disconnect observer to prevent memory leaks
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
     };
   }, [hasError, touched, error]); // Re-run when error state changes
 

@@ -25,10 +25,6 @@ const QuoteStep2 = () => {
   const [_, setStep] = render;
   const [formValues, setFormValues] = data;
 
-  React.useEffect(() => {
-    setFormValues(formValues);
-  }, [formValues]);
-
   return (
     <Formik
       enableReinitialize={true}
@@ -36,7 +32,7 @@ const QuoteStep2 = () => {
       validationSchema={step2ValidationSchema}
       validateOnChange={false}
       validateOnBlur={true}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
+      onSubmit={async (values, { setSubmitting, setFieldError }) => {
         try {
           setFormValues((prevValues) => ({
             ...prevValues,
@@ -44,7 +40,22 @@ const QuoteStep2 = () => {
           }));
           setStep(3);
           window.scrollTo(0, 0);
-        } catch (err) {}
+        } catch (err) {
+          // Log error for debugging
+          const isDev = typeof window !== "undefined" 
+            ? (process.env.NODE_ENV === "development" || (window as any).__DEV__)
+            : process.env.NODE_ENV === "development";
+          
+          if (isDev) {
+            console.error("Error submitting QuoteStep2 form:", err);
+          }
+          
+          // Set a generic error message for user feedback
+          setFieldError("deliveryDate", "An error occurred. Please try again.");
+          
+          // Re-throw to prevent silent failure if needed
+          throw err;
+        }
       }}
     >
       <Form noValidate>

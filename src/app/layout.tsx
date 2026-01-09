@@ -142,9 +142,20 @@ export default function RootLayout({
               (function() {
                 // Suppress MIME type errors immediately before any other code runs
                 if (typeof window !== 'undefined') {
-                  // Catch errors before they're logged
-                  const originalError = console.error;
-                  const originalWarn = console.warn;
+                  // Prevent duplicate setup on client-side navigation
+                  if (window.__mimeErrorSuppressionSetup) {
+                    return;
+                  }
+                  window.__mimeErrorSuppressionSetup = true;
+
+                  // Store original methods only once
+                  if (!window.__originalConsoleError) {
+                    window.__originalConsoleError = console.error;
+                    window.__originalConsoleWarn = console.warn;
+                  }
+                  
+                  const originalError = window.__originalConsoleError;
+                  const originalWarn = window.__originalConsoleWarn;
                   
                   console.error = function() {
                     const message = arguments[0] ? String(arguments[0]) : '';
@@ -164,28 +175,35 @@ export default function RootLayout({
                     originalWarn.apply(console, arguments);
                   };
                   
-                  // Catch errors via global error handler (capture phase)
-                  window.addEventListener('error', function(event) {
-                    const message = event.message || '';
-                    const filename = event.filename || '';
-                    // Suppress MIME type errors for CSS files
-                    if ((message.includes('MIME type') || message.includes('not executable')) && 
-                        (filename.includes('.css') || message.includes('text/css'))) {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      event.stopImmediatePropagation();
-                      return false;
-                    }
-                  }, true);
-                  
-                  // Catch unhandled promise rejections
-                  window.addEventListener('unhandledrejection', function(event) {
-                    const message = event.reason ? String(event.reason) : '';
-                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
-                      event.preventDefault();
-                      return false;
-                    }
-                  });
+                  // Store error handler reference to prevent duplicates
+                  if (!window.__mimeErrorHandler) {
+                    window.__mimeErrorHandler = function(event) {
+                      const message = event.message || '';
+                      const filename = event.filename || '';
+                      // Suppress MIME type errors for CSS files
+                      if ((message.includes('MIME type') || message.includes('not executable')) && 
+                          (filename.includes('.css') || message.includes('text/css'))) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        return false;
+                      }
+                    };
+                    
+                    window.__mimeRejectionHandler = function(event) {
+                      const message = event.reason ? String(event.reason) : '';
+                      if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                        event.preventDefault();
+                        return false;
+                      }
+                    };
+                    
+                    // Catch errors via global error handler (capture phase) - only add once
+                    window.addEventListener('error', window.__mimeErrorHandler, true);
+                    
+                    // Catch unhandled promise rejections - only add once
+                    window.addEventListener('unhandledrejection', window.__mimeRejectionHandler);
+                  }
                 }
               })();
             `,

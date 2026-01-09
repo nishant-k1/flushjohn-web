@@ -1,4 +1,22 @@
-export const G_TAG_ID: string = process.env.NEXT_PUBLIC_G_TAG_ID as string;
+/**
+ * Validate and get environment variable
+ * Throws error in development if missing, provides fallback in production
+ */
+function getEnvVar(key: string, fallback?: string): string {
+  const value = process.env[key];
+  if (!value && fallback) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn(`Environment variable ${key} is not set. Using fallback: ${fallback}`);
+    }
+    return fallback;
+  }
+  if (!value && process.env.NODE_ENV === "development") {
+    throw new Error(`Required environment variable ${key} is not set`);
+  }
+  return value || fallback || "";
+}
+
+export const G_TAG_ID: string = getEnvVar("NEXT_PUBLIC_G_TAG_ID", "");
 
 export type apiBaseUrlsType = {
   CRM_BASE_URL: string;
@@ -6,8 +24,8 @@ export type apiBaseUrlsType = {
 };
 
 export const apiBaseUrls: apiBaseUrlsType = {
-  CRM_BASE_URL: process.env.NEXT_PUBLIC_CRM_BASE_URL as string,
-  API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL as string,
+  CRM_BASE_URL: getEnvVar("NEXT_PUBLIC_CRM_BASE_URL", ""),
+  API_BASE_URL: getEnvVar("NEXT_PUBLIC_API_BASE_URL", ""),
 };
 
 export type phoneType = {
@@ -16,8 +34,8 @@ export type phoneType = {
 };
 
 export const phone: phoneType = {
-  phone_link: process.env.NEXT_PUBLIC_PHONE_URL as string,
-  phone_number: process.env.NEXT_PUBLIC_PHONE_NUMBER as string,
+  phone_link: getEnvVar("NEXT_PUBLIC_PHONE_URL", ""),
+  phone_number: getEnvVar("NEXT_PUBLIC_PHONE_NUMBER", ""),
 };
 
 export type contactType = {
@@ -64,10 +82,9 @@ export const socialMedia: socialMediaType = {
   instagram: "https://www.instagram.com/flushjohn",
 };
 
-export const s3assets: string = process.env
-  .NEXT_PUBLIC_CLOUD_FRONT_URL as string;
+export const s3assets: string = getEnvVar("NEXT_PUBLIC_CLOUD_FRONT_URL", "");
 
-export const websiteURL: string = process.env.NEXT_PUBLIC_WEBSITE_URL as string;
+export const websiteURL: string = getEnvVar("NEXT_PUBLIC_WEBSITE_URL", "");
 
 // Theme exports
 export { theme, type Theme, type ThemeColors, type ThemeSpacing } from "./theme";

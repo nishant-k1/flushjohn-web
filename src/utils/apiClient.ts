@@ -74,10 +74,45 @@ export const apiClient = async <T = any>(
 
   // Handle errors
   if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(
-      errorData.message || `HTTP ${response.status}: ${response.statusText}`
-    );
+    let errorMessage = `HTTP ${response.status}`;
+    let errorDetails: any = null;
+
+    try {
+      const errorData = await response.json();
+      if (errorData && typeof errorData === "object") {
+        errorMessage = errorData.message || errorData.error || errorMessage;
+        if (errorData.details) {
+          errorDetails = errorData.details;
+        }
+        // Include status text if available and message is generic
+        if (response.statusText && (!errorData.message || errorData.message === errorMessage)) {
+          errorMessage = `${errorMessage}: ${response.statusText}`;
+        }
+      } else if (typeof errorData === "string") {
+        errorMessage = errorData || errorMessage;
+      }
+    } catch (parseError) {
+      // Response is not JSON, try to get text
+      try {
+        const text = await response.text();
+        if (text) {
+          errorMessage = text.substring(0, 200); // Limit length
+        }
+      } catch (textError) {
+        // Failed to read response body, use status text
+        if (response.statusText) {
+          errorMessage = `${errorMessage}: ${response.statusText}`;
+        }
+      }
+    }
+
+    // Create error object with more details
+    const error = new Error(errorMessage) as Error & { status?: number; details?: any };
+    error.status = response.status;
+    if (errorDetails) {
+      error.details = errorDetails;
+    }
+    throw error;
   }
 
   // Parse response
