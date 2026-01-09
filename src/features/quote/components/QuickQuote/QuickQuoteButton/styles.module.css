@@ -144,50 +144,50 @@
   position: fixed;
   left: 100px;
   bottom: 20px;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--callout-gradient-start) 0%, var(--callout-gradient-end) 100%);
   color: var(--text-primary);
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
   box-shadow: 0 4px 12px var(--black-alpha-30);
   z-index: 9999;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   animation: slideIn 0.4s ease-out;
-  border: 2px solid var(--primary-light);
-  max-width: 200px;
+  border: 1.5px solid var(--primary-light);
+  max-width: 160px;
 }
 
 .callout::after {
   content: "";
   position: absolute;
-  left: -12px;
-  bottom: 20px;
+  left: -10px;
+  bottom: 16px;
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 12px solid var(--primary-light);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid var(--primary-light);
   z-index: 10000;
 }
 
 .callout::before {
   content: "";
   position: absolute;
-  left: -10px;
-  bottom: 22px;
+  left: -8px;
+  bottom: 18px;
   width: 0;
   height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid var(--primary-dark);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--callout-gradient-start);
   z-index: 10001;
 }
 
 .calloutText {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
@@ -195,12 +195,12 @@
   background: transparent;
   border: none;
   color: var(--text-primary);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   padding: 0;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,26 +228,26 @@
   .callout {
     left: 90px;
     bottom: 20px;
-    max-width: 150px;
-    padding: 10px 16px;
-    font-size: 0.85rem;
+    max-width: 140px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
   }
 
   .callout::after {
-    left: -10px;
-    bottom: 18px;
-    border-right-width: 10px;
-    border-top-width: 10px;
-    border-bottom-width: 10px;
+    left: -8px;
+    bottom: 16px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
     border-left-width: 0;
   }
 
   .callout::before {
-    left: -8px;
-    bottom: 20px;
-    border-right-width: 8px;
-    border-top-width: 8px;
-    border-bottom-width: 8px;
+    left: -7px;
+    bottom: 18px;
+    border-right-width: 7px;
+    border-top-width: 7px;
+    border-bottom-width: 7px;
     border-left-width: 0;
   }
 }

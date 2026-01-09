@@ -1,5 +1,5 @@
 .phoneBar {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--phone-bar-background-start) 0%, var(--phone-bar-background-end) 100%);
   padding: var(--spacing-md) var(--spacing-xl);
   box-shadow: 0 4px 12px var(--black-alpha-15);
   position: relative;
@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--phone-button-red-start) 0%, var(--phone-button-red-end) 100%);
   color: var(--text-primary);
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: 0;
@@ -44,16 +44,16 @@
   letter-spacing: 0.05em;
   transition: all var(--transition-base);
   box-shadow:
-    0 4px 12px var(--primary-alpha-30),
+    0 4px 12px var(--phone-button-red-alpha-30),
     inset 0 1px 0 var(--white-alpha-10);
   text-shadow: 0 1px 2px var(--black-alpha-20);
   border: 2px solid var(--white-alpha-10);
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--phone-button-red-hover-start) 0%, var(--phone-button-red-hover-end) 100%);
   box-shadow:
-    0 6px 20px var(--primary-alpha-40),
+    0 6px 20px var(--phone-button-red-alpha-40),
     inset 0 1px 0 var(--white-alpha-15);
   color: var(--text-primary);
 }
@@ -61,7 +61,7 @@
 .phoneNumber:active {
   transform: translateY(0);
   box-shadow:
-    0 2px 8px var(--primary-alpha-30),
+    0 2px 8px var(--phone-button-red-alpha-30),
     inset 0 1px 0 var(--white-alpha-10);
 }
 

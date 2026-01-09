@@ -133,6 +133,7 @@ export const theme = {
       20: "rgba(255, 255, 255, 0.2)",
       25: "rgba(255, 255, 255, 0.25)",
       30: "rgba(255, 255, 255, 0.3)",
+      50: "rgba(255, 255, 255, 0.5)",
       90: "rgba(255, 255, 255, 0.9)",
     },
 
@@ -180,6 +181,48 @@ export const theme = {
       overlayGradientEnd: "rgba(52, 73, 94, 0.3)", // Dark blue-gray gradient end
       overlayGradientStartLight: "rgba(44, 62, 80, 0.25)", // Lighter gradient start
       overlayGradientEndLight: "rgba(52, 73, 94, 0.25)", // Lighter gradient end
+    },
+
+    // Callout Colors (used for phone callout, similar to hero overlay colors)
+    callout: {
+      gradientStart: "#2c3e50", // Dark blue-gray gradient start
+      gradientEnd: "#34495e", // Dark blue-gray gradient end
+    },
+
+    // Phone Bar Colors (dark blue-gray background for phone bars)
+    phoneBar: {
+      backgroundStart: "#2c3e50", // Dark blue-gray gradient start
+      backgroundEnd: "#34495e", // Dark blue-gray gradient end
+    },
+
+    // Phone Button Colors
+    phoneButton: {
+      // Red variant (for PhoneNumberBar)
+      redStart: "#e74c3c",
+      redEnd: "#c0392b",
+      redHoverStart: "#c0392b",
+      redHoverEnd: "#a93226",
+      redAlpha30: "rgba(231, 76, 60, 0.3)",
+      redAlpha40: "rgba(231, 76, 60, 0.4)",
+      // Green variant (for CombinedContactBar)
+      greenStart: "#4a7c59",
+      greenEnd: "#2d4a35",
+      greenHoverStart: "#2d4a35",
+      greenHoverEnd: "#1e3124",
+      greenAlpha40: "rgba(45, 74, 53, 0.4)",
+      greenAlpha50: "rgba(45, 74, 53, 0.5)",
+    },
+
+    // Check Button Colors (orange/brown for zip code checker)
+    checkButton: {
+      gradientStart: "#5f3300",
+      gradientEnd: "#b45309",
+      hoverStart: "#b45309",
+      hoverEnd: "#92400e",
+      border: "#7e4505",
+      hoverBorder: "#b45309",
+      alpha40: "rgba(217, 119, 6, 0.4)",
+      alpha50: "rgba(217, 119, 6, 0.5)",
     },
   },
 

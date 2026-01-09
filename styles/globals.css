@@ -139,6 +139,7 @@
   --white-alpha-20: rgba(255, 255, 255, 0.2);
   --white-alpha-25: rgba(255, 255, 255, 0.25);
   --white-alpha-30: rgba(255, 255, 255, 0.3);
+  --white-alpha-50: rgba(255, 255, 255, 0.5);
   --white-alpha-90: rgba(255, 255, 255, 0.9);
 
   /* Black/Dark Overlay Variants */
@@ -176,6 +177,38 @@
   --hero-overlay-gradient-end: rgba(52, 73, 94, 0.3); /* Dark blue-gray gradient end */
   --hero-overlay-gradient-start-light: rgba(44, 62, 80, 0.25); /* Lighter gradient start */
   --hero-overlay-gradient-end-light: rgba(52, 73, 94, 0.25); /* Lighter gradient end */
+
+  /* Callout Colors (used for phone callout, similar to hero overlay colors) */
+  --callout-gradient-start: #2c3e50; /* Dark blue-gray gradient start */
+  --callout-gradient-end: #34495e; /* Dark blue-gray gradient end */
+
+  /* Phone Bar Colors (dark blue-gray background for phone bars) */
+  --phone-bar-background-start: #2c3e50; /* Dark blue-gray gradient start */
+  --phone-bar-background-end: #34495e; /* Dark blue-gray gradient end */
+
+  /* Phone Button Colors */
+  --phone-button-red-start: #e74c3c; /* Red gradient start */
+  --phone-button-red-end: #c0392b; /* Red gradient end */
+  --phone-button-red-hover-start: #c0392b; /* Red hover gradient start */
+  --phone-button-red-hover-end: #a93226; /* Red hover gradient end */
+  --phone-button-red-alpha-30: rgba(231, 76, 60, 0.3); /* Red shadow */
+  --phone-button-red-alpha-40: rgba(231, 76, 60, 0.4); /* Red shadow hover */
+  --phone-button-green-start: #4a7c59; /* Green gradient start */
+  --phone-button-green-end: #2d4a35; /* Green gradient end */
+  --phone-button-green-hover-start: #2d4a35; /* Green hover gradient start */
+  --phone-button-green-hover-end: #1e3124; /* Green hover gradient end */
+  --phone-button-green-alpha-40: rgba(45, 74, 53, 0.4); /* Green shadow */
+  --phone-button-green-alpha-50: rgba(45, 74, 53, 0.5); /* Green shadow hover */
+
+  /* Check Button Colors (orange/brown for zip code checker) */
+  --check-button-gradient-start: #5f3300; /* Orange/brown gradient start */
+  --check-button-gradient-end: #b45309; /* Orange/brown gradient end */
+  --check-button-hover-start: #b45309; /* Orange/brown hover gradient start */
+  --check-button-hover-end: #92400e; /* Orange/brown hover gradient end */
+  --check-button-border: #7e4505; /* Check button border */
+  --check-button-hover-border: #b45309; /* Check button hover border */
+  --check-button-alpha-40: rgba(217, 119, 6, 0.4); /* Check button shadow */
+  --check-button-alpha-50: rgba(217, 119, 6, 0.5); /* Check button shadow hover */
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);

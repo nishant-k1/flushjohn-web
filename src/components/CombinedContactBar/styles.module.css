@@ -1,6 +1,6 @@
 .combinedBar {
   width: 100%;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--phone-bar-background-start) 0%, var(--phone-bar-background-end) 100%);
   box-shadow: 0 4px 12px var(--black-alpha-15);
   border-top: 2px solid var(--primary-light);
 }
@@ -68,16 +68,16 @@
 }
 
 .zipInput::placeholder {
-  color: var(--gray-text);
+  color: #999;
   font-weight: 400;
 }
 
 .checkButton {
   height: 36px;
   padding: 8px 20px;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--check-button-gradient-start) 0%, var(--check-button-gradient-end) 100%);
   color: var(--text-primary);
-  border: 2px solid var(--primary-dark);
+  border: 2px solid var(--check-button-border);
   border-radius: 0;
   font-size: 0.85rem;
   font-weight: 700;
@@ -86,7 +86,7 @@
   transition: all 0.3s ease;
   white-space: nowrap;
   box-shadow:
-    0 4px 12px var(--primary-alpha-40),
+    0 4px 12px var(--check-button-alpha-40),
     inset 0 1px 0 var(--white-alpha-20);
   text-transform: uppercase;
   box-sizing: border-box;
@@ -96,16 +96,16 @@
 }
 
 .checkButton:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--check-button-hover-start) 0%, var(--check-button-hover-end) 100%);
+  border-color: var(--check-button-hover-border);
   box-shadow:
-    0 6px 20px var(--primary-alpha-40),
+    0 6px 20px var(--check-button-alpha-50),
     inset 0 1px 0 var(--white-alpha-25);
 }
 
 .checkButton:active:not(:disabled) {
   box-shadow:
-    0 2px 8px var(--primary-alpha-40),
+    0 2px 8px var(--check-button-alpha-40),
     inset 0 1px 0 var(--white-alpha-10);
 }
 
@@ -115,7 +115,7 @@
 }
 
 .checkButton:focus-visible {
-  outline: 3px solid var(--white-alpha-30);
+  outline: 3px solid var(--white-alpha-50);
   outline-offset: 2px;
 }
 
@@ -205,7 +205,7 @@
   align-items: center;
   gap: 6px;
   height: 36px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--phone-button-green-start) 0%, var(--phone-button-green-end) 100%);
   color: var(--text-primary);
   padding: 8px 14px;
   border-radius: 0;
@@ -215,31 +215,31 @@
   letter-spacing: 0.05em;
   transition: all var(--transition-base);
   box-shadow:
-    0 4px 12px var(--primary-alpha-40),
+    0 4px 12px var(--phone-button-green-alpha-40),
     inset 0 1px 0 var(--white-alpha-15);
   text-shadow: 0 1px 2px var(--black-alpha-30);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--phone-button-green-end);
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-  border-color: var(--primary-dark);
+  background: linear-gradient(135deg, var(--phone-button-green-hover-start) 0%, var(--phone-button-green-hover-end) 100%);
+  border-color: var(--phone-button-green-hover-start);
   box-shadow:
-    0 6px 20px var(--primary-alpha-40),
+    0 6px 20px var(--phone-button-green-alpha-50),
     inset 0 1px 0 var(--white-alpha-20);
   color: var(--text-primary);
 }
 
 .phoneNumber:active {
   box-shadow:
-    0 2px 8px var(--primary-alpha-40),
+    0 2px 8px var(--phone-button-green-alpha-40),
     inset 0 1px 0 var(--white-alpha-10);
 }
 
 .phoneNumber:focus-visible {
-  outline: 3px solid var(--white-alpha-30);
+  outline: 3px solid var(--white-alpha-50);
   outline-offset: 2px;
 }
 
