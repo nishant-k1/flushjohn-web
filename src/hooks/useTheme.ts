@@ -1,10 +1,13 @@
 import { useMemo } from "react";
 import { theme, type Theme, type ThemeColors } from "@/constants/theme";
+import { useThemeContext } from "@/contexts/ThemeContext";
 
 /**
  * Hook to access theme values in React components
  * 
- * Provides easy access to all theme colors, spacing, typography, and design tokens
+ * Provides easy access to all theme colors, spacing, typography, and design tokens.
+ * Automatically uses the current active theme from ThemeContext if available,
+ * otherwise falls back to the default theme.
  * 
  * @returns Complete theme object with helper functions
  * 
@@ -47,6 +50,16 @@ export const useTheme = (): Theme & {
    */
   getCSSVar: (path: string) => string;
 } => {
+  // Try to use dynamic theme context if available
+  let activeTheme: Theme;
+  try {
+    const themeContext = useThemeContext();
+    activeTheme = themeContext.getFullTheme();
+  } catch (e) {
+    // Fallback to default theme if not within ThemeContextProvider
+    activeTheme = theme;
+  }
+
   return useMemo(() => {
     /**
      * Get color by path string
@@ -54,7 +67,7 @@ export const useTheme = (): Theme & {
      */
     const getColor = (path: string): string | undefined => {
       const keys = path.split(".");
-      let value: any = theme.colors;
+      let value: any = activeTheme.colors;
 
       for (const key of keys) {
         if (value && typeof value === "object" && key in value) {
@@ -71,7 +84,7 @@ export const useTheme = (): Theme & {
      * Get spacing value by size
      */
     const getSpacing = (size: keyof Theme["spacing"]): string => {
-      return theme.spacing[size] || theme.spacing.md;
+      return activeTheme.spacing[size] || activeTheme.spacing.md;
     };
 
     /**
@@ -88,12 +101,12 @@ export const useTheme = (): Theme & {
     };
 
     return {
-      ...theme,
+      ...activeTheme,
       getColor,
       getSpacing,
       getCSSVar,
     };
-  }, []);
+  }, [activeTheme]);
 };
 
 /**
@@ -110,7 +123,16 @@ export const useTheme = (): Theme & {
  * ```
  */
 export const useThemeColors = (): ThemeColors => {
-  return useMemo(() => theme.colors, []);
+  // Use dynamic theme context if available, with safe fallback
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const themeContext = useThemeContext();
+    // Type assertion needed because dynamic themes may have different color values
+    return themeContext.currentTheme.colors as ThemeColors;
+  } catch (e) {
+    // Not within ThemeContextProvider, use default theme
+    return useMemo(() => theme.colors, []);
+  }
 };
 
 // Default export

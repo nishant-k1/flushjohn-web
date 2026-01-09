@@ -60,14 +60,17 @@
   --text-inverse-secondary: rgba(255, 255, 255, 0.9);
   --text-inverse-tertiary: rgba(255, 255, 255, 0.7);
 
-  /* Background Colors - Single consistent color scheme using muted darker brown */
-  --bg-primary: #5a4a3a; /* Main background - body, sections, everything - more muted brown */
+  /* Background Colors - Original brown with glass morphism support */
+  --bg-primary: #5a4a3a; /* Main background - original brown */
   --bg-secondary: #5a4a3a; /* Same for consistency */
   --bg-tertiary: #5a4a3a; /* Same for consistency */
   --bg-dark: #5a4a3a; /* Same for consistency */
   --bg-dark-alpha: rgba(90, 74, 58, 0.95); /* For header/footer with backdrop */
   --bg-dark-alpha-50: rgba(90, 74, 58, 0.5); /* For overlays */
   --bg-dark-alpha-40: rgba(90, 74, 58, 0.4); /* For overlays */
+  --bg-glass: rgba(90, 74, 58, 0.75); /* Glass morphism background */
+  --bg-glass-light: rgba(90, 74, 58, 0.65); /* Lighter glass */
+  --bg-glass-dark: rgba(90, 74, 58, 0.85); /* Darker glass */
   --bg-transparent: transparent;
 
   /* Semantic Colors - Earth-toned but functional */
@@ -76,22 +79,27 @@
   --success-dark: #556b47; /* Darker variant for hover/active */
   --success-light: #7fa366; /* Lighter variant for backgrounds */
   --success-bg: rgba(107, 142, 90, 0.15); /* Subtle success background */
-  
+
   /* Error: Muted red/orange that's distinct but not jarring */
   --error: #c85d47; /* Muted terracotta red - distinct but earth-toned */
   --error-dark: #b04a35; /* Darker variant for hover/active */
   --error-light: #d8725f; /* Lighter variant */
   --error-red: #ff4444; /* Bright red for form validation (keep for visibility) */
-  --error-red-alpha-90: rgba(255, 68, 68, 0.9); /* Error red with 0.9 opacity for messages */
+  --error-red-alpha-90: rgba(
+    255,
+    68,
+    68,
+    0.9
+  ); /* Error red with 0.9 opacity for messages */
   --error-border: #ff4444; /* Error border color */
   --error-bg: rgba(200, 93, 71, 0.15); /* Subtle error background */
-  
+
   /* Warning: Warm amber that complements brown */
   --warning: #d4a574; /* Warm amber - harmonious with brown */
   --warning-dark: #b8905a; /* Darker variant */
   --warning-light: #e6b890; /* Lighter variant */
   --warning-bg: rgba(212, 165, 116, 0.15); /* Subtle warning background */
-  
+
   /* Info: Cooler brown-tone or teal that stands out */
   --info: #8c6f48; /* Use primary for consistency */
   --info-dark: #6d5637; /* Darker variant */
@@ -156,7 +164,7 @@
   --black-alpha-60: rgba(0, 0, 0, 0.6);
 
   /* Rating/Star Colors */
-  --rating-active: #FFD700; /* Gold for active stars */
+  --rating-active: #ffd700; /* Gold for active stars */
   --rating-inactive: rgba(255, 255, 255, 0.25); /* Inactive star color */
   --rating-glow: rgba(255, 215, 0, 0.5); /* Star glow effect */
 
@@ -172,11 +180,36 @@
   --gray-darker: #1a1a1a;
 
   /* Hero Section Overlay Colors */
-  --hero-overlay-dark-blue: rgba(0, 28, 58, 0.8); /* Dark blue overlay on carousel images */
-  --hero-overlay-gradient-start: rgba(44, 62, 80, 0.3); /* Dark blue-gray gradient start */
-  --hero-overlay-gradient-end: rgba(52, 73, 94, 0.3); /* Dark blue-gray gradient end */
-  --hero-overlay-gradient-start-light: rgba(44, 62, 80, 0.25); /* Lighter gradient start */
-  --hero-overlay-gradient-end-light: rgba(52, 73, 94, 0.25); /* Lighter gradient end */
+  --hero-overlay-dark-blue: rgba(
+    0,
+    28,
+    58,
+    0.8
+  ); /* Dark blue overlay on carousel images */
+  --hero-overlay-gradient-start: rgba(
+    44,
+    62,
+    80,
+    0.3
+  ); /* Dark blue-gray gradient start */
+  --hero-overlay-gradient-end: rgba(
+    52,
+    73,
+    94,
+    0.3
+  ); /* Dark blue-gray gradient end */
+  --hero-overlay-gradient-start-light: rgba(
+    44,
+    62,
+    80,
+    0.25
+  ); /* Lighter gradient start */
+  --hero-overlay-gradient-end-light: rgba(
+    52,
+    73,
+    94,
+    0.25
+  ); /* Lighter gradient end */
 
   /* Callout Colors (used for phone callout, similar to hero overlay colors) */
   --callout-gradient-start: #2c3e50; /* Dark blue-gray gradient start */
@@ -208,7 +241,12 @@
   --check-button-border: #7e4505; /* Check button border */
   --check-button-hover-border: #b45309; /* Check button hover border */
   --check-button-alpha-40: rgba(217, 119, 6, 0.4); /* Check button shadow */
-  --check-button-alpha-50: rgba(217, 119, 6, 0.5); /* Check button shadow hover */
+  --check-button-alpha-50: rgba(
+    217,
+    119,
+    6,
+    0.5
+  ); /* Check button shadow hover */
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);

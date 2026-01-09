@@ -68,7 +68,7 @@
 }
 
 .zipInput::placeholder {
-  color: #999;
+  color: var(--gray-text);
   font-weight: 400;
 }
 
