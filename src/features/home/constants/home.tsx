@@ -3,8 +3,7 @@ import { FaTruckLoading } from "react-icons/fa";
 import { GiVacuumCleaner } from "react-icons/gi";
 import { RiTimeFill } from "react-icons/ri";
 import { MdLocationOn } from "react-icons/md";
-
-const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
+import { s3assets } from "@/constants";
 
 export interface Image {
   src: string;

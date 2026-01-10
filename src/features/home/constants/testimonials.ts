@@ -1,4 +1,4 @@
-const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
+import { s3assets } from "@/constants";
 
 export interface Image {
   src: string;

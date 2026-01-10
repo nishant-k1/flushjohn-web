@@ -1,19 +1,32 @@
 /**
  * Validate and get environment variable
- * Throws error in development if missing, provides fallback in production
+ * If fallback is provided (even empty string), use it when env var is missing
+ * Only throws error if no fallback is provided and env var is missing
  */
 function getEnvVar(key: string, fallback?: string): string {
   const value = process.env[key];
-  if (!value && fallback) {
-    if (process.env.NODE_ENV === "development") {
+  
+  // If value exists, return it
+  if (value) {
+    return value;
+  }
+  
+  // If fallback is explicitly provided (even if it's empty string), use it
+  if (fallback !== undefined) {
+    if (fallback !== "" && process.env.NODE_ENV === "development") {
       console.warn(`Environment variable ${key} is not set. Using fallback: ${fallback}`);
     }
     return fallback;
   }
-  if (!value && process.env.NODE_ENV === "development") {
-    throw new Error(`Required environment variable ${key} is not set`);
+  
+  // No value and no fallback provided - throw error in development, return empty in production
+  if (process.env.NODE_ENV === "development") {
+    throw new Error(`Required environment variable ${key} is not set and no fallback provided`);
   }
-  return value || fallback || "";
+  
+  // In production, log error but return empty string as last resort
+  console.error(`Environment variable ${key} is not set in production. This may cause issues.`);
+  return "";
 }
 
 export const G_TAG_ID: string = getEnvVar("NEXT_PUBLIC_G_TAG_ID", "");
@@ -33,9 +46,11 @@ export type phoneType = {
   phone_number: string;
 };
 
+// Critical constants - use direct access like before to ensure they're always set
+// These should never be empty strings, so we access them directly
 export const phone: phoneType = {
-  phone_link: getEnvVar("NEXT_PUBLIC_PHONE_URL", ""),
-  phone_number: getEnvVar("NEXT_PUBLIC_PHONE_NUMBER", ""),
+  phone_link: process.env.NEXT_PUBLIC_PHONE_URL as string,
+  phone_number: process.env.NEXT_PUBLIC_PHONE_NUMBER as string,
 };
 
 export type contactType = {
@@ -82,7 +97,9 @@ export const socialMedia: socialMediaType = {
   instagram: "https://www.instagram.com/flushjohn",
 };
 
-export const s3assets: string = getEnvVar("NEXT_PUBLIC_CLOUD_FRONT_URL", "");
+// Critical constant - use direct access like before to ensure it's always set
+// This should never be empty string, so we access it directly
+export const s3assets: string = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL as string;
 
 export const websiteURL: string = getEnvVar("NEXT_PUBLIC_WEBSITE_URL", "");
 
