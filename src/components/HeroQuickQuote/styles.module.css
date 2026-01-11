@@ -80,6 +80,7 @@
   font-size: 14px;
   color: var(--text-dark);
   border-radius: 0;
+  background-color: var(--bg-white);
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -88,16 +89,40 @@
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Fix Safari autofill brown/yellow background */
+.quickQuoteform input:-webkit-autofill,
+.quickQuoteform input:-webkit-autofill:hover,
+.quickQuoteform input:-webkit-autofill:focus,
+.quickQuoteform input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .quickQuoteform textarea {
   height: 4rem;
 }
+
+.quickQuoteform textarea:-webkit-autofill,
+.quickQuoteform textarea:-webkit-autofill:hover,
+.quickQuoteform textarea:-webkit-autofill:focus,
+.quickQuoteform textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .quickQuoteform input:hover,
 .quickQuoteform textarea:hover {
   border: none;
+  background-color: var(--bg-white);
 }
+
 .quickQuoteform input:focus,
 .quickQuoteform textarea:focus {
   border: none;
+  background-color: var(--bg-white);
 }
 
 .quickQuoteform input::placeholder,
@@ -127,16 +152,31 @@
   font-size: 14px;
   border-radius: 0;
   color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
   height: 2rem !important;
   margin: 0 !important;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Fix Safari autofill for date inputs */
+.date input:-webkit-autofill,
+.date input:-webkit-autofill:hover,
+.date input:-webkit-autofill:focus,
+.date input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .date input:hover {
   border: none;
+  background-color: var(--bg-white) !important;
 }
+
 .date input:focus {
   border: none;
+  background-color: var(--bg-white) !important;
 }
 .date input::placeholder {
   color: var(--text-form-placeholder) !important;
@@ -260,9 +300,20 @@
   box-sizing: border-box !important;
 }
 
+/* Fix Safari autofill for phone inputs */
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:hover),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:focus),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:active) {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background: var(--bg-white) !important;
+}
+
 .quickQuoteform :global(.PhoneInputInput):focus {
   outline: none !important;
   border: none !important;
+  background: var(--bg-white) !important;
 }
 
 .quickQuoteform :global(.PhoneInputCountry) {

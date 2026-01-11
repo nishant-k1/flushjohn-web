@@ -152,6 +152,16 @@
   font-size: 14px !important;
 }
 
+/* Fix Safari autofill brown/yellow background for date inputs */
+.quickQuoteInput:-webkit-autofill,
+.quickQuoteInput:-webkit-autofill:hover,
+.quickQuoteInput:-webkit-autofill:focus,
+.quickQuoteInput:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-form-value) !important;
+  background: var(--bg-white) !important;
+}
+
 .quickQuoteError {
   position: absolute;
   bottom: 100%;
