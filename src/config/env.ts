@@ -4,14 +4,39 @@
  * All environment variables should be accessed through this file for consistency.
  * This ensures type safety and makes it easier to manage environment variables.
  *
- * Validates all required environment variables at startup - throws error if missing.
+ * Validates all required environment variables - throws error if missing.
+ * Uses lazy getters to allow Next.js to load .env files before validation.
  */
 
-function getEnvVar(name: string): string {
+function getEnvVar(name: string, fallback?: string): string {
   const value = process.env[name];
   if (!value) {
+    const isServer = typeof window === "undefined";
+    const isDevelopment = process.env.NODE_ENV === "development";
+    
+    // In client-side code (browser), be lenient - Next.js replaces NEXT_PUBLIC_* at build time
+    // In development, env vars might not be available during module initialization
+    if (!isServer) {
+      if (fallback) {
+        console.warn(
+          `[ENV] Missing environment variable: ${name}. Using fallback: ${fallback}`
+        );
+        return fallback;
+      }
+      
+      const errorMsg = isDevelopment
+        ? `[ENV] Missing environment variable: ${name}. Please ensure it's set in your .env file and restart the dev server.`
+        : `[ENV] Missing required environment variable: ${name}. The application may not work correctly.`;
+      
+      console.error(errorMsg);
+      // Return empty string to prevent crash - this allows the app to load
+      // but the app may not work correctly until env vars are set
+      return "";
+    }
+    
+    // Server-side: throw error to catch issues early
     throw new Error(
-      `Missing required environment variable: ${name}. Please set it in your .env file.`
+      `Missing required environment variable: ${name}. Please set it in your .env file or ensure it's available in your deployment environment.`
     );
   }
   return value;
