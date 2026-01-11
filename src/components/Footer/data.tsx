@@ -15,10 +15,8 @@ import {
   EmailIcon,
 } from "@/components/UI/Icons";
 import { FaBloggerB } from "react-icons/fa";
-import { phone } from "../../constants";
+import { PHONE_LINK } from "@/config/env";
 import { Images as ImagesIcon } from "lucide-react";
-
-const { phone_link } = phone;
 
 export const footerLinks = {
   social: [
@@ -131,7 +129,7 @@ export const footerLinks = {
     {
       id: "15",
       name: "Phone",
-      href: phone_link,
+      href: PHONE_LINK,
       icon: <PhoneIcon />,
     },
     {

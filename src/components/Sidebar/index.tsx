@@ -11,13 +11,12 @@ import {
   LocalShippingIcon,
 } from "@/components/UI/Icons";
 import Image from "next/image";
-import { phone, s3assets } from "../../constants";
+import { PHONE_LINK, PHONE_NUMBER, CLOUD_FRONT_URL } from "@/config/env";
 import { logEvent } from "../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 
 const Sidebar = () => {
-  const { phone_link, phone_number } = phone;
 
   const { active, setActive } = useContext(SidebarContext);
   const handleClick = () => {
@@ -39,7 +38,7 @@ const Sidebar = () => {
               height={501}
               width={1039}
               onClick={handleClick}
-              src={`${s3assets}/logo_white.svg`}
+              src={`${CLOUD_FRONT_URL}/logo_white.svg`}
               alt="brand-logo"
               priority={true}
               placeholder="empty"
@@ -64,7 +63,7 @@ const Sidebar = () => {
             Request Quote
           </Link>
           <Link
-            href={phone_link}
+            href={PHONE_LINK}
             onClick={() => {
               setActive(false);
               logEvent({
@@ -78,7 +77,7 @@ const Sidebar = () => {
             }}
           >
             <PhoneIcon size={20} />
-            {phone_number}
+            {PHONE_NUMBER}
           </Link>
         </div>
       </div>

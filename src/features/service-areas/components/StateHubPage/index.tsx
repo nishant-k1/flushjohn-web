@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Script from "next/script";
-import { websiteURL, phone, contact } from "@/constants";
 import {
   getStateUniqueContent,
   generateStateServices,
@@ -9,6 +8,10 @@ import {
   generateStateCTADescription,
 } from "@/features/locations/constants";
 import styles from "./styles.module.css";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
 
 interface City {
   name: string;
@@ -40,8 +43,8 @@ const StateHubPage = ({ state }: StateProps) => {
     name: `FlushJohn - ${state.displayName}`,
     description: state.description,
     url: `${websiteURL}/service-areas/${state.name.toLowerCase()}`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: phone_number,
+    email: contact_email,
     address: {
       "@type": "PostalAddress",
       addressRegion: state.abbreviation,
@@ -76,7 +79,7 @@ const StateHubPage = ({ state }: StateProps) => {
     name: `FlushJohn Porta Potty Rentals - ${state.displayName}`,
     description: state.description,
     url: `${websiteURL}/service-areas/${state.name.toLowerCase()}`,
-    telephone: phone.phone_number,
+    telephone: phone_number,
     areaServed: {
       "@type": "State",
       name: state.name,

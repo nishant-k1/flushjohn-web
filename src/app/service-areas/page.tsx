@@ -1,7 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, phone, contact } from "@/constants";
 import ServiceAreasPage from "@/features/service-areas/components/ServiceAreasPage";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Service Areas | Porta Potty Rentals Nationwide | FlushJohn",
@@ -141,8 +143,8 @@ const organizationJsonLd = {
   },
   description:
     "FlushJohn is a leading porta potty rental company providing professional portable toilet services across 25+ cities in 6 states: Delaware, Texas, Florida, California, Georgia, and Illinois.",
-  telephone: phone.phone_number,
-  email: contact.support_email,
+  telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+  email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",
@@ -194,8 +196,8 @@ const serviceAreaBusinessJsonLd = {
   description:
     "Professional porta potty rental services across 25+ cities in 6 states: Delaware, Texas, Florida, California, Georgia, and Illinois.",
   url: `${websiteURL}/service-areas`,
-  telephone: phone.phone_number,
-  email: contact.support_email,
+  telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+  email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

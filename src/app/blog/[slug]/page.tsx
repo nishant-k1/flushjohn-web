@@ -1,10 +1,14 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { BlogPost } from "@/features/blog/components";
-import { apiBaseUrls, s3assets, websiteURL, socialMedia } from "@/constants";
 import DOMPurify from "isomorphic-dompurify";
 
-const { API_BASE_URL } = apiBaseUrls;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const socialMedia_facebook = process.env.NEXT_PUBLIC_FLUSH_JOHN_FACEBOOK!;
+const socialMedia_twitter = process.env.NEXT_PUBLIC_FLUSH_JOHN_TWITTER!;
+const socialMedia_linkedin = process.env.NEXT_PUBLIC_FLUSH_JOHN_LINKEDIN!;
 const API_URL = `${API_BASE_URL}/blogs`;
 
 import { getCityCoordinates } from "@/features/locations/constants";
@@ -303,9 +307,9 @@ const BlogPostPage = async ({
           name: "FlushJohn",
           url: websiteURL,
           sameAs: [
-            socialMedia.facebook,
-            socialMedia.twitter,
-            socialMedia.linkedin,
+            socialMedia_facebook,
+            socialMedia_twitter,
+            socialMedia_linkedin,
           ],
         },
       ],

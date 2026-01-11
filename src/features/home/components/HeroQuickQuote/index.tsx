@@ -19,7 +19,6 @@ import MyRadioField from "@/components/FormControls/MyRadioField";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
-import { apiBaseUrls } from "@/constants";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import { api } from "@/utils/apiClient";
 import {
@@ -57,8 +56,6 @@ const HeroQuickQuote = () => {
       setHeroQuickQuoteViewStatus(true);
     }
   }, [clientWidth]);
-
-  const { API_BASE_URL } = apiBaseUrls;
 
   const handleLeadConversion = () => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -105,6 +102,7 @@ const HeroQuickQuote = () => {
           };
 
           // API request in background (non-blocking)
+          const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
           await api.post(`${API_BASE_URL}/leads`, finalData);
           // If successful, success modal is already shown ✅
         } catch (err) {

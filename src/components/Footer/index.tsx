@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Locations } from "@/features/locations/components";
 import { footerLinks } from "./data";
 import { home_data } from "@/features/home/constants";
-import { s3assets, phone, contact, address } from "@/constants";
 const { locations } = home_data;
 
 var date = new Date();
@@ -18,6 +17,11 @@ type itemType = {
 };
 
 const Footer = () => {
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
+  const address_full = process.env.NEXT_PUBLIC_FLUSH_JOHN_ADDRESS!;
+  
   return (
     <>
       <div className={styles.footer}>
@@ -103,7 +107,7 @@ const Footer = () => {
             <div className={styles.businessInfoContent}>
               <div className={styles.businessInfoItem}>
                 <h3>Business Address</h3>
-                <p>{address.full_address}</p>
+                <p>{address_full}</p>
               </div>
               <div className={styles.businessInfoItem}>
                 <h3>Established</h3>
@@ -112,9 +116,9 @@ const Footer = () => {
               <div className={styles.businessInfoItem}>
                 <h3>Contact</h3>
                 <p>
-                  <a href={`tel:${phone.phone_number}`}>{phone.phone_number}</a>
+                  <a href={`tel:${phone_number}`}>{phone_number}</a>
                   <br />
-                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  <a href={`mailto:${contact_email}`}>{contact_email}</a>
                 </p>
               </div>
             </div>

@@ -1,9 +1,11 @@
 import React from "react";
 import { Products } from "@/features/products/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL } from "@/constants";
 import { products_data } from "@/features/products/constants";
 import { generateProductSlug } from "@/utils/slug";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Rental Products - FlushJohn Porta Potty Rentals",

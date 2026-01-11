@@ -9,8 +9,10 @@ import {
   HelpCircle,
   Camera,
 } from "lucide-react";
-import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Link from "next/link";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Porta Potty Rentals by City - FlushJohn",
@@ -89,8 +91,8 @@ const serviceAreaBusinessJsonLd = {
   description:
     "Professional porta potty rental services across 25+ cities in 6 states. Same-day delivery, competitive pricing.",
   url: `${websiteURL}/porta-potty-rental`,
-  telephone: phone.phone_number,
-  email: contact.support_email,
+  telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+  email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

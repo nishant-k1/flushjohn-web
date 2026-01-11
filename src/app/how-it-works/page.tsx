@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets } from "@/constants";
 import Script from "next/script";
 import styles from "./styles.module.css";
 import Link from "next/link";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "How It Works | FlushJohn - Simple Porta Potty Rental Process",

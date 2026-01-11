@@ -1,12 +1,4 @@
 import React from "react";
-import {
-  s3assets,
-  websiteURL,
-  phone,
-  contact,
-  address,
-  socialMedia,
-} from "@/constants";
 // Import CSS - Next.js will optimize this automatically
 import "../../styles/globals.css";
 import { testimonials } from "@/features/home/constants";
@@ -61,6 +53,9 @@ import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
 
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+
 export const metadata = {
   title: "FlushJohn - Premium Porta Potty Rentals | Same-Day Delivery",
   description:
@@ -113,13 +108,13 @@ export default function RootLayout({
               logo: `${s3assets}/og-image-flushjonn-web.png`,
               description:
                 "Professional porta potty rental and portable toilet rental services across 25+ cities in the United States",
-              telephone: phone.phone_number,
-              email: contact.support_email,
+              telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+              email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
               address: {
                 "@type": "PostalAddress",
-                addressLocality: address.city,
-                addressRegion: address.state,
-                postalCode: address.zip,
+                addressLocality: "Dover",
+                addressRegion: "DE",
+                postalCode: "19901",
                 addressCountry: "US",
               },
               areaServed: {
@@ -127,10 +122,10 @@ export default function RootLayout({
                 name: "United States",
               },
               sameAs: [
-                socialMedia.facebook,
-                socialMedia.twitter,
-                socialMedia.linkedin,
-                socialMedia.instagram,
+                process.env.NEXT_PUBLIC_FLUSH_JOHN_FACEBOOK!,
+                process.env.NEXT_PUBLIC_FLUSH_JOHN_TWITTER!,
+                process.env.NEXT_PUBLIC_FLUSH_JOHN_LINKEDIN!,
+                process.env.NEXT_PUBLIC_FLUSH_JOHN_INSTAGRAM!,
               ],
             }),
           }}

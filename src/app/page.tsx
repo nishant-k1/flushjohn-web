@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
 import Script from "next/script";
 
 import Home from "@/features/home/components/Home";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
@@ -61,11 +63,11 @@ const jsonLd = {
     "@type": "PostalAddress",
     addressCountry: "US",
   },
-  telephone: phone.phone_number,
-  email: contact.email,
+  telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+  email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: phone.phone_number,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
     contactType: "customer service",
     availableLanguage: ["English"],
     areaServed: "US",
@@ -431,10 +433,10 @@ const jsonLd = {
     "Construction Site Services",
   ],
   sameAs: [
-    socialMedia.facebook,
-    socialMedia.twitter,
-    socialMedia.linkedin,
-    socialMedia.instagram,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_FACEBOOK!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_TWITTER!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_LINKEDIN!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_INSTAGRAM!,
   ],
 };
 

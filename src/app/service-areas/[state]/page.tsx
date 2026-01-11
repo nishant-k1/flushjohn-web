@@ -1,7 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, phone, contact } from "@/constants";
 import StateHubPage from "@/features/service-areas/components/StateHubPage";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import {
   statesData,
   getStateCoordinates,
@@ -136,8 +138,8 @@ const StatePage = async ({ params }: PageProps) => {
       height: 630,
     },
     description: `FlushJohn provides professional porta potty rental services across ${state.displayName}. Serving ${state.cities.length} major cities including ${state.cities.map((c: { name: string }) => c.name).join(", ")}.`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+    email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
     address: {
       "@type": "PostalAddress",
       addressCountry: "US",
@@ -163,8 +165,8 @@ const StatePage = async ({ params }: PageProps) => {
     name: `FlushJohn - Porta Potty Rentals ${state.displayName}`,
     description: `Professional porta potty rental services across ${state.displayName}. Serving ${state.cities.length} major cities.`,
     url: `${websiteURL}/service-areas/${stateParam}`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+    email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
     address: {
       "@type": "PostalAddress",
       addressRegion: state.abbreviation,

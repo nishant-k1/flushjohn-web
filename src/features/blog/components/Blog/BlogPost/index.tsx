@@ -5,11 +5,15 @@ import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
-import { phone, websiteURL, s3assets } from "@/constants";
 import { generateSlug } from "@/utils";
 import { convert } from "html-to-text";
 
 const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+  
   const actualBlogPost = blogPost;
 
   const {
@@ -282,7 +286,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                   Get Free Quote
                 </Link>
                 <a
-                  href={phone.phone_link}
+                  href={phone_link}
                   style={{
                     background: "var(--primary)",
                     color: "white",
@@ -294,7 +298,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                     display: "inline-block",
                   }}
                 >
-                  Call {phone.phone_number}
+                  Call {phone_number}
                 </a>
               </div>
             </div>

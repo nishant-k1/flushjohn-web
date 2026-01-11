@@ -1,9 +1,11 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { IndividualProduct } from "@/features/products/components";
-import { s3assets, websiteURL, phone } from "@/constants";
 import { products_data } from "@/features/products/constants";
 import { findProductBySlug, generateProductSlug } from "@/utils/slug";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export async function generateStaticParams() {
   return products_data.product_list.map((product) => ({
@@ -184,7 +186,7 @@ const ProductPage = async ({
         url: websiteURL,
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: phone.phone_number,
+          telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
           contactType: "sales",
         },
         areaServed: [

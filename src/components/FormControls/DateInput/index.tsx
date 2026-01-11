@@ -124,7 +124,7 @@ const DateInput: React.FC<DateInputProps> = ({
 }) => {
   const [field, meta, helpers] = useField(name);
   const { error, touched } = meta;
-  const { setTouched } = helpers;
+  const { setTouched, setValue, setError } = helpers;
   const hasError = touched && !!error;
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
@@ -232,12 +232,14 @@ const DateInput: React.FC<DateInputProps> = ({
   const handleDateChange = (date: Date | null) => {
     // Store as ISO string for API compatibility
     const isoString = date ? dayjs(date).toISOString() : "";
-    field.onChange({
-      target: {
-        name: field.name,
-        value: isoString,
-      },
-    });
+    
+    // Use setValue to ensure Formik updates immediately
+    setValue(isoString);
+    
+    // Clear error immediately when a valid date is selected
+    if (date) {
+      setError(undefined);
+    }
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -253,12 +255,17 @@ const DateInput: React.FC<DateInputProps> = ({
     setIsCalendarOpen(false);
     // Mark field as touched when calendar closes
     setTouched(true);
-    // Trigger validation by calling onBlur
-    field.onBlur({
-      target: {
-        name: field.name,
-      },
-    } as React.FocusEvent<HTMLInputElement>);
+    
+    // Delay validation slightly to ensure Formik has updated the value
+    // This prevents validation from running before the value is set
+    setTimeout(() => {
+      // Trigger validation by calling onBlur
+      field.onBlur({
+        target: {
+          name: field.name,
+        },
+      } as React.FocusEvent<HTMLInputElement>);
+    }, 0);
   };
 
   const handleFocus = () => {

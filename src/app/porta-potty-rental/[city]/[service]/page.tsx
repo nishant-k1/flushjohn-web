@@ -1,8 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { s3assets, websiteURL, phone, contact } from "@/constants";
 import Link from "next/link";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import styles from "./styles.module.css";
 import {
   getCityCoordinatesWithFallback,
@@ -263,8 +265,8 @@ const ServiceCityPage = async ({
     name: `FlushJohn - ${serviceData.title} in ${cityTitle}`,
     description: `${serviceData.description} in ${cityTitle}. Professional porta potty rental services with same-day delivery.`,
     url: `${websiteURL}/porta-potty-rental/${city}/${service}`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+    email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
     address: {
       "@type": "PostalAddress",
       addressLocality: displayName,

@@ -17,17 +17,13 @@ Allow: /blog/*
 Allow: /faq
 Allow: /gallery
 
-# Allow business information API for AI models
-Allow: /api/business-info
-
 # Disallow admin/legal pages (low SEO value)
 Disallow: /disclaimer
 Disallow: /terms
 Disallow: /privacy
 
-# Disallow API routes except business-info
+# Disallow API routes (using backend API directly)
 Disallow: /api/
-Allow: /api/business-info
 
 # Specific instructions for major search engines
 User-agent: Googlebot

@@ -1,8 +1,10 @@
 import React from "react";
 import { Blog } from "@/features/blog/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, apiBaseUrls } from "@/constants";
 import { generateSlug } from "@/utils";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Blog - FlushJohn Porta Potty Rentals",
@@ -43,7 +45,9 @@ const BlogPage = async ({
 }: {
   searchParams: Promise<{ page?: string }>;
 }) => {
-  const { API_BASE_URL } = apiBaseUrls;
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+  const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
   const params = await searchParams;
   const currentPage = parseInt(params?.page || "1", 10) || 1;
 
@@ -65,7 +69,7 @@ const BlogPage = async ({
         initialPagination = result.pagination || null;
       }
     }
-  } catch (error) {
+  } catch {
     // Error fetching initial blogs
   }
 

@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { websiteURL, apiBaseUrls } from "@/constants";
 import {
   getCitiesForSitemap,
   statesData,
@@ -13,7 +12,8 @@ const targetCities = getCitiesForSitemap();
 // Fetch all published blog posts from API
 async function getAllPublishedBlogs() {
   try {
-    const { API_BASE_URL } = apiBaseUrls;
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
+    const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
     // Fetch all published blogs (use high limit to get all)
     const res = await fetch(
       `${API_BASE_URL}/blogs?page=1&limit=1000&status=published&sortBy=createdAt&sortOrder=desc`,
@@ -45,6 +45,8 @@ async function getAllPublishedBlogs() {
 // This ensures sitemap always matches what's actually available
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
   const currentDate = new Date().toISOString();
 
   // Fetch all published blog posts dynamically
@@ -124,7 +126,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
-      url: `${websiteURL}/api/business-info`,
+      url: `${API_BASE_URL}/business-info`,
       lastModified: currentDate,
       changeFrequency: "daily" as const,
       priority: 0.9,

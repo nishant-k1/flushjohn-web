@@ -1,4 +1,4 @@
-import { s3assets } from "@/constants";
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export interface ProductImage {
   src_1: string;

@@ -7,7 +7,11 @@
 
 import React from "react";
 import Script from "next/script";
-import { websiteURL, phone, contact, s3assets } from "@/constants";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 interface EnhancedStructuredDataProps {
   pageType?: "homepage" | "city" | "product" | "blog" | "faq" | "contact";
@@ -63,8 +67,8 @@ export default function EnhancedStructuredData({
       "FlushJohn is a leading porta potty rental company providing professional portable toilet services across the United States. We serve construction sites, events, weddings, festivals, and more with same-day delivery and competitive pricing.",
     foundingDate: "2020",
     slogan: "Professional Porta Potty Rentals - Fast, Reliable, Affordable",
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: phone_number,
+    email: contact_email,
     areaServed: [
       {
         "@type": "Country",
@@ -171,7 +175,7 @@ export default function EnhancedStructuredData({
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: phone.phone_number,
+        telephone: phone_number,
         contactType: "customer service",
         contactOption: "TollFree",
         areaServed: "US",
@@ -193,14 +197,14 @@ export default function EnhancedStructuredData({
       },
       {
         "@type": "ContactPoint",
-        telephone: phone.phone_number,
+        telephone: phone_number,
         contactType: "sales",
         areaServed: "US",
         availableLanguage: ["English", "Spanish"],
       },
       {
         "@type": "ContactPoint",
-        email: contact.support_email,
+        email: contact_email,
         contactType: "customer support",
         areaServed: "US",
       },
@@ -256,7 +260,7 @@ export default function EnhancedStructuredData({
       "@type": "ServiceChannel",
       serviceUrl: `${websiteURL}/quote`,
       serviceName: "Online Quote Request",
-      servicePhone: phone.phone_number,
+      servicePhone: phone_number,
       availableLanguage: ["English", "Spanish"],
     },
     offers: {
@@ -301,8 +305,8 @@ export default function EnhancedStructuredData({
           name: `FlushJohn - ${cityDisplayName || city}, ${state}`,
           description: `Professional porta potty rental services in ${cityDisplayName || city}, ${state}. Same-day delivery, competitive pricing, and reliable service for all your event and construction needs.`,
           url: `${websiteURL}/porta-potty-rental/${city}`,
-          telephone: phone.phone_number,
-          email: contact.support_email,
+          telephone: phone_number,
+          email: contact_email,
           image: [
             `${s3assets}/og-image-flushjonn-web.png`,
             `${s3assets}/images/porta-potty-standard.jpg`,

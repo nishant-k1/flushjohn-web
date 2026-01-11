@@ -7,7 +7,6 @@ import styles from "./styles.module.css";
 import { useContext } from "react";
 import { QuoteContext } from "@/features/quote/contexts/QuoteContext";
 import { initialQuoteValues } from "@/features/quote/contexts/QuoteContext";
-import { apiBaseUrls } from "@/constants";
 import TextField from "../FormFields/TextField";
 import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
@@ -24,8 +23,6 @@ const QuoteStep3 = () => {
   React.useEffect(() => {
     setFormValues(formValues);
   }, [formValues]);
-
-  const { API_BASE_URL } = apiBaseUrls;
 
   const handleLeadConversion = () => {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -76,6 +73,7 @@ const QuoteStep3 = () => {
 
             // Data is automatically serialized by apiClient
             // API request in background (non-blocking)
+            const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
             await api.post(`${API_BASE_URL}/leads`, finalData);
             // If successful, success modal is already shown ✅
           } catch (err) {

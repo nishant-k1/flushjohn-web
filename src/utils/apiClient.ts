@@ -27,7 +27,7 @@ interface ApiClientConfig extends RequestInit {
  *
  * @example
  * const response = await apiClient({
- *   url: '/api/leads',
+ *   url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/leads`,
  *   method: 'POST',
  *   data: { fName: 'John', phone: '(713) 555-1234' }
  * });

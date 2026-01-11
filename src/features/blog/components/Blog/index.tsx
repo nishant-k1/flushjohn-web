@@ -19,7 +19,6 @@ import Link from "next/link";
 import { generateSlug } from "@/utils";
 import { convert } from "html-to-text";
 import { useRouter, useSearchParams } from "next/navigation";
-import { s3assets } from "@/constants";
 
 // Component to handle image loading with error fallback
 const BlogImage = ({
@@ -31,6 +30,7 @@ const BlogImage = ({
   alt: string;
   blogId: string;
 }) => {
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
   const [imageSrc, setImageSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const fallbackImage = `${s3assets}/og-image-flushjonn-web.png`;
@@ -97,6 +97,7 @@ interface BlogProps {
 }
 
 const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10) || 1;
@@ -151,9 +152,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
       setError(null);
 
       try {
-        const { API_BASE_URL } = await import("@/constants").then(
-          (m) => m.apiBaseUrls
-        );
+        const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
         const params = new URLSearchParams({
           page: currentPage.toString(),
           limit: "12",

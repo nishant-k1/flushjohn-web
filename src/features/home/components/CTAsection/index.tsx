@@ -3,13 +3,13 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Zap, DollarSign, Droplet, Phone, Tag } from "lucide-react";
 import styles from "./styles.module.css";
-import { phone } from "@/constants";
 
 type Props = {};
 
 const CTAsection = (props: Props) => {
   const router = useRouter();
-  const { phone_number, phone_link } = phone;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 
   return (
     <div>

@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { apiBaseUrls } from "@/constants";
 
 interface Blog {
   _id: string;
@@ -85,8 +84,6 @@ export const useBlogsPagination = ({
     }
   );
 
-  const { API_BASE_URL } = apiBaseUrls;
-
   const fetchBlogs = useCallback(
     async (page: number, isLoadMore = false) => {
       try {
@@ -97,6 +94,7 @@ export const useBlogsPagination = ({
         }
         setError(null);
 
+        const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
         const params = new URLSearchParams({
           page: page.toString(),
           limit: limit.toString(),
@@ -134,7 +132,7 @@ export const useBlogsPagination = ({
         setIsFetchingMore(false);
       }
     },
-    [API_BASE_URL, limit, status, search]
+    [limit, status, search]
   );
 
   const loadMore = useCallback(() => {

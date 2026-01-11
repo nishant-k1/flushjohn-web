@@ -1,7 +1,9 @@
 import React from "react";
 import { Gallery } from "@/features/gallery/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL } from "@/constants";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Gallery - FlushJohn Porta Potty Rentals",

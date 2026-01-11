@@ -1,7 +1,9 @@
 import React from "react";
 import { Quote } from "@/features/quote/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact } from "@/constants";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Get Your Free Porta Potty Rental Quote in 60 Seconds | FlushJohn",
@@ -99,8 +101,8 @@ const serviceAreaBusinessJsonLd = {
   description:
     "Get free porta potty rental quotes across 25+ cities in 6 states. Same-day delivery available.",
   url: `${websiteURL}/quote`,
-  telephone: phone.phone_number,
-  email: contact.support_email,
+  telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+  email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

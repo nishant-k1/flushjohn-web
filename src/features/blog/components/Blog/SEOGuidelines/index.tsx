@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { Lightbulb } from "lucide-react";
-import { phone } from "@/constants";
 
 const SEOGuidelines = () => {
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
   const guidelines = [
     {
       category: "Title Optimization",
@@ -105,7 +105,7 @@ const SEOGuidelines = () => {
 
   const ctaExamples = [
     "Get your free porta potty rental quote today!",
-    `Call ${phone.phone_number} for immediate assistance`,
+    `Call ${phone_number} for immediate assistance`,
     "Contact FlushJohn for professional porta potty services",
     "Request a quote for your event or construction site",
     "Get same-day delivery in [City] - call now!",

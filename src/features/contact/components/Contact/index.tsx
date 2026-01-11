@@ -12,7 +12,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
-import { apiBaseUrls } from "@/constants";
 import { api } from "@/utils/apiClient";
 
 const MyTextField = ({ label, ...props }: any) => {
@@ -74,7 +73,6 @@ const MyMultilineTextField = ({ label, ...props }: any) => {
 };
 
 const Contact = () => {
-  const { API_BASE_URL } = apiBaseUrls;
   const [state, setState] = React.useState(false);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
@@ -144,6 +142,7 @@ const Contact = () => {
             try {
               // Data is automatically serialized by apiClient
               // API request in background (non-blocking)
+              const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
               await api.post(`${API_BASE_URL}/contact`, values);
               // If successful, success modal is already shown ✅
             } catch (err) {

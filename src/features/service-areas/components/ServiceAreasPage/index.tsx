@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./styles.module.css";
-import { phone, contact } from "@/constants";
 import { serviceAreasByState } from "@/features/locations/constants";
 
 const ServiceAreasPage = () => {
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
   const totalCities = Object.values(serviceAreasByState).reduce(
     (sum, cities) => sum + cities.length,
     0
@@ -67,11 +69,11 @@ const ServiceAreasPage = () => {
           <div className={styles.contactInfo}>
             <div className={styles.contactItem}>
               <strong>Phone:</strong>{" "}
-              <a href={phone.phone_link}>{phone.phone_number}</a>
+              <a href={phone_link}>{phone_number}</a>
             </div>
             <div className={styles.contactItem}>
               <strong>Email:</strong>{" "}
-              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <a href={`mailto:${contact_email}`}>{contact_email}</a>
             </div>
           </div>
           <div className={styles.ctaButtons}>

@@ -1,7 +1,8 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
 import styles from "./styles.module.css";
-import { websiteURL } from "@/constants";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 
 const QuoteStep4 = () => {
   return (

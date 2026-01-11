@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Phone, MessageCircle } from "lucide-react";
-import { phone } from "@/constants";
 import styles from "./styles.module.css";
+
+const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 
 interface StickyCTAProps {
   city?: string;
@@ -61,7 +63,7 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
               Get Free Quote
             </Link>
             <a
-              href={phone.phone_link}
+              href={phone_link}
               className={styles.phoneButton}
               onClick={() => {
                 if (
@@ -78,7 +80,7 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
               }}
             >
               <Phone size={18} />
-              {phone.phone_number}
+              {phone_number}
             </a>
           </div>
         </div>

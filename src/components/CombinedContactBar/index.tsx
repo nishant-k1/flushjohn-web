@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { phone } from "@/constants";
 import { PhoneIcon } from "@/components/UI/Icons";
 import styles from "./styles.module.css";
 
 const CombinedContactBar = () => {
-  const { phone_link, phone_number } = phone;
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
   const [zipCode, setZipCode] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [isChecking, setIsChecking] = useState(false);

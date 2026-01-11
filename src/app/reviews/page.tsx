@@ -1,12 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, phone } from "@/constants";
 import Script from "next/script";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { testimonials } from "@/features/home/constants";
 import Image from "next/image";
 import { Star } from "lucide-react";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Customer Reviews | FlushJohn Porta Potty Rentals",
@@ -141,7 +143,7 @@ export default function ReviewsPage() {
             </p>
             <div className={styles.ctaButtons}>
               <a
-                href={`tel:${phone.phone_number}`}
+                href={`tel:${process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!}`}
                 className={styles.primaryButton}
               >
                 Call Us to Share Feedback

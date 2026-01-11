@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { phone, contact, websiteURL, s3assets } from "@/constants";
 import { cityPageData } from "../../../constants";
 import { getCityEnhancement } from "../../../constants/cityEnhancements";
 import { getCityUniqueContent } from "../../../constants/cityUniqueContent";
@@ -63,7 +62,11 @@ export default function PortaPottyRentalCity({
   coordinates,
 }: PortaPottyRentalCityProps) {
   const cityTitle = `${displayName}, ${state}`;
-  const { phone_number, phone_link } = phone;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+  const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
+  const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
   const enhancements = getCityEnhancement(citySlug);
   const uniqueContent = getCityUniqueContent(citySlug);
 
@@ -119,8 +122,8 @@ export default function PortaPottyRentalCity({
     name: `FlushJohn Porta Potty Rentals - ${cityTitle}`,
     description: `Professional porta potty rental services in ${cityTitle}. Same-day delivery, competitive pricing, and reliable service for events and construction sites.`,
     url: `${websiteURL}/porta-potty-rental/${citySlug}`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: phone_number,
+    email: contact_email,
     address: {
       "@type": "PostalAddress",
       addressCountry: "US",
@@ -278,8 +281,8 @@ export default function PortaPottyRentalCity({
     name: `FlushJohn - ${cityTitle}`,
     description: `Professional porta potty rental services in ${cityTitle}. Same-day delivery, competitive pricing, and reliable service for events and construction sites.`,
     url: `${websiteURL}/porta-potty-rental/${citySlug}`,
-    telephone: phone.phone_number,
-    email: contact.support_email,
+    telephone: phone_number,
+    email: contact_email,
     address: {
       "@type": "PostalAddress",
       addressLocality: displayName,
@@ -994,10 +997,10 @@ export default function PortaPottyRentalCity({
                 <p style={{ marginTop: "1.5rem", fontSize: "1.1rem" }}>
                   Or call us directly at{" "}
                   <Link
-                    href={phone.phone_link}
+                    href={phone_link}
                     style={{ fontWeight: "bold", fontSize: "1.2rem" }}
                   >
-                    {phone.phone_number}
+                    {phone_number}
                   </Link>
                 </p>
               </div>
@@ -1063,7 +1066,7 @@ export default function PortaPottyRentalCity({
                   </Link>
                 </li>
                 <li>
-                  <Link href={phone.phone_link}>
+                  <Link href={phone_link}>
                     <Phone size={20} />
                     <span>Call Us Now</span>
                   </Link>

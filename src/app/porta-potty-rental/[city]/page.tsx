@@ -1,8 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { s3assets, websiteURL } from "@/constants";
 import { PortaPottyRentalCity } from "@/features/locations/components";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import {
   citiesData,
   getCityCoordinatesWithFallback,

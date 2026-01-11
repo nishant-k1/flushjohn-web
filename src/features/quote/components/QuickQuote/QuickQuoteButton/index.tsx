@@ -4,11 +4,11 @@ import * as React from "react";
 import { QuickQuoteContext } from "../../../contexts/QuickQuoteContext";
 import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
-import { phone } from "@/constants";
 import Link from "next/link";
 
+const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+
 export default function QuickQuoteButton() {
-  const { phone_link } = phone;
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
   const [showCallout, setShowCallout] = React.useState(true);

@@ -10,7 +10,6 @@ import dynamic from "next/dynamic";
 import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
-import { s3assets, phone } from "@/constants";
 import { PhoneIcon } from "@/components/UI/Icons";
 
 // Dynamically import hamburger-react to reduce initial bundle size
@@ -33,6 +32,7 @@ const Hamburger = dynamic(
 );
 
 const Navbar = () => {
+  const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
   const { active, setActive } =
     React.useContext<SidebarContextType>(SidebarContext);
   const { setQuickQuoteViewStatus } =
@@ -112,7 +112,7 @@ const Navbar = () => {
               Contact
             </Link>
             <Link
-              href={phone.phone_link}
+              href={process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!}
               className={styles.phoneLink}
               onClick={() => {
                 if (
@@ -129,7 +129,7 @@ const Navbar = () => {
               }}
             >
               <PhoneIcon size={16} />
-              <span>{phone.phone_number}</span>
+              <span>{process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!}</span>
             </Link>
           </div>
         </div>

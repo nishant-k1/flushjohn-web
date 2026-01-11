@@ -1,8 +1,10 @@
 import React from "react";
 import { Contact } from "@/features/contact/components";
 import type { Metadata } from "next";
-import { s3assets, websiteURL, phone, contact, socialMedia } from "@/constants";
 import EnhancedStructuredData from "@/components/SEO/EnhancedStructuredData";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "Contact Us - FlushJohn Porta Potty Rentals",
@@ -57,9 +59,9 @@ const jsonLd = {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: phone.phone_number,
+        telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
         contactType: "Customer Service",
-        email: contact.support_email,
+        email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
         availableLanguage: ["English"],
         areaServed: "US",
         hoursAvailable: {
@@ -79,16 +81,16 @@ const jsonLd = {
       },
       {
         "@type": "ContactPoint",
-        telephone: phone.phone_number,
+        telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
         contactType: "Sales",
-        email: contact.sales_email,
+        email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
         availableLanguage: ["English"],
         areaServed: "US",
       },
       {
         "@type": "ContactPoint",
         contactType: "Emergency Support",
-        telephone: phone.phone_number,
+        telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
         availableLanguage: ["English"],
         areaServed: "US",
       },
@@ -106,7 +108,11 @@ const jsonLd = {
       },
       geoRadius: "2000000",
     },
-    sameAs: [socialMedia.facebook, socialMedia.twitter, socialMedia.linkedin],
+    sameAs: [
+      process.env.NEXT_PUBLIC_FLUSH_JOHN_FACEBOOK!,
+      process.env.NEXT_PUBLIC_FLUSH_JOHN_TWITTER!,
+      process.env.NEXT_PUBLIC_FLUSH_JOHN_LINKEDIN!,
+    ],
   },
   breadcrumb: {
     "@type": "BreadcrumbList",
@@ -167,8 +173,8 @@ const serviceAreaBusinessJsonLd = {
   "@type": "ServiceAreaBusiness",
   name: "FlushJohn",
   url: websiteURL,
-  telephone: phone.phone_number,
-  email: contact.support_email,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
+    email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

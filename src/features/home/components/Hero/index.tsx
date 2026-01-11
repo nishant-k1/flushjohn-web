@@ -2,7 +2,6 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { phone } from "@/constants";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -18,7 +17,8 @@ type HeroProps = {
   subTitle: string;
 };
 
-const { phone_link, phone_number } = phone;
+const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 
 const Hero = React.memo(({ title, subTitle }: HeroProps) => {
   return (

@@ -1,8 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
-import { websiteURL, s3assets, address, phone, contact } from "@/constants";
 import Script from "next/script";
 import styles from "./styles.module.css";
+
+const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
+const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
   title: "About Us | FlushJohn - Professional Porta Potty Rental Company",
@@ -45,28 +47,32 @@ const organizationSchema = {
   foundingDate: "2020",
   address: {
     "@type": "PostalAddress",
-    streetAddress: address.street,
-    addressLocality: address.city,
-    addressRegion: address.state,
-    postalCode: address.zip,
-    addressCountry: address.country,
+    streetAddress: "8 The Green STE R",
+    addressLocality: "Dover",
+    addressRegion: "DE",
+    postalCode: "19901",
+    addressCountry: "United States",
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: phone.phone_number,
+    telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,
     contactType: "customer service",
-    email: contact.email,
+    email: process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!,
     areaServed: "US",
   },
   sameAs: [
-    "https://www.facebook.com/flushjohn",
-    "https://www.twitter.com/flushjohn",
-    "https://www.linkedin.com/company/flushjohn",
-    "https://www.instagram.com/flushjohn",
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_FACEBOOK!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_TWITTER!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_LINKEDIN!,
+    process.env.NEXT_PUBLIC_FLUSH_JOHN_INSTAGRAM!,
   ],
 };
 
 export default function AboutPage() {
+  const address_full = process.env.NEXT_PUBLIC_FLUSH_JOHN_ADDRESS!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+  const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
+  
   return (
     <>
       <Script
@@ -158,18 +164,18 @@ export default function AboutPage() {
               </div>
               <div className={styles.infoCard}>
                 <h3>Business Address</h3>
-                <p>{address.full_address}</p>
+                <p>{address_full}</p>
               </div>
               <div className={styles.infoCard}>
                 <h3>Phone</h3>
                 <p>
-                  <a href={`tel:${phone.phone_number}`}>{phone.phone_number}</a>
+                  <a href={`tel:${phone_number}`}>{phone_number}</a>
                 </p>
               </div>
               <div className={styles.infoCard}>
                 <h3>Email</h3>
                 <p>
-                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  <a href={`mailto:${contact_email}`}>{contact_email}</a>
                 </p>
               </div>
               <div className={styles.infoCard}>
