@@ -174,7 +174,6 @@ const nextConfig = {
   },
   // Modern browser support - reduces polyfills
   transpilePackages: [],
-  serverExternalPackages: ["nodemailer"],
   // Enable HTTP/2 and modern protocols - requires HTTPS deployment
   // HTTP/2 is automatic on platforms like Vercel, Netlify
   // For custom server, configure nginx (see nginx.conf)

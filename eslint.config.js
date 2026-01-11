@@ -3,6 +3,8 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import unusedImports from "eslint-plugin-unused-imports";
 
 export default [
@@ -66,8 +68,15 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tseslint,
+      react: react,
+      "react-hooks": reactHooks,
       prettier: prettierPlugin,
       "unused-imports": unusedImports,
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
     rules: {
       ...tseslint.configs.recommended.rules,
@@ -87,10 +96,14 @@ export default [
       "no-console": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "prettier/prettier": "warn",
-      // Next.js specific rules
-      "@typescript-eslint/no-require-imports": "off", // Next.js allows require
+      // React rules
       "react/react-in-jsx-scope": "off", // Not needed in Next.js
       "react/prop-types": "off", // Using TypeScript instead
+      // React Hooks rules
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      // Next.js specific rules
+      "@typescript-eslint/no-require-imports": "off", // Next.js allows require
     },
   },
   prettier,
