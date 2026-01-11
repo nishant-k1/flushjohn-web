@@ -25,6 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main
       onClick={handleClick}
+      suppressHydrationWarning
       className={`${styles.main} ${active ? styles.active : styles.inactive}`}
       role="main"
       aria-label="Main content"
