@@ -138,6 +138,7 @@
   padding-left: 12px;
   font-size: 14px;
   color: var(--text-dark);
+  background-color: var(--bg-white);
   border-radius: 0;
   transition:
     color 0.5s,
@@ -147,16 +148,40 @@
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Fix Safari autofill brown/yellow background */
+.quickQuoteform input:-webkit-autofill,
+.quickQuoteform input:-webkit-autofill:hover,
+.quickQuoteform input:-webkit-autofill:focus,
+.quickQuoteform input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .quickQuoteform textarea {
   height: 4rem;
 }
+
+.quickQuoteform textarea:-webkit-autofill,
+.quickQuoteform textarea:-webkit-autofill:hover,
+.quickQuoteform textarea:-webkit-autofill:focus,
+.quickQuoteform textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .quickQuoteform input:hover,
 .quickQuoteform textarea:hover {
   border: none;
+  background-color: var(--bg-white);
 }
+
 .quickQuoteform input:focus,
 .quickQuoteform textarea:focus {
   border: none;
+  background-color: var(--bg-white);
 }
 
 .quickQuoteform input::placeholder,
@@ -327,9 +352,20 @@
   box-sizing: border-box !important;
 }
 
+/* Fix Safari autofill for phone inputs */
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:hover),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:focus),
+.quickQuoteform :global(.PhoneInputInput:-webkit-autofill:active) {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+  background: var(--bg-white) !important;
+}
+
 .quickQuoteform :global(.PhoneInputInput):focus {
   outline: none !important;
   border: none !important;
+  background: var(--bg-white) !important;
 }
 
 .quickQuoteform :global(.PhoneInputCountry) {

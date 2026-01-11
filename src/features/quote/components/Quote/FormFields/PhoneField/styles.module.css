@@ -64,6 +64,16 @@
   opacity: 1 !important;
 }
 
+/* Fix Safari autofill for phone inputs */
+.inputContainer :global(.PhoneInputInput:-webkit-autofill),
+.inputContainer :global(.PhoneInputInput:-webkit-autofill:hover),
+.inputContainer :global(.PhoneInputInput:-webkit-autofill:focus),
+.inputContainer :global(.PhoneInputInput:-webkit-autofill:active) {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-form-value) !important;
+  background: var(--bg-white) !important;
+}
+
 .inputContainer :global(.PhoneInputCountry) {
   border: 1px solid var(--border-light) !important;
   padding: 0 8px !important;

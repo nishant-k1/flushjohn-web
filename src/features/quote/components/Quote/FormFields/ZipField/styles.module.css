@@ -49,6 +49,16 @@
   opacity: 1;
 }
 
+/* Fix Safari autofill brown/yellow background */
+.zipInput:-webkit-autofill,
+.zipInput:-webkit-autofill:hover,
+.zipInput:-webkit-autofill:focus,
+.zipInput:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-white) inset !important;
+  -webkit-text-fill-color: var(--text-form-value) !important;
+  background-color: var(--bg-white) !important;
+}
+
 .error_field {
   border: 1px solid var(--error-border) !important;
 }
