@@ -136,69 +136,67 @@ export default function RootLayout({
             __html: `
               (function() {
                 // Suppress MIME type errors immediately before any other code runs
-                if (typeof window !== 'undefined') {
-                  // Prevent duplicate setup on client-side navigation
-                  if (window.__mimeErrorSuppressionSetup) {
-                    return;
-                  }
-                  window.__mimeErrorSuppressionSetup = true;
+                // Prevent duplicate setup on client-side navigation
+                if (window.__mimeErrorSuppressionSetup) {
+                  return;
+                }
+                window.__mimeErrorSuppressionSetup = true;
 
-                  // Store original methods only once
-                  if (!window.__originalConsoleError) {
-                    window.__originalConsoleError = console.error;
-                    window.__originalConsoleWarn = console.warn;
+                // Store original methods only once
+                if (!window.__originalConsoleError) {
+                  window.__originalConsoleError = console.error;
+                  window.__originalConsoleWarn = console.warn;
+                }
+                
+                const originalError = window.__originalConsoleError;
+                const originalWarn = window.__originalConsoleWarn;
+                
+                console.error = function() {
+                  const message = arguments[0] ? String(arguments[0]) : '';
+                  // Suppress CSS MIME type errors (typically from browser extensions or cached HTML)
+                  if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css') || message.includes('not executable'))) {
+                    return; // Suppress this error
                   }
-                  
-                  const originalError = window.__originalConsoleError;
-                  const originalWarn = window.__originalConsoleWarn;
-                  
-                  console.error = function() {
-                    const message = arguments[0] ? String(arguments[0]) : '';
-                    // Suppress CSS MIME type errors (typically from browser extensions or cached HTML)
-                    if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css') || message.includes('not executable'))) {
-                      return; // Suppress this error
+                  originalError.apply(console, arguments);
+                };
+                
+                console.warn = function() {
+                  const message = arguments[0] ? String(arguments[0]) : '';
+                  // Suppress CSS MIME type warnings
+                  if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
+                    return; // Suppress this warning
+                  }
+                  originalWarn.apply(console, arguments);
+                };
+                
+                // Store error handler reference to prevent duplicates
+                if (!window.__mimeErrorHandler) {
+                  window.__mimeErrorHandler = function(event) {
+                    const message = event.message || '';
+                    const filename = event.filename || '';
+                    // Suppress MIME type errors for CSS files
+                    if ((message.includes('MIME type') || message.includes('not executable')) && 
+                        (filename.includes('.css') || message.includes('text/css'))) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      event.stopImmediatePropagation();
+                      return false;
                     }
-                    originalError.apply(console, arguments);
                   };
                   
-                  console.warn = function() {
-                    const message = arguments[0] ? String(arguments[0]) : '';
-                    // Suppress CSS MIME type warnings
+                  window.__mimeRejectionHandler = function(event) {
+                    const message = event.reason ? String(event.reason) : '';
                     if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
-                      return; // Suppress this warning
+                      event.preventDefault();
+                      return false;
                     }
-                    originalWarn.apply(console, arguments);
                   };
                   
-                  // Store error handler reference to prevent duplicates
-                  if (!window.__mimeErrorHandler) {
-                    window.__mimeErrorHandler = function(event) {
-                      const message = event.message || '';
-                      const filename = event.filename || '';
-                      // Suppress MIME type errors for CSS files
-                      if ((message.includes('MIME type') || message.includes('not executable')) && 
-                          (filename.includes('.css') || message.includes('text/css'))) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        event.stopImmediatePropagation();
-                        return false;
-                      }
-                    };
-                    
-                    window.__mimeRejectionHandler = function(event) {
-                      const message = event.reason ? String(event.reason) : '';
-                      if (message.includes('MIME type') && (message.includes('text/css') || message.includes('.css'))) {
-                        event.preventDefault();
-                        return false;
-                      }
-                    };
-                    
-                    // Catch errors via global error handler (capture phase) - only add once
-                    window.addEventListener('error', window.__mimeErrorHandler, true);
-                    
-                    // Catch unhandled promise rejections - only add once
-                    window.addEventListener('unhandledrejection', window.__mimeRejectionHandler);
-                  }
+                  // Catch errors via global error handler (capture phase) - only add once
+                  window.addEventListener('error', window.__mimeErrorHandler, true);
+                  
+                  // Catch unhandled promise rejections - only add once
+                  window.addEventListener('unhandledrejection', window.__mimeRejectionHandler);
                 }
               })();
             `,
@@ -320,7 +318,7 @@ export default function RootLayout({
           as="image"
         />
       </head>
-      <body suppressHydrationWarning>
+      <body>
         {/* Google Analytics / Google Ads Conversion Tracking
             Note: Third-party cookie warnings from /ccm/collect are expected when using Google Ads conversion tracking.
             These cookies are set by Google's domain and are necessary for conversion measurement.
