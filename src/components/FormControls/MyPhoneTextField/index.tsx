@@ -61,7 +61,7 @@ const MyPhoneTextField = ({ label, ...props }: any) => {
           autoComplete="tel"
           countryCallingCodeEditable={false}
           displayInitialValueAsLocalNumber={true}
-          onChange={(value) => setValue(value)}
+          onChange={(value) => setValue(value || "")}
           onFocus={() => {
             // Hide error when field is focused
             setShowError(false);
