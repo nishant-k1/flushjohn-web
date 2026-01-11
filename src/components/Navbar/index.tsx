@@ -14,7 +14,7 @@ import { PhoneIcon } from "@/components/UI/Icons";
 
 // Dynamically import hamburger-react to reduce initial bundle size
 const Hamburger = dynamic(
-  () => import("hamburger-react").then((mod) => mod.Divide),
+  () => import("hamburger-react").then((mod) => ({ default: mod.Divide })),
   {
     ssr: false,
     loading: () => (

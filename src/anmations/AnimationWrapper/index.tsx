@@ -5,12 +5,12 @@ import React from "react";
 
 // Lazy load framer-motion to reduce initial bundle size
 const AnimatePresence = dynamic(
-  () => import("framer-motion").then((mod) => mod.AnimatePresence),
+  () => import("framer-motion").then((mod) => ({ default: mod.AnimatePresence })),
   { ssr: false }
 );
 
 const MotionDiv = dynamic(
-  () => import("framer-motion").then((mod) => mod.motion.div),
+  () => import("framer-motion").then((mod) => ({ default: mod.motion.div })),
   { ssr: false }
 );
 

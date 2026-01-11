@@ -8,7 +8,7 @@ import AnimationWrapper from "../AnimationWrapper";
 
 // Lazy load framer-motion to reduce initial bundle size
 const AnimatePresence = dynamic(
-  () => import("framer-motion").then((mod) => mod.AnimatePresence),
+  () => import("framer-motion").then((mod) => ({ default: mod.AnimatePresence })),
   { ssr: false }
 );
 
