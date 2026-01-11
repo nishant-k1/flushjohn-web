@@ -94,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Critical Schema Markup - Inline for SEO audit tools that don't execute JavaScript */}
         <script
@@ -318,7 +318,7 @@ export default function RootLayout({
           as="image"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/* Google Analytics / Google Ads Conversion Tracking
             Note: Third-party cookie warnings from /ccm/collect are expected when using Google Ads conversion tracking.
             These cookies are set by Google's domain and are necessary for conversion measurement.
