@@ -63,6 +63,13 @@ export const metadata = {
   url: websiteURL,
   type: "website",
   siteName: "FlushJohn",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
   alternates: {
     canonical: websiteURL,
     languages: {

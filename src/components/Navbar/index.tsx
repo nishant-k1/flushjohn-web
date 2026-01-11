@@ -52,6 +52,7 @@ const Navbar = () => {
 
   return (
     <nav
+      suppressHydrationWarning
       className={
         scrolled
           ? `${pathname === "/" ? styles.navbar_home : styles.navbar} ${styles.scrolled}`
