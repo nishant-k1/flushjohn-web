@@ -3,7 +3,7 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import {
   HomeIcon,
   PhoneIcon,
@@ -22,6 +22,7 @@ import { animations } from "@/anmations/effectData";
 const Sidebar = () => {
 
   const { active, setActive } = useContext(SidebarContext);
+  const sidebarRef = useRef<HTMLDivElement>(null);
   
   // Prevent body scrolling when sidebar is open on mobile
   useEffect(() => {
@@ -53,6 +54,34 @@ const Sidebar = () => {
     };
   }, [active]);
 
+  // Handle outside clicks - more reliable than overlay
+  useEffect(() => {
+    if (!active) {
+      return;
+    }
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      
+      // Don't close if clicking inside the sidebar
+      if (sidebarRef.current && sidebarRef.current.contains(target)) {
+        return;
+      }
+
+      // Close sidebar when clicking outside
+      setActive(false);
+    };
+
+    // Use capture phase to catch events before they bubble
+    document.addEventListener("mousedown", handleOutsideClick, true);
+    document.addEventListener("touchstart", handleOutsideClick, true);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick, true);
+      document.removeEventListener("touchstart", handleOutsideClick, true);
+    };
+  }, [active, setActive]);
+
   const handleClick = () => {
     setActive(false);
   };
@@ -69,7 +98,11 @@ const Sidebar = () => {
         active ? styles.active : styles.inactive
       }`}
     >
-      <div className={styles.container} onClick={handleSidebarClick}>
+      <div 
+        ref={sidebarRef}
+        className={styles.container} 
+        onClick={handleSidebarClick}
+      >
         <div className={styles.sidebar}>
           <Link href="/">
             <Image
