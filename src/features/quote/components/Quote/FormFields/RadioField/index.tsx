@@ -6,13 +6,15 @@ const RadioField = ({ label, ...props }: any) => {
   const { touched, error } = meta;
   const { setValue } = helpers;
 
+  const fieldId = props.id || `${props.name}-${props.value || Math.random().toString(36).substr(2, 9)}`;
+
   return (
     <div className={styles.radioWrapper}>
-      <label className={styles.radioLabel}>
+      <label className={styles.radioLabel} htmlFor={fieldId}>
         <input
           {...field}
           {...props}
-          aria-label={props.name}
+          id={fieldId}
           type="radio"
           checked={field.value === props.value}
           className={props.className}

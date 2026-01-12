@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 
@@ -21,28 +21,79 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 }) => {
   const [showContent, setShowContent] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
 
+  // Focus trap and management
   useEffect(() => {
-    if (isOpen) {
-      // Lock body scroll when modal is open
-      document.body.style.overflow = "hidden";
-      setTimeout(() => setShowContent(true), 100);
-    } else {
-      setShowContent(false);
-      // Restore body scroll when modal is closed
-      document.body.style.overflow = "";
-    }
+    if (!isOpen || !mounted) return;
 
-    // Cleanup function to restore scroll if component unmounts
+    // Save currently focused element
+    previousActiveElementRef.current = document.activeElement as HTMLElement;
+
+    // Lock body scroll when modal is open
+    document.body.style.overflow = "hidden";
+    setTimeout(() => setShowContent(true), 100);
+
+    // Focus close button when modal opens
+    setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 150);
+
+    // Get all focusable elements within modal
+    const getFocusableElements = (): HTMLElement[] => {
+      if (!modalRef.current) return [];
+      const selector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      return Array.from(modalRef.current.querySelectorAll<HTMLElement>(selector));
+    };
+
+    // Handle Tab key for focus trap
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusableElements = getFocusableElements();
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    // Add event listener
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup function
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKeyDown);
+      // Restore focus to previous element
+      previousActiveElementRef.current?.focus();
     };
-  }, [isOpen]);
+  }, [isOpen, mounted, onClose]);
 
   if (!isOpen || !mounted) return null;
 
@@ -56,8 +107,10 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
       aria-describedby="success-modal-message"
     >
       <div
+        ref={modalRef}
         className={`${styles.modal} ${showContent ? styles.modalShow : ""}`}
         onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
       >
         {/* Animated Checkmark Circle */}
         <div className={styles.checkmarkWrapper}>
@@ -93,7 +146,12 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
         </div>
 
         {/* Close Button */}
-        <button className={styles.closeButton} onClick={onClose} aria-label="Close success message">
+        <button
+          ref={closeButtonRef}
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Close success message"
+        >
           Got it!
         </button>
       </div>

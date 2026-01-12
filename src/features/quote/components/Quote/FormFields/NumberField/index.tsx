@@ -76,18 +76,26 @@ const NumberField = ({ label, ...props }: any) => {
     }
   }, [field.value, isFocused]);
 
+  const errorId = `${props.name || 'number'}-error`;
+  const fieldId = props.id || props.name || `number-${Math.random().toString(36).substr(2, 9)}`;
+  const hasError = touched && error;
+  const errorMessage = typeof error === 'string' ? error : 'Required';
+
   return (
     <div className={styles.fieldRow}>
-      <label className={styles.fieldLabel}>{label}</label>
+      <label className={styles.fieldLabel} htmlFor={fieldId}>{label}</label>
       <div className={styles.inputContainer}>
         <div className={styles.inputRow}>
           <NumericFormat
             {...field}
             {...props}
+            id={fieldId}
             ref={inputRef}
             className={`${styles.numberInput} ${touched && error ? styles.error_field : ""}`}
             placeholder=""
             title="Enter Quantity - Use arrow keys to increment/decrement"
+            aria-invalid={hasError ? "true" : "false"}
+            aria-describedby={hasError ? errorId : undefined}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onClick={handleClick}
@@ -99,9 +107,12 @@ const NumberField = ({ label, ...props }: any) => {
           <span className={styles.unitsText}>Units</span>
         </div>
         <div
+          id={errorId}
           className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+          role="alert"
+          aria-live="polite"
         >
-          {touched && error ? "Required" : ""}
+          {touched && error ? errorMessage : ""}
         </div>
       </div>
     </div>

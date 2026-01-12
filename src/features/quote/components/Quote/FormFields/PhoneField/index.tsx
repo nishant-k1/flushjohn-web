@@ -18,17 +18,23 @@ const PhoneField = ({ label, ...props }: any) => {
     }
   }, [touched, error]);
 
+  const errorId = `${props.name || 'phone'}-error`;
+  const fieldId = props.id || props.name || `phone-${Math.random().toString(36).substr(2, 9)}`;
+  const hasError = touched && error;
+  const errorMessage = typeof error === 'string' ? error : 'Required';
+
   return (
     <div className={styles.fieldRow}>
-      <label className={styles.fieldLabel}>
+      <label className={styles.fieldLabel} htmlFor={fieldId}>
         {label}
-        <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>*</span>
+        <span style={{ color: "var(--error-border)", fontSize: "x-large" }} aria-label="required">*</span>
       </label>
       <div className={styles.inputContainer}>
         <div title="Enter 10-digit phone number">
           <PhoneInput
             {...field}
             {...props}
+            id={fieldId}
             defaultCountry="US"
             addInternationalOption={false}
             countries={["US"]}
@@ -45,12 +51,17 @@ const PhoneField = ({ label, ...props }: any) => {
             limitMaxLength={true}
             maxLength={14}
             inputMode="numeric"
+            aria-invalid={hasError ? "true" : "false"}
+            aria-describedby={hasError ? errorId : undefined}
           />
         </div>
         <div
+          id={errorId}
           className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
+          role="alert"
+          aria-live="polite"
         >
-          {touched && error ? "Required" : ""}
+          {touched && error ? errorMessage : ""}
         </div>
       </div>
     </div>
