@@ -9,7 +9,7 @@ export interface ProductRequest {
   id: string;
   item: string;
   desc: string;
-  qty: number; // Proper number type
+  quantity: number; // Proper number type
   rate: number; // Proper number type
   amount: number; // Proper number type
 }
@@ -48,7 +48,7 @@ export function prepareApiPayload(formData: any): LeadFormRequest {
       id: String(product.id),
       item: String(product.item),
       desc: String(product.desc),
-      qty: Number(product.qty), // Ensure number type
+      quantity: Number(product.quantity), // Ensure number type
       rate: Number(product.rate), // Ensure number type
       amount: Number(product.amount), // Ensure number type
     })),
@@ -97,7 +97,7 @@ export function parseApiResponse(data: LeadResponse): any {
     updatedAt: dayjs(data.updatedAt).toDate(),
     products: data.products.map((product) => ({
       ...product,
-      qty: Number(product.qty),
+      quantity: Number(product.quantity),
       rate: Number(product.rate),
       amount: Number(product.amount),
     })),

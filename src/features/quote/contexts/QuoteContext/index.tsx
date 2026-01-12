@@ -9,7 +9,7 @@ const requirementDetails = {
       id: "standard-portable-restroom",
       item: "Standard Portable Restroom",
       desc: "Standard Portable Restroom",
-      qty: 0, // Number in application state
+      quantity: 0, // Number in application state
       rate: 0.0, // User will enter their own rate
       amount: 0.0, // Number in application state
     },
@@ -17,7 +17,7 @@ const requirementDetails = {
       id: "deluxe-flushable-restroom",
       item: "Deluxe Flushable Restroom",
       desc: "Deluxe Flushable Restroom",
-      qty: 0, // Number in application state
+      quantity: 0, // Number in application state
       rate: 0.0, // User will enter their own rate
       amount: 0.0, // Number in application state
     },
@@ -25,7 +25,7 @@ const requirementDetails = {
       id: "ada-portable-restroom",
       item: "ADA Portable Restroom",
       desc: "ADA Portable Restroom",
-      qty: 0, // Number in application state
+      quantity: 0, // Number in application state
       rate: 0.0, // User will enter their own rate
       amount: 0.0, // Number in application state
     },
@@ -33,7 +33,7 @@ const requirementDetails = {
       id: "hand-wash-station",
       item: "Hand Wash Station",
       desc: "Hand Wash Station",
-      qty: 0, // Number in application state
+      quantity: 0, // Number in application state
       rate: 0.0, // User will enter their own rate
       amount: 0.0, // Number in application state
     },

@@ -117,7 +117,9 @@ const UsageTypeField = () => {
           className={hasError ? styles.error_field : ""}
           style={{
             padding: "0 12px",
-            border: hasError ? `1px solid var(--error-border)` : `1px solid var(--border-light)`,
+            border: hasError
+              ? `1px solid var(--error-border)`
+              : `1px solid var(--border-light)`,
             borderRadius: "0",
             cursor: "pointer",
             height: "2rem",
@@ -130,7 +132,9 @@ const UsageTypeField = () => {
         >
           <span
             style={{
-              color: values.usageType ? "var(--text-form-value)" : "var(--text-form-placeholder)",
+              color: values.usageType
+                ? "var(--text-form-value)"
+                : "var(--text-form-placeholder)",
               fontSize: "14px",
               fontWeight: 500,
               flex: 1,
@@ -170,8 +174,7 @@ const UsageTypeField = () => {
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
-              boxShadow:
-                `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
+              boxShadow: `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
               padding: "4px 0",
               animation:
                 "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -189,7 +192,9 @@ const UsageTypeField = () => {
                       ? "var(--primary-alpha-12)"
                       : "var(--bg-white)",
                   borderBottom:
-                    index < options.length - 1 ? `1px solid var(--border-lighter)` : "none",
+                    index < options.length - 1
+                      ? `1px solid var(--border-lighter)`
+                      : "none",
                   borderLeft:
                     values.usageType === option.value
                       ? `4px solid var(--primary-bg-color, var(--primary))`
@@ -287,7 +292,7 @@ const QuickQuote = () => {
             products: [],
             deliveryDate: "",
             pickupDate: "",
-            street: "",
+            streetAddress: "",
             zip: "",
             city: "",
             state: "",
@@ -401,7 +406,7 @@ const QuickQuote = () => {
                       <Grid item xs={12}>
                         <MyTextField
                           label="Street Address"
-                          name="street"
+                          name="streetAddress"
                           placeholder="Street Address (Optional)"
                         />
                       </Grid>

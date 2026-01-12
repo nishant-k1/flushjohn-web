@@ -17,7 +17,7 @@ const step1StringValidationSchema = Yup.object({
         id: Yup.string(),
         item: Yup.string(),
         desc: Yup.string(),
-        qty: Yup.string()
+        quantity: Yup.string()
           .matches(/^\d*$/, "Quantity must be a whole number")
           .test(
             "non-negative",
@@ -44,7 +44,7 @@ const step1StringValidationSchema = Yup.object({
       function (products) {
         if (!products) return false;
         return products.some((product: any) => {
-          return parseInt(product.qty || "0", 10) > 0; // Parse string to number for comparison
+          return parseInt(product.quantity || "0", 10) > 0; // Parse string to number for comparison
         });
       }
     ),
@@ -58,7 +58,7 @@ const step1ParsedValidationSchema = Yup.object({
         id: Yup.string(),
         item: Yup.string(),
         desc: Yup.string(),
-        qty: Yup.number().integer().min(1, "Quantity must be at least 1"),
+        quantity: Yup.number().integer().min(1, "Quantity must be at least 1"),
         rate: Yup.number().min(0, "Rate cannot be negative"),
         amount: Yup.number().min(0, "Amount cannot be negative"),
       })
@@ -144,7 +144,7 @@ const QuoteStep1 = () => {
             <NumberField
               key={item.id || index}
               label={item.item}
-              name={`products[${index}].qty`}
+              name={`products[${index}].quantity`}
               mask="9999"
               type="tel"
             />

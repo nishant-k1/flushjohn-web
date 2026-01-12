@@ -72,7 +72,7 @@ const HeroQuickQuote = () => {
         products: [],
         deliveryDate: "",
         pickupDate: "",
-        street: "",
+        streetAddress: "",
         zip: "",
         city: "",
         state: "",

@@ -125,11 +125,11 @@ export function formatPhone(phone: string): string {
  */
 export function formatProductSummary(product: {
   item: string;
-  qty: number;
+  quantity: number;
   rate: number;
   amount: number;
 }): string {
-  return `${product.item} (Qty: ${product.qty}) - ${formatCurrency(product.rate)} = ${formatCurrency(product.amount)}`;
+  return `${product.item} (Qty: ${product.quantity}) - ${formatCurrency(product.rate)} = ${formatCurrency(product.amount)}`;
 }
 
 /**
@@ -138,7 +138,7 @@ export function formatProductSummary(product: {
 export function formatProductList(
   products: Array<{
     item: string;
-    qty: number;
+    quantity: number;
     rate: number;
     amount: number;
   }>

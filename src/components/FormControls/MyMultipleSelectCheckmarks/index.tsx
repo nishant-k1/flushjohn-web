@@ -22,8 +22,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
 
   const toggleOption = (optionValue: string) => {
     const existingItem = value.find(
-      (v: any) =>
-        v.item === optionValue || v.type === optionValue || v === optionValue
+      (v: any) => v.item === optionValue || v === optionValue
     );
 
     // Mark as touched when user makes a selection/deselection
@@ -32,9 +31,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     }
 
     if (existingItem) {
-      setValue(
-        value.filter((v: any) => (v.item || v.type || v) !== optionValue)
-      );
+      setValue(value.filter((v: any) => v.item !== optionValue));
     } else {
       setValue([
         ...value,
@@ -42,7 +39,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           id: `product-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
           item: optionValue,
           desc: optionValue,
-          qty: 1, // Default quantity is 1 (user can change it)
+          quantity: 1, // Default quantity is 1 (user can change it)
           rate: 0.0, // Empty rate - user will enter their own
           amount: 0.0, // Will be calculated when user enters rate
         },
@@ -61,16 +58,16 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
     }
 
     const newValue = value.map((v: any) => {
-      if ((v.item || v.type || v) === optionValue) {
+      if (v.item === optionValue) {
         const qty = Math.max(1, quantity);
         const rate = Number(v.rate) || 0;
         const amount = rate * qty;
 
         return {
           ...v,
-          item: v.item || v.type || optionValue,
-          desc: v.desc || v.type || optionValue,
-          qty: qty, // Proper number type
+          item: v.item || optionValue,
+          desc: v.desc || v.item || optionValue,
+          quantity: qty, // Proper number type
           rate: rate, // Proper number type
           amount: amount, // Proper number type
         };
@@ -81,21 +78,19 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   };
 
   const isSelected = (optionValue: string) => {
-    return value.some((v: any) => (v.item || v.type || v) === optionValue);
+    return value.some((v: any) => v.item === optionValue);
   };
 
   const getQuantity = (optionValue: string) => {
-    const item = value.find(
-      (v: any) => (v.item || v.type || v) === optionValue
-    );
-    const qty = item?.qty || item?.quantity || 1;
-    return Number(qty) || 1; // Already a number in application state
+    const item = value.find((v: any) => v.item === optionValue);
+    const quantity = item?.quantity || 1;
+    return Number(quantity) || 1; // Already a number in application state
   };
 
   const getTotalUnits = () => {
     return value.reduce((sum: number, item: any) => {
-      const qty = Number(item.qty || item.quantity || 1) || 1;
-      return sum + qty;
+      const quantity = Number(item.quantity || 1) || 1;
+      return sum + quantity;
     }, 0);
   };
 
@@ -176,7 +171,10 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
       >
         <span
           style={{
-            color: value.length === 0 ? "var(--text-form-placeholder)" : "var(--text-form-value)",
+            color:
+              value.length === 0
+                ? "var(--text-form-placeholder)"
+                : "var(--text-form-value)",
             fontSize: "14px",
             fontWeight: 500,
             whiteSpace: "nowrap",
@@ -188,7 +186,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           {value.length === 0
             ? label || "Select Items"
             : value.length === 1
-              ? `${getQuantity(value[0].item || value[0].type || value[0])} × ${options.find((opt) => opt.value === (value[0].item || value[0].type || value[0]))?.label}`
+              ? `${getQuantity(value[0].item || value[0])} × ${options.find((opt) => opt.value === (value[0].item || value[0]))?.label}`
               : `${getTotalUnits()} units (${value.length} types)`}
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -241,8 +239,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             maxHeight: "280px",
             overflowY: "auto",
             zIndex: 10000,
-            boxShadow:
-              `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
+            boxShadow: `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
             padding: "4px 0",
             animation:
               "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -264,7 +261,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
                   ? "var(--primary-alpha-12)"
                   : "var(--bg-white)",
                 borderBottom:
-                  index < options.length - 1 ? `1px solid var(--border-lighter)` : "none",
+                  index < options.length - 1
+                    ? `1px solid var(--border-lighter)`
+                    : "none",
                 borderLeft: isSelected(option.value)
                   ? `4px solid var(--primary-bg-color, var(--primary))`
                   : "4px solid transparent",
