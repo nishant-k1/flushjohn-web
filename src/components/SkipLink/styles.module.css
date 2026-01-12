@@ -1,0 +1,30 @@
+/* Skip Link - Hidden by default, visible on focus */
+.skipLink {
+  position: fixed;
+  top: -100px; /* Hidden completely off-screen */
+  left: 0;
+  background: var(--primary);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  text-decoration: none;
+  z-index: 10000; /* Above all other content including navbar (z-sticky is 200) */
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid var(--text-primary);
+  outline: none;
+  transition: top 0.2s ease-in-out;
+  width: auto;
+  display: block;
+}
+
+/* Show skip link when focused (keyboard navigation) */
+.skipLink:focus {
+  top: 0;
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure skip link is visible even when scrolling */
+.skipLink:focus-visible {
+  top: 0;
+}

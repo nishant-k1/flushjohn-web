@@ -72,6 +72,13 @@
 
 .navLinks {
   display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinks li {
+  display: inline-block;
 }
 
 .navLinks a {
@@ -83,6 +90,7 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
   text-decoration: none;
+  display: inline-block;
 }
 
 .navLinks a:hover {

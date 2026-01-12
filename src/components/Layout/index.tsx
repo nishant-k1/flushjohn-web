@@ -18,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <main
+      id="main-content"
       suppressHydrationWarning
       className={`${styles.main} ${active ? styles.active : styles.inactive}`}
       role="main"

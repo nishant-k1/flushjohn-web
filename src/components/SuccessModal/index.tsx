@@ -47,7 +47,14 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
   if (!isOpen || !mounted) return null;
 
   const modalContent = (
-    <div className={styles.overlay} onClick={onClose}>
+    <div 
+      className={styles.overlay} 
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-modal-title"
+      aria-describedby="success-modal-message"
+    >
       <div
         className={`${styles.modal} ${showContent ? styles.modalShow : ""}`}
         onClick={(e) => e.stopPropagation()}
@@ -80,13 +87,13 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 
         {/* Success Message */}
         <div className={styles.content}>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.message}>{message}</p>
+          <h2 id="success-modal-title" className={styles.title}>{title}</h2>
+          <p id="success-modal-message" className={styles.message} role="alert" aria-live="polite">{message}</p>
           {submessage && <p className={styles.submessage}>{submessage}</p>}
         </div>
 
         {/* Close Button */}
-        <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onClose} aria-label="Close success message">
           Got it!
         </button>
       </div>

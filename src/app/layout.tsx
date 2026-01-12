@@ -53,6 +53,7 @@ import AnalyticsInitializer from "@/components/Analytics/AnalyticsInitializer";
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
+import SkipLink from "@/components/SkipLink";
 // Using environment variable directly
 const GOOGLE_ADS_ACCOUNT_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID!;
 
@@ -366,6 +367,9 @@ export default function RootLayout({
 
         {/* Final Optimizer - Suppresses console errors and optimizes performance */}
         <FinalOptimizer />
+
+        {/* Skip Link - Accessibility: Allows keyboard users to skip to main content */}
+        <SkipLink />
 
         <Layout>
           <ClientWidthContextProvider>

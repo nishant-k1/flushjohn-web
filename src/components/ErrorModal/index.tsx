@@ -47,7 +47,14 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
   if (!isOpen || !mounted) return null;
 
   const modalContent = (
-    <div className={styles.overlay} onClick={onClose}>
+    <div 
+      className={styles.overlay} 
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="error-modal-title"
+      aria-describedby="error-modal-message"
+    >
       <div
         className={`${styles.modal} ${showContent ? styles.modalShow : ""}`}
         onClick={(e) => e.stopPropagation()}
@@ -80,13 +87,13 @@ const ErrorModal: React.FC<ErrorModalProps> = ({
 
         {/* Error Message */}
         <div className={styles.content}>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.message}>{message}</p>
+          <h2 id="error-modal-title" className={styles.title}>{title}</h2>
+          <p id="error-modal-message" className={styles.message} role="alert" aria-live="assertive">{message}</p>
           {submessage && <p className={styles.submessage}>{submessage}</p>}
         </div>
 
         {/* Close Button */}
-        <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onClose} aria-label="Close error message">
           Try Again
         </button>
       </div>

@@ -123,14 +123,14 @@ const Sidebar = () => {
           className={styles.container} 
           onClick={handleSidebarClick}
         >
-        <div className={styles.sidebar}>
-          <Link href="/">
+        <nav className={styles.sidebar} role="navigation" aria-label="Mobile navigation menu">
+          <Link href="/" aria-label="FlushJohn Home">
             <Image
               height={501}
               width={1039}
               onClick={handleClick}
               src={`${CLOUD_FRONT_URL}/logo_white.svg`}
-              alt="brand-logo"
+              alt="FlushJohn - Porta Potty Rental Services"
               priority={true}
               placeholder="empty"
               style={{
@@ -141,16 +141,16 @@ const Sidebar = () => {
               }}
             />
           </Link>
-          <Link href="/" onClick={handleClick}>
-            <HomeIcon size={20} />
+          <Link href="/" onClick={handleClick} aria-label="Home">
+            <HomeIcon size={20} aria-hidden="true" />
             Home
           </Link>
-          <Link href="/rental-products" onClick={handleClick}>
-            <LocalShippingIcon size={20} />
+          <Link href="/rental-products" onClick={handleClick} aria-label="Rental Products">
+            <LocalShippingIcon size={20} aria-hidden="true" />
             Rental Products
           </Link>
-          <Link href="/quote" onClick={handleClick}>
-            <RequestQuoteIcon size={20} />
+          <Link href="/quote" onClick={handleClick} aria-label="Request Quote">
+            <RequestQuoteIcon size={20} aria-hidden="true" />
             Request Quote
           </Link>
           <Link
@@ -166,11 +166,12 @@ const Sidebar = () => {
                 transport: "beacon",
               });
             }}
+            aria-label={`Call ${PHONE_NUMBER}`}
           >
-            <PhoneIcon size={20} />
+            <PhoneIcon size={20} aria-hidden="true" />
             {PHONE_NUMBER}
           </Link>
-        </div>
+        </nav>
       </div>
     </AnimationWrapper>
     </div>

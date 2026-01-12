@@ -60,13 +60,15 @@ const Navbar = () => {
           ? `${pathname === "/" ? styles.navbar_home : styles.navbar} ${styles.scrolled}`
           : `${pathname === "/" ? styles.navbar_home : styles.navbar}`
       }
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Link href="/">
+          <Link href="/" aria-label="FlushJohn Home">
             <Image
               src={`${s3assets}/logo_white.svg`}
-              alt="porta-potty"
+              alt="FlushJohn - Porta Potty Rental Services"
               height={501}
               width={1039}
               priority={true}
@@ -92,50 +94,68 @@ const Navbar = () => {
               label="Toggle navigation menu"
             />
           </div>
-          <div className={styles.navLinks}>
-            <Link href="/">Home</Link>
-            <Link
-              href="/rental-products"
-              className={
-                pathname === "/rental-products" ? styles.activeLink : ""
-              }
-            >
-              Rental Products
-            </Link>
-            <Link
-              href="/quote"
-              className={pathname === "/quote" ? styles.activeLink : ""}
-            >
-              Request Quote
-            </Link>
-            <Link
-              href="/contact"
-              className={pathname === "/contact" ? styles.activeLink : ""}
-            >
-              Contact
-            </Link>
-            <Link
-              href={process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!}
-              className={styles.phoneLink}
-              onClick={() => {
-                if (
-                  typeof window !== "undefined" &&
-                  typeof window.gtag === "function" &&
-                  GOOGLE_ADS_CONVERSION_PHONE_CALL
-                ) {
-                  window.gtag("event", "conversion", {
-                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                    event_category: "Phone Call",
-                    event_label: "Navbar Phone Link",
-                    value: 1,
-                  });
+          <ul className={styles.navLinks} role="menubar">
+            <li role="none">
+              <Link href="/" role="menuitem" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
+            </li>
+            <li role="none">
+              <Link
+                href="/rental-products"
+                className={
+                  pathname === "/rental-products" ? styles.activeLink : ""
                 }
-              }}
-            >
-              <PhoneIcon size={16} />
-              <span>{process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!}</span>
-            </Link>
-          </div>
+                role="menuitem"
+                aria-current={pathname === "/rental-products" ? "page" : undefined}
+              >
+                Rental Products
+              </Link>
+            </li>
+            <li role="none">
+              <Link
+                href="/quote"
+                className={pathname === "/quote" ? styles.activeLink : ""}
+                role="menuitem"
+                aria-current={pathname === "/quote" ? "page" : undefined}
+              >
+                Request Quote
+              </Link>
+            </li>
+            <li role="none">
+              <Link
+                href="/contact"
+                className={pathname === "/contact" ? styles.activeLink : ""}
+                role="menuitem"
+                aria-current={pathname === "/contact" ? "page" : undefined}
+              >
+                Contact
+              </Link>
+            </li>
+            <li role="none">
+              <Link
+                href={process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!}
+                className={styles.phoneLink}
+                role="menuitem"
+                aria-label={`Call ${process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE}`}
+                onClick={() => {
+                  if (
+                    typeof window !== "undefined" &&
+                    typeof window.gtag === "function" &&
+                    GOOGLE_ADS_CONVERSION_PHONE_CALL
+                  ) {
+                    window.gtag("event", "conversion", {
+                      send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
+                      event_category: "Phone Call",
+                      event_label: "Navbar Phone Link",
+                      value: 1,
+                    });
+                  }
+                }}
+              >
+                <PhoneIcon size={16} aria-hidden="true" />
+                <span>{process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!}</span>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
