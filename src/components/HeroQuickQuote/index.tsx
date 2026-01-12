@@ -22,11 +22,10 @@ import {
   QuickQuoteContext,
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
-import {
-  GOOGLE_ADS_CONVERSION_HERO_QUOTE,
-  GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE,
-  GOOGLE_ADS_CONVERSION_CURRENCY,
-} from "@/config/env";
+// Construct Google Ads conversion values from env vars
+const GOOGLE_ADS_CONVERSION_HERO_QUOTE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_HERO_QUICK_QUOTE_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_HERO_QUICK_QUOTE_FORM!);
+const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";

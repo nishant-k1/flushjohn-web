@@ -11,7 +11,10 @@ import {
   LocalShippingIcon,
 } from "@/components/UI/Icons";
 import Image from "next/image";
-import { PHONE_LINK, PHONE_NUMBER, CLOUD_FRONT_URL } from "@/config/env";
+// Using environment variables directly
+const PHONE_LINK = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+const PHONE_NUMBER = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
+const CLOUD_FRONT_URL = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import { logEvent } from "../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";

@@ -53,7 +53,8 @@ import AnalyticsInitializer from "@/components/Analytics/AnalyticsInitializer";
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
-import { GOOGLE_ADS_ACCOUNT_ID } from "@/config/env";
+// Using environment variable directly
+const GOOGLE_ADS_ACCOUNT_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID!;
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;

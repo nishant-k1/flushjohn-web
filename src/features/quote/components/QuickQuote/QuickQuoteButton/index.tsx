@@ -5,7 +5,8 @@ import { QuickQuoteContext } from "../../../contexts/QuickQuoteContext";
 import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
-import { GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE } from "@/config/env";
+// Construct Google Ads conversion label from env vars
+const GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_FLOATING_PHONE_BUTTON_SUFFIX}`;
 
 const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 

@@ -5,7 +5,8 @@ import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
+// Construct Google Ads conversion label from env vars
+const GOOGLE_ADS_CONVERSION_PHONE_CALL = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_PHONE_BUTTON_SUFFIX}`;
 // Import CarouselView directly (not dynamically) to ensure LCP image loads immediately
 import CarouselView from "@/components/CarouselView";
 

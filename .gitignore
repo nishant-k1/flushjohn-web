@@ -40,3 +40,4 @@ yarn-error.log*
 
 # playwright-mcp
 .playwright-mcp/
+.env.local

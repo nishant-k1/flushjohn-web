@@ -23,11 +23,10 @@ import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
-import {
-  GOOGLE_ADS_CONVERSION_QUICK_QUOTE,
-  GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE,
-  GOOGLE_ADS_CONVERSION_CURRENCY,
-} from "@/config/env";
+// Construct Google Ads conversion values from env vars
+const GOOGLE_ADS_CONVERSION_QUICK_QUOTE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_MODAL_QUICK_QUOTE_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
+const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const quickQuoteValidationSchema = Yup.object().shape({

@@ -13,11 +13,10 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { api } from "@/utils/apiClient";
-import {
-  GOOGLE_ADS_CONVERSION_CONTACT_FORM,
-  GOOGLE_ADS_CONVERSION_VALUE_CONTACT,
-  GOOGLE_ADS_CONVERSION_CURRENCY,
-} from "@/config/env";
+// Construct Google Ads conversion values from env vars
+const GOOGLE_ADS_CONVERSION_CONTACT_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CONTACT_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_CONTACT = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_CONTACT_FORM!);
+const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const MyTextField = ({ label, ...props }: any) => {

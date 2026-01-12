@@ -15,7 +15,8 @@ import {
   EmailIcon,
 } from "@/components/UI/Icons";
 import { FaBloggerB } from "react-icons/fa";
-import { PHONE_LINK } from "@/config/env";
+// Using environment variable directly
+const PHONE_LINK = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 import { Images as ImagesIcon } from "lucide-react";
 
 export const footerLinks = {

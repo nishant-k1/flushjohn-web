@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack -p 3000",
+    "dev": "next dev -p 3000",
+    "dev:turbo": "next dev --turbopack -p 3000",
     "build": "NODE_OPTIONS='--max-old-space-size=8096' next build --webpack",
     "analyze": "ANALYZE=true npm run build",
     "start": "next start",
