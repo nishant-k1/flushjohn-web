@@ -53,9 +53,9 @@ const QuoteStep3 = () => {
       <Formik
         enableReinitialize={true}
         initialValues={formValues}
-      validationSchema={step3ValidationSchema}
-      validateOnChange={true}
-      validateOnBlur={true}
+        validationSchema={step3ValidationSchema}
+        validateOnChange={true}
+        validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
 
@@ -140,7 +140,7 @@ const QuoteStep3 = () => {
                     label="Onsite Contact Person Phone"
                     name="contactPersonPhone"
                     autoComplete="tel"
-                    placeholder="Enter contact phone number"
+                    placeholder="Enter contact phone"
                   />
                 </div>
                 <div className={`${styles.outerBox} ${styles.buttons}`}>

@@ -67,7 +67,7 @@
 .ctaButton {
   background-color: var(--bg-white);
   opacity: 0.95;
-  color: var(--primary);
+  color: var(--text-primary);
   border: 2px solid var(--bg-white);
   padding: 8px 20px;
   font-size: 1rem;
@@ -84,7 +84,7 @@
 
 .ctaButton:hover {
   background-color: var(--bg-white);
-  color: var(--primary-bg-color, var(--primary));
+  color: var(--text-primary);
   box-shadow: var(--shadow-lg);
   border-color: var(--bg-white);
 }
@@ -92,7 +92,7 @@
 .ctaButton:active {
   background-color: var(--bg-white);
   opacity: 0.9;
-  color: var(--primary-bg-color, var(--primary));
+  color: var(--text-primary);
   transform: translateY(0);
 }
 

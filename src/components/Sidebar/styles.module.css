@@ -48,7 +48,7 @@
 }
 
 .sidebar a {
-  color: var(--primary-text-color);
+  color: var(--text-primary);
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 0.5rem;

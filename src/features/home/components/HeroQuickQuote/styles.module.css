@@ -169,13 +169,13 @@
 :where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled) {
   font-weight: 400;
-  color: var(--primary-text-color);
+  color: var(--text-primary);
   background-color: var(--primary-bg-color);
 }
 
 :where(.css-dev-only-do-not-override-240cud).ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-enabled)
   svg {
-  color: var(--primary-text-color);
+  color: var(--text-primary);
   font-weight: 400;
 }
