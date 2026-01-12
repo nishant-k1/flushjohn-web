@@ -1,6 +1,6 @@
 .combinedBar {
   width: 100%;
-  background: linear-gradient(135deg, var(--phone-bar-background-start) 0%, var(--phone-bar-background-end) 100%);
+  background: var(--phone-bar-background-end);
   box-shadow: 0 4px 12px var(--black-alpha-15);
   border-top: 2px solid var(--primary-light);
 }
@@ -75,9 +75,9 @@
 .checkButton {
   height: 36px;
   padding: 8px 20px;
-  background: linear-gradient(135deg, var(--check-button-gradient-start) 0%, var(--check-button-gradient-end) 100%);
+  background: var(--primary);
   color: var(--text-primary);
-  border: 2px solid var(--check-button-border);
+  border: 2px solid var(--primary);
   border-radius: 0;
   font-size: 0.85rem;
   font-weight: 700;
@@ -86,7 +86,7 @@
   transition: all 0.3s ease;
   white-space: nowrap;
   box-shadow:
-    0 4px 12px var(--check-button-alpha-40),
+    0 4px 12px var(--black-alpha-20),
     inset 0 1px 0 var(--white-alpha-20);
   text-transform: uppercase;
   box-sizing: border-box;
@@ -96,22 +96,27 @@
 }
 
 .checkButton:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--check-button-hover-start) 0%, var(--check-button-hover-end) 100%);
-  border-color: var(--check-button-hover-border);
+  background: var(--primary-light);
+  color: var(--text-primary);
+  border-color: var(--primary-light);
   box-shadow:
-    0 6px 20px var(--check-button-alpha-50),
+    0 6px 20px var(--black-alpha-30),
     inset 0 1px 0 var(--white-alpha-25);
 }
 
 .checkButton:active:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
   box-shadow:
-    0 2px 8px var(--check-button-alpha-40),
+    0 2px 8px var(--black-alpha-20),
     inset 0 1px 0 var(--white-alpha-10);
 }
 
 .checkButton:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
+  background: var(--primary);
+  color: var(--text-primary);
 }
 
 .checkButton:focus-visible {
@@ -128,10 +133,10 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding: 12px 20px;
-  background: linear-gradient(135deg, var(--success-bg) 0%, var(--success-light) 100%);
-  border: 2px solid var(--success);
+  background: var(--callout-gradient-end);
+  border: 1.5px solid var(--primary-light);
   border-radius: 0;
-  box-shadow: 0 4px 12px var(--success-alpha-20);
+  box-shadow: 0 4px 12px var(--black-alpha-30);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
@@ -148,7 +153,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--success);
+  border-bottom: 8px solid var(--primary-light);
 }
 
 .resultVisible {
@@ -166,22 +171,15 @@
   color: var(--success);
   font-size: 1.5rem;
   font-weight: bold;
-  background: var(--bg-white);
-  width: 32px;
-  height: 32px;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px var(--success-bg);
   flex-shrink: 0;
 }
 
 .successText {
-  color: var(--success-dark);
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 1.05rem;
   letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px var(--black-alpha-20);
 }
 
 .phoneSection {
@@ -205,7 +203,7 @@
   align-items: center;
   gap: 6px;
   height: 36px;
-  background: linear-gradient(135deg, var(--phone-button-green-start) 0%, var(--phone-button-green-end) 100%);
+  background: transparent;
   color: var(--text-primary);
   padding: 8px 14px;
   border-radius: 0;
@@ -214,28 +212,19 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   transition: all var(--transition-base);
-  box-shadow:
-    0 4px 12px var(--phone-button-green-alpha-40),
-    inset 0 1px 0 var(--white-alpha-15);
   text-shadow: 0 1px 2px var(--black-alpha-30);
-  border: 2px solid var(--phone-button-green-end);
+  border: 2px solid var(--primary-light);
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, var(--phone-button-green-hover-start) 0%, var(--phone-button-green-hover-end) 100%);
-  border-color: var(--phone-button-green-hover-start);
-  box-shadow:
-    0 6px 20px var(--phone-button-green-alpha-50),
-    inset 0 1px 0 var(--white-alpha-20);
+  background: transparent;
+  border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .phoneNumber:active {
-  box-shadow:
-    0 2px 8px var(--phone-button-green-alpha-40),
-    inset 0 1px 0 var(--white-alpha-10);
 }
 
 .phoneNumber:focus-visible {
