@@ -98,7 +98,6 @@
 .checkButton:hover:not(:disabled) {
   background: var(--primary-light);
   color: var(--text-primary);
-  border-color: var(--primary-light);
   box-shadow:
     0 6px 20px var(--black-alpha-30),
     inset 0 1px 0 var(--white-alpha-25);
@@ -106,14 +105,13 @@
 
 .checkButton:active:not(:disabled) {
   background: var(--primary-dark);
-  border-color: var(--primary-dark);
   box-shadow:
     0 2px 8px var(--black-alpha-20),
     inset 0 1px 0 var(--white-alpha-10);
 }
 
 .checkButton:disabled {
-  opacity: 0.6;
+  opacity: 1;
   cursor: not-allowed;
   background: var(--primary);
   color: var(--text-primary);

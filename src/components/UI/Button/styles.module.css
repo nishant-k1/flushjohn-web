@@ -156,13 +156,11 @@
 
 .outlined.primary:hover {
   background: var(--white-alpha-15);
-  border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.primary:active {
   background: var(--white-alpha-25);
-  border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
 }
@@ -175,13 +173,11 @@
 
 .outlined.secondary:hover {
   background: var(--white-alpha-15);
-  border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.secondary:active {
   background: var(--white-alpha-25);
-  border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
 }
@@ -194,13 +190,11 @@
 
 .outlined.success:hover {
   background: var(--white-alpha-15);
-  border-color: var(--primary-light);
   color: var(--text-primary);
 }
 
 .outlined.success:active {
   background: var(--white-alpha-25);
-  border-color: var(--primary);
   color: var(--text-primary);
   transform: none;
 }

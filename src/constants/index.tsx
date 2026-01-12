@@ -1,7 +1,2 @@
-// Theme exports
-export {
-  theme,
-  type Theme,
-  type ThemeColors,
-  type ThemeSpacing,
-} from "./theme";
+// Constants exports
+// (theme.ts removed - use CSS variables from globals.css instead)

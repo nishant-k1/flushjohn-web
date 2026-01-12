@@ -2,15 +2,17 @@
 /* Using font-display: optional to prevent blocking render */
 
 :root {
-    /* ============================================
-     DESIGN TOKENS - Auto-generated from theme.ts
-     DO NOT EDIT MANUALLY - Edit src/constants/theme.ts instead
-     Run: node scripts/sync-theme-css.js to regenerate
+  /* ============================================
+     DESIGN TOKENS - Source of Truth
+     Edit this file directly to change CSS variables
+     theme.ts matches these values for TypeScript usage
      ============================================ */
 
   /* Typography */
   --font-poppins: "Poppins", sans-serif;
   --font-merriweather: "Merriweather", serif;
+
+
 
   /* Primary Brand Colors */
   --primary: #CF772C;

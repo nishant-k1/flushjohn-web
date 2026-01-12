@@ -235,11 +235,7 @@
   justify-content: center;
   gap: 8px;
   height: 2.5rem;
-  background: linear-gradient(
-    135deg,
-    var(--primary-light) 0%,
-    var(--primary) 100%
-  );
+  background: var(--primary);
   color: var(--text-primary) !important;
   font-weight: 600;
   font-size: large;
@@ -252,12 +248,7 @@
 }
 
 .button:hover {
-  background: linear-gradient(
-    135deg,
-    var(--primary-lighter) 0%,
-    var(--primary-light) 100%
-  );
-  border-color: var(--primary-lighter);
+  background: var(--primary-light);
   color: var(--text-primary) !important;
   box-shadow: 0 4px 12px var(--black-alpha-40);
   transition: var(--transition-base);
@@ -265,14 +256,8 @@
 }
 
 .button:active {
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
-  );
-  border-color: var(--primary);
+  background: var(--primary-dark);
   color: var(--text-primary) !important;
-  transform: translateY(0);
   text-shadow: 0 1px 2px var(--black-alpha-30);
   box-shadow: 0 1px 4px var(--black-alpha-30);
 }
