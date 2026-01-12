@@ -85,6 +85,9 @@ const HeroQuickQuote = () => {
         contactPersonName: "",
         contactPersonPhone: "",
       }}
+      validationSchema={quickQuoteValidationSchema}
+      validateOnChange={true}
+      validateOnBlur={true}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
 

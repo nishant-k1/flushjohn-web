@@ -81,7 +81,7 @@ const QuoteStep1 = () => {
       enableReinitialize={true}
       initialValues={formValues}
       validationSchema={step1StringValidationSchema}
-      validateOnChange={false}
+      validateOnChange={true}
       validateOnBlur={true}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         try {

@@ -103,6 +103,8 @@ const Contact = () => {
               .min(1, "Message cannot be empty")
               .required("Required"),
           })}
+          validateOnChange={true}
+          validateOnBlur={true}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
 

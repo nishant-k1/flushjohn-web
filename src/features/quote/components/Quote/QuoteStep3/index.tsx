@@ -53,9 +53,9 @@ const QuoteStep3 = () => {
       <Formik
         enableReinitialize={true}
         initialValues={formValues}
-        validationSchema={step3ValidationSchema}
-        validateOnChange={false}
-        validateOnBlur={true}
+      validationSchema={step3ValidationSchema}
+      validateOnChange={true}
+      validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
 
