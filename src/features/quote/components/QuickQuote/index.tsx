@@ -328,12 +328,12 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
 
-          // ✅ OPTIMISTIC: Show success immediately (before API response)
-          setShowSuccessModal(true);
-          setQuickQuoteRequested(true);
+            // ✅ OPTIMISTIC: Show success immediately (before API response)
+            setShowSuccessModal(true);
+            setQuickQuoteRequested(true);
           trackComplete(); // Track form completion
-          handleLeadConversion();
-          resetForm();
+            handleLeadConversion();
+            resetForm();
 
             try {
               // Data is automatically serialized by apiClient

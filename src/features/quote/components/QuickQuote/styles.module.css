@@ -21,11 +21,7 @@
   padding: 8px;
   height: fit-content;
   width: 300px;
-  background: linear-gradient(
-    135deg,
-    var(--bg-dark-alpha) 0%,
-    var(--primary-dark) 100%
-  );
+  background: var(--bg-primary);
   backdrop-filter: blur(10px);
   border: 1px solid var(--white-alpha-15);
   border-radius: 0;

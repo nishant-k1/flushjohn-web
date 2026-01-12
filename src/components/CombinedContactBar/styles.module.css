@@ -203,7 +203,7 @@
   align-items: center;
   gap: 6px;
   height: 36px;
-  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  background: none;
   color: #ffffff;
   padding: 8px 14px;
   border-radius: 0;
@@ -211,22 +211,19 @@
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  transition: all var(--transition-base);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: none;
   white-space: nowrap;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, #2FE576 0%, #25D366 100%);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: none;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
 }
 
 .phoneNumber:active {
+  background: none;
+  color: #ffffff;
 }
 
 .phoneNumber:focus-visible {

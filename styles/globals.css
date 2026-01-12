@@ -2,38 +2,93 @@
 /* Using font-display: optional to prevent blocking render */
 
 :root {
-  /* ============================================
-     DESIGN TOKENS - Unified Design System
-     ============================================
-     ⚠️  IMPORTANT: This file should match src/constants/theme.ts
-     All color values should come from theme.ts as the single source of truth.
-     When updating colors, update theme.ts first, then sync this file.
+    /* ============================================
+     DESIGN TOKENS - Auto-generated from theme.ts
+     DO NOT EDIT MANUALLY - Edit src/constants/theme.ts instead
+     Run: node scripts/sync-theme-css.js to regenerate
      ============================================ */
 
   /* Typography */
-  --font-poppins:
-    "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Helvetica Neue", Arial, sans-serif;
-  --font-merriweather: "Merriweather", Georgia, "Times New Roman", Times, serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-merriweather: "Merriweather", serif;
 
-  /* Primary Brand Colors - Using #8c6f48 as main color */
-  --primary: #8c6f48;
-  --primary-dark: #6d5637; /* Darker variant for hover/active states */
-  --primary-light: #a5896a; /* Lighter variant for accents */
-  --primary-lighter: #bea38c; /* Even lighter for subtle highlights */
+  /* Primary Brand Colors */
+  --primary: #CF772C;
+  --primary-dark: #a85f1f;
+  --primary-light: #e08a4a;
+  --primary-lighter: #f19d68;
+
+  /* Secondary Colors */
+  --secondary: #CF772C;
+  --secondary-light: #e08a4a;
+  --secondary-lighter: #f19d68;
+
+  /* Accent Colors */
+  --accent-blue: #a85f1f;
+  --accent-blue-light: #CF772C;
+  --accent-blue-dark: #8a4d18;
+  --accent-green: #a85f1f;
+  --accent-green-dark: #8a4d18;
+  --accent-gold: #CF772C;
+
+  /* Neutral Colors */
+  --neutral-50: #f5f3f0;
+  --neutral-100: #ebe7e1;
+  --neutral-200: #d7cfc3;
+  --neutral-300: #c3b7a5;
+  --neutral-400: #af9f87;
+  --neutral-500: #CF772C;
+  --neutral-600: #a85f1f;
+  --neutral-700: #4e3d26;
+  --neutral-800: #2f2415;
+  --neutral-900: #1a1209;
+
+  /* Background Colors */
+  --bg-primary: #7a6a5a;
+  --bg-secondary: #7a6a5a;
+  --bg-tertiary: #7a6a5a;
+  --bg-dark: #7a6a5a;
+  --bg-dark-alpha: rgba(122, 106, 90, 0.95);
+  --bg-dark-alpha-50: rgba(122, 106, 90, 0.5);
+  --bg-dark-alpha-40: rgba(122, 106, 90, 0.4);
+
+  /* Info Colors */
+  --info: #CF772C;
+  --info-dark: #a85f1f;
+  --info-light: #e08a4a;
+  --info-bg: rgba(207, 119, 44, 0.15);
+
+  /* Primary Color with Opacity Variants */
+  --primary-alpha-5: rgba(207, 119, 44, 0.05);
+  --primary-alpha-6: rgba(207, 119, 44, 0.06);
+  --primary-alpha-8: rgba(207, 119, 44, 0.08);
+  --primary-alpha-10: rgba(207, 119, 44, 0.1);
+  --primary-alpha-12: rgba(207, 119, 44, 0.12);
+  --primary-alpha-15: rgba(207, 119, 44, 0.15);
+  --primary-alpha-20: rgba(207, 119, 44, 0.2);
+  --primary-alpha-30: rgba(207, 119, 44, 0.3);
+  --primary-alpha-40: rgba(122, 106, 90, 0.4);
+
+
+
+  /* Primary Brand Colors - Using #CF772C as main color */
+  --primary: #cf772c;
+  --primary-dark: #a85f1f; /* Darker variant for hover/active states */
+  --primary-light: #e08a4a; /* Lighter variant for accents */
+  --primary-lighter: #f19d68; /* Even lighter for subtle highlights */
 
   /* Secondary Colors - Same as primary for consistency */
-  --secondary: #8c6f48;
-  --secondary-light: #a5896a;
-  --secondary-lighter: #bea38c;
+  --secondary: #cf772c;
+  --secondary-light: #e08a4a;
+  --secondary-lighter: #f19d68;
 
   /* Accent Colors - Harmonious with main color */
-  --accent-blue: #6d5637; /* Darker variant */
-  --accent-blue-light: #8c6f48; /* Main color */
-  --accent-blue-dark: #5a4630; /* Darkest variant for contrast */
-  --accent-green: #6d5637; /* Use theme color instead of vibrant green */
-  --accent-green-dark: #5a4630; /* Darker theme variant */
-  --accent-gold: #a5896a; /* Use primary-light instead of vibrant gold */
+  --accent-blue: #a85f1f; /* Darker variant */
+  --accent-blue-light: #cf772c; /* Main color */
+  --accent-blue-dark: #8a4d18; /* Darkest variant for contrast */
+  --accent-green: #a85f1f; /* Use theme color instead of vibrant green */
+  --accent-green-dark: #8a4d18; /* Darker theme variant */
+  --accent-gold: #cf772c; /* Use primary instead of vibrant gold */
 
   /* Neutral Colors - Based on main color with proper contrast */
   --neutral-50: #f5f3f0;
@@ -41,13 +96,13 @@
   --neutral-200: #d7cfc3;
   --neutral-300: #c3b7a5;
   --neutral-400: #af9f87;
-  --neutral-500: #8c6f48; /* Main color */
+  --neutral-500: #cf772c; /* Main color */
   --neutral-600: #6d5637;
   --neutral-700: #4e3d26;
   --neutral-800: #2f2415;
   --neutral-900: #1a1209;
 
-  /* Text Colors - Optimized for #8c6f48 background (dark brown) */
+  /* Text Colors - Optimized for #CF772C background */
   --text-primary: #ffffff; /* White for headings - high contrast */
   --text-secondary: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
   --text-tertiary: rgba(
@@ -60,14 +115,19 @@
   --text-inverse-secondary: rgba(255, 255, 255, 0.9);
   --text-inverse-tertiary: rgba(255, 255, 255, 0.7);
 
-  /* Background Colors - Single consistent color scheme using muted darker brown */
-  --bg-primary: #5a4a3a; /* Main background - body, sections, everything - more muted brown */
-  --bg-secondary: #5a4a3a; /* Same for consistency */
-  --bg-tertiary: #5a4a3a; /* Same for consistency */
-  --bg-dark: #5a4a3a; /* Same for consistency */
-  --bg-dark-alpha: rgba(90, 74, 58, 0.95); /* For header/footer with backdrop */
-  --bg-dark-alpha-50: rgba(90, 74, 58, 0.5); /* For overlays */
-  --bg-dark-alpha-40: rgba(90, 74, 58, 0.4); /* For overlays */
+  /* Background Colors - Single consistent color scheme using less muted brown */
+  --bg-primary: #7a6a5a; /* Main background - body, sections, everything - less muted brown */
+  --bg-secondary: #7a6a5a; /* Same for consistency */
+  --bg-tertiary: #7a6a5a; /* Same for consistency */
+  --bg-dark: #7a6a5a; /* Same for consistency */
+  --bg-dark-alpha: rgba(
+    122,
+    106,
+    90,
+    0.95
+  ); /* For header/footer with backdrop */
+  --bg-dark-alpha-50: rgba(122, 106, 90, 0.5); /* For overlays */
+  --bg-dark-alpha-40: rgba(122, 106, 90, 0.4); /* For overlays */
   --bg-transparent: transparent;
 
   /* Semantic Colors - Earth-toned but functional */
@@ -76,27 +136,32 @@
   --success-dark: #556b47; /* Darker variant for hover/active */
   --success-light: #7fa366; /* Lighter variant for backgrounds */
   --success-bg: rgba(107, 142, 90, 0.15); /* Subtle success background */
-  
+
   /* Error: Muted red/orange that's distinct but not jarring */
   --error: #c85d47; /* Muted terracotta red - distinct but earth-toned */
   --error-dark: #b04a35; /* Darker variant for hover/active */
   --error-light: #d8725f; /* Lighter variant */
   --error-red: #ff4444; /* Bright red for form validation (keep for visibility) */
-  --error-red-alpha-90: rgba(255, 68, 68, 0.9); /* Error red with 0.9 opacity for messages */
+  --error-red-alpha-90: rgba(
+    255,
+    68,
+    68,
+    0.9
+  ); /* Error red with 0.9 opacity for messages */
   --error-border: #ff4444; /* Error border color */
   --error-bg: rgba(200, 93, 71, 0.15); /* Subtle error background */
-  
+
   /* Warning: Warm amber that complements brown */
   --warning: #d4a574; /* Warm amber - harmonious with brown */
   --warning-dark: #b8905a; /* Darker variant */
   --warning-light: #e6b890; /* Lighter variant */
   --warning-bg: rgba(212, 165, 116, 0.15); /* Subtle warning background */
-  
+
   /* Info: Cooler brown-tone or teal that stands out */
-  --info: #8c6f48; /* Use primary for consistency */
-  --info-dark: #6d5637; /* Darker variant */
-  --info-light: #a5896a; /* Lighter variant */
-  --info-bg: rgba(140, 111, 72, 0.15); /* Subtle info background */
+  --info: #cf772c; /* Use primary for consistency */
+  --info-dark: #a85f1f; /* Darker variant */
+  --info-light: #e08a4a; /* Lighter variant */
+  --info-bg: rgba(207, 119, 44, 0.15); /* Subtle info background */
 
   /* Border Colors - Light borders for forms and dividers */
   --border-light: #d9d9d9; /* Light border default */
@@ -119,15 +184,15 @@
   --bg-gray: #ddd; /* Medium gray background */
 
   /* Primary Color with Opacity Variants */
-  --primary-alpha-05: rgba(140, 111, 72, 0.05);
-  --primary-alpha-06: rgba(140, 111, 72, 0.06);
-  --primary-alpha-08: rgba(140, 111, 72, 0.08);
-  --primary-alpha-10: rgba(140, 111, 72, 0.1);
-  --primary-alpha-12: rgba(140, 111, 72, 0.12);
-  --primary-alpha-15: rgba(140, 111, 72, 0.15);
-  --primary-alpha-20: rgba(140, 111, 72, 0.2);
-  --primary-alpha-30: rgba(140, 111, 72, 0.3);
-  --primary-alpha-40: rgba(140, 111, 72, 0.4);
+  --primary-alpha-05: rgba(207, 119, 44, 0.05);
+  --primary-alpha-06: rgba(207, 119, 44, 0.06);
+  --primary-alpha-08: rgba(207, 119, 44, 0.08);
+  --primary-alpha-10: rgba(207, 119, 44, 0.1);
+  --primary-alpha-12: rgba(207, 119, 44, 0.12);
+  --primary-alpha-15: rgba(207, 119, 44, 0.15);
+  --primary-alpha-20: rgba(207, 119, 44, 0.2);
+  --primary-alpha-30: rgba(207, 119, 44, 0.3);
+  --primary-alpha-40: rgba(207, 119, 44, 0.4);
 
   /* White Overlay Variants */
   --white-alpha-05: rgba(255, 255, 255, 0.05);
@@ -156,7 +221,7 @@
   --black-alpha-60: rgba(0, 0, 0, 0.6);
 
   /* Rating/Star Colors */
-  --rating-active: #FFD700; /* Gold for active stars */
+  --rating-active: #ffd700; /* Gold for active stars */
   --rating-inactive: rgba(255, 255, 255, 0.25); /* Inactive star color */
   --rating-glow: rgba(255, 215, 0, 0.5); /* Star glow effect */
 
@@ -172,11 +237,36 @@
   --gray-darker: #1a1a1a;
 
   /* Hero Section Overlay Colors */
-  --hero-overlay-dark-blue: rgba(0, 28, 58, 0.8); /* Dark blue overlay on carousel images */
-  --hero-overlay-gradient-start: rgba(44, 62, 80, 0.3); /* Dark blue-gray gradient start */
-  --hero-overlay-gradient-end: rgba(52, 73, 94, 0.3); /* Dark blue-gray gradient end */
-  --hero-overlay-gradient-start-light: rgba(44, 62, 80, 0.25); /* Lighter gradient start */
-  --hero-overlay-gradient-end-light: rgba(52, 73, 94, 0.25); /* Lighter gradient end */
+  --hero-overlay-dark-blue: rgba(
+    0,
+    28,
+    58,
+    0.8
+  ); /* Dark blue overlay on carousel images */
+  --hero-overlay-gradient-start: rgba(
+    44,
+    62,
+    80,
+    0.3
+  ); /* Dark blue-gray gradient start */
+  --hero-overlay-gradient-end: rgba(
+    52,
+    73,
+    94,
+    0.3
+  ); /* Dark blue-gray gradient end */
+  --hero-overlay-gradient-start-light: rgba(
+    44,
+    62,
+    80,
+    0.25
+  ); /* Lighter gradient start */
+  --hero-overlay-gradient-end-light: rgba(
+    52,
+    73,
+    94,
+    0.25
+  ); /* Lighter gradient end */
 
   /* Callout Colors (used for phone callout, similar to hero overlay colors) */
   --callout-gradient-start: #2c3e50; /* Dark blue-gray gradient start */
@@ -208,7 +298,12 @@
   --check-button-border: #7e4505; /* Check button border */
   --check-button-hover-border: #b45309; /* Check button hover border */
   --check-button-alpha-40: rgba(217, 119, 6, 0.4); /* Check button shadow */
-  --check-button-alpha-50: rgba(217, 119, 6, 0.5); /* Check button shadow hover */
+  --check-button-alpha-50: rgba(
+    217,
+    119,
+    6,
+    0.5
+  ); /* Check button shadow hover */
 
   /* Legacy Support (Backward Compatibility) */
   --primary-bg-color: var(--primary);

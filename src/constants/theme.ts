@@ -12,22 +12,22 @@ export const theme = {
   // Primary Brand Colors
   // ============================================
   colors: {
-    primary: "#8c6f48",
-    primaryDark: "#6d5637",
-    primaryLight: "#a5896a",
-    primaryLighter: "#bea38c",
+    primary: "#CF772C",
+    primaryDark: "#a85f1f",
+    primaryLight: "#e08a4a",
+    primaryLighter: "#f19d68",
 
-    secondary: "#8c6f48",
-    secondaryLight: "#a5896a",
-    secondaryLighter: "#bea38c",
+    secondary: "#CF772C",
+    secondaryLight: "#e08a4a",
+    secondaryLighter: "#f19d68",
 
     // Accent Colors
-    accentBlue: "#6d5637",
-    accentBlueLight: "#8c6f48",
-    accentBlueDark: "#5a4630",
-    accentGreen: "#6d5637",
-    accentGreenDark: "#5a4630",
-    accentGold: "#a5896a",
+    accentBlue: "#a85f1f",
+    accentBlueLight: "#CF772C",
+    accentBlueDark: "#8a4d18",
+    accentGreen: "#a85f1f",
+    accentGreenDark: "#8a4d18",
+    accentGold: "#CF772C",
 
     // Neutral Colors - Based on main color with proper contrast
     neutral: {
@@ -36,8 +36,8 @@ export const theme = {
       200: "#d7cfc3",
       300: "#c3b7a5",
       400: "#af9f87",
-      500: "#8c6f48", // Main color
-      600: "#6d5637",
+      500: "#CF772C", // Main color
+      600: "#a85f1f",
       700: "#4e3d26",
       800: "#2f2415",
       900: "#1a1209",
@@ -58,13 +58,13 @@ export const theme = {
 
     // Background Colors
     background: {
-      primary: "#5a4a3a",
-      secondary: "#5a4a3a",
-      tertiary: "#5a4a3a",
-      dark: "#5a4a3a",
-      darkAlpha: "rgba(90, 74, 58, 0.95)",
-      darkAlpha50: "rgba(90, 74, 58, 0.5)",
-      darkAlpha40: "rgba(90, 74, 58, 0.4)",
+      primary: "#7a6a5a",
+      secondary: "#7a6a5a",
+      tertiary: "#7a6a5a",
+      dark: "#7a6a5a",
+      darkAlpha: "rgba(122, 106, 90, 0.95)",
+      darkAlpha50: "rgba(122, 106, 90, 0.5)",
+      darkAlpha40: "rgba(122, 106, 90, 0.4)",
       transparent: "transparent",
       white: "#ffffff",
       light: "#f7fafc",
@@ -95,10 +95,10 @@ export const theme = {
       warningLight: "#e6b890",
       warningBg: "rgba(212, 165, 116, 0.15)",
 
-      info: "#8c6f48",
-      infoDark: "#6d5637",
-      infoLight: "#a5896a",
-      infoBg: "rgba(140, 111, 72, 0.15)",
+      info: "#CF772C",
+      infoDark: "#a85f1f",
+      infoLight: "#e08a4a",
+      infoBg: "rgba(207, 119, 44, 0.15)",
     },
 
     // Border Colors
@@ -111,15 +111,15 @@ export const theme = {
 
     // Primary Color with Opacity Variants
     primaryAlpha: {
-      5: "rgba(140, 111, 72, 0.05)",
-      6: "rgba(140, 111, 72, 0.06)",
-      8: "rgba(140, 111, 72, 0.08)",
-      10: "rgba(140, 111, 72, 0.1)",
-      12: "rgba(140, 111, 72, 0.12)",
-      15: "rgba(140, 111, 72, 0.15)",
-      20: "rgba(140, 111, 72, 0.2)",
-      30: "rgba(140, 111, 72, 0.3)",
-      40: "rgba(140, 111, 72, 0.4)",
+      5: "rgba(207, 119, 44, 0.05)",
+      6: "rgba(207, 119, 44, 0.06)",
+      8: "rgba(207, 119, 44, 0.08)",
+      10: "rgba(207, 119, 44, 0.1)",
+      12: "rgba(207, 119, 44, 0.12)",
+      15: "rgba(207, 119, 44, 0.15)",
+      20: "rgba(207, 119, 44, 0.2)",
+      30: "rgba(207, 119, 44, 0.3)",
+      40: "rgba(207, 119, 44, 0.4)",
     },
 
     // White Overlay Variants

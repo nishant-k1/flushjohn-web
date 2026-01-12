@@ -7,36 +7,122 @@
  * Usage: node scripts/sync-theme-css.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Import theme (we'll need to handle TypeScript - using require with ts-node or converting)
-// For now, we'll use a simpler approach - reading and parsing
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const themePath = path.join(__dirname, '../src/constants/theme.ts');
 const cssPath = path.join(__dirname, '../styles/globals.css');
 
 /**
- * Flatten theme object to CSS variable format
+ * Parse theme.ts file and extract color values using regex
  */
-function flattenThemeToCSS(theme, prefix = '') {
-  const cssVars = {};
+function parseThemeFile() {
+  const themeContent = fs.readFileSync(themePath, 'utf8');
+  const theme = { colors: {} };
 
-  function traverse(obj, keyPrefix) {
-    for (const [key, value] of Object.entries(obj)) {
-      const cssKey = keyPrefix ? `${keyPrefix}-${key}` : key;
-      const kebabKey = cssKey.replace(/([A-Z])/g, '-$1').toLowerCase();
+  // Extract primary colors
+  const primaryMatch = themeContent.match(/primary:\s*"([^"]+)"/);
+  const primaryDarkMatch = themeContent.match(/primaryDark:\s*"([^"]+)"/);
+  const primaryLightMatch = themeContent.match(/primaryLight:\s*"([^"]+)"/);
+  const primaryLighterMatch = themeContent.match(/primaryLighter:\s*"([^"]+)"/);
+  
+  theme.colors.primary = primaryMatch ? primaryMatch[1] : '#CF772C';
+  theme.colors.primaryDark = primaryDarkMatch ? primaryDarkMatch[1] : '#a85f1f';
+  theme.colors.primaryLight = primaryLightMatch ? primaryLightMatch[1] : '#e08a4a';
+  theme.colors.primaryLighter = primaryLighterMatch ? primaryLighterMatch[1] : '#f19d68';
 
-      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        traverse(value, cssKey);
-      } else if (typeof value === 'string' || typeof value === 'number') {
-        cssVars[kebabKey] = value;
-      }
+  // Extract secondary colors
+  const secondaryMatch = themeContent.match(/secondary:\s*"([^"]+)"/);
+  const secondaryLightMatch = themeContent.match(/secondaryLight:\s*"([^"]+)"/);
+  const secondaryLighterMatch = themeContent.match(/secondaryLighter:\s*"([^"]+)"/);
+  
+  theme.colors.secondary = secondaryMatch ? secondaryMatch[1] : '#CF772C';
+  theme.colors.secondaryLight = secondaryLightMatch ? secondaryLightMatch[1] : '#e08a4a';
+  theme.colors.secondaryLighter = secondaryLighterMatch ? secondaryLighterMatch[1] : '#f19d68';
+
+  // Extract accent colors
+  const accentBlueMatch = themeContent.match(/accentBlue:\s*"([^"]+)"/);
+  const accentBlueLightMatch = themeContent.match(/accentBlueLight:\s*"([^"]+)"/);
+  const accentBlueDarkMatch = themeContent.match(/accentBlueDark:\s*"([^"]+)"/);
+  const accentGreenMatch = themeContent.match(/accentGreen:\s*"([^"]+)"/);
+  const accentGreenDarkMatch = themeContent.match(/accentGreenDark:\s*"([^"]+)"/);
+  const accentGoldMatch = themeContent.match(/accentGold:\s*"([^"]+)"/);
+  
+  theme.colors.accentBlue = accentBlueMatch ? accentBlueMatch[1] : '#a85f1f';
+  theme.colors.accentBlueLight = accentBlueLightMatch ? accentBlueLightMatch[1] : '#CF772C';
+  theme.colors.accentBlueDark = accentBlueDarkMatch ? accentBlueDarkMatch[1] : '#8a4d18';
+  theme.colors.accentGreen = accentGreenMatch ? accentGreenMatch[1] : '#a85f1f';
+  theme.colors.accentGreenDark = accentGreenDarkMatch ? accentGreenDarkMatch[1] : '#8a4d18';
+  theme.colors.accentGold = accentGoldMatch ? accentGoldMatch[1] : '#CF772C';
+
+  // Extract neutral colors
+  theme.colors.neutral = {};
+  for (let i = 50; i <= 900; i += (i < 100 ? 50 : 100)) {
+    const regex = new RegExp(`${i}:\\s*"([^"]+)"`);
+    const match = themeContent.match(regex);
+    if (match) {
+      theme.colors.neutral[i] = match[1];
     }
   }
 
-  traverse(theme, prefix);
-  return cssVars;
+  // Extract background colors
+  const bgPrimaryMatch = themeContent.match(/background:\s*\{[^}]*primary:\s*"([^"]+)"/s);
+  const bgSecondaryMatch = themeContent.match(/secondary:\s*"([^"]+)"/);
+  const bgTertiaryMatch = themeContent.match(/tertiary:\s*"([^"]+)"/);
+  const bgDarkMatch = themeContent.match(/dark:\s*"([^"]+)"/);
+  const bgDarkAlphaMatch = themeContent.match(/darkAlpha:\s*"([^"]+)"/);
+  const bgDarkAlpha50Match = themeContent.match(/darkAlpha50:\s*"([^"]+)"/);
+  const bgDarkAlpha40Match = themeContent.match(/darkAlpha40:\s*"([^"]+)"/);
+  
+  theme.colors.background = {
+    primary: bgPrimaryMatch ? bgPrimaryMatch[1] : '#7a6a5a',
+    secondary: bgPrimaryMatch ? bgPrimaryMatch[1] : '#7a6a5a',
+    tertiary: bgPrimaryMatch ? bgPrimaryMatch[1] : '#7a6a5a',
+    dark: bgPrimaryMatch ? bgPrimaryMatch[1] : '#7a6a5a',
+    darkAlpha: bgDarkAlphaMatch ? bgDarkAlphaMatch[1] : 'rgba(122, 106, 90, 0.95)',
+    darkAlpha50: bgDarkAlpha50Match ? bgDarkAlpha50Match[1] : 'rgba(122, 106, 90, 0.5)',
+    darkAlpha40: bgDarkAlpha40Match ? bgDarkAlpha40Match[1] : 'rgba(122, 106, 90, 0.4)',
+  };
+
+  // Extract semantic colors
+  const infoMatch = themeContent.match(/info:\s*"([^"]+)"/);
+  const infoDarkMatch = themeContent.match(/infoDark:\s*"([^"]+)"/);
+  const infoLightMatch = themeContent.match(/infoLight:\s*"([^"]+)"/);
+  const infoBgMatch = themeContent.match(/infoBg:\s*"([^"]+)"/);
+  
+  theme.colors.semantic = {
+    info: infoMatch ? infoMatch[1] : '#CF772C',
+    infoDark: infoDarkMatch ? infoDarkMatch[1] : '#a85f1f',
+    infoLight: infoLightMatch ? infoLightMatch[1] : '#e08a4a',
+    infoBg: infoBgMatch ? infoBgMatch[1] : 'rgba(207, 119, 44, 0.15)',
+  };
+
+  // Extract primaryAlpha
+  theme.colors.primaryAlpha = {};
+  for (const key of ['5', '6', '8', '10', '12', '15', '20', '30', '40']) {
+    const regex = new RegExp(`${key}:\\s*"([^"]+)"`);
+    const match = themeContent.match(regex);
+    if (match && match[1].includes('rgba')) {
+      theme.colors.primaryAlpha[key] = match[1];
+    }
+  }
+
+  // Extract typography
+  const poppinsMatch = themeContent.match(/poppins:\s*"([^"]+)"/);
+  const merriweatherMatch = themeContent.match(/merriweather:\s*"([^"]+)"/);
+  
+  theme.typography = {
+    fontFamily: {
+      poppins: poppinsMatch ? poppinsMatch[1] : '"Poppins", sans-serif',
+      merriweather: merriweatherMatch ? merriweatherMatch[1] : '"Merriweather", serif',
+    }
+  };
+
+  return theme;
 }
 
 /**
@@ -46,6 +132,7 @@ function generateCSSVariables(theme) {
   let css = '  /* ============================================\n';
   css += '     DESIGN TOKENS - Auto-generated from theme.ts\n';
   css += '     DO NOT EDIT MANUALLY - Edit src/constants/theme.ts instead\n';
+  css += '     Run: node scripts/sync-theme-css.js to regenerate\n';
   css += '     ============================================ */\n\n';
 
   // Typography
@@ -82,18 +169,6 @@ function generateCSSVariables(theme) {
   });
   css += '\n';
 
-  // Text Colors
-  css += '  /* Text Colors */\n';
-  css += `  --text-primary: ${theme.colors.text.primary};\n`;
-  css += `  --text-secondary: ${theme.colors.text.secondary};\n`;
-  css += `  --text-tertiary: ${theme.colors.text.tertiary};\n`;
-  css += `  --text-inverse: ${theme.colors.text.inverse};\n`;
-  css += `  --text-inverse-secondary: ${theme.colors.text.inverseSecondary};\n`;
-  css += `  --text-inverse-tertiary: ${theme.colors.text.inverseTertiary};\n`;
-  css += `  --text-dark: ${theme.colors.text.dark};\n`;
-  css += `  --text-form-placeholder: ${theme.colors.text.formPlaceholder};\n`;
-  css += `  --text-form-value: ${theme.colors.text.formValue};\n\n`;
-
   // Background Colors
   css += '  /* Background Colors */\n';
   css += `  --bg-primary: ${theme.colors.background.primary};\n`;
@@ -101,42 +176,15 @@ function generateCSSVariables(theme) {
   css += `  --bg-tertiary: ${theme.colors.background.tertiary};\n`;
   css += `  --bg-dark: ${theme.colors.background.dark};\n`;
   css += `  --bg-dark-alpha: ${theme.colors.background.darkAlpha};\n`;
-  css += `  --bg-transparent: ${theme.colors.background.transparent};\n`;
-  css += `  --bg-white: ${theme.colors.background.white};\n`;
-  css += `  --bg-light: ${theme.colors.background.light};\n`;
-  css += `  --bg-lighter: ${theme.colors.background.lighter};\n`;
-  css += `  --bg-input: ${theme.colors.background.input};\n`;
-  css += `  --bg-button-light: ${theme.colors.background.buttonLight};\n`;
-  css += `  --bg-gray-light: ${theme.colors.background.grayLight};\n`;
-  css += `  --bg-gray: ${theme.colors.background.gray};\n\n`;
+  css += `  --bg-dark-alpha-50: ${theme.colors.background.darkAlpha50};\n`;
+  css += `  --bg-dark-alpha-40: ${theme.colors.background.darkAlpha40};\n\n`;
 
-  // Semantic Colors
-  css += '  /* Semantic Colors */\n';
-  css += `  --success: ${theme.colors.semantic.success};\n`;
-  css += `  --success-dark: ${theme.colors.semantic.successDark};\n`;
-  css += `  --success-light: ${theme.colors.semantic.successLight};\n`;
-  css += `  --success-bg: ${theme.colors.semantic.successBg};\n`;
-  css += `  --error: ${theme.colors.semantic.error};\n`;
-  css += `  --error-dark: ${theme.colors.semantic.errorDark};\n`;
-  css += `  --error-light: ${theme.colors.semantic.errorLight};\n`;
-  css += `  --error-red: ${theme.colors.semantic.errorRed};\n`;
-  css += `  --error-border: ${theme.colors.semantic.errorBorder};\n`;
-  css += `  --error-bg: ${theme.colors.semantic.errorBg};\n`;
-  css += `  --warning: ${theme.colors.semantic.warning};\n`;
-  css += `  --warning-dark: ${theme.colors.semantic.warningDark};\n`;
-  css += `  --warning-light: ${theme.colors.semantic.warningLight};\n`;
-  css += `  --warning-bg: ${theme.colors.semantic.warningBg};\n`;
+  // Semantic Colors - Info
+  css += '  /* Info Colors */\n';
   css += `  --info: ${theme.colors.semantic.info};\n`;
   css += `  --info-dark: ${theme.colors.semantic.infoDark};\n`;
   css += `  --info-light: ${theme.colors.semantic.infoLight};\n`;
   css += `  --info-bg: ${theme.colors.semantic.infoBg};\n\n`;
-
-  // Border Colors
-  css += '  /* Border Colors */\n';
-  css += `  --border-light: ${theme.colors.border.light};\n`;
-  css += `  --border-lighter: ${theme.colors.border.lighter};\n`;
-  css += `  --border-checkbox: ${theme.colors.border.checkbox};\n`;
-  css += `  --border-default: var(--border-light);\n\n`;
 
   // Primary Alpha Variants
   css += '  /* Primary Color with Opacity Variants */\n';
@@ -145,116 +193,55 @@ function generateCSSVariables(theme) {
   });
   css += '\n';
 
-  // White Alpha Variants
-  css += '  /* White Overlay Variants */\n';
-  Object.entries(theme.colors.whiteAlpha).forEach(([key, value]) => {
-    css += `  --white-alpha-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Black Alpha Variants
-  css += '  /* Black/Dark Overlay Variants */\n';
-  Object.entries(theme.colors.blackAlpha).forEach(([key, value]) => {
-    css += `  --black-alpha-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Rating Colors
-  css += '  /* Rating/Star Colors */\n';
-  css += `  --rating-active: ${theme.colors.rating.active};\n`;
-  css += `  --rating-inactive: ${theme.colors.rating.inactive};\n`;
-  css += `  --rating-glow: ${theme.colors.rating.glow};\n\n`;
-
-  // Social Media Colors
-  css += '  /* Social Media Colors */\n';
-  css += `  --social-facebook: ${theme.colors.social.facebook};\n`;
-  css += `  --social-twitter: ${theme.colors.social.twitter};\n`;
-  css += `  --social-linkedin: ${theme.colors.social.linkedin};\n\n`;
-
-  // Gray Colors
-  css += '  /* Additional Gray Colors */\n';
-  css += `  --gray-medium: ${theme.colors.gray.medium};\n`;
-  css += `  --gray-text: ${theme.colors.gray.text};\n\n`;
-
-  // Legacy Support
-  css += '  /* Legacy Support (Backward Compatibility) */\n';
-  css += '  --primary-bg-color: var(--primary);\n';
-  css += '  --primary-text-color: var(--text-inverse);\n';
-  css += '  --primary-error-color: var(--primary-dark);\n';
-  css += '  --secondary-bg-color: var(--bg-dark-alpha);\n';
-  css += '  --secondary-text-color: var(--text-primary);\n';
-  css += '  --tertiary-bg-color: var(--bg-transparent);\n';
-  css += '  --neutral-bg-color: var(--neutral-400);\n';
-  css += '  --btn-text-color: var(--text-inverse);\n\n';
-
-  // Spacing
-  css += '  /* Spacing Scale */\n';
-  Object.entries(theme.spacing).forEach(([key, value]) => {
-    const spacingKey = key === 'section' ? 'spacing-section' : `spacing-${key}`;
-    css += `  --${spacingKey}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Gaps
-  css += '  /* Grid Gaps */\n';
-  Object.entries(theme.gap).forEach(([key, value]) => {
-    css += `  --gap-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Border Radius
-  css += '  /* Border Radius */\n';
-  Object.entries(theme.borderRadius).forEach(([key, value]) => {
-    css += `  --radius-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Shadows
-  css += '  /* Shadows */\n';
-  Object.entries(theme.shadows).forEach(([key, value]) => {
-    css += `  --shadow-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Transitions
-  css += '  /* Transitions */\n';
-  Object.entries(theme.transitions).forEach(([key, value]) => {
-    css += `  --transition-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Z-Index
-  css += '  /* Z-Index Scale */\n';
-  Object.entries(theme.zIndex).forEach(([key, value]) => {
-    css += `  --z-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Container
-  css += '  /* Container Widths */\n';
-  Object.entries(theme.container).forEach(([key, value]) => {
-    css += `  --container-${key}: ${value};\n`;
-  });
-  css += '\n';
-
-  // Breakpoints (for reference, not as CSS vars usually)
-  css += '  /* Breakpoints (for reference, use in media queries) */\n';
-  Object.entries(theme.breakpoints).forEach(([key, value]) => {
-    css += `  --breakpoint-${key}: ${value};\n`;
-  });
-
   return css;
 }
 
+/**
+ * Update globals.css with synced values from theme.ts
+ */
+function syncCSSFile() {
+  const theme = parseThemeFile();
+  const cssVars = generateCSSVariables(theme);
+  
+  // Read existing CSS file
+  let cssContent = fs.readFileSync(cssPath, 'utf8');
+  
+  // Find the :root block and replace the design tokens section
+  // Look for the start of design tokens comment and end before other CSS
+  const designTokensStart = cssContent.indexOf('/* ============================================');
+  const designTokensEnd = cssContent.indexOf('/* Typography */');
+  
+  if (designTokensStart !== -1 && designTokensEnd !== -1) {
+    // Find the actual end of the design tokens section (before other CSS rules)
+    const nextSection = cssContent.indexOf('\n\n  /*', designTokensEnd + 100);
+    const sectionEnd = nextSection !== -1 ? nextSection : cssContent.indexOf('\n\n}', designTokensEnd);
+    
+    if (sectionEnd !== -1) {
+      // Replace the design tokens section
+      const before = cssContent.substring(0, designTokensStart);
+      const after = cssContent.substring(sectionEnd);
+      cssContent = before + cssVars + after;
+    }
+  } else {
+    // If structure is different, try to find :root and insert after it
+    const rootIndex = cssContent.indexOf(':root {');
+    if (rootIndex !== -1) {
+      const afterRoot = cssContent.indexOf('\n', rootIndex) + 1;
+      cssContent = cssContent.substring(0, afterRoot) + '\n' + cssVars + cssContent.substring(afterRoot);
+    }
+  }
+  
+  fs.writeFileSync(cssPath, cssContent, 'utf8');
+  console.log('✅ Synced globals.css from theme.ts');
+}
+
 try {
-  // Read theme file and extract theme object (simplified - would need proper TS parsing in production)
-  // For now, we'll just validate that the structure matches
-  console.log('✅ Theme sync script ready');
-  console.log('⚠️  Note: This script requires manual execution with theme object');
-  console.log('   For full automation, use TypeScript compiler or ts-node');
+  syncCSSFile();
+  console.log('✅ Theme sync completed successfully!');
 } catch (error) {
-  console.error('❌ Error:', error.message);
+  console.error('❌ Error syncing theme:', error.message);
+  console.error(error.stack);
   process.exit(1);
 }
 
-module.exports = { generateCSSVariables };
+export { generateCSSVariables, parseThemeFile };

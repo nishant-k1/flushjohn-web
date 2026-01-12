@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  background: none;
   color: #ffffff;
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: 0;
@@ -42,27 +42,17 @@
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  transition: all var(--transition-base);
-  box-shadow:
-    0 4px 12px rgba(37, 211, 102, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .phoneNumber:hover {
-  background: linear-gradient(135deg, #2FE576 0%, #25D366 100%);
-  box-shadow:
-    0 6px 20px rgba(37, 211, 102, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: none;
   color: #ffffff;
 }
 
 .phoneNumber:active {
-  transform: translateY(0);
-  box-shadow:
-    0 2px 8px rgba(37, 211, 102, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: none;
+  color: #ffffff;
 }
 
 .phoneNumber:focus-visible {
