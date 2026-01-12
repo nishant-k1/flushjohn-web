@@ -3,7 +3,7 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { SidebarContext } from "@/contexts/SidebarContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   HomeIcon,
   PhoneIcon,
@@ -22,8 +22,43 @@ import { animations } from "@/anmations/effectData";
 const Sidebar = () => {
 
   const { active, setActive } = useContext(SidebarContext);
+  
+  // Prevent body scrolling when sidebar is open on mobile
+  useEffect(() => {
+    if (active) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
+    }
+
+    return () => {
+      // Cleanup on unmount
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   const handleClick = () => {
     setActive(false);
+  };
+
+  const handleSidebarClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
   };
 
   return (
@@ -34,7 +69,7 @@ const Sidebar = () => {
         active ? styles.active : styles.inactive
       }`}
     >
-      <div className={styles.container}>
+      <div className={styles.container} onClick={handleSidebarClick}>
         <div className={styles.sidebar}>
           <Link href="/">
             <Image

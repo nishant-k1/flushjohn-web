@@ -1,6 +1,6 @@
 .section {
   width: 60%;
-  height: 100%;
+  height: 100vh;
   /* background-color: #040318; */
   background-image: url("https://cdn.flushjohn.com/assets/hero_bg.svg");
   background-size: cover;
@@ -9,8 +9,9 @@
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   border-right: 1px solid var(--primary-text-color);
   box-shadow: var(--black-alpha-25) 0px 5px 15px;
   z-index: 250;
