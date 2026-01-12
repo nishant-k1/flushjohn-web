@@ -61,6 +61,7 @@ const CustomInput = React.memo(
             placeholder={placeholder || ""}
             readOnly
             onClick={onClick}
+            onChange={() => {}}
             className={className || ""}
             style={{
               transition: "all 0.3s ease-in-out",
