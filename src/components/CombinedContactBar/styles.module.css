@@ -128,10 +128,10 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding: 12px 20px;
-  background: var(--success-bg);
+  background: linear-gradient(135deg, var(--success-bg) 0%, var(--success-light) 100%);
   border: 2px solid var(--success);
   border-radius: 0;
-  box-shadow: 0 4px 12px var(--success-bg);
+  box-shadow: 0 4px 12px var(--success-alpha-20);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
