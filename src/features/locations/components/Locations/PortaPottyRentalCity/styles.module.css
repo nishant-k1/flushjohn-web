@@ -555,7 +555,7 @@
 
 .finalCTAButton {
   background: var(--bg-white);
-  color: var(--text-primary) !important;
+  color: var(--text-dark) !important;
   padding: 18px 36px;
   text-decoration: none !important;
   border-radius: 4px;
