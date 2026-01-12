@@ -25,6 +25,7 @@ import {
   QuickQuoteContext,
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
+import { GOOGLE_ADS_CONVERSION_HERO_QUOTE } from "@/config/env";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   products: Yup.array().of(Yup.string().required("Required")),
@@ -58,9 +59,13 @@ const HeroQuickQuote = () => {
   }, [clientWidth]);
 
   const handleLeadConversion = () => {
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function" &&
+      GOOGLE_ADS_CONVERSION_HERO_QUOTE
+    ) {
       window.gtag("event", "conversion", {
-        send_to: "AW-11248564671/6KpkCNjzpaoaEL_z3fMp",
+        send_to: GOOGLE_ADS_CONVERSION_HERO_QUOTE,
       });
     }
   };

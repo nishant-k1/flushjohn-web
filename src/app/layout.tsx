@@ -52,6 +52,7 @@ import Script from "next/script";
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
+import { GOOGLE_ADS_ACCOUNT_ID } from "@/config/env";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
@@ -330,10 +331,10 @@ export default function RootLayout({
             Note: Third-party cookie warnings from /ccm/collect are expected when using Google Ads conversion tracking.
             These cookies are set by Google's domain and are necessary for conversion measurement.
             The configuration below minimizes privacy impact by disabling ad personalization and anonymizing IPs. */}
-        {process.env.NODE_ENV === "production" && (
+        {process.env.NODE_ENV === "production" && GOOGLE_ADS_ACCOUNT_ID && (
           <>
             <Script
-              src="https://www.googletagmanager.com/gtag/js?id=AW-11246929750"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ACCOUNT_ID}`}
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">
@@ -341,7 +342,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'AW-11246929750', {
+                gtag('config', '${GOOGLE_ADS_ACCOUNT_ID}', {
                   'send_page_view': false,
                   'cookie_domain': 'auto',
                   'cookie_expires': 63072000,

@@ -5,6 +5,7 @@ import { QuickQuoteContext } from "../../../contexts/QuickQuoteContext";
 import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
+import { GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE } from "@/config/env";
 
 const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 
@@ -42,10 +43,11 @@ export default function QuickQuoteButton() {
         onClick={() => {
           if (
             typeof window !== "undefined" &&
-            typeof window.gtag === "function"
+            typeof window.gtag === "function" &&
+            GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE
           ) {
             window.gtag("event", "conversion", {
-              send_to: "AW-11248564671/OTFxCOSso6oaEL_z3fMp",
+              send_to: GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE,
               event_category: "Phone Call",
               event_label: "Quick Phone Link",
               value: 1,

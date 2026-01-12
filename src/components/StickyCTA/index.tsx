@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Phone, MessageCircle } from "lucide-react";
 import styles from "./styles.module.css";
+import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
 
 const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
@@ -48,10 +49,11 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
               onClick={() => {
                 if (
                   typeof window !== "undefined" &&
-                  typeof window.gtag === "function"
+                  typeof window.gtag === "function" &&
+                  GOOGLE_ADS_CONVERSION_PHONE_CALL
                 ) {
                   window.gtag("event", "conversion", {
-                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                     event_category: "Quote Request",
                     event_label: "Sticky CTA Quote",
                     value: 1,
@@ -68,10 +70,11 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
               onClick={() => {
                 if (
                   typeof window !== "undefined" &&
-                  typeof window.gtag === "function"
+                  typeof window.gtag === "function" &&
+                  GOOGLE_ADS_CONVERSION_PHONE_CALL
                 ) {
                   window.gtag("event", "conversion", {
-                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                     event_category: "Phone Call",
                     event_label: "Sticky CTA Phone",
                     value: 1,

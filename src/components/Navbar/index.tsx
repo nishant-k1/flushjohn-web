@@ -11,6 +11,7 @@ import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 import { PhoneIcon } from "@/components/UI/Icons";
+import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
 
 // Dynamically import hamburger-react to reduce initial bundle size
 const Hamburger = dynamic(
@@ -118,10 +119,11 @@ const Navbar = () => {
               onClick={() => {
                 if (
                   typeof window !== "undefined" &&
-                  typeof window.gtag === "function"
+                  typeof window.gtag === "function" &&
+                  GOOGLE_ADS_CONVERSION_PHONE_CALL
                 ) {
                   window.gtag("event", "conversion", {
-                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                     event_category: "Phone Call",
                     event_label: "Navbar Phone Link",
                     value: 1,

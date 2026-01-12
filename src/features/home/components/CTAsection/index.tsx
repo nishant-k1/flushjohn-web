@@ -3,6 +3,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Zap, DollarSign, Droplet, Phone, Tag } from "lucide-react";
 import styles from "./styles.module.css";
+import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
 
 type Props = {};
 
@@ -37,10 +38,11 @@ const CTAsection = (props: Props) => {
               onClick={() => {
                 if (
                   typeof window !== "undefined" &&
-                  typeof window.gtag === "function"
+                  typeof window.gtag === "function" &&
+                  GOOGLE_ADS_CONVERSION_PHONE_CALL
                 ) {
                   window.gtag("event", "conversion", {
-                    send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                     event_category: "Phone Call",
                     event_label: "CTA Phone Link",
                     value: 1,

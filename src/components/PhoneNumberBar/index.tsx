@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@/components/UI/Icons";
 import styles from "./styles.module.css";
+import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
 
 const PhoneNumberBar = () => {
   const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
@@ -21,10 +22,11 @@ const PhoneNumberBar = () => {
           onClick={() => {
             if (
               typeof window !== "undefined" &&
-              typeof window.gtag === "function"
+              typeof window.gtag === "function" &&
+              GOOGLE_ADS_CONVERSION_PHONE_CALL
             ) {
               window.gtag("event", "conversion", {
-                send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                 event_category: "Phone Call",
                 event_label: "Phone Bar Link",
                 value: 1,

@@ -23,6 +23,7 @@ import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
+import { GOOGLE_ADS_CONVERSION_QUICK_QUOTE } from "@/config/env";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Required"),
@@ -276,9 +277,13 @@ const QuickQuote = () => {
   }, [clientWidth]);
 
   const handleLeadConversion = () => {
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function" &&
+      GOOGLE_ADS_CONVERSION_QUICK_QUOTE
+    ) {
       window.gtag("event", "conversion", {
-        send_to: "AW-11248564671/tcj2CLn8kKoaEL_z3fMp",
+        send_to: GOOGLE_ADS_CONVERSION_QUICK_QUOTE,
       });
     }
   };

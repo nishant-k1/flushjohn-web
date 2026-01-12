@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { GOOGLE_ADS_CONVERSION_PHONE_CALL } from "@/config/env";
 // Import CarouselView directly (not dynamically) to ensure LCP image loads immediately
 import CarouselView from "@/components/CarouselView";
 
@@ -46,10 +47,11 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 onClick={() => {
                   if (
                     typeof window !== "undefined" &&
-                    typeof window.gtag === "function"
+                    typeof window.gtag === "function" &&
+                    GOOGLE_ADS_CONVERSION_PHONE_CALL
                   ) {
                     window.gtag("event", "conversion", {
-                      send_to: "AW-11248564671/kLt0CLzekKoaEL_z3fMp",
+                      send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
                       event_category: "Phone Call",
                       event_label: "Hero Phone Link",
                       value: 1,

@@ -12,6 +12,7 @@ import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
+import { GOOGLE_ADS_CONVERSION_QUOTE_FORM } from "@/config/env";
 
 const QuoteStep3 = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
@@ -25,9 +26,13 @@ const QuoteStep3 = () => {
   }, [formValues]);
 
   const handleLeadConversion = () => {
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function" &&
+      GOOGLE_ADS_CONVERSION_QUOTE_FORM
+    ) {
       window.gtag("event", "conversion", {
-        send_to: "AW-11248564671/EhUQCLz8kKoaEL_z3fMp",
+        send_to: GOOGLE_ADS_CONVERSION_QUOTE_FORM,
       });
     }
   };
