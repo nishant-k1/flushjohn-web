@@ -138,7 +138,7 @@
   --success-dark: #556b47; /* Darker variant for hover/active */
   --success-light: #7fa366; /* Lighter variant for backgrounds */
   --success-bg: rgba(107, 142, 90, 0.15); /* Subtle success background */
-
+  
   /* Error: Muted red/orange that's distinct but not jarring */
   --error: #c85d47; /* Muted terracotta red - distinct but earth-toned */
   --error-dark: #b04a35; /* Darker variant for hover/active */
@@ -152,13 +152,13 @@
   ); /* Error red with 0.9 opacity for messages */
   --error-border: #ff4444; /* Error border color */
   --error-bg: rgba(200, 93, 71, 0.15); /* Subtle error background */
-
+  
   /* Warning: Warm amber that complements brown */
   --warning: #d4a574; /* Warm amber - harmonious with brown */
   --warning-dark: #b8905a; /* Darker variant */
   --warning-light: #e6b890; /* Lighter variant */
   --warning-bg: rgba(212, 165, 116, 0.15); /* Subtle warning background */
-
+  
   /* Info: Cooler brown-tone or teal that stands out */
   --info: #cf772c; /* Use primary for consistency */
   --info-dark: #a85f1f; /* Darker variant */

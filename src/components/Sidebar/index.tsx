@@ -61,10 +61,27 @@ const Sidebar = () => {
     }
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-      const target = e.target as Node;
+      const target = e.target as HTMLElement;
       
-      // Don't close if clicking inside the sidebar
+      // Don't close if clicking inside the sidebar (check ref)
       if (sidebarRef.current && sidebarRef.current.contains(target)) {
+        return;
+      }
+
+      // Also check if target is inside any element with data-sidebar attribute
+      const sidebarElement = target.closest('[data-sidebar="true"]');
+      if (sidebarElement) {
+        return;
+      }
+
+      // Don't close if clicking on the hamburger button (it handles its own toggle)
+      const hamburgerElement = target.closest('[class*="hamburger"]');
+      if (hamburgerElement) {
+        return;
+      }
+
+      // Don't close if clicking on any button with aria-label containing "Toggle" or "menu"
+      if (target.closest('button[aria-label*="Toggle"], button[aria-label*="menu"]')) {
         return;
       }
 
@@ -72,11 +89,14 @@ const Sidebar = () => {
       setActive(false);
     };
 
-    // Use capture phase to catch events before they bubble
-    document.addEventListener("mousedown", handleOutsideClick, true);
-    document.addEventListener("touchstart", handleOutsideClick, true);
+    // Use a small delay to avoid immediate closure when opening via hamburger
+    const timeoutId = setTimeout(() => {
+      document.addEventListener("mousedown", handleOutsideClick, true);
+      document.addEventListener("touchstart", handleOutsideClick, true);
+    }, 150);
 
     return () => {
+      clearTimeout(timeoutId);
       document.removeEventListener("mousedown", handleOutsideClick, true);
       document.removeEventListener("touchstart", handleOutsideClick, true);
     };
@@ -91,18 +111,18 @@ const Sidebar = () => {
   };
 
   return (
-    <AnimationWrapper
-      effect={animations?.slidebarSlide}
-      animationKey={String(active)}
-      className={`${styles.section} ${
-        active ? styles.active : styles.inactive
-      }`}
-    >
-      <div 
-        ref={sidebarRef}
-        className={styles.container} 
-        onClick={handleSidebarClick}
+    <div ref={sidebarRef} data-sidebar="true">
+      <AnimationWrapper
+        effect={animations?.slidebarSlide}
+        animationKey={String(active)}
+        className={`${styles.section} ${
+          active ? styles.active : styles.inactive
+        }`}
       >
+        <div 
+          className={styles.container} 
+          onClick={handleSidebarClick}
+        >
         <div className={styles.sidebar}>
           <Link href="/">
             <Image
@@ -153,6 +173,7 @@ const Sidebar = () => {
         </div>
       </div>
     </AnimationWrapper>
+    </div>
   );
 };
 
