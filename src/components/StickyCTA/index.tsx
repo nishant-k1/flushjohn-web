@@ -46,20 +46,6 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
             <Link
               href="/quote"
               className={styles.quoteButton}
-              onClick={() => {
-                if (
-                  typeof window !== "undefined" &&
-                  typeof window.gtag === "function" &&
-                  GOOGLE_ADS_CONVERSION_PHONE_CALL
-                ) {
-                  window.gtag("event", "conversion", {
-                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                    event_category: "Quote Request",
-                    event_label: "Sticky CTA Quote",
-                    value: 1,
-                  });
-                }
-              }}
             >
               <MessageCircle size={18} />
               Get Free Quote

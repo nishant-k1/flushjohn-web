@@ -13,6 +13,12 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { api } from "@/utils/apiClient";
+import {
+  GOOGLE_ADS_CONVERSION_CONTACT_FORM,
+  GOOGLE_ADS_CONVERSION_VALUE_CONTACT,
+  GOOGLE_ADS_CONVERSION_CURRENCY,
+} from "@/config/env";
+import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const MyTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props as FieldHookConfig<any>);
@@ -77,6 +83,12 @@ const Contact = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
 
+  // Form abandonment tracking
+  const { trackComplete } = useFormAbandonmentTracking({
+    formType: "contact_form",
+    totalFields: 5, // firstName, lastName, email, phone, message
+  });
+
   return (
     <React.Fragment>
       <div className={styles.section}>
@@ -111,7 +123,27 @@ const Contact = () => {
             // ✅ OPTIMISTIC: Show success immediately (before API response)
             setState(true);
             setShowSuccessModal(true);
+            trackComplete(); // Track form completion
             resetForm();
+
+            // Google Ads conversion tracking
+            try {
+              if (
+                typeof window !== "undefined" &&
+                typeof window.gtag === "function" &&
+                GOOGLE_ADS_CONVERSION_CONTACT_FORM
+              ) {
+                window.gtag("event", "conversion", {
+                  send_to: GOOGLE_ADS_CONVERSION_CONTACT_FORM,
+                  value: GOOGLE_ADS_CONVERSION_VALUE_CONTACT,
+                  currency: GOOGLE_ADS_CONVERSION_CURRENCY,
+                });
+              }
+            } catch (gtagError) {
+              if (process.env.NODE_ENV === "development") {
+                console.warn("GTag conversion error:", gtagError);
+              }
+            }
 
             // Analytics tracking (non-blocking)
             try {

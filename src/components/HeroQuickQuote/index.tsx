@@ -22,7 +22,12 @@ import {
   QuickQuoteContext,
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
-import { GOOGLE_ADS_CONVERSION_HERO_QUOTE } from "@/config/env";
+import {
+  GOOGLE_ADS_CONVERSION_HERO_QUOTE,
+  GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE,
+  GOOGLE_ADS_CONVERSION_CURRENCY,
+} from "@/config/env";
+import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 
@@ -112,7 +117,9 @@ const UsageTypeField = () => {
           className={hasError ? styles.error_field : ""}
           style={{
             padding: "0 12px",
-            border: hasError ? `1px solid var(--error-border)` : `1px solid var(--border-light)`,
+            border: hasError
+              ? `1px solid var(--error-border)`
+              : `1px solid var(--border-light)`,
             borderRadius: "0",
             cursor: "pointer",
             height: "2rem",
@@ -125,7 +132,9 @@ const UsageTypeField = () => {
         >
           <span
             style={{
-              color: values.usageType ? "var(--text-form-value)" : "var(--text-form-placeholder)",
+              color: values.usageType
+                ? "var(--text-form-value)"
+                : "var(--text-form-placeholder)",
               fontSize: "14px",
               fontWeight: 500,
               flex: 1,
@@ -165,8 +174,7 @@ const UsageTypeField = () => {
               maxHeight: "280px",
               overflowY: "auto",
               zIndex: 10000,
-              boxShadow:
-                `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
+              boxShadow: `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
               padding: "4px 0",
               animation:
                 "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -184,7 +192,9 @@ const UsageTypeField = () => {
                       ? "var(--primary-alpha-12)"
                       : "var(--bg-white)",
                   borderBottom:
-                    index < options.length - 1 ? `1px solid var(--border-lighter)` : "none",
+                    index < options.length - 1
+                      ? `1px solid var(--border-lighter)`
+                      : "none",
                   borderLeft:
                     values.usageType === option.value
                       ? `4px solid var(--primary-bg-color, var(--primary))`
@@ -250,6 +260,12 @@ const HeroQuickQuote = () => {
   const { setQuickQuoteRequested } =
     useContext<QuickQuoteContextType>(QuickQuoteContext);
 
+  // Form abandonment tracking
+  const { trackComplete } = useFormAbandonmentTracking({
+    formType: "hero_quick_quote_form",
+    totalFields: 12, // All form fields
+  });
+
   React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {
       setHeroQuickQuoteViewStatus(true);
@@ -264,6 +280,8 @@ const HeroQuickQuote = () => {
     ) {
       window.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CONVERSION_HERO_QUOTE,
+        value: GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE,
+        currency: GOOGLE_ADS_CONVERSION_CURRENCY,
       });
     }
   };
@@ -298,6 +316,7 @@ const HeroQuickQuote = () => {
           // ✅ OPTIMISTIC: Show success immediately (before API response)
           setShowSuccessModal(true);
           setQuickQuoteRequested(true);
+          trackComplete(); // Track form completion
           handleLeadConversion();
           resetForm();
 

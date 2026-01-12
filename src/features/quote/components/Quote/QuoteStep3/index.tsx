@@ -12,7 +12,12 @@ import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
-import { GOOGLE_ADS_CONVERSION_QUOTE_FORM } from "@/config/env";
+import {
+  GOOGLE_ADS_CONVERSION_QUOTE_FORM,
+  GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM,
+  GOOGLE_ADS_CONVERSION_CURRENCY,
+} from "@/config/env";
+import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const QuoteStep3 = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
@@ -20,6 +25,13 @@ const QuoteStep3 = () => {
   const { render, data, setQuoteRequested } = useContext(QuoteContext);
   const [_, setStep] = render;
   const [formValues, setFormValues] = data;
+
+  // Form abandonment tracking
+  const { trackFieldInteraction, trackComplete } = useFormAbandonmentTracking({
+    formType: "quote_page_form",
+    totalFields: 5, // fName, email, phone, contactPersonName, contactPersonPhone
+    initialStep: 3,
+  });
 
   React.useEffect(() => {
     setFormValues(formValues);
@@ -33,6 +45,8 @@ const QuoteStep3 = () => {
     ) {
       window.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CONVERSION_QUOTE_FORM,
+        value: GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM,
+        currency: GOOGLE_ADS_CONVERSION_CURRENCY,
       });
     }
   };
@@ -67,6 +81,7 @@ const QuoteStep3 = () => {
           // ✅ OPTIMISTIC: Show success immediately (before API response)
           setShowSuccessModal(true);
           setQuoteRequested(true);
+          trackComplete(); // Track form completion
           handleLeadConversion();
 
           try {

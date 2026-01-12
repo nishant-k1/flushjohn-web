@@ -23,7 +23,12 @@ import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
-import { GOOGLE_ADS_CONVERSION_QUICK_QUOTE } from "@/config/env";
+import {
+  GOOGLE_ADS_CONVERSION_QUICK_QUOTE,
+  GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE,
+  GOOGLE_ADS_CONVERSION_CURRENCY,
+} from "@/config/env";
+import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Required"),
@@ -265,6 +270,12 @@ const QuickQuote = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
 
+  // Form abandonment tracking
+  const { trackComplete } = useFormAbandonmentTracking({
+    formType: "modal_quick_quote_form",
+    totalFields: 12, // All form fields
+  });
+
   const handleClickOutside = (event: MouseEvent) => {};
 
   React.useEffect(() => {
@@ -284,6 +295,8 @@ const QuickQuote = () => {
     ) {
       window.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CONVERSION_QUICK_QUOTE,
+        value: GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE,
+        currency: GOOGLE_ADS_CONVERSION_CURRENCY,
       });
     }
   };
@@ -316,11 +329,12 @@ const QuickQuote = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
 
-            // ✅ OPTIMISTIC: Show success immediately (before API response)
-            setShowSuccessModal(true);
-            setQuickQuoteRequested(true);
-            handleLeadConversion();
-            resetForm();
+          // ✅ OPTIMISTIC: Show success immediately (before API response)
+          setShowSuccessModal(true);
+          setQuickQuoteRequested(true);
+          trackComplete(); // Track form completion
+          handleLeadConversion();
+          resetForm();
 
             try {
               // Data is automatically serialized by apiClient

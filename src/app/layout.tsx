@@ -48,6 +48,7 @@ import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
 import { QuickQuoteContextProvider } from "@/features/quote/contexts/QuickQuoteContext";
 import Script from "next/script";
+import AnalyticsInitializer from "@/components/Analytics/AnalyticsInitializer";
 
 import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
@@ -370,6 +371,7 @@ export default function RootLayout({
             <SidebarContextProvider>
               <QuickQuoteContextProvider>
                 <QuoteContextProvider>
+                  <AnalyticsInitializer />
                   <ScrollToTop />
                   <Sidebar />
                   <Navbar />
