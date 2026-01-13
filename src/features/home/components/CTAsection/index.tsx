@@ -37,18 +37,16 @@ const CTAsection = (props: Props) => {
               href={phone_link}
               className={styles.phoneButton}
               onClick={() => {
-                if (
-                  typeof window !== "undefined" &&
-                  typeof window.gtag === "function" &&
-                  GOOGLE_ADS_CONVERSION_PHONE_CALL
-                ) {
-                  window.gtag("event", "conversion", {
-                    send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                    event_category: "Phone Call",
-                    event_label: "CTA Phone Link",
-                    value: 1,
-                  });
-                }
+                  if (
+                    typeof window !== "undefined" &&
+                    typeof window.gtag === "function" &&
+                    GOOGLE_ADS_CONVERSION_PHONE_CALL
+                  ) {
+                    // Google's recommended format: only send_to parameter
+                    window.gtag("event", "conversion", {
+                      send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
+                    });
+                  }
               }}
             >
               Call {phone_number}

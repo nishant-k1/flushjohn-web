@@ -60,11 +60,9 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
                   typeof window.gtag === "function" &&
                   GOOGLE_ADS_CONVERSION_PHONE_CALL
                 ) {
+                  // Google's recommended format: only send_to parameter
                   window.gtag("event", "conversion", {
                     send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                    event_category: "Phone Call",
-                    event_label: "Sticky CTA Phone",
-                    value: 1,
                   });
                 }
               }}

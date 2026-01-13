@@ -26,11 +26,9 @@ const PhoneNumberBar = () => {
               typeof window.gtag === "function" &&
               GOOGLE_ADS_CONVERSION_PHONE_CALL
             ) {
+              // Google's recommended format: only send_to parameter
               window.gtag("event", "conversion", {
                 send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                event_category: "Phone Call",
-                event_label: "Phone Bar Link",
-                value: 1,
               });
             }
           }}

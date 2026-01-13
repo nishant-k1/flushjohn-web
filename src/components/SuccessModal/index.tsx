@@ -37,9 +37,9 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
     // Save currently focused element
     previousActiveElementRef.current = document.activeElement as HTMLElement;
 
-    // Lock body scroll when modal is open
-    document.body.style.overflow = "hidden";
-    setTimeout(() => setShowContent(true), 100);
+      // Lock body scroll when modal is open
+      document.body.style.overflow = "hidden";
+      setTimeout(() => setShowContent(true), 100);
 
     // Focus close button when modal opens
     setTimeout(() => {
@@ -58,7 +58,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
       if (e.key === "Escape") {
         onClose();
         return;
-      }
+    }
 
       if (e.key !== "Tab") return;
 

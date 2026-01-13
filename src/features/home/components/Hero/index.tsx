@@ -51,11 +51,9 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                     typeof window.gtag === "function" &&
                     GOOGLE_ADS_CONVERSION_PHONE_CALL
                   ) {
+                    // Google's recommended format: only send_to parameter
                     window.gtag("event", "conversion", {
                       send_to: GOOGLE_ADS_CONVERSION_PHONE_CALL,
-                      event_category: "Phone Call",
-                      event_label: "Hero Phone Link",
-                      value: 1,
                     });
                   }
                 }}

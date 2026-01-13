@@ -41,18 +41,38 @@ export default function QuickQuoteButton() {
         href={phone_link}
         className={styles.phoneBtn}
         aria-label="Call Us"
-        onClick={() => {
+        onClick={(e) => {
+          // Fire conversion event for Floating Phone Button
+          // Use Google's recommended format: only send_to parameter
           if (
             typeof window !== "undefined" &&
-            typeof window.gtag === "function" &&
-            GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE
+            typeof window.gtag === "function"
           ) {
-            window.gtag("event", "conversion", {
-              send_to: GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE,
-              event_category: "Phone Call",
-              event_label: "Quick Phone Link",
-              value: 1,
-            });
+            const conversionId = GOOGLE_ADS_CONVERSION_QUICK_QUOTE_PHONE;
+            
+            // Only fire if conversion ID is properly constructed
+            if (conversionId && conversionId.includes("/")) {
+              try {
+                // Google's recommended format for phone call conversions
+                // Only send_to is required; extra parameters can interfere with Tag Assistant detection
+                window.gtag("event", "conversion", {
+                  send_to: conversionId,
+                });
+                
+                // Log in development for debugging
+                if (process.env.NODE_ENV === "development") {
+                  console.log("Conversion fired:", conversionId);
+                }
+              } catch (error) {
+                console.error("Conversion tracking error:", error);
+              }
+            } else if (process.env.NODE_ENV === "development") {
+              console.warn("Conversion ID not properly configured:", {
+                gTagId: process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID,
+                suffix: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_FLOATING_PHONE_BUTTON_SUFFIX,
+                constructed: conversionId,
+              });
+            }
           }
         }}
       >
