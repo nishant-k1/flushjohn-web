@@ -334,7 +334,7 @@ const DateInput: React.FC<DateInputProps> = ({
         <label className={styles.fieldLabel}>
           {label}
           {props.required && (
-            <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>*</span>
+            <span style={{ color: "var(--error-border)" }}>*</span>
           )}
         </label>
       )}

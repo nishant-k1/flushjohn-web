@@ -102,10 +102,7 @@ const QuoteStep1 = () => {
             <div className={styles.usage_type_row}>
               <label className={styles.field_label}>
                 Usage Type
-                <span style={{ color: "var(--error-border)", fontSize: "x-large", display: "inline", lineHeight: 1, verticalAlign: "baseline" }}>
-                  {" "}
-                  *
-                </span>
+                <span style={{ color: "var(--error-border)" }}> *</span>
               </label>
               <div className={styles.radio_inner_box}>
                 <RadioField

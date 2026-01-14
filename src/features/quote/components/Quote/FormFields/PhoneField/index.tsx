@@ -18,16 +18,21 @@ const PhoneField = ({ label, ...props }: any) => {
     }
   }, [touched, error]);
 
-  const errorId = `${props.name || 'phone'}-error`;
-  const fieldId = props.id || props.name || `phone-${Math.random().toString(36).substr(2, 9)}`;
+  const errorId = `${props.name || "phone"}-error`;
+  const fieldId =
+    props.id ||
+    props.name ||
+    `phone-${Math.random().toString(36).substr(2, 9)}`;
   const hasError = touched && error;
-  const errorMessage = typeof error === 'string' ? error : 'Required';
+  const errorMessage = typeof error === "string" ? error : "Required";
 
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel} htmlFor={fieldId}>
         {label}
-        <span style={{ color: "var(--error-border)", fontSize: "x-large", display: "inline", lineHeight: 1, verticalAlign: "baseline" }} aria-label="required">*</span>
+        <span style={{ color: "var(--error-border)" }} aria-label="required">
+          *
+        </span>
       </label>
       <div className={styles.inputContainer}>
         <div title="Enter 10-digit phone number">

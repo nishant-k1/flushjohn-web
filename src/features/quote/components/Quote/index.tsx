@@ -25,9 +25,9 @@ const Quote = () => {
 
           <div className={styles.quoteWrapper}>
             <div className={styles.innerSection}>
-              <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
+                <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
                 <QuoteSinglePage />
-              </AnimationWrapper>
+                </AnimationWrapper>
             </div>
           </div>
         </AnimationWrapper>
