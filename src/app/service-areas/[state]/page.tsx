@@ -4,7 +4,7 @@ import StateHubPage from "@/features/service-areas/components/StateHubPage";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
-const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME || "Siteway Services";
+const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
 import {
   statesData,
   getStateCoordinates,

@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
-const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME || "Siteway Services";
+const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
 
 export const metadata: Metadata = {
   title: "About Us | FlushJohn - Professional Porta Potty Rental Company",
