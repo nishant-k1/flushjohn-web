@@ -13,12 +13,13 @@
   position: relative;
   z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .quoteWrapper {
   display: grid;
   align-items: start;
-  justify-content: center;
+  justify-content: stretch;
   padding-top: 0;
   width: 100%;
 }
@@ -29,10 +30,7 @@
   align-items: start;
   grid-template-columns: minmax(0, 1fr);
   background: transparent;
-  padding: var(--spacing-lg) var(--spacing-md);
-  padding-top: calc(
-    var(--spacing-lg) + 40px
-  ); /* Extra top padding to accommodate error messages */
+  padding: var(--spacing-md) 0;
   border-radius: 0;
   max-width: 100%;
   min-width: auto;
@@ -42,16 +40,9 @@
   overflow: visible; /* Allow error messages to be visible above the container */
 }
 
-@media screen and (max-width: 550px) {
-  .innerSection {
-    min-width: auto; /* Remove min-width on smaller screens */
-    max-width: 100%;
-  }
-}
-
 /* Animated Progress Bar Container */
 .progressBarContainer {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
   width: 100%;
   max-width: 500px; /* Match form width for alignment */
   margin-left: auto;
@@ -60,7 +51,7 @@
 
 /* Breadcrumb wrapper - add bottom margin when hero is hidden */
 .breadcrumbWrapper {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 /* Add top margin when hero is hidden (step 2+) */
