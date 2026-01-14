@@ -147,10 +147,7 @@ const UsageTypeDropdown = () => {
       <div className={styles.fieldRow}>
         <label className={styles.field_label}>
           Usage Type
-          <span style={{ color: "var(--error-border)", fontSize: "x-large", display: "inline", lineHeight: 1, verticalAlign: "baseline" }}>
-            {" "}
-            *
-          </span>
+          <span style={{ color: "var(--error-border)" }}> *</span>
         </label>
         <div ref={dropdownRef} className={styles.dropdownContainer}>
           <div
@@ -209,6 +206,7 @@ const UsageTypeDropdown = () => {
 
           {isOpen && (
             <div
+              className={styles.usageTypeDropdownMenu}
               style={{
                 position: "absolute",
                 top: "100%",
@@ -358,13 +356,13 @@ const QuoteSinglePage = () => {
             <div className={styles.form}>
               {/* Requirement & Delivery Details Section */}
               <div className={styles.section}>
-                <h3 className={styles.sectionTitle}>Requirement & Delivery Details</h3>
+                <h3 className={styles.sectionTitle}>
+                  Requirement & Delivery Details
+                </h3>
                 <UsageTypeDropdown />
                 <div className={styles.productsDropdown}>
                   <div className={styles.fieldRow}>
-                    <label className={styles.fieldLabel}>
-                      Select Items
-                    </label>
+                    <label className={styles.fieldLabel}>Select Items</label>
                     <div className={styles.dropdownContainer}>
                       <MyMultipleSelectCheckmarks
                         label="Select Items"
@@ -409,53 +407,53 @@ const QuoteSinglePage = () => {
               <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>Personal Details</h3>
                 <div className={styles.wrappingFields}>
-                <TextField
-                  label="First Name"
-                  name="fName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="given-name"
-                  placeholder="Enter first name"
-                />
-                <TextField
-                  label="Last Name"
-                  name="lName"
-                  type="text"
-                  maxLength="50"
-                  autoComplete="family-name"
-                  placeholder="Enter last name"
-                />
-                <TextField
-                  label="Company Name (If any)"
-                  name="cName"
-                  type="text"
-                  maxLength="120"
-                  autoComplete="organization"
-                  placeholder="Enter company name (optional)"
-                />
-                <TextField
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Enter email address"
-                />
-                <PhoneField
-                  label="Phone"
-                  name="phone"
-                  placeholder="Enter phone number"
-                />
-                <TextField
-                  label="Onsite Name"
-                  name="contactPersonName"
-                  placeholder="Enter contact person name"
-                />
-                <PhoneField
-                  label="Onsite Phone"
-                  name="contactPersonPhone"
-                  autoComplete="tel"
-                  placeholder="Enter contact phone"
-                />
+                  <TextField
+                    label="First Name"
+                    name="fName"
+                    type="text"
+                    maxLength="50"
+                    autoComplete="given-name"
+                    placeholder="Enter first name"
+                  />
+                  <TextField
+                    label="Last Name"
+                    name="lName"
+                    type="text"
+                    maxLength="50"
+                    autoComplete="family-name"
+                    placeholder="Enter last name"
+                  />
+                  <TextField
+                    label="Company Name (If any)"
+                    name="cName"
+                    type="text"
+                    maxLength="120"
+                    autoComplete="organization"
+                    placeholder="Enter company name (optional)"
+                  />
+                  <TextField
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Enter email address"
+                  />
+                  <PhoneField
+                    label="Phone"
+                    name="phone"
+                    placeholder="Enter phone number"
+                  />
+                  <TextField
+                    label="Onsite Name"
+                    name="contactPersonName"
+                    placeholder="Enter contact person name"
+                  />
+                  <PhoneField
+                    label="Onsite Phone"
+                    name="contactPersonPhone"
+                    autoComplete="tel"
+                    placeholder="Enter contact phone"
+                  />
                 </div>
               </div>
 
