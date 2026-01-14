@@ -29,11 +29,10 @@
   justify-content: stretch;
   align-items: start;
   grid-template-columns: minmax(0, 1fr);
-  background: var(--white-alpha-05);
+  background: transparent;
   padding: var(--spacing-lg) var(--spacing-md);
   padding-top: calc(var(--spacing-lg) + 40px); /* Extra top padding to accommodate error messages */
   border-radius: 0;
-  border: 1px solid var(--white-alpha-10);
   max-width: 500px; /* Constrain form width for better focus and readability */
   min-width: 500px; /* Force minimum width */
   width: 100%;

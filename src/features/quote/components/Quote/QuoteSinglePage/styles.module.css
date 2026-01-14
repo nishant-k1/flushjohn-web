@@ -1,0 +1,228 @@
+/* Compact single-page form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 16px;
+  background: transparent;
+  padding: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--white-alpha-20);
+  border-radius: 0;
+}
+
+/* Override field margins for compact layout */
+.section :global(.fieldRow) {
+  margin-bottom: 0.75rem !important;
+}
+
+.sectionTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.375rem;
+  border-bottom: 2px solid var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Usage Type Dropdown */
+.usageTypeDropdown {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.usageTypeDropdown .fieldRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.usageTypeDropdown .field_label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.usageTypeDropdown .dropdownContainer {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.error_field {
+  border: 1px solid var(--error-border) !important;
+}
+
+.usageTypeDropdown .error {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1000;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-primary);
+  font-size: 10px;
+  background-color: var(--error-red-alpha-90);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--error-dark);
+  font-weight: 600;
+  text-shadow: none;
+  box-shadow: 0 4px 12px var(--black-alpha-25);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeIn 0.3s ease-in;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  min-width: 200px;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0;
+  transition: var(--transition-base);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  color: var(--text-inverse);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.submitButton:active:not(:disabled) {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--text-inverse);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-inverse);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Messages */
+.error {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1000;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-primary);
+  font-size: 10px;
+  background-color: var(--error-red-alpha-90);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--error-dark);
+  font-weight: 600;
+  text-shadow: none;
+  box-shadow: 0 4px 12px var(--black-alpha-25);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeIn 0.3s ease-in;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.productsError {
+  color: var(--error-border);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 68, 68, 0.1);
+  border-left: 3px solid var(--error-border);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile: Stack radio buttons vertically on small screens */
+@media screen and (max-width: 599px) {
+  .radio_inner_box {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .usage_type_row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .field_label {
+    flex: none;
+    width: 100%;
+  }
+
+  .section {
+    padding: 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 0.875rem;
+  }
+}
