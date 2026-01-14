@@ -147,7 +147,8 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
   return (
     <div
       style={{
-        background: "var(--neutral-700)",
+        background: "rgba(255, 255, 255, 0.95)",
+        boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
         padding: "30px",
         borderRadius: "0",
         marginTop: "40px",
@@ -180,10 +181,11 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "var(--neutral-600)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h4
@@ -230,10 +232,11 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "var(--neutral-600)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h4
@@ -280,10 +283,11 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
             <div
               key={index}
               style={{
-                background: "var(--neutral-600)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "15px",
                 borderRadius: "0",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h4
@@ -322,10 +326,11 @@ const ContentStrategy = ({ city, state }: ContentStrategyProps) => {
       {/* SEO Best Practices */}
       <div
         style={{
-          background: "var(--neutral-600)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "20px",
           borderRadius: "0",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h3 style={{ marginBottom: "15px", color: "var(--text-primary)" }}>

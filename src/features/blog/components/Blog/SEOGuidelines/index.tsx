@@ -114,7 +114,8 @@ const SEOGuidelines = () => {
   return (
     <div
       style={{
-        background: "var(--neutral-700)",
+        background: "rgba(255, 255, 255, 0.95)",
+        boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
         padding: "30px",
         borderRadius: "0",
         border: "1px solid var(--white-alpha-15)",
@@ -143,10 +144,11 @@ const SEOGuidelines = () => {
           <div
             key={index}
             style={{
-              background: "var(--neutral-600)",
+              background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid var(--white-alpha-15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             <h3
@@ -191,10 +193,11 @@ const SEOGuidelines = () => {
             <div
               key={index}
               style={{
-                background: "var(--neutral-600)",
+                background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "20px",
                 borderRadius: "0",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h3
@@ -227,11 +230,12 @@ const SEOGuidelines = () => {
 
       <div
         style={{
-          background: "var(--neutral-600)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "20px",
           borderRadius: "0",
           marginBottom: "30px",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h3 style={{ margin: "0 0 15px 0", color: "var(--text-primary)" }}>
@@ -258,11 +262,12 @@ const SEOGuidelines = () => {
 
       <div
         style={{
-          background: "var(--neutral-600)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "20px",
           borderRadius: "0",
           textAlign: "center",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h3

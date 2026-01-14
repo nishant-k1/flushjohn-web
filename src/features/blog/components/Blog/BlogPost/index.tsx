@@ -306,11 +306,12 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
             {/* Author Bio */}
             <div
               style={{
-                background: "var(--neutral-700)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "20px",
                 borderRadius: "0",
                 marginBottom: "40px",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h3

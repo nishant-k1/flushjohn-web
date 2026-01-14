@@ -327,12 +327,13 @@
 
 .serviceCard {
   padding: 1.5rem;
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 8px;
-  background-color: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
 }
 
 .serviceCard h3 {
@@ -348,29 +349,30 @@
 }
 
 .serviceCard:hover {
-  box-shadow: 0 6px 20px var(--black-alpha-30);
-  border-color: var(--primary);
-  background-color: var(--neutral-600);
+  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .cityCard {
   display: block;
   padding: 1.5rem;
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--white-alpha-20);
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
-  background-color: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
 }
 
 .cityCard:hover {
-  background-color: var(--neutral-600);
-  box-shadow: 0 8px 24px var(--black-alpha-30);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
   text-decoration: none;
-  border-color: var(--primary);
+  border-color: var(--white-alpha-30);
 }
 
 .cityCard p {
@@ -415,18 +417,19 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   border-radius: 8px;
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--white-alpha-20);
   transition: all var(--transition-base, 0.3s);
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
 }
 
 .featureItem:hover {
-  background-color: var(--neutral-600);
+  background: rgba(255, 255, 255, 0.98);
   transform: translateX(4px);
-  border-color: var(--primary);
-  box-shadow: 0 6px 20px var(--black-alpha-30);
+  border-color: var(--white-alpha-30);
+  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
 }
 
 .featureContent h3 {
@@ -579,10 +582,11 @@
 .exploreSection {
   margin-top: 4rem;
   padding: 2.5rem;
-  background-color: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   border-radius: 12px;
-  border: 1px solid var(--white-alpha-15);
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  border: 1px solid var(--white-alpha-20);
+  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
 }
 
 .exploreLinks a {
@@ -621,21 +625,23 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background-color: var(--neutral-800);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   border-radius: 8px;
-  border: 1px solid var(--white-alpha-10);
+  border: 1px solid var(--white-alpha-20);
   transition: all var(--transition-base, 0.3s);
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 500;
+  box-shadow: 0 2px 8px var(--black-alpha-10);
 }
 
 .exploreLinks a:hover {
-  background-color: var(--neutral-700);
+  background: rgba(255, 255, 255, 0.98);
   transform: translateX(4px);
-  border-color: var(--primary);
+  border-color: var(--white-alpha-30);
   text-decoration: none;
-  box-shadow: 0 4px 12px var(--black-alpha-30);
+  box-shadow: 0 6px 20px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-20);
   color: var(--text-primary);
 }
 

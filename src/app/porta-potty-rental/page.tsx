@@ -225,11 +225,12 @@ const PortaPottyRentalPage = () => {
                         style={{
                           display: "block",
                           padding: "15px",
-                          border: "1px solid var(--white-alpha-15)",
+                          border: "1px solid rgba(255, 255, 255, 0.2)",
                           borderRadius: "0",
                           textDecoration: "none",
                           color: "inherit",
-                          background: "var(--neutral-700)",
+                          background: "rgba(255, 255, 255, 0.95)",
+                          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                           transition: "all 0.3s ease",
                         }}
                       >
@@ -282,9 +283,10 @@ const PortaPottyRentalPage = () => {
               <div
                 style={{
                   padding: "20px",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   borderRadius: "0",
-                  border: "1px solid var(--white-alpha-15)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -307,9 +309,10 @@ const PortaPottyRentalPage = () => {
               <div
                 style={{
                   padding: "20px",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   borderRadius: "0",
-                  border: "1px solid var(--white-alpha-15)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -332,9 +335,10 @@ const PortaPottyRentalPage = () => {
               <div
                 style={{
                   padding: "20px",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   borderRadius: "0",
-                  border: "1px solid var(--white-alpha-15)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -357,9 +361,10 @@ const PortaPottyRentalPage = () => {
               <div
                 style={{
                   padding: "20px",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   borderRadius: "0",
-                  border: "1px solid var(--white-alpha-15)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -435,7 +440,8 @@ const PortaPottyRentalPage = () => {
                     display: "block",
                     transition: "all 0.3s ease",
                     cursor: "pointer",
-                    background: "var(--neutral-700)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                   }}
                 >
                   <h4
@@ -480,7 +486,8 @@ const PortaPottyRentalPage = () => {
                   color: "inherit",
                   display: "block",
                   transition: "all 0.3s ease",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 }}
               >
                 <h3
@@ -510,7 +517,8 @@ const PortaPottyRentalPage = () => {
                   color: "inherit",
                   display: "block",
                   transition: "all 0.3s ease",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 }}
               >
                 <h3
@@ -540,7 +548,8 @@ const PortaPottyRentalPage = () => {
                   color: "inherit",
                   display: "block",
                   transition: "all 0.3s ease",
-                  background: "var(--neutral-700)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 }}
               >
                 <h3

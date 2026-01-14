@@ -30,8 +30,9 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "var(--neutral-700)",
-          border: "1px solid var(--white-alpha-15)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
           padding: "20px",
           borderRadius: "0",
           marginBottom: "30px",
@@ -72,11 +73,12 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "var(--neutral-700)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "30px",
           borderRadius: "0",
           marginBottom: "30px",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
@@ -92,10 +94,11 @@ const BlogDashboard = () => {
         >
           <div
             style={{
-              background: "var(--neutral-600)",
+              background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid var(--white-alpha-15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
@@ -119,10 +122,11 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "var(--neutral-600)",
+              background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid var(--white-alpha-15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
@@ -146,10 +150,11 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "var(--neutral-600)",
+              background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid var(--white-alpha-15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
@@ -173,10 +178,11 @@ const BlogDashboard = () => {
 
           <div
             style={{
-              background: "var(--neutral-600)",
+              background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
               padding: "20px",
               borderRadius: "0",
-              border: "1px solid var(--white-alpha-15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
             }}
           >
             <h3 style={{ margin: "0 0 10px 0", color: "var(--text-primary)" }}>
@@ -202,11 +208,12 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "var(--neutral-700)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "30px",
           borderRadius: "0",
           marginBottom: "30px",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>
@@ -285,9 +292,10 @@ const BlogDashboard = () => {
             <div
               key={index}
               style={{
-                background: "var(--neutral-600)",
+                background: "rgba(255, 255, 255, 0.95)",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "15px",
-                border: "1px solid var(--black-alpha-10)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
                 borderRadius: "0",
               }}
             >
@@ -326,11 +334,12 @@ const BlogDashboard = () => {
 
       <div
         style={{
-          background: "var(--neutral-700)",
+          background: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
           padding: "30px",
           borderRadius: "0",
           textAlign: "center",
-          border: "1px solid var(--white-alpha-15)",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
         }}
       >
         <h2 style={{ marginBottom: "15px", color: "var(--text-primary)" }}>

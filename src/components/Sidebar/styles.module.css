@@ -61,6 +61,23 @@
   transition: var(--transition-base);
 }
 
+/* Mobile: Light background with dark text for better readability */
+@media only screen and (max-width: 767px) {
+  .section {
+    background-image: none;
+    background-color: var(--bg-primary);
+  }
+
+  .sidebar a {
+    color: var(--text-primary);
+  }
+
+  .sidebar a:hover {
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+}
+
 /* tablet device breakpoint: 768px*/
 @media only screen and (min-width: 768px) {
 }
