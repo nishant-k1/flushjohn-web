@@ -5,53 +5,6 @@
   min-height: 100vh;
 }
 
-.page::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      var(--white-alpha-05) 10px,
-      var(--white-alpha-05) 20px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 10px,
-      var(--white-alpha-05) 10px,
-      var(--white-alpha-05) 20px
-    ),
-    radial-gradient(
-      circle at 1px 1px,
-      var(--black-alpha-05) 1px,
-      transparent 0
-    ),
-    radial-gradient(
-      circle at 20% 50%,
-      var(--primary-alpha-10) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      var(--primary-alpha-10) 0%,
-      transparent 50%
-    );
-  background-size:
-    40px 40px,
-    40px 40px,
-    20px 20px,
-    100% 100%,
-    100% 100%;
-  pointer-events: none;
-  opacity: 0.8;
-}
-
 .container {
   max-width: 960px;
   margin: 0 auto;

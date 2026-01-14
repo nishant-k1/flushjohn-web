@@ -122,17 +122,17 @@
   --bg-dark-alpha-40: rgba(255, 255, 255, 0.4); /* For overlays */
   --bg-transparent: transparent;
 
-  /* Section-specific backgrounds for better visual hierarchy using green and blue shades */
+  /* Section-specific backgrounds for better visual hierarchy using white and blue shades */
   --bg-section-primary: #ffffff; /* Primary sections - white */
-  --bg-section-alternate: #f0f7f1; /* Alternating sections - light green tint */
+  --bg-section-alternate: #f0f3f7; /* Alternating sections - light blue tint */
   --bg-section-alternate-blue: #f0f3f7; /* Alternating sections - light blue tint */
-  --bg-section-card: #f5faf6; /* Cards and elevated content - subtle green tint */
+  --bg-section-card: #f5f7fa; /* Cards and elevated content - subtle blue tint */
   --bg-section-card-blue: #f5f7fa; /* Cards and elevated content - subtle blue tint */
-  --bg-section-footer: #e8f5e9; /* Footer background - distinct green shade */
+  --bg-section-footer: #303E59; /* Footer background - dark blue shade */
   --bg-section-hero: #ffffff; /* Hero section - white */
-  --bg-section-cta: #e1f3e2; /* CTA sections - noticeable green for emphasis */
+  --bg-section-cta: #e1e8f2; /* CTA sections - noticeable blue for emphasis */
   --bg-section-cta-blue: #e1e8f2; /* CTA sections - noticeable blue for emphasis */
-  --bg-section-accent: #f0f7f1; /* Accent sections - subtle green */
+  --bg-section-accent: #f0f3f7; /* Accent sections - subtle blue */
   --bg-section-accent-blue: #f0f3f7; /* Accent sections - subtle blue */
 
   /* Semantic Colors - Matching Siteway Logo */

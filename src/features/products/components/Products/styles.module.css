@@ -8,22 +8,6 @@
   position: relative;
 }
 
-/* Subtle texture overlay */
-.products::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    var(--black-alpha-10) 1px,
-    transparent 0
-  );
-  background-size: 20px 20px;
-  pointer-events: none;
-}
 
 .container {
   margin: 0 auto;
