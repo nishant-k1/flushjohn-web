@@ -41,7 +41,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "FlushJohn",
-  legalName: "Quengenesis, LLC",
+  legalName: "Siteway Services",
   url: websiteURL,
   logo: `${s3assets}/og-image-flushjonn-web.png`,
   foundingDate: "2020",

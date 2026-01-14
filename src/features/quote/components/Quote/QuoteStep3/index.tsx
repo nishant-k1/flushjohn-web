@@ -14,8 +14,11 @@ import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
 // Construct Google Ads conversion values from env vars
 const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_QUOTE_PAGE_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_QUOTE_PAGE_FORM!);
-const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
+const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_QUOTE_PAGE_FORM!
+);
+const GOOGLE_ADS_CONVERSION_CURRENCY =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const QuoteStep3 = () => {
