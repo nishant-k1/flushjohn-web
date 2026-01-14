@@ -7,7 +7,6 @@
   position: relative;
 }
 
-
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -31,10 +30,12 @@
   grid-template-columns: minmax(0, 1fr);
   background: transparent;
   padding: var(--spacing-lg) var(--spacing-md);
-  padding-top: calc(var(--spacing-lg) + 40px); /* Extra top padding to accommodate error messages */
+  padding-top: calc(
+    var(--spacing-lg) + 40px
+  ); /* Extra top padding to accommodate error messages */
   border-radius: 0;
-  max-width: 500px; /* Constrain form width for better focus and readability */
-  min-width: 500px; /* Force minimum width */
+  max-width: 100%;
+  min-width: auto;
   width: 100%;
   margin: 0 auto; /* Center the form container */
   box-sizing: border-box;

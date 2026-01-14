@@ -1,7 +1,8 @@
 /* Compact single-page form styles */
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
   width: 100%;
   margin-bottom: 16px;
@@ -17,6 +18,9 @@
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
+  flex: 1 1 calc(50% - 0.5rem);
+  min-width: 280px;
+  max-width: calc(50% - 0.5rem);
 }
 
 /* Override field margins for compact layout */
@@ -89,18 +93,24 @@
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
 }
 
 /* Buttons */
 .buttons {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-light);
+  flex-basis: 100%;
+  width: 100%;
+  order: 999;
 }
 
 .submitButton {
@@ -176,7 +186,10 @@
   white-space: nowrap;
   pointer-events: none;
   animation: fadeIn 0.3s ease-in;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
 }
 
 .productsError {
@@ -200,7 +213,19 @@
   }
 }
 
-/* Mobile: Stack radio buttons vertically on small screens */
+/* Mobile: Stack sections vertically on small screens */
+@media screen and (max-width: 768px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .section {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
 @media screen and (max-width: 599px) {
   .radio_inner_box {
     grid-template-columns: repeat(2, 1fr);
