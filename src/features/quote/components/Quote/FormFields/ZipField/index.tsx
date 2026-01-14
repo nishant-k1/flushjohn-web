@@ -26,7 +26,7 @@ const ZipTextField = ({ label, ...props }: any) => {
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel} htmlFor={fieldId}>
-        {label} <span style={{ color: "var(--error-border)", fontSize: "x-large" }} aria-label="required">*</span>
+        {label} <span style={{ color: "var(--error-border)", fontSize: "x-large", display: "inline", lineHeight: 1, verticalAlign: "baseline" }} aria-label="required">*</span>
       </label>
       <div className={styles.inputContainer}>
         <input

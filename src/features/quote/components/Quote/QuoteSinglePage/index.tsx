@@ -147,7 +147,7 @@ const UsageTypeDropdown = () => {
       <div className={styles.fieldRow}>
         <label className={styles.field_label}>
           Usage Type
-          <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>
+          <span style={{ color: "var(--error-border)", fontSize: "x-large", display: "inline", lineHeight: 1, verticalAlign: "baseline" }}>
             {" "}
             *
           </span>
@@ -446,12 +446,12 @@ const QuoteSinglePage = () => {
                   placeholder="Enter phone number"
                 />
                 <TextField
-                  label="Onsite Contact Person Name"
+                  label="Onsite Name"
                   name="contactPersonName"
                   placeholder="Enter contact person name"
                 />
                 <PhoneField
-                  label="Onsite Contact Person Phone"
+                  label="Onsite Phone"
                   name="contactPersonPhone"
                   autoComplete="tel"
                   placeholder="Enter contact phone"
