@@ -9,8 +9,8 @@ import {
   QuoteContext,
   initialQuoteValues,
 } from "@/features/quote/contexts/QuoteContext";
-import NumberField from "../FormFields/NumberField";
 import TextField from "../FormFields/TextField";
+import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
 import MultilineTextField from "../FormFields/MultilineTextField";
 import ZipTextField from "../FormFields/ZipField";
 import PhoneField from "../FormFields/PhoneField";
@@ -356,33 +356,23 @@ const QuoteSinglePage = () => {
         {({ isSubmitting }) => (
           <Form noValidate>
             <div className={styles.form}>
-              {/* Requirement Details Section */}
+              {/* Requirement & Delivery Details Section */}
               <div className={styles.section}>
-                <h3 className={styles.sectionTitle}>Requirement Details</h3>
+                <h3 className={styles.sectionTitle}>Requirement & Delivery Details</h3>
                 <UsageTypeDropdown />
-                {products.map((item, index) => (
-                  <NumberField
-                    key={item.id || index}
-                    label={item.item}
-                    name={`products[${index}].quantity`}
-                    mask="9999"
-                    type="tel"
-                  />
-                ))}
-                <ErrorMessage name="products">
-                  {(msg) => {
-                    return (
-                      <div className={styles.productsError}>
-                        Enter quantity for at least one item
-                      </div>
-                    );
-                  }}
-                </ErrorMessage>
-              </div>
-
-              {/* Delivery Details Section */}
-              <div className={styles.section}>
-                <h3 className={styles.sectionTitle}>Delivery Details</h3>
+                <div className={styles.productsDropdown}>
+                  <div className={styles.fieldRow}>
+                    <label className={styles.fieldLabel}>
+                      Select Items
+                    </label>
+                    <div className={styles.dropdownContainer}>
+                      <MyMultipleSelectCheckmarks
+                        label="Select Items"
+                        name="products"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <DateInput
                   label="Delivery Date"
                   name="deliveryDate"
@@ -418,6 +408,7 @@ const QuoteSinglePage = () => {
               {/* Personal Details Section */}
               <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>Personal Details</h3>
+                <div className={styles.wrappingFields}>
                 <TextField
                   label="First Name"
                   name="fName"
@@ -465,6 +456,7 @@ const QuoteSinglePage = () => {
                   autoComplete="tel"
                   placeholder="Enter contact phone"
                 />
+                </div>
               </div>
 
               {/* Submit Button */}
