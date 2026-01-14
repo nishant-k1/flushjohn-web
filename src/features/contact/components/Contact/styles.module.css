@@ -1,6 +1,6 @@
 .section {
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
 }
 
 .container {
@@ -236,29 +236,29 @@
   gap: 8px;
   height: 2.5rem;
   background: var(--primary);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   font-weight: 600;
   font-size: large;
   border: solid 2px var(--primary-light);
   border-radius: 0;
   cursor: pointer;
   transition: var(--transition-base);
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
   box-shadow: 0 2px 8px var(--black-alpha-30);
 }
 
 .button:hover {
   background: var(--primary-light);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   box-shadow: 0 4px 12px var(--black-alpha-40);
   transition: var(--transition-base);
-  text-shadow: 0 1px 3px var(--black-alpha-40);
+  text-shadow: none;
 }
 
 .button:active {
   background: var(--primary-dark);
-  color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  color: var(--text-inverse) !important;
+  text-shadow: none;
   box-shadow: 0 1px 4px var(--black-alpha-30);
 }
 

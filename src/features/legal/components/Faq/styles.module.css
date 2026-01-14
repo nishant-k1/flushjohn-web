@@ -1,5 +1,5 @@
 .faq {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,7 +48,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   padding: 1.5rem 2rem;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
@@ -105,7 +106,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   color: var(--text-primary);
@@ -139,7 +141,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   color: var(--text-primary);
   cursor: pointer;
   font-weight: 300;
@@ -176,7 +179,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   box-shadow:

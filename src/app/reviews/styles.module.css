@@ -1,6 +1,6 @@
 .reviewsPage {
   padding: var(--spacing-section) 0;
-  background: var(--bg-primary);
+  background: var(--bg-section-alternate-blue);
   color: var(--text-primary);
   min-height: 60vh;
 }
@@ -39,9 +39,9 @@
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-xl);
-  background: var(--neutral-700);
+  background: var(--bg-section-card);
   border-radius: var(--radius-md);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   max-width: 400px;
   margin: 0 auto;
 }
@@ -91,9 +91,9 @@
 
 .reviewCard {
   padding: var(--spacing-xl);
-  background: var(--neutral-700);
+  background: var(--bg-section-card);
   border-radius: var(--radius-md);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   transition: all var(--transition-base);
 }
 
@@ -182,7 +182,7 @@
   padding: var(--spacing-3xl) var(--spacing-2xl);
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-radius: var(--radius-md);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   margin-top: var(--spacing-4xl);
   border: 1px solid var(--white-alpha-15);
 }
@@ -191,14 +191,14 @@
   font-size: 2rem;
   font-weight: 400;
   margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-family: var(--font-merriweather);
 }
 
 .ctaSection p {
   font-size: 1.1rem;
   margin-bottom: var(--spacing-2xl);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;

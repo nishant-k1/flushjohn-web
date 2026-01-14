@@ -74,7 +74,7 @@
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   font-size: 14px !important;
   font-weight: bold !important;
   line-height: 1 !important;
@@ -105,7 +105,7 @@
 }
 
 .button {
-  color: var(--text-primary);
+  color: var(--text-inverse);
   background-color: var(--primary);
   border-color: var(--primary);
   transition: var(--transition-base);
@@ -114,7 +114,7 @@
 .button:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary-lg);
   transition: var(--transition-base);
 }
@@ -122,6 +122,7 @@
 .button:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
+  color: var(--text-inverse);
   color: var(--text-primary);
   transform: translateY(0);
 }

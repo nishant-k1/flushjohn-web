@@ -120,13 +120,14 @@
 
 .primaryButton {
   background: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 2px solid var(--primary);
 }
 
 .primaryButton:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
+  color: var(--text-inverse);
 }
 
 .secondaryButton {
@@ -138,6 +139,7 @@
 .secondaryButton:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: var(--text-inverse);
 }
 
 .linkButton {

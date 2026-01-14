@@ -1,6 +1,6 @@
 /* utilities */
 .product {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
@@ -24,7 +24,8 @@
     var(--white-alpha-08) 0%,
     var(--white-alpha-05) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   padding: 3rem 2.5rem;
   border: 1px solid var(--white-alpha-15);
   border-radius: 0;

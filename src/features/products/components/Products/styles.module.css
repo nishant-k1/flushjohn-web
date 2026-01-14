@@ -1,6 +1,6 @@
 /* utilities */
 .products {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,7 +54,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   display: grid;
   grid-template-columns: 50% 50%;
   column-gap: var(--spacing-lg);
@@ -113,7 +114,7 @@
   border-radius: 0;
   padding: var(--spacing-xs) var(--spacing-md);
   background-color: var(--primary);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   font-weight: 500;
   font-size: 0.75rem;
   justify-self: center;
@@ -147,14 +148,14 @@
 .quoteLink:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary-lg);
 }
 
 .quoteLink:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   transform: translateY(0);
 }
 

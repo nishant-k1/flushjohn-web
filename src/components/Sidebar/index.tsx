@@ -138,6 +138,7 @@ const Sidebar = () => {
                 width: "8rem",
                 padding: "0",
                 margin: "0",
+                filter: "invert(1) brightness(0)",
               }}
             />
           </Link>

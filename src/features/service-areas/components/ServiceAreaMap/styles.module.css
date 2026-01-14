@@ -6,7 +6,8 @@
     var(--white-alpha-08) 0%,
     var(--white-alpha-05) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   border: 1px solid var(--white-alpha-15);
   border-radius: 0;
   box-shadow: 0 6px 24px var(--black-alpha-12);
@@ -48,7 +49,8 @@
     var(--white-alpha-12) 0%,
     var(--white-alpha-08) 100%
   );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   padding: var(--spacing-lg);
   border-radius: 0;
   box-shadow:

@@ -1,5 +1,5 @@
 .city {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -247,9 +247,9 @@
 /* Cards - Theme Colors */
 .card {
   padding: 2rem;
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
   display: flex;
@@ -278,13 +278,13 @@
 .card:hover {
   box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .testimonialCard {
   padding: 2rem;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
@@ -475,7 +475,7 @@
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
@@ -483,7 +483,7 @@
 }
 
 .servicesList li:hover {
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
   transform: translateX(4px);
   box-shadow: 0 4px 12px var(--black-alpha-30);
 }

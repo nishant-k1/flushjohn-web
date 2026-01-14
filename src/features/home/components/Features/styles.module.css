@@ -1,6 +1,6 @@
 .features {
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   position: relative;
 }
 
@@ -38,12 +38,9 @@
   align-items: center;
   justify-content: space-between; /* Distributes content evenly */
   padding: 2.5rem 2rem;
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   box-shadow:

@@ -4,12 +4,9 @@
   height: fit-content;
   width: 300px;
   align-self: end;
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
   box-shadow:
@@ -75,7 +72,7 @@
   margin: 0 !important;
   height: 2rem;
   outline: none;
-  border: none;
+  border: 1px solid var(--border-light);
   padding-left: 12px;
   font-size: 14px;
   color: var(--text-dark);
@@ -83,7 +80,8 @@
   background-color: var(--bg-white);
   transition:
     color 0.5s,
-    background-color 0.5s;
+    background-color 0.5s,
+    border-color 0.2s;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -115,13 +113,13 @@
 
 .quickQuoteform input:hover,
 .quickQuoteform textarea:hover {
-  border: none;
+  border: 1px solid var(--border-light);
   background-color: var(--bg-white);
 }
 
 .quickQuoteform input:focus,
 .quickQuoteform textarea:focus {
-  border: none;
+  border: 1px solid var(--primary);
   background-color: var(--bg-white);
 }
 
@@ -147,7 +145,7 @@
 .date input {
   transition: 0.3s;
   width: 100%;
-  border: none;
+  border: 1px solid var(--border-light);
   padding: 0 8px 0 12px !important;
   font-size: 14px;
   border-radius: 0;
@@ -170,12 +168,12 @@
 }
 
 .date input:hover {
-  border: none;
+  border: 1px solid var(--border-light);
   background-color: var(--bg-white) !important;
 }
 
 .date input:focus {
-  border: none;
+  border: 1px solid var(--primary);
   background-color: var(--bg-white) !important;
 }
 .date input::placeholder {
@@ -215,7 +213,7 @@
   color: var(--text-primary);
   border-radius: 6px;
   border-left: 3px solid var(--error-dark);
-  text-shadow: 0 1px 2px var(--black-alpha-25);
+  text-shadow: none;
   box-shadow: 0 4px 12px var(--black-alpha-25);
   white-space: nowrap;
   pointer-events: none;
@@ -286,6 +284,13 @@
 .quickQuoteform :global(.PhoneInput) {
   width: 100% !important;
   display: flex !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 0 !important;
+  transition: border-color 0.2s !important;
+}
+
+.quickQuoteform :global(.PhoneInput):focus-within {
+  border: 1px solid var(--primary) !important;
 }
 
 .quickQuoteform :global(.PhoneInputInput) {
@@ -293,7 +298,7 @@
   height: 2rem !important;
   padding-left: 12px !important;
   border: none !important;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   font-size: 14px !important;
   background: var(--bg-white) !important;
   color: var(--text-dark) !important;
@@ -322,7 +327,8 @@
   cursor: default !important;
   pointer-events: none !important;
   border: none !important;
-  border-radius: 4px !important;
+  border-right: 1px solid var(--border-light) !important;
+  border-radius: 0 !important;
   height: 2rem !important;
   align-items: center !important;
   display: flex !important;

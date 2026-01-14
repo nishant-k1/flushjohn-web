@@ -1,7 +1,7 @@
 .footer {
-  background: var(--bg-primary);
+  background: var(--bg-section-footer);
   padding: 4rem 0 2rem;
-  border-top: 1px solid var(--white-alpha-15);
+  border-top: 1px solid var(--border-light);
   position: relative;
 }
 
@@ -26,7 +26,7 @@
   font-weight: 500 !important;
   letter-spacing: 0.05em !important;
   text-transform: uppercase !important;
-  border-bottom: 1px solid var(--white-alpha-15) !important;
+  border-bottom: 1px solid var(--border-light) !important;
 }
 
 .container :global(.locations .container p) {
@@ -66,7 +66,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   opacity: 1;
-  border-bottom: 1px solid var(--white-alpha-15);
+  border-bottom: 1px solid var(--border-light);
   padding-bottom: 0.5rem;
 }
 
@@ -204,7 +204,7 @@
 .address {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--white-alpha-15);
+  border-top: 1px solid var(--border-light);
 }
 
 .address p {
@@ -219,7 +219,7 @@
 .businessInfo {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid var(--white-alpha-20);
+  border-top: 2px solid var(--border-light);
 }
 
 .businessInfoContent {
@@ -277,7 +277,7 @@
 
 .bottomFooter {
   padding: 2rem 0 1rem;
-  border-top: 1px solid var(--white-alpha-15);
+  border-top: 1px solid var(--border-light);
   margin-top: 2rem;
   position: relative;
   z-index: 1;

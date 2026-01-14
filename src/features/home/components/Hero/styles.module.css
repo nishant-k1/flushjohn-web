@@ -2,10 +2,16 @@
   position: relative;
   padding: var(--spacing-md) 0 0;
   overflow: hidden;
-  contain: layout style paint; /* CSS containment */
-  transform: translateZ(0); /* Force hardware acceleration */
-  background-color: var(--bg-primary);
+  /* Remove contain to prevent text blur */
+  contain: none;
+  /* Remove transform that might cause blur */
+  transform: none;
+  background-color: var(--bg-section-hero);
   min-height: 100vh;
+  /* Fix text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .hero::before {
@@ -20,8 +26,11 @@
     var(--hero-overlay-gradient-start) 0%,
     var(--hero-overlay-gradient-end) 100%
   );
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
+  /* Ensure overlay doesn't affect text rendering */
+  will-change: auto;
+  transform: none;
 }
 
 .container {
@@ -32,6 +41,8 @@
   display: flex;
   align-items: center;
   padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
 }
 
 .carouselWrapper {
@@ -41,9 +52,10 @@
   width: 100%;
   height: 100%;
   min-height: 100%;
-  z-index: -1;
-  background-color: var(--bg-primary);
-  contain: layout style paint;
+  z-index: 0;
+  background-color: var(--bg-section-hero);
+  /* Remove contain to prevent rendering issues */
+  contain: none;
   will-change: transform;
 }
 
@@ -59,8 +71,11 @@
     var(--hero-overlay-gradient-start-light) 0%,
     var(--hero-overlay-gradient-end-light) 100%
   );
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
+  /* Ensure overlay doesn't affect text rendering */
+  will-change: auto;
+  transform: none;
 }
 
 .skeletonCarousel {
@@ -116,79 +131,154 @@
   justify-content: center;
   row-gap: 2rem;
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  /* Ensure text is above all overlays */
+  isolation: isolate;
+  /* Fix text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: none;
+  will-change: auto;
 }
 
 .heroTitle {
   display: grid;
   align-items: start;
   justify-items: start;
-  color: var(--text-primary);
+  color: #ffffff;
   grid-template-rows: max-content max-content;
   row-gap: var(--spacing-md);
   position: relative;
-  z-index: 1;
-  contain: layout style;
+  z-index: 10;
+  /* Remove contain property that might cause blur */
+  contain: none;
   min-height: fit-content;
+  /* Fix text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Force crisp rendering - no transforms or will-change */
+  will-change: auto;
+  transform: none;
+  isolation: isolate;
+  /* Ensure text is not affected by parent transforms */
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .serviceBadge {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-sm);
-  background: linear-gradient(
-    135deg,
-    var(--bg-dark-alpha-50) 0%,
-    var(--bg-dark-alpha-40) 100%
-  );
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--white-alpha-30); /* Lighter border for better visibility */
+  /* Solid background - no backdrop-filter */
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 0;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-primary); /* Pure white for maximum contrast */
+  color: #ffffff;
   margin-bottom: var(--spacing-md);
-  box-shadow: 0 2px 8px var(--black-alpha-30);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.01em;
-  min-height: 2rem; /* Reserve space to prevent layout shift */
+  min-height: 2rem;
   line-height: 1.5;
-  text-shadow: 0 1px 2px var(--black-alpha-40);
+  /* Completely remove text-shadow */
+  text-shadow: none;
+  /* Fix text blur - use subpixel rendering for crisp text */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  position: relative;
+  z-index: 10;
+  /* No transforms or will-change that might cause blur */
+  will-change: auto;
+  transform: none;
+  /* Ensure text renders on separate layer */
+  isolation: isolate;
+  backface-visibility: visible;
+}
+
+.serviceBadge > * {
+  position: relative;
+  z-index: 2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: none;
 }
 
 .badgeIcon {
-  color: var(--text-primary);
+  color: #ffffff;
   font-weight: 700;
   font-size: 1rem;
-  text-shadow: 0 1px 2px var(--black-alpha-40);
+  /* Completely remove text-shadow */
+  text-shadow: none;
+  /* Fix text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  z-index: 11;
+  transform: none;
+  will-change: auto;
 }
 
 .heroTitle h1 {
   font-size: xx-large;
   font-weight: 400;
-  color: var(--text-primary); /* Pure white for maximum contrast */
-  text-shadow:
-    0 2px 8px var(--black-alpha-60),
-    0 1px 3px var(--black-alpha-40);
+  color: #ffffff;
+  /* Completely remove text-shadow */
+  text-shadow: none;
   letter-spacing: 0.02em;
   line-height: 1.3;
   margin: 0;
-  min-height: 2.6em; /* Reserve space to prevent layout shift */
+  min-height: 2.6em;
   display: block;
+  /* Fix text blur - use subpixel rendering for crisp text */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  /* No transforms or will-change that might cause blur */
+  will-change: auto;
+  transform: none;
+  /* Ensure text is on separate layer */
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  backface-visibility: visible;
+  /* No background - transparent */
+  background: transparent;
+  padding: 0;
 }
 
 .heroTitle h2 {
   font-size: large;
   font-weight: 300;
   line-height: 1.6;
-  color: var(--text-primary); /* Pure white for maximum contrast */
-  opacity: 1; /* Changed from 0.95 to 1 for full opacity */
+  color: #ffffff;
+  opacity: 1;
   margin: 0;
-  min-height: 3.2em; /* Reserve space for 2 lines to prevent layout shift */
+  min-height: 3.2em;
   display: block;
-  text-shadow:
-    0 1px 4px var(--black-alpha-50),
-    0 1px 2px var(--black-alpha-30);
+  /* Completely remove text-shadow */
+  text-shadow: none;
+  /* Fix text blur - use subpixel rendering for crisp text */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  /* No transforms or will-change that might cause blur */
+  will-change: auto;
+  transform: none;
+  /* Ensure text is on separate layer */
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  backface-visibility: visible;
+  /* No background - transparent */
+  background: transparent;
+  padding: 0;
 }
 
 .heroCta {
@@ -233,7 +323,8 @@
   align-items: center;
   position: relative;
   z-index: 1;
-  contain: layout style;
+  /* Remove contain to prevent text blur */
+  contain: none;
 }
 
 .ctaQuoteBtn {
@@ -242,7 +333,7 @@
     var(--primary-light) 0%,
     var(--primary) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 1px solid var(--primary-light);
 }
 
@@ -253,7 +344,7 @@
     var(--primary-dark) 100%
   );
   border-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
   box-shadow:
     0 6px 20px var(--black-alpha-20),
@@ -267,7 +358,7 @@
     var(--primary) 100%
   );
   border-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
@@ -281,16 +372,20 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
-  color: var(--text-primary);
-  border: 1px solid var(--white-alpha-20);
+  /* Remove backdrop-filter - use solid background */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: none;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 8px 20px;
+  /* Fix text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  isolation: isolate;
   min-height: 36px;
+  transform: none;
+  will-change: auto;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 0;
@@ -321,7 +416,7 @@
 
 .ctaPhoneBtn:hover {
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
   box-shadow:
     0 6px 20px var(--black-alpha-20),
@@ -330,7 +425,7 @@
 
 .ctaPhoneBtn:active {
   border-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
@@ -343,8 +438,12 @@
 .ctaPhoneBtn .flippedIcon {
   position: relative;
   z-index: 2;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transition: color var(--transition-base);
+  /* Fix text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .flippedIcon {

@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   padding: var(--spacing-section) 0;
 }
 
@@ -47,8 +47,8 @@
 .searchInput {
   width: 100%;
   padding: 12px 40px 12px 40px;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 14px;
@@ -58,7 +58,7 @@
 .searchInput:focus {
   outline: none;
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-white);
 }
 
 .searchInput::placeholder {
@@ -86,7 +86,7 @@
 .searchButton {
   padding: 12px 24px;
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 1px solid var(--primary);
   border-radius: 0;
   cursor: pointer;
@@ -99,6 +99,7 @@
 .searchButton:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
+  color: var(--text-inverse);
   box-shadow: 0 4px 12px var(--black-alpha-20);
 }
 
@@ -116,8 +117,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 6px 12px;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 13px;
@@ -157,8 +158,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 0;
   margin-bottom: 2rem;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   overflow: hidden;
   text-decoration: none;
@@ -170,7 +171,7 @@
 .featuredPost:hover {
   box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .featuredImageContainer {
@@ -204,7 +205,7 @@
   display: inline-block;
   padding: 4px 12px;
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -244,8 +245,8 @@
 }
 
 .sidebarSection {
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   padding: 1.5rem;
 }
@@ -268,8 +269,8 @@
 
 .tagButton {
   padding: 8px 12px;
-  background-color: var(--neutral-600);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-alternate);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 14px;
@@ -286,7 +287,7 @@
 
 .tagButtonActive {
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border-color: var(--primary);
   font-weight: 500;
 }
@@ -302,8 +303,8 @@
   align-items: center;
   gap: 0.75rem;
   padding: 10px 12px;
-  background-color: var(--neutral-600);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-alternate);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   text-decoration: none;
@@ -361,11 +362,11 @@
 }
 
 .blogItem {
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 2px 8px var(--black-alpha-20);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -383,7 +384,7 @@
 .blogItem:hover {
   box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .imageContainer {
@@ -620,9 +621,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 10px 20px;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   color: var(--text-primary);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   cursor: pointer;
   font-size: 14px;
@@ -631,7 +632,7 @@
 }
 
 .paginationButton:hover:not(:disabled) {
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
   border-color: var(--primary);
   box-shadow: 0 4px 12px var(--black-alpha-20);
 }
@@ -657,9 +658,9 @@
   min-width: 40px;
   height: 40px;
   padding: 0 12px;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   color: var(--text-primary);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   cursor: pointer;
   font-size: 14px;
@@ -671,14 +672,14 @@
 }
 
 .pageNumber:hover:not(.active) {
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
   border-color: var(--primary);
 }
 
 .pageNumber.active {
   background-color: var(--primary);
   border-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-weight: 600;
 }
 

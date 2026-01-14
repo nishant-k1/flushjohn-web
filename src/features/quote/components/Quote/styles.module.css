@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -192,7 +192,8 @@
   box-shadow:
     0 2px 8px var(--black-alpha-20),
     inset 0 1px 2px var(--white-alpha-10);
-  backdrop-filter: blur(4px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
 }
 
 .stepIndicator::before {
@@ -210,6 +211,9 @@
   transition: opacity 0.4s ease;
   z-index: -1;
   filter: blur(6px);
+  /* Ensure blur doesn't affect text */
+  pointer-events: none;
+  will-change: opacity;
 }
 
 .stepIndicator::after {
@@ -272,9 +276,9 @@
 .stepNumber {
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--white-alpha-25);
+  color: var(--text-secondary);
   transition: color 0.3s ease;
-  text-shadow: 0 1px 2px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 .stepIndicator.current .stepNumber {
@@ -306,7 +310,7 @@
 .stepLabel {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--white-alpha-25);
+  color: var(--text-secondary);
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -317,7 +321,7 @@
 .stepLabel.activeLabel {
   color: var(--text-primary);
   font-weight: 600;
-  text-shadow: 0 1px 3px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 /* Progress Percentage */
@@ -340,7 +344,8 @@
   box-shadow:
     0 2px 8px var(--black-alpha-15),
     inset 0 1px 2px var(--white-alpha-10);
-  backdrop-filter: blur(8px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   letter-spacing: 0.02em;
 }
 

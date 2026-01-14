@@ -1,6 +1,6 @@
 .howItWorksPage {
   padding: var(--spacing-section) 0;
-  background: var(--bg-primary);
+  background: var(--bg-section-alternate-blue);
   color: var(--text-primary);
   min-height: 60vh;
 }
@@ -78,7 +78,7 @@
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   position: relative;
   z-index: 1;
 }
@@ -126,9 +126,9 @@
 
 .benefitCard {
   padding: var(--spacing-xl);
-  background: var(--neutral-700);
+  background: var(--bg-section-card);
   border-radius: var(--radius-md);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
 }
 
 .benefitCard h3 {
@@ -151,7 +151,7 @@
   padding: var(--spacing-3xl) var(--spacing-2xl);
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-radius: var(--radius-md);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   margin-top: var(--spacing-4xl);
   border: 1px solid var(--white-alpha-15);
 }
@@ -160,14 +160,14 @@
   font-size: 2rem;
   font-weight: 400;
   margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-family: var(--font-merriweather);
 }
 
 .ctaSection p {
   font-size: 1.2rem;
   margin-bottom: var(--spacing-2xl);
-  color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .ctaButtons {

@@ -29,7 +29,7 @@
   background-color: var(--primary);
   border-radius: 50%;
   border: 2px solid var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
@@ -44,7 +44,7 @@
   touch-action: manipulation;
   box-shadow: var(--black-alpha-50) 0px 22px 70px 4px;
   z-index: 9998;
-  text-shadow: 0 1px 3px var(--black-alpha-50);
+  text-shadow: none;
   letter-spacing: 0.05em;
 }
 
@@ -54,7 +54,7 @@
   width: 92%;
   height: 92%;
   border-radius: 50%;
-  background-image: linear-gradient(var(--text-primary) 0, transparent 100%);
+  background-image: linear-gradient(var(--text-inverse) 0, transparent 100%);
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -64,14 +64,14 @@
 .quickQuoteBtn:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--black-alpha-60) 0px 22px 70px 4px;
 }
 
 .quickQuoteBtn:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .quickQuoteBtn:focus-visible {
@@ -88,7 +88,7 @@
   background-color: var(--primary);
   border-radius: 50%;
   border: 2px solid var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   cursor: pointer;
   display: flex;
   font-size: 12px;
@@ -115,7 +115,7 @@
   height: 92%;
   border-radius: 50%;
   background-color: initial;
-  background-image: linear-gradient(var(--text-primary) 0, transparent 100%);
+  background-image: linear-gradient(var(--text-inverse) 0, transparent 100%);
   content: "";
   opacity: 0.5;
   position: absolute;
@@ -125,14 +125,14 @@
 .phoneBtn:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--black-alpha-50) 0px 8px 20px;
 }
 
 .phoneBtn:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .phoneBtn:focus-visible {
@@ -145,7 +145,7 @@
   left: 100px;
   bottom: 20px;
   background: linear-gradient(135deg, var(--callout-gradient-start) 0%, var(--callout-gradient-end) 100%);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   padding: 8px 14px;
   border-radius: 6px;
   box-shadow: 0 4px 12px var(--black-alpha-30);
@@ -188,13 +188,13 @@
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  text-shadow: 0 1px 2px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 .calloutClose {
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
@@ -210,7 +210,8 @@
 }
 
 .calloutClose:hover {
-  color: var(--text-primary);
+  color: var(--text-inverse);
+  opacity: 0.8;
 }
 
 @keyframes slideIn {

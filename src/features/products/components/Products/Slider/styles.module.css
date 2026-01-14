@@ -80,7 +80,8 @@
   padding: 0;
   margin: 0;
   background: var(--white-alpha-10);
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   cursor: pointer;
   border-radius: 50%;
   display: flex;

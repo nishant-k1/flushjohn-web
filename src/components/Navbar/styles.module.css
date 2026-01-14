@@ -7,7 +7,8 @@
   transition: all var(--transition-base);
   padding: var(--spacing-sm) 0 0;
   z-index: var(--z-sticky);
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
 }
 
 .navbar_home {
@@ -18,7 +19,8 @@
   transition: all var(--transition-base);
   padding: var(--spacing-sm) 0;
   z-index: var(--z-sticky);
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
 }
 
 .scrolled {
@@ -56,12 +58,12 @@
 }
 
 .hamburger {
-  color: var(--text-inverse);
+  color: var(--text-primary);
   transition: color var(--transition-base);
 }
 
 .hamburger:hover {
-  color: var(--text-primary);
+  color: var(--primary);
 }
 
 .hamburger:focus-visible {
@@ -82,7 +84,7 @@
 }
 
 .navLinks a {
-  color: var(--text-inverse);
+  color: var(--text-primary);
   font-size: 0.9375rem;
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -94,8 +96,8 @@
 }
 
 .navLinks a:hover {
-  color: var(--text-primary);
-  text-shadow: 0 0 8px var(--white-alpha-30);
+  color: var(--primary);
+  text-shadow: none;
 }
 
 .navLinks a:focus-visible {
@@ -105,10 +107,10 @@
 
 .activeLink,
 .activeLink a {
-  color: var(--text-primary) !important;
+  color: var(--primary) !important;
   font-weight: 400;
   letter-spacing: 0.02em;
-  text-shadow: 0 0 8px var(--white-alpha-30);
+  text-shadow: none;
 }
 
 /* tablet device breakpoint: 768px*/
@@ -132,7 +134,7 @@
   display: inline-flex !important;
   align-items: center;
   gap: 6px;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -140,10 +142,10 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
   text-decoration: none;
-  background: var(--white-alpha-20);
-  border: 1px solid var(--white-alpha-30);
+  background: var(--primary);
+  border: 1px solid var(--primary-dark);
   white-space: nowrap;
-  text-shadow: 0 1px 2px var(--black-alpha-25);
+  text-shadow: none;
   line-height: 1;
 }
 
@@ -160,10 +162,10 @@
 }
 
 .navLinks .phoneLink:hover {
-  color: var(--text-primary);
-  background: var(--white-alpha-25);
-  border-color: var(--white-alpha-30);
-  text-shadow: 0 1px 3px var(--black-alpha-25);
+  color: var(--text-inverse);
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  text-shadow: none;
 }
 
 .navLinks .phoneLink:focus-visible {

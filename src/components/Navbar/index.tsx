@@ -77,6 +77,7 @@ const Navbar = () => {
                 height: "3rem",
                 width: "auto",
                 transition: "transform 0.3s ease-in-out",
+                filter: "invert(1) brightness(0)",
               }}
               onMouseEnter={(e) => {}}
               onMouseLeave={(e) => {}}
@@ -89,7 +90,7 @@ const Navbar = () => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
-              color="white"
+              color="#1a1a1a"
               size={20}
               label="Toggle navigation menu"
             />

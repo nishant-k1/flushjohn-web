@@ -103,7 +103,7 @@
 }
 
 .blogContent code {
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   color: var(--text-primary);
   padding: 2px 6px;
   border-radius: 0;
@@ -111,12 +111,12 @@
 }
 
 .blogContent pre {
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card);
   color: var(--text-primary);
   padding: 1rem;
   border-radius: 0;
   overflow-x: auto;
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
 }
 
 .blogContent blockquote {
@@ -149,8 +149,8 @@
 }
 
 .relatedPostCard {
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   overflow: hidden;
   text-decoration: none;
@@ -164,7 +164,7 @@
   transform: translateY(-4px);
   box-shadow: 0 8px 24px var(--black-alpha-30);
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .relatedPostImage {

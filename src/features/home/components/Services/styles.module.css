@@ -1,6 +1,6 @@
 .servicesSection {
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   position: relative;
 }
 
@@ -47,12 +47,9 @@
 }
 
 .serviceCard {
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: none;
   padding: 2rem 1.5rem;
   border-radius: 0; /* No rounded borders */
   box-shadow:
@@ -208,7 +205,7 @@
     var(--primary) 0%,
     var(--primary-dark) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 1px solid var(--primary);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 0; /* No rounded borders */
@@ -227,7 +224,7 @@
     var(--primary-light) 0%,
     var(--primary) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary-lg);
   border-color: var(--primary-light);
 }
@@ -238,7 +235,7 @@
     var(--primary-dark) 0%,
     var(--primary) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: translateY(0);
 }
 
