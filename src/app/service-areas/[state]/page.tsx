@@ -4,7 +4,7 @@ import StateHubPage from "@/features/service-areas/components/StateHubPage";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
-const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
+// const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
 import {
   statesData,
   getStateCoordinates,
@@ -130,7 +130,7 @@ const StatePage = async ({ params }: PageProps) => {
     "@type": "Organization",
     "@id": `${websiteURL}#organization`,
     name: "FlushJohn",
-    legalName: legalName,
+    // legalName: legalName,
     url: websiteURL,
     logo: {
       "@type": "ImageObject",

@@ -12,7 +12,7 @@ const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 const contact_email = process.env.NEXT_PUBLIC_FLUSH_JOHN_EMAIL_ID!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
-const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
+// const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
 
 interface EnhancedStructuredDataProps {
   pageType?: "homepage" | "city" | "product" | "blog" | "faq" | "contact";
@@ -48,7 +48,7 @@ export default function EnhancedStructuredData({
     "@type": "Organization",
     "@id": `${websiteURL}#organization`,
     name: "FlushJohn",
-    legalName: legalName,
+    // legalName: legalName,
     url: websiteURL,
     logo: {
       "@type": "ImageObject",

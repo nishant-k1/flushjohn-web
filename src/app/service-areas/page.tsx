@@ -4,7 +4,7 @@ import ServiceAreasPage from "@/features/service-areas/components/ServiceAreasPa
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
-const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
+// const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
 
 export const metadata: Metadata = {
   title: "Service Areas | Porta Potty Rentals Nationwide | FlushJohn",
@@ -134,7 +134,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   "@id": `${websiteURL}#organization`,
   name: "FlushJohn",
-  legalName: legalName,
+  // legalName: legalName,
   url: websiteURL,
   logo: {
     "@type": "ImageObject",
