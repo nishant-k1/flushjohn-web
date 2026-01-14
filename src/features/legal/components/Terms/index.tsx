@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+const legalName = process.env.NEXT_PUBLIC_FLUSH_JOHN_LEGAL_NAME!;
+
 const Terms = () => {
   return (
     <React.Fragment>
@@ -321,11 +323,11 @@ const Terms = () => {
               <p>
                 Service and its original content (excluding Content provided by
                 users), features and functionality are and will remain the
-                exclusive property of Flush John LLC and its licensors. Service
+                exclusive property of {legalName} and its licensors. Service
                 is protected by copyright, trademark, and other laws of and
                 foreign countries. Our trademarks may not be used in connection
                 with any product or service without the prior written consent of
-                Flush John LLC.
+                {legalName}.
               </p>
             </div>
 
@@ -428,7 +430,7 @@ const Terms = () => {
               <h3>Links To Other Web Sites</h3>
               <p>
                 Our Service may contain links to third party web sites or
-                services that are not owned or controlled by Flush John LLC.
+                services that are not owned or controlled by {legalName}.
               </p>
               <p>
                 We have no control over, and assumes no responsibility for the
