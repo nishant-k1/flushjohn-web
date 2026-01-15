@@ -28,7 +28,6 @@ const GOOGLE_ADS_CONVERSION_QUICK_QUOTE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_
 const GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
 const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
-import { useScrollTrigger } from "@/hooks/useScrollTrigger";
 
 const quickQuoteValidationSchema = Yup.object().shape({
   usageType: Yup.string().required("Required"),
@@ -271,13 +270,6 @@ const QuickQuote = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [hasShownScrollPopup, setHasShownScrollPopup] = useState(false);
 
-  // Scroll trigger to show modal automatically after 30% scroll
-  const { shouldShow: shouldShowOnScroll } = useScrollTrigger({
-    threshold: 30, // Show after 30% scroll
-    delay: 500, // Small delay after reaching threshold
-    once: true, // Only show once per session
-  });
-
   // Form abandonment tracking
   const { trackComplete } = useFormAbandonmentTracking({
     formType: "modal_quick_quote_form",
@@ -286,35 +278,13 @@ const QuickQuote = () => {
 
   const handleClickOutside = (event: MouseEvent) => {};
 
-  // Show modal automatically on scroll trigger (only once)
-  React.useEffect(() => {
-    if (shouldShowOnScroll && !quickQuoteViewStatus && !hasShownScrollPopup) {
-      const timer = setTimeout(() => {
-        setQuickQuoteViewStatus(true);
-        setQuickQuoteTitle("Quick Quote");
-        setHasShownScrollPopup(true);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [shouldShowOnScroll, quickQuoteViewStatus, hasShownScrollPopup, setQuickQuoteViewStatus, setQuickQuoteTitle]);
-
-  React.useEffect(() => {
-    if (clientWidth && clientWidth > 600) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [clientWidth]);
-
-  // Auto-show modal on scroll (30% threshold)
+  // Auto-show modal on scroll (300px threshold - same as StickyCTA)
   React.useEffect(() => {
     if (hasShownScrollPopup || quickQuoteViewStatus) return;
 
     const handleScroll = () => {
-      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
-      if (scrollPercentage >= 30 && !hasShownScrollPopup) {
+      // Show modal after scrolling 300px (same as StickyCTA)
+      if (window.scrollY > 300 && !hasShownScrollPopup) {
         setTimeout(() => {
           setQuickQuoteViewStatus(true);
           setQuickQuoteTitle("Get Your Free Quote!");
@@ -326,6 +296,15 @@ const QuickQuote = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasShownScrollPopup, quickQuoteViewStatus, setQuickQuoteViewStatus, setQuickQuoteTitle]);
+
+  React.useEffect(() => {
+    if (clientWidth && clientWidth > 600) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [clientWidth]);
 
   const handleLeadConversion = () => {
     if (
