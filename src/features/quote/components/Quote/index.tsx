@@ -12,23 +12,17 @@ const Quote = () => {
   return (
     <React.Fragment>
       <Breadcrumbs path={""} />
-      <div className={styles.section}>
-        <AnimationWrapper
-          effect={animations.fadeWithScale}
-          className={styles.container}
-        >
-          {/* Hero Section - H1, Value Props, Trust Signals, Phone */}
-          <QuoteHero />
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <AnimationWrapper effect={animations.fadeWithScale}>
+            <QuoteHero />
+          </AnimationWrapper>
 
-          <div className={styles.quoteWrapper}>
-            <div className={styles.innerSection}>
-              <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
-                <QuoteSinglePage />
-              </AnimationWrapper>
-            </div>
-          </div>
-        </AnimationWrapper>
-      </div>
+          <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
+            <QuoteSinglePage />
+          </AnimationWrapper>
+        </div>
+      </section>
     </React.Fragment>
   );
 };

@@ -16,30 +16,6 @@
   overflow: visible;
 }
 
-.quoteWrapper {
-  display: grid;
-  align-items: start;
-  justify-content: stretch;
-  padding-top: 0;
-  width: 100%;
-}
-
-.innerSection {
-  display: grid;
-  justify-content: stretch;
-  align-items: start;
-  grid-template-columns: minmax(0, 1fr);
-  background: transparent;
-  padding: var(--spacing-md) 0;
-  border-radius: 0;
-  max-width: 100%;
-  min-width: auto;
-  width: 100%;
-  margin: 0 auto; /* Center the form container */
-  box-sizing: border-box;
-  overflow: visible; /* Allow error messages to be visible above the container */
-}
-
 
 /* Animated Progress Bar Container */
 .progressBarContainer {
@@ -48,15 +24,6 @@
   max-width: 500px; /* Match form width for alignment */
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Breadcrumb wrapper - no space needed as breadcrumb is fixed position */
-.breadcrumbWrapper {
-  margin: 0;
-  padding: 0;
-  height: 0;
-  line-height: 0;
-  overflow: hidden;
 }
 
 /* Add top margin when hero is hidden (step 2+) */

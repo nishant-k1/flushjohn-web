@@ -90,34 +90,35 @@ const Contact = () => {
 
   return (
     <React.Fragment>
-      <div className={styles.section}>
-        <Breadcrumbs path={""} />
-        <Formik
-          initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            message: "",
-          }}
-          validationSchema={Yup.object({
-            firstName: Yup.string()
-              .max(15, "Must be 15 characters or less")
-              .required("Required"),
-            lastName: Yup.string()
-              .max(20, "Must be 20 characters or less")
-              .required("Required"),
-            email: Yup.string()
-              .email("Invalid email address")
-              .required("Required"),
-            phone: Yup.string().required("Required"),
-            message: Yup.string()
-              .min(1, "Message cannot be empty")
-              .required("Required"),
-          })}
-          validateOnChange={true}
-          validateOnBlur={true}
-          onSubmit={async (values, { setSubmitting, resetForm }) => {
+      <Breadcrumbs path={""} />
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              phone: "",
+              message: "",
+            }}
+            validationSchema={Yup.object({
+              firstName: Yup.string()
+                .max(15, "Must be 15 characters or less")
+                .required("Required"),
+              lastName: Yup.string()
+                .max(20, "Must be 20 characters or less")
+                .required("Required"),
+              email: Yup.string()
+                .email("Invalid email address")
+                .required("Required"),
+              phone: Yup.string().required("Required"),
+              message: Yup.string()
+                .min(1, "Message cannot be empty")
+                .required("Required"),
+            })}
+            validateOnChange={true}
+            validateOnBlur={true}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
 
             // ✅ OPTIMISTIC: Show success immediately (before API response)
