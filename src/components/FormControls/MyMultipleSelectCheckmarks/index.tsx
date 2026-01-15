@@ -437,7 +437,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
       <div
         className={`${styles.error} ${showError && touched && error ? styles.errorVisible : styles.errorHidden}`}
       >
-        {touched && error ? "Required" : ""}
+        {touched && error ? (typeof error === "string" ? error : "Required") : ""}
       </div>
     </div>
   );

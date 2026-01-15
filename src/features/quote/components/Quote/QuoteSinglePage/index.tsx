@@ -383,13 +383,6 @@ const QuoteSinglePage = () => {
                         required
                       />
                     </div>
-                    <ErrorMessage name="products">
-                      {(msg) => (
-                        <div className={styles.productsError}>
-                          {typeof msg === "string" ? msg : "At least one product is required"}
-                        </div>
-                      )}
-                    </ErrorMessage>
                   </div>
                 </div>
                 <DateInput
