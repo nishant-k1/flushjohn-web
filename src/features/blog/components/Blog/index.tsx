@@ -288,6 +288,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
             <div className={styles.loadingContainer}>
               <div className={styles.loadingSpinner}></div>
               <p>Loading blogs...</p>
+            </div>
           </div>
         </section>
       </>
@@ -706,6 +707,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                 </div>
               </div>
             )}
+          </div>
         </div>
       </section>
     </>

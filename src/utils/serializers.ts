@@ -296,19 +296,19 @@ export const formatContactData = (data: any): any => {
       // Convert quantity to number (handle string inputs from form fields)
       if (product.quantity !== undefined && product.quantity !== null) {
         const quantityNum = Number(product.quantity);
-        normalizedProduct.quantity = isNaN(quantityNum) ? 0 : quantityNum;
+        formattedProduct.quantity = isNaN(quantityNum) ? 0 : quantityNum;
       }
       
       // Convert rate to number
       if (product.rate !== undefined && product.rate !== null) {
         const rateNum = Number(product.rate);
-        normalizedProduct.rate = isNaN(rateNum) ? 0 : rateNum;
+        formattedProduct.rate = isNaN(rateNum) ? 0 : rateNum;
       }
       
       // Convert amount to number
       if (product.amount !== undefined && product.amount !== null) {
         const amountNum = Number(product.amount);
-        normalizedProduct.amount = isNaN(amountNum) ? 0 : amountNum;
+        formattedProduct.amount = isNaN(amountNum) ? 0 : amountNum;
       }
       
       return formattedProduct;

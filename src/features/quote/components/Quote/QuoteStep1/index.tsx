@@ -137,10 +137,10 @@ const QuoteStep1 = () => {
               }}
             </ErrorMessage>
           </div>
-          {products.map((item, index) => (
+          {products.map((item: any, index) => (
             <NumberField
-              key={item.id || index}
-              label={item.item}
+              key={item?.id || index}
+              label={item?.item || ""}
               name={`products[${index}].quantity`}
               mask="9999"
               type="tel"

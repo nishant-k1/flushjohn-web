@@ -476,7 +476,8 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
       </>
     );
   };
