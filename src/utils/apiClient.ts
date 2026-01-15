@@ -8,8 +8,7 @@
  */
 
 import {
-  serializeDataForApi,
-  deserializeDataFromApi,
+  formatDataForApi,
 } from "./dataTransformers";
 
 /**
@@ -18,8 +17,7 @@ import {
 interface ApiClientConfig extends RequestInit {
   url: string;
   data?: any;
-  serialize?: boolean; // Default: true
-  deserialize?: boolean; // Default: true
+  serialize?: boolean; // Default: true (formatting enabled)
 }
 
 /**
@@ -39,15 +37,14 @@ export const apiClient = async <T = any>(
     url,
     data,
     serialize = true,
-    deserialize = true,
     headers = {},
     ...fetchOptions
   } = config;
 
-  // Serialize request data (if enabled)
-  let serializedData = data;
+  // Format request data (if enabled)
+  let formattedData = data;
   if (serialize && data) {
-    serializedData = serializeDataForApi(url, data);
+    formattedData = formatDataForApi(url, data);
   }
 
   // Prepare fetch options
@@ -61,12 +58,12 @@ export const apiClient = async <T = any>(
 
   // Add body if data is provided
   if (
-    serializedData &&
+    formattedData &&
     (fetchConfig.method === "POST" ||
       fetchConfig.method === "PUT" ||
       fetchConfig.method === "PATCH")
   ) {
-    fetchConfig.body = JSON.stringify(serializedData);
+    fetchConfig.body = JSON.stringify(formattedData);
   }
 
   // Make the request
@@ -118,19 +115,8 @@ export const apiClient = async <T = any>(
   // Parse response
   const responseData = await response.json().catch(() => null);
 
-  // Deserialize response data (if enabled)
-  if (deserialize && responseData) {
-    // Handle paginated responses
-    if (responseData.data && typeof responseData.data === "object") {
-      return {
-        ...responseData,
-        data: deserializeDataFromApi(url, responseData.data),
-      } as T;
-    }
-
-    // Handle direct data responses
-    return deserializeDataFromApi(url, responseData) as T;
-  }
+  // Response data is used as-is (no deserialization needed)
+  // DateInput component handles date parsing directly when needed
 
   return responseData as T;
 };
