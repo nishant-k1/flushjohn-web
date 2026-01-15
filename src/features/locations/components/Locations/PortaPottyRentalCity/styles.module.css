@@ -33,7 +33,7 @@
 .cityWrapper h3,
 .cityWrapper h4 {
   color: var(--text-primary);
-  text-shadow: 0 1px 3px var(--black-alpha-15);
+  text-shadow: none;
 }
 
 .cityWrapper p {

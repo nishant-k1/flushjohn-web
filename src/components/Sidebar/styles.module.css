@@ -57,7 +57,7 @@
 }
 .sidebar a:hover {
   color: var(--text-primary);
-  text-shadow: 0 0 6px var(--white-alpha-30);
+  text-shadow: none;
   transition: var(--transition-base);
 }
 

@@ -277,7 +277,7 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
   box-shadow: 0 1px 4px var(--black-alpha-20);
 }
 
@@ -291,7 +291,7 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
 }
 
 .button * {
@@ -314,7 +314,7 @@
   font-size: medium;
   font-weight: 900;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 .notSubmitted {
