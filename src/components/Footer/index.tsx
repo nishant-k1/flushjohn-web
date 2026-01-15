@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Locations } from "@/features/locations/components";
 import { footerLinks } from "./data";
 import { home_data } from "@/features/home/constants";
+import Logo from "@/components/Logo";
 const { locations } = home_data;
 
 var date = new Date();
@@ -30,21 +31,7 @@ const Footer = () => {
             {/* logo */}
             <li className={styles.footerLogo}>
               <Link href="/">
-                <Image
-                  src={`${s3assets}/logo_white.svg`}
-                  alt="brand-logo"
-                  height={501}
-                  width={1039}
-                  priority={true}
-                  placeholder="empty"
-                  style={{
-                    height: "auto",
-                    width: "8rem",
-                    padding: "0",
-                    margin: "0",
-                    filter: "none",
-                  }}
-                />
+                <Logo height="2.5rem" />
               </Link>
             </li>
             {/* social */}

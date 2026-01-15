@@ -16,13 +16,13 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
 }
 
 .indicatorButton:hover {
-  background: var(--white-alpha-10);
+  background: var(--primary-alpha-10);
 }
 
 .indicatorButton:focus-visible {
@@ -31,9 +31,9 @@
 }
 
 .circle {
-  height: 0.5rem;
-  width: 0.5rem;
-  border: 2px solid var(--white-alpha-30);
+  height: 0.75rem;
+  width: 0.75rem;
+  border: 2.5px solid var(--border-light);
   background-color: transparent;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -41,24 +41,29 @@
 }
 
 .active {
-  background-color: var(--text-primary);
-  border-color: var(--text-primary);
+  background-color: var(--primary);
+  border-color: var(--primary);
   box-shadow:
-    0 0 8px var(--white-alpha-30),
-    0 0 12px var(--white-alpha-30);
+    0 0 8px var(--primary-alpha-30),
+    0 0 12px var(--primary-alpha-30);
 }
 
 .inactive {
   background-color: transparent;
-  border-color: var(--white-alpha-30);
+  border-color: var(--text-primary);
 }
 
 .indicatorButton:hover .circle {
-  border-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.indicatorButton:hover .inactive {
+  border-color: var(--text-secondary);
+  background-color: rgba(26, 26, 26, 0.1);
 }
 
 .indicatorButton:hover .active {
   box-shadow:
-    0 0 10px var(--white-alpha-30),
-    0 0 16px var(--white-alpha-30);
+    0 0 10px var(--primary-alpha-40),
+    0 0 16px var(--primary-alpha-40);
 }

@@ -96,31 +96,52 @@
 .footerLogo {
   padding: 0;
   margin: 0;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   z-index: 1;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .footerLogo a {
   display: inline-block;
   transition: transform var(--transition-base);
+  max-width: 100%;
+  width: 100%;
 }
 
 .footerLogo a:hover {
 }
 
-.footerLogo img {
+.footerLogo :global(.logoContainer) {
   padding: 0;
   margin: 0;
-  width: 7rem;
-  height: auto;
   opacity: 0.95;
   transition: opacity var(--transition-base);
+  max-width: 100%;
+  width: 100%;
 }
 
-.footerLogo:hover img {
+.footerLogo :global(.iconWrapper) {
+  max-width: 40%;
+  flex-shrink: 1;
+}
+
+.footerLogo :global(.textContainer) {
+  flex-shrink: 1;
+  max-width: 60%;
+}
+
+.footerLogo :global(.flushText),
+.footerLogo :global(.johnText) {
+  font-size: 0.875rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.footerLogo:hover :global(.logoContainer) {
   opacity: 1;
 }
 
@@ -339,6 +360,11 @@
 
   .footerLogo {
     margin-bottom: 0;
+  }
+
+  .footerLogo :global(.flushText),
+  .footerLogo :global(.johnText) {
+    font-size: 1rem !important;
   }
 
   .container :global(.locations) {

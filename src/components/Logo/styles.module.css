@@ -1,0 +1,90 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logoContainer:hover {
+  transform: scale(1.02);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  display: block;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.flushText {
+  color: currentColor;
+  font-size: 1.5rem;
+  font-weight: 700; /* Bold for strength and reliability - industry standard */
+  /* Based on research: Most porta potty companies use bold sans-serif fonts
+     Options: Oswald (condensed, strong), Roboto (readable), Montserrat (versatile) */
+  font-family:
+    "Oswald",
+    "Roboto",
+    "Montserrat",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Arial Black",
+    sans-serif;
+  letter-spacing: 0.08em; /* Slightly wider for industrial/construction feel */
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase; /* Industry standard - strong, professional presence */
+}
+
+.johnText {
+  color: #4caf50; /* Primary green color */
+  font-size: 1.5rem;
+  font-weight: 700; /* Bold for strength and reliability - industry standard */
+  /* Based on research: Most porta potty companies use bold sans-serif fonts
+     Options: Oswald (condensed, strong), Roboto (readable), Montserrat (versatile) */
+  font-family:
+    "Oswald",
+    "Roboto",
+    "Montserrat",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Arial Black",
+    sans-serif;
+  letter-spacing: 0.08em; /* Slightly wider for industrial/construction feel */
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase; /* Industry standard - strong, professional presence */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flushText,
+  .johnText {
+    font-size: 1rem;
+  }
+
+  .logoContainer {
+    gap: 0.5rem;
+  }
+}

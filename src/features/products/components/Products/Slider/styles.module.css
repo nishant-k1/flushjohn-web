@@ -76,10 +76,10 @@
 .navButton {
   height: 2.5rem;
   width: 2.5rem;
-  color: var(--text-primary);
+  color: var(--text-dark);
   padding: 0;
   margin: 0;
-  background: var(--white-alpha-10);
+  background: var(--bg-white);
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
   cursor: pointer;
@@ -88,7 +88,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  border: 1px solid var(--white-alpha-20);
+  border: 1px solid var(--border-light);
   flex-shrink: 0;
   line-height: 0;
   box-shadow: 0 2px 8px var(--black-alpha-15);
@@ -101,12 +101,18 @@
   margin: 0;
   padding: 0;
   transition: transform 0.2s ease;
+  color: var(--text-dark);
 }
 
 .navButton:hover {
-  background: var(--white-alpha-20);
-  border-color: var(--primary-light);
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--text-primary);
   box-shadow: 0 4px 12px var(--black-alpha-20);
+}
+
+.navButton:hover svg {
+  color: var(--text-primary);
 }
 
 .navButton:hover svg {

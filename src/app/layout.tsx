@@ -69,10 +69,11 @@ export const metadata = {
   siteName: "FlushJohn",
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon_io/favicon.ico", sizes: "any" },
+      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/favicon_io/apple-touch-icon.png",
   },
   alternates: {
     canonical: websiteURL,
@@ -297,6 +298,9 @@ export default function RootLayout({
           type="font/ttf"
           crossOrigin="anonymous"
         />
+
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/favicon_io/site.webmanifest" />
 
         {/* DNS prefetch for third-party domains - lower priority */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

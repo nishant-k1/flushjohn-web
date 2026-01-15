@@ -21,7 +21,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                   <p>{item.body}</p>
                 </div>
                 <div className={styles.iconContainer}>
-                  {item.image}
+                    {item.image}
                 </div>
               </div>
             ))}

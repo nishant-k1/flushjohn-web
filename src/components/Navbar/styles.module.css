@@ -57,6 +57,13 @@
   border-radius: var(--radius-sm);
 }
 
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 .hamburger {
   color: var(--text-primary);
   transition: color var(--transition-base);
