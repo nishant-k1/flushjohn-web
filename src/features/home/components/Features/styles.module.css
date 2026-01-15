@@ -40,16 +40,13 @@
   justify-content: space-between; /* Distributes content evenly */
   padding: 2.5rem 2rem;
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
   overflow: hidden;
@@ -78,9 +75,7 @@
 }
 
 .wrapper:hover {
-  box-shadow:
-    0 12px 40px var(--black-alpha-20),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -110,11 +105,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 0;
-  box-shadow: 0 4px 16px var(--black-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
+    transform var(--transition-base);
   margin-bottom: var(--spacing-md);
   flex-shrink: 0; /* Prevents icon from shrinking */
   position: relative;
@@ -123,7 +117,7 @@
 
 .wrapper:hover .iconContainer {
   transform: rotate(3deg);
-  box-shadow: 0 6px 20px var(--black-alpha-25);
+  box-shadow: none;
 }
 
 .iconContainer svg {

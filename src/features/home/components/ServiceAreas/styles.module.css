@@ -50,24 +50,19 @@
 
 .stateCard {
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   padding: var(--spacing-lg);
   border-radius: 0;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base);
 }
 
 .stateCard:hover {
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
 }
 

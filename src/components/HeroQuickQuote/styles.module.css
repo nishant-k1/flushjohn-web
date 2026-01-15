@@ -9,9 +9,7 @@
   backdrop-filter: none;
   border: 1px solid var(--border-light);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   overflow: hidden;
   position: relative;
 }

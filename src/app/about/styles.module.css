@@ -171,13 +171,11 @@
 
 .benefit {
   padding: var(--spacing-xl);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   border-radius: var(--radius-md);
   border: 1px solid var(--white-alpha-20);
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .benefit h3 {
@@ -255,7 +253,7 @@
 }
 
 .primaryButton:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: none;
   background: var(--text-primary);
   color: var(--bg-primary);
 }

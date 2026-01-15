@@ -219,7 +219,7 @@
 }
 
 .primaryButton:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: none;
 }
 
 .secondaryButton {

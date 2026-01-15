@@ -33,17 +33,14 @@
 
 .statItem {
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-primary);
   backdrop-filter: none;
   padding: 2rem 1.5rem;
   border-radius: 0;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
   display: flex;
@@ -52,9 +49,7 @@
 }
 
 .statItem:hover {
-  box-shadow:
-    0 8px 28px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -93,13 +88,11 @@
   justify-content: center;
   gap: var(--spacing-xs);
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-primary);
   backdrop-filter: none;
   padding: 1rem 1.25rem;
   border-radius: 0;
-  box-shadow:
-    0 4px 16px var(--black-alpha-10),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   font-weight: 300;
   color: var(--text-primary);
@@ -107,15 +100,12 @@
   letter-spacing: 0.01em;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
 }
 
 .badge:hover {
-  box-shadow:
-    0 6px 20px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,

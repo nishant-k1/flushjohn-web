@@ -155,7 +155,7 @@
 }
 
 .relatedPostCard {
-  background-color: var(--bg-section-primary) !important;
+  background-color: var(--bg-section-card) !important;
   border: 1px solid var(--border-light);
   border-radius: 0;
   overflow: hidden;
@@ -168,7 +168,7 @@
 
 .relatedPostCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px var(--black-alpha-30);
+  box-shadow: none;
   border-color: var(--primary);
   background-color: var(--bg-section-alternate);
 }

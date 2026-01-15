@@ -23,19 +23,13 @@
   grid-gap: 2rem;
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-08) 0%,
-    var(--white-alpha-05) 100%
-  );
+  background: var(--bg-section-card);
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
   padding: 3rem 2.5rem;
   border: 1px solid var(--white-alpha-15);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-15);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
 }

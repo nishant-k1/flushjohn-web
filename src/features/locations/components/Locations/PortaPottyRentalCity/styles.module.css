@@ -275,12 +275,12 @@
   padding: 2rem;
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  background-color: var(--bg-section-primary) !important;
+  background-color: var(--bg-section-card) !important;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: none;
 }
 
 .card h3 {
@@ -302,20 +302,20 @@
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px var(--black-alpha-30);
+  box-shadow: none;
   border-color: var(--primary);
   background-color: var(--bg-section-alternate);
 }
 
 .testimonialCard {
   padding: 2rem;
-  background-color: var(--bg-section-primary) !important;
+  background-color: var(--bg-section-card) !important;
   border: 1px solid var(--border-light);
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: none;
 }
 
 .testimonialCard p {
@@ -329,7 +329,7 @@
 }
 
 .testimonialCard:hover {
-  box-shadow: 0 8px 24px var(--black-alpha-12);
+  box-shadow: none;
 }
 
 .testimonialCard p:first-child {
@@ -355,13 +355,11 @@
   padding: 1.5rem;
   border: 1px solid var(--white-alpha-20);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .serviceCard h3 {
@@ -377,9 +375,7 @@
 }
 
 .serviceCard:hover {
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: rgba(255, 255, 255, 0.98);
 }
@@ -391,20 +387,16 @@
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .cityCard:hover {
   background: rgba(255, 255, 255, 0.98);
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   text-decoration: none;
   border-color: var(--white-alpha-30);
 }
@@ -453,23 +445,19 @@
   text-align: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   border-radius: 8px;
   border: 1px solid var(--white-alpha-20);
   transition: all var(--transition-base, 0.3s);
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .featureItem:hover {
   background: rgba(255, 255, 255, 0.98);
   transform: translateY(-4px);
   border-color: var(--white-alpha-30);
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
 }
 
 .featureContent h3 {
@@ -518,17 +506,17 @@
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--bg-section-primary) !important;
+  background-color: var(--bg-section-card) !important;
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
-  box-shadow: 0 2px 8px var(--black-alpha-20);
+  box-shadow: none;
 }
 
 .servicesList li:hover {
   background-color: var(--bg-section-alternate);
   transform: translateX(4px);
-  box-shadow: 0 4px 12px var(--black-alpha-30);
+  box-shadow: none;
 }
 
 .servicesList li strong {
@@ -560,7 +548,7 @@
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px var(--black-alpha-20);
+  box-shadow: none;
 }
 
 .finalCTA::before {
@@ -606,13 +594,13 @@
   font-size: 1.1rem;
   transition: all var(--transition-base, 0.3s);
   display: inline-block;
-  box-shadow: 0 4px 12px var(--black-alpha-20);
+  box-shadow: none;
   border: 2px solid white;
 }
 
 .finalCTAButton:hover {
   background: var(--bg-primary);
-  box-shadow: 0 6px 20px var(--black-alpha-30);
+  box-shadow: none;
   text-decoration: none !important;
   color: var(--text-primary) !important;
   border-color: var(--bg-primary);
@@ -622,13 +610,11 @@
 .exploreSection {
   margin-top: 4rem;
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   border-radius: 12px;
   border: 1px solid var(--white-alpha-20);
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .exploreLinks a {
@@ -667,7 +653,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-primary);
   backdrop-filter: none;
   border-radius: 8px;
   border: 1px solid var(--white-alpha-20);
@@ -675,17 +661,15 @@
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 500;
-  box-shadow: 0 2px 8px var(--black-alpha-10);
+  box-shadow: none;
 }
 
 .exploreLinks a:hover {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--bg-section-card);
   transform: translateX(4px);
   border-color: var(--white-alpha-30);
   text-decoration: none;
-  box-shadow:
-    0 6px 20px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   color: var(--text-primary);
 }
 

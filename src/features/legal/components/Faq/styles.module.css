@@ -43,32 +43,23 @@
 }
 
 .faqItem {
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
   padding: 1.5rem 2rem;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  background: var(--bg-section-card);
+  box-shadow: none;
   margin-bottom: 1.5rem;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
 }
 
 .faqItem:hover {
   transform: translateY(-2px);
-  box-shadow:
-    0 8px 28px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -174,18 +165,12 @@
 .ctaBox {
   margin-top: 3rem;
   padding: 2.5rem 2rem;
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
+  background: var(--bg-section-card);
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
   border: 1px solid var(--white-alpha-20);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   text-align: center;
 }
 

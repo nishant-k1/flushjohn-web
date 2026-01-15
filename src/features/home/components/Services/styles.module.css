@@ -49,20 +49,17 @@
 
 .serviceCard {
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   padding: 2rem 1.5rem;
   border-radius: 0; /* No rounded borders */
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     background var(--transition-base),
     border-color var(--transition-base);
   border: 1px solid var(--white-alpha-20);
@@ -93,9 +90,7 @@
 }
 
 .serviceCard:hover {
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -105,12 +100,10 @@
 }
 
 .imageCard {
-  background: var(--white-alpha-10);
+  background: var(--bg-section-card);
   padding: 0;
   border-radius: 0;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -119,14 +112,11 @@
   position: relative;
   min-height: 100%;
   transition:
-    box-shadow var(--transition-base),
     border-color var(--transition-base);
 }
 
 .imageCard:hover {
-  box-shadow:
-    0 10px 32px var(--black-alpha-18),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
 }
 

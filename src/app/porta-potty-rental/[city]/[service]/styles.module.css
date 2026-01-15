@@ -64,14 +64,12 @@
 }
 
 .features {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-card);
   backdrop-filter: none;
   padding: 2rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--white-alpha-20);
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
 }
 
 .features h2 {
