@@ -87,31 +87,7 @@
 /* Mobile Optimizations */
 @media screen and (max-width: 599px) {
   .hero {
-    padding: 0;
-    margin-bottom: 0;
-  }
-
-  .h1 {
-    margin-bottom: var(--spacing-sm);
-    text-align: center;
-  }
-
-  .subheading {
-    margin-bottom: var(--spacing-lg);
-    padding: 0;
-    text-align: center;
-  }
-
-  .phoneSection {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .phoneLink {
-    justify-content: center;
-  }
-
-  .trustBadge {
-    justify-content: center;
+    display: none;
   }
 }
 

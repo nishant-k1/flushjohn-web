@@ -23,55 +23,43 @@
 .quickQuoteBtn {
   position: fixed;
   left: 20px;
-  bottom: 92px;
-  height: 4rem;
-  width: 4rem;
-  background-color: var(--primary);
-  border-radius: 50%;
-  border: 2px solid var(--primary);
+  bottom: 20px;
+  background: var(--primary);
   color: var(--text-inverse);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  outline: 0;
-  padding: 6px 10px;
-  text-align: center;
-  text-decoration: none;
-  transition: all var(--transition-base);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 24px var(--primary-alpha-40);
+  z-index: 9998;
+  transition: all 0.3s ease;
+  white-space: normal;
+  animation: pulse 2s infinite;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: var(--black-alpha-50) 0px 22px 70px 4px;
-  z-index: 9998;
   text-shadow: none;
-  letter-spacing: 0.05em;
-}
-
-.quickQuoteBtn:before {
-  top: 0;
-  left: 0;
-  width: 92%;
-  height: 92%;
-  border-radius: 50%;
-  background-image: linear-gradient(var(--text-inverse) 0, transparent 100%);
-  content: "";
-  opacity: 0.5;
-  position: absolute;
-  transition: all 0.3s;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  max-width: 150px;
 }
 
 .quickQuoteBtn:hover {
-  background-color: var(--primary-light);
-  border-color: var(--primary-light);
-  color: var(--text-inverse);
-  box-shadow: var(--black-alpha-60) 0px 22px 70px 4px;
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--primary-alpha-50);
 }
 
 .quickQuoteBtn:active {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: var(--text-inverse);
+  transform: translateY(0);
+  background: var(--primary-dark);
 }
 
 .quickQuoteBtn:focus-visible {
@@ -79,60 +67,53 @@
   outline-offset: 2px;
 }
 
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 24px var(--primary-alpha-40);
+  }
+  50% {
+    box-shadow: 0 8px 24px var(--primary-alpha-60), 0 0 0 8px var(--primary-alpha-10);
+  }
+}
+
 .phoneBtn {
   position: fixed;
-  left: 20px;
+  right: 20px;
   bottom: 20px;
-  height: 4rem;
-  width: 4rem;
-  background-color: var(--primary);
+  height: 56px;
+  width: 56px;
+  background: var(--primary);
   border-radius: 50%;
-  border: 2px solid var(--primary);
+  border: none;
   color: var(--text-inverse);
   cursor: pointer;
   display: flex;
-  font-size: 12px;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  outline: 0;
   text-decoration: none;
-  transition: all var(--transition-base);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: var(--black-alpha-40) 0px 8px 20px;
+  box-shadow: 0 8px 24px var(--primary-alpha-40);
   z-index: 9998;
 }
 
 .icon {
-  font-size: xx-large;
-}
-.phoneBtn:before {
-  top: 0;
-  left: 0;
-  width: 92%;
-  height: 92%;
-  border-radius: 50%;
-  background-color: initial;
-  background-image: linear-gradient(var(--text-inverse) 0, transparent 100%);
-  content: "";
-  opacity: 0.5;
-  position: absolute;
-  transition: all 0.3s;
+  flex-shrink: 0;
 }
 
 .phoneBtn:hover {
-  background-color: var(--primary-light);
-  border-color: var(--primary-light);
-  color: var(--text-inverse);
-  box-shadow: var(--black-alpha-50) 0px 8px 20px;
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--primary-alpha-50);
 }
 
 .phoneBtn:active {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  color: var(--text-inverse);
+  transform: translateY(0);
+  background: var(--primary-dark);
 }
 
 .phoneBtn:focus-visible {
@@ -142,7 +123,7 @@
 
 .callout {
   position: fixed;
-  left: 100px;
+  right: 100px;
   bottom: 20px;
   background: var(--callout-gradient-end);
   color: var(--text-inverse);
@@ -162,26 +143,26 @@
 .callout::after {
   content: "";
   position: absolute;
-  left: -10px;
+  right: -10px;
   bottom: 16px;
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid var(--primary-light);
+  border-left: 10px solid var(--primary-light);
   z-index: 10000;
 }
 
 .callout::before {
   content: "";
   position: absolute;
-  left: -8px;
+  right: -8px;
   bottom: 18px;
   width: 0;
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-right: 8px solid var(--callout-gradient-start);
+  border-left: 8px solid var(--callout-gradient-start);
   z-index: 10001;
 }
 
@@ -218,7 +199,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
@@ -227,8 +208,26 @@
 }
 
 @media (max-width: 768px) {
+  .quickQuoteBtn {
+    left: 15px;
+    bottom: 20px;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  .phoneBtn {
+    right: 15px;
+    bottom: 20px;
+    width: 56px;
+    height: 56px;
+  }
+
   .callout {
-    left: 90px;
+    right: 90px;
     bottom: 20px;
     max-width: 140px;
     padding: 8px 12px;
@@ -236,20 +235,34 @@
   }
 
   .callout::after {
-    left: -8px;
+    right: -8px;
+    left: auto;
     bottom: 16px;
-    border-right-width: 8px;
+    border-left-width: 8px;
     border-top-width: 8px;
     border-bottom-width: 8px;
-    border-left-width: 0;
+    border-right-width: 0;
   }
 
   .callout::before {
-    left: -7px;
+    right: -7px;
+    left: auto;
     bottom: 18px;
-    border-right-width: 7px;
+    border-left-width: 7px;
     border-top-width: 7px;
     border-bottom-width: 7px;
-    border-left-width: 0;
+    border-right-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .quickQuoteBtn {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .phoneBtn {
+    right: 10px;
+    bottom: 10px;
   }
 }

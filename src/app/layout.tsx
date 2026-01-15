@@ -5,7 +5,6 @@ import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import ScrollToTop from "@/components/ScrollToTop";
 import dynamic from "next/dynamic";
-import ClientOnlyLeadCapture from "@/components/ClientOnlyLeadCapture";
 
 // Critical above-the-fold components - SSR enabled
 const Navbar = dynamic(() => import("@/components/Navbar"), {
@@ -389,7 +388,6 @@ export default function RootLayout({
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />
-                  <ClientOnlyLeadCapture />
                 </Layout>
               </QuoteContextProvider>
             </QuickQuoteContextProvider>
