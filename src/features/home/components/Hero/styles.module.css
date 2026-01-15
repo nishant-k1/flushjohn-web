@@ -172,15 +172,15 @@
   align-items: center;
   gap: var(--spacing-sm);
   /* Solid background - no backdrop-filter */
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 0;
   font-size: 0.875rem;
   font-weight: 500;
   color: #ffffff;
   margin-bottom: var(--spacing-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.01em;
   min-height: 2rem;
   line-height: 1.5;

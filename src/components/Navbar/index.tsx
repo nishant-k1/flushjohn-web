@@ -77,7 +77,6 @@ const Navbar = () => {
                 height: "3rem",
                 width: "auto",
                 transition: "transform 0.3s ease-in-out",
-                filter: "invert(1) brightness(0)",
               }}
               onMouseEnter={(e) => {}}
               onMouseLeave={(e) => {}}
