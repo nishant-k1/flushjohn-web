@@ -1,6 +1,9 @@
 .page {
+  background-color: var(--bg-section-primary) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-section-alternate-blue);
   position: relative;
   min-height: 100vh;
 }
@@ -9,9 +12,10 @@
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg);
   position: relative;
   z-index: 1;
+  padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .header {

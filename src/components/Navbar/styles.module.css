@@ -5,14 +5,14 @@
   top: 0;
   width: 100%;
   transition: all var(--transition-base);
-  padding: var(--spacing-sm) 0 0;
+  padding: var(--spacing-sm) 0;
   z-index: var(--z-sticky);
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
 }
 
 .navbar_home {
-  background-color: var(--bg-dark-alpha);
+  background-color: var(--bg-primary);
   position: fixed;
   top: 0;
   width: 100%;
@@ -24,7 +24,7 @@
 }
 
 .scrolled {
-  background-color: var(--bg-dark-alpha);
+  background-color: var(--bg-primary);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }

@@ -5,17 +5,25 @@
   width: 100%;
   overflow: hidden;
   padding: 2rem 0;
+  margin: 0;
+  border: none;
+  outline: none;
 }
 
 .slidesContainer {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  width: 100%;
+  border: none;
+  outline: none;
 }
 
 .slide {
   flex-shrink: 0;
   width: 100%;
+  border: none;
+  outline: none;
 }
 
 /* Arrows */
@@ -27,10 +35,11 @@
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
   color: var(--text-primary);
-  border: 1px solid var(--white-alpha-30);
+  border: none;
+  outline: none;
   width: 48px;
   height: 48px;
-  border-radius: 0;
+  border-radius: 50%;
   font-size: 28px;
   font-weight: 300;
   cursor: pointer;
@@ -44,7 +53,6 @@
 
 .arrow:hover {
   background: var(--white-alpha-25);
-  border-color: var(--primary-light);
   transform: translateY(-50%);
   box-shadow: 0 6px 16px var(--black-alpha-15);
 }

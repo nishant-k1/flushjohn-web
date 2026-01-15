@@ -1,16 +1,22 @@
 /* utilities */
-.post {
-  background-color: var(--bg-primary);
+
+.postSection {
+  background-color: var(--bg-section-primary) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .container {
-  margin: 0 auto;
   max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .wrapper {
@@ -103,7 +109,7 @@
 }
 
 .blogContent code {
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   color: var(--text-primary);
   padding: 2px 6px;
   border-radius: 0;
@@ -111,7 +117,7 @@
 }
 
 .blogContent pre {
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   color: var(--text-primary);
   padding: 1rem;
   border-radius: 0;
@@ -149,7 +155,7 @@
 }
 
 .relatedPostCard {
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   border: 1px solid var(--border-light);
   border-radius: 0;
   overflow: hidden;

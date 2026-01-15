@@ -66,7 +66,11 @@ const Navbar = () => {
     >
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Link href="/" aria-label="FlushJohn Home" className={styles.logoLink}>
+          <Link
+            href="/"
+            aria-label="FlushJohn Home"
+            className={styles.logoLink}
+          >
             <Logo height="3rem" />
           </Link>
           <div className={styles.hamburger}>
@@ -83,7 +87,13 @@ const Navbar = () => {
           </div>
           <ul className={styles.navLinks} role="menubar">
             <li role="none">
-              <Link href="/" role="menuitem" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
+              <Link
+                href="/"
+                role="menuitem"
+                aria-current={pathname === "/" ? "page" : undefined}
+              >
+                Home
+              </Link>
             </li>
             <li role="none">
               <Link
@@ -92,7 +102,9 @@ const Navbar = () => {
                   pathname === "/rental-products" ? styles.activeLink : ""
                 }
                 role="menuitem"
-                aria-current={pathname === "/rental-products" ? "page" : undefined}
+                aria-current={
+                  pathname === "/rental-products" ? "page" : undefined
+                }
               >
                 Rental Products
               </Link>

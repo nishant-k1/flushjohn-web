@@ -1,10 +1,35 @@
+/* Breadcrumb section wrapper - fixed position below navbar */
+.breadcrumbSection {
+  width: 100%;
+  position: fixed;
+  top: 54px; /* Height of navbar */
+  left: 0;
+  background-color: var(--bg-breadcrumb) !important;
+  padding: 0;
+  z-index: 99; /* Just below navbar (z-index: var(--z-sticky)) */
+  border-bottom: 1px solid var(--border-light);
+  transition: box-shadow 0.3s ease;
+}
+
+.breadcrumbSection.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbContainer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
 .breadcrumb {
   position: relative;
-  top: 4rem;
+  top: 0;
   left: 0;
   width: fit-content;
+  max-width: 100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .breadcrumb span {
   padding: 0 4px;
@@ -14,24 +39,20 @@
 }
 .breadcrumb a {
   display: inline-flex;
-  padding: 8px 4px;
+  padding: 0 4px;
   color: var(--text-primary);
   text-transform: capitalize;
   align-items: center;
-  font-weight: 500;
-  font-size: 12px;
-  opacity: 0.9;
+  font-weight: 300;
+  font-size: 0.75rem;
+  opacity: 0.8;
   transition: opacity var(--transition-base);
   cursor: pointer;
-  min-height: 32px;
   line-height: 1.5;
 }
 
 .breadcrumb a:hover {
   color: var(--text-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--text-primary);
-  text-decoration-thickness: 2px;
   opacity: 1;
   transition: var(--transition-base);
 }
@@ -55,20 +76,16 @@
     color: var(--text-primary);
     text-transform: capitalize;
     align-items: center;
-    font-weight: 500;
-    font-size: large;
-    opacity: 0.9;
-    padding: 8px 6px;
+    font-weight: 300;
+    font-size: 0.875rem;
+    opacity: 0.8;
+    padding: 0 6px;
     cursor: pointer;
-    min-height: 36px;
     line-height: 1.5;
   }
 
   .breadcrumb a:hover {
     color: var(--text-primary);
-    text-decoration: underline;
-    text-decoration-color: var(--text-primary);
-    text-decoration-thickness: 2px;
     opacity: 1;
   }
 

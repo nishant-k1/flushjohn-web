@@ -134,6 +134,7 @@
   --bg-section-cta-blue: #e1e8f2; /* CTA sections - noticeable blue for emphasis */
   --bg-section-accent: #f0f3f7; /* Accent sections - subtle blue */
   --bg-section-accent-blue: #f0f3f7; /* Accent sections - subtle blue */
+  --bg-breadcrumb: #f0f3f7; /* Breadcrumb sections - reserved unique light blue */
 
   /* Semantic Colors - Matching Siteway Logo */
   /* Success: Green from Siteway logo */

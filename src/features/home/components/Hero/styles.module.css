@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: var(--spacing-md) 0 0;
+  padding: 0;
   overflow: hidden;
   /* Remove contain to prevent text blur */
   contain: none;
@@ -40,7 +40,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-lg);
+  padding: 54px var(--spacing-lg) 0; /* Add top padding to account for fixed navbar */
   position: relative;
   z-index: 1;
 }
@@ -455,7 +455,7 @@
   .container {
     height: fit-content;
     min-height: 100vh;
-    padding: var(--spacing-4xl) var(--spacing-lg);
+    padding: 54px var(--spacing-lg) var(--spacing-4xl); /* Top padding for navbar, bottom padding for spacing */
   }
 
   .heroWrapper {
@@ -529,6 +529,7 @@
   .container {
     height: auto;
     min-height: 100vh;
+    padding: 54px var(--spacing-lg) 0; /* Top padding for navbar */
   }
 
   .heroWrapper {

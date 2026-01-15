@@ -75,10 +75,10 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
 
   if (!title && !content) {
     return (
-      <div>
-        <div className={styles.post}>
+      <>
+        <Breadcrumbs path={`/blog/${slug}`} />
+        <section className={styles.postSection}>
           <div className={styles.container}>
-            <Breadcrumbs path={`/blog/${slug}`} />
             <div className={styles.wrapper}>
               <h1>{actualBlogPost?.title || "No Title"}</h1>
               {imageSource && (
@@ -118,16 +118,16 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </>
     );
   }
 
   return (
-    <div>
-      <div className={styles.post}>
+    <>
+      <Breadcrumbs path={`/blog/${slug}`} />
+      <section className={styles.postSection}>
         <div className={styles.container}>
-          <Breadcrumbs path={`/blog/${slug}`} />
           <div className={styles.wrapper}>
             {/* Enhanced Blog Header */}
             <header style={{ marginBottom: "30px" }}>
@@ -476,10 +476,9 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </section>
+      </>
+    );
+  };
 
 export default BlogPost;

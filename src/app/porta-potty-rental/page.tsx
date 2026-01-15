@@ -10,6 +10,7 @@ import {
   Camera,
 } from "lucide-react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
@@ -151,14 +152,30 @@ const PortaPottyRentalPage = () => {
 
       <div
         style={{
-          maxWidth: "960px",
-          margin: "0 auto",
           padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-card)",
         }}
       >
-        <div style={{ padding: "0 var(--spacing-lg)" }}>
+        <Breadcrumbs path={""} />
+      </div>
+
           {/* Hero Section */}
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+      <section
+        style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-primary)",
+          borderTop: "1px solid var(--border-light)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            padding: "0 var(--spacing-lg)",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ marginBottom: "40px" }}>
             <h1 style={{ color: "var(--text-primary)" }}>
               Porta Potty Rentals by City
             </h1>
@@ -173,8 +190,24 @@ const PortaPottyRentalPage = () => {
               delivery, competitive pricing, and reliable service.
             </p>
           </div>
+        </div>
+      </section>
 
           {/* Cities by State */}
+      <section
+        style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-card)",
+          borderTop: "1px solid var(--border-light)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            padding: "0 var(--spacing-lg)",
+          }}
+        >
           <div style={{ marginBottom: "40px" }}>
             <h2 style={{ color: "var(--text-primary)" }}>Select Your City</h2>
             <p
@@ -267,8 +300,24 @@ const PortaPottyRentalPage = () => {
               );
             })}
           </div>
+        </div>
+      </section>
 
           {/* Why Choose FlushJohn */}
+      <section
+        style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-primary)",
+          borderTop: "1px solid var(--border-light)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            padding: "0 var(--spacing-lg)",
+          }}
+        >
           <div style={{ marginBottom: "40px" }}>
             <h2 style={{ color: "var(--text-primary)" }}>
               Why Choose FlushJohn for City-Wide Porta Potty Rentals?
@@ -386,8 +435,24 @@ const PortaPottyRentalPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
           {/* Popular Services */}
+      <section
+        style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-card)",
+          borderTop: "1px solid var(--border-light)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            padding: "0 var(--spacing-lg)",
+          }}
+        >
           <div style={{ marginBottom: "40px" }}>
             <h2 style={{ color: "var(--text-primary)" }}>
               Popular Porta Potty Services Across All Cities
@@ -465,8 +530,24 @@ const PortaPottyRentalPage = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
           {/* Related Content Section */}
+      <section
+        style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-primary)",
+          borderTop: "1px solid var(--border-light)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            padding: "0 var(--spacing-lg)",
+          }}
+        >
           <div style={{ marginBottom: "40px" }}>
             <h2 style={{ color: "var(--text-primary)" }}>Related Resources</h2>
             <div
@@ -571,18 +652,19 @@ const PortaPottyRentalPage = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
 
           {/* CTA Section */}
-          <div
+      <section
             style={{
+          padding: "var(--spacing-section) 0",
+          background: "var(--bg-section-cta-blue)",
+          borderTop: "1px solid var(--border-light)",
               textAlign: "center",
-              padding: "80px 18px",
-              background: "var(--primary-bg-color)",
-              color: "white",
-              borderRadius: "0",
             }}
           >
-            <div style={{ maxWidth: "960px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 var(--spacing-lg)" }}>
               <h2 style={{ color: "var(--text-primary)" }}>
                 Ready to Rent Porta Potties in Your City?
               </h2>
@@ -635,9 +717,7 @@ const PortaPottyRentalPage = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -8,6 +8,7 @@ import {
   generateStateCTADescription,
 } from "@/features/locations/constants";
 import styles from "./styles.module.css";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
@@ -113,7 +114,8 @@ const StateHubPage = ({ state }: StateProps) => {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      <div className={styles.page}>
+      <Breadcrumbs path={""} />
+      <section className={styles.contentSection}>
         <div className={styles.container}>
           <div className={styles.header}>
             <h1 className={styles.title}>
@@ -241,7 +243,7 @@ const StateHubPage = ({ state }: StateProps) => {
             <Link href="/service-areas">← View All Service Areas</Link>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -1,31 +1,57 @@
+
 .city {
-  background-color: var(--bg-section-alternate-blue);
+  background-color: var(--bg-section-primary) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: var(--spacing-section, 60px) 0;
-  min-height: 100vh;
+  position: relative;
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
-.breadcrumbWrapper {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  padding-top: 0;
+.heroSectionWrapper {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-section-primary) !important;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
 }
 
-.breadcrumbWrapper > * {
-  position: relative !important;
-  top: 0 !important;
+.contentSection {
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
-.cityWrapper {
-  padding-top: 1rem;
+.contentSectionAlt {
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.ctaSectionMid {
+  padding: var(--spacing-section) 0;
+  background: var(--bg-section-cta-blue);
+  text-align: center;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.ctaSection {
+  padding: var(--spacing-section) 0;
+  background: var(--bg-section-cta-blue);
+  text-align: center;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .cityWrapper h1,
@@ -249,7 +275,7 @@
   padding: 2rem;
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
   display: flex;
@@ -283,7 +309,7 @@
 
 .testimonialCard {
   padding: 2rem;
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   border: 1px solid var(--border-light);
   border-radius: 8px;
   border-left: 4px solid var(--primary);
@@ -333,7 +359,9 @@
   backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .serviceCard h3 {
@@ -349,7 +377,9 @@
 }
 
 .serviceCard:hover {
-  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
+  box-shadow:
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
   border-color: var(--white-alpha-30);
   background: rgba(255, 255, 255, 0.98);
 }
@@ -365,12 +395,16 @@
   backdrop-filter: none;
   transition: all var(--transition-base, 0.3s);
   height: 100%;
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .cityCard:hover {
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
+  box-shadow:
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
   text-decoration: none;
   border-color: var(--white-alpha-30);
 }
@@ -414,7 +448,9 @@
 
 .featureItem {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 1rem;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.95);
@@ -422,14 +458,18 @@
   border-radius: 8px;
   border: 1px solid var(--white-alpha-20);
   transition: all var(--transition-base, 0.3s);
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .featureItem:hover {
   background: rgba(255, 255, 255, 0.98);
-  transform: translateX(4px);
+  transform: translateY(-4px);
   border-color: var(--white-alpha-30);
-  box-shadow: 0 10px 32px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-25);
+  box-shadow:
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
 }
 
 .featureContent h3 {
@@ -478,7 +518,7 @@
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--bg-section-card);
+  background-color: var(--bg-section-primary) !important;
   border-radius: 8px;
   border-left: 4px solid var(--primary);
   transition: all var(--transition-base, 0.3s);
@@ -586,7 +626,9 @@
   backdrop-filter: none;
   border-radius: 12px;
   border: 1px solid var(--white-alpha-20);
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .exploreLinks a {
@@ -641,7 +683,9 @@
   transform: translateX(4px);
   border-color: var(--white-alpha-30);
   text-decoration: none;
-  box-shadow: 0 6px 20px var(--black-alpha-18), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 20px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-20);
   color: var(--text-primary);
 }
 

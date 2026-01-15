@@ -1,29 +1,58 @@
+
 .aboutPage {
+  background-color: var(--bg-section-primary) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
-  background: var(--bg-section-alternate-blue);
+  position: relative;
   color: var(--text-primary);
-  min-height: 60vh;
 }
 
 .container {
-  max-width: var(--container-xl);
+  max-width: 960px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
-.hero {
-  text-align: center;
+.heroSection {
   padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--white-alpha-15);
-  margin-bottom: var(--spacing-3xl);
+  background-color: var(--bg-section-primary) !important;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
 }
 
-.hero h1 {
+.heroSection h1 {
   font-size: 2.5rem;
   font-weight: 400;
   margin-bottom: var(--spacing-lg);
   color: var(--text-primary);
   font-family: var(--font-merriweather);
+}
+
+.contentSection {
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.contentSectionAlt {
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.ctaSection {
+  padding: var(--spacing-section) 0;
+  background: var(--bg-section-cta-blue);
+  text-align: center;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .subtitle {
@@ -33,17 +62,24 @@
   margin: 0 auto;
 }
 
-.section {
-  margin-bottom: var(--spacing-3xl);
-}
-
-.section h2 {
+.contentSection h2,
+.contentSectionAlt h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: var(--spacing-xl);
   color: var(--text-primary);
   border-bottom: 1px solid var(--white-alpha-15);
   padding-bottom: var(--spacing-md);
+  font-family: var(--font-merriweather);
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
   font-family: var(--font-merriweather);
 }
 
@@ -139,7 +175,9 @@
   backdrop-filter: none;
   border-radius: var(--radius-md);
   border: 1px solid var(--white-alpha-20);
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .benefit h3 {
@@ -189,30 +227,10 @@
   text-decoration: underline;
 }
 
-.cta {
-  text-align: center;
-  padding: var(--spacing-3xl) var(--spacing-2xl);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border-radius: var(--radius-md);
-  color: var(--text-inverse);
-  margin-top: var(--spacing-4xl);
-  border: 1px solid var(--white-alpha-15);
-}
-
-.cta h2 {
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: var(--spacing-lg);
-  color: var(--text-inverse);
-  border: none;
-  padding: 0;
-  font-family: var(--font-merriweather);
-}
-
-.cta p {
+.ctaSection p {
   font-size: 1.2rem;
   margin-bottom: var(--spacing-2xl);
-  color: var(--text-inverse);
+  color: var(--text-primary);
 }
 
 .ctaButtons {
@@ -266,12 +284,11 @@
     padding: var(--spacing-2xl) 0;
   }
 
-  .hero {
+  .heroSection {
     padding: var(--spacing-2xl) 0;
-    margin-bottom: var(--spacing-2xl);
   }
 
-  .hero h1 {
+  .heroSection h1 {
     font-size: 2rem;
   }
 
@@ -279,11 +296,13 @@
     font-size: 1.1rem;
   }
 
-  .section {
-    margin-bottom: var(--spacing-2xl);
+  .contentSection,
+  .contentSectionAlt {
+    padding: var(--spacing-2xl) 0;
   }
 
-  .section h2 {
+  .contentSection h2,
+  .contentSectionAlt h2 {
     font-size: 1.5rem;
   }
 
@@ -315,4 +334,3 @@
     max-width: 300px;
   }
 }
-

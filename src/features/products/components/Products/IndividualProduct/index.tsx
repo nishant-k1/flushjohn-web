@@ -32,9 +32,10 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
   const { src_1, src_2, alt } = image;
 
   return (
-    <div className={styles.product}>
-      <div className={styles.container}>
+    <>
+      <div className={styles.product}>
         <Breadcrumbs path={`/rental-products/${slug}`} />
+        <div className={styles.container}>
         <div className={styles.wrapper}>
           <h1>{title} - Porta Potty Rentals Nearby</h1>
           <p style={{ color: "var(--text-primary)" }}>
@@ -207,8 +208,9 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
             </Link>
           </p>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

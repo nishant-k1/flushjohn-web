@@ -1,13 +1,27 @@
-.page {
-  min-height: 100vh;
-  padding: 2rem 0;
-  background: var(--bg-primary);
-}
 
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+}
+
+.contentSection {
+  background-color: var(--bg-section-primary) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: var(--spacing-section) 0;
+  position: relative;
+  border-top: 1px solid var(--border-light);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .breadcrumbs {
@@ -55,7 +69,9 @@
   padding: 2rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--white-alpha-20);
-  box-shadow: 0 6px 24px var(--black-alpha-12), inset 0 1px 0 var(--white-alpha-20);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
 }
 
 .features h2 {
@@ -177,4 +193,3 @@
     text-align: center;
   }
 }
-

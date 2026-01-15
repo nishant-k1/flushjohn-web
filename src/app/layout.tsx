@@ -5,6 +5,7 @@ import { testimonials } from "@/features/home/constants";
 import Layout from "@/components/Layout";
 import ScrollToTop from "@/components/ScrollToTop";
 import dynamic from "next/dynamic";
+import ClientOnlyLeadCapture from "@/components/ClientOnlyLeadCapture";
 
 // Critical above-the-fold components - SSR enabled
 const Navbar = dynamic(() => import("@/components/Navbar"), {
@@ -375,24 +376,25 @@ export default function RootLayout({
         {/* Skip Link - Accessibility: Allows keyboard users to skip to main content */}
         <SkipLink />
 
-        <Layout>
-          <ClientWidthContextProvider>
-            <SidebarContextProvider>
-              <QuickQuoteContextProvider>
-                <QuoteContextProvider>
-                  <AnalyticsInitializer />
-                  <ScrollToTop />
-                  <Sidebar />
-                  <Navbar />
+        <ClientWidthContextProvider>
+          <SidebarContextProvider>
+            <QuickQuoteContextProvider>
+              <QuoteContextProvider>
+                <AnalyticsInitializer />
+                <ScrollToTop />
+                <Sidebar />
+                <Navbar />
+                <Layout>
                   {children}
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />
-                </QuoteContextProvider>
-              </QuickQuoteContextProvider>
-            </SidebarContextProvider>
-          </ClientWidthContextProvider>
-        </Layout>
+                  <ClientOnlyLeadCapture />
+                </Layout>
+              </QuoteContextProvider>
+            </QuickQuoteContextProvider>
+          </SidebarContextProvider>
+        </ClientWidthContextProvider>
         {/* Portal root for datepicker and other portals */}
         <div id="root" />
       </body>

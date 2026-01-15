@@ -91,6 +91,7 @@ const Contact = () => {
   return (
     <React.Fragment>
       <div className={styles.section}>
+        <Breadcrumbs path={""} />
         <Formik
           initialValues={{
             firstName: "",
@@ -194,7 +195,6 @@ const Contact = () => {
         >
           {({ isSubmitting }) => (
             <div className={styles.container}>
-              <Breadcrumbs path={""} />
               <Form>
                 <AnimationWrapper
                   effect={animations?.fadeWithScale}

@@ -6,6 +6,7 @@ import Link from "next/link";
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import styles from "./styles.module.css";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import {
   getCityCoordinatesWithFallback,
   citiesData,
@@ -329,18 +330,9 @@ const ServiceCityPage = async ({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
         />
       )}
-      <div className={styles.page}>
+      <Breadcrumbs path={""} />
+      <section className={styles.contentSection}>
         <div className={styles.container}>
-          <nav className={styles.breadcrumbs}>
-            <Link href="/">Home</Link>
-            <span> / </span>
-            <Link href={`/porta-potty-rental/${city}`}>
-              {cityTitle} Porta Potty Rentals
-            </Link>
-            <span> / </span>
-            <span>{serviceData.title}</span>
-          </nav>
-
           <div className={styles.header}>
             <h1>
               {serviceData.title} in {cityTitle}
@@ -368,8 +360,6 @@ const ServiceCityPage = async ({
               );
             })()}
           </div>
-
-          <div className={styles.content}>
             {(() => {
               const uniqueContent = getServiceCityUniqueContent(
                 city,
@@ -496,9 +486,8 @@ const ServiceCityPage = async ({
                 </>
               );
             })()}
-          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

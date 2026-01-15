@@ -1,6 +1,7 @@
 /* utilities */
-.products {
-  background-color: var(--bg-section-alternate-blue);
+
+.section {
+  background-color: var(--bg-section-primary) !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -8,17 +9,17 @@
   position: relative;
 }
 
-
 .container {
-  margin: 0 auto;
   max-width: 960px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .productsWrapper {
-  margin-top: 6rem;
+  margin-top: 0;
   display: grid;
   grid-gap: var(--gap-md); /* 32px - matches nexbaron-web gap-8 */
   height: 100%;
@@ -236,7 +237,7 @@
 
 /* tablet device breakpoint: 768px*/
 @media screen and (min-width: 768px) {
-  .products {
+  .section {
     padding: var(--spacing-section) 0;
   }
   .container {

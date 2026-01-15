@@ -8,8 +8,8 @@ const Gallery = () => {
   return (
     <React.Fragment>
       <div className={styles.gallery}>
+        <Breadcrumbs path={""} />
         <div className={styles.container}>
-          <Breadcrumbs path={""} />
           <div className={styles.imagesWrapper}>
             {galleryImages.map(({ url, alt, id, height, width }, index) => {
               // Only prioritize first 3 images for faster initial load

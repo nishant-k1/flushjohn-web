@@ -47,24 +47,6 @@ const Testimonial = ({ heading, content }: TestimonialProps) => {
             content.map((item, index) => (
               <div key={index}>
                 <div className={styles.wrapper}>
-                  <div style={{ position: "relative" }}>
-                    <Image
-                      src={item.image.src}
-                      alt={item.image.alt}
-                      width={120}
-                      height={120}
-                      priority={true}
-                      placeholder="empty"
-                      style={{
-                        height: 120,
-                        width: 120,
-                        borderRadius: "0",
-                        boxShadow: `0 6px 20px var(--black-alpha-20)`,
-                        objectFit: "cover",
-                        border: `2px solid var(--white-alpha-30)`,
-                      }}
-                    />
-                  </div>
                   <div>
                     <h3>{item.title}</h3>
                     <div className={styles.ratingContainer}>
