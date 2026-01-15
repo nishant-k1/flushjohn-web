@@ -33,7 +33,7 @@ const TrustSignals = () => {
           </div>
           <div className={styles.statItem}>
             <div className={styles.statNumber}>100%</div>
-            <div className={styles.statLabel}>Vendor Network</div>
+            <div className={styles.statLabel}>Satisfaction Rate</div>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ const TrustSignals = () => {
             <span className={styles.badgeIcon}>
               <Award size={20} />
             </span>
-            <span>Vetted Local Partners</span>
+            <span>Quality Guaranteed</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>
@@ -94,8 +94,7 @@ const TrustSignals = () => {
             The Green STE R, Dover, DE 19901
           </p>
           <p className={styles.transparency}>
-            Professional porta potty rental services through our network of
-            trusted local partners across 25+ cities in 6 states.
+            Professional porta potty rental services across 25+ cities in 6 states.
           </p>
         </div>
       </div>

@@ -17,10 +17,9 @@ const CTAsection = (props: Props) => {
     <div>
       <div className={styles.ctaSection}>
         <div className={styles.container}>
-          <h3>Ready to Rent Your Porta Potty?</h3>
+          <h3>Get Your Free Quote in 60 Seconds</h3>
           <p>
-            Join thousands of satisfied customers across the USA. Get a free,
-            no-obligation quote today!
+            Join thousands of satisfied customers across the USA. Get a free, no-obligation quote today!
           </p>
 
           <div className={styles.ctaButtons}>

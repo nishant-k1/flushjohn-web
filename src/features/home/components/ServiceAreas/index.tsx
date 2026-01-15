@@ -46,7 +46,7 @@ const ServiceAreas = () => {
     <div className={styles.serviceAreas}>
       <div className={styles.container}>
         <h2 className={styles.heading}>
-          Nationwide Porta Potty Rental Service Areas
+          Find Porta Potty Rentals Near You
         </h2>
         <p className={styles.description}>
           We provide reliable porta potty rental services across multiple
