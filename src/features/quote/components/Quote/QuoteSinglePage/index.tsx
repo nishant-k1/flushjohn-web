@@ -483,7 +483,7 @@ const QuoteSinglePage = () => {
                       Sending
                     </>
                   ) : (
-                    "Send Quote Request"
+                    "Submit"
                   )}
                 </button>
               </div>

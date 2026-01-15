@@ -389,25 +389,14 @@ const InlineQuickQuote = () => {
                       variant="contained"
                       style={{
                         background: "var(--primary-bg-color)",
-                        color: "var(--text-inverse)",
-                        width: "100%",
-                        padding: "0.75rem",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        textTransform: "none",
                         borderRadius: 0,
                       }}
+                      endIcon={<SendIcon size={18} />}
                       type="submit"
+                      loading={isSubmitting}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? (
-                        "Submitting..."
-                      ) : (
-                        <>
-                          <SendIcon size={18} style={{ marginRight: "8px" }} />
-                          Request Callback
-                        </>
-                      )}
+                      Submit
                     </Button>
                   </Grid>
                 </Grid>

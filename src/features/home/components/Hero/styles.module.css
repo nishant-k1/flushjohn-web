@@ -296,7 +296,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   border-radius: 0;
   transition: all var(--transition-base);
@@ -304,8 +304,8 @@
   text-align: center;
   flex: 1;
   min-width: 0;
-  padding: 8px 20px;
-  min-height: 36px;
+  padding: 6px 16px;
+  min-height: 32px;
   cursor: pointer;
   text-decoration: none;
   box-shadow:
@@ -340,10 +340,10 @@
 .ctaQuoteBtn:hover {
   background: linear-gradient(
     135deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
+    var(--primary-dark) 0%,
+    var(--primary-darker, var(--primary-dark)) 100%
   );
-  border-color: var(--primary);
+  border-color: var(--primary-dark);
   color: var(--text-inverse);
   transform: none;
   box-shadow:
@@ -403,8 +403,8 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    var(--primary-light) 0%,
-    var(--primary) 100%
+    var(--primary-dark) 0%,
+    var(--primary-darker, var(--primary-dark)) 100%
   );
   transition: left var(--transition-slow);
   z-index: 0;
@@ -415,7 +415,7 @@
 }
 
 .ctaPhoneBtn:hover {
-  border-color: var(--primary-light);
+  border-color: var(--primary-dark);
   color: var(--text-inverse);
   transform: none;
   box-shadow:
@@ -496,7 +496,7 @@
   .ctaQuoteBtn,
   .ctaPhoneBtn {
     flex: 0 1 auto;
-    min-width: 160px;
+    min-width: 140px;
   }
 }
 
@@ -566,12 +566,13 @@
   .ctaPhoneBtn {
     flex: 1;
     min-width: 0;
-    font-size: 0.9rem;
-    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.8125rem;
+    padding: 5px 12px;
+    min-height: 30px;
   }
 
   .ctaPhoneBtn div {
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
   }
 
 }

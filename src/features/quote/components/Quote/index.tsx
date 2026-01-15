@@ -33,11 +33,9 @@ const Quote = () => {
             </AnimationWrapper>
           )}
 
-          {!isMobile && (
-            <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
-              <QuoteSinglePage />
-            </AnimationWrapper>
-          )}
+          <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
+            <QuoteSinglePage />
+          </AnimationWrapper>
         </div>
       </section>
     </React.Fragment>

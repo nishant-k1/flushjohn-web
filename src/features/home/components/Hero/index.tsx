@@ -62,7 +62,7 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 }}
               >
                 <div>{phone_number}</div>
-                <PhoneIcon className={styles.flippedIcon} size={20} />
+                <PhoneIcon className={styles.flippedIcon} size={18} />
               </Link>
             </div>
           </div>

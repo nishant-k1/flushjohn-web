@@ -504,7 +504,7 @@ const QuickQuote = () => {
                           loading={isSubmitting}
                           disabled={isSubmitting}
                         >
-                          Send
+                          Submit
                         </Button>
                       </Grid>
                     </Grid>
