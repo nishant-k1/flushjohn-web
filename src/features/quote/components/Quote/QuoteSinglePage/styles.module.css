@@ -342,7 +342,7 @@
 
   .section {
     flex: 1 1 100%;
-    min-width: 100%;
+    min-width: 0;
     max-width: 100%;
     padding: 0.5rem;
     box-sizing: border-box;
@@ -351,7 +351,7 @@
 
   .wrappingFields :global(.fieldRow) {
     flex: 1 1 100%;
-    min-width: 100%;
+    min-width: 0;
   }
 
   /* Increase dropdown container widths on mobile */

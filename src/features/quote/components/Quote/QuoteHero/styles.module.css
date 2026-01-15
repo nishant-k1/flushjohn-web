@@ -84,10 +84,3 @@
   font-weight: 400;
 }
 
-/* Mobile Optimizations */
-@media screen and (max-width: 599px) {
-  .hero {
-    display: none;
-  }
-}
-

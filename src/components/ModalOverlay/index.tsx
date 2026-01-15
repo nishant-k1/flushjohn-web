@@ -63,8 +63,8 @@ const ModalOverlay = () => {
       onClick={handleClick}
       onTouchEnd={handleTouchEnd}
       style={{
-        height: "100vh",
-        width: "100vw",
+        height: "100%",
+        width: "100%",
         background: "var(--black-alpha-50)",
         position: "fixed",
         top: 0,

@@ -7,6 +7,12 @@
   position: relative;
 }
 
+@media screen and (max-width: 599px) {
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;

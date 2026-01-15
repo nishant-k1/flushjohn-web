@@ -27,11 +27,9 @@ const Quote = () => {
       <Breadcrumbs path={""} />
       <section className={styles.section}>
         <div className={styles.container}>
-          {!isMobile && (
-            <AnimationWrapper effect={animations.fadeWithScale}>
-              <QuoteHero />
-            </AnimationWrapper>
-          )}
+          <AnimationWrapper effect={animations.fadeWithScale}>
+            <QuoteHero />
+          </AnimationWrapper>
 
           <AnimationWrapper effect={animations?.zoomOutAndZoomIn}>
             <QuoteSinglePage />

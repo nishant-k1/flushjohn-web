@@ -410,7 +410,8 @@ body {
   background-size: cover;
   background-repeat: repeat;
   overflow-x: hidden !important;
-  width: 100vw !important;
+  width: 100% !important;
+  max-width: 100% !important;
   /* Font rendering optimizations to prevent blur */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

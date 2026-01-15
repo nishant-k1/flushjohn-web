@@ -111,6 +111,14 @@
   align-self: end;
 }
 
+@media (max-width: 767px) {
+  .skeletonQuote {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 @keyframes skeleton-loading {
   0% {
     background-position: 200% 0;

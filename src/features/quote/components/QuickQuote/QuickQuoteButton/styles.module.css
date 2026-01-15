@@ -33,13 +33,14 @@
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   box-shadow: 0 8px 24px var(--primary-alpha-40);
   z-index: 9998;
   transition: all 0.3s ease;
-  white-space: nowrap;
+  white-space: normal;
   animation: pulse 2s infinite;
   user-select: none;
   -webkit-user-select: none;
@@ -48,6 +49,7 @@
   letter-spacing: 0.02em;
   line-height: 1.2;
   width: fit-content;
+  max-width: 150px;
   min-height: 36px;
 }
 
