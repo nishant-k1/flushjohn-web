@@ -13,10 +13,6 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { api } from "@/utils/apiClient";
-// Construct Google Ads conversion values from env vars
-const GOOGLE_ADS_CONVERSION_CONTACT_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CONTACT_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_CONTACT = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_CONTACT_FORM!);
-const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const MyTextField = ({ label, ...props }: any) => {
@@ -126,25 +122,6 @@ const Contact = () => {
             setShowSuccessModal(true);
             trackComplete(); // Track form completion
             resetForm();
-
-            // Google Ads conversion tracking
-            try {
-              if (
-                typeof window !== "undefined" &&
-                typeof window.gtag === "function" &&
-                GOOGLE_ADS_CONVERSION_CONTACT_FORM
-              ) {
-                window.gtag("event", "conversion", {
-                  send_to: GOOGLE_ADS_CONVERSION_CONTACT_FORM,
-                  value: GOOGLE_ADS_CONVERSION_VALUE_CONTACT,
-                  currency: GOOGLE_ADS_CONVERSION_CURRENCY,
-                });
-              }
-            } catch (gtagError) {
-              if (process.env.NODE_ENV === "development") {
-                console.warn("GTag conversion error:", gtagError);
-              }
-            }
 
             // Analytics tracking (non-blocking)
             try {

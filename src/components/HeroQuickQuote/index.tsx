@@ -22,9 +22,9 @@ import {
   QuickQuoteContext,
   QuickQuoteContextType,
 } from "@/features/quote/contexts/QuickQuoteContext";
-// Construct Google Ads conversion values from env vars
-const GOOGLE_ADS_CONVERSION_HERO_QUOTE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_HERO_QUICK_QUOTE_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_HERO_QUICK_QUOTE_FORM!);
+// Construct Google Ads conversion values from env vars (same as all quote forms)
+const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_QUOTE_REQUEST_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_HERO_QUICK_QUOTE_FORM!);
 const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 import SuccessModal from "@/components/SuccessModal";
@@ -271,11 +271,11 @@ const HeroQuickQuote = () => {
     if (
       typeof window !== "undefined" &&
       typeof window.gtag === "function" &&
-      GOOGLE_ADS_CONVERSION_HERO_QUOTE
+      GOOGLE_ADS_CONVERSION_QUOTE_FORM
     ) {
       window.gtag("event", "conversion", {
-        send_to: GOOGLE_ADS_CONVERSION_HERO_QUOTE,
-        value: GOOGLE_ADS_CONVERSION_VALUE_HERO_QUOTE,
+        send_to: GOOGLE_ADS_CONVERSION_QUOTE_FORM,
+        value: GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM,
         currency: GOOGLE_ADS_CONVERSION_CURRENCY,
       });
     }

@@ -12,8 +12,8 @@ import PhoneField from "../FormFields/PhoneField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
-// Construct Google Ads conversion values from env vars
-const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_QUOTE_PAGE_FORM_SUFFIX}`;
+// Construct Google Ads conversion values from env vars (same as all quote forms)
+const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_QUOTE_REQUEST_FORM_SUFFIX}`;
 const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(
   process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_QUOTE_PAGE_FORM!
 );
