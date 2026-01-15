@@ -12,6 +12,13 @@
   box-sizing: border-box;
 }
 
+/* Mobile: Hide the form */
+@media screen and (max-width: 599px) {
+  .form {
+    display: none;
+  }
+}
+
 /* Desktop: Ensure sections display in a row */
 @media screen and (min-width: 1025px) {
   .form {
