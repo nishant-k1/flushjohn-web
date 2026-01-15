@@ -193,9 +193,8 @@ const Contact = () => {
               setSubmitting(false);
             }
           }}
-        >
-          {({ isSubmitting }) => (
-            <div className={styles.container}>
+          >
+            {({ isSubmitting }) => (
               <Form>
                 <AnimationWrapper
                   effect={animations?.fadeWithScale}
@@ -280,10 +279,10 @@ const Contact = () => {
                   </a>
                 </p>
               </div>
-            </div>
-          )}
-        </Formik>
-      </div>
+            )}
+          </Formik>
+        </div>
+      </section>
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
