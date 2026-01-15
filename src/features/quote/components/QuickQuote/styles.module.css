@@ -14,12 +14,6 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 599px) {
-  .overlay {
-    display: none !important;
-  }
-}
-
 .quickQuoteform {
   position: relative;
   margin: 0;
