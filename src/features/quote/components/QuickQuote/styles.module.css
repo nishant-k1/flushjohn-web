@@ -21,10 +21,9 @@
   padding: 8px;
   height: fit-content;
   width: 300px;
-  background: var(--bg-primary);
   /* Remove backdrop-filter - use solid background */
   backdrop-filter: none;
-  background: var(--bg-section-primary);
+  background: var(--bg-section-card);
   border: 1px solid var(--border-light);
   border-radius: 0;
   box-shadow:

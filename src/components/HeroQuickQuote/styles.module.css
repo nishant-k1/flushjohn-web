@@ -5,7 +5,7 @@
   width: 300px;
   align-self: end;
   /* Remove backdrop-filter - use solid background */
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-section-alternate);
   backdrop-filter: none;
   border: 1px solid var(--border-light);
   border-radius: 0;
