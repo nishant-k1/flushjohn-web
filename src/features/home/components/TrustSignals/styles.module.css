@@ -1,6 +1,6 @@
 .trustSignals {
   background-color: var(--bg-section-alternate);
-  padding: var(--spacing-section) 0;
+  padding: 3rem 0;
   margin: 0;
   position: relative;
 }
@@ -82,7 +82,7 @@
 
 .trustBadges {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-md); /* 32px - matches nexbaron-web gap-8 for 3-column grids */
   margin-bottom: var(--spacing-3xl);
 }
@@ -169,17 +169,36 @@
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .trustBadges {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .trustSignals {
-    padding: var(--spacing-3xl) 0;
+    padding: 2.5rem 0;
   }
 
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--gap-sm); /* 24px - consistent gap */
     margin-bottom: var(--spacing-2xl);
+  }
+
+  .trustBadges {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-sm);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .trustBadges {
+    grid-template-columns: 1fr;
   }
 
   .statNumber {

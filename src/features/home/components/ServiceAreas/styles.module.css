@@ -1,7 +1,8 @@
 .serviceAreas {
-  padding: var(--spacing-section) 0;
+  padding: 4rem 0;
   background-color: var(--bg-section-primary);
   position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 
@@ -163,6 +164,12 @@
   outline-offset: 2px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .statesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .statesGrid {
     grid-template-columns: 1fr;
@@ -170,7 +177,7 @@
   }
 
   .serviceAreas {
-    padding: var(--spacing-3xl) 0;
+    padding: 3rem 0;
   }
 
   .description {

@@ -23,13 +23,13 @@ const Home = () => {
         <CombinedContactBar />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
-        <Features {...features} />
+        <TrustSignals />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <Services {...services} />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
-        <TrustSignals />
+        <Features {...features} />
       </React.Suspense>
       <React.Suspense fallback={<div>...</div>}>
         <ServiceAreas />

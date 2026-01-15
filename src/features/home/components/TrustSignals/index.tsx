@@ -46,15 +46,9 @@ const TrustSignals = () => {
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>
-              <Award size={20} />
-            </span>
-            <span>Quality Guaranteed</span>
-          </div>
-          <div className={styles.badge}>
-            <span className={styles.badgeIcon}>
               <Truck size={20} />
             </span>
-            <span>Fast Delivery (24-48hrs typical)</span>
+            <span>Fast Delivery (24-48hrs)</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>
@@ -66,36 +60,20 @@ const TrustSignals = () => {
             <span className={styles.badgeIcon}>
               <Droplet size={20} />
             </span>
-            <span>Professionally Cleaned Units</span>
+            <span>Professionally Cleaned</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>
               <Phone size={20} />
             </span>
-            <span>Responsive Support</span>
+            <span>24/7 Support</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>
-              <Shield size={20} />
+              <Award size={20} />
             </span>
-            <span>Secure Booking</span>
+            <span>Quality Guaranteed</span>
           </div>
-          <div className={styles.badge}>
-            <span className={styles.badgeIcon}>
-              <Lock size={20} />
-            </span>
-            <span>SSL Encrypted</span>
-          </div>
-        </div>
-
-        <div className={styles.businessInfo}>
-          <p>
-            <strong>FlushJohn</strong> | Established 2020 | Business Address: 8
-            The Green STE R, Dover, DE 19901
-          </p>
-          <p className={styles.transparency}>
-            Professional porta potty rental services across 25+ cities in 6 states.
-          </p>
         </div>
       </div>
     </div>

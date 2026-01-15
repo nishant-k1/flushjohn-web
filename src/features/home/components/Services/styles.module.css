@@ -2,6 +2,7 @@
   padding: var(--spacing-section) 0;
   background-color: var(--bg-section-primary);
   position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 
@@ -107,7 +108,9 @@
   background: var(--white-alpha-10);
   padding: 0;
   border-radius: 0;
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    0 6px 24px var(--black-alpha-12),
+    inset 0 1px 0 var(--white-alpha-20);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -115,6 +118,16 @@
   overflow: hidden;
   position: relative;
   min-height: 100%;
+  transition:
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.imageCard:hover {
+  box-shadow:
+    0 10px 32px var(--black-alpha-18),
+    inset 0 1px 0 var(--white-alpha-25);
+  border-color: var(--white-alpha-30);
 }
 
 .imageCard img {
@@ -240,6 +253,59 @@
 }
 
 .quoteButton:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.secondaryCTA {
+  text-align: center;
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 1px solid var(--border-light);
+}
+
+.ctaLink {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  color: var(--text-inverse);
+  border: 1px solid var(--primary);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-md);
+  min-width: 200px;
+}
+
+.ctaLink:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-light) 0%,
+    var(--primary) 100%
+  );
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-primary-lg);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.ctaLink:active {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
+  transform: translateY(0);
+}
+
+.ctaLink:focus-visible {
   outline: 2px solid var(--primary-light);
   outline-offset: 2px;
 }

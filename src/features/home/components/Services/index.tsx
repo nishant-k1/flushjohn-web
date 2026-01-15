@@ -112,6 +112,12 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
             );
           })}
         </div>
+        {/* Secondary CTA after Services */}
+        <div className={styles.secondaryCTA}>
+          <a href="/quote" className={styles.ctaLink}>
+            Get Your Free Quote →
+          </a>
+        </div>
       </div>
     </div>
   );

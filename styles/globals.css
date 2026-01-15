@@ -518,36 +518,97 @@ button {
   letter-spacing: 0.01em;
 }
 
-/* SCROLL BAR - Cross-platform consistent styling */
-/* WebKit browsers (Chrome, Safari, Edge, Opera) */
-::-webkit-scrollbar {
-  width: 8px; /* Slightly wider for better visibility on Windows */
-  height: 8px; /* For horizontal scrollbars */
-}
+/* SCROLL BAR - Green thumb only, transparent track */
+/* Works across Chrome, Safari, Firefox on Mac, Windows, Linux */
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05); /* Subtle track background for light theme */
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2); /* Scrollbar thumb for light theme */
-  border-radius: 0;
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for definition */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4); /* Darker on hover */
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent; /* Corner where scrollbars meet */
-}
-
-/* Firefox scrollbar styling */
-html {
+/* Base - Firefox */
+html, body, * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+  scrollbar-color: var(--primary) transparent;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge, Opera) - All OS */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: transparent !important;
+  background-color: transparent !important;
+  -webkit-appearance: none;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  filter: opacity(0) !important;
+}
+
+html::-webkit-scrollbar-track-piece,
+body::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-track-piece {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  filter: opacity(0) !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  min-height: 20px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark) !important;
+  background-color: var(--primary-dark) !important;
+}
+
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active,
+*::-webkit-scrollbar-thumb:active {
+  background: var(--primary-dark) !important;
+  background-color: var(--primary-dark) !important;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Date Picker Calendar Styling - Chrome/Edge/Safari */

@@ -7,7 +7,7 @@
   /* Remove backdrop-filter - use solid background */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: none;
-  border: 1px solid var(--white-alpha-20);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   box-shadow:
     0 8px 32px var(--black-alpha-15),
