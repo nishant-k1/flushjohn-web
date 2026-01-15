@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,22 +7,10 @@
   position: relative;
 }
 
-/* Subtle texture overlay */
-.section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    var(--black-alpha-05) 1px,
-    transparent 0
-  );
-  background-size: 20px 20px;
-  pointer-events: none;
-  opacity: 0.5;
+@media screen and (max-width: 599px) {
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
 }
 
 .container {
@@ -31,53 +19,17 @@
   position: relative;
   z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
-.quoteWrapper {
-  display: grid;
-  align-items: start;
-  justify-content: center;
-  padding-top: 0;
-  width: 100%;
-}
-
-.innerSection {
-  display: grid;
-  justify-content: stretch;
-  align-items: start;
-  grid-template-columns: minmax(0, 1fr);
-  background: var(--white-alpha-05);
-  padding: var(--spacing-lg) var(--spacing-md);
-  padding-top: calc(var(--spacing-lg) + 40px); /* Extra top padding to accommodate error messages */
-  border-radius: 0;
-  border: 1px solid var(--white-alpha-10);
-  max-width: 500px; /* Constrain form width for better focus and readability */
-  min-width: 500px; /* Force minimum width */
-  width: 100%;
-  margin: 0 auto; /* Center the form container */
-  box-sizing: border-box;
-  overflow: visible; /* Allow error messages to be visible above the container */
-}
-
-@media screen and (max-width: 550px) {
-  .innerSection {
-    min-width: auto; /* Remove min-width on smaller screens */
-    max-width: 100%;
-  }
-}
 
 /* Animated Progress Bar Container */
 .progressBarContainer {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
   width: 100%;
   max-width: 500px; /* Match form width for alignment */
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Breadcrumb wrapper - add bottom margin when hero is hidden */
-.breadcrumbWrapper {
-  margin-bottom: 2rem;
 }
 
 /* Add top margin when hero is hidden (step 2+) */
@@ -192,7 +144,8 @@
   box-shadow:
     0 2px 8px var(--black-alpha-20),
     inset 0 1px 2px var(--white-alpha-10);
-  backdrop-filter: blur(4px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
 }
 
 .stepIndicator::before {
@@ -210,6 +163,9 @@
   transition: opacity 0.4s ease;
   z-index: -1;
   filter: blur(6px);
+  /* Ensure blur doesn't affect text */
+  pointer-events: none;
+  will-change: opacity;
 }
 
 .stepIndicator::after {
@@ -272,9 +228,9 @@
 .stepNumber {
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--white-alpha-25);
+  color: var(--text-secondary);
   transition: color 0.3s ease;
-  text-shadow: 0 1px 2px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 .stepIndicator.current .stepNumber {
@@ -306,7 +262,7 @@
 .stepLabel {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--white-alpha-25);
+  color: var(--text-secondary);
   text-align: center;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -317,7 +273,7 @@
 .stepLabel.activeLabel {
   color: var(--text-primary);
   font-weight: 600;
-  text-shadow: 0 1px 3px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 /* Progress Percentage */
@@ -340,7 +296,8 @@
   box-shadow:
     0 2px 8px var(--black-alpha-15),
     inset 0 1px 2px var(--white-alpha-10);
-  backdrop-filter: blur(8px);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   letter-spacing: 0.02em;
 }
 
@@ -419,5 +376,19 @@
 
   .stepWrapper {
     gap: var(--spacing-xs);
+  }
+
+  .formWrapper {
+    display: none !important;
+  }
+}
+
+.formWrapper {
+  display: block;
+}
+
+@media screen and (max-width: 599px) {
+  .formWrapper {
+    display: none !important;
   }
 }

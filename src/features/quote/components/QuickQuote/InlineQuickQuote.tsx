@@ -1,0 +1,427 @@
+"use client";
+
+import { Formik, Form, useFormikContext } from "formik";
+import styles from "./styles.module.css";
+import React, { useState } from "react";
+import MyMultipleSelectCheckmarks from "@/components/FormControls/MyMultipleSelectCheckmarks";
+import MyTextField from "@/components/FormControls/MyTextField";
+import DateInput from "@/components/FormControls/DateInput";
+import MyPhoneTextField from "@/components/FormControls/MyPhoneTextField";
+import MyMultilineTextField from "@/components/FormControls/MyMultilineTextField";
+import Button from "@/components/UI/Button";
+import Grid from "@/components/UI/Grid";
+import { SendIcon } from "@/components/UI/Icons";
+import * as Yup from "yup";
+import MyZipTextField from "@/components/FormControls/MyZipTextField";
+import SuccessModal from "@/components/SuccessModal";
+import ErrorModal from "@/components/ErrorModal";
+import { api } from "@/utils/apiClient";
+// Construct Google Ads conversion values from env vars (same as all quote forms)
+const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_QUOTE_REQUEST_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
+const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
+
+const quickQuoteValidationSchema = Yup.object().shape({
+  usageType: Yup.string().required("Required"),
+  products: Yup.array().min(1, "Required").required("Required"),
+  deliveryDate: Yup.string().required("Required"),
+  pickupDate: Yup.string().required("Required"),
+  zip: Yup.string()
+    .matches(/^\d{5}$/, "Required")
+    .required("Required"),
+  fName: Yup.string().min(2, "Required").required("Required"),
+  email: Yup.string().email("Required").required("Required"),
+  phone: Yup.string().min(10, "Required").required("Required"),
+  lName: Yup.string(),
+  instructions: Yup.string(),
+});
+
+const UsageTypeField = () => {
+  const { errors, touched, values, setFieldValue, setFieldTouched } =
+    useFormikContext<any>();
+  const hasError = touched.usageType && errors.usageType;
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  const options = [
+    { label: "Event", value: "event" },
+    { label: "Construction", value: "construction" },
+    { label: "Emergency", value: "emergency" },
+    { label: "Renovation", value: "renovation" },
+  ];
+
+  React.useEffect(() => {
+    if (hasError) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+  }, [hasError]);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (
+        target.closest(".custom-datepicker") ||
+        target.closest(".react-datepicker-popper")
+      ) {
+        return;
+      }
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+        setFieldTouched("usageType", true);
+        if (!touched.usageType) {
+          setShowError(false);
+        }
+      }
+    };
+
+    if (isOpen || showError) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, showError, touched.usageType, setFieldTouched]);
+
+  const handleSelect = async (value: string) => {
+    await setFieldValue("usageType", value);
+    setFieldTouched("usageType", true);
+    setIsOpen(false);
+  };
+
+  const selectedOption = options.find((opt) => opt.value === values.usageType);
+
+  return (
+    <Grid item xs={12}>
+      <div
+        ref={dropdownRef}
+        style={{ position: "relative", width: "100%" }}
+        className={styles.usageTypeContainer}
+      >
+        <div
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setShowError(false);
+          }}
+          onBlur={() => {
+            setFieldTouched("usageType", true);
+          }}
+          className={hasError ? styles.error_field : ""}
+          style={{
+            padding: "0 12px",
+            border: hasError
+              ? `1px solid var(--error-border)`
+              : `1px solid var(--border-light)`,
+            borderRadius: "0",
+            cursor: "pointer",
+            height: "2rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "var(--bg-white)",
+            transition: "border-color 0.2s",
+          }}
+        >
+          <span
+            style={{
+              color: values.usageType
+                ? "var(--text-form-value)"
+                : "var(--text-form-placeholder)",
+              fontSize: "14px",
+              fontWeight: 500,
+              flex: 1,
+            }}
+          >
+            {selectedOption ? selectedOption.label : "Select Usage Type"}
+          </span>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ flexShrink: 0, opacity: 0.6 }}
+          >
+            <path
+              d="M3 4.5L6 7.5L9 4.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+
+        {isOpen && (
+          <div
+            style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
+              background: "var(--bg-white)",
+              border: `1px solid var(--primary-bg-color, var(--primary))`,
+              borderRadius: "0",
+              marginTop: "0",
+              maxHeight: "280px",
+              overflowY: "auto",
+              zIndex: 10000,
+              boxShadow: `0 12px 48px var(--black-alpha-25), 0 6px 20px var(--black-alpha-15), 0 0 0 1px var(--primary-alpha-20)`,
+              padding: "4px 0",
+              animation:
+                "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            }}
+          >
+            {options.map((option, index) => (
+              <div
+                key={option.value}
+                onClick={() => handleSelect(option.value)}
+                style={{
+                  padding: "6px 16px",
+                  cursor: "pointer",
+                  background:
+                    values.usageType === option.value
+                      ? "var(--primary-alpha-12)"
+                      : "var(--bg-white)",
+                  borderBottom:
+                    index < options.length - 1
+                      ? `1px solid var(--border-lighter)`
+                      : "none",
+                  borderLeft:
+                    values.usageType === option.value
+                      ? `4px solid var(--primary-bg-color, var(--primary))`
+                      : "4px solid transparent",
+                  transition: "all 0.15s ease",
+                  fontSize: "14px",
+                  fontWeight: values.usageType === option.value ? 600 : 500,
+                  color:
+                    values.usageType === option.value
+                      ? "var(--primary-bg-color, var(--primary))"
+                      : "var(--text-dark)",
+                  margin: index < options.length - 1 ? "0 0 2px 0" : "0",
+                  borderRadius: "0",
+                  boxShadow:
+                    values.usageType === option.value
+                      ? `inset 0 0 0 1px var(--primary-alpha-10)`
+                      : "none",
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                }}
+                onMouseEnter={(e) => {
+                  if (values.usageType !== option.value) {
+                    e.currentTarget.style.background = "var(--bg-lighter)";
+                    e.currentTarget.style.borderLeft = `4px solid var(--primary-alpha-30)`;
+                    e.currentTarget.style.boxShadow = `inset 0 0 0 1px var(--primary-alpha-08)`;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (values.usageType !== option.value) {
+                    e.currentTarget.style.background = "var(--bg-white)";
+                    e.currentTarget.style.borderLeft = "4px solid transparent";
+                    e.currentTarget.style.boxShadow = "none";
+                  }
+                }}
+              >
+                {option.label}
+              </div>
+            ))}
+          </div>
+        )}
+        <div
+          className={`${styles.error} ${showError && hasError ? styles.errorVisible : styles.errorHidden}`}
+        >
+          {hasError ? "Required" : ""}
+        </div>
+      </div>
+    </Grid>
+  );
+};
+
+const InlineQuickQuote = () => {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
+  const handleLeadConversion = () => {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function" &&
+      GOOGLE_ADS_CONVERSION_QUOTE_FORM
+    ) {
+      window.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION_QUOTE_FORM,
+        value: GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM,
+        currency: GOOGLE_ADS_CONVERSION_CURRENCY,
+      });
+    }
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={{
+          usageType: "",
+          products: [],
+          deliveryDate: "",
+          pickupDate: "",
+          streetAddress: "",
+          zip: "",
+          city: "",
+          state: "",
+          instructions: "",
+          fName: "",
+          lName: "",
+          cName: "",
+          email: "",
+          phone: "",
+          contactPersonName: "",
+          contactPersonPhone: "",
+        }}
+        validationSchema={quickQuoteValidationSchema}
+        validateOnChange={true}
+        validateOnBlur={true}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          setSubmitting(true);
+
+          // Show success immediately
+          setShowSuccessModal(true);
+          handleLeadConversion();
+          resetForm();
+
+          try {
+            const finalData = {
+              ...values,
+              leadSource: "Web Quick Lead - Hero Form",
+            };
+
+            const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
+            await api.post(`${API_BASE_URL}/leads`, finalData);
+          } catch (err) {
+            if (process.env.NODE_ENV === "development") {
+              console.error("Error submitting lead:", err);
+            }
+            setShowSuccessModal(false);
+            setShowErrorModal(true);
+          } finally {
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <div className={styles.quickQuoteform}>
+              <div>
+                <Grid container spacing={0.5}>
+                  <Grid item xs={12}>
+                    <div>
+                      <h2>Get instant free quote</h2>
+                    </div>
+                  </Grid>
+                  <UsageTypeField />
+                  <Grid item xs={12}>
+                    <MyMultipleSelectCheckmarks
+                      label="Select Items"
+                      name="products"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <DateInput
+                      label="Delivery Date"
+                      name="deliveryDate"
+                      required
+                      variant="quickquote"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <DateInput
+                      label="Pickup Date"
+                      name="pickupDate"
+                      required
+                      variant="quickquote"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MyZipTextField
+                      label="Zip"
+                      name="zip"
+                      placeholder="Zip"
+                      min={0}
+                      maxLength={5}
+                      inputMode="numeric"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MyTextField
+                      label="Street Address"
+                      name="streetAddress"
+                      placeholder="Street Address (Optional)"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <MyTextField label="First Name" name="fName" />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <MyTextField label="Last Name" name="lName" />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MyTextField label="Email" name="email" />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MyPhoneTextField
+                      label="Phone"
+                      name="phone"
+                      placeholder="Phone"
+                      type="tel"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <MyMultilineTextField
+                      label="Instructions (if any)"
+                      name="instructions"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      variant="contained"
+                      style={{
+                        background: "var(--primary-bg-color)",
+                        borderRadius: 0,
+                      }}
+                      endIcon={<SendIcon size={18} />}
+                      type="submit"
+                      loading={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
+                </Grid>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Thank You!"
+        message="Your quick quote request has been received successfully."
+        submessage="One of our representatives will contact you within 24 hours."
+      />
+      <ErrorModal
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        title="Submission Failed"
+        message="Failed to submit your quote request. Please try again."
+        submessage="If the problem persists, please contact our support team."
+      />
+    </>
+  );
+};
+
+export default InlineQuickQuote;

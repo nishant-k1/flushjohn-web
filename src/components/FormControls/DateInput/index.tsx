@@ -319,7 +319,7 @@ const DateInput: React.FC<DateInputProps> = ({
           <div
             className={`${quickQuoteStyles.error} ${showError && touched && error ? quickQuoteStyles.errorVisible : quickQuoteStyles.errorHidden}`}
           >
-            {touched && error ? error || "Required" : ""}
+            {touched && error ? "Required" : ""}
           </div>
         </div>
       </div>
@@ -335,7 +335,7 @@ const DateInput: React.FC<DateInputProps> = ({
         <label className={styles.fieldLabel}>
           {label}
           {props.required && (
-            <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>*</span>
+            <span style={{ color: "var(--error-border)" }}>*</span>
           )}
         </label>
       )}
@@ -376,7 +376,7 @@ const DateInput: React.FC<DateInputProps> = ({
         <div
           className={`${quickQuoteStyles.error} ${showError && touched && error ? quickQuoteStyles.errorVisible : quickQuoteStyles.errorHidden}`}
         >
-          {touched && error ? error || "Required" : ""}
+          {touched && error ? "Required" : ""}
         </div>
       </div>
     </div>

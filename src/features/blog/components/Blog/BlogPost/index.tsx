@@ -75,10 +75,10 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
 
   if (!title && !content) {
     return (
-      <div>
-        <div className={styles.post}>
+      <>
+        <Breadcrumbs path={`/blog/${slug}`} />
+        <section className={styles.postSection}>
           <div className={styles.container}>
-            <Breadcrumbs path={`/blog/${slug}`} />
             <div className={styles.wrapper}>
               <h1>{actualBlogPost?.title || "No Title"}</h1>
               {imageSource && (
@@ -118,16 +118,16 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </>
     );
   }
 
   return (
-    <div>
-      <div className={styles.post}>
+    <>
+      <Breadcrumbs path={`/blog/${slug}`} />
+      <section className={styles.postSection}>
         <div className={styles.container}>
-          <Breadcrumbs path={`/blog/${slug}`} />
           <div className={styles.wrapper}>
             {/* Enhanced Blog Header */}
             <header style={{ marginBottom: "30px" }}>
@@ -306,11 +306,12 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
             {/* Author Bio */}
             <div
               style={{
-                background: "var(--neutral-700)",
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
                 padding: "20px",
                 borderRadius: "0",
                 marginBottom: "40px",
-                border: "1px solid var(--white-alpha-15)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
               }}
             >
               <h3
@@ -475,10 +476,9 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </section>
+      </>
+    );
+  };
 
 export default BlogPost;

@@ -4,40 +4,7 @@ import React, { createContext, ReactNode } from "react";
 
 const requirementDetails = {
   usageType: "",
-  products: [
-    {
-      id: "standard-portable-restroom",
-      item: "Standard Portable Restroom",
-      desc: "Standard Portable Restroom",
-      quantity: 0, // Number in application state
-      rate: 0.0, // User will enter their own rate
-      amount: 0.0, // Number in application state
-    },
-    {
-      id: "deluxe-flushable-restroom",
-      item: "Deluxe Flushable Restroom",
-      desc: "Deluxe Flushable Restroom",
-      quantity: 0, // Number in application state
-      rate: 0.0, // User will enter their own rate
-      amount: 0.0, // Number in application state
-    },
-    {
-      id: "ada-portable-restroom",
-      item: "ADA Portable Restroom",
-      desc: "ADA Portable Restroom",
-      quantity: 0, // Number in application state
-      rate: 0.0, // User will enter their own rate
-      amount: 0.0, // Number in application state
-    },
-    {
-      id: "hand-wash-station",
-      item: "Hand Wash Station",
-      desc: "Hand Wash Station",
-      quantity: 0, // Number in application state
-      rate: 0.0, // User will enter their own rate
-      amount: 0.0, // Number in application state
-    },
-  ],
+  products: [], // Empty array - no items selected by default
 };
 
 const deliveryDetails = {

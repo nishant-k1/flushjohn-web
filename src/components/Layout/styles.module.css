@@ -1,3 +1,8 @@
 .main {
   /* position: relative; */
+  padding-top: 82px; /* Offset for fixed navbar (~54px) + fixed breadcrumb (~28px) */
+}
+
+.main.homePage {
+  padding-top: 0; /* No padding on homepage - hero handles its own spacing */
 }

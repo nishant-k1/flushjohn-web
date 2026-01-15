@@ -280,27 +280,26 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
 
   if (loading && !initialBlogs.length) {
     return (
-      <div className={styles.section}>
-        <div className={styles.container}>
-          <Breadcrumbs path="" />
-          <div className={styles.wrapper}>
+      <>
+        <Breadcrumbs path="" />
+        <section className={styles.blogSection}>
+          <div className={styles.container}>
             <h1>Our Blog</h1>
             <div className={styles.loadingContainer}>
               <div className={styles.loadingSpinner}></div>
               <p>Loading blogs...</p>
-            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </>
     );
   }
 
   if (error) {
     return (
-      <div className={styles.section}>
-        <div className={styles.container}>
-          <Breadcrumbs path="" />
-          <div className={styles.wrapper}>
+      <>
+        <Breadcrumbs path="" />
+        <section className={styles.blogSection}>
+          <div className={styles.container}>
             <h1>Our Blog</h1>
             <div className={styles.errorContainer}>
               <p>Error loading blogs: {error}</p>
@@ -312,8 +311,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </>
     );
   }
 
@@ -341,11 +340,12 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
   };
 
   return (
-    <div className={styles.section}>
-      <div className={styles.container}>
-        <Breadcrumbs path="" />
-        <div className={styles.wrapper}>
-          <h1>Our Blog</h1>
+    <>
+      <Breadcrumbs path="" />
+      <section className={styles.blogSection}>
+        <div className={styles.container}>
+          <div className={styles.wrapper}>
+            <h1>Our Blog</h1>
 
           {/* Search Bar */}
           <form onSubmit={handleSearch} className={styles.searchForm}>
@@ -707,8 +707,8 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
               </div>
             )}
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

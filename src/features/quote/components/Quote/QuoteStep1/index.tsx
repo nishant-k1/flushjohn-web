@@ -102,10 +102,7 @@ const QuoteStep1 = () => {
             <div className={styles.usage_type_row}>
               <label className={styles.field_label}>
                 Usage Type
-                <span style={{ color: "var(--error-border)", fontSize: "x-large" }}>
-                  {" "}
-                  *
-                </span>
+                <span style={{ color: "var(--error-border)" }}> *</span>
               </label>
               <div className={styles.radio_inner_box}>
                 <RadioField
@@ -154,7 +151,7 @@ const QuoteStep1 = () => {
           {(msg) => {
             return (
               <div className={styles.productsError}>
-                Enter quantity for at least one item
+                Required
               </div>
             );
           }}

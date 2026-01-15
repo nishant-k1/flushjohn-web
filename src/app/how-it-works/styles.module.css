@@ -1,21 +1,42 @@
 .howItWorksPage {
+  background-color: var(--bg-section-primary) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
-  background: var(--bg-primary);
+  position: relative;
   color: var(--text-primary);
-  min-height: 60vh;
 }
 
 .container {
-  max-width: var(--container-xl);
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--spacing-lg);
+  overflow: visible;
+}
+
+
+.container {
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
 
-.hero {
-  text-align: center;
+.heroSection {
   padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--white-alpha-15);
-  margin-bottom: var(--spacing-3xl);
+  background-color: var(--bg-section-primary) !important;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+}
+
+.heroSection h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-family: var(--font-merriweather);
 }
 
 .hero h1 {
@@ -34,7 +55,10 @@
 }
 
 .processSection {
-  margin-bottom: var(--spacing-4xl);
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .processSteps {
@@ -70,7 +94,11 @@
   flex-shrink: 0;
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
   border: 2px solid var(--white-alpha-20);
   border-radius: var(--radius-md);
   display: flex;
@@ -78,7 +106,7 @@
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   position: relative;
   z-index: 1;
 }
@@ -104,9 +132,10 @@
 }
 
 .benefitsSection {
-  margin-bottom: var(--spacing-4xl);
-  padding: var(--spacing-3xl) 0;
-  border-top: 1px solid var(--white-alpha-15);
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-primary) !important;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .benefitsSection h2 {
@@ -126,9 +155,9 @@
 
 .benefitCard {
   padding: var(--spacing-xl);
-  background: var(--neutral-700);
+  background: var(--bg-section-card);
   border-radius: var(--radius-md);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
 }
 
 .benefitCard h3 {
@@ -147,13 +176,11 @@
 }
 
 .ctaSection {
+  padding: var(--spacing-section) 0;
+  background: var(--bg-section-cta-blue);
   text-align: center;
-  padding: var(--spacing-3xl) var(--spacing-2xl);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  margin-top: var(--spacing-4xl);
-  border: 1px solid var(--white-alpha-15);
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .ctaSection h2 {
@@ -192,7 +219,7 @@
 }
 
 .primaryButton:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: none;
 }
 
 .secondaryButton {
@@ -252,4 +279,3 @@
     max-width: 300px;
   }
 }
-

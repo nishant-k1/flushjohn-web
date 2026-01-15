@@ -13,10 +13,6 @@ import { logEvent } from "../../../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
 import { api } from "@/utils/apiClient";
-// Construct Google Ads conversion values from env vars
-const GOOGLE_ADS_CONVERSION_CONTACT_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CONTACT_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_CONTACT = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_CONTACT_FORM!);
-const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const MyTextField = ({ label, ...props }: any) => {
@@ -90,33 +86,35 @@ const Contact = () => {
 
   return (
     <React.Fragment>
-      <div className={styles.section}>
-        <Formik
-          initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            message: "",
-          }}
-          validationSchema={Yup.object({
-            firstName: Yup.string()
-              .max(15, "Must be 15 characters or less")
-              .required("Required"),
-            lastName: Yup.string()
-              .max(20, "Must be 20 characters or less")
-              .required("Required"),
-            email: Yup.string()
-              .email("Invalid email address")
-              .required("Required"),
-            phone: Yup.string().required("Required"),
-            message: Yup.string()
-              .min(1, "Message cannot be empty")
-              .required("Required"),
-          })}
-          validateOnChange={true}
-          validateOnBlur={true}
-          onSubmit={async (values, { setSubmitting, resetForm }) => {
+      <Breadcrumbs path={""} />
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              phone: "",
+              message: "",
+            }}
+            validationSchema={Yup.object({
+              firstName: Yup.string()
+                .max(15, "Must be 15 characters or less")
+                .required("Required"),
+              lastName: Yup.string()
+                .max(20, "Must be 20 characters or less")
+                .required("Required"),
+              email: Yup.string()
+                .email("Invalid email address")
+                .required("Required"),
+              phone: Yup.string().required("Required"),
+              message: Yup.string()
+                .min(1, "Message cannot be empty")
+                .required("Required"),
+            })}
+            validateOnChange={true}
+            validateOnBlur={true}
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
 
             // ✅ OPTIMISTIC: Show success immediately (before API response)
@@ -124,25 +122,6 @@ const Contact = () => {
             setShowSuccessModal(true);
             trackComplete(); // Track form completion
             resetForm();
-
-            // Google Ads conversion tracking
-            try {
-              if (
-                typeof window !== "undefined" &&
-                typeof window.gtag === "function" &&
-                GOOGLE_ADS_CONVERSION_CONTACT_FORM
-              ) {
-                window.gtag("event", "conversion", {
-                  send_to: GOOGLE_ADS_CONVERSION_CONTACT_FORM,
-                  value: GOOGLE_ADS_CONVERSION_VALUE_CONTACT,
-                  currency: GOOGLE_ADS_CONVERSION_CURRENCY,
-                });
-              }
-            } catch (gtagError) {
-              if (process.env.NODE_ENV === "development") {
-                console.warn("GTag conversion error:", gtagError);
-              }
-            }
 
             // Analytics tracking (non-blocking)
             try {
@@ -191,98 +170,98 @@ const Contact = () => {
               setSubmitting(false);
             }
           }}
-        >
-          {({ isSubmitting }) => (
-            <div className={styles.container}>
-              <Breadcrumbs path={""} />
-              <Form>
-                <AnimationWrapper
-                  effect={animations?.fadeWithScale}
-                  className={styles.form}
-                >
-                  <div className={styles.firstName}>
-                    <MyTextField
-                      label="First Name"
-                      name="firstName"
-                      type="text"
-                      maxLength="15"
-                      autoComplete="given-name"
-                    />
-                  </div>
-
-                  <div className={styles.lastName}>
-                    <MyTextField
-                      label="Last Name"
-                      name="lastName"
-                      type="text"
-                      maxLength="20"
-                      autoComplete="family-name"
-                    />
-                  </div>
-
-                  <div className={styles.email}>
-                    <MyTextField
-                      label="Email Address"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                    />
-                  </div>
-
-                  <div className={styles.phone}>
-                    <MyPhoneField
-                      label="Phone"
-                      name="phone"
-                      autoComplete="tel"
-                    />
-                  </div>
-
-                  <div className={styles.message}>
-                    <MyMultilineTextField
-                      label="Message"
-                      name="message"
-                      type="textarea"
-                    />
-                  </div>
-                  <button
-                    className={styles.button}
-                    type="submit"
-                    disabled={isSubmitting}
+          >
+            {({ isSubmitting }) => (
+              <>
+                <Form>
+                  <AnimationWrapper
+                    effect={animations?.fadeWithScale}
+                    className={styles.form}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className={styles.spinner}></span>
-                        SUBMITTING...
-                      </>
-                    ) : (
-                      "SUBMIT"
-                    )}
-                  </button>
-                </AnimationWrapper>
-              </Form>
-              {state && (
-                <h1 style={{ color: "var(--text-primary)", marginTop: "2rem" }}>
-                  Your message has been delivered
-                </h1>
-              )}
+                    <div className={styles.firstName}>
+                      <MyTextField
+                        label="First Name"
+                        name="firstName"
+                        type="text"
+                        maxLength="15"
+                        autoComplete="given-name"
+                      />
+                    </div>
 
-              {/* Service Areas Information */}
-              <div className={styles.mapContainer}>
-                <h2 className={styles.mapTitle}>Our Service Areas</h2>
-                <p className={styles.serviceAreasDescription}>
-                  FlushJohn provides porta potty rental services across 25+
-                  cities in 6 states: Texas, Florida, California, Georgia,
-                  Illinois, and Delaware. We deliver directly to your location -
-                  no physical storefront needed.
-                  <a href="/service-areas" className={styles.serviceAreasLink}>
-                    View all service areas →
-                  </a>
-                </p>
-              </div>
-            </div>
-          )}
-        </Formik>
-      </div>
+                    <div className={styles.lastName}>
+                      <MyTextField
+                        label="Last Name"
+                        name="lastName"
+                        type="text"
+                        maxLength="20"
+                        autoComplete="family-name"
+                      />
+                    </div>
+
+                    <div className={styles.email}>
+                      <MyTextField
+                        label="Email Address"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                      />
+                    </div>
+
+                    <div className={styles.phone}>
+                      <MyPhoneField
+                        label="Phone"
+                        name="phone"
+                        autoComplete="tel"
+                      />
+                    </div>
+
+                    <div className={styles.message}>
+                      <MyMultilineTextField
+                        label="Message"
+                        name="message"
+                        type="textarea"
+                      />
+                    </div>
+                    <button
+                      className={styles.button}
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className={styles.spinner}></span>
+                          SUBMITTING...
+                        </>
+                      ) : (
+                        "SUBMIT"
+                      )}
+                    </button>
+                  </AnimationWrapper>
+                </Form>
+                {state && (
+                  <h1 style={{ color: "var(--text-primary)", marginTop: "2rem" }}>
+                    Your message has been delivered
+                  </h1>
+                )}
+
+                {/* Service Areas Information */}
+                <div className={styles.mapContainer}>
+                  <h2 className={styles.mapTitle}>Our Service Areas</h2>
+                  <p className={styles.serviceAreasDescription}>
+                    FlushJohn provides porta potty rental services across 25+
+                    cities in 6 states: Texas, Florida, California, Georgia,
+                    Illinois, and Delaware. We deliver directly to your location -
+                    no physical storefront needed.
+                    <a href="/service-areas" className={styles.serviceAreasLink}>
+                      View all service areas →
+                    </a>
+                  </p>
+                </div>
+              </>
+            )}
+          </Formik>
+        </div>
+      </section>
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}

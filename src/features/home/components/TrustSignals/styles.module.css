@@ -1,6 +1,6 @@
 .trustSignals {
-  background-color: var(--bg-primary);
-  padding: var(--spacing-section) 0;
+  background-color: var(--bg-section-alternate);
+  padding: 3rem 0;
   margin: 0;
   position: relative;
 }
@@ -32,21 +32,15 @@
 }
 
 .statItem {
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  background: var(--bg-section-primary);
+  backdrop-filter: none;
   padding: 2rem 1.5rem;
   border-radius: 0;
-  box-shadow:
-    0 6px 24px var(--black-alpha-12),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
   display: flex;
@@ -55,9 +49,7 @@
 }
 
 .statItem:hover {
-  box-shadow:
-    0 8px 28px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -73,7 +65,7 @@
   margin-bottom: var(--spacing-xs);
   line-height: 1.2;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px var(--black-alpha-10);
+  text-shadow: none;
 }
 
 .statLabel {
@@ -85,7 +77,7 @@
 
 .trustBadges {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-md); /* 32px - matches nexbaron-web gap-8 for 3-column grids */
   margin-bottom: var(--spacing-3xl);
 }
@@ -95,17 +87,12 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-12) 0%,
-    var(--white-alpha-08) 100%
-  );
-  backdrop-filter: blur(10px);
+  /* Remove backdrop-filter - use solid background */
+  background: var(--bg-section-primary);
+  backdrop-filter: none;
   padding: 1rem 1.25rem;
   border-radius: 0;
-  box-shadow:
-    0 4px 16px var(--black-alpha-10),
-    inset 0 1px 0 var(--white-alpha-20);
+  box-shadow: none;
   border: 1px solid var(--white-alpha-20);
   font-weight: 300;
   color: var(--text-primary);
@@ -113,15 +100,12 @@
   letter-spacing: 0.01em;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
     border-color var(--transition-base),
     background var(--transition-base);
 }
 
 .badge:hover {
-  box-shadow:
-    0 6px 20px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-25);
+  box-shadow: none;
   border-color: var(--white-alpha-30);
   background: linear-gradient(
     135deg,
@@ -175,17 +159,36 @@
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .trustBadges {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .trustSignals {
-    padding: var(--spacing-3xl) 0;
+    padding: 2.5rem 0;
   }
 
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--gap-sm); /* 24px - consistent gap */
     margin-bottom: var(--spacing-2xl);
+  }
+
+  .trustBadges {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-sm);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .trustBadges {
+    grid-template-columns: 1fr;
   }
 
   .statNumber {

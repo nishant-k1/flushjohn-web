@@ -21,13 +21,12 @@
   padding: 8px;
   height: fit-content;
   width: 300px;
-  background: var(--bg-primary);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--white-alpha-15);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
+  background: var(--bg-section-card);
+  border: 1px solid var(--border-light);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-25),
-    inset 0 1px 0 var(--white-alpha-10);
+  box-shadow: none;
   overflow: hidden;
 }
 
@@ -75,9 +74,9 @@
   padding-right: 40px;
   margin: 0 0 1rem 0;
   line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Usage Type Row - Responsive Layout */
@@ -130,7 +129,7 @@
   margin: 0 !important;
   height: 2rem;
   outline: none;
-  border: none;
+  border: 1px solid var(--border-light);
   padding-left: 12px;
   font-size: 14px;
   color: var(--text-dark);
@@ -138,7 +137,8 @@
   border-radius: 0;
   transition:
     color 0.5s,
-    background-color 0.5s;
+    background-color 0.5s,
+    border-color 0.2s;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -170,13 +170,13 @@
 
 .quickQuoteform input:hover,
 .quickQuoteform textarea:hover {
-  border: none;
+  border: 1px solid var(--border-light);
   background-color: var(--bg-white);
 }
 
 .quickQuoteform input:focus,
 .quickQuoteform textarea:focus {
-  border: none;
+  border: 1px solid var(--primary);
   background-color: var(--bg-white);
 }
 
@@ -243,7 +243,7 @@
   color: var(--text-primary);
   border-radius: 6px;
   border-left: 3px solid var(--error-dark);
-  text-shadow: 0 1px 2px var(--black-alpha-25);
+  text-shadow: none;
   box-shadow: 0 4px 12px var(--black-alpha-25);
   white-space: nowrap;
   pointer-events: none;
@@ -334,6 +334,13 @@
 .quickQuoteform :global(.PhoneInput) {
   width: 100% !important;
   display: flex !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 0 !important;
+  transition: border-color 0.2s !important;
+}
+
+.quickQuoteform :global(.PhoneInput):focus-within {
+  border: 1px solid var(--primary) !important;
 }
 
 .quickQuoteform :global(.PhoneInputInput) {
@@ -341,7 +348,7 @@
   height: 2rem !important;
   padding-left: 12px !important;
   border: none !important;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   font-size: 14px !important;
   background: var(--bg-white) !important;
   color: var(--text-dark) !important;
@@ -370,7 +377,8 @@
   cursor: default !important;
   pointer-events: none !important;
   border: none !important;
-  border-radius: 4px !important;
+  border-right: 1px solid var(--border-light) !important;
+  border-radius: 0 !important;
   height: 2rem !important;
   align-items: center !important;
   display: flex !important;

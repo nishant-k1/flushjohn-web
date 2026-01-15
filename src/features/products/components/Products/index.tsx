@@ -10,9 +10,9 @@ const Products = () => {
   const { product_list } = products_data;
   return (
     <React.Fragment>
-      <div className={styles.products}>
+      <Breadcrumbs path={""} />
+      <section className={styles.section}>
         <div className={styles.container}>
-          <Breadcrumbs path={""} />
           <div className={styles.productsWrapper}>
             {product_list.map((item, index) => {
               const { id, image, title, desc } = item;
@@ -44,7 +44,7 @@ const Products = () => {
             })}
           </div>
         </div>
-      </div>
+      </section>
     </React.Fragment>
   );
 };

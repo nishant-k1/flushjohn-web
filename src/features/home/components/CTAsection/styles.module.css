@@ -1,13 +1,14 @@
 .ctaSection {
   margin-top: 0;
-  padding: var(--spacing-section) 0;
-  background: var(--bg-primary);
+  padding: 6rem 0;
+  background: var(--bg-section-cta-blue);
   border-radius: 0;
   text-align: center;
-  box-shadow: none;
-  color: var(--text-inverse);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  border-top: 2px solid var(--primary);
 }
 
 .container {
@@ -20,7 +21,7 @@
 
 .ctaSection h3 {
   font-size: 2.2rem;
-  color: var(--text-inverse);
+  color: var(--text-primary);
   margin-bottom: var(--spacing-md);
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -30,7 +31,7 @@
 
 .ctaSection p {
   font-size: 1.2rem;
-  color: var(--text-inverse-secondary);
+  color: var(--text-secondary);
   margin-bottom: var(--spacing-xl);
   line-height: 1.7;
   position: relative;
@@ -83,9 +84,9 @@
 }
 
 .phoneButton {
-  background-color: var(--primary-light);
-  color: var(--text-primary);
-  border: 2px solid var(--primary-light);
+  background-color: var(--primary);
+  color: var(--text-inverse);
+  border: 2px solid var(--primary);
   padding: 8px 20px;
   font-size: 1rem;
   font-weight: 500;
@@ -100,14 +101,14 @@
 }
 
 .phoneButton:hover {
-  background-color: var(--primary);
+  background-color: var(--primary-dark);
   box-shadow: var(--shadow-lg);
-  color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .phoneButton:active {
   background-color: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
 }
 
 .phoneButton:focus-visible {
@@ -120,7 +121,7 @@
   font-size: 1.3rem;
   color: var(--text-primary);
   font-weight: 400;
-  text-shadow: 1px 1px 2px var(--black-alpha-30);
+  text-shadow: none;
   position: relative;
   z-index: 1;
 }
@@ -142,7 +143,7 @@
   justify-content: center;
   gap: var(--spacing-sm);
   font-size: 1rem;
-  color: var(--text-inverse-secondary);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -155,7 +156,7 @@
 
 @media (max-width: 768px) {
   .ctaSection {
-    padding: var(--spacing-3xl) 0;
+    padding: 4rem 0;
   }
 
   .ctaSection h3 {

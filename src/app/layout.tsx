@@ -69,10 +69,11 @@ export const metadata = {
   siteName: "FlushJohn",
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon_io/favicon.ico", sizes: "any" },
+      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/favicon_io/apple-touch-icon.png",
   },
   alternates: {
     canonical: websiteURL,
@@ -298,6 +299,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
         {/* DNS prefetch for third-party domains - lower priority */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
@@ -371,24 +375,24 @@ export default function RootLayout({
         {/* Skip Link - Accessibility: Allows keyboard users to skip to main content */}
         <SkipLink />
 
-        <Layout>
-          <ClientWidthContextProvider>
-            <SidebarContextProvider>
-              <QuickQuoteContextProvider>
-                <QuoteContextProvider>
-                  <AnalyticsInitializer />
-                  <ScrollToTop />
-                  <Sidebar />
-                  <Navbar />
+        <ClientWidthContextProvider>
+          <SidebarContextProvider>
+            <QuickQuoteContextProvider>
+              <QuoteContextProvider>
+                <AnalyticsInitializer />
+                <ScrollToTop />
+                <Sidebar />
+                <Navbar />
+                <Layout>
                   {children}
                   <QuickQuote />
                   <Testimonial {...testimonials} />
                   <Footer />
-                </QuoteContextProvider>
-              </QuickQuoteContextProvider>
-            </SidebarContextProvider>
-          </ClientWidthContextProvider>
-        </Layout>
+                </Layout>
+              </QuoteContextProvider>
+            </QuickQuoteContextProvider>
+          </SidebarContextProvider>
+        </ClientWidthContextProvider>
         {/* Portal root for datepicker and other portals */}
         <div id="root" />
       </body>

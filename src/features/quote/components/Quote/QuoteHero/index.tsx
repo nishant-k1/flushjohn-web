@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
+import { PhoneIcon } from "@/components/UI/Icons";
 
 const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
@@ -26,7 +27,7 @@ const QuoteHero = () => {
           aria-label={`Call FlushJohn at ${phone_number}`}
         >
           <span className={styles.phoneNumber}>{phone_number}</span>
-          <span className={styles.phoneLabel}>Or call us</span>
+          <PhoneIcon className={styles.phoneIcon} size={20} />
         </a>
       </div>
 

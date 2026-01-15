@@ -1,6 +1,6 @@
 .section {
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-primary) !important;
 }
 
 .container {
@@ -26,7 +26,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px var(--white-alpha-30);
+  border-bottom: solid 2px var(--border-light);
   background-color: transparent;
   outline: none;
   height: 2rem;
@@ -61,12 +61,12 @@
 }
 
 .input::placeholder {
-  color: var(--white-alpha-30);
+  color: var(--text-tertiary);
   opacity: 1;
 }
 
 .input:focus::placeholder {
-  color: var(--white-alpha-20);
+  color: var(--text-quaternary);
 }
 
 .form input {
@@ -77,7 +77,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px var(--white-alpha-30);
+  border-bottom: solid 2px var(--border-light);
   background-color: transparent;
   outline: none;
   height: 2rem;
@@ -112,12 +112,12 @@
 }
 
 .form input::placeholder {
-  color: var(--white-alpha-30);
+  color: var(--text-tertiary);
   opacity: 1;
 }
 
 .form input:focus::placeholder {
-  color: var(--white-alpha-20);
+  color: var(--text-quaternary);
 }
 
 .textarea {
@@ -128,7 +128,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px var(--white-alpha-30);
+  border-bottom: solid 2px var(--border-light);
   background-color: transparent;
   outline: none;
   height: 100px;
@@ -157,12 +157,12 @@
 }
 
 .textarea::placeholder {
-  color: var(--white-alpha-30);
+  color: var(--text-tertiary);
   opacity: 1;
 }
 
 .textarea:focus::placeholder {
-  color: var(--white-alpha-20);
+  color: var(--text-quaternary);
 }
 
 .error {
@@ -175,7 +175,7 @@
   border-radius: 4px;
   border-left: 3px solid var(--error-dark);
   font-weight: 600;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
 }
 
 .form {
@@ -236,29 +236,29 @@
   gap: 8px;
   height: 2.5rem;
   background: var(--primary);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   font-weight: 600;
   font-size: large;
   border: solid 2px var(--primary-light);
   border-radius: 0;
   cursor: pointer;
   transition: var(--transition-base);
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
   box-shadow: 0 2px 8px var(--black-alpha-30);
 }
 
 .button:hover {
   background: var(--primary-light);
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
   box-shadow: 0 4px 12px var(--black-alpha-40);
   transition: var(--transition-base);
-  text-shadow: 0 1px 3px var(--black-alpha-40);
+  text-shadow: none;
 }
 
 .button:active {
   background: var(--primary-dark);
-  color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  color: var(--text-inverse) !important;
+  text-shadow: none;
   box-shadow: 0 1px 4px var(--black-alpha-30);
 }
 
@@ -277,7 +277,7 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
   box-shadow: 0 1px 4px var(--black-alpha-20);
 }
 
@@ -291,7 +291,7 @@
   ) !important;
   border-color: var(--primary-dark) !important;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-30);
+  text-shadow: none;
 }
 
 .button * {
@@ -314,7 +314,7 @@
   font-size: medium;
   font-weight: 900;
   color: var(--text-primary) !important;
-  text-shadow: 0 1px 2px var(--black-alpha-20);
+  text-shadow: none;
 }
 
 .notSubmitted {
@@ -410,7 +410,7 @@
   }
 
   .message {
-    border-left: 1px solid var(--white-alpha-30);
+    border-left: 1px solid var(--border-light);
     padding: 0;
     margin: 0;
   }
@@ -434,7 +434,7 @@
 .mapContainer {
   margin-top: var(--spacing-3xl);
   padding-top: var(--spacing-3xl);
-  border-top: 1px solid var(--white-alpha-15);
+  border-top: 1px solid var(--border-light);
 }
 
 .mapTitle {
@@ -452,7 +452,7 @@
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 6px 24px var(--black-alpha-12);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
 }
 
 .mapWrapper iframe {

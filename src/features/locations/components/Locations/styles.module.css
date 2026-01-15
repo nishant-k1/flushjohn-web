@@ -1,9 +1,10 @@
 .locations {
   display: flex;
-  background-color: var(--bg-primary);
+  background-color: #303E59;
   background-size: cover;
   background-position: left;
   background-repeat: repeat;
+  padding: 1rem 0;
 }
 
 .container {
@@ -15,32 +16,33 @@
 }
 
 .container h2 {
-  color: var(--text-primary);
-  padding-bottom: 1.5rem;
-  font-size: 1.5rem;
+  color: var(--text-inverse);
+  padding-bottom: 0.75rem;
+  font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .container p {
-  line-height: 1.7;
+  line-height: 1.6;
   font-weight: 300;
-  font-size: 0.9375rem;
-  color: var(--text-primary);
+  font-size: 0.8125rem;
+  color: var(--text-inverse);
+  opacity: 0.9;
 }
 
 .container a {
-  color: var(--text-primary);
+  color: var(--text-inverse);
   opacity: 0.9;
   font-weight: 400;
   transition: all 0.3s ease;
 }
 
 .container a:hover {
-  color: var(--text-primary);
-  text-shadow: 0 0 6px var(--white-alpha-30);
+  color: var(--text-inverse);
+  opacity: 1;
   text-decoration: underline;
-  text-decoration-color: var(--text-primary);
+  text-decoration-color: var(--text-inverse);
 }
 
 /* tablet device breakpoint: 768px*/

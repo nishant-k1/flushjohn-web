@@ -1,16 +1,20 @@
 /* utilities */
 .product {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-section-primary) !important;
   background-size: cover;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
+  position: relative;
 }
 
 .container {
-  margin: 0 auto;
   max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .wrapper {
@@ -19,18 +23,13 @@
   grid-gap: 2rem;
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    135deg,
-    var(--white-alpha-08) 0%,
-    var(--white-alpha-05) 100%
-  );
-  backdrop-filter: blur(10px);
+  background: var(--bg-section-card);
+  /* Remove backdrop-filter - use solid background */
+  backdrop-filter: none;
   padding: 3rem 2.5rem;
   border: 1px solid var(--white-alpha-15);
   border-radius: 0;
-  box-shadow:
-    0 8px 32px var(--black-alpha-15),
-    inset 0 1px 0 var(--white-alpha-15);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
 }

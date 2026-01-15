@@ -14,11 +14,11 @@
 
 
 
-  /* Primary Brand Colors */
-  --primary: #CF772C;
-  --primary-dark: #a85f1f;
-  --primary-light: #e08a4a;
-  --primary-lighter: #f19d68;
+  /* Primary Brand Colors - Green for buttons and interactive elements */
+  --primary: #4CAF50; /* Green from Siteway logo - for buttons */
+  --primary-dark: #388e3c; /* Darker green variant */
+  --primary-light: #66bb6a; /* Lighter green variant */
+  --primary-lighter: #81c784; /* Even lighter green variant */
 
   /* Secondary Colors */
   --secondary: #CF772C;
@@ -45,20 +45,13 @@
   --neutral-800: #2f2415;
   --neutral-900: #1a1209;
 
-  /* Background Colors */
-  --bg-primary: #7a6a5a;
-  --bg-secondary: #7a6a5a;
-  --bg-tertiary: #7a6a5a;
-  --bg-dark: #7a6a5a;
-  --bg-dark-alpha: rgba(122, 106, 90, 0.95);
-  --bg-dark-alpha-50: rgba(122, 106, 90, 0.5);
-  --bg-dark-alpha-40: rgba(122, 106, 90, 0.4);
+  /* Background Colors - Matching API light theme (duplicate removed - see below) */
 
-  /* Info Colors */
-  --info: #CF772C;
-  --info-dark: #a85f1f;
-  --info-light: #e08a4a;
-  --info-bg: rgba(207, 119, 44, 0.15);
+  /* Info Colors - Green for buttons */
+  --info: #4CAF50; /* Green for buttons */
+  --info-dark: #388e3c;
+  --info-light: #66bb6a;
+  --info-bg: rgba(76, 175, 80, 0.15);
 
   /* Primary Color with Opacity Variants */
   --primary-alpha-5: rgba(207, 119, 44, 0.05);
@@ -73,66 +66,82 @@
 
 
 
-  /* Primary Brand Colors - Using #CF772C as main color */
-  --primary: #cf772c;
-  --primary-dark: #a85f1f; /* Darker variant for hover/active states */
-  --primary-light: #e08a4a; /* Lighter variant for accents */
-  --primary-lighter: #f19d68; /* Even lighter for subtle highlights */
+  /* Primary Brand Colors - Green for buttons and interactive elements */
+  --primary: #4CAF50; /* Green from Siteway logo - for buttons */
+  --primary-dark: #388e3c; /* Darker green variant for hover/active states */
+  --primary-light: #66bb6a; /* Lighter green variant for accents */
+  --primary-lighter: #81c784; /* Even lighter green variant for subtle highlights */
 
-  /* Secondary Colors - Same as primary for consistency */
-  --secondary: #cf772c;
-  --secondary-light: #e08a4a;
-  --secondary-lighter: #f19d68;
+  /* Secondary Colors - Green for buttons */
+  --secondary: #4CAF50; /* Green for buttons */
+  --secondary-light: #66bb6a;
+  --secondary-lighter: #81c784;
 
-  /* Accent Colors - Harmonious with main color */
-  --accent-blue: #a85f1f; /* Darker variant */
-  --accent-blue-light: #cf772c; /* Main color */
-  --accent-blue-dark: #8a4d18; /* Darkest variant for contrast */
-  --accent-green: #a85f1f; /* Use theme color instead of vibrant green */
-  --accent-green-dark: #8a4d18; /* Darker theme variant */
-  --accent-gold: #cf772c; /* Use primary instead of vibrant gold */
+  /* Accent Colors - Matching Siteway Logo */
+  --accent-blue: #2D415B; /* Dark blue from Siteway logo */
+  --accent-blue-light: #3d5a7a; /* Lighter blue variant */
+  --accent-blue-dark: #1e2d3f; /* Darkest blue variant */
+  --accent-green: #4CAF50; /* Vibrant green from Siteway logo */
+  --accent-green-dark: #388e3c; /* Darker green variant */
+  --accent-gold: #2D415B; /* Use primary blue */
 
-  /* Neutral Colors - Based on main color with proper contrast */
-  --neutral-50: #f5f3f0;
-  --neutral-100: #ebe7e1;
-  --neutral-200: #d7cfc3;
-  --neutral-300: #c3b7a5;
-  --neutral-400: #af9f87;
-  --neutral-500: #cf772c; /* Main color */
-  --neutral-600: #6d5637;
-  --neutral-700: #4e3d26;
-  --neutral-800: #2f2415;
-  --neutral-900: #1a1209;
+  /* Neutral Colors */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e0e0e0;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #2D415B; /* Dark blue for text and non-button elements */
+  --neutral-600: #1e2d3f;
+  --neutral-700: #15202e;
+  --neutral-800: #0f151f;
+  --neutral-900: #0a0f14;
 
-  /* Text Colors - WCAG AA Compliant (4.5:1 contrast ratio minimum) */
-  --text-primary: #ffffff; /* White for headings - high contrast (meets WCAG AAA) */
-  --text-secondary: #f5f5f5; /* Near-white for secondary text - meets WCAG AA (was rgba(255,255,255,0.9)) */
-  --text-tertiary: #e8e8e8; /* Light gray for muted text - meets WCAG AA (was rgba(255,255,255,0.7)) */
-  --text-inverse: #ffffff;
-  --text-inverse-secondary: #f5f5f5; /* Updated for WCAG AA compliance */
-  --text-inverse-tertiary: #e8e8e8; /* Updated for WCAG AA compliance */
+  /* Text Colors - Matching API light theme */
+  --text-primary: #1a1a1a; /* Dark for headings - matches API */
+  --text-secondary: #333333; /* Dark gray for secondary text - matches API */
+  --text-tertiary: #555555; /* Medium gray for body text - matches API */
+  --text-quaternary: #666666; /* Muted text - matches API */
+  --text-inverse: #ffffff; /* White for text on dark backgrounds (buttons, etc.) */
+  --text-inverse-secondary: #f5f5f5; /* Light gray for secondary text on dark backgrounds */
+  --text-inverse-tertiary: #e8e8e8; /* Lighter gray for tertiary text on dark backgrounds */
 
-  /* Background Colors - Single consistent color scheme using less muted brown */
-  --bg-primary: #7a6a5a; /* Main background - body, sections, everything - less muted brown */
-  --bg-secondary: #7a6a5a; /* Same for consistency */
-  --bg-tertiary: #7a6a5a; /* Same for consistency */
-  --bg-dark: #7a6a5a; /* Same for consistency */
+  /* Background Colors - Better UI hierarchy with subtle shades */
+  --bg-primary: #ffffff; /* Main background - pure white for hero and main content */
+  --bg-secondary: #f9fafb; /* Light gray for alternating sections */
+  --bg-tertiary: #f5f5f5; /* Slightly darker gray for cards and elevated elements */
+  --bg-quaternary: #f0f0f0; /* Footer and distinct sections */
+  --bg-dark: #f5f5f5; /* For dark sections (now light gray) */
   --bg-dark-alpha: rgba(
-    122,
-    106,
-    90,
+    255,
+    255,
+    255,
     0.95
-  ); /* For header/footer with backdrop */
-  --bg-dark-alpha-50: rgba(122, 106, 90, 0.5); /* For overlays */
-  --bg-dark-alpha-40: rgba(122, 106, 90, 0.4); /* For overlays */
+  ); /* For header with backdrop - white with transparency */
+  --bg-dark-alpha-50: rgba(255, 255, 255, 0.5); /* For overlays */
+  --bg-dark-alpha-40: rgba(255, 255, 255, 0.4); /* For overlays */
   --bg-transparent: transparent;
 
-  /* Semantic Colors - Earth-toned but functional */
-  /* Success: Muted green that harmonizes with brown theme */
-  --success: #6b8e5a; /* Muted forest green - works with brown */
-  --success-dark: #556b47; /* Darker variant for hover/active */
-  --success-light: #7fa366; /* Lighter variant for backgrounds */
-  --success-bg: rgba(107, 142, 90, 0.15); /* Subtle success background */
+  /* Section-specific backgrounds for better visual hierarchy using white and blue shades */
+  --bg-section-primary: #ffffff; /* Primary sections - white */
+  --bg-section-alternate: #f0f3f7; /* Alternating sections - light blue tint */
+  --bg-section-alternate-blue: #f0f3f7; /* Alternating sections - light blue tint */
+  --bg-section-card: #f5f7fa; /* Cards and elevated content - subtle blue tint */
+  --bg-section-card-blue: #f5f7fa; /* Cards and elevated content - subtle blue tint */
+  --bg-section-footer: #303E59; /* Footer background - dark blue shade */
+  --bg-section-hero: #ffffff; /* Hero section - white */
+  --bg-section-cta: #e1e8f2; /* CTA sections - noticeable blue for emphasis */
+  --bg-section-cta-blue: #e1e8f2; /* CTA sections - noticeable blue for emphasis */
+  --bg-section-accent: #f0f3f7; /* Accent sections - subtle blue */
+  --bg-section-accent-blue: #f0f3f7; /* Accent sections - subtle blue */
+  --bg-breadcrumb: #f0f3f7; /* Breadcrumb sections - reserved unique light blue */
+
+  /* Semantic Colors - Matching Siteway Logo */
+  /* Success: Green from Siteway logo */
+  --success: #4CAF50; /* Vibrant green from Siteway logo */
+  --success-dark: #388e3c; /* Darker variant for hover/active */
+  --success-light: #66bb6a; /* Lighter variant for backgrounds */
+  --success-bg: rgba(76, 175, 80, 0.15); /* Subtle success background */
   
   /* Error: Muted red/orange that's distinct but not jarring */
   --error: #c85d47; /* Muted terracotta red - distinct but earth-toned */
@@ -154,16 +163,16 @@
   --warning-light: #e6b890; /* Lighter variant */
   --warning-bg: rgba(212, 165, 116, 0.15); /* Subtle warning background */
   
-  /* Info: Cooler brown-tone or teal that stands out */
-  --info: #cf772c; /* Use primary for consistency */
-  --info-dark: #a85f1f; /* Darker variant */
-  --info-light: #e08a4a; /* Lighter variant */
-  --info-bg: rgba(207, 119, 44, 0.15); /* Subtle info background */
+  /* Info: Green for buttons */
+  --info: #4CAF50; /* Green for buttons */
+  --info-dark: #388e3c; /* Darker variant */
+  --info-light: #66bb6a; /* Lighter variant */
+  --info-bg: rgba(76, 175, 80, 0.15); /* Subtle info background */
 
-  /* Border Colors - Light borders for forms and dividers */
-  --border-light: #d9d9d9; /* Light border default */
+  /* Border Colors - Matching API light theme */
+  --border-light: #e0e0e0; /* Light border default - matches API */
   --border-lighter: #e8e8e8; /* Even lighter border */
-  --border-checkbox: #c0c0c0; /* Checkbox border */
+  --border-checkbox: #e0e0e0; /* Checkbox border - matches API */
   --border-default: var(--border-light); /* Default border */
 
   /* Form Text Colors - Text colors for form inputs */
@@ -171,25 +180,25 @@
   --text-form-value: #333; /* Form input value text */
   --text-dark: #1a1a1a; /* Dark text for light backgrounds */
 
-  /* Background Colors - White and light backgrounds */
+  /* Background Colors - Matching API light theme */
   --bg-white: #ffffff; /* Pure white */
-  --bg-light: #f7fafc; /* Light background */
-  --bg-lighter: #f8f9fa; /* Even lighter background */
+  --bg-light: #f9fafb; /* Light background - matches API */
+  --bg-lighter: #f9f9f9; /* Even lighter background - matches API */
   --bg-input: #ffffff; /* Input background */
-  --bg-button-light: #f0f0f0; /* Light button background */
-  --bg-gray-light: #f2f2f2; /* Light gray background */
-  --bg-gray: #ddd; /* Medium gray background */
+  --bg-button-light: #f5f5f5; /* Light button background - matches API */
+  --bg-gray-light: #f9f9f9; /* Light gray background - matches API */
+  --bg-gray: #e0e0e0; /* Medium gray background - matches API borders */
 
-  /* Primary Color with Opacity Variants */
-  --primary-alpha-05: rgba(207, 119, 44, 0.05);
-  --primary-alpha-06: rgba(207, 119, 44, 0.06);
-  --primary-alpha-08: rgba(207, 119, 44, 0.08);
-  --primary-alpha-10: rgba(207, 119, 44, 0.1);
-  --primary-alpha-12: rgba(207, 119, 44, 0.12);
-  --primary-alpha-15: rgba(207, 119, 44, 0.15);
-  --primary-alpha-20: rgba(207, 119, 44, 0.2);
-  --primary-alpha-30: rgba(207, 119, 44, 0.3);
-  --primary-alpha-40: rgba(207, 119, 44, 0.4);
+  /* Primary Color with Opacity Variants - Green for buttons */
+  --primary-alpha-05: rgba(76, 175, 80, 0.05);
+  --primary-alpha-06: rgba(76, 175, 80, 0.06);
+  --primary-alpha-08: rgba(76, 175, 80, 0.08);
+  --primary-alpha-10: rgba(76, 175, 80, 0.1);
+  --primary-alpha-12: rgba(76, 175, 80, 0.12);
+  --primary-alpha-15: rgba(76, 175, 80, 0.15);
+  --primary-alpha-20: rgba(76, 175, 80, 0.2);
+  --primary-alpha-30: rgba(76, 175, 80, 0.3);
+  --primary-alpha-40: rgba(76, 175, 80, 0.4);
 
   /* White Overlay Variants */
   --white-alpha-05: rgba(255, 255, 255, 0.05);
@@ -219,7 +228,7 @@
 
   /* Rating/Star Colors */
   --rating-active: #ffd700; /* Gold for active stars */
-  --rating-inactive: rgba(255, 255, 255, 0.25); /* Inactive star color */
+  --rating-inactive: rgba(0, 0, 0, 0.2); /* Inactive star color - dark for light theme */
   --rating-glow: rgba(255, 215, 0, 0.5); /* Star glow effect */
 
   /* Social Media Colors */
@@ -303,7 +312,7 @@
   ); /* Check button shadow hover */
 
   /* Legacy Support (Backward Compatibility) */
-  --primary-bg-color: var(--primary);
+  --primary-bg-color: var(--primary); /* Green for buttons */
   --primary-text-color: var(--text-inverse);
   --primary-error-color: var(
     --primary-dark
@@ -346,8 +355,8 @@
   --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 6px 20px rgba(0, 0, 0, 0.15);
   --shadow-2xl: 0 8px 30px rgba(0, 0, 0, 0.18);
-  --shadow-primary: 0 2px 8px rgba(169, 93, 31, 0.25);
-  --shadow-primary-lg: 0 4px 16px rgba(169, 93, 31, 0.3);
+  --shadow-primary: 0 2px 8px rgba(76, 175, 80, 0.25);
+  --shadow-primary-lg: 0 4px 16px rgba(76, 175, 80, 0.3);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -401,7 +410,70 @@ body {
   background-size: cover;
   background-repeat: repeat;
   overflow-x: hidden !important;
-  width: 100vw !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  /* Font rendering optimizations to prevent blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+}
+
+/* Section background utilities for better visual hierarchy */
+section:nth-child(even),
+.section-alternate {
+  background-color: var(--bg-section-alternate);
+}
+
+section:nth-child(odd):not(.section-alternate),
+.section-primary {
+  background-color: var(--bg-section-primary);
+}
+
+.section-card {
+  background-color: var(--bg-section-card);
+}
+
+.section-cta {
+  background-color: var(--bg-section-cta);
+}
+
+/* Fix text blur on elements with backdrop-filter */
+/* Ensure all text elements have proper font smoothing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Override for elements that use backdrop-filter but contain text */
+.serviceCard,
+.statItem,
+.badge,
+.quickQuoteform,
+.card,
+[class*="Card"],
+[class*="card"] {
+  /* Create separate rendering layer to prevent backdrop-filter from affecting text */
+  isolation: isolate;
+  /* Ensure text inside is crisp */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure text content inside backdrop-filter elements is on separate layer */
+.serviceCard > *,
+.statItem > *,
+.badge > *,
+.quickQuoteform > *,
+.card > * {
+  /* Force text to render on separate layer */
+  position: relative;
+  z-index: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -413,6 +485,10 @@ h3 {
   letter-spacing: 0.02em;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  /* Prevent text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1 {
@@ -430,6 +506,10 @@ h3 {
 p {
   margin-bottom: 1rem;
   line-height: 1.7;
+  /* Prevent text blur */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -440,36 +520,97 @@ button {
   letter-spacing: 0.01em;
 }
 
-/* SCROLL BAR - Cross-platform consistent styling */
-/* WebKit browsers (Chrome, Safari, Edge, Opera) */
-::-webkit-scrollbar {
-  width: 8px; /* Slightly wider for better visibility on Windows */
-  height: 8px; /* For horizontal scrollbars */
-}
+/* SCROLL BAR - Green thumb only, transparent track */
+/* Works across Chrome, Safari, Firefox on Mac, Windows, Linux */
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); /* Subtle track background */
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3); /* More visible on Windows */
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.5); /* Darker on hover */
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent; /* Corner where scrollbars meet */
-}
-
-/* Firefox scrollbar styling */
-html {
+/* Base - Firefox */
+html, body, * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+  scrollbar-color: var(--primary) transparent;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge, Opera) - All OS */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: transparent !important;
+  background-color: transparent !important;
+  -webkit-appearance: none;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  filter: opacity(0) !important;
+}
+
+html::-webkit-scrollbar-track-piece,
+body::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-track-piece {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  filter: opacity(0) !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  min-height: 20px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark) !important;
+  background-color: var(--primary-dark) !important;
+}
+
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active,
+*::-webkit-scrollbar-thumb:active {
+  background: var(--primary-dark) !important;
+  background-color: var(--primary-dark) !important;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Date Picker Calendar Styling - Chrome/Edge/Safari */
@@ -513,7 +654,7 @@ input[type="radio"] {
   height: 20px !important;
   border: 2px solid var(--neutral-400) !important;
   border-radius: 0 !important;
-  background-color: var(--bg-primary) !important;
+  background-color: var(--bg-white) !important;
   cursor: pointer !important;
   position: relative !important;
   transition: all var(--transition-fast) !important;

@@ -231,7 +231,9 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             position: "absolute",
             top: "100%",
             left: 0,
-            right: 0,
+            minWidth: "100%",
+            width: "max-content",
+            maxWidth: "min(100%, calc(100vw - 32px))",
             background: "var(--bg-white)",
             border: `1px solid var(--primary-bg-color, var(--primary))`,
             borderRadius: "0",
@@ -244,6 +246,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
             animation:
               "datePickerSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
+          className="products-dropdown-menu"
         >
           {options.map((option, index) => (
             <div

@@ -69,13 +69,13 @@ export const home_data: HomeData = {
         id: 1,
         image: <FaTruckLoading />,
         title: "Customer Support",
-        body: "Our professional customer support ensures instant quote and bookings for portable toilet rental and porta potty rental services. We're ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
+        body: "Our professional customer support ensures instant quotes and bookings for portable toilet rental and porta potty rental services. We're ready to address any issues or concerns that you may have, ensuring your satisfaction and peace of mind.",
       },
       {
         id: 2,
         image: <RiTimeFill />,
-        title: "Delivery and Setup",
-        body: "Our experienced yard manager and driver facilitates hassle-free delivery and setup services for your portable toilet rentals, porta potties, and handwash stations, saving your time and effort.",
+        title: "Fast Delivery & Setup",
+        body: "Our experienced team ensures hassle-free delivery and setup services for your portable toilet rentals, porta potties, and handwash stations, saving your time and effort.",
       },
       {
         id: 3,
@@ -87,13 +87,13 @@ export const home_data: HomeData = {
         id: 4,
         image: <MdLocationOn />,
         title: "Wide Coverage",
-        body: "Through our network of trusted local partners, we serve 25+ cities across 6 states, ensuring you can find reliable porta potty rental, portable toilet rental, porta john, and portable restroom service wherever you need it.",
+        body: "We serve 25+ cities across 6 states, ensuring you can find reliable porta potty rental, portable toilet rental, porta john, and portable restroom service wherever you need it.",
       },
     ],
   },
   services: {
     heading:
-      "Our Comprehensive Portable Toilet Rental, Porta Potty, and Handwash Station Services",
+      "Porta Potty Rentals for Every Need",
     content: [
       {
         id: 1,

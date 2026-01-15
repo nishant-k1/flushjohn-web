@@ -6,6 +6,7 @@ import Link from "next/link";
 import { testimonials } from "@/features/home/constants";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
@@ -63,10 +64,11 @@ export default function ReviewsPage() {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
-      <div className={styles.reviewsPage}>
-        <div className={styles.container}>
+      <Breadcrumbs path={""} />
+
           {/* Hero Section */}
-          <section className={styles.hero}>
+      <section className={styles.heroSection}>
+        <div className={styles.container}>
             <h1>Customer Reviews</h1>
             <p className={styles.subtitle}>
               See what our customers say about FlushJohn porta potty rental
@@ -83,12 +85,14 @@ export default function ReviewsPage() {
               <div className={styles.ratingText}>
                 <strong>4.8 out of 5</strong>
                 <span>Based on customer reviews</span>
+            </div>
               </div>
             </div>
           </section>
 
           {/* Reviews Grid */}
           <section className={styles.reviewsSection}>
+        <div className={styles.container}>
             <h2>What Our Customers Say</h2>
             <div className={styles.reviewsGrid}>
               {testimonials.content.map((review, index) => (
@@ -130,11 +134,13 @@ export default function ReviewsPage() {
                   <p className={styles.reviewBody}>{review.body}</p>
                 </div>
               ))}
+          </div>
             </div>
           </section>
 
           {/* Leave Review CTA */}
           <section className={styles.ctaSection}>
+        <div className={styles.container}>
             <h2>Share Your Experience</h2>
             <p>
               Had a great experience with FlushJohn? We'd love to hear from you!
@@ -156,9 +162,8 @@ export default function ReviewsPage() {
               After your rental, we'll send you a follow-up email with a link to
               leave a review on Google Business Profile.
             </p>
-          </section>
         </div>
-      </div>
+      </section>
     </>
   );
 }

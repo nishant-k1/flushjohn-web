@@ -23,9 +23,9 @@ import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
-// Construct Google Ads conversion values from env vars
-const GOOGLE_ADS_CONVERSION_QUICK_QUOTE = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_MODAL_QUICK_QUOTE_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
+// Construct Google Ads conversion values from env vars (same as all quote forms)
+const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_QUOTE_REQUEST_FORM_SUFFIX}`;
+const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
 const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
@@ -268,6 +268,7 @@ const QuickQuote = () => {
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [hasShownScrollPopup, setHasShownScrollPopup] = useState(false);
 
   // Form abandonment tracking
   const { trackComplete } = useFormAbandonmentTracking({
@@ -276,6 +277,25 @@ const QuickQuote = () => {
   });
 
   const handleClickOutside = (event: MouseEvent) => {};
+
+  // Auto-show modal on scroll (300px threshold - same as StickyCTA)
+  React.useEffect(() => {
+    if (hasShownScrollPopup || quickQuoteViewStatus) return;
+
+    const handleScroll = () => {
+      // Show modal after scrolling 300px (same as StickyCTA)
+      if (window.scrollY > 300 && !hasShownScrollPopup) {
+        setTimeout(() => {
+          setQuickQuoteViewStatus(true);
+          setQuickQuoteTitle("Get Your Free Quote!");
+          setHasShownScrollPopup(true);
+        }, 500);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasShownScrollPopup, quickQuoteViewStatus, setQuickQuoteViewStatus, setQuickQuoteTitle]);
 
   React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {
@@ -290,11 +310,11 @@ const QuickQuote = () => {
     if (
       typeof window !== "undefined" &&
       typeof window.gtag === "function" &&
-      GOOGLE_ADS_CONVERSION_QUICK_QUOTE
+      GOOGLE_ADS_CONVERSION_QUOTE_FORM
     ) {
       window.gtag("event", "conversion", {
-        send_to: GOOGLE_ADS_CONVERSION_QUICK_QUOTE,
-        value: GOOGLE_ADS_CONVERSION_VALUE_QUICK_QUOTE,
+        send_to: GOOGLE_ADS_CONVERSION_QUOTE_FORM,
+        value: GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM,
         currency: GOOGLE_ADS_CONVERSION_CURRENCY,
       });
     }
@@ -331,7 +351,7 @@ const QuickQuote = () => {
             // ✅ OPTIMISTIC: Show success immediately (before API response)
             setShowSuccessModal(true);
             setQuickQuoteRequested(true);
-          trackComplete(); // Track form completion
+            trackComplete(); // Track form completion
             handleLeadConversion();
             resetForm();
 
@@ -463,7 +483,7 @@ const QuickQuote = () => {
                           loading={isSubmitting}
                           disabled={isSubmitting}
                         >
-                          Send
+                          Submit
                         </Button>
                       </Grid>
                     </Grid>

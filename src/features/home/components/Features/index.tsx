@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Feature } from "../../constants";
-import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { animations } from "@/anmations/effectData";
 
 type FeaturesType = {
   heading: string;
@@ -23,9 +21,7 @@ const Features = React.memo(({ heading, content }: FeaturesType) => {
                   <p>{item.body}</p>
                 </div>
                 <div className={styles.iconContainer}>
-                  <AnimationWrapper effect={animations?.bobbleImage}>
                     {item.image}
-                  </AnimationWrapper>
                 </div>
               </div>
             ))}

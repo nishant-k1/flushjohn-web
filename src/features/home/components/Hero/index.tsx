@@ -10,9 +10,12 @@ const GOOGLE_ADS_CONVERSION_PHONE_CALL = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G
 // Import CarouselView directly (not dynamically) to ensure LCP image loads immediately
 import CarouselView from "@/components/CarouselView";
 
-const HeroQuickQuote = dynamic(() => import("@/components/HeroQuickQuote"), {
-  loading: () => <div className={styles.skeletonQuote} />,
-});
+const InlineQuickQuote = dynamic(
+  () => import("@/features/quote/components/QuickQuote/InlineQuickQuote"),
+  {
+    loading: () => <div className={styles.skeletonQuote} />,
+  }
+);
 
 type HeroProps = {
   title: string;
@@ -59,14 +62,14 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 }}
               >
                 <div>{phone_number}</div>
-                <PhoneIcon className={styles.flippedIcon} size={20} />
+                <PhoneIcon className={styles.flippedIcon} size={18} />
               </Link>
             </div>
           </div>
 
           {/* Lazy-loaded form with skeleton fallback */}
           <div className={styles.heroImage}>
-            <HeroQuickQuote />
+            <InlineQuickQuote />
           </div>
         </div>
       </div>

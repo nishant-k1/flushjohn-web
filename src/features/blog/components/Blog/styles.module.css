@@ -1,12 +1,21 @@
-.section {
-  background-color: var(--bg-primary);
+
+.blogSection {
+  background-color: var(--bg-section-primary) !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
+  position: relative;
+  border-top: 1px solid var(--border-light);
 }
 
 .container {
-  margin: 0 auto;
   max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
   padding: 0 var(--spacing-lg);
+  overflow: visible;
 }
 
 .wrapper {
@@ -47,8 +56,8 @@
 .searchInput {
   width: 100%;
   padding: 12px 40px 12px 40px;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 14px;
@@ -58,7 +67,7 @@
 .searchInput:focus {
   outline: none;
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-white);
 }
 
 .searchInput::placeholder {
@@ -86,7 +95,7 @@
 .searchButton {
   padding: 12px 24px;
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 1px solid var(--primary);
   border-radius: 0;
   cursor: pointer;
@@ -99,7 +108,8 @@
 .searchButton:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  box-shadow: 0 4px 12px var(--black-alpha-20);
+  color: var(--text-inverse);
+  box-shadow: none;
 }
 
 /* Active Filters */
@@ -116,8 +126,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 6px 12px;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-primary) !important;
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 13px;
@@ -157,8 +167,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 0;
   margin-bottom: 2rem;
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-card) !important;
+  border: 1px solid var(--border-light);
   border-radius: 0;
   overflow: hidden;
   text-decoration: none;
@@ -168,9 +178,9 @@
 }
 
 .featuredPost:hover {
-  box-shadow: 0 8px 24px var(--black-alpha-30);
+  box-shadow: none;
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .featuredImageContainer {
@@ -204,7 +214,7 @@
   display: inline-block;
   padding: 4px 12px;
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -244,8 +254,8 @@
 }
 
 .sidebarSection {
-  background-color: var(--neutral-700);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-primary) !important;
+  border: 1px solid var(--border-light);
   border-radius: 0;
   padding: 1.5rem;
 }
@@ -268,8 +278,8 @@
 
 .tagButton {
   padding: 8px 12px;
-  background-color: var(--neutral-600);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-alternate);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   font-size: 14px;
@@ -286,7 +296,7 @@
 
 .tagButtonActive {
   background-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border-color: var(--primary);
   font-weight: 500;
 }
@@ -302,8 +312,8 @@
   align-items: center;
   gap: 0.75rem;
   padding: 10px 12px;
-  background-color: var(--neutral-600);
-  border: 1px solid var(--white-alpha-15);
+  background-color: var(--bg-section-alternate);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   color: var(--text-primary);
   text-decoration: none;
@@ -361,14 +371,13 @@
 }
 
 .blogItem {
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-card) !important;
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 2px 8px var(--black-alpha-20);
-  border: 1px solid var(--white-alpha-15);
+  box-shadow: none;
+  border: 1px solid var(--border-light);
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
     border-color 0.3s ease;
   text-decoration: none;
   display: flex;
@@ -381,9 +390,9 @@
 }
 
 .blogItem:hover {
-  box-shadow: 0 8px 24px var(--black-alpha-30);
+  box-shadow: none;
   border-color: var(--primary);
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
 }
 
 .imageContainer {
@@ -589,7 +598,7 @@
   background-color: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--text-primary);
-  box-shadow: var(--shadow-primary-lg);
+  box-shadow: none;
 }
 
 .retryButton:active {
@@ -620,9 +629,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 10px 20px;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-primary) !important;
   color: var(--text-primary);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   cursor: pointer;
   font-size: 14px;
@@ -631,9 +640,9 @@
 }
 
 .paginationButton:hover:not(:disabled) {
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
   border-color: var(--primary);
-  box-shadow: 0 4px 12px var(--black-alpha-20);
+  box-shadow: none;
 }
 
 .paginationButton:disabled {
@@ -657,9 +666,9 @@
   min-width: 40px;
   height: 40px;
   padding: 0 12px;
-  background-color: var(--neutral-700);
+  background-color: var(--bg-section-primary) !important;
   color: var(--text-primary);
-  border: 1px solid var(--white-alpha-15);
+  border: 1px solid var(--border-light);
   border-radius: 0;
   cursor: pointer;
   font-size: 14px;
@@ -671,14 +680,14 @@
 }
 
 .pageNumber:hover:not(.active) {
-  background-color: var(--neutral-600);
+  background-color: var(--bg-section-alternate);
   border-color: var(--primary);
 }
 
 .pageNumber.active {
   background-color: var(--primary);
   border-color: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   font-weight: 600;
 }
 
@@ -752,7 +761,7 @@
 }
 
 .relatedLink:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   background: var(--white-alpha-20);
   border-color: var(--primary-light);
 }

@@ -415,19 +415,11 @@ export default function PortaPottyRentalCity({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div className={styles.city}>
-        <div className={styles.container}>
-          <div
-            className={styles.breadcrumbWrapper}
-            style={{ position: "relative" }}
-          >
-            <div style={{ position: "relative", top: 0 }}>
-              <Breadcrumbs path={""} />
-            </div>
-          </div>
+      <Breadcrumbs path={""} />
 
           {/* Hero Section */}
-          <div className={styles.heroSection}>
+      <section className={styles.heroSectionWrapper}>
+        <div className={styles.container}>
             <h1>Porta Potty Rentals in {cityTitle}</h1>
             <p>
               Serving {population} residents with reliable, clean porta potty
@@ -445,10 +437,11 @@ export default function PortaPottyRentalCity({
               </a>
             </div>
           </div>
+      </section>
 
-          <div className={styles.cityWrapper}>
             {/* Introduction */}
-            <div className={styles.section}>
+      <section className={styles.contentSectionAlt}>
+        <div className={styles.container}>
               <h1>{getCityH1Heading(displayName)}</h1>
               {uniqueContent ? (
                 <p
@@ -466,9 +459,11 @@ export default function PortaPottyRentalCity({
                 </p>
               )}
             </div>
+      </section>
 
             {/* Why Choose Us - Features Grid */}
-            <div className={styles.section}>
+      <section className={styles.contentSection}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>{getCityH2Heading(displayName, "why-choose")}</h2>
               </div>
@@ -507,9 +502,11 @@ export default function PortaPottyRentalCity({
                 })}
               </div>
             </div>
+      </section>
 
             {/* Service Areas */}
-            <div className={styles.section}>
+      <section className={styles.contentSectionAlt}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>We Serve All Areas in {cityTitle}</h2>
               </div>
@@ -522,9 +519,11 @@ export default function PortaPottyRentalCity({
                 ))}
               </div>
             </div>
+      </section>
 
             {/* Our Services */}
-            <div className={styles.section}>
+      <section className={styles.contentSection}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>{getCityH2Heading(displayName, "services")}</h2>
               </div>
@@ -575,17 +574,11 @@ export default function PortaPottyRentalCity({
                 })}
               </ul>
             </div>
+      </section>
 
             {/* Mid-content CTA */}
-            <div
-              style={{
-                textAlign: "center",
-                marginTop: "2rem",
-                padding: "1.5rem",
-                background: "var(--white-alpha-05)",
-                borderRadius: "var(--radius-md)",
-              }}
-            >
+      <section className={styles.ctaSectionMid}>
+        <div className={styles.container}>
               <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
                 Need porta potty rental services in {displayName}, {state}? Get
                 a free quote today!
@@ -606,9 +599,11 @@ export default function PortaPottyRentalCity({
                 </a>
               </div>
             </div>
+      </section>
 
             {/* Pricing Section */}
-            <div className={styles.section}>
+      <section className={styles.contentSectionAlt}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>{getCityH2Heading(displayName, "pricing")}</h2>
               </div>
@@ -655,11 +650,13 @@ export default function PortaPottyRentalCity({
                 </Link>
               </div>
             </div>
+      </section>
 
             {/* Testimonials removed - using ReviewCollection component instead to avoid duplicate content */}
 
             {/* FAQ Section */}
-            <div className={styles.section}>
+      <section className={styles.contentSection}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>Frequently Asked Questions - {cityTitle}</h2>
               </div>
@@ -672,10 +669,12 @@ export default function PortaPottyRentalCity({
                 ))}
               </div>
             </div>
+      </section>
 
             {/* Related Cities */}
             {nearbyCities.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSectionAlt}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>We Also Serve These Nearby Areas</h2>
                 </div>
@@ -701,11 +700,13 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* Local Landmarks Section */}
             {enhancements.landmarks.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSection}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>
                     Porta Potty Rentals Near Popular {displayName} Landmarks
@@ -779,11 +780,13 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* Local Events Section */}
             {enhancements.events.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSection}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>Porta Potty Rentals for {displayName} Events</h2>
                 </div>
@@ -856,11 +859,13 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* Neighborhoods Section */}
             {enhancements.neighborhoods.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSection}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>Porta Potty Rentals in {displayName} Neighborhoods</h2>
                 </div>
@@ -892,11 +897,13 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* Regulations Section */}
             {enhancements.regulations.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSectionAlt}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>
                     {displayName} Porta Potty Rental Regulations & Compliance
@@ -928,11 +935,13 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* City-Specific FAQs */}
             {enhancements.faqs.length > 0 && (
-              <div className={styles.section}>
+        <section className={styles.contentSection}>
+          <div className={styles.container}>
                 <div className={styles.sectionTitle}>
                   <h2>
                     Frequently Asked Questions About Porta Potty Rentals in{" "}
@@ -955,10 +964,12 @@ export default function PortaPottyRentalCity({
                   ))}
                 </div>
               </div>
+        </section>
             )}
 
             {/* Call to Action Section */}
-            <div className={styles.section}>
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
               <div className={styles.sectionTitle}>
                 <h2>Rent a Porta Potty in {displayName} Today!</h2>
               </div>
@@ -1005,10 +1016,11 @@ export default function PortaPottyRentalCity({
                 </p>
               </div>
             </div>
+      </section>
 
             {/* Final CTA */}
-            <div className={styles.finalCTA}>
-              <div style={{ maxWidth: "960px", margin: "0 auto" }}>
+      <section className={styles.contentSectionAlt}>
+        <div className={styles.container}>
                 <h2>Ready to Rent Porta Potties in {cityTitle}?</h2>
                 <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
                   Join thousands of satisfied customers in {cityTitle}. Get your
@@ -1023,9 +1035,11 @@ export default function PortaPottyRentalCity({
                   </a>
                 </div>
               </div>
-            </div>
+      </section>
 
             {/* Explore More Section */}
+      <section className={styles.contentSection}>
+        <div className={styles.container}>
             <div className={styles.exploreSection}>
               <h3>Explore More</h3>
               <ul className={styles.exploreLinks}>
@@ -1074,14 +1088,13 @@ export default function PortaPottyRentalCity({
               </ul>
             </div>
           </div>
+        </section>
 
           {/* Content Marketing Section */}
           <ContentMarketing city={displayName} state={state} />
 
           {/* Review Collection Section */}
           <ReviewCollection city={displayName} state={state} />
-        </div>
-      </div>
 
       {/* Sticky CTA */}
       <StickyCTA city={displayName} state={state} />

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
@@ -101,20 +102,23 @@ export default function HowItWorksPage() {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
-      <div className={styles.howItWorksPage}>
-        <div className={styles.container}>
-          {/* Hero Section */}
-          <section className={styles.hero}>
-            <h1>How It Works</h1>
-            <p className={styles.subtitle}>
-              Simple, hassle-free porta potty rentals in just a few easy steps
-            </p>
-          </section>
+      <Breadcrumbs path={""} />
 
-          {/* Process Steps */}
-          <section className={styles.processSection}>
-            <div className={styles.processSteps}>
-              <div className={styles.step}>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <div className={styles.container}>
+          <h1>How It Works</h1>
+          <p className={styles.subtitle}>
+            Simple, hassle-free porta potty rentals in just a few easy steps
+          </p>
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <section className={styles.processSection}>
+        <div className={styles.container}>
+          <div className={styles.processSteps}>
+            <div className={styles.step}>
                 <div className={styles.stepNumber}>1</div>
                 <div className={styles.stepContent}>
                   <h3>Request a Free Quote</h3>
@@ -197,14 +201,16 @@ export default function HowItWorksPage() {
                   </p>
                 </div>
               </div>
-            </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
-          {/* Why Choose This Process */}
-          <section className={styles.benefitsSection}>
-            <h2>Why Our Process Works</h2>
-            <div className={styles.benefitsGrid}>
-              <div className={styles.benefitCard}>
+      {/* Why Choose This Process */}
+      <section className={styles.benefitsSection}>
+        <div className={styles.container}>
+          <h2>Why Our Process Works</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitCard}>
                 <h3>One Point of Contact</h3>
                 <p>
                   You deal with us, not multiple vendors. We coordinate
@@ -232,27 +238,28 @@ export default function HowItWorksPage() {
                   ensure you get professional service every time.
                 </p>
               </div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className={styles.ctaSection}>
-            <h2>Ready to Get Started?</h2>
-            <p>
-              Request your free quote today and experience our simple,
-              hassle-free process.
-            </p>
-            <div className={styles.ctaButtons}>
-              <Link href="/quote" className={styles.primaryButton}>
-                Get Free Quote
-              </Link>
-              <Link href="/contact" className={styles.secondaryButton}>
-                Contact Us
-              </Link>
-            </div>
-          </section>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <h2>Ready to Get Started?</h2>
+          <p>
+            Request your free quote today and experience our simple,
+            hassle-free process.
+          </p>
+          <div className={styles.ctaButtons}>
+            <Link href="/quote" className={styles.primaryButton}>
+              Get Free Quote
+            </Link>
+            <Link href="/contact" className={styles.secondaryButton}>
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -36,7 +36,7 @@
 }
 
 .next {
-  color: var(--text-primary);
+  color: var(--text-inverse);
   background-color: var(--primary);
   border-color: var(--primary);
   transition: var(--transition-base);
@@ -45,7 +45,7 @@
 .next:hover {
   background-color: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary-lg);
   transition: var(--transition-base);
 }
@@ -53,7 +53,7 @@
 .next:active {
   background-color: var(--primary-dark);
   border-color: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: translateY(0);
 }
 

@@ -17,8 +17,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
           <div className={styles.headingColumn}>
             <h3 className={styles.heading}>{heading}</h3>
             <p className={styles.description}>
-              Comprehensive porta potty rental solutions tailored to meet your
-              infrastructure needs.
+              Comprehensive porta potty rental solutions tailored to meet your infrastructure needs.
             </p>
           </div>
 
@@ -112,6 +111,12 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
               </div>
             );
           })}
+        </div>
+        {/* Secondary CTA after Services */}
+        <div className={styles.secondaryCTA}>
+          <a href="/quote" className={styles.ctaLink}>
+            Get Your Free Quote →
+          </a>
         </div>
       </div>
     </div>

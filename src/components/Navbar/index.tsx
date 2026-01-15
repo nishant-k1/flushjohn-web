@@ -11,6 +11,7 @@ import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
 import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 import { PhoneIcon } from "@/components/UI/Icons";
+import Logo from "@/components/Logo";
 // Construct Google Ads conversion label from env vars
 const GOOGLE_ADS_CONVERSION_PHONE_CALL = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_PHONE_BUTTON_SUFFIX}`;
 
@@ -65,22 +66,12 @@ const Navbar = () => {
     >
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Link href="/" aria-label="FlushJohn Home">
-            <Image
-              src={`${s3assets}/logo_white.svg`}
-              alt="FlushJohn - Porta Potty Rental Services"
-              height={501}
-              width={1039}
-              priority={true}
-              placeholder="empty"
-              style={{
-                height: "3rem",
-                width: "auto",
-                transition: "transform 0.3s ease-in-out",
-              }}
-              onMouseEnter={(e) => {}}
-              onMouseLeave={(e) => {}}
-            />
+          <Link
+            href="/"
+            aria-label="FlushJohn Home"
+            className={styles.logoLink}
+          >
+            <Logo height="3rem" />
           </Link>
           <div className={styles.hamburger}>
             <Hamburger
@@ -89,14 +80,20 @@ const Navbar = () => {
                 setActive(!active);
                 !active && setQuickQuoteViewStatus(false);
               }}
-              color="white"
+              color="#1a1a1a"
               size={20}
               label="Toggle navigation menu"
             />
           </div>
           <ul className={styles.navLinks} role="menubar">
             <li role="none">
-              <Link href="/" role="menuitem" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
+              <Link
+                href="/"
+                role="menuitem"
+                aria-current={pathname === "/" ? "page" : undefined}
+              >
+                Home
+              </Link>
             </li>
             <li role="none">
               <Link
@@ -105,7 +102,9 @@ const Navbar = () => {
                   pathname === "/rental-products" ? styles.activeLink : ""
                 }
                 role="menuitem"
-                aria-current={pathname === "/rental-products" ? "page" : undefined}
+                aria-current={
+                  pathname === "/rental-products" ? "page" : undefined
+                }
               >
                 Rental Products
               </Link>

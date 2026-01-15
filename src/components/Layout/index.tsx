@@ -2,11 +2,14 @@
 import styles from "./styles.module.css";
 import { SidebarContext } from "@/contexts/SidebarContext";
 import { useContext } from "react";
+import { usePathname } from "next/navigation";
 import ModalOverlay from "../ModalOverlay";
 import { SidebarContextType } from "@/contexts/SidebarContext";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const sidebarContext = useContext<SidebarContextType>(SidebarContext);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   if (!sidebarContext) {
     throw new Error(
@@ -20,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main
       id="main-content"
       suppressHydrationWarning
-      className={`${styles.main} ${active ? styles.active : styles.inactive}`}
+      className={`${styles.main} ${active ? styles.active : styles.inactive} ${isHomePage ? styles.homePage : ""}`}
       role="main"
       aria-label="Main content"
     >

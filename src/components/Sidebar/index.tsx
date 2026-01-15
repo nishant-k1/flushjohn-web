@@ -10,11 +10,10 @@ import {
   RequestQuoteIcon,
   LocalShippingIcon,
 } from "@/components/UI/Icons";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 // Using environment variables directly
 const PHONE_LINK = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 const PHONE_NUMBER = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
-const CLOUD_FRONT_URL = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 import { logEvent } from "../../../react-ga4-config";
 import AnimationWrapper from "@/anmations/AnimationWrapper";
 import { animations } from "@/anmations/effectData";
@@ -124,22 +123,8 @@ const Sidebar = () => {
           onClick={handleSidebarClick}
         >
         <nav className={styles.sidebar} role="navigation" aria-label="Mobile navigation menu">
-          <Link href="/" aria-label="FlushJohn Home">
-            <Image
-              height={501}
-              width={1039}
-              onClick={handleClick}
-              src={`${CLOUD_FRONT_URL}/logo_white.svg`}
-              alt="FlushJohn - Porta Potty Rental Services"
-              priority={true}
-              placeholder="empty"
-              style={{
-                height: "auto",
-                width: "8rem",
-                padding: "0",
-                margin: "0",
-              }}
-            />
+          <Link href="/" aria-label="FlushJohn Home" onClick={handleClick}>
+            <Logo height="4rem" />
           </Link>
           <Link href="/" onClick={handleClick} aria-label="Home">
             <HomeIcon size={20} aria-hidden="true" />

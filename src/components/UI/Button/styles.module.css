@@ -58,17 +58,17 @@
     var(--primary) 0%,
     var(--primary-dark) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary);
 }
 
 .contained.primary:hover {
   background: linear-gradient(
     135deg,
-    var(--primary-light) 0%,
-    var(--primary) 100%
+    var(--primary-dark) 0%,
+    var(--primary-darker, var(--primary-dark)) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: var(--shadow-primary-lg);
 }
 
@@ -78,7 +78,7 @@
     var(--primary-dark) 0%,
     var(--primary) 100%
   );
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
@@ -90,55 +90,55 @@
 
 .contained.secondary {
   background: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.secondary:hover {
-  background: var(--primary-light);
-  color: var(--text-primary);
+  background: var(--primary-dark);
+  color: var(--text-inverse);
   box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.secondary:active {
   background: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
 .contained.success {
   background: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.success:hover {
-  background: var(--primary-light);
-  color: var(--text-primary);
+  background: var(--primary-dark);
+  color: var(--text-inverse);
   box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.success:active {
   background: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
 .contained.error {
   background: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   box-shadow: 0 2px 4px var(--primary-alpha-30);
 }
 
 .contained.error:hover {
-  background: var(--primary);
-  color: var(--text-primary);
+  background: var(--primary-darker, var(--primary-dark));
+  color: var(--text-inverse);
   box-shadow: 0 4px 8px var(--primary-alpha-40);
 }
 
 .contained.error:active {
   background: var(--primary-dark);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   transform: none;
 }
 
@@ -247,14 +247,14 @@
   cursor: not-allowed;
   pointer-events: none;
   background-color: var(--primary-dark) !important;
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
 }
 
 /* Loading State */
 .loading {
   cursor: wait;
   opacity: 0.9;
-  color: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
 }
 
 .spinner {

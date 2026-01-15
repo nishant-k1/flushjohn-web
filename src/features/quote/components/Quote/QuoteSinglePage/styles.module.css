@@ -1,0 +1,505 @@
+/* Compact single-page form styles */
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: var(--spacing-xl);
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Tablet: Show sections side by side */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    flex: 1 1 48%;
+    min-width: 48%;
+    max-width: 48%;
+  }
+}
+
+/* Desktop: Ensure sections display in a row */
+@media screen and (min-width: 1025px) {
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    flex: 1 1 48%;
+    min-width: 48%;
+    max-width: 48%;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--white-alpha-20);
+  border-radius: 0;
+  flex: 1 1 48%;
+  min-width: 300px;
+  max-width: 48%;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.fullWidthSection {
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.wrappingFields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wrappingFields :global(.fieldRow) {
+  flex: 1 1 calc(50% - 0.25rem);
+  min-width: 250px;
+  margin-bottom: 0 !important;
+}
+
+/* Remove all margins from direct children - use flexbox gap instead */
+.section > * {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.section > .sectionTitle {
+  margin-bottom: 0.5rem !important; /* Preserve title spacing */
+}
+
+.sectionTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.375rem;
+  border-bottom: 2px solid var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.productsDropdown {
+  margin-bottom: 0.25rem !important;
+}
+
+.productsDropdown .fieldRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 0 !important;
+}
+
+.productsDropdown .fieldLabel {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.productsDropdown .dropdownContainer {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Desktop: Allow dropdown menu to expand if needed */
+.usageTypeDropdownMenu {
+  min-width: 100%;
+  width: max-content;
+  max-width: min(100%, calc(100vw - 32px));
+}
+
+.productsDropdown :global(.products-dropdown-menu) {
+  min-width: 100%;
+  width: max-content;
+  max-width: min(100%, calc(100vw - 32px));
+}
+
+/* Usage Type Dropdown */
+.usageTypeDropdown {
+  margin-bottom: 0.25rem !important;
+  position: relative;
+}
+
+.usageTypeDropdown .fieldRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.usageTypeDropdown .field_label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.usageTypeDropdown .dropdownContainer {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+}
+
+/* Ensure dropdown container doesn't clip on mobile */
+@media screen and (max-width: 599px) {
+  .usageTypeDropdown .dropdownContainer,
+  .productsDropdown .dropdownContainer {
+    overflow: visible;
+  }
+
+  /* Ensure parent containers don't clip dropdowns */
+  .section {
+    overflow: visible;
+  }
+
+  .form {
+    overflow: visible;
+  }
+}
+
+.error_field {
+  border: 1px solid var(--error-border) !important;
+}
+
+.usageTypeDropdown .error {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1000;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-primary);
+  font-size: 10px;
+  background-color: var(--error-red-alpha-90);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--error-dark);
+  font-weight: 600;
+  text-shadow: none;
+  box-shadow: 0 4px 12px var(--black-alpha-25);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeIn 0.3s ease-in;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+  flex-basis: 100%;
+  width: 100%;
+  order: 999;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+  min-width: auto;
+  min-height: 36px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0;
+  transition: var(--transition-base);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  color: var(--text-inverse);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.submitButton:active:not(:disabled) {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--text-inverse);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-inverse);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Messages */
+.error {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1000;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-primary);
+  font-size: 10px;
+  background-color: var(--error-red-alpha-90);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--error-dark);
+  font-weight: 600;
+  text-shadow: none;
+  box-shadow: 0 4px 12px var(--black-alpha-25);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeIn 0.3s ease-in;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out,
+    visibility 0.3s ease-out;
+}
+
+.productsError {
+  color: var(--error-border);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 68, 68, 0.1);
+  border-left: 3px solid var(--error-border);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile and small tablets: Stack sections vertically */
+@media screen and (max-width: 767px) {
+  .form {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .section {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    overflow: visible; /* Allow dropdowns to show */
+  }
+
+  .wrappingFields :global(.fieldRow) {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  /* Increase dropdown container widths on mobile */
+  .usageTypeDropdown .dropdownContainer,
+  .productsDropdown .dropdownContainer {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .radio_inner_box {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .usage_type_row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .field_label {
+    flex: none;
+    width: 100%;
+  }
+
+  .section {
+    padding: 0.5rem;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 0.375rem;
+  }
+
+  .form {
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Increase field widths on mobile to accommodate dropdowns */
+  .usageTypeDropdown .dropdownContainer,
+  .productsDropdown .dropdownContainer {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 0.875rem;
+  }
+
+  /* Mobile: Stack UsageTypeDropdown label and dropdown vertically */
+  .usageTypeDropdown .fieldRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .usageTypeDropdown .field_label {
+    flex: none;
+    width: 100%;
+  }
+
+  .usageTypeDropdown .dropdownContainer {
+    flex: none;
+    width: 100%;
+  }
+
+  /* Mobile: Stack productsDropdown label and dropdown vertically */
+  .productsDropdown .fieldRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .productsDropdown .fieldLabel {
+    flex: none;
+    width: 100%;
+  }
+
+  .productsDropdown .dropdownContainer {
+    flex: none;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .usageTypeDropdown .dropdownContainer {
+    flex: none;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* Mobile: Fix dropdown menu width and positioning */
+  .usageTypeDropdownMenu {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Mobile: Fix products dropdown menu width */
+  .productsDropdown :global(.products-dropdown-menu) {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Mobile: Ensure error messages are properly positioned */
+  .usageTypeDropdown .error {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 6px;
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  /* Mobile: Ensure wrappingFields stack properly */
+  .wrappingFields {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .wrappingFields :global(.fieldRow) {
+    width: 100%;
+    flex: 1 1 100%;
+    min-width: 100%;
+    margin-bottom: 0;
+  }
+
+  /* Mobile: Make button full width like other fields */
+  .submitButton {
+    width: 100%;
+    min-width: 100%;
+    padding: 6px 16px;
+    min-height: 36px;
+    font-size: 0.875rem;
+  }
+
+  /* Mobile: Reduce button section spacing */
+  .buttons {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+}

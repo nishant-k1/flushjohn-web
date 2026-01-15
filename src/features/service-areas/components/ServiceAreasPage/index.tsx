@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { serviceAreasByState } from "@/features/locations/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const ServiceAreasPage = () => {
   const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
@@ -13,7 +14,9 @@ const ServiceAreasPage = () => {
   );
 
   return (
-    <div className={styles.page}>
+    <>
+      <div className={styles.page}>
+        <Breadcrumbs path={""} />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>Our Service Areas</h1>
@@ -113,6 +116,7 @@ const ServiceAreasPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

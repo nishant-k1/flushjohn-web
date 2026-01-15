@@ -76,7 +76,7 @@
 
 .quoteButton {
   background: var(--primary);
-  color: var(--text-primary);
+  color: var(--text-inverse);
   border: 2px solid var(--primary);
 }
 
@@ -95,6 +95,7 @@
 .phoneButton:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: var(--text-inverse);
 }
 
 @media (max-width: 768px) {
