@@ -5,7 +5,9 @@
   top: 54px; /* Height of navbar */
   left: 0;
   background-color: var(--bg-breadcrumb) !important;
-  padding: 0;
+  padding: 4px 0;
+  min-height: auto;
+  height: auto;
   z-index: 99; /* Just below navbar (z-index: var(--z-sticky)) */
   border-bottom: 1px solid var(--border-light);
   transition: box-shadow 0.3s ease;
@@ -19,6 +21,8 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  min-height: 0;
+  line-height: 1.5;
 }
 
 .breadcrumb {

@@ -32,8 +32,6 @@ const GOOGLE_ADS_CONVERSION_CURRENCY =
 const combinedValidationSchema = Yup.object({
   usageType: Yup.string().required("Usage type is required"),
   products: Yup.array()
-    .min(1, "At least one product is required")
-    .required("At least one product is required")
     .of(
       Yup.object().shape({
         id: Yup.string(),
@@ -64,7 +62,7 @@ const combinedValidationSchema = Yup.object({
       "at-least-one-product",
       "At least one product must have a quantity greater than 0",
       function (products) {
-        if (!products || products.length === 0) return false;
+        if (!products) return false;
         return products.some((product: any) => {
           return parseInt(product.quantity || "0", 10) > 0;
         });
@@ -283,7 +281,13 @@ const UsageTypeDropdown = () => {
             </div>
           )}
           {showError && hasError && (
-            <div className={styles.error}>{hasError ? "Required" : ""}</div>
+            <div className={styles.error}>
+              {hasError
+                ? typeof errors.usageType === "string"
+                  ? errors.usageType
+                  : String(errors.usageType || "")
+                : ""}
+            </div>
           )}
         </div>
       </div>
@@ -370,18 +374,12 @@ const QuoteSinglePage = () => {
                   <div className={styles.fieldRow}>
                     <label className={styles.fieldLabel}>
                       Select Items
-                      <span
-                        style={{ color: "var(--error-border)" }}
-                        aria-label="required"
-                      >
-                        *
-                      </span>
+                      <span style={{ color: "var(--error-border)" }}> *</span>
                     </label>
                     <div className={styles.dropdownContainer}>
                       <MyMultipleSelectCheckmarks
                         label="Select Items"
                         name="products"
-                        required
                       />
                     </div>
                   </div>

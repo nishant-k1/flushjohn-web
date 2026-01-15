@@ -1,14 +1,10 @@
-
-.quoteSection {
-  background-color: var(--bg-section-primary) !important;
+.section {
+  background-color: var(--bg-section-alternate-blue);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: var(--spacing-section) 0;
   position: relative;
-  border-top: none;
-  margin: 0;
-  margin-top: 0;
 }
 
 .container {
@@ -20,29 +16,11 @@
   overflow: visible;
 }
 
-.quoteHeroWrapper {
+.quoteWrapper {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-2xl);
   align-items: start;
   justify-content: stretch;
   padding-top: 0;
-  width: 100%;
-  margin-top: 0;
-}
-
-.quoteHeroWrapper > :first-child {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.quoteHeroWrapper > :last-child {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   width: 100%;
 }
 
@@ -62,35 +40,6 @@
   overflow: visible; /* Allow error messages to be visible above the container */
 }
 
-/* Desktop: Side-by-side layout */
-@media (min-width: 768px) {
-  .quoteHeroWrapper {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-4xl);
-    align-items: start;
-  }
-
-  .quoteHeroWrapper > :last-child {
-    justify-content: flex-end;
-  }
-}
-
-/* Mobile: Stack vertically */
-@media (max-width: 767px) {
-  .quoteHeroWrapper {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-  }
-
-  .quoteHeroWrapper > :first-child {
-    text-align: center;
-    align-items: center;
-  }
-
-  .quoteHeroWrapper > :last-child {
-    justify-content: center;
-  }
-}
 
 /* Animated Progress Bar Container */
 .progressBarContainer {
@@ -101,10 +50,13 @@
   margin-right: auto;
 }
 
-/* Breadcrumb wrapper - now handled by breadcrumb section itself */
+/* Breadcrumb wrapper - no space needed as breadcrumb is fixed position */
 .breadcrumbWrapper {
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
 }
 
 /* Add top margin when hero is hidden (step 2+) */
@@ -310,7 +262,7 @@
 
 .stepIndicator.current .stepNumber {
   color: var(--text-inverse);
-  text-shadow: none;
+  text-shadow: 0 1px 3px var(--black-alpha-30);
 }
 
 .stepIndicator.completed svg {
