@@ -195,90 +195,92 @@ const Contact = () => {
           }}
           >
             {({ isSubmitting }) => (
-              <Form>
-                <AnimationWrapper
-                  effect={animations?.fadeWithScale}
-                  className={styles.form}
-                >
-                  <div className={styles.firstName}>
-                    <MyTextField
-                      label="First Name"
-                      name="firstName"
-                      type="text"
-                      maxLength="15"
-                      autoComplete="given-name"
-                    />
-                  </div>
-
-                  <div className={styles.lastName}>
-                    <MyTextField
-                      label="Last Name"
-                      name="lastName"
-                      type="text"
-                      maxLength="20"
-                      autoComplete="family-name"
-                    />
-                  </div>
-
-                  <div className={styles.email}>
-                    <MyTextField
-                      label="Email Address"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                    />
-                  </div>
-
-                  <div className={styles.phone}>
-                    <MyPhoneField
-                      label="Phone"
-                      name="phone"
-                      autoComplete="tel"
-                    />
-                  </div>
-
-                  <div className={styles.message}>
-                    <MyMultilineTextField
-                      label="Message"
-                      name="message"
-                      type="textarea"
-                    />
-                  </div>
-                  <button
-                    className={styles.button}
-                    type="submit"
-                    disabled={isSubmitting}
+              <>
+                <Form>
+                  <AnimationWrapper
+                    effect={animations?.fadeWithScale}
+                    className={styles.form}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className={styles.spinner}></span>
-                        SUBMITTING...
-                      </>
-                    ) : (
-                      "SUBMIT"
-                    )}
-                  </button>
-                </AnimationWrapper>
-              </Form>
-              {state && (
-                <h1 style={{ color: "var(--text-primary)", marginTop: "2rem" }}>
-                  Your message has been delivered
-                </h1>
-              )}
+                    <div className={styles.firstName}>
+                      <MyTextField
+                        label="First Name"
+                        name="firstName"
+                        type="text"
+                        maxLength="15"
+                        autoComplete="given-name"
+                      />
+                    </div>
 
-              {/* Service Areas Information */}
-              <div className={styles.mapContainer}>
-                <h2 className={styles.mapTitle}>Our Service Areas</h2>
-                <p className={styles.serviceAreasDescription}>
-                  FlushJohn provides porta potty rental services across 25+
-                  cities in 6 states: Texas, Florida, California, Georgia,
-                  Illinois, and Delaware. We deliver directly to your location -
-                  no physical storefront needed.
-                  <a href="/service-areas" className={styles.serviceAreasLink}>
-                    View all service areas →
-                  </a>
-                </p>
-              </div>
+                    <div className={styles.lastName}>
+                      <MyTextField
+                        label="Last Name"
+                        name="lastName"
+                        type="text"
+                        maxLength="20"
+                        autoComplete="family-name"
+                      />
+                    </div>
+
+                    <div className={styles.email}>
+                      <MyTextField
+                        label="Email Address"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                      />
+                    </div>
+
+                    <div className={styles.phone}>
+                      <MyPhoneField
+                        label="Phone"
+                        name="phone"
+                        autoComplete="tel"
+                      />
+                    </div>
+
+                    <div className={styles.message}>
+                      <MyMultilineTextField
+                        label="Message"
+                        name="message"
+                        type="textarea"
+                      />
+                    </div>
+                    <button
+                      className={styles.button}
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className={styles.spinner}></span>
+                          SUBMITTING...
+                        </>
+                      ) : (
+                        "SUBMIT"
+                      )}
+                    </button>
+                  </AnimationWrapper>
+                </Form>
+                {state && (
+                  <h1 style={{ color: "var(--text-primary)", marginTop: "2rem" }}>
+                    Your message has been delivered
+                  </h1>
+                )}
+
+                {/* Service Areas Information */}
+                <div className={styles.mapContainer}>
+                  <h2 className={styles.mapTitle}>Our Service Areas</h2>
+                  <p className={styles.serviceAreasDescription}>
+                    FlushJohn provides porta potty rental services across 25+
+                    cities in 6 states: Texas, Florida, California, Georgia,
+                    Illinois, and Delaware. We deliver directly to your location -
+                    no physical storefront needed.
+                    <a href="/service-areas" className={styles.serviceAreasLink}>
+                      View all service areas →
+                    </a>
+                  </p>
+                </div>
+              </>
             )}
           </Formik>
         </div>
