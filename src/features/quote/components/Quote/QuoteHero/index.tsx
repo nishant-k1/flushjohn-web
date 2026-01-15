@@ -26,7 +26,6 @@ const QuoteHero = () => {
           aria-label={`Call FlushJohn at ${phone_number}`}
         >
           <span className={styles.phoneNumber}>{phone_number}</span>
-          <span className={styles.phoneLabel}>Or call us</span>
         </a>
       </div>
 
