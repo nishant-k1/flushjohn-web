@@ -59,11 +59,11 @@ body > #root .react-datepicker-popper {
   position: fixed !important;
 }
 
-/* DatePicker Header Theme - Match navbar background */
+/* DatePicker Header Theme - Green background for white text visibility */
 .react-datepicker__header,
 .react-datepicker .react-datepicker__header,
 body .react-datepicker__header {
-  background: var(--bg-primary) !important;
+  background: var(--primary) !important;
   border-bottom: 1px solid var(--white-alpha-10) !important;
   border-radius: 0 !important;
   padding: 12px !important;

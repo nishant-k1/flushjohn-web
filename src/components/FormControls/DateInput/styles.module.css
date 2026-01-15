@@ -409,7 +409,7 @@
 }
 
 .datePickerWrapper :global(.react-datepicker__header) {
-  background: var(--bg-primary) !important;
+  background: var(--primary) !important;
   border-bottom: 1px solid var(--white-alpha-10) !important;
   border-radius: 0 !important;
   padding: 12px !important;

@@ -28,9 +28,8 @@ const TextField = ({ label, ...props }: any) => {
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel} htmlFor={fieldId}>
         {label}
-        {(props.name === "email" ||
+ {(props.name === "email" ||
           props.name === "fName" ||
-          props.name === "contactPersonName" ||
           props.name === "streetAddress" ||
           props.required) && (
           <span style={{ color: "var(--error-border)" }} aria-label="required">

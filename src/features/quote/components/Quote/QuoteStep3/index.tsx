@@ -63,10 +63,14 @@ const QuoteStep3 = () => {
     phone: Yup.string()
       .min(10, "Phone number must be at least 10 digits")
       .required("Phone number is required"),
-    contactPersonName: Yup.string().required("Contact person name is required"),
+    contactPersonName: Yup.string().optional(),
     contactPersonPhone: Yup.string()
-      .min(10, "Phone number must be at least 10 digits")
-      .required("Contact person phone is required"),
+      .optional()
+      .test("phone-format", "Phone number must be at least 10 digits", (value) => {
+        if (!value) return true; // Optional field
+        const digits = value.replace(/\D/g, "");
+        return digits.length >= 10;
+      }),
   });
 
   return (
