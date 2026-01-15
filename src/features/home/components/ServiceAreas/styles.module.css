@@ -1,6 +1,6 @@
 .serviceAreas {
   padding: var(--spacing-section) 0;
-  background-color: var(--bg-section-alternate-blue);
+  background-color: var(--bg-section-primary);
   position: relative;
 }
 
