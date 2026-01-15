@@ -88,11 +88,15 @@ const combinedValidationSchema = Yup.object({
   contactPersonName: Yup.string().optional(),
   contactPersonPhone: Yup.string()
     .optional()
-    .test("phone-format", "Phone number must be at least 10 digits", (value) => {
-      if (!value) return true; // Optional field
-      const digits = value.replace(/\D/g, "");
-      return digits.length >= 10;
-    }),
+    .test(
+      "phone-format",
+      "Phone number must be at least 10 digits",
+      (value) => {
+        if (!value) return true; // Optional field
+        const digits = value.replace(/\D/g, "");
+        return digits.length >= 10;
+      }
+    ),
 });
 
 const UsageTypeDropdown = () => {
@@ -279,13 +283,7 @@ const UsageTypeDropdown = () => {
             </div>
           )}
           {showError && hasError && (
-            <div className={styles.error}>
-              {hasError
-                ? typeof errors.usageType === "string"
-                  ? errors.usageType
-                  : String(errors.usageType || "")
-                : ""}
-            </div>
+            <div className={styles.error}>{hasError ? "Required" : ""}</div>
           )}
         </div>
       </div>
@@ -372,7 +370,10 @@ const QuoteSinglePage = () => {
                   <div className={styles.fieldRow}>
                     <label className={styles.fieldLabel}>
                       Select Items
-                      <span style={{ color: "var(--error-border)" }} aria-label="required">
+                      <span
+                        style={{ color: "var(--error-border)" }}
+                        aria-label="required"
+                      >
                         *
                       </span>
                     </label>

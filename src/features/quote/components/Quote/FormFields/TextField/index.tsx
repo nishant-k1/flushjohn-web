@@ -22,13 +22,13 @@ const TextField = ({ label, ...props }: any) => {
     props.name ||
     `field-${Math.random().toString(36).substr(2, 9)}`;
   const hasError = touched && error;
-  const errorMessage = typeof error === "string" ? error : "Required";
+  const errorMessage = "Required";
 
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel} htmlFor={fieldId}>
         {label}
- {(props.name === "email" ||
+        {(props.name === "email" ||
           props.name === "fName" ||
           props.name === "streetAddress" ||
           props.required) && (

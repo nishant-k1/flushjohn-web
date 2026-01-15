@@ -151,7 +151,7 @@ const QuoteStep1 = () => {
           {(msg) => {
             return (
               <div className={styles.productsError}>
-                Enter quantity for at least one item
+                Required
               </div>
             );
           }}

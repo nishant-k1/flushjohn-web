@@ -22,7 +22,7 @@ const ZipTextField = ({ label, ...props }: any) => {
   const fieldId =
     props.id || props.name || `zip-${Math.random().toString(36).substr(2, 9)}`;
   const hasError = touched && error;
-  const errorMessage = typeof error === "string" ? error : "Required";
+  const errorMessage = "Required";
 
   return (
     <div className={styles.fieldRow}>

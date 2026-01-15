@@ -24,16 +24,16 @@ const PhoneField = ({ label, ...props }: any) => {
     props.name ||
     `phone-${Math.random().toString(36).substr(2, 9)}`;
   const hasError = touched && error;
-  const errorMessage = typeof error === "string" ? error : "Required";
+  const errorMessage = "Required";
 
   return (
     <div className={styles.fieldRow}>
       <label className={styles.fieldLabel} htmlFor={fieldId}>
         {label}
         {props.name === "phone" && (
-          <span style={{ color: "var(--error-border)" }} aria-label="required">
-            *
-          </span>
+        <span style={{ color: "var(--error-border)" }} aria-label="required">
+          *
+        </span>
         )}
       </label>
       <div className={styles.inputContainer}>

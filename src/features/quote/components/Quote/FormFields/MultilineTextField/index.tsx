@@ -16,7 +16,7 @@ const MultilineTextField = ({ label, ...props }: any) => {
   const errorId = `${props.name || 'textarea'}-error`;
   const fieldId = props.id || props.name || `textarea-${Math.random().toString(36).substr(2, 9)}`;
   const hasError = meta.touched && meta.error;
-  const errorMessage = typeof meta.error === 'string' ? meta.error : 'Required';
+  const errorMessage = 'Required';
 
   return (
     <div className={styles.fieldRow}>
