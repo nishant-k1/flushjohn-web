@@ -555,8 +555,7 @@
   }
 
   .heroImage {
-    min-height: auto; /* Remove fixed min-height on mobile */
-    min-width: auto;
+    display: none; /* Hide form on mobile */
   }
 
   .serviceBadge {

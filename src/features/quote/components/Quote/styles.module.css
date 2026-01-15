@@ -371,4 +371,18 @@
   .stepWrapper {
     gap: var(--spacing-xs);
   }
+
+  .formWrapper {
+    display: none !important;
+  }
+}
+
+.formWrapper {
+  display: block;
+}
+
+@media screen and (max-width: 599px) {
+  .formWrapper {
+    display: none !important;
+  }
 }
