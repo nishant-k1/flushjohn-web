@@ -1,17 +1,17 @@
 /**
- * Data Normalization Utilities - Client Side
+ * Data Formatting Utilities - Client Side
  *
- * Mirrors server-side normalization logic exactly
- * Normalizes data BEFORE sending to API for consistency
+ * Formats data before sending to API for consistency.
+ * Backend also formats as defensive check before saving to DB.
  */
 
 /**
- * Normalize phone number to E.164 format
+ * Format phone number to E.164 format
  *
  * @param phone - Phone number in any format
  * @returns E.164 format (+1XXXXXXXXXX) or null if invalid
  */
-export const serializePhoneNumber = (
+export const formatPhoneNumber = (
   phone: string | null | undefined
 ): string | null => {
   if (!phone) return null;
@@ -149,19 +149,19 @@ export const normalizeDate = (
 };
 
 /**
- * Deserialize date from API format to Date object for form inputs
+ * Parse date from API format to Date object for form inputs
  *
- * Converts API format (ISO 8601 string) to Date object for editing forms.
- * This is the reverse of serializeDate/normalizeDate.
+ * Converts API format (ISO 8601 string) to Date object for date pickers.
+ * react-datepicker requires Date objects, not ISO strings.
  *
  * @param date - Date from API (ISO 8601 string) or Date object
  * @returns Date object or null if invalid
  *
  * @example
- * deserializeDate("2024-01-15T00:00:00.000Z") // Returns: Date object
- * deserializeDate(null) // Returns: null
+ * parseDateForInput("2024-01-15T00:00:00.000Z") // Returns: Date object
+ * parseDateForInput(null) // Returns: null
  */
-export const deserializeDate = (
+export const parseDateForInput = (
   date: string | Date | null | undefined
 ): Date | null => {
   if (!date) return null;
@@ -211,82 +211,109 @@ export const normalizeLongText = (
 };
 
 /**
- * Normalize contact data (all fields)
+ * Format contact data (all fields)
  * This is the main function to use before sending data to API
  *
  * @param data - Object containing contact information
- * @returns Object with normalized contact data
+ * @returns Object with formatted contact data
  */
 
-export const serializeContactData = (data: any): any => {
-  const normalized: any = { ...data };
+export const formatContactData = (data: any): any => {
+  const formatted: any = { ...data };
 
-  // Normalize phone fields
+  // Format phone fields
   if (data.phone) {
-    normalized.phone = serializePhoneNumber(data.phone);
+    formatted.phone = formatPhoneNumber(data.phone);
   }
   if (data.contactPersonPhone) {
-    normalized.contactPersonPhone = serializePhoneNumber(
+    formatted.contactPersonPhone = formatPhoneNumber(
       data.contactPersonPhone
     );
   }
   if (data.fax) {
-    normalized.fax = serializePhoneNumber(data.fax);
+    formatted.fax = formatPhoneNumber(data.fax);
   }
 
-  // Normalize email
+  // Format email
   if (data.email) {
-    normalized.email = normalizeEmail(data.email);
+    formatted.email = normalizeEmail(data.email);
   }
 
-  // Normalize ZIP code
+  // Format ZIP code
   if (data.zip) {
-    normalized.zip = normalizeZipCode(data.zip);
+    formatted.zip = normalizeZipCode(data.zip);
   }
 
-  // Normalize state
+  // Format state
   if (data.state) {
-    normalized.state = normalizeState(data.state);
+    formatted.state = normalizeState(data.state);
   }
 
-  // Normalize text fields
+  // Format text fields
   if (data.fName !== undefined) {
-    normalized.fName = normalizeText(data.fName);
+    formatted.fName = normalizeText(data.fName);
   }
   if (data.lName !== undefined) {
-    normalized.lName = normalizeText(data.lName);
+    formatted.lName = normalizeText(data.lName);
   }
   if (data.cName !== undefined) {
-    normalized.cName = normalizeText(data.cName);
+    formatted.cName = normalizeText(data.cName);
   }
   if (data.contactPersonName !== undefined) {
-    normalized.contactPersonName = normalizeText(data.contactPersonName);
+    formatted.contactPersonName = normalizeText(data.contactPersonName);
   }
   if (data.streetAddress !== undefined) {
-    normalized.streetAddress = normalizeText(data.streetAddress);
+    formatted.streetAddress = normalizeText(data.streetAddress);
   }
   if (data.street !== undefined) {
-    normalized.street = normalizeText(data.street);
+    formatted.street = normalizeText(data.street);
   }
   if (data.city !== undefined) {
-    normalized.city = normalizeText(data.city);
+    formatted.city = normalizeText(data.city);
   }
   if (data.instructions !== undefined) {
-    normalized.instructions = normalizeLongText(data.instructions);
+    formatted.instructions = normalizeLongText(data.instructions);
   }
 
-  // Normalize usage type
+  // Format usage type
   if (data.usageType) {
-    normalized.usageType = normalizeUsageType(data.usageType);
+    formatted.usageType = normalizeUsageType(data.usageType);
   }
 
-  // Normalize dates
+  // Format dates
   if (data.deliveryDate) {
-    normalized.deliveryDate = normalizeDate(data.deliveryDate);
+    formatted.deliveryDate = normalizeDate(data.deliveryDate);
   }
   if (data.pickupDate) {
-    normalized.pickupDate = normalizeDate(data.pickupDate);
+    formatted.pickupDate = normalizeDate(data.pickupDate);
   }
 
-  return normalized;
+  // Format products array - convert quantity, rate, and amount to numbers
+  if (data.products && Array.isArray(data.products)) {
+    formatted.products = data.products.map((product: any) => {
+      const formattedProduct: any = { ...product };
+      
+      // Convert quantity to number (handle string inputs from form fields)
+      if (product.quantity !== undefined && product.quantity !== null) {
+        const quantityNum = Number(product.quantity);
+        formattedProduct.quantity = isNaN(quantityNum) ? 0 : quantityNum;
+      }
+      
+      // Convert rate to number
+      if (product.rate !== undefined && product.rate !== null) {
+        const rateNum = Number(product.rate);
+        formattedProduct.rate = isNaN(rateNum) ? 0 : rateNum;
+      }
+      
+      // Convert amount to number
+      if (product.amount !== undefined && product.amount !== null) {
+        const amountNum = Number(product.amount);
+        formattedProduct.amount = isNaN(amountNum) ? 0 : amountNum;
+      }
+      
+      return formattedProduct;
+    });
+  }
+
+  return formatted;
 };
