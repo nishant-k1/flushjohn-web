@@ -22,14 +22,14 @@
 
 .quickQuoteBtn {
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  right: 20px;
+  bottom: 110px;
   background: #2e7d32; /* Darker green for better contrast */
   color: #ffffff; /* White text for sufficient contrast */
-  border: 2px solid #1b5e20; /* Visible border for accessibility */
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-size: 14px;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 24px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -49,13 +49,12 @@
   letter-spacing: 0.02em;
   line-height: 1.2;
   width: fit-content;
-  max-width: 150px;
-  min-height: 36px;
+  max-width: 140px;
+  min-height: 32px;
 }
 
 .quickQuoteBtn:hover {
   background: #1b5e20; /* Even darker on hover */
-  border-color: #1b5e20;
   transform: none;
   box-shadow: 0 12px 32px rgba(27, 94, 32, 0.5);
 }
@@ -83,12 +82,12 @@
 .phoneBtn {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 32px;
   height: 56px;
   width: 56px;
   background: #2e7d32; /* Darker green for better contrast */
   border-radius: 50%;
-  border: 2px solid #1b5e20; /* Visible border for accessibility */
+  border: none;
   color: #ffffff; /* White icon for sufficient contrast */
   cursor: pointer;
   display: flex;
@@ -110,7 +109,6 @@
 
 .phoneBtn:hover {
   background: #1b5e20; /* Even darker on hover */
-  border-color: #1b5e20;
   transform: none;
   box-shadow: 0 12px 32px rgba(27, 94, 32, 0.5);
 }
@@ -213,19 +211,17 @@
 
 @media (max-width: 768px) {
   .quickQuoteBtn {
-    left: 15px;
-    bottom: 20px;
-    padding: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    justify-content: center;
-    font-size: 0.75rem;
+    right: 15px;
+    bottom: 104px;
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    min-height: 30px;
   }
 
   .phoneBtn {
     right: 15px;
-    bottom: 20px;
+    bottom: 28px;
     width: 56px;
     height: 56px;
   }
@@ -261,12 +257,12 @@
 
 @media (max-width: 480px) {
   .quickQuoteBtn {
-    left: 10px;
-    bottom: 10px;
+    right: 10px;
+    bottom: 92px;
   }
 
   .phoneBtn {
     right: 10px;
-    bottom: 10px;
+    bottom: 24px;
   }
 }
