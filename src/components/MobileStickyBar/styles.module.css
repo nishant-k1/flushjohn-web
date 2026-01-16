@@ -1,0 +1,48 @@
+.mobileStickyBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  display: none;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-primary);
+  box-shadow: 0 -4px 16px var(--black-alpha-20);
+  border-top: 1px solid var(--border-default);
+  z-index: 200;
+}
+
+.quoteButton {
+  flex: 1;
+  background: var(--primary);
+  color: var(--text-inverse);
+  border: none;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.phoneButton {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(46, 125, 50, 0.12);
+  color: var(--primary);
+  border: 1px solid var(--primary-alpha-20);
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .mobileStickyBar {
+    display: flex;
+  }
+}

@@ -211,19 +211,11 @@
 
 @media (max-width: 768px) {
   .quickQuoteBtn {
-    right: 15px;
-    bottom: 104px;
-    padding: 0.4rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    min-height: 30px;
+    display: none;
   }
 
   .phoneBtn {
-    right: 15px;
-    bottom: 28px;
-    width: 56px;
-    height: 56px;
+    display: none;
   }
 
   .callout {

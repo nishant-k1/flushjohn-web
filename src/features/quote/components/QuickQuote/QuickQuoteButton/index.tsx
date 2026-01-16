@@ -13,6 +13,39 @@ const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 export default function QuickQuoteButton() {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
+  const [ctaLabel, setCtaLabel] = React.useState("Quick Quote");
+
+  React.useEffect(() => {
+    const target = document.getElementById("services-section");
+
+    if (!target) {
+      const handleScroll = () => {
+        setCtaLabel(window.scrollY > 800 ? "Get Pricing" : "Quick Quote");
+      };
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCtaLabel("Quick Quote");
+          return;
+        }
+
+        if (entry.boundingClientRect.top < 0) {
+          setCtaLabel("Get Pricing");
+        } else {
+          setCtaLabel("Quick Quote");
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
   // COMMENTED OUT: "Order By Phone" callout
   // const [showCallout, setShowCallout] = React.useState(true);
 
@@ -24,7 +57,7 @@ export default function QuickQuoteButton() {
         }}
         className={styles.quickQuoteBtn}
       >
-        Quick Quote
+        {ctaLabel}
       </button>
       {/* COMMENTED OUT: "Order By Phone" callout with × close button */}
       {/* {showCallout && (

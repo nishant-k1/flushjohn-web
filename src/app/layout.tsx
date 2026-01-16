@@ -43,6 +43,10 @@ const MobileMenu = dynamic(() => import("@/components/MobileMenu"), {
   ssr: true,
 });
 
+const MobileStickyBar = dynamic(() => import("@/components/MobileStickyBar"), {
+  ssr: true,
+});
+
 import { ClientWidthContextProvider } from "@/contexts/ClientWidthContext";
 import { QuoteContextProvider } from "@/features/quote/contexts/QuoteContext";
 import { SidebarContextProvider } from "@/contexts/SidebarContext";
@@ -519,6 +523,7 @@ export default function RootLayout({
                 <ScrollToTop />
                 <Navbar />
                 <MobileMenu />
+                <MobileStickyBar />
                 <Layout>
                   {children}
                   <QuickQuote />

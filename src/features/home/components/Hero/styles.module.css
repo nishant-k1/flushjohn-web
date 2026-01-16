@@ -299,6 +299,21 @@
   align-items: center;
 }
 
+.heroTrust {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: none;
+}
+
+.heroTrust span {
+  white-space: nowrap;
+}
+
 .ctaQuoteBtn,
 .ctaPhoneBtn {
   display: flex;
@@ -558,6 +573,12 @@
     gap: var(--spacing-sm);
     width: 100%;
     min-height: auto; /* Remove fixed min-height on mobile */
+  }
+
+  .heroTrust {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    font-size: 0.8rem;
   }
 
   .heroImage {

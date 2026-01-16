@@ -65,6 +65,11 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
                 <PhoneIcon className={styles.flippedIcon} size={18} />
               </Link>
             </div>
+            <div className={styles.heroTrust}>
+              <span>⭐ 4.8/5</span>
+              <span>120+ reviews</span>
+              <span>Fast delivery 24–48 hrs</span>
+            </div>
           </div>
 
           {/* Lazy-loaded form with skeleton fallback */}

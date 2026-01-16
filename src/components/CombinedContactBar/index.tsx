@@ -12,24 +12,10 @@ const CombinedContactBar = () => {
   const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
   const [zipCode, setZipCode] = useState("");
   const [showResult, setShowResult] = useState(false);
-  const [isChecking, setIsChecking] = useState(false);
-  const zipSectionRef = React.useRef<HTMLDivElement>(null);
 
-  const handleCheck = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!zipCode || zipCode.length !== 5) {
-      return;
-    }
-
-    setIsChecking(true);
-
-    // Simulate a brief check (always returns yes)
-    setTimeout(() => {
-      setIsChecking(false);
-      setShowResult(true);
-    }, 500);
-  };
+  React.useEffect(() => {
+    setShowResult(zipCode.length === 5);
+  }, [zipCode]);
 
   const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 5);
@@ -37,34 +23,14 @@ const CombinedContactBar = () => {
     setShowResult(false);
   };
 
-  // Close popover when clicking outside
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        zipSectionRef.current &&
-        !zipSectionRef.current.contains(event.target as Node) &&
-        showResult
-      ) {
-        setShowResult(false);
-      }
-    };
-
-    if (showResult) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showResult]);
 
   return (
     <div className={styles.combinedBar}>
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           {/* Zip Code Checker Section */}
-          <div className={styles.zipSection} ref={zipSectionRef}>
-            <form onSubmit={handleCheck} className={styles.zipForm}>
+          <div className={styles.zipSection}>
+            <div className={styles.zipForm}>
               <label htmlFor="zipCode" className={styles.zipLabel}>
                 Enter Delivery Zipcode:
               </label>
@@ -79,14 +45,8 @@ const CombinedContactBar = () => {
                 placeholder="Zip Code"
                 className={styles.zipInput}
               />
-              <button
-                type="submit"
-                className={styles.checkButton}
-                disabled={zipCode.length !== 5 || isChecking}
-              >
-                {isChecking ? "Checking..." : "Can I get it?"}
-              </button>
-            </form>
+              <span className={styles.zipHint}>Auto‑checks after 5 digits</span>
+            </div>
 
             {/* Success message */}
             <div

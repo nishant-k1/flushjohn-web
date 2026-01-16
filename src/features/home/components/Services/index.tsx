@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { Service } from "../../constants";
+import Link from "next/link";
 
 type ServicesProps = {
   heading: string;
@@ -10,7 +11,7 @@ type ServicesProps = {
 
 const Services = React.memo(({ heading, content }: ServicesProps) => {
   return (
-    <div className={styles.servicesSection}>
+    <div className={styles.servicesSection} id="services-section">
       <div className={styles.container}>
         <div className={styles.servicesGrid}>
           {/* First column: Heading and description */}
@@ -43,6 +44,9 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                   <div className={styles.textContent}>
                     <h3 className={styles.cardTitle}>{title}</h3>
                     <p className={styles.cardBody}>{body}</p>
+                    <Link href="/quote" className={styles.cardCta}>
+                      Get pricing →
+                    </Link>
                   </div>
                 </div>
               );
@@ -84,6 +88,9 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     <div className={styles.textContent}>
                       <h3 className={styles.cardTitle}>{title}</h3>
                       <p className={styles.cardBody}>{body}</p>
+                      <Link href="/quote" className={styles.cardCta}>
+                        Get pricing →
+                      </Link>
                     </div>
                   </div>
                 </React.Fragment>
@@ -107,6 +114,9 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                 <div className={styles.textContent}>
                   <h3 className={styles.cardTitle}>{title}</h3>
                   <p className={styles.cardBody}>{body}</p>
+                  <Link href="/quote" className={styles.cardCta}>
+                    Get pricing →
+                  </Link>
                 </div>
               </div>
             );

@@ -202,6 +202,20 @@
   max-height: 5.6rem; /* 4 lines * 1.6 line-height * 0.875rem ≈ 5.6rem */
 }
 
+.cardCta {
+  margin-top: var(--spacing-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.cardCta:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
 .quoteButton {
   background: linear-gradient(
     135deg,

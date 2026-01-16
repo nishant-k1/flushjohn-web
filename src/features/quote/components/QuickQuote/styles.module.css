@@ -111,6 +111,20 @@
   overflow-wrap: break-word;
 }
 
+.stepHint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.stepActions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
 /* Usage Type Row - Responsive Layout */
 .usageTypeRow {
   display: flex;
