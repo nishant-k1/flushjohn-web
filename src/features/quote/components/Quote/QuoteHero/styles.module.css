@@ -38,12 +38,14 @@
   gap: var(--spacing-sm);
   text-decoration: none;
   color: var(--text-primary);
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
   justify-content: flex-start;
+  border-bottom: 2px solid transparent;
 }
 
 .phoneLink:hover {
   opacity: 0.8;
+  border-bottom-color: var(--text-primary);
 }
 
 .phoneNumber {

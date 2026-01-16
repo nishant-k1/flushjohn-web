@@ -55,13 +55,9 @@
 }
 
 .ctaButton {
-  background: linear-gradient(
-    135deg,
-    var(--primary-light) 0%,
-    var(--primary) 100%
-  );
-  color: var(--text-inverse);
-  border: 1px solid var(--primary-light);
+  background: #2e7d32; /* Darker green for better contrast */
+  color: #ffffff; /* White text for sufficient contrast */
+  border: 2px solid #1b5e20; /* Visible border for accessibility */
   padding: 8px 20px;
   font-size: 0.875rem;
   font-weight: 600;
@@ -82,13 +78,9 @@
 }
 
 .ctaButton:hover {
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark) 0%,
-    var(--primary-darker, var(--primary-dark)) 100%
-  );
-  border-color: var(--primary-dark);
-  color: var(--text-inverse);
+  background: #1b5e20; /* Even darker on hover */
+  border-color: #1b5e20;
+  color: #ffffff;
   transform: none;
   box-shadow:
     0 6px 20px var(--black-alpha-20),
@@ -96,18 +88,14 @@
 }
 
 .ctaButton:active {
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark) 0%,
-    var(--primary) 100%
-  );
-  border-color: var(--primary);
-  color: var(--text-inverse);
+  background: #1b5e20;
+  border-color: #1b5e20;
+  color: #ffffff;
   transform: none;
 }
 
 .ctaButton:focus-visible {
-  outline: 2px solid var(--primary-light);
+  outline: 3px solid #ffffff; /* White outline for visibility on green background */
   outline-offset: 2px;
 }
 
@@ -123,20 +111,21 @@
 }
 
 .phoneLink {
-  color: var(--primary);
+  color: #2e7d32; /* Darker green for better contrast (WCAG AA compliant) */
   font-weight: 600;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   transition: all var(--transition-base);
 }
 
 .phoneLink:hover {
-  color: var(--primary-dark);
-  border-bottom-color: var(--primary-dark);
+  color: #1b5e20; /* Even darker on hover */
+  text-decoration-thickness: 3px;
 }
 
 .phoneLink:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid #2e7d32; /* Darker green for better visibility */
   outline-offset: 2px;
   border-radius: 2px;
 }

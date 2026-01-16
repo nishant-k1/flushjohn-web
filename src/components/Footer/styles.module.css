@@ -41,10 +41,17 @@
 .container a {
   transition: all var(--transition-base);
   border-radius: var(--radius-sm);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-underline-offset: 3px;
+}
+
+.container a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.8);
 }
 
 .container a:focus-visible {
-  outline: 2px solid var(--primary-light);
+  outline: 3px solid #81c784; /* Lighter green for dark background */
   outline-offset: var(--spacing-xs);
 }
 
@@ -167,13 +174,13 @@
 }
 
 .footerLogo :global(.flushText) {
-  color: #1a1a1a !important;
+  color: #ffffff !important; /* White for dark footer background */
   font-size: 0.875rem !important;
   letter-spacing: 0.05em !important;
 }
 
 .footerLogo :global(.johnText) {
-  color: #4caf50 !important;
+  color: #81c784 !important; /* Lighter green for dark footer background (WCAG AA compliant) */
   font-size: 0.875rem !important;
   letter-spacing: 0.05em !important;
 }
@@ -210,7 +217,7 @@
 }
 
 .social ul li a:focus-visible {
-  outline: 2px solid var(--primary-light);
+  outline: 3px solid #81c784; /* Lighter green for dark background */
   outline-offset: var(--spacing-xs);
 }
 
@@ -402,12 +409,12 @@
   }
 
   .footerLogo :global(.flushText) {
-    color: #1a1a1a !important;
+    color: #ffffff !important; /* White for dark footer background */
     font-size: 1rem !important;
   }
   
   .footerLogo :global(.johnText) {
-    color: #4caf50 !important;
+    color: #81c784 !important; /* Lighter green for dark footer background (WCAG AA compliant) */
     font-size: 1rem !important;
   }
 

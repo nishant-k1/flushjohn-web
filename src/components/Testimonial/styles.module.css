@@ -129,10 +129,10 @@
 
 .testimonialDate {
   font-size: 0.875rem !important;
-  color: var(--gray-text) !important;
+  color: #666666 !important; /* Sufficient contrast without opacity */
   margin-top: 0.75rem !important;
   font-style: normal !important;
-  opacity: 0.8;
+  opacity: 1; /* Remove opacity for better contrast */
 }
 
 /* Tablet Breakpoint */

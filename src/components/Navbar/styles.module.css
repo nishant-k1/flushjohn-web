@@ -52,7 +52,7 @@
 }
 
 .logo:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid #2e7d32; /* Darker green for better visibility */
   outline-offset: var(--spacing-xs);
   border-radius: var(--radius-sm);
 }
@@ -70,11 +70,11 @@
 }
 
 .hamburger:hover {
-  color: var(--primary);
+  color: #2e7d32; /* Darker green for better contrast */
 }
 
 .hamburger:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid #2e7d32; /* Darker green for better visibility */
   outline-offset: var(--spacing-xs);
   border-radius: var(--radius-sm);
 }
@@ -95,29 +95,34 @@
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  transition: color var(--transition-base);
+  transition: all var(--transition-base);
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   text-decoration: none;
   display: inline-block;
+  position: relative;
 }
 
 .navLinks a:hover {
-  color: var(--primary-dark);
+  color: #1b5e20; /* Even darker on hover for better contrast */
   text-shadow: none;
+  background-color: rgba(46, 125, 50, 0.08); /* Very light green background */
 }
 
 .navLinks a:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid #2e7d32; /* Darker green for better visibility */
   outline-offset: var(--spacing-xs);
+  background-color: rgba(46, 125, 50, 0.08);
 }
 
 .activeLink,
 .activeLink a {
-  color: var(--primary) !important;
-  font-weight: 400;
+  color: #2e7d32 !important; /* Darker green for better contrast */
+  font-weight: 600; /* Bolder to help distinguish from inactive links */
   letter-spacing: 0.02em;
   text-shadow: none;
+  background-color: rgba(46, 125, 50, 0.12); /* Slightly darker background for active state */
+  border-bottom: 2px solid #2e7d32; /* Bottom border instead of underline */
 }
 
 /* tablet device breakpoint: 768px*/
@@ -141,7 +146,7 @@
   display: inline-flex !important;
   align-items: center;
   gap: 6px;
-  color: var(--text-inverse);
+  color: #ffffff; /* White text for sufficient contrast on green */
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -149,8 +154,8 @@
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 8px;
   text-decoration: none;
-  background: var(--primary);
-  border: 1px solid var(--primary-dark);
+  background: #2e7d32; /* Darker green for better contrast */
+  border: 1px solid #1b5e20; /* Even darker border */
   white-space: nowrap;
   text-shadow: none;
   line-height: 1;
@@ -169,14 +174,14 @@
 }
 
 .navLinks .phoneLink:hover {
-  color: var(--text-inverse);
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
+  color: #ffffff;
+  background: #1b5e20; /* Even darker on hover */
+  border-color: #1b5e20;
   text-shadow: none;
 }
 
 .navLinks .phoneLink:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 3px solid #ffffff; /* White outline on green background for visibility */
   outline-offset: var(--spacing-xs);
 }
 

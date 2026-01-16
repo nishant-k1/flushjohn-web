@@ -55,7 +55,7 @@
 }
 
 .johnText {
-  color: #4caf50; /* Primary green color */
+  color: #2e7d32; /* Darker green for better contrast (WCAG AA compliant) */
   font-size: 1.5rem;
   font-weight: 700; /* Bold for strength and reliability - industry standard */
   /* Based on research: Most porta potty companies use bold sans-serif fonts
