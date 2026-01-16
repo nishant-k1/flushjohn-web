@@ -54,6 +54,7 @@ import FacebookPixel from "@/components/SEO/FacebookPixel";
 import FinalOptimizer from "@/components/SEO/FinalOptimizer";
 import WebVitals from "@/components/SEO/WebVitals";
 import SkipLink from "@/components/SkipLink";
+import BrowserExtensionHandler from "@/components/BrowserExtensionHandler";
 // Using environment variable directly
 const GOOGLE_ADS_ACCOUNT_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID!;
 
@@ -108,6 +109,138 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Suppress hydration warnings for browser extension injections */}
+        {/* This script must run before React hydration to normalize extension-injected elements */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                'use strict';
+                // Run immediately to normalize browser extension injections before React hydration
+                // This must run before React tries to hydrate the DOM
+                const normalizeExtensionElements = () => {
+                  try {
+                    // Specifically target pronounceRootElement which is causing the hydration mismatch
+                    const pronounceRoot = document.getElementById('pronounceRootElement');
+                    if (pronounceRoot) {
+                      // Normalize hidden attribute - React expects boolean or undefined, not null
+                      const hiddenAttr = pronounceRoot.getAttribute('hidden');
+                      if (hiddenAttr === 'null' || hiddenAttr === null) {
+                        pronounceRoot.removeAttribute('hidden');
+                      } else if (hiddenAttr === 'true' || hiddenAttr === '') {
+                        // Ensure it's a proper boolean attribute
+                        pronounceRoot.setAttribute('hidden', '');
+                      }
+                      
+                      // Mark as extension-injected
+                      pronounceRoot.setAttribute('data-extension-injected', 'true');
+                      
+                      // Ensure consistent styling to prevent mismatches
+                      if (!pronounceRoot.hasAttribute('style')) {
+                        pronounceRoot.setAttribute('style', 'position:fixed;top:0px;left:0px;width:1px;height:1px;z-index:2147483645');
+                      }
+                    }
+                    
+                    // Also normalize any other extension-injected elements
+                    const extensionSelectors = [
+                      '[id*="pronounce"]',
+                      '[class*="pronounce"]',
+                      '[id*="accessibility"]',
+                    ];
+                    
+                    extensionSelectors.forEach((selector) => {
+                      try {
+                        const elements = document.querySelectorAll(selector);
+                        elements.forEach((el) => {
+                          if (el.id === 'pronounceRootElement') return; // Already handled
+                          
+                          // Normalize hidden attribute
+                          if (el.hasAttribute('hidden')) {
+                            const hiddenValue = el.getAttribute('hidden');
+                            if (hiddenValue === 'null' || hiddenValue === null) {
+                              el.removeAttribute('hidden');
+                            }
+                          }
+                          
+                          // Mark as extension-injected
+                          el.setAttribute('data-extension-injected', 'true');
+                        });
+                      } catch (e) {
+                        // Silently fail for individual selectors
+                      }
+                    });
+                  } catch (e) {
+                    // Silently fail if DOM is not ready
+                  }
+                };
+                
+                // Run immediately if DOM is available
+                // This script runs synchronously when the head is parsed, before React hydration
+                if (typeof document !== 'undefined') {
+                  // Try to run immediately - this will work if the element already exists
+                  try {
+                    normalizeExtensionElements();
+                  } catch (e) {
+                    // If DOM isn't ready yet, wait for it
+                  }
+                  
+                  // Also run when DOM is ready (in case extensions inject later)
+                  if (document.readyState === 'loading') {
+                    if (document.addEventListener) {
+                      document.addEventListener('DOMContentLoaded', normalizeExtensionElements, { once: true, passive: true });
+                    }
+                  }
+                  
+                  // Run again after a microtask to catch elements injected during parsing
+                  if (typeof Promise !== 'undefined' && Promise.resolve) {
+                    Promise.resolve().then(() => {
+                      normalizeExtensionElements();
+                    });
+                  } else {
+                    // Fallback for older browsers
+                    setTimeout(normalizeExtensionElements, 0);
+                  }
+                  
+                  // Use MutationObserver to catch elements injected after initial load
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver((mutations) => {
+                      let shouldNormalize = false;
+                      mutations.forEach((mutation) => {
+                        if (mutation.addedNodes.length > 0) {
+                          mutation.addedNodes.forEach((node) => {
+                            if (node.nodeType === 1) { // Element node
+                              const el = node;
+                              if (el.id && (el.id.includes('pronounce') || el.id === 'pronounceRootElement')) {
+                                shouldNormalize = true;
+                              }
+                            }
+                          });
+                        }
+                      });
+                      if (shouldNormalize) {
+                        normalizeExtensionElements();
+                      }
+                    });
+                    
+                    // Observe the document head and body for new elements
+                    if (document.head) {
+                      observer.observe(document.head, {
+                        childList: true,
+                        subtree: true,
+                      });
+                    }
+                    if (document.body) {
+                      observer.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                      });
+                    }
+                  }
+                }
+              })();
+            `,
+          }}
+        />
         {/* Critical Schema Markup - Inline for SEO audit tools that don't execute JavaScript */}
         <script
           type="application/ld+json"
@@ -371,6 +504,9 @@ export default function RootLayout({
 
         {/* Final Optimizer - Suppresses console errors and optimizes performance */}
         <FinalOptimizer />
+
+        {/* Browser Extension Handler - Normalizes extension-injected elements to prevent hydration mismatches */}
+        <BrowserExtensionHandler />
 
         {/* Skip Link - Accessibility: Allows keyboard users to skip to main content */}
         <SkipLink />

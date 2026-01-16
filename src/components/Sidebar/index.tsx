@@ -124,7 +124,7 @@ const Sidebar = () => {
         >
         <nav className={styles.sidebar} role="navigation" aria-label="Mobile navigation menu">
           <Link href="/" aria-label="FlushJohn Home" onClick={handleClick}>
-            <Logo height="4rem" />
+            <Logo height="3rem" />
           </Link>
           <Link href="/" onClick={handleClick} aria-label="Home">
             <HomeIcon size={20} aria-hidden="true" />
