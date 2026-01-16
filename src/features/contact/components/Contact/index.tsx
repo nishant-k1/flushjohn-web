@@ -48,7 +48,8 @@ const MyPhoneField = ({ label, ...props }: any) => {
         addInternationalOption={false}
         countryCallingCodeEditable={false}
         onChange={(value) => setValue(value)}
-        className={styles.input}
+        className={styles.phoneInputWrapper}
+        inputClassName={styles.phoneInput}
         placeholder="Enter phone number"
         limitMaxLength={true}
         maxLength={14}

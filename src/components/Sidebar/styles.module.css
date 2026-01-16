@@ -15,15 +15,6 @@
   border-right: 1px solid var(--primary-text-color);
   box-shadow: var(--black-alpha-25) 0px 5px 15px;
   z-index: 250;
-  transition: 0.3s;
-}
-
-.active {
-}
-
-.inactive {
-  display: none;
-  transition: 0.3s;
 }
 
 .container {

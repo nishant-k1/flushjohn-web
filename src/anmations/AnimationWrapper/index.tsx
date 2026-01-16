@@ -28,20 +28,18 @@ const AnimationWrapper = ({
   const { variants } = effect;
 
   return (
-    <div>
-      <AnimatePresence>
-        <MotionDiv
-          key={animationKey}
-          className={className}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={variants}
-        >
-          {children}
-        </MotionDiv>
-      </AnimatePresence>
-    </div>
+    <AnimatePresence mode="wait">
+      <MotionDiv
+        key={animationKey}
+        className={className}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={variants}
+      >
+        {children}
+      </MotionDiv>
+    </AnimatePresence>
   );
 };
 

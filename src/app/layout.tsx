@@ -39,7 +39,7 @@ const QuickQuote = dynamic(
   }
 );
 
-const Sidebar = dynamic(() => import("@/components/Sidebar"), {
+const MobileMenu = dynamic(() => import("@/components/MobileMenu"), {
   ssr: true,
 });
 
@@ -517,8 +517,8 @@ export default function RootLayout({
               <QuoteContextProvider>
                 <AnalyticsInitializer />
                 <ScrollToTop />
-                <Sidebar />
                 <Navbar />
+                <MobileMenu />
                 <Layout>
                   {children}
                   <QuickQuote />

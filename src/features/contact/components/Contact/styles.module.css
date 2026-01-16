@@ -1,5 +1,5 @@
 .section {
-  padding: var(--spacing-section) 0;
+  padding: var(--spacing-2xl) 0;
   background-color: var(--bg-section-primary) !important;
 }
 
@@ -14,7 +14,7 @@
   padding: 0;
   margin: 0;
   color: var(--text-primary);
-  font-size: large;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -30,9 +30,43 @@
   background-color: transparent;
   outline: none;
   height: 2rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
+}
+
+.phoneInputWrapper {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+.phoneInput {
+  padding: 0;
+  margin: 0;
+  color: var(--text-primary);
+  outline: none;
+  border: none;
+  border-bottom: solid 2px var(--border-light);
+  background-color: transparent;
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+}
+
+.phoneInput:focus {
+  border-bottom: solid 2px var(--primary-light);
+}
+
+.phoneInput::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.phoneInput:focus::placeholder {
+  color: var(--text-quaternary);
 }
 
 .input:-webkit-autofill,
@@ -55,7 +89,7 @@
   background-color: transparent;
   outline: none;
   height: 2rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
 }
@@ -81,7 +115,7 @@
   background-color: transparent;
   outline: none;
   height: 2rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
 }
@@ -106,7 +140,7 @@
   background-color: transparent;
   outline: none;
   height: 2rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
 }
@@ -133,7 +167,7 @@
   outline: none;
   height: 100px;
   padding-top: 0.5rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
 }
@@ -151,7 +185,7 @@
   outline: none;
   height: 100px;
   padding-top: 0.5rem;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 500;
   width: 100%;
 }
@@ -179,7 +213,7 @@
 }
 
 .form {
-  padding: 108px 0;
+  padding: var(--spacing-xl) 0;
   margin: 0;
   background-color: transparent;
   display: grid;
@@ -495,6 +529,14 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .form {
+    padding: var(--spacing-lg) 0;
+  }
+
   .mapContainer {
     margin-top: var(--spacing-2xl);
     padding-top: var(--spacing-2xl);

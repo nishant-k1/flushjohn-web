@@ -11,18 +11,16 @@ import {
   LocalShippingIcon,
 } from "@/components/UI/Icons";
 import Logo from "@/components/Logo";
+import { motion } from "framer-motion";
 // Using environment variables directly
 const PHONE_LINK = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 const PHONE_NUMBER = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 import { logEvent } from "../../../react-ga4-config";
-import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { animations } from "@/anmations/effectData";
 
 const Sidebar = () => {
-
   const { active, setActive } = useContext(SidebarContext);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  
+
   // Prevent body scrolling when sidebar is open on mobile
   useEffect(() => {
     if (active) {
@@ -61,7 +59,7 @@ const Sidebar = () => {
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLElement;
-      
+
       // Don't close if clicking inside the sidebar (check ref)
       if (sidebarRef.current && sidebarRef.current.contains(target)) {
         return;
@@ -80,7 +78,11 @@ const Sidebar = () => {
       }
 
       // Don't close if clicking on any button with aria-label containing "Toggle" or "menu"
-      if (target.closest('button[aria-label*="Toggle"], button[aria-label*="menu"]')) {
+      if (
+        target.closest(
+          'button[aria-label*="Toggle"], button[aria-label*="menu"]'
+        )
+      ) {
         return;
       }
 
@@ -110,31 +112,63 @@ const Sidebar = () => {
   };
 
   return (
-    <div ref={sidebarRef} data-sidebar="true">
-      <AnimationWrapper
-        effect={animations?.slidebarSlide}
-        animationKey={String(active)}
-        className={`${styles.section} ${
-          active ? styles.active : styles.inactive
-        }`}
-      >
-        <div 
-          className={styles.container} 
-          onClick={handleSidebarClick}
+    <motion.div
+      ref={sidebarRef}
+      data-sidebar="true"
+      className={styles.section}
+      initial={false}
+      animate={{
+        x: active ? "0%" : "-100%",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 30,
+        mass: 0.8,
+      }}
+      style={{
+        pointerEvents: active ? "auto" : "none",
+      }}
+      aria-hidden={!active}
+    >
+      <div className={styles.container} onClick={handleSidebarClick}>
+        <nav
+          className={styles.sidebar}
+          role="navigation"
+          aria-label="Mobile navigation menu"
         >
-        <nav className={styles.sidebar} role="navigation" aria-label="Mobile navigation menu">
-          <Link href="/" aria-label="FlushJohn Home" onClick={handleClick}>
+          <Link
+            href="/"
+            aria-label="FlushJohn Home"
+            onClick={handleClick}
+            tabIndex={active ? 0 : -1}
+          >
             <Logo height="3rem" />
           </Link>
-          <Link href="/" onClick={handleClick} aria-label="Home">
+          <Link
+            href="/"
+            onClick={handleClick}
+            aria-label="Home"
+            tabIndex={active ? 0 : -1}
+          >
             <HomeIcon size={20} aria-hidden="true" />
             Home
           </Link>
-          <Link href="/rental-products" onClick={handleClick} aria-label="Rental Products">
+          <Link
+            href="/rental-products"
+            onClick={handleClick}
+            aria-label="Rental Products"
+            tabIndex={active ? 0 : -1}
+          >
             <LocalShippingIcon size={20} aria-hidden="true" />
             Rental Products
           </Link>
-          <Link href="/quote" onClick={handleClick} aria-label="Request Quote">
+          <Link
+            href="/quote"
+            onClick={handleClick}
+            aria-label="Request Quote"
+            tabIndex={active ? 0 : -1}
+          >
             <RequestQuoteIcon size={20} aria-hidden="true" />
             Request Quote
           </Link>
@@ -152,14 +186,14 @@ const Sidebar = () => {
               });
             }}
             aria-label={`Call ${PHONE_NUMBER}`}
+            tabIndex={active ? 0 : -1}
           >
             <PhoneIcon size={20} aria-hidden="true" />
             {PHONE_NUMBER}
           </Link>
         </nav>
       </div>
-    </AnimationWrapper>
-    </div>
+    </motion.div>
   );
 };
 
