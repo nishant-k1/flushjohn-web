@@ -278,24 +278,24 @@ const QuickQuote = () => {
 
   const handleClickOutside = (event: MouseEvent) => {};
 
-  // Auto-show modal on scroll (300px threshold - same as StickyCTA)
-  React.useEffect(() => {
-    if (hasShownScrollPopup || quickQuoteViewStatus) return;
+  // COMMENTED OUT: Auto-show modal on scroll at 300px
+  // React.useEffect(() => {
+  //   if (hasShownScrollPopup || quickQuoteViewStatus) return;
 
-    const handleScroll = () => {
-      // Show modal after scrolling 300px (same as StickyCTA)
-      if (window.scrollY > 300 && !hasShownScrollPopup) {
-        setTimeout(() => {
-          setQuickQuoteViewStatus(true);
-          setQuickQuoteTitle("Get Your Free Quote!");
-          setHasShownScrollPopup(true);
-        }, 500);
-      }
-    };
+  //   const handleScroll = () => {
+  //     // Show modal after scrolling 300px (same as StickyCTA)
+  //     if (window.scrollY > 300 && !hasShownScrollPopup) {
+  //       setTimeout(() => {
+  //         setQuickQuoteViewStatus(true);
+  //         setQuickQuoteTitle("Get Your Free Quote!");
+  //         setHasShownScrollPopup(true);
+  //       }, 500);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasShownScrollPopup, quickQuoteViewStatus, setQuickQuoteViewStatus, setQuickQuoteTitle]);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [hasShownScrollPopup, quickQuoteViewStatus, setQuickQuoteViewStatus, setQuickQuoteTitle]);
 
   React.useEffect(() => {
     if (clientWidth && clientWidth > 600) {

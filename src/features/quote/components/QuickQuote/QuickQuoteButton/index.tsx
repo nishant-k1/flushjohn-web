@@ -13,7 +13,8 @@ const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 export default function QuickQuoteButton() {
   const { quickQuoteViewStatus, setQuickQuoteViewStatus } =
     React.useContext(QuickQuoteContext);
-  const [showCallout, setShowCallout] = React.useState(true);
+  // COMMENTED OUT: "Order By Phone" callout
+  // const [showCallout, setShowCallout] = React.useState(true);
 
   return (
     <div>
@@ -25,7 +26,8 @@ export default function QuickQuoteButton() {
       >
         Quick Quote
       </button>
-      {showCallout && (
+      {/* COMMENTED OUT: "Order By Phone" callout with × close button */}
+      {/* {showCallout && (
         <div className={styles.callout}>
           <button
             className={styles.calloutClose}
@@ -36,7 +38,7 @@ export default function QuickQuoteButton() {
           </button>
           <span className={styles.calloutText}>Order By Phone</span>
         </div>
-      )}
+      )} */}
       <Link
         href={phone_link}
         className={styles.phoneBtn}

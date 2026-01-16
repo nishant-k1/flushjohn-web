@@ -42,50 +42,52 @@ export const QuickQuoteContextProvider = ({
 
   const [exitTriggered, setExitTriggered] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (
-        window.location.pathname === "/quote" ||
-        window.location.pathname === "/"
-      ) {
-        return;
-      }
-      const timer = setTimeout(() => {
-        setQuickQuoteViewStatus(true);
-      }, 12000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
+  // COMMENTED OUT: Auto-popup after 12 seconds
+  // React.useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (
+  //       window.location.pathname === "/quote" ||
+  //       window.location.pathname === "/"
+  //     ) {
+  //       return;
+  //     }
+  //     const timer = setTimeout(() => {
+  //       setQuickQuoteViewStatus(true);
+  //     }, 12000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, []);
 
-  React.useEffect(() => {
-    const handleExitIntent = (e: MouseEvent) => {
-      if (
-        e.clientY < 10 &&
-        !quickQuoteViewStatus &&
-        !exitTriggered &&
-        !quickQuoteRequested &&
-        !quoteRequested &&
-        window.location.pathname !== "/quote"
-      ) {
-        setQuickQuoteViewStatus(true);
-        setQuickQuoteTitle("Get a Quote Before You Go!");
-        setExitTriggered(true);
-      }
-    };
+  // COMMENTED OUT: Exit-intent popup
+  // React.useEffect(() => {
+  //   const handleExitIntent = (e: MouseEvent) => {
+  //     if (
+  //       e.clientY < 10 &&
+  //       !quickQuoteViewStatus &&
+  //       !exitTriggered &&
+  //       !quickQuoteRequested &&
+  //       !quoteRequested &&
+  //       window.location.pathname !== "/quote"
+  //     ) {
+  //       setQuickQuoteViewStatus(true);
+  //       setQuickQuoteTitle("Get a Quote Before You Go!");
+  //       setExitTriggered(true);
+  //     }
+  //   };
 
-    if (typeof window !== "undefined") {
-      document.addEventListener("mouseleave", handleExitIntent);
-    }
+  //   if (typeof window !== "undefined") {
+  //     document.addEventListener("mouseleave", handleExitIntent);
+  //   }
 
-    return () => {
-      document.removeEventListener("mouseleave", handleExitIntent);
-    };
-  }, [
-    quickQuoteViewStatus,
-    exitTriggered,
-    quoteRequested,
-    quickQuoteRequested,
-  ]);
+  //   return () => {
+  //     document.removeEventListener("mouseleave", handleExitIntent);
+  //   };
+  // }, [
+  //   quickQuoteViewStatus,
+  //   exitTriggered,
+  //   quoteRequested,
+  //   quickQuoteRequested,
+  // ]);
 
   React.useEffect(() => {
     if (quickQuoteViewStatus) {
