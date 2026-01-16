@@ -155,7 +155,7 @@
   border-radius: 8px;
   text-decoration: none;
   background: #2e7d32; /* Darker green for better contrast */
-  border: 1px solid #1b5e20; /* Even darker border */
+  border: none;
   white-space: nowrap;
   text-shadow: none;
   line-height: 1;
@@ -176,7 +176,6 @@
 .navLinks .phoneLink:hover {
   color: #ffffff;
   background: #1b5e20; /* Even darker on hover */
-  border-color: #1b5e20;
   text-shadow: none;
 }
 
