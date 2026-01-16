@@ -25,8 +25,11 @@ import ErrorModal from "@/components/ErrorModal";
 import { api } from "@/utils/apiClient";
 // Construct Google Ads conversion values from env vars (same as all quote forms)
 const GOOGLE_ADS_CONVERSION_QUOTE_FORM = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_QUOTE_REQUEST_FORM_SUFFIX}`;
-const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!);
-const GOOGLE_ADS_CONVERSION_CURRENCY = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
+const GOOGLE_ADS_CONVERSION_VALUE_QUOTE_FORM = parseFloat(
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_VALUE_MODAL_QUICK_QUOTE_FORM!
+);
+const GOOGLE_ADS_CONVERSION_CURRENCY =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_CURRENCY!;
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
 const quickQuoteValidationSchema = Yup.object().shape({
@@ -119,30 +122,14 @@ const UsageTypeField = () => {
           onBlur={() => {
             setFieldTouched("usageType", true);
           }}
-          className={hasError ? styles.error_field : ""}
-          style={{
-            padding: "0 12px",
-            border: hasError
-              ? `1px solid var(--error-border)`
-              : `1px solid var(--border-light)`,
-            borderRadius: "0",
-            cursor: "pointer",
-            height: "2rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            backgroundColor: "var(--bg-white)",
-            transition: "border-color 0.2s",
-          }}
+          className={`${styles.usageTypeTrigger} ${hasError ? styles.errorBorder : ""}`}
         >
           <span
+            className={styles.usageTypeValue}
             style={{
               color: values.usageType
                 ? "var(--text-form-value)"
                 : "var(--text-form-placeholder)",
-              fontSize: "14px",
-              fontWeight: 500,
-              flex: 1,
             }}
           >
             {selectedOption ? selectedOption.label : "Select Usage Type"}
@@ -412,182 +399,192 @@ const QuickQuote = () => {
                   deliveryDate: true,
                   pickupDate: true,
                   zip: true,
-                });
+                } as any);
                 return;
               }
               setMobileStep(2);
             };
 
             return (
-            <div
-              className={styles.overlay}
-              style={{
-                display: quickQuoteViewStatus ? "flex" : "none",
-              }}
-            >
-              <Form>
-                <AnimationWrapper
-                  effect={animations?.zoomOutAndZoomIn}
-                  animationKey={String(quickQuoteViewStatus)}
-                  className={styles.quickQuoteform}
-                >
-                  <CloseIcon
-                    size={24}
-                    className={styles.closeIcon}
-                    onClick={() => {
-                      setQuickQuoteViewStatus(false);
-                      setQuickQuoteTitle("Quick Quote");
-                    }}
-                  />
-                  <div>
-                    <Grid container spacing={0.5}>
-                      <Grid item xs={12}>
-                        <div>
-                          <h2>
-                            {quickQuoteTitle}
-                            {isMobile && (
-                              <span className={styles.stepHint}>
-                                Step {mobileStep} of 2
-                              </span>
-                            )}
-                          </h2>
-                        </div>
-                      </Grid>
-                      {showStep1 && (
-                        <>
-                          <UsageTypeField />
-                          <Grid item xs={12}>
-                            <MyMultipleSelectCheckmarks
-                              label="Select Items"
-                              name="products"
-                            />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <DateInput
-                              label="Delivery Date"
-                              name="deliveryDate"
-                              required
-                              variant="quickquote"
-                            />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <DateInput
-                              label="Pickup Date"
-                              name="pickupDate"
-                              required
-                              variant="quickquote"
-                            />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <MyZipTextField
-                              label="Zip"
-                              name="zip"
-                              placeholder="Zip"
-                              min={0}
-                              maxLength={5}
-                              inputMode="numeric"
-                            />
-                          </Grid>
-                          {isMobile && (
+              <div
+                className={styles.overlay}
+                style={{
+                  display: quickQuoteViewStatus ? "flex" : "none",
+                }}
+              >
+                <Form>
+                  <AnimationWrapper
+                    effect={animations?.zoomOutAndZoomIn}
+                    animationKey={String(quickQuoteViewStatus)}
+                    className={styles.quickQuoteform}
+                  >
+                    <CloseIcon
+                      size={24}
+                      className={styles.closeIcon}
+                      onClick={() => {
+                        setQuickQuoteViewStatus(false);
+                        setQuickQuoteTitle("Quick Quote");
+                      }}
+                    />
+                    <div>
+                      <Grid container spacing={0.5}>
+                        <Grid item xs={12}>
+                          <div>
+                            <h2>
+                              {quickQuoteTitle}
+                              {isMobile && (
+                                <span className={styles.stepHint}>
+                                  Step {mobileStep} of 2
+                                </span>
+                              )}
+                            </h2>
+                          </div>
+                        </Grid>
+                        {showStep1 && (
+                          <>
+                            <UsageTypeField />
                             <Grid item xs={12}>
-                              <Button
-                                variant="contained"
-                                style={{
-                                  background: "var(--primary-bg-color)",
-                                  borderRadius: 0,
-                                }}
-                                type="button"
-                                onClick={handleNext}
-                              >
-                                Continue
-                              </Button>
+                              <MyMultipleSelectCheckmarks
+                                label="Select Items"
+                                name="products"
+                              />
                             </Grid>
-                          )}
-                        </>
-                      )}
-                      {showStep2 && (
-                        <>
-                          <Grid item xs={12}>
-                            <MyTextField
-                              label="Street Address"
-                              name="streetAddress"
-                              placeholder="Street Address (Optional)"
-                            />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <MyTextField label="First Name" name="fName" />
-                          </Grid>
-                          <Grid item xs={6}>
-                            <MyTextField label="Last Name" name="lName" />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <MyTextField label="Email" name="email" />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <MyPhoneTextField
-                              label="Phone"
-                              name="phone"
-                              placeholder="Phone"
-                              type="tel"
-                            />
-                          </Grid>
-                          <Grid item xs={12}>
-                            <MyMultilineTextField
-                              label="Instructions (if any)"
-                              name="instructions"
-                            />
-                          </Grid>
-                          {isMobile ? (
-                            <Grid item xs={12} className={styles.stepActions}>
-                              <Button
-                                variant="outlined"
-                                style={{
-                                  borderRadius: 0,
-                                }}
-                                type="button"
-                                onClick={() => setMobileStep(1)}
-                              >
-                                Back
-                              </Button>
-                              <Button
-                                variant="contained"
-                                style={{
-                                  background: "var(--primary-bg-color)",
-                                  borderRadius: 0,
-                                }}
-                                endIcon={<SendIcon size={18} />}
-                                type="submit"
-                                loading={isSubmitting}
-                                disabled={isSubmitting}
-                              >
-                                Submit
-                              </Button>
+                            <Grid item xs={6}>
+                              <DateInput
+                                label="Delivery Date"
+                                name="deliveryDate"
+                                required
+                                variant="quickquote"
+                              />
                             </Grid>
-                          ) : (
-                            <Grid item xs={3}>
-                              <Button
-                                variant="contained"
-                                style={{
-                                  background: "var(--primary-bg-color)",
-                                  borderRadius: 0,
-                                }}
-                                endIcon={<SendIcon size={18} />}
-                                type="submit"
-                                loading={isSubmitting}
-                                disabled={isSubmitting}
-                              >
-                                Submit
-                              </Button>
+                            <Grid item xs={6}>
+                              <DateInput
+                                label="Pickup Date"
+                                name="pickupDate"
+                                required
+                                variant="quickquote"
+                              />
                             </Grid>
-                          )}
-                        </>
-                      )}
-                    </Grid>
-                  </div>
-                </AnimationWrapper>
-              </Form>
-            </div>
-          );
+                            <Grid item xs={12}>
+                              <MyZipTextField
+                                label="Zip"
+                                name="zip"
+                                placeholder="Zip"
+                                min={0}
+                                maxLength={5}
+                                inputMode="numeric"
+                              />
+                            </Grid>
+                            {isMobile && (
+                              <Grid
+                                item
+                                xs={12}
+                                className={styles.stepActionsSticky}
+                              >
+                                <Button
+                                  variant="contained"
+                                  style={{
+                                    background: "var(--primary-bg-color)",
+                                    borderRadius: 0,
+                                  }}
+                                  type="button"
+                                  onClick={handleNext}
+                                >
+                                  Continue
+                                </Button>
+                              </Grid>
+                            )}
+                          </>
+                        )}
+                        {showStep2 && (
+                          <>
+                            <Grid item xs={12}>
+                              <MyTextField
+                                label="Street Address"
+                                name="streetAddress"
+                                placeholder="Street Address (Optional)"
+                              />
+                            </Grid>
+                            <Grid item xs={6}>
+                              <MyTextField label="First Name" name="fName" />
+                            </Grid>
+                            <Grid item xs={6}>
+                              <MyTextField label="Last Name" name="lName" />
+                            </Grid>
+                            <Grid item xs={12}>
+                              <MyTextField label="Email" name="email" />
+                            </Grid>
+                            <Grid item xs={12}>
+                              <MyPhoneTextField
+                                label="Phone"
+                                name="phone"
+                                placeholder="Phone"
+                                type="tel"
+                              />
+                            </Grid>
+                            <Grid item xs={12}>
+                              <MyMultilineTextField
+                                label="Instructions (if any)"
+                                name="instructions"
+                              />
+                            </Grid>
+                            {isMobile ? (
+                              <Grid
+                                item
+                                xs={12}
+                                className={styles.stepActionsSticky}
+                              >
+                                <div className={styles.stepActions}>
+                                  <Button
+                                    variant="outlined"
+                                    style={{
+                                      borderRadius: 0,
+                                    }}
+                                    type="button"
+                                    onClick={() => setMobileStep(1)}
+                                  >
+                                    Back
+                                  </Button>
+                                  <Button
+                                    variant="contained"
+                                    style={{
+                                      background: "var(--primary-bg-color)",
+                                      borderRadius: 0,
+                                    }}
+                                    endIcon={<SendIcon size={18} />}
+                                    type="submit"
+                                    loading={isSubmitting}
+                                    disabled={isSubmitting}
+                                  >
+                                    Submit
+                                  </Button>
+                                </div>
+                              </Grid>
+                            ) : (
+                              <Grid item xs={3}>
+                                <Button
+                                  variant="contained"
+                                  style={{
+                                    background: "var(--primary-bg-color)",
+                                    borderRadius: 0,
+                                  }}
+                                  endIcon={<SendIcon size={18} />}
+                                  type="submit"
+                                  loading={isSubmitting}
+                                  disabled={isSubmitting}
+                                >
+                                  Submit
+                                </Button>
+                              </Grid>
+                            )}
+                          </>
+                        )}
+                      </Grid>
+                    </div>
+                  </AnimationWrapper>
+                </Form>
+              </div>
+            );
           }}
         </Formik>
       )}

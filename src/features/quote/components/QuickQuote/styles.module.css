@@ -40,14 +40,38 @@
     width: 100%;
     height: 92vh;
     max-height: 92vh;
-    border-radius: 16px 16px 0 0;
+    border-radius: 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    padding: 12px 12px 16px;
+    padding: 10px 12px 72px;
     overflow-y: auto;
     box-shadow: var(--shadow-lg);
     animation: quickQuoteSheetIn 0.2s ease-out;
+  }
+
+  .quickQuoteform input,
+  .quickQuoteform textarea {
+    height: 2.5rem;
+    padding-left: 14px;
+    font-size: 15px;
+  }
+
+  .quickQuoteform textarea {
+    height: 5rem;
+  }
+
+  .quickQuoteform :global(.PhoneInputInput) {
+    height: 2.5rem !important;
+    font-size: 15px !important;
+  }
+
+  .quickQuoteform h2 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .stepHint {
+    margin-top: 2px;
   }
 }
 
@@ -123,6 +147,19 @@
   display: flex;
   gap: var(--spacing-sm);
   align-items: center;
+}
+
+.stepActionsSticky {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg-section-card);
+  padding: 10px 0 12px;
+  margin-top: var(--spacing-md);
+  box-shadow: 0 -6px 12px var(--black-alpha-10);
+}
+
+.stepActionsSticky .stepActions {
+  margin: 0;
 }
 
 /* Usage Type Row - Responsive Layout */
@@ -235,6 +272,47 @@
 .quickQuoteform textarea:focus::placeholder {
   color: var(--text-form-placeholder);
   font-size: 14px;
+}
+
+.usageTypeTrigger {
+  padding: 0 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 0;
+  cursor: pointer;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-white);
+  transition: border-color 0.2s;
+}
+
+.usageTypeValue {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.productsTrigger {
+  padding: 0 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 0;
+  cursor: pointer;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-white);
+  transition: border-color 0.2s;
+}
+
+.productsValue {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.errorBorder {
+  border: 1px solid var(--error-border) !important;
 }
 
 .error_field {
@@ -456,4 +534,56 @@
   svg {
   color: var(--text-primary);
   font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .quickQuoteform input,
+  .quickQuoteform textarea {
+    height: 2.75rem !important;
+    padding-left: 14px !important;
+    font-size: 15px !important;
+  }
+
+  .quickQuoteform textarea {
+    height: 5.5rem !important;
+  }
+
+  .quickQuoteform :global(.PhoneInputInput) {
+    height: 2.75rem !important;
+    font-size: 15px !important;
+  }
+
+  .quickQuoteform :global(.PhoneInputCountry) {
+    height: 2.75rem !important;
+  }
+
+  .quickQuoteform :global(.ant-select-selector) {
+    min-height: 2.75rem !important;
+    height: 2.75rem !important;
+    padding: 6px 12px !important;
+    font-size: 15px !important;
+  }
+
+  .quickQuoteform :global(.ant-select-selection-item),
+  .quickQuoteform :global(.ant-select-selection-placeholder) {
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+  }
+
+  .quickQuoteform :global(.ant-picker) {
+    height: 2.75rem !important;
+    padding: 0 12px !important;
+    font-size: 15px !important;
+  }
+
+  .usageTypeTrigger,
+  .productsTrigger {
+    height: 2.75rem;
+    padding: 0 14px;
+  }
+
+  .usageTypeValue,
+  .productsValue {
+    font-size: 15px;
+  }
 }

@@ -141,11 +141,7 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
   return (
     <div ref={dropdownRef} style={{ position: "relative", width: "100%" }}>
       <div
-        className={
-          touched && error
-            ? `${props.className} ${styles.error_field}`
-            : props.className
-        }
+        className={`${styles.productsTrigger} ${touched && error ? styles.errorBorder : ""}`}
         onClick={() => {
           setIsOpen(!isOpen);
           // Hide error when field is focused/clicked (but don't mark as touched yet)
@@ -156,26 +152,14 @@ const MyMultipleSelectCheckmarks = ({ label, ...props }: any) => {
           // Only mark as touched on blur (when user clicks away)
           setTouched(true);
         }}
-        style={{
-          padding: "0 12px",
-          border: `1px solid ${touched && error ? "var(--error-border)" : "var(--border-light)"}`,
-          borderRadius: "0",
-          cursor: "pointer",
-          height: "2rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "var(--bg-white)",
-          transition: "border-color 0.2s",
-        }}
       >
         <span
+          className={styles.productsValue}
           style={{
             color:
               value.length === 0
                 ? "var(--text-form-placeholder)"
                 : "var(--text-form-value)",
-            fontSize: "14px",
             fontWeight: 500,
             whiteSpace: "nowrap",
             overflow: "hidden",
