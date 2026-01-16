@@ -298,9 +298,21 @@ const UsageTypeDropdown = () => {
 const QuoteSinglePage = () => {
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [mobileStep, setMobileStep] = React.useState(1);
   const { data, setQuoteRequested } = useContext(QuoteContext);
   const [formValues, setFormValues] = data;
   const { products } = formValues;
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Form abandonment tracking
   const { trackFieldInteraction, trackComplete } = useFormAbandonmentTracking({
@@ -361,11 +373,57 @@ const QuoteSinglePage = () => {
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, validateForm, setTouched }) => {
+          const showStep1 = !isMobile || mobileStep === 1;
+          const showStep2 = !isMobile || mobileStep === 2;
+
+          const handleNext = async () => {
+            if (!isMobile) return;
+            const errors = await validateForm();
+            const step1Fields = [
+              "usageType",
+              "products",
+              "deliveryDate",
+              "pickupDate",
+              "streetAddress",
+              "zip",
+            ];
+            const hasErrors = step1Fields.some(
+              (field) => (errors as Record<string, unknown>)[field]
+            );
+            if (hasErrors) {
+              setTouched({
+                usageType: true,
+                products: true,
+                deliveryDate: true,
+                pickupDate: true,
+                streetAddress: true,
+                zip: true,
+              } as any);
+              return;
+            }
+            setMobileStep(2);
+          };
+
+          return (
           <Form noValidate>
             <div className={styles.form}>
+              {isMobile && (
+                <div className={styles.mobileProgress}>
+                  <div className={styles.mobileProgressTrack}>
+                    <div
+                      className={styles.mobileProgressFill}
+                      style={{ width: mobileStep === 1 ? "50%" : "100%" }}
+                    />
+                  </div>
+                  <div className={styles.mobileProgressText}>
+                    Step {mobileStep} of 2
+                  </div>
+                </div>
+              )}
               {/* Requirement & Delivery Details Section */}
-              <div className={styles.section}>
+              {showStep1 && (
+                <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>
                   Requirement & Delivery Details
                 </h3>
@@ -415,9 +473,11 @@ const QuoteSinglePage = () => {
                   placeholder="Enter any special placement instructions"
                 />
               </div>
+              )}
 
               {/* Personal Details Section */}
-              <div className={styles.section}>
+              {showStep2 && (
+                <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>Personal Details</h3>
                 <div className={styles.wrappingFields}>
                   <TextField
@@ -469,27 +529,70 @@ const QuoteSinglePage = () => {
                   />
                 </div>
               </div>
+              )}
 
-              {/* Submit Button */}
-              <div className={styles.buttons}>
-                <button
-                  type="submit"
-                  className={styles.submitButton}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className={styles.spinner}></span>
-                      Sending
-                    </>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
-              </div>
+              {!isMobile && (
+                <div className={styles.buttons}>
+                  <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className={styles.spinner}></span>
+                        Sending
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
+                  </button>
+                </div>
+              )}
+
+              {isMobile && showStep1 && (
+                <div className={styles.mobileActionsSticky}>
+                  <button
+                    type="button"
+                    className={styles.submitButton}
+                    onClick={handleNext}
+                  >
+                    Continue
+                  </button>
+                </div>
+              )}
+
+              {isMobile && showStep2 && (
+                <div className={styles.mobileActionsSticky}>
+                  <div className={styles.mobileActionsRow}>
+                    <button
+                      type="button"
+                      className={styles.secondaryButton}
+                      onClick={() => setMobileStep(1)}
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      className={styles.submitButton}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className={styles.spinner}></span>
+                          Sending
+                        </>
+                      ) : (
+                        "Submit"
+                      )}
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </Form>
-        )}
+          );
+        }}
       </Formik>
 
       <SuccessModal

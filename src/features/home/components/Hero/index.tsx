@@ -5,6 +5,8 @@ import styles from "./styles.module.css";
 import { PhoneIcon } from "@/components/UI/Icons";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { QuickQuoteContext } from "@/features/quote/contexts/QuickQuoteContext";
+import { QuickQuoteContextType } from "@/features/quote/contexts/QuickQuoteContext";
 // Construct Google Ads conversion label from env vars
 const GOOGLE_ADS_CONVERSION_PHONE_CALL = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_PHONE_BUTTON_SUFFIX}`;
 // Import CarouselView directly (not dynamically) to ensure LCP image loads immediately
@@ -26,6 +28,19 @@ const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
 const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 
 const Hero = React.memo(({ title, subTitle }: HeroProps) => {
+  const { setQuickQuoteViewStatus, setQuickQuoteTitle } =
+    React.useContext<QuickQuoteContextType>(QuickQuoteContext);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className={styles.hero}>
       {/* Background carousel */}
@@ -42,9 +57,22 @@ const Hero = React.memo(({ title, subTitle }: HeroProps) => {
             <h1>{title}</h1>
             <h2>{subTitle}</h2>
             <div className={styles.heroCta}>
-              <Link href="/quote" className={styles.ctaQuoteBtn}>
-                GET A QUOTE
-              </Link>
+              {isMobile ? (
+                <button
+                  type="button"
+                  className={styles.ctaQuoteBtn}
+                  onClick={() => {
+                    setQuickQuoteTitle("Quick Quote");
+                    setQuickQuoteViewStatus(true);
+                  }}
+                >
+                  GET A QUOTE
+                </button>
+              ) : (
+                <Link href="/quote" className={styles.ctaQuoteBtn}>
+                  GET A QUOTE
+                </Link>
+              )}
               <Link
                 href={phone_link}
                 className={styles.ctaPhoneBtn}

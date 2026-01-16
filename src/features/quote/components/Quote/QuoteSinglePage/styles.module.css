@@ -97,6 +97,76 @@
   letter-spacing: 0.05em;
 }
 
+.mobileStepHint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.mobileProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.mobileProgressTrack {
+  width: 100%;
+  height: 4px;
+  background: var(--white-alpha-15);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px var(--black-alpha-10);
+}
+
+.mobileProgressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-light) 0%,
+    var(--primary) 50%,
+    var(--primary-dark) 100%
+  );
+  transition: width 0.3s ease;
+}
+
+.mobileProgressText {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mobileActionsSticky {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg-section-alternate-blue);
+  padding: 12px 0;
+  margin-top: var(--spacing-md);
+  box-shadow: 0 -6px 12px var(--black-alpha-10);
+}
+
+.mobileActionsRow {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.secondaryButton {
+  flex: 1;
+  height: 44px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.secondaryButton:hover {
+  border-color: var(--primary);
+}
+
 .productsDropdown {
   margin-bottom: 0.25rem !important;
 }
@@ -501,5 +571,16 @@
   .buttons {
     margin-top: 0.75rem;
     padding-top: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    margin-bottom: 0;
+  }
+
+  .section {
+    max-width: 100%;
+    min-width: 100%;
   }
 }
