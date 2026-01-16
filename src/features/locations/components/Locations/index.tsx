@@ -13,7 +13,7 @@ export default function Locations({ title, list }: LocationsProps) {
   return (
     <div className={styles.locations}>
       <div className={styles.container}>
-        <h2>{title}</h2>
+        {title && <h2>{title}</h2>}
         <p className={styles.list}>
           {list.map((city, index) => (
             <span key={city}>

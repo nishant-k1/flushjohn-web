@@ -126,8 +126,7 @@ export const home_data: HomeData = {
     ],
   },
   locations: {
-    title:
-      "Extensive service coverage: We're providing porta potty rentals across multiple locations",
+    title: "",
     list: [
       "Houston, TX",
       "Dallas, TX",
