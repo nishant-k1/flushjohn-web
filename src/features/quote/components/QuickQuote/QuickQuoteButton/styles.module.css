@@ -55,12 +55,12 @@
 
 .quickQuoteBtn:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: none;
   box-shadow: 0 12px 32px var(--primary-alpha-50);
 }
 
 .quickQuoteBtn:active {
-  transform: translateY(0);
+  transform: none;
   background: var(--primary-dark);
 }
 
@@ -109,12 +109,12 @@
 
 .phoneBtn:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: none;
   box-shadow: 0 12px 32px var(--primary-alpha-50);
 }
 
 .phoneBtn:active {
-  transform: translateY(0);
+  transform: none;
   background: var(--primary-dark);
 }
 
