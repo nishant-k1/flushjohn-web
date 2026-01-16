@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Zap, DollarSign, Droplet, Phone, Tag } from "lucide-react";
 import styles from "./styles.module.css";
 // Construct Google Ads conversion label from env vars
 const GOOGLE_ADS_CONVERSION_PHONE_CALL = `${process.env.NEXT_PUBLIC_GOOGLE_ADS_G_TAG_ID}/${process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_SITE_WIDE_PHONE_BUTTON_SUFFIX}`;
@@ -17,9 +16,9 @@ const CTAsection = (props: Props) => {
     <div>
       <div className={styles.ctaSection}>
         <div className={styles.container}>
-          <h3>Get Your Free Quote in 60 Seconds</h3>
+          <h3>Ready to Get Started?</h3>
           <p>
-            Join thousands of satisfied customers across the USA. Get a free, no-obligation quote today!
+            Get your free quote in 60 seconds or speak with our team now.
           </p>
 
           <div className={styles.ctaButtons}>
@@ -32,9 +31,12 @@ const CTAsection = (props: Props) => {
             >
               Get My Free Quote
             </button>
-            <a
+          </div>
+
+          <p className={styles.ctaOffer}>
+            or call <a
               href={phone_link}
-              className={styles.phoneButton}
+              className={styles.phoneLink}
               onClick={() => {
                   if (
                     typeof window !== "undefined" &&
@@ -48,48 +50,9 @@ const CTAsection = (props: Props) => {
                   }
               }}
             >
-              Call {phone_number}
+              {phone_number}
             </a>
-          </div>
-
-          <p className={styles.ctaOffer}>
-            <Tag
-              size={18}
-              style={{
-                display: "inline",
-                verticalAlign: "middle",
-                marginRight: "4px",
-              }}
-            />
-            Claim $15 OFF on Your First Rental! Limited Time Offer!
           </p>
-
-          <div className={styles.trustElements}>
-            <div className={styles.trustItem}>
-              <span className={styles.trustIcon}>
-                <Zap size={20} />
-              </span>
-              <span>Fast Delivery (24-48hrs)</span>
-            </div>
-            <div className={styles.trustItem}>
-              <span className={styles.trustIcon}>
-                <DollarSign size={20} />
-              </span>
-              <span>Best Price Guarantee</span>
-            </div>
-            <div className={styles.trustItem}>
-              <span className={styles.trustIcon}>
-                <Droplet size={20} />
-              </span>
-              <span>Professionally Cleaned</span>
-            </div>
-            <div className={styles.trustItem}>
-              <span className={styles.trustIcon}>
-                <Phone size={20} />
-              </span>
-              <span>24/7 Support</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

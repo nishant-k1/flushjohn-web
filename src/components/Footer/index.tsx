@@ -27,13 +27,14 @@ const Footer = () => {
     <>
       <div className={styles.footer}>
         <div className={styles.container}>
+          {/* logo */}
+          <div className={styles.footerLogo}>
+            <Link href="/">
+              <Logo height="3rem" />
+            </Link>
+          </div>
+          
           <ul className={styles.ul}>
-            {/* logo */}
-            <li className={styles.footerLogo}>
-              <Link href="/">
-                <Logo height="2.5rem" />
-              </Link>
-            </li>
             {/* social */}
             <li className={styles.social}>
               <h2>Follow Us</h2>
@@ -52,11 +53,29 @@ const Footer = () => {
               </ul>
             </li>
 
-            {/* nav  */}
+            {/* nav - column 1 */}
             <li className={styles.nav}>
               <h2>Quick Links</h2>
               <ul>
-                {footerLinks?.nav.map((item: itemType) => {
+                {footerLinks?.nav.slice(0, 6).map((item: itemType) => {
+                  const { id, name, icon, href } = item;
+                  return (
+                    <li key={id}>
+                      <Link href={href}>
+                        {name}
+                        {icon}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+
+            {/* nav - column 2 */}
+            <li className={styles.nav}>
+              <h2>Resources</h2>
+              <ul>
+                {footerLinks?.nav.slice(6).map((item: itemType) => {
                   const { id, name, icon, href } = item;
                   return (
                     <li key={id}>

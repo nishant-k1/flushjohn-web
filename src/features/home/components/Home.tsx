@@ -31,9 +31,10 @@ const Home = () => {
       <React.Suspense fallback={<div>...</div>}>
         <Features {...features} />
       </React.Suspense>
-      <React.Suspense fallback={<div>...</div>}>
+      {/* SECTION 5: "Find Porta Potty Rentals Near You" - Hidden */}
+      {/* <React.Suspense fallback={<div>...</div>}>
         <ServiceAreas />
-      </React.Suspense>
+      </React.Suspense> */}
       <React.Suspense fallback={<div>...</div>}>
         <CTAsection />
       </React.Suspense>

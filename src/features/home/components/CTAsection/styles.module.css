@@ -1,7 +1,7 @@
 .ctaSection {
   margin-top: 0;
-  padding: 6rem 0;
-  background: var(--bg-section-cta-blue);
+  padding: 12px;
+  background: #f4f8f6;
   border-radius: 0;
   text-align: center;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
@@ -11,10 +11,16 @@
   border-top: 2px solid var(--primary);
 }
 
+@media (prefers-color-scheme: dark) {
+  .ctaSection {
+    background: #f4f8f6;
+  }
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg);
+  padding: 0;
 }
 
 /* Removed gradient overlay for muted appearance */
@@ -22,7 +28,7 @@
 .ctaSection h3 {
   font-size: 2.2rem;
   color: var(--text-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 0;
   font-weight: 400;
   letter-spacing: 0.02em;
   position: relative;
@@ -32,7 +38,7 @@
 .ctaSection p {
   font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: 0;
   line-height: 1.7;
   position: relative;
   z-index: 1;
@@ -40,10 +46,10 @@
 
 .ctaButtons {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: 0;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 0;
   position: relative;
   z-index: 1;
 }
@@ -53,7 +59,7 @@
   opacity: 0.95;
   color: var(--text-dark);
   border: 2px solid var(--bg-white);
-  padding: 8px 20px;
+  padding: 0;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 0;
@@ -83,104 +89,60 @@
   outline-offset: 2px;
 }
 
-.phoneButton {
-  background-color: var(--primary);
-  color: var(--text-inverse);
-  border: 2px solid var(--primary);
-  padding: 8px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all var(--transition-base);
-  text-decoration: none;
-  display: inline-block;
-  min-width: 180px;
-  min-height: 36px;
-  box-shadow: var(--shadow-md);
-}
-
-.phoneButton:hover {
-  background-color: var(--primary-dark);
-  box-shadow: var(--shadow-lg);
-  color: var(--text-inverse);
-}
-
-.phoneButton:active {
-  background-color: var(--primary-dark);
-  color: var(--text-inverse);
-}
-
-.phoneButton:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
 
 .ctaOffer {
-  margin-top: var(--spacing-lg);
-  font-size: 1.3rem;
-  color: var(--text-primary);
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
   font-weight: 400;
   text-shadow: none;
   position: relative;
   z-index: 1;
 }
 
-.trustElements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--gap-sm); /* 24px - matches nexbaron-web gap-6 */
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-xl);
-  border-top: 1px solid var(--white-alpha-20);
-  position: relative;
-  z-index: 1;
+.phoneLink {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-base);
 }
 
-.trustItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  font-size: 1rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+.phoneLink:hover {
+  color: var(--primary-dark);
+  border-bottom-color: var(--primary-dark);
 }
 
-.trustIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.phoneLink:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
+
 
 @media (max-width: 768px) {
   .ctaSection {
-    padding: 4rem 0;
+    padding: 12px;
   }
 
   .ctaSection h3 {
     font-size: 1.8rem;
+    margin-bottom: 0;
   }
 
   .ctaSection p {
     font-size: 1.1rem;
+    margin-bottom: 0;
   }
 
   .ctaButtons {
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: 0;
   }
 
-  .ctaButton,
-  .phoneButton {
+  .ctaButton {
     width: 100%;
     max-width: 300px;
-  }
-
-  .trustElements {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--gap-sm); /* 24px - consistent gap */
   }
 }
