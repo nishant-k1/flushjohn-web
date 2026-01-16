@@ -256,14 +256,6 @@ const QuickQuote = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [hasShownScrollPopup, setHasShownScrollPopup] = useState(false);
-  const [mobileStep, setMobileStep] = useState(1);
-  const isMobile = !!clientWidth && clientWidth <= 768;
-
-  React.useEffect(() => {
-    if (quickQuoteViewStatus) {
-      setMobileStep(1);
-    }
-  }, [quickQuoteViewStatus]);
 
   // Form abandonment tracking
   const { trackComplete } = useFormAbandonmentTracking({
@@ -375,37 +367,7 @@ const QuickQuote = () => {
             }
           }}
         >
-          {({ isSubmitting, validateForm, setTouched }) => {
-            const showStep1 = !isMobile || mobileStep === 1;
-            const showStep2 = !isMobile || mobileStep === 2;
-
-            const handleNext = async () => {
-              if (!isMobile) return;
-              const errors = await validateForm();
-              const step1Fields = [
-                "usageType",
-                "products",
-                "deliveryDate",
-                "pickupDate",
-                "zip",
-              ];
-              const hasErrors = step1Fields.some(
-                (field) => (errors as Record<string, unknown>)[field]
-              );
-              if (hasErrors) {
-                setTouched({
-                  usageType: true,
-                  products: true,
-                  deliveryDate: true,
-                  pickupDate: true,
-                  zip: true,
-                } as any);
-                return;
-              }
-              setMobileStep(2);
-            };
-
-            return (
+          {({ isSubmitting }) => (
               <div
                 className={styles.overlay}
                 style={{
@@ -430,162 +392,93 @@ const QuickQuote = () => {
                       <Grid container spacing={0.5}>
                         <Grid item xs={12}>
                           <div>
-                            <h2>
-                              {quickQuoteTitle}
-                              {isMobile && (
-                                <span className={styles.stepHint}>
-                                  Step {mobileStep} of 2
-                                </span>
-                              )}
-                            </h2>
+                            <h2>{quickQuoteTitle}</h2>
                           </div>
                         </Grid>
-                        {showStep1 && (
-                          <>
-                            <UsageTypeField />
-                            <Grid item xs={12}>
-                              <MyMultipleSelectCheckmarks
-                                label="Select Items"
-                                name="products"
-                              />
-                            </Grid>
-                            <Grid item xs={6}>
-                              <DateInput
-                                label="Delivery Date"
-                                name="deliveryDate"
-                                required
-                                variant="quickquote"
-                              />
-                            </Grid>
-                            <Grid item xs={6}>
-                              <DateInput
-                                label="Pickup Date"
-                                name="pickupDate"
-                                required
-                                variant="quickquote"
-                              />
-                            </Grid>
-                            <Grid item xs={12}>
-                              <MyZipTextField
-                                label="Zip"
-                                name="zip"
-                                placeholder="Zip"
-                                min={0}
-                                maxLength={5}
-                                inputMode="numeric"
-                              />
-                            </Grid>
-                            {isMobile && (
-                              <Grid
-                                item
-                                xs={12}
-                                className={styles.stepActionsSticky}
-                              >
-                                <Button
-                                  variant="contained"
-                                  style={{
-                                    background: "var(--primary-bg-color)",
-                                    borderRadius: 0,
-                                  }}
-                                  type="button"
-                                  onClick={handleNext}
-                                >
-                                  Continue
-                                </Button>
-                              </Grid>
-                            )}
-                          </>
-                        )}
-                        {showStep2 && (
-                          <>
-                            <Grid item xs={12}>
-                              <MyTextField
-                                label="Street Address"
-                                name="streetAddress"
-                                placeholder="Street Address (Optional)"
-                              />
-                            </Grid>
-                            <Grid item xs={6}>
-                              <MyTextField label="First Name" name="fName" />
-                            </Grid>
-                            <Grid item xs={6}>
-                              <MyTextField label="Last Name" name="lName" />
-                            </Grid>
-                            <Grid item xs={12}>
-                              <MyTextField label="Email" name="email" />
-                            </Grid>
-                            <Grid item xs={12}>
-                              <MyPhoneTextField
-                                label="Phone"
-                                name="phone"
-                                placeholder="Phone"
-                                type="tel"
-                              />
-                            </Grid>
-                            <Grid item xs={12}>
-                              <MyMultilineTextField
-                                label="Instructions (if any)"
-                                name="instructions"
-                              />
-                            </Grid>
-                            {isMobile ? (
-                              <Grid
-                                item
-                                xs={12}
-                                className={styles.stepActionsSticky}
-                              >
-                                <div className={styles.stepActions}>
-                                  <Button
-                                    variant="outlined"
-                                    style={{
-                                      borderRadius: 0,
-                                    }}
-                                    type="button"
-                                    onClick={() => setMobileStep(1)}
-                                  >
-                                    Back
-                                  </Button>
-                                  <Button
-                                    variant="contained"
-                                    style={{
-                                      background: "var(--primary-bg-color)",
-                                      borderRadius: 0,
-                                    }}
-                                    endIcon={<SendIcon size={18} />}
-                                    type="submit"
-                                    loading={isSubmitting}
-                                    disabled={isSubmitting}
-                                  >
-                                    Submit
-                                  </Button>
-                                </div>
-                              </Grid>
-                            ) : (
-                              <Grid item xs={3}>
-                                <Button
-                                  variant="contained"
-                                  style={{
-                                    background: "var(--primary-bg-color)",
-                                    borderRadius: 0,
-                                  }}
-                                  endIcon={<SendIcon size={18} />}
-                                  type="submit"
-                                  loading={isSubmitting}
-                                  disabled={isSubmitting}
-                                >
-                                  Submit
-                                </Button>
-                              </Grid>
-                            )}
-                          </>
-                        )}
+                        <UsageTypeField />
+                        <Grid item xs={12}>
+                          <MyMultipleSelectCheckmarks
+                            label="Select Items"
+                            name="products"
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <DateInput
+                            label="Delivery Date"
+                            name="deliveryDate"
+                            required
+                            variant="quickquote"
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <DateInput
+                            label="Pickup Date"
+                            name="pickupDate"
+                            required
+                            variant="quickquote"
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <MyZipTextField
+                            label="Zip"
+                            name="zip"
+                            placeholder="Zip"
+                            min={0}
+                            maxLength={5}
+                            inputMode="numeric"
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <MyTextField
+                            label="Street Address"
+                            name="streetAddress"
+                            placeholder="Street Address (Optional)"
+                          />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <MyTextField label="First Name" name="fName" />
+                        </Grid>
+                        <Grid item xs={6}>
+                          <MyTextField label="Last Name" name="lName" />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <MyTextField label="Email" name="email" />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <MyPhoneTextField
+                            label="Phone"
+                            name="phone"
+                            placeholder="Phone"
+                            type="tel"
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <MyMultilineTextField
+                            label="Instructions (if any)"
+                            name="instructions"
+                          />
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button
+                            variant="contained"
+                            style={{
+                              background: "var(--primary-bg-color)",
+                              borderRadius: 0,
+                            }}
+                            endIcon={<SendIcon size={18} />}
+                            type="submit"
+                            loading={isSubmitting}
+                            disabled={isSubmitting}
+                          >
+                            Submit
+                          </Button>
+                        </Grid>
                       </Grid>
                     </div>
                   </AnimationWrapper>
                 </Form>
               </div>
-            );
-          }}
+          )}
         </Formik>
       )}
 
