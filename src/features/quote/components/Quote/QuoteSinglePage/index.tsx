@@ -17,6 +17,7 @@ import PhoneField from "../FormFields/PhoneField";
 import DateInput from "@/components/FormControls/DateInput";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
+import { PhoneIcon } from "@/components/UI/Icons";
 import { api } from "@/utils/apiClient";
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
@@ -30,7 +31,7 @@ const GOOGLE_ADS_CONVERSION_CURRENCY =
 
 // Combined validation schema
 const combinedValidationSchema = Yup.object({
-  usageType: Yup.string().required("Usage type is required"),
+  usageType: Yup.string().required("Required"),
   products: Yup.array()
     .of(
       Yup.object().shape({
@@ -303,6 +304,8 @@ const QuoteSinglePage = () => {
   const { data, setQuoteRequested } = useContext(QuoteContext);
   const [formValues, setFormValues] = data;
   const { products } = formValues;
+  const phone_link = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE_LINK!;
+  const phone_number = process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!;
 
   React.useEffect(() => {
     const checkMobile = () => {
@@ -594,6 +597,21 @@ const QuoteSinglePage = () => {
           );
         }}
       </Formik>
+
+      <div className={styles.quoteTrust}>
+        <a
+          href={phone_link}
+          className={styles.quotePhoneLink}
+          aria-label={`Call FlushJohn at ${phone_number}`}
+        >
+          <span className={styles.quotePhoneNumber}>{phone_number}</span>
+          <PhoneIcon className={styles.quotePhoneIcon} size={18} />
+        </a>
+        <div className={styles.quoteTrustBadge}>
+          <span className={styles.quoteStars}>⭐⭐⭐⭐⭐</span>
+          <span className={styles.quoteTrustText}>4.8/5 from 127+ customers</span>
+        </div>
+      </div>
 
       <SuccessModal
         isOpen={showSuccessModal}

@@ -148,6 +148,49 @@
   justify-content: flex-start;
 }
 
+.quoteTrust {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.quotePhoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.quotePhoneNumber {
+  font-size: 1.1rem;
+}
+
+.quotePhoneIcon {
+  color: var(--text-primary);
+}
+
+.quoteTrustBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.quoteStars {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.quoteTrustText {
+  font-weight: 400;
+}
+
 .mobileActionsRow {
   display: flex;
   gap: var(--spacing-sm);
