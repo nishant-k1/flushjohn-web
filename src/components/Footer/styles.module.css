@@ -59,8 +59,8 @@
   padding: 0;
   margin: 0 0 1.5rem 0;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   position: relative;
   z-index: 1;
@@ -194,6 +194,8 @@
   align-items: flex-start;
   position: relative;
   z-index: 1;
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 150px;
 }
 
 .social ul {
@@ -231,6 +233,8 @@
   align-items: flex-start;
   position: relative;
   z-index: 1;
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 150px;
 }
 
 .nav ul {
@@ -252,6 +256,8 @@
   align-items: flex-start;
   position: relative;
   z-index: 1;
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 150px;
 }
 
 .contact ul {
@@ -397,10 +403,16 @@
   }
 
   .ul {
-    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-bottom: 1.5rem;
     align-items: start;
+  }
+
+  .social,
+  .nav,
+  .contact {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 180px;
   }
 
   .ul h2 {
@@ -445,6 +457,13 @@
 
   .ul {
     gap: 2rem;
+  }
+
+  .social,
+  .nav,
+  .contact {
+    flex: 1 1 calc(25% - 1.5rem);
+    min-width: 180px;
   }
 
   .businessInfoContent {
