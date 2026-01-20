@@ -34,20 +34,50 @@
   .overlay {
     align-items: flex-end;
     padding: 0;
+    /* Height will be set dynamically by JavaScript for accurate viewport */
+    /* Use dvh (dynamic viewport height) for modern browsers as fallback */
+    height: 100dvh;
+    /* Fallback for older browsers */
+    min-height: 100vh;
+    max-height: 100vh;
+    /* Ensure overlay covers exactly the visible viewport */
+    overflow: hidden;
   }
 
   .quickQuoteform {
     width: 100%;
-    height: 92vh;
-    max-height: 92vh;
+    /* JavaScript sets --modal-height via inline style for accurate viewport calculation */
+    /* Default: 85% of viewport to ensure gap at top (never 100%) */
+    height: var(--modal-height, 85dvh);
+    max-height: var(--modal-height, 85dvh);
+    /* Ensure modal never exceeds 90% of viewport to maintain gap */
+    max-height: min(var(--modal-height, 85dvh), 90dvh);
     border-radius: 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    padding: 10px 12px 72px;
+    /* Account for safe area insets on iOS devices */
+    padding: 10px 12px calc(72px + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
     box-shadow: var(--shadow-lg);
     animation: quickQuoteSheetIn 0.2s ease-out;
+    /* Ensure smooth transitions when height changes */
+    transition: height 0.2s ease-out, max-height 0.2s ease-out;
+  }
+
+  /* Fallback for browsers that don't support dvh */
+  @supports not (height: 100dvh) {
+    .overlay {
+      height: 100vh;
+    }
+
+    .quickQuoteform {
+      /* Default: 85% of viewport to ensure gap at top */
+      height: var(--modal-height, 85vh);
+      max-height: var(--modal-height, 85vh);
+      /* Ensure modal never exceeds 90% of viewport to maintain gap */
+      max-height: min(var(--modal-height, 85vh), 90vh);
+    }
   }
 
   .quickQuoteform input,

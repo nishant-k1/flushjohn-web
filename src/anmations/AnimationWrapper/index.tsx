@@ -14,24 +14,27 @@ const MotionDiv = dynamic(
   { ssr: false }
 );
 
-const AnimationWrapper = ({
-  children,
-  effect,
-  animationKey,
-  className,
-}: {
-  children: React.ReactNode;
-  effect: any;
-  animationKey?: any;
-  className?: any;
-}) => {
+const AnimationWrapper = React.forwardRef<
+  HTMLDivElement,
+  {
+    children: React.ReactNode;
+    effect: any;
+    animationKey?: any;
+    className?: any;
+    style?: React.CSSProperties;
+    onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  }
+>(({ children, effect, animationKey, className, style, onClick }, ref) => {
   const { variants } = effect;
 
   return (
     <AnimatePresence mode="wait">
       <MotionDiv
+        ref={ref}
         key={animationKey}
         className={className}
+        style={style}
+        onClick={onClick}
         initial="initial"
         animate="animate"
         exit="exit"
@@ -41,6 +44,8 @@ const AnimationWrapper = ({
       </MotionDiv>
     </AnimatePresence>
   );
-};
+});
+
+AnimationWrapper.displayName = "AnimationWrapper";
 
 export default AnimationWrapper;

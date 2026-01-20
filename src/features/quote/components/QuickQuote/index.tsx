@@ -253,9 +253,12 @@ const QuickQuote = () => {
   } = useContext<QuickQuoteContextType>(QuickQuoteContext);
 
   const quickQuoteRef = React.useRef<HTMLDivElement | null>(null);
+  const formRef = React.useRef<HTMLDivElement | null>(null);
+  const overlayRef = React.useRef<HTMLDivElement | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [hasShownScrollPopup, setHasShownScrollPopup] = useState(false);
+  const [modalHeight, setModalHeight] = useState<string>("92vh");
 
   // Form abandonment tracking
   const { trackComplete } = useFormAbandonmentTracking({
@@ -263,7 +266,128 @@ const QuickQuote = () => {
     totalFields: 12, // All form fields
   });
 
-  const handleClickOutside = (event: MouseEvent) => {};
+  // Handle click outside modal to close it
+  const handleClickOutside = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      // Only close if clicking directly on the overlay (gap area), not on the form
+      if (event.target === overlayRef.current) {
+        setQuickQuoteViewStatus(false);
+        setQuickQuoteTitle("Quick Quote");
+      }
+    },
+    [setQuickQuoteViewStatus, setQuickQuoteTitle]
+  );
+
+  // Calculate dynamic viewport height for mobile modals
+  // Always ensures there's a gap at the top (modal never takes 100% height)
+  const calculateModalHeight = React.useCallback(() => {
+    if (typeof window === "undefined") return;
+
+    // Prefer Visual Viewport API if available (more accurate for mobile)
+    let viewportHeight = window.innerHeight;
+    
+    // @ts-ignore - Visual Viewport API might not be in types yet
+    if (window.visualViewport) {
+      // Visual Viewport API gives the actual visible viewport (excludes keyboard)
+      // @ts-ignore
+      viewportHeight = window.visualViewport.height;
+    } else {
+      // Fallback to window.innerHeight
+      viewportHeight = window.innerHeight;
+    }
+    
+    // Use 85% of viewport to ensure consistent gap at top (8% gap = ~8vh)
+    // This ensures the modal never occupies 100% and always has a visible gap
+    const calculatedHeight = Math.round(viewportHeight * 0.85);
+    
+    // Ensure minimum height for usability (at least 400px)
+    // But also ensure we never exceed 90% to maintain gap
+    const maxHeight = Math.round(viewportHeight * 0.90);
+    const finalHeight = Math.min(Math.max(calculatedHeight, 400), maxHeight);
+    
+    // Set as pixel value for consistency
+    setModalHeight(`${finalHeight}px`);
+    
+    // Also set CSS custom property for the form element
+    if (formRef.current) {
+      const element = formRef.current as HTMLDivElement;
+      if (element) {
+        element.style.setProperty("--modal-height", `${finalHeight}px`);
+      }
+    }
+
+    // Overlay should always cover full viewport (gap is created by form height being less than viewport)
+    if (overlayRef.current) {
+      overlayRef.current.style.height = `${viewportHeight}px`;
+      overlayRef.current.style.maxHeight = `${viewportHeight}px`;
+    }
+  }, []);
+
+  // Update modal height when it opens and on viewport changes
+  React.useEffect(() => {
+    if (!quickQuoteViewStatus) return;
+
+    // Calculate height immediately when modal opens (using requestAnimationFrame for accuracy)
+    requestAnimationFrame(() => {
+      calculateModalHeight();
+      // Second calculation after a brief delay to catch any viewport stabilization
+      setTimeout(calculateModalHeight, 50);
+    });
+
+    // Recalculate on resize (handles orientation changes, keyboard, etc.)
+    const handleResize = () => {
+      // Use requestAnimationFrame for smooth updates
+      requestAnimationFrame(() => {
+        // Small delay to ensure viewport has stabilized (especially for keyboard)
+        setTimeout(calculateModalHeight, 100);
+      });
+    };
+
+    // Recalculate on orientation change
+    const handleOrientationChange = () => {
+      requestAnimationFrame(() => {
+        setTimeout(calculateModalHeight, 200);
+      });
+    };
+
+    // Visual Viewport API listener (most accurate for mobile viewport changes)
+    // @ts-ignore
+    const visualViewport = window.visualViewport;
+    // @ts-ignore
+    const handleVisualViewportChange = visualViewport
+      ? () => {
+          requestAnimationFrame(calculateModalHeight);
+        }
+      : null;
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleOrientationChange);
+    
+    // Add Visual Viewport listener if available
+    if (visualViewport && handleVisualViewportChange) {
+      visualViewport.addEventListener("resize", handleVisualViewportChange);
+      visualViewport.addEventListener("scroll", handleVisualViewportChange);
+    }
+    
+    // Recalculate after delays to catch address bar and keyboard changes
+    const timeoutId1 = setTimeout(calculateModalHeight, 150);
+    const timeoutId2 = setTimeout(calculateModalHeight, 300);
+    const timeoutId3 = setTimeout(calculateModalHeight, 500);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      
+      if (visualViewport && handleVisualViewportChange) {
+        visualViewport.removeEventListener("resize", handleVisualViewportChange);
+        visualViewport.removeEventListener("scroll", handleVisualViewportChange);
+      }
+      
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
+      clearTimeout(timeoutId3);
+    };
+  }, [quickQuoteViewStatus, calculateModalHeight]);
 
   // COMMENTED OUT: Auto-show modal on scroll at 300px
   // React.useEffect(() => {
@@ -284,14 +408,7 @@ const QuickQuote = () => {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, [hasShownScrollPopup, quickQuoteViewStatus, setQuickQuoteViewStatus, setQuickQuoteTitle]);
 
-  React.useEffect(() => {
-    if (clientWidth && clientWidth > 600) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [clientWidth]);
+  // Remove old desktop click-outside handler - we handle it via overlay onClick now
 
   const handleLeadConversion = () => {
     if (
@@ -369,16 +486,28 @@ const QuickQuote = () => {
         >
           {({ isSubmitting }) => (
               <div
+                ref={overlayRef}
                 className={styles.overlay}
                 style={{
                   display: quickQuoteViewStatus ? "flex" : "none",
                 }}
+                onClick={handleClickOutside}
               >
                 <Form>
                   <AnimationWrapper
                     effect={animations?.zoomOutAndZoomIn}
                     animationKey={String(quickQuoteViewStatus)}
                     className={styles.quickQuoteform}
+                    ref={formRef}
+                    style={
+                      typeof window !== "undefined" && window.innerWidth <= 768
+                        ? { height: modalHeight, maxHeight: modalHeight }
+                        : undefined
+                    }
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                      // Prevent clicks on form from closing the modal
+                      e.stopPropagation();
+                    }}
                   >
                     <CloseIcon
                       size={24}
