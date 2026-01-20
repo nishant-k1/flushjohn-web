@@ -279,7 +279,6 @@ const QuickQuote = () => {
   );
 
   // Calculate dynamic viewport height for mobile modals
-  // Always ensures there's a gap at the top (modal never takes 100% height)
   const calculateModalHeight = React.useCallback(() => {
     if (typeof window === "undefined") return;
 
@@ -296,14 +295,11 @@ const QuickQuote = () => {
       viewportHeight = window.innerHeight;
     }
     
-    // Use 85% of viewport to ensure consistent gap at top (8% gap = ~8vh)
-    // This ensures the modal never occupies 100% and always has a visible gap
-    const calculatedHeight = Math.round(viewportHeight * 0.85);
+    // Use 92% of viewport height (no gap - fills most of viewport)
+    const calculatedHeight = Math.round(viewportHeight * 0.92);
     
     // Ensure minimum height for usability (at least 400px)
-    // But also ensure we never exceed 90% to maintain gap
-    const maxHeight = Math.round(viewportHeight * 0.90);
-    const finalHeight = Math.min(Math.max(calculatedHeight, 400), maxHeight);
+    const finalHeight = Math.max(calculatedHeight, 400);
     
     // Set as pixel value for consistency
     setModalHeight(`${finalHeight}px`);
@@ -316,7 +312,7 @@ const QuickQuote = () => {
       }
     }
 
-    // Overlay should always cover full viewport (gap is created by form height being less than viewport)
+    // Overlay should always cover full viewport
     if (overlayRef.current) {
       overlayRef.current.style.height = `${viewportHeight}px`;
       overlayRef.current.style.maxHeight = `${viewportHeight}px`;

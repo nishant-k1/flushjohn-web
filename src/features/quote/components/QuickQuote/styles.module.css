@@ -47,11 +47,9 @@
   .quickQuoteform {
     width: 100%;
     /* JavaScript sets --modal-height via inline style for accurate viewport calculation */
-    /* Default: 85% of viewport to ensure gap at top (never 100%) */
-    height: var(--modal-height, 85dvh);
-    max-height: var(--modal-height, 85dvh);
-    /* Ensure modal never exceeds 90% of viewport to maintain gap */
-    max-height: min(var(--modal-height, 85dvh), 90dvh);
+    /* Default: 92% of viewport (no gap - fills most of viewport) */
+    height: var(--modal-height, 92dvh);
+    max-height: var(--modal-height, 92dvh);
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -72,11 +70,9 @@
     }
 
     .quickQuoteform {
-      /* Default: 85% of viewport to ensure gap at top */
-      height: var(--modal-height, 85vh);
-      max-height: var(--modal-height, 85vh);
-      /* Ensure modal never exceeds 90% of viewport to maintain gap */
-      max-height: min(var(--modal-height, 85vh), 90vh);
+      /* Default: 92% of viewport (no gap) */
+      height: var(--modal-height, 92vh);
+      max-height: var(--modal-height, 92vh);
     }
   }
 
