@@ -47,6 +47,7 @@ const MyPhoneField = ({ label, ...props }: any) => {
         countries={["US"]}
         addInternationalOption={false}
         countryCallingCodeEditable={false}
+        displayInitialValueAsLocalNumber={true}
         onChange={(value) => setValue(value)}
         className={styles.phoneInputWrapper}
         inputClassName={styles.phoneInput}

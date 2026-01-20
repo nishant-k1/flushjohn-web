@@ -5,6 +5,7 @@
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { getUsTodayStart } from "@/utils/usDate";
 
 dayjs.extend(customParseFormat);
 
@@ -33,12 +34,13 @@ export function validateDeliveryDate(date: string | Date): {
     return { isValid: false, error: "Invalid date format" };
   }
 
-  if (deliveryDate.isBefore(dayjs(), "day")) {
+  const usToday = dayjs(getUsTodayStart());
+
+  if (deliveryDate.isBefore(usToday, "day")) {
     return { isValid: false, error: "Delivery date cannot be in the past" };
   }
 
-  const today = dayjs().startOf("day");
-  const minDeliveryDate = today.add(
+  const minDeliveryDate = usToday.add(
     BUSINESS_RULES.MIN_ADVANCE_NOTICE_DAYS,
     "day"
   );
@@ -50,7 +52,7 @@ export function validateDeliveryDate(date: string | Date): {
     };
   }
 
-  const maxDeliveryDate = today.add(6, "months");
+  const maxDeliveryDate = usToday.add(6, "months");
   if (deliveryDate.isAfter(maxDeliveryDate)) {
     return {
       isValid: false,
@@ -113,7 +115,7 @@ export function calculateRentalDuration(
 export function getAvailableDeliveryDates(startDate?: string | Date): string[] {
   const start = startDate
     ? dayjs(startDate)
-    : dayjs().add(BUSINESS_RULES.MIN_ADVANCE_NOTICE_DAYS, "day");
+    : dayjs(getUsTodayStart()).add(BUSINESS_RULES.MIN_ADVANCE_NOTICE_DAYS, "day");
   const end = start.add(3, "months"); // Show 3 months of availability
   const dates: string[] = [];
 

@@ -1,15 +1,15 @@
 /**
  * Date Formatter Utilities
  *
- * Formats ISO 8601 dates for display in UI
- * Storage: "2026-01-07T00:00:00.000Z"
+ * Formats date strings for display in UI
+ * Storage: "2026-01-07"
  * Display: "January 7, 2026" or "01/07/2026"
  */
 
 /**
- * Format ISO date for display (long format)
+ * Format date for display (long format)
  *
- * @param isoDate - ISO 8601 date string
+ * @param isoDate - Date string
  * @returns Formatted date string "January 7, 2026"
  */
 export const formatDateForDisplay = (
@@ -27,7 +27,7 @@ export const formatDateForDisplay = (
       year: "numeric",
       month: "long",
       day: "numeric",
-      timeZone: "UTC", // Use UTC to match stored date
+      timeZone: "America/New_York", // US local timezone
     });
   } catch {
     return "";
@@ -35,9 +35,9 @@ export const formatDateForDisplay = (
 };
 
 /**
- * Format ISO date for display (short format)
+ * Format date for display (short format)
  *
- * @param isoDate - ISO 8601 date string
+ * @param isoDate - Date string
  * @returns Formatted date string "01/07/2026"
  */
 export const formatDateShort = (isoDate: string | null | undefined): string => {
@@ -53,7 +53,7 @@ export const formatDateShort = (isoDate: string | null | undefined): string => {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      timeZone: "UTC",
+      timeZone: "America/New_York",
     });
   } catch {
     return "";
@@ -61,9 +61,9 @@ export const formatDateShort = (isoDate: string | null | undefined): string => {
 };
 
 /**
- * Format ISO date for display (medium format)
+ * Format date for display (medium format)
  *
- * @param isoDate - ISO 8601 date string
+ * @param isoDate - Date string
  * @returns Formatted date string "Jan 7, 2026"
  */
 export const formatDateMedium = (
@@ -81,7 +81,7 @@ export const formatDateMedium = (
       year: "numeric",
       month: "short",
       day: "numeric",
-      timeZone: "UTC",
+      timeZone: "America/New_York",
     });
   } catch {
     return "";
@@ -89,9 +89,9 @@ export const formatDateMedium = (
 };
 
 /**
- * Format ISO datetime for display (includes time)
+ * Format datetime for display (includes time)
  *
- * @param isoDateTime - ISO 8601 datetime string
+ * @param isoDateTime - Datetime string
  * @returns Formatted datetime string "Jan 7, 2026 at 3:30 PM"
  */
 export const formatDateTimeForDisplay = (
@@ -109,12 +109,14 @@ export const formatDateTimeForDisplay = (
       year: "numeric",
       month: "short",
       day: "numeric",
+      timeZone: "America/New_York",
     });
 
     const timeStr = date.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "2-digit",
       hour12: true,
+      timeZone: "America/New_York",
     });
 
     return `${dateStr} at ${timeStr}`;
@@ -126,8 +128,8 @@ export const formatDateTimeForDisplay = (
 /**
  * Format date range for display
  *
- * @param startDate - ISO 8601 start date
- * @param endDate - ISO 8601 end date
+ * @param startDate - Date string
+ * @param endDate - Date string
  * @returns Formatted date range "Jan 7 - Jan 14, 2026"
  */
 export const formatDateRange = (
@@ -152,13 +154,13 @@ export const formatDateRange = (
       const startStr = start.toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
-        timeZone: "UTC",
+        timeZone: "America/New_York",
       });
       const endStr = end.toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
-        timeZone: "UTC",
+        timeZone: "America/New_York",
       });
       return `${startStr} - ${endStr}`;
     }
@@ -171,10 +173,10 @@ export const formatDateRange = (
 };
 
 /**
- * Parse date to ISO 8601 format (for sending to server)
+ * Parse date to YYYY-MM-DD format (for sending to server)
  *
  * @param date - Date in any format
- * @returns ISO 8601 string or null if invalid
+ * @returns YYYY-MM-DD string or null if invalid
  */
 export const parseDateToISO = (
   date: string | Date | null | undefined
@@ -182,14 +184,22 @@ export const parseDateToISO = (
   if (!date) return null;
 
   try {
+    if (typeof date === "string") {
+      const trimmed = date.trim();
+      if (!trimmed) return null;
+      if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+        return trimmed;
+      }
+    }
+
     const dateObj = new Date(date);
 
     if (isNaN(dateObj.getTime())) return null;
 
-    // Set to start of day UTC
-    dateObj.setUTCHours(0, 0, 0, 0);
-
-    return dateObj.toISOString();
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   } catch {
     return null;
   }

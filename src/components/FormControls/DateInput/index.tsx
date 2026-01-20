@@ -10,8 +10,9 @@ import { Calendar } from "lucide-react";
 import styles from "./styles.module.css";
 import quickQuoteStyles from "@/features/quote/components/QuickQuote/styles.module.css";
 import { parseDateForInput } from "@/utils/serializers";
+import { getUsTodayStart } from "@/utils/usDate";
 
-const MIN_DATE = dayjs().startOf("day").toDate();
+const MIN_DATE = getUsTodayStart();
 
 interface CustomInputProps {
   value?: string;
@@ -232,11 +233,11 @@ const DateInput: React.FC<DateInputProps> = ({
   const selectedDate = parseDateForInput(field.value);
 
   const handleDateChange = (date: Date | null) => {
-    // Store as ISO string for API compatibility
-    const isoString = date ? dayjs(date).toISOString() : "";
+    // Store as date-only string to avoid timezone shifts
+    const dateOnly = date ? dayjs(date).format("YYYY-MM-DD") : "";
     
     // Use setValue to ensure Formik updates immediately
-    setValue(isoString);
+    setValue(dateOnly);
     
     // Clear error immediately when a valid date is selected
     if (date) {

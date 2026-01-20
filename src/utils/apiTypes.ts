@@ -17,8 +17,8 @@ export interface ProductRequest {
 export interface LeadFormRequest {
   usageType: string;
   products: ProductRequest[];
-  deliveryDate: string; // ISO 8601 string
-  pickupDate: string; // ISO 8601 string
+  deliveryDate: string; // YYYY-MM-DD
+  pickupDate: string; // YYYY-MM-DD
   zip: string;
   fName: string;
   lName: string;
@@ -52,8 +52,8 @@ export function prepareApiPayload(formData: any): LeadFormRequest {
       rate: Number(product.rate), // Ensure number type
       amount: Number(product.amount), // Ensure number type
     })),
-    deliveryDate: dayjs(formData.deliveryDate).toISOString(),
-    pickupDate: dayjs(formData.pickupDate).toISOString(),
+    deliveryDate: dayjs(formData.deliveryDate).format("YYYY-MM-DD"),
+    pickupDate: dayjs(formData.pickupDate).format("YYYY-MM-DD"),
     zip: String(formData.zip),
     fName: String(formData.fName),
     lName: String(formData.lName),
@@ -91,8 +91,8 @@ export interface LeadResponse {
 export function parseApiResponse(data: LeadResponse): any {
   return {
     ...data,
-    deliveryDate: dayjs(data.deliveryDate).toDate(),
-    pickupDate: dayjs(data.pickupDate).toDate(),
+    deliveryDate: dayjs(data.deliveryDate, "YYYY-MM-DD").toDate(),
+    pickupDate: dayjs(data.pickupDate, "YYYY-MM-DD").toDate(),
     createdAt: dayjs(data.createdAt).toDate(),
     updatedAt: dayjs(data.updatedAt).toDate(),
     products: data.products.map((product) => ({

@@ -121,10 +121,10 @@ export const normalizeUsageType = (
 };
 
 /**
- * Normalize date to ISO 8601 format
+ * Normalize date to YYYY-MM-DD format
  *
  * @param date - Date in any format
- * @returns ISO 8601 string at start of day or null if invalid
+ * @returns YYYY-MM-DD string or null if invalid
  */
 export const normalizeDate = (
   date: string | Date | null | undefined
@@ -132,6 +132,16 @@ export const normalizeDate = (
   if (!date) return null;
 
   try {
+    if (typeof date === "string") {
+      const trimmed = date.trim();
+      if (!trimmed) return null;
+
+      // Preserve date-only values to avoid timezone shifts
+      if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+        return trimmed;
+      }
+    }
+
     const dateObj = new Date(date);
 
     // Check if valid date
@@ -139,10 +149,11 @@ export const normalizeDate = (
       return null;
     }
 
-    // Set to start of day UTC
-    dateObj.setUTCHours(0, 0, 0, 0);
-
-    return dateObj.toISOString();
+    // Use local date parts to avoid timezone shifts
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   } catch {
     return null;
   }
@@ -174,6 +185,19 @@ export const parseDateForInput = (
 
   // Try to parse ISO string or any date string
   try {
+    if (typeof date === "string") {
+      const trimmed = date.trim();
+
+      if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+        const [yearStr, monthStr, dayStr] = trimmed.split("-");
+        const year = Number(yearStr);
+        const month = Number(monthStr) - 1;
+        const day = Number(dayStr);
+        const localDate = new Date(year, month, day);
+        return isNaN(localDate.getTime()) ? null : localDate;
+      }
+    }
+
     const dateObj = new Date(date);
 
     // Check if valid date
