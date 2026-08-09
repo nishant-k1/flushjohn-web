@@ -89,7 +89,7 @@ export default function PortaPottyRentalCity({
       "@type": "Organization",
       name: "FlushJohn",
       url: websiteURL,
-      logo: `${s3assets}/og-image-flushjonn-web.png`,
+      logo: `${s3assets}/og-image-flushjohn-web.png`,
       areaServed: {
         "@type": "City",
         name: cityTitle,
@@ -184,7 +184,7 @@ export default function PortaPottyRentalCity({
       },
     ],
     image: [
-      `${s3assets}/og-image-flushjonn-web.png`,
+      `${s3assets}/og-image-flushjohn-web.png`,
       `${s3assets}/images/porta-potty-standard.jpg`,
       `${s3assets}/images/porta-potty-deluxe.jpg`,
       `${s3assets}/images/porta-potty-ada.jpg`,

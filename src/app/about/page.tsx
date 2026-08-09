@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         width: 1200,
         height: 630,
         alt: "FlushJohn About Us",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "About Us | FlushJohn - Professional Porta Potty Rental Company",
     description:
       "Learn about FlushJohn, a trusted porta potty rental company serving 25+ cities across the United States since 2020.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: `${websiteURL}/about`,
@@ -45,7 +45,7 @@ const organizationSchema = {
   name: "FlushJohn",
   // legalName: legalName,
   url: websiteURL,
-  logo: `${s3assets}/og-image-flushjonn-web.png`,
+  logo: `${s3assets}/og-image-flushjohn-web.png`,
   foundingDate: "2020",
   address: {
     "@type": "PostalAddress",

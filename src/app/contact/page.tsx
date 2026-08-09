@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "FlushJohn",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         height: 630,
         width: 1200,
         alt: "FlushJohn Contact",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: `${websiteURL}/contact`,
@@ -52,7 +52,7 @@ const jsonLd = {
     url: websiteURL,
     logo: {
       "@type": "ImageObject",
-      url: `${s3assets}/og-image-flushjonn-web.png`,
+      url: `${s3assets}/og-image-flushjohn-web.png`,
       width: 1200,
       height: 630,
     },
@@ -144,7 +144,7 @@ const reviewJsonLd = {
   itemReviewed: {
     "@type": "Organization",
     name: "FlushJohn",
-    image: `${s3assets}/og-image-flushjonn-web.png`,
+    image: `${s3assets}/og-image-flushjohn-web.png`,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",

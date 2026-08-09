@@ -33,7 +33,7 @@ const BlogImage = ({
   const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
   const [imageSrc, setImageSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
-  const fallbackImage = `${s3assets}/og-image-flushjonn-web.png`;
+  const fallbackImage = `${s3assets}/og-image-flushjohn-web.png`;
 
   // Reset when src changes
   useEffect(() => {
@@ -430,7 +430,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                         featuredPost.coverImageS3?.src ||
                         featuredPost.coverImageUnsplash?.src ||
                         featuredPost.coverImage?.src ||
-                        `${s3assets}/og-image-flushjonn-web.png`
+                        `${s3assets}/og-image-flushjohn-web.png`
                       }
                       alt={featuredPost.title || "Featured post"}
                       fill
@@ -489,7 +489,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                     coverImageS3?.src ||
                     coverImageUnsplash?.src ||
                     item.coverImage?.src ||
-                    `${s3assets}/og-image-flushjonn-web.png`;
+                    `${s3assets}/og-image-flushjohn-web.png`;
 
                   const imageAlt =
                     coverImageS3?.alt ||

@@ -34,7 +34,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
     coverImageS3?.src ||
     coverImageUnsplash?.src ||
     coverImage?.src ||
-    `${s3assets}/og-image-flushjonn-web.png`;
+    `${s3assets}/og-image-flushjohn-web.png`;
 
   const imageAlt =
     coverImageS3?.alt ||
@@ -44,7 +44,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
     "Blog cover image";
 
   const [imageError, setImageError] = useState(false);
-  const fallbackImage = `${s3assets}/og-image-flushjonn-web.png`;
+  const fallbackImage = `${s3assets}/og-image-flushjohn-web.png`;
   const finalImageSource = imageError ? fallbackImage : imageSource;
 
   const formatDate = (dateString: string) => {
@@ -223,7 +223,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   onError={(e) => {
-                    e.currentTarget.src = `${s3assets}/og-image-flushjonn-web.png`;
+                    e.currentTarget.src = `${s3assets}/og-image-flushjohn-web.png`;
                   }}
                 />
               </div>
@@ -400,7 +400,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                       post.coverImageS3?.src ||
                       post.coverImageUnsplash?.src ||
                       post.coverImage?.src ||
-                      `${s3assets}/og-image-flushjonn-web.png`;
+                      `${s3assets}/og-image-flushjohn-web.png`;
                     const postExcerpt = post.excerpt
                       ? post.excerpt.replace(/<[^>]*>/g, "").substring(0, 120) +
                         "..."

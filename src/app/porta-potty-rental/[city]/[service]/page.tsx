@@ -67,7 +67,7 @@ export async function generateMetadata({
       siteName: "FlushJohn",
       images: [
         {
-          url: `${s3assets}/og-image-flushjonn-web.png`,
+          url: `${s3assets}/og-image-flushjohn-web.png`,
           height: 630,
           width: 1200,
           alt: `${serviceData.title} in ${cityTitle}`,

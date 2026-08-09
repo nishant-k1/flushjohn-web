@@ -58,7 +58,7 @@ export default function RichSnippets({
         name: "Determine Your Needs",
         text: "Calculate how many porta potties you need based on attendance, event duration, and whether alcohol is served. Use 1 unit per 50 people for short events, 1 per 35 for events with alcohol.",
         url: `${websiteURL}/faq`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
       {
         "@type": "HowToStep",
@@ -66,7 +66,7 @@ export default function RichSnippets({
         name: "Choose Your Unit Type",
         text: "Select from standard porta potties, deluxe flushing units, ADA compliant units, or luxury restroom trailers based on your event type and budget.",
         url: `${websiteURL}/rental-products`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
       {
         "@type": "HowToStep",
@@ -74,7 +74,7 @@ export default function RichSnippets({
         name: "Request a Quote",
         text: "Fill out our online quote form with your event details, location, dates, and unit requirements. We respond within 1 hour during business hours.",
         url: `${websiteURL}/quote`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
       {
         "@type": "HowToStep",
@@ -82,7 +82,7 @@ export default function RichSnippets({
         name: "Review and Confirm",
         text: "Review the customized quote including delivery, setup, and pickup. Approve the quote and provide payment to confirm your reservation.",
         url: `${websiteURL}/quote`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
       {
         "@type": "HowToStep",
@@ -90,7 +90,7 @@ export default function RichSnippets({
         name: "Prepare Your Site",
         text: "Ensure level ground, vehicle access within 50 feet, and 12 feet of clearance for delivery. Mark preferred placement locations.",
         url: `${websiteURL}/faq`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
       {
         "@type": "HowToStep",
@@ -98,7 +98,7 @@ export default function RichSnippets({
         name: "Delivery and Setup",
         text: "Our team delivers and sets up the porta potties at your specified location. We handle all setup - you just need to provide access.",
         url: `${websiteURL}/contact`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       },
     ],
   };
@@ -111,7 +111,7 @@ export default function RichSnippets({
           name: "FlushJohn Porta Potty Rental Services Overview",
           description:
             "Learn about FlushJohn porta potty rental services, our products, and service areas across the United States.",
-          thumbnailUrl: `${s3assets}/og-image-flushjonn-web.png`,
+          thumbnailUrl: `${s3assets}/og-image-flushjohn-web.png`,
           uploadDate: "2024-01-01T00:00:00Z",
           duration: "PT2M30S",
           contentUrl: `${websiteURL}/#video`,
@@ -137,7 +137,7 @@ export default function RichSnippets({
                 name: "Standard Porta Potty",
                 description:
                   "Basic portable toilet for events and construction",
-                image: `${s3assets}/og-image-flushjonn-web.png`,
+                image: `${s3assets}/og-image-flushjohn-web.png`,
                 offers: {
                   "@type": "Offer",
                   price: "100-150",
@@ -160,7 +160,7 @@ export default function RichSnippets({
                 "@type": "Product",
                 name: "Deluxe Flushing Porta Potty",
                 description: "Upgraded unit with flushing toilet and sink",
-                image: `${s3assets}/og-image-flushjonn-web.png`,
+                image: `${s3assets}/og-image-flushjohn-web.png`,
                 offers: {
                   "@type": "Offer",
                   price: "150-250",
@@ -183,7 +183,7 @@ export default function RichSnippets({
                 "@type": "Product",
                 name: "ADA Compliant Porta Potty",
                 description: "Wheelchair accessible portable toilet",
-                image: `${s3assets}/og-image-flushjonn-web.png`,
+                image: `${s3assets}/og-image-flushjohn-web.png`,
                 offers: {
                   "@type": "Offer",
                   price: "175-275",
@@ -206,7 +206,7 @@ export default function RichSnippets({
                 "@type": "Product",
                 name: "Luxury Restroom Trailer",
                 description: "Premium multi-stall trailer with AC",
-                image: `${s3assets}/og-image-flushjonn-web.png`,
+                image: `${s3assets}/og-image-flushjohn-web.png`,
                 offers: {
                   "@type": "Offer",
                   price: "800-1500",

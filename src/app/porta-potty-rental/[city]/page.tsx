@@ -274,7 +274,7 @@ export async function generateMetadata({
       siteName: "FlushJohn",
       images: [
         {
-          url: `${s3assets}/og-image-flushjonn-web.png`,
+          url: `${s3assets}/og-image-flushjohn-web.png`,
           height: 630,
           width: 1200,
           alt: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
@@ -285,7 +285,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
       description: `Professional porta potty rental & portable toilet services in ${cityTitle}. Porta john & portable restroom rentals. Fast delivery, best price guarantee.`,
-      images: [`${s3assets}/og-image-flushjonn-web.png`],
+      images: [`${s3assets}/og-image-flushjohn-web.png`],
     },
     alternates: {
       canonical: `${websiteURL}/porta-potty-rental/${city}`,

@@ -45,7 +45,7 @@ export const generateMetadata = async ({
       siteName: "FlushJohn",
       images: [
         {
-          url: src_1 || `${s3assets}/og-image-flushjonn-web.png`,
+          url: src_1 || `${s3assets}/og-image-flushjohn-web.png`,
           height: 630,
           width: 1200,
           alt: `${alt} - FlushJohn`,
@@ -56,7 +56,7 @@ export const generateMetadata = async ({
       card: "summary_large_image",
       title: `${title} - FlushJohn Porta Potty Rentals`,
       description: `Discover the features and pricing for our ${title} at FlushJohn.`,
-      images: [src_1 || `${s3assets}/og-image-flushjonn-web.png`],
+      images: [src_1 || `${s3assets}/og-image-flushjohn-web.png`],
     },
     alternates: {
       canonical: `${websiteURL}/rental-products/${slug}`,

@@ -110,7 +110,7 @@ export async function generateMetadata({
               blog?.coverImageUnsplash?.src ||
               blog?.coverImageS3?.src ||
               blog?.coverImage?.src ||
-              `${s3assets}/og-image-flushjonn-web.png`,
+              `${s3assets}/og-image-flushjohn-web.png`,
             height: 630,
             width: 1200,
             alt: blog?.title,
@@ -130,7 +130,7 @@ export async function generateMetadata({
           blog?.coverImageUnsplash?.src ||
             blog?.coverImageS3?.src ||
             blog?.coverImage?.src ||
-            `${s3assets}/og-image-flushjonn-web.png`,
+            `${s3assets}/og-image-flushjohn-web.png`,
         ],
       },
       alternates: {
@@ -252,7 +252,7 @@ const BlogPostPage = async ({
         name: "FlushJohn",
         logo: {
           "@type": "ImageObject",
-          url: `${s3assets}/og-image-flushjonn-web.png`,
+          url: `${s3assets}/og-image-flushjohn-web.png`,
         },
       },
       mainEntityOfPage: {
@@ -263,7 +263,7 @@ const BlogPostPage = async ({
         blogPost?.coverImageUnsplash?.src ||
         blogPost?.coverImageS3?.src ||
         blogPost?.coverImage?.src ||
-        `${s3assets}/og-image-flushjonn-web.png`,
+        `${s3assets}/og-image-flushjohn-web.png`,
     };
 
     // Enhanced JSON-LD with location data for city-specific posts

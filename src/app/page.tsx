@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "FlushJohn",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         height: 630,
         width: 1200,
         alt: "FlushJohn Porta Potty Rentals",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Porta Potty Rentals | Fast Delivery | 25+ Cities | FlushJohn",
     description:
       "Professional porta potty rentals in 25+ cities. Fast delivery, competitive pricing, licensed & insured. Get a quote in 60 seconds!",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: websiteURL,
@@ -46,11 +46,11 @@ const jsonLd = {
   "@type": "ServiceAreaBusiness", // Changed from LocalBusiness - better for service-area businesses
   name: "FlushJohn",
   url: websiteURL,
-  logo: `${s3assets}/og-image-flushjonn-web.png`,
+  logo: `${s3assets}/og-image-flushjohn-web.png`,
   description:
     "FlushJohn offers affordable and reliable porta potty rental services for all types of events across the United States.",
   image: [
-    `${s3assets}/og-image-flushjonn-web.png`,
+    `${s3assets}/og-image-flushjohn-web.png`,
     `${s3assets}/images/porta-potty-standard.jpg`,
     `${s3assets}/images/porta-potty-deluxe.jpg`,
     `${s3assets}/images/porta-potty-ada.jpg`,
@@ -448,7 +448,7 @@ const serviceJsonLd = {
     "@type": "Organization",
     name: "FlushJohn",
     url: websiteURL,
-    logo: `${s3assets}/og-image-flushjonn-web.png`,
+    logo: `${s3assets}/og-image-flushjohn-web.png`,
   },
   serviceType: "Porta Potty Rental Services",
   areaServed: {
@@ -622,7 +622,7 @@ const howToJsonLd = {
       name: "Determine Your Needs",
       text: "Calculate how many porta potties you need based on attendance, event duration, and whether alcohol is served. Use 1 unit per 50 people for short events, 1 per 35 for events with alcohol.",
       url: `${websiteURL}/faq`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
     {
       "@type": "HowToStep",
@@ -630,7 +630,7 @@ const howToJsonLd = {
       name: "Choose Your Unit Type",
       text: "Select from standard porta potties, deluxe flushing units, ADA compliant units, or luxury restroom trailers based on your event type and budget.",
       url: `${websiteURL}/rental-products`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
     {
       "@type": "HowToStep",
@@ -638,7 +638,7 @@ const howToJsonLd = {
       name: "Request a Quote",
       text: "Fill out our online quote form with your event details, location, dates, and unit requirements. We respond within 1 hour during business hours.",
       url: `${websiteURL}/quote`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
     {
       "@type": "HowToStep",
@@ -646,7 +646,7 @@ const howToJsonLd = {
       name: "Review and Confirm",
       text: "Review the customized quote including delivery, setup, and pickup. Approve the quote and provide payment to confirm your reservation.",
       url: `${websiteURL}/quote`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
     {
       "@type": "HowToStep",
@@ -654,7 +654,7 @@ const howToJsonLd = {
       name: "Prepare Your Site",
       text: "Ensure level ground, vehicle access within 50 feet, and 12 feet of clearance for delivery. Mark preferred placement locations.",
       url: `${websiteURL}/faq`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
     {
       "@type": "HowToStep",
@@ -662,7 +662,7 @@ const howToJsonLd = {
       name: "Delivery and Setup",
       text: "Our team delivers and sets up the porta potties at your specified location. We handle all setup - you just need to provide access.",
       url: `${websiteURL}/contact`,
-      image: `${s3assets}/og-image-flushjonn-web.png`,
+      image: `${s3assets}/og-image-flushjohn-web.png`,
     },
   ],
 };

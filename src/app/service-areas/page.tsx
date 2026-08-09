@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "FlushJohn",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         height: 630,
         width: 1200,
         alt: "FlushJohn Service Areas",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Service Areas | Porta Potty Rentals Nationwide | FlushJohn",
     description:
       "FlushJohn provides porta potty rental services across 25+ cities in 6 states. Find porta potty rentals in your city.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: `${websiteURL}/service-areas`,
@@ -138,7 +138,7 @@ const organizationJsonLd = {
   url: websiteURL,
   logo: {
     "@type": "ImageObject",
-    url: `${s3assets}/og-image-flushjonn-web.png`,
+    url: `${s3assets}/og-image-flushjohn-web.png`,
     width: 1200,
     height: 630,
   },

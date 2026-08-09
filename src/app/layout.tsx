@@ -91,7 +91,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         width: 1200,
         height: 630,
         alt: "FlushJohn Porta Potty Rentals",
@@ -254,7 +254,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "FlushJohn",
               url: websiteURL,
-              logo: `${s3assets}/og-image-flushjonn-web.png`,
+              logo: `${s3assets}/og-image-flushjohn-web.png`,
               description:
                 "Professional porta potty rental and portable toilet rental services across 25+ cities in the United States",
               telephone: process.env.NEXT_PUBLIC_FLUSH_JOHN_PHONE!,

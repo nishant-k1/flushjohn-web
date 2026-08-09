@@ -53,14 +53,14 @@ export default function EnhancedStructuredData({
     logo: {
       "@type": "ImageObject",
       "@id": `${websiteURL}#logo`,
-      url: `${s3assets}/og-image-flushjonn-web.png`,
+      url: `${s3assets}/og-image-flushjohn-web.png`,
       width: 1200,
       height: 630,
       caption: "FlushJohn Porta Potty Rentals",
     },
     image: {
       "@type": "ImageObject",
-      url: `${s3assets}/og-image-flushjonn-web.png`,
+      url: `${s3assets}/og-image-flushjohn-web.png`,
       width: 1200,
       height: 630,
     },
@@ -309,7 +309,7 @@ export default function EnhancedStructuredData({
           telephone: phone_number,
           email: contact_email,
           image: [
-            `${s3assets}/og-image-flushjonn-web.png`,
+            `${s3assets}/og-image-flushjohn-web.png`,
             `${s3assets}/images/porta-potty-standard.jpg`,
             `${s3assets}/images/porta-potty-deluxe.jpg`,
             `${s3assets}/images/porta-potty-ada.jpg`,
@@ -429,7 +429,7 @@ export default function EnhancedStructuredData({
         name: productName,
         description:
           productDescription || `Professional ${productName} rental services`,
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
         brand: {
           "@id": `${websiteURL}#organization`,
         },
@@ -495,7 +495,7 @@ export default function EnhancedStructuredData({
           "@type": "WebPage",
           "@id": websiteURL,
         },
-        image: `${s3assets}/og-image-flushjonn-web.png`,
+        image: `${s3assets}/og-image-flushjohn-web.png`,
       }
     : null;
 

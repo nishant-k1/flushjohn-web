@@ -50,7 +50,7 @@ export async function generateMetadata({
       siteName: "FlushJohn",
       images: [
         {
-          url: `${s3assets}/og-image-flushjonn-web.png`,
+          url: `${s3assets}/og-image-flushjohn-web.png`,
           height: 630,
           width: 1200,
           alt: `FlushJohn Porta Potty Rentals ${state.displayName}`,
@@ -62,7 +62,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `Porta Potty Rentals ${state.displayName} | FlushJohn`,
       description: `${state.description} Offering porta potty rental, portable toilet rental, porta john, and portable restroom services across ${state.displayName}.`,
-      images: [`${s3assets}/og-image-flushjonn-web.png`],
+      images: [`${s3assets}/og-image-flushjohn-web.png`],
     },
     alternates: {
       canonical: `${websiteURL}/service-areas/${stateParam}`,
@@ -134,7 +134,7 @@ const StatePage = async ({ params }: PageProps) => {
     url: websiteURL,
     logo: {
       "@type": "ImageObject",
-      url: `${s3assets}/og-image-flushjonn-web.png`,
+      url: `${s3assets}/og-image-flushjohn-web.png`,
       width: 1200,
       height: 630,
     },

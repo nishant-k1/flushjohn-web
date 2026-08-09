@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "FlushJohn",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         height: 630,
         width: 1200,
         alt: "FlushJohn Blog",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "FlushJohn - Porta Potty Rentals",
     description:
       "Providing high-quality porta potty rental solutions for events of all sizes. Clean, affordable, and convenient.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: `${websiteURL}/blog`,
@@ -85,7 +85,7 @@ const BlogPage = async ({
       name: "FlushJohn",
       logo: {
         "@type": "ImageObject",
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
       },
     },
     blogPost: initialBlogs.map((post) => {

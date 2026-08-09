@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${s3assets}/og-image-flushjonn-web.png`,
+        url: `${s3assets}/og-image-flushjohn-web.png`,
         width: 1200,
         height: 630,
         alt: "FlushJohn Reviews",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Customer Reviews | FlushJohn Porta Potty Rentals",
     description:
       "Read real customer reviews and testimonials from FlushJohn porta potty rental customers across the United States.",
-    images: [`${s3assets}/og-image-flushjonn-web.png`],
+    images: [`${s3assets}/og-image-flushjohn-web.png`],
   },
   alternates: {
     canonical: `${websiteURL}/reviews`,
