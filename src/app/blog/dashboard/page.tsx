@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import type { Metadata } from "next";
 import { TrendingUp } from "lucide-react";
 import dynamic from "next/dynamic";
+
+const BLOG_DASHBOARD_PASSWORD = process.env.NEXT_PUBLIC_BLOG_DASHBOARD_PASSWORD;
 
 const SEOGuidelines = dynamic(() =>
   import("@/features/blog/components").then((mod) => ({
@@ -18,10 +22,72 @@ export const metadata: Metadata = {
   title: "Blog SEO Dashboard - FlushJohn",
   description:
     "Generate SEO-optimized blog posts and manage content strategy for maximum lead generation.",
-  robots: "noindex, nofollow", // Internal dashboard
+  robots: "noindex, nofollow",
 };
 
 const BlogDashboard = () => {
+  const [authenticated, setAuthenticated] = React.useState(!BLOG_DASHBOARD_PASSWORD);
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === BLOG_DASHBOARD_PASSWORD) {
+      setAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
+
+  if (!authenticated) {
+    return (
+      <div style={{ maxWidth: "400px", margin: "100px auto", padding: "40px", textAlign: "center" }}>
+        <h2 style={{ marginBottom: "20px", color: "var(--text-primary)" }}>Blog Dashboard</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              border: `1px solid ${error ? "var(--error-border, #ef4444)" : "var(--border-color, #e5e7eb)"}`,
+              borderRadius: "8px",
+              fontSize: "16px",
+              marginBottom: "12px",
+              background: "var(--bg-primary)",
+              color: "var(--text-primary)",
+            }}
+            autoFocus
+          />
+          {error && (
+            <p style={{ color: "var(--error-border, #ef4444)", fontSize: "14px", marginBottom: "8px" }}>
+              Incorrect password
+            </p>
+          )}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "12px",
+              background: "var(--text-primary)",
+              color: "var(--bg-primary)",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            Access Dashboard
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
       <h1 style={{ marginBottom: "30px", color: "var(--text-primary)" }}>

@@ -87,8 +87,8 @@ const QuoteStep1 = () => {
           }));
           setStep(2);
           window.scrollTo(0, 0);
-        } catch (err) {
-          alert(err);
+        } catch (err: any) {
+          console.error("QuoteStep1 validation error:", err);
         }
       }}
     >

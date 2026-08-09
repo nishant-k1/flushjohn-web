@@ -118,14 +118,8 @@ const Contact = () => {
             validateOnBlur={true}
             onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
+            trackComplete();
 
-            // ✅ OPTIMISTIC: Show success immediately (before API response)
-            setState(true);
-            setShowSuccessModal(true);
-            trackComplete(); // Track form completion
-            resetForm();
-
-            // Analytics tracking (non-blocking)
             try {
               if (typeof window !== "undefined" && window.gtag) {
                 window.gtag("event", "button_click", {
@@ -134,9 +128,7 @@ const Contact = () => {
                 });
               }
             } catch (gtagError) {
-              if (process.env.NODE_ENV === "development") {
-                console.warn("GTag error:", gtagError);
-              }
+              console.warn("GTag error:", gtagError);
             }
             try {
               logEvent({
@@ -148,26 +140,18 @@ const Contact = () => {
                 transport: "beacon",
               });
             } catch (logError) {
-              if (process.env.NODE_ENV === "development") {
-                console.warn("Log event error:", logError);
-              }
+              console.warn("Log event error:", logError);
             }
 
             try {
-              // Data is automatically serialized by apiClient
-              // API request in background (non-blocking)
               const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
               await api.post(`${API_BASE_URL}/contact`, values);
-              // If successful, success modal is already shown ✅
+              setState(true);
+              setShowSuccessModal(true);
+              resetForm();
             } catch (err) {
-              if (process.env.NODE_ENV === "development") {
-                console.error("Contact form error:", err);
-              }
-              // ✅ ROLLBACK: Revert optimistic updates on error
-              setState(false);
-              setShowSuccessModal(false);
+              console.error("Contact form error:", err);
               setShowErrorModal(true);
-              // Could optionally restore form with values if needed
             } finally {
               setSubmitting(false);
             }
