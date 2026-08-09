@@ -330,7 +330,7 @@ const ServiceCityPage = async ({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
         />
       )}
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
       <section className={styles.contentSection}>
         <div className={styles.container}>
           <div className={styles.header}>

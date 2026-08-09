@@ -76,7 +76,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
   if (!title && !content) {
     return (
       <>
-        <Breadcrumbs path={`/blog/${slug}`} />
+        <Breadcrumbs />
         <section className={styles.postSection}>
           <div className={styles.container}>
             <div className={styles.wrapper}>
@@ -125,7 +125,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
 
   return (
     <>
-      <Breadcrumbs path={`/blog/${slug}`} />
+      <Breadcrumbs />
       <section className={styles.postSection}>
         <div className={styles.container}>
           <div className={styles.wrapper}>

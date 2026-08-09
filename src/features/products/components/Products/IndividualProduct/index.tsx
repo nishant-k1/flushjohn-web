@@ -34,7 +34,7 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
   return (
     <>
       <div className={styles.product}>
-        <Breadcrumbs path={`/rental-products/${slug}`} />
+        <Breadcrumbs />
         <div className={styles.container}>
         <div className={styles.wrapper}>
           <h1>{title} - Porta Potty Rentals Nearby</h1>

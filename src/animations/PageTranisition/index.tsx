@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { animations } from "@/anmations/effectData";
+import { animations } from "@/animations/effectData";
 import AnimationWrapper from "../AnimationWrapper";
 
 // Lazy load framer-motion to reduce initial bundle size

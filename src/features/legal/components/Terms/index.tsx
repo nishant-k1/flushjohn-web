@@ -8,7 +8,7 @@ const Terms = () => {
   return (
     <React.Fragment>
       <div className={styles.terms}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
         <div className={styles.container}>
           <div className={styles.termsWrapper}>
             <h2>TERMS AND CONDITIONS</h2>

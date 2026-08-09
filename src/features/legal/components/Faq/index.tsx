@@ -25,7 +25,7 @@ const Faq = () => {
   return (
     <React.Fragment>
       <div className={styles.faq}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
         <div className={styles.container}>
           {/* FAQ Section */}
           <div className={styles.faqWrapper}>

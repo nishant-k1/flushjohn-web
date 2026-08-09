@@ -415,7 +415,7 @@ export default function PortaPottyRentalCity({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
 
           {/* Hero Section */}
       <section className={styles.heroSectionWrapper}>

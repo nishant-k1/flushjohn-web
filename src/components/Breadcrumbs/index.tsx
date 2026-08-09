@@ -3,26 +3,10 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
-type BreadcrumbsProps = {
-  path: string;
-};
-
-const Breadcrumbs = ({ path }: BreadcrumbsProps) => {
+const Breadcrumbs = () => {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-
   const pageTitles = pathname.split("/");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const route = (pageTitles: string[], index: number) => {
     if (!pageTitles || index < 0) return;
@@ -37,9 +21,7 @@ const Breadcrumbs = ({ path }: BreadcrumbsProps) => {
   };
 
   return (
-    <section
-      className={`${styles.breadcrumbSection} ${isScrolled ? styles.scrolled : ""}`}
-    >
+    <section className={styles.breadcrumbSection}>
       <div className={styles.breadcrumbContainer}>
         <div className={styles.breadcrumb}>
           <Link href="/" style={{ paddingLeft: "0" }}>

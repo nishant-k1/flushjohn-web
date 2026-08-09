@@ -83,7 +83,7 @@ export default function AboutPage() {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
 
       {/* Hero Section */}
       <section className={styles.heroSection}>

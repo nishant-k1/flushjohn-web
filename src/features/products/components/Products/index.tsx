@@ -10,7 +10,7 @@ const Products = () => {
   const { product_list } = products_data;
   return (
     <React.Fragment>
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.productsWrapper}>

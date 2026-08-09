@@ -6,7 +6,7 @@ const Privacy = () => {
   return (
     <React.Fragment>
       <div className={styles.privacy}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
         <div className={styles.container}>
           <div className={styles.privacyWrapper}>
             <h2>PRIVACY POLICY</h2>

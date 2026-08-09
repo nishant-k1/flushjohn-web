@@ -114,7 +114,7 @@ const StateHubPage = ({ state }: StateProps) => {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
       <section className={styles.contentSection}>
         <div className={styles.container}>
           <div className={styles.header}>

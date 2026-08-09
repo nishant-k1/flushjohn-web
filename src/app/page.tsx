@@ -580,10 +580,6 @@ const reviewJsonLd = {
       reviewCount: "6",
     },
   },
-  author: {
-    "@type": "Person",
-    name: "Customer Reviews",
-  },
   reviewRating: {
     "@type": "Rating",
     ratingValue: "4.8",

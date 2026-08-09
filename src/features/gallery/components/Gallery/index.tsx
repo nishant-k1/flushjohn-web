@@ -8,7 +8,7 @@ const Gallery = () => {
   return (
     <React.Fragment>
       <div className={styles.gallery}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
         <div className={styles.container}>
           <div className={styles.imagesWrapper}>
             {galleryImages.map(({ url, alt, id, height, width }, index) => {

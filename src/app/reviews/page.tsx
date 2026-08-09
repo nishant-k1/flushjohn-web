@@ -64,7 +64,7 @@ export default function ReviewsPage() {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
 
           {/* Hero Section */}
       <section className={styles.heroSection}>

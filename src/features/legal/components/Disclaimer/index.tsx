@@ -6,7 +6,7 @@ const Disclaimer = () => {
   return (
     <React.Fragment>
       <div className={styles.disclaimer}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
         <div className={styles.container}>
           <div className={styles.disclaimerWrapper}>
             <h2>DISCLAIMER</h2>

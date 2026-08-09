@@ -156,7 +156,7 @@ const PortaPottyRentalPage = () => {
           background: "var(--bg-section-card)",
         }}
       >
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
       </div>
 
           {/* Hero Section */}

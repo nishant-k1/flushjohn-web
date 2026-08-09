@@ -16,7 +16,7 @@ const ServiceAreasPage = () => {
   return (
     <>
       <div className={styles.page}>
-        <Breadcrumbs path={""} />
+        <Breadcrumbs />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>Our Service Areas</h1>

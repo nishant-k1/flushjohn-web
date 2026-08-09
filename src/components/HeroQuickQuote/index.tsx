@@ -14,8 +14,8 @@ import { SendIcon } from "@/components/UI/Icons";
 import * as Yup from "yup";
 import { ClientWidthContext } from "@/contexts/ClientWidthContext";
 import { ClientWidthContextType } from "@/contexts/ClientWidthContext";
-import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { animations } from "@/anmations/effectData";
+import AnimationWrapper from "@/animations/AnimationWrapper";
+import { animations } from "@/animations/effectData";
 import MyZipTextField from "@/components/FormControls/MyZipTextField";
 import { api } from "@/utils/apiClient";
 import {

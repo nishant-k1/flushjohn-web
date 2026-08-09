@@ -10,8 +10,8 @@ import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { logEvent } from "../../../../../react-ga4-config";
-import AnimationWrapper from "@/anmations/AnimationWrapper";
-import { animations } from "@/anmations/effectData";
+import AnimationWrapper from "@/animations/AnimationWrapper";
+import { animations } from "@/animations/effectData";
 import { api } from "@/utils/apiClient";
 import { useFormAbandonmentTracking } from "@/hooks/useFormAbandonmentTracking";
 
@@ -88,7 +88,7 @@ const Contact = () => {
 
   return (
     <React.Fragment>
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
       <section className={styles.section}>
         <div className={styles.container}>
           <Formik

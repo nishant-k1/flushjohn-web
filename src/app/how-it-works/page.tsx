@@ -102,7 +102,7 @@ export default function HowItWorksPage() {
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
-      <Breadcrumbs path={""} />
+      <Breadcrumbs />
 
       {/* Hero Section */}
       <section className={styles.heroSection}>

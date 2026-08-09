@@ -281,7 +281,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
   if (loading && !initialBlogs.length) {
     return (
       <>
-        <Breadcrumbs path="" />
+        <Breadcrumbs />
         <section className={styles.blogSection}>
           <div className={styles.container}>
             <h1>Our Blog</h1>
@@ -298,7 +298,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
   if (error) {
     return (
       <>
-        <Breadcrumbs path="" />
+        <Breadcrumbs />
         <section className={styles.blogSection}>
           <div className={styles.container}>
             <h1>Our Blog</h1>
@@ -342,7 +342,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
 
   return (
     <>
-      <Breadcrumbs path="" />
+      <Breadcrumbs />
       <section className={styles.blogSection}>
         <div className={styles.container}>
           <div className={styles.wrapper}>
