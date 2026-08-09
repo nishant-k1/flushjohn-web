@@ -382,7 +382,7 @@ const BlogDashboard = () => {
               fontWeight: "bold",
             }}
           >
-            Get Free Quote
+            Get a Quote
           </a>
         </div>
       </div>

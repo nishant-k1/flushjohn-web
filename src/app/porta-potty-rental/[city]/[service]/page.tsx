@@ -62,7 +62,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `${serviceData.title} in ${cityTitle} | FlushJohn`,
-      description: `Affordable ${serviceData.description.toLowerCase()} and portable toilet rental services in ${cityTitle}. Professional porta john and portable restroom options. Get your free quote today!`,
+      description: `Affordable ${serviceData.description.toLowerCase()} and portable toilet rental services in ${cityTitle}. Professional porta john and portable restroom options. Get a quote in 60 seconds!`,
       url: `${websiteURL}/porta-potty-rental/${city}/${service}`,
       type: "website",
       siteName: "FlushJohn",
@@ -421,14 +421,15 @@ const ServiceCityPage = async ({
                     </div>
 
                     <div className={styles.cta}>
-                      <h2>Get Started Today</h2>
+                      <h2>Get a Quote in 60 Seconds</h2>
                       <p>
-                        Contact us for a free quote on{" "}
-                        {serviceData.title.toLowerCase()} in {cityTitle}.
+                        Get the best price on{" "}
+                        {serviceData.title.toLowerCase()} in {cityTitle} — we
+                        compare rates from our local network.
                       </p>
                       <div className={styles.buttons}>
                         <Link href="/quote" className={styles.primaryButton}>
-                          Get Free Quote
+                          Get a Quote
                         </Link>
                         <Link
                           href={serviceData.productLink}
@@ -460,14 +461,15 @@ const ServiceCityPage = async ({
                   </div>
 
                   <div className={styles.cta}>
-                    <h2>Get Started Today</h2>
+                    <h2>Get a Quote in 60 Seconds</h2>
                     <p>
-                      Contact us for a free quote on{" "}
-                      {serviceData.title.toLowerCase()} in {cityTitle}.
+                      Get the best price on{" "}
+                      {serviceData.title.toLowerCase()} in {cityTitle} — we
+                      compare rates from our local network.
                     </p>
                     <div className={styles.buttons}>
                       <Link href="/quote" className={styles.primaryButton}>
-                        Get Free Quote
+                        Get a Quote
                       </Link>
                       <Link
                         href={serviceData.productLink}

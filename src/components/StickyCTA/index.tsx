@@ -20,14 +20,20 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
   const locationText = city ? `${city}${state ? `, ${state}` : ""}` : "";
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      // Show CTA after scrolling 300px
-      setIsVisible(window.scrollY > 300);
-    };
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 300)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   if (!isVisible) return null;
 
@@ -41,7 +47,7 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
                 ? `Ready to rent porta potties in ${locationText}?`
                 : "Need porta potty rental?"}
             </strong>
-            <span>Get your free quote today!</span>
+            <span>Get a quote in 60 seconds</span>
           </div>
           <div className={styles.buttons}>
             <Link
@@ -49,7 +55,7 @@ const StickyCTA = ({ city, state }: StickyCTAProps) => {
               className={styles.quoteButton}
             >
               <MessageCircle size={18} />
-              Get Free Quote
+              Get a Quote
             </Link>
             <a
               href={phone_link}

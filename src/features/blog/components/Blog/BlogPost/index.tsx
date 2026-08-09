@@ -283,7 +283,7 @@ const BlogPost = ({ blogPost, slug, relatedPosts = [] }: any) => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Get Free Quote
+                  Get a Quote
                 </Link>
                 <a
                   href={phone_link}

@@ -318,7 +318,7 @@ const InlineQuickQuote = () => {
                 <Grid container spacing={0.5}>
                   <Grid item xs={12}>
                     <div>
-                      <h2>Get instant free quote</h2>
+                      <h2>Get a Quote in 60 Seconds</h2>
                     </div>
                   </Grid>
                   <UsageTypeField />

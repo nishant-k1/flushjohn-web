@@ -36,7 +36,7 @@ const Products = () => {
                   <div>
                     <Slider {...image} />
                     <Link className={styles.quoteLink} href="/quote">
-                      Request Quote
+                      Get a Quote
                     </Link>
                   </div>
                 </div>

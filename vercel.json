@@ -1,0 +1,5 @@
+{
+  "buildCommand": "NODE_OPTIONS='--max-old-space-size=8096' next build --webpack",
+  "installCommand": "npm install",
+  "framework": "nextjs"
+}

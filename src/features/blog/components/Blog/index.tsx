@@ -689,7 +689,7 @@ const Blog = ({ initialBlogs = [], initialPagination }: BlogProps) => {
                       <DollarSign size={18} />
                       Get a Quote
                     </h4>
-                    <p>Request a free quote for your event or project</p>
+                    <p>Get a quote in 60 seconds for your event or project</p>
                   </Link>
                   <Link href="/faq" className={styles.relatedLink}>
                     <h4

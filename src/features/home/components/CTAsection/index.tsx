@@ -18,7 +18,7 @@ const CTAsection = (props: Props) => {
         <div className={styles.container}>
           <h3>Ready to Get Started?</h3>
           <p>
-            Get your free quote in 60 seconds or speak with our team now.
+            Get a quote in 60 seconds. We compare rates from our network to get you the best price.
           </p>
 
           <div className={styles.ctaButtons}>
@@ -29,7 +29,7 @@ const CTAsection = (props: Props) => {
                 window.scrollTo({ top: 0, behavior: "instant" });
               }}
             >
-              Get My Free Quote
+              Get a Quote in 60 Seconds
             </button>
           </div>
 

@@ -72,10 +72,6 @@ const QuoteStep1 = () => {
   const [formValues, setFormValues] = data;
   const { products } = formValues;
 
-  React.useEffect(() => {
-    setFormValues(formValues);
-  }, [formValues]);
-
   return (
     <Formik
       enableReinitialize={true}

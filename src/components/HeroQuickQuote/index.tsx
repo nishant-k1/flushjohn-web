@@ -357,7 +357,7 @@ const HeroQuickQuote = () => {
                 <Grid container spacing={0.5}>
                   <Grid item xs={12}>
                     <div>
-                      <h2>Get My Free Quote</h2>
+                      <h2>Get a Quote in 60 Seconds</h2>
                     </div>
                   </Grid>
                   <UsageTypeField />

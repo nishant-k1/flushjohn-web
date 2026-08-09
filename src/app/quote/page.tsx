@@ -6,9 +6,9 @@ const websiteURL = process.env.NEXT_PUBLIC_FLUSH_JOHN_WEBSITE_URL!;
 const s3assets = process.env.NEXT_PUBLIC_CLOUD_FRONT_URL!;
 
 export const metadata: Metadata = {
-  title: "Get Your Free Porta Potty Rental Quote in 60 Seconds | FlushJohn",
+  title: "Get Your Porta Potty Rental Quote in 60 Seconds | FlushJohn",
   description:
-    "Get your free porta potty rental quote in 60 seconds. No obligation, same-day delivery available. Starting at $150/unit. Serving 25+ cities across 6 states. Call (877) 790-7062 or fill out our quick form.",
+    "Get your porta potty rental quote in 60 seconds. No obligation, same-day delivery available. Starting from $150. We compare rates from our network to get you the best price. Serving 25+ cities across 6 states.",
   keywords:
     "get a quote, porta potty rental quote, portable toilet pricing, event rentals, porta potty quote near me, portable toilet quote Houston, porta potty quote Dallas, porta potty quote Miami, porta potty quote Los Angeles, porta potty pricing near me, portable toilet quote [city]",
   openGraph: {

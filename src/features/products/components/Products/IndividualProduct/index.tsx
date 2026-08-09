@@ -186,7 +186,7 @@ const IndividualProduct = ({ slug }: IndividualProductProps) => {
           <p style={{ marginTop: "2rem", color: "var(--text-primary)" }}>
             Need a {title}?{" "}
             <Link href="/quote" style={{ color: "var(--text-primary)" }}>
-              Get a free quote
+              Get a Quote
             </Link>{" "}
             today or learn more about our{" "}
             <Link href="/rental-products" style={{ color: "var(--text-primary)" }}>

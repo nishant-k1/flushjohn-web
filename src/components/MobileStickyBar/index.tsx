@@ -17,12 +17,19 @@ const MobileStickyBar = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
   React.useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 200);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 200)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
   }, []);
 
   if (!isVisible || quickQuoteViewStatus) return null;
@@ -37,7 +44,7 @@ const MobileStickyBar = () => {
         }}
         type="button"
       >
-        Get Free Quote
+        Get a Quote
       </button>
       <a
         href={phone_link}

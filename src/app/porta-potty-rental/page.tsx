@@ -400,11 +400,11 @@ const PortaPottyRentalPage = () => {
                   }}
                 >
                   <DollarSign size={20} />
-                  Competitive Pricing
+                  Best Price Guarantee
                 </h3>
                 <p style={{ color: "var(--text-primary)" }}>
-                  Best rates in every city with transparent, no-hidden-fees
-                  pricing.
+                  We compare rates from our network to get you the best price in
+                  every city.
                 </p>
               </div>
               <div
@@ -675,8 +675,8 @@ const PortaPottyRentalPage = () => {
                   color: "var(--text-primary)",
                 }}
               >
-                Get a free quote for porta potty rental services in your city
-                today!
+                Get a quote in 60 seconds for porta potty rental services in
+                your city. We'll find you the best price from our local network.
               </p>
               <div
                 style={{
@@ -699,7 +699,7 @@ const PortaPottyRentalPage = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Get Free Quote
+                  Get a Quote
                 </Link>
                 <Link
                   href="/contact"

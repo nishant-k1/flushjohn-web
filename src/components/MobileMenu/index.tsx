@@ -103,7 +103,7 @@ const MobileMenu = () => {
           aria-current={pathname === "/quote" ? "page" : undefined}
         >
           <RequestQuoteIcon size={20} aria-hidden="true" />
-          <span>Request Quote</span>
+          <span>Get a Quote</span>
         </Link>
 
         <Link

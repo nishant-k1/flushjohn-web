@@ -7,7 +7,7 @@ const QuoteHero = () => {
   return (
     <div className={styles.hero}>
       {/* H1 Heading for SEO - Clean and Simple */}
-      <h1 className={styles.h1}>Get Your Free Porta Potty Rental Quote</h1>
+      <h1 className={styles.h1}>Get Your Porta Potty Rental Quote in 60 Seconds</h1>
 
       {/* Simple Subheading */}
       <p className={styles.subheading}>

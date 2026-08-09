@@ -430,7 +430,7 @@ export default function PortaPottyRentalCity({
             {/* CTA Buttons */}
             <div className={styles.ctaButtons}>
               <Link href="/quote" className={styles.ctaButton}>
-                Get Free Quote
+                Get a Quote
               </Link>
               <a href={phone_link} className={styles.ctaButtonSecondary}>
                 Call {phone_number}
@@ -581,7 +581,7 @@ export default function PortaPottyRentalCity({
         <div className={styles.container}>
               <p style={{ marginBottom: "1rem", fontSize: "1.1rem" }}>
                 Need porta potty rental services in {displayName}, {state}? Get
-                a free quote today!
+                a quote in 60 seconds — we'll find you the best price.
               </p>
               <div
                 style={{
@@ -592,7 +592,7 @@ export default function PortaPottyRentalCity({
                 }}
               >
                 <Link href="/quote" className={styles.ctaButton}>
-                  Get Free Quote
+                  Get a Quote
                 </Link>
                 <a href={phone_link} className={styles.ctaButtonSecondary}>
                   Call {phone_number}
@@ -629,15 +629,11 @@ export default function PortaPottyRentalCity({
                     lineHeight: "1.7",
                   }}
                 >
-                  Porta potty rental pricing in {displayName}, {state} is
-                  determined by several factors including the type of unit
-                  selected, rental duration, delivery location within the city,
-                  and seasonal demand. Our pricing structure is designed to be
-                  competitive for both short-term event rentals and long-term
-                  construction site needs. We provide transparent, no-hidden-fee
-                  pricing with quotes customized to your specific requirements
-                  in {displayName}. Contact us for a detailed quote tailored to
-                  your project or event needs.
+                  Our porta potty rental pricing in {displayName}, {state} is based
+                  on unit type, rental duration, and delivery location. We compare
+                  rates across our network of local providers in {displayName} to
+                  find you the best price — starting from $150. Get a personalized
+                  quote in 60 seconds tailored to your project or event.
                 </p>
               )}
               <div style={{ textAlign: "center" }}>
@@ -646,7 +642,7 @@ export default function PortaPottyRentalCity({
                     size={20}
                     style={{ marginRight: "8px", verticalAlign: "middle" }}
                   />
-                  Get an Instant Free Quote
+                  Get a Quote in 60 Seconds
                 </Link>
               </div>
             </div>
@@ -853,7 +849,7 @@ export default function PortaPottyRentalCity({
                           display: "inline-block",
                         }}
                       >
-                        Request Quote →
+                        Get a Quote →
                       </Link>
                     </div>
                   ))}
@@ -1002,7 +998,7 @@ export default function PortaPottyRentalCity({
                     Contact Us
                   </Link>
                   <Link href="/quote" className={styles.ctaButtonSecondary}>
-                    Get a Free Quote
+                    Get a Quote
                   </Link>
                 </div>
                 <p style={{ marginTop: "1.5rem", fontSize: "1.1rem" }}>
@@ -1023,12 +1019,12 @@ export default function PortaPottyRentalCity({
         <div className={styles.container}>
                 <h2>Ready to Rent Porta Potties in {cityTitle}?</h2>
                 <p style={{ fontSize: "1.2em", marginBottom: "30px" }}>
-                  Join thousands of satisfied customers in {cityTitle}. Get your
-                  free quote today!
+                  Join thousands of satisfied customers in {cityTitle}. Get
+                  a quote in 60 seconds — we'll find you the best price.
                 </p>
                 <div className={styles.ctaButtons}>
                   <Link href="/quote" className={styles.finalCTAButton}>
-                    Get Free Quote
+                    Get a Quote
                   </Link>
                   <a href={phone_link} className={styles.ctaButtonSecondary}>
                     Call {phone_number}
@@ -1052,7 +1048,7 @@ export default function PortaPottyRentalCity({
                 <li>
                   <Link href="/quote">
                     <DollarSign size={20} />
-                    <span>Get a Free Quote</span>
+                    <span>Get a Quote</span>
                   </Link>
                 </li>
                 <li>

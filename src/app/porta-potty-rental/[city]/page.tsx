@@ -269,7 +269,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
-      description: `Get reliable porta potty rental, portable toilet rental, porta john, and portable restroom services in ${cityTitle}. Same-day delivery, competitive pricing, and professional service for all your event and construction needs.`,
+      description: `Get reliable porta potty rental, portable toilet rental, porta john, and portable restroom services in ${cityTitle}. Same-day delivery, best price guarantee, and professional service for all your event and construction needs.`,
       url: `${websiteURL}/porta-potty-rental/${city}`,
       type: "website",
       siteName: "FlushJohn",
@@ -285,7 +285,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `Porta Potty Rentals in ${cityTitle} - FlushJohn`,
-      description: `Professional porta potty rental & portable toilet services in ${cityTitle}. Porta john & portable restroom rentals. Fast delivery, competitive pricing.`,
+      description: `Professional porta potty rental & portable toilet services in ${cityTitle}. Porta john & portable restroom rentals. Fast delivery, best price guarantee.`,
       images: [`${s3assets}/og-image-flushjonn-web.png`],
     },
     alternates: {

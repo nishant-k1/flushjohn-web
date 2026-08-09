@@ -205,11 +205,11 @@ export default function AboutPage() {
               </p>
             </div>
             <div className={styles.benefit}>
-              <h3>Competitive Pricing</h3>
+              <h3>Best Price Guarantee</h3>
               <p>
-                We work with our local partners to offer competitive pricing
-                on all portable toilet rentals, ensuring you get the best
-                value for quality service.
+                We compare rates across our network of local providers to find
+                you the best price. No hidden fees, no surprises — just the
+                best value for quality service.
               </p>
             </div>
             <div className={styles.benefit}>
@@ -278,12 +278,12 @@ export default function AboutPage() {
         <div className={styles.container}>
           <h2>Get Started Today</h2>
           <p>
-            Need a porta potty rental? Request a free quote and we'll provide
-            you with professional service in your area.
+            Need a porta potty rental? Get a quote in 60 seconds and we'll get
+            you the best price from our local network.
           </p>
           <div className={styles.ctaButtons}>
             <a href="/quote" className={styles.primaryButton}>
-              Request Free Quote
+              Get a Quote
             </a>
             <a href="/contact" className={styles.secondaryButton}>
               Contact Us

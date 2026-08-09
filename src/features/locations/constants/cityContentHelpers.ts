@@ -37,10 +37,10 @@ export function generateCityFeatures(
   // Feature 3: Pricing - city-specific
   const pricingDesc =
     enhancements.events.length > 0 && hasMajorEvents
-      ? `Competitive pricing for ${displayName} residents with transparent rates. We offer special pricing for major events and long-term construction rentals in ${displayName}.`
-      : `Competitive, transparent pricing for ${displayName} with no hidden fees. Long-term rentals offer the best value for ${displayName} construction projects and events.`;
+      ? `Starting from $150 in ${displayName}. We compare rates from our local network to get you the best price for major events and long-term construction rentals.`
+      : `Starting from $150 in ${displayName}. We compare rates from our local network to find you the best price — no hidden fees, no surprises.`;
   features.push({
-    title: "Affordable & Transparent Pricing",
+    title: "Best Price Guarantee",
     description: pricingDesc,
   });
 
@@ -141,7 +141,7 @@ export function generateCityFAQs(
   // Generate default FAQs with city context
   faqs.push({
     q: `How much does porta potty rental cost in ${displayName}?`,
-    a: `Porta potty rental prices in ${displayName}, ${state} vary based on unit type, rental duration, delivery location within ${displayName}, and seasonal demand. We provide free, personalized quotes for ${displayName} projects and events with transparent, no-hidden-fee pricing.`,
+    a: `Porta potty rental prices in ${displayName}, ${state} start from $150 and vary based on unit type, rental duration, and delivery location. We compare rates from our local network to get you the best price. Get a personalized quote in 60 seconds.`,
   });
 
   faqs.push({

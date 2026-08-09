@@ -141,7 +141,7 @@ export const footerLinks = {
     },
     {
       id: "17",
-      name: "Request Quote",
+      name: "Get a Quote",
       href: "/quote",
       icon: <RequestQuoteIcon />,
     },

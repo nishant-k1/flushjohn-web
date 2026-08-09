@@ -33,7 +33,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Pricing & Costs",
     question: "How much does it cost to rent a porta potty?",
     answer:
-      "Porta potty rental costs vary by location, unit type, and duration. Standard units typically cost $100-$150 per day, deluxe flushing units cost $150-$250 per day, ADA compliant units cost $175-$275 per day, and luxury restroom trailers cost $800-$1500 per day. For construction sites, long-term monthly rentals start at $150-$200 per month. Contact us for exact pricing in your area.",
+      "Porta potty rental costs vary by location, unit type, and duration. Standard units start from $150, with deluxe and ADA-compliant units available at higher rates. For construction sites, long-term monthly rentals are available. Contact us for a personalized quote — we'll compare rates from our local network to get you the best price.",
     keywords: [
       "pricing",
       "cost",
@@ -67,7 +67,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     question:
       "How much does long-term porta potty rental cost for construction sites?",
     answer:
-      "Long-term construction site porta potty rentals typically cost $150-$200 per month per unit. This price includes weekly servicing, cleaning, waste removal, and supply restocking. Multiple-month contracts and multiple-unit orders may qualify for additional discounts. Most construction contracts run for the duration of the project, with flexible extension options.",
+      "Long-term construction site porta potty rentals start from $150 per month per unit. This price includes weekly servicing, cleaning, waste removal, and supply restocking. Multiple-month contracts and multiple-unit orders may qualify for additional discounts. Most construction contracts run for the duration of the project, with flexible extension options. Contact us for an exact quote based on your location and needs.",
     keywords: [
       "construction cost",
       "long-term rental",
@@ -190,7 +190,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Product Types & Options",
     question: "What types of porta potties do you offer?",
     answer:
-      "We offer six main types of portable restrooms: (1) Standard Porta Potty - basic unit with toilet, urinal, toilet paper, and hand sanitizer ($100-$150/day), (2) Deluxe Flushing Porta Potty - upgraded unit with flushing toilet, hand washing sink, mirror, and lighting ($150-$250/day), (3) ADA Compliant Porta Potty - wheelchair accessible with grab bars and ramp ($175-$275/day), (4) Luxury Restroom Trailer - premium multi-stall trailer with AC, running water, and upscale finishes ($800-$1500/day), (5) Portable Hand Wash Station - standalone handwashing unit ($75-$125/day), (6) Construction Porta Potty Package - rugged units designed for job sites ($150-$200/month).",
+      "We offer a full range of portable restrooms: Standard Porta Potty (basic unit with toilet, urinal, toilet paper, and hand sanitizer), Deluxe Flushing Porta Potty (flushing toilet, hand washing sink, mirror, and lighting), ADA Compliant Porta Potty (wheelchair accessible with grab bars and ramp), Luxury Restroom Trailer (premium multi-stall trailer with AC, running water, and upscale finishes), Portable Hand Wash Station (standalone handwashing unit), and Construction Porta Potty Packages (rugged units designed for job sites). Contact us for pricing — standard units start from $150.",
     keywords: [
       "types",
       "options",
@@ -435,7 +435,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Maintenance & Cleaning",
     question: "Can I request additional cleaning or servicing?",
     answer:
-      "Absolutely! Additional cleaning and servicing can be scheduled at any time during your rental period for an extra fee. This is recommended for: high-traffic events, multi-day festivals, VIP areas requiring extra attention, or any situation where increased cleanliness is important. Extra servicing typically costs $75-$125 per unit per service. For large events, we can also provide on-site attendants who maintain cleanliness throughout the event. Contact us to arrange additional servicing or discuss your specific needs.",
+      "Absolutely! Additional cleaning and servicing can be scheduled at any time during your rental period for an extra fee. This is recommended for: high-traffic events, multi-day festivals, VIP areas requiring extra attention, or any situation where increased cleanliness is important. Contact us for extra servicing rates in your area. For large events, we can also provide on-site attendants who maintain cleanliness throughout the event. Contact us to arrange additional servicing or discuss your specific needs.",
     keywords: [
       "extra cleaning",
       "additional service",
@@ -525,7 +525,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Events & Occasions",
     question: "What porta potty options are best for weddings?",
     answer:
-      "For weddings, we recommend our deluxe flushing porta potties or luxury restroom trailers. Deluxe units ($150-$250/day) offer flushing toilets, hand washing sinks, mirrors, and lighting - providing a more refined experience for your guests. Luxury restroom trailers ($800-$1500/day) offer the ultimate experience with multiple stalls, climate control, premium finishes, and a true bathroom feel. For a 150-person wedding reception (4-5 hours with alcohol), we typically recommend 2-3 deluxe units or 1 luxury trailer. The units can be positioned discreetly and we offer delivery/pickup outside of event hours.",
+      "For weddings, we recommend our deluxe flushing porta potties or luxury restroom trailers. Deluxe units offer flushing toilets, hand washing sinks, mirrors, and lighting — providing a more refined experience for your guests. Luxury restroom trailers offer the ultimate experience with multiple stalls, climate control, premium finishes, and a true bathroom feel. For a 150-person wedding reception (4-5 hours with alcohol), we typically recommend 2-3 deluxe units or 1 luxury trailer. The units can be positioned discreetly and we offer delivery/pickup outside of event hours. Contact us for pricing tailored to your wedding.",
     keywords: [
       "wedding porta potty",
       "wedding bathroom",
@@ -595,7 +595,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Events & Occasions",
     question: "Do I need special porta potties for food service events?",
     answer:
-      "For events involving food service, health codes typically require hand washing stations in addition to porta potties. Requirements usually include: porta potties for general use, separate hand washing stations with soap and paper towels, proper signage, and adequate quantity based on vendor count and public attendance. For food vendors, OSHA and health departments often mandate hand washing facilities within 200 feet of food preparation areas. We recommend at least one hand washing station ($75-$125/day) for every food service area, plus standard porta potties for attendees. Always check local health department requirements for your specific event.",
+      "For events involving food service, health codes typically require hand washing stations in addition to porta potties. Requirements usually include: porta potties for general use, separate hand washing stations with soap and paper towels, proper signage, and adequate quantity based on vendor count and public attendance. For food vendors, OSHA and health departments often mandate hand washing facilities within 200 feet of food preparation areas. We recommend at least one hand washing station for every food service area, plus standard porta potties for attendees. Always check local health department requirements for your specific event.",
     keywords: [
       "food service event",
       "food truck",
@@ -615,7 +615,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Construction Sites",
     question: "What are the porta potty requirements for construction sites?",
     answer:
-      "OSHA regulations require construction sites to provide adequate sanitation facilities. Specific requirements: 1 toilet for every 20 workers or fewer, facilities must be available within 200 feet of work areas, hand washing facilities must be provided, toilets must be maintained in sanitary condition with regular cleaning, toilet paper must be provided, and facilities must be available at the start of each workday. For projects lasting more than 30 days, we recommend our construction packages ($150-$200/month) which include weekly servicing. Violations of OSHA sanitation standards can result in significant fines.",
+      "OSHA regulations require construction sites to provide adequate sanitation facilities. Specific requirements: 1 toilet for every 20 workers or fewer, facilities must be available within 200 feet of work areas, hand washing facilities must be provided, toilets must be maintained in sanitary condition with regular cleaning, toilet paper must be provided, and facilities must be available at the start of each workday. For projects lasting more than 30 days, we recommend our construction packages which include weekly servicing. Violations of OSHA sanitation standards can result in significant fines.",
     keywords: [
       "construction requirements",
       "OSHA requirements",
@@ -669,7 +669,7 @@ export const comprehensiveFaqData: FAQItem[] = [
     category: "Construction Sites",
     question: "How long can I rent porta potties for construction projects?",
     answer:
-      "Construction porta potty rentals can be arranged for any duration: weekly ($35-$50/week per unit), monthly ($150-$200/month per unit), or for the entire project duration (discounted long-term rates). Most construction rentals are month-to-month with flexible extension options. There's no maximum rental period - we've supported projects lasting several years. Long-term rentals (3+ months) may qualify for discounted rates. The rental continues until you notify us that the project is complete and schedule pickup. Monthly rentals include weekly servicing.",
+      "Construction porta potty rentals can be arranged for any duration: weekly, monthly (starting from $150/month per unit), or for the entire project duration (discounted long-term rates). Most construction rentals are month-to-month with flexible extension options. There's no maximum rental period - we've supported projects lasting several years. Long-term rentals (3+ months) may qualify for discounted rates. The rental continues until you notify us that the project is complete and schedule pickup. Monthly rentals include weekly servicing.",
     keywords: [
       "construction rental duration",
       "long-term rental",

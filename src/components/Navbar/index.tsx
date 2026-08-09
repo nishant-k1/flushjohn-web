@@ -44,14 +44,21 @@ const Navbar = () => {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
+    let ticking = false
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", onScroll);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
     return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", onScroll)
+    }
+  }, [])
 
   return (
     <nav
@@ -116,7 +123,7 @@ const Navbar = () => {
                 role="menuitem"
                 aria-current={pathname === "/quote" ? "page" : undefined}
               >
-                Request Quote
+                Get a Quote
               </Link>
             </li>
             <li role="none">

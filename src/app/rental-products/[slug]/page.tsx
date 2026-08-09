@@ -169,11 +169,11 @@ const ProductPage = async ({
       priceCurrency: "USD",
       priceSpecification: {
         "@type": "PriceSpecification",
-        price: "Competitive rates starting from $50/day",
+        price: "Starting from $150",
         priceCurrency: "USD",
         eligibleTransactionVolume: {
           "@type": "PriceSpecification",
-          minPrice: "50.00",
+          minPrice: "150.00",
           priceCurrency: "USD",
         },
       },

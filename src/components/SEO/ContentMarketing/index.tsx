@@ -190,7 +190,7 @@ const ContentMarketing = ({ city, state }: ContentMarketingProps) => {
               fontWeight: "bold",
             }}
           >
-            Get Free Quote
+            Get a Quote
           </Link>
           <Link
             href="/contact"

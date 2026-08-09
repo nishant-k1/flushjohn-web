@@ -45,7 +45,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                     <h3 className={styles.cardTitle}>{title}</h3>
                     <p className={styles.cardBody}>{body}</p>
                     <Link href="/quote" className={styles.cardCta}>
-                      Get pricing →
+                      Get a Quote →
                     </Link>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                       <h3 className={styles.cardTitle}>{title}</h3>
                       <p className={styles.cardBody}>{body}</p>
                       <Link href="/quote" className={styles.cardCta}>
-                        Get pricing →
+                        Get a Quote →
                       </Link>
                     </div>
                   </div>
@@ -115,7 +115,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
                   <h3 className={styles.cardTitle}>{title}</h3>
                   <p className={styles.cardBody}>{body}</p>
                   <Link href="/quote" className={styles.cardCta}>
-                    Get pricing →
+                    Get a Quote →
                   </Link>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const Services = React.memo(({ heading, content }: ServicesProps) => {
         {/* Secondary CTA after Services */}
         <div className={styles.secondaryCTA}>
           <a href="/quote" className={styles.ctaLink}>
-            Get Your Free Quote →
+            Get a Quote in 60 Seconds →
           </a>
         </div>
       </div>

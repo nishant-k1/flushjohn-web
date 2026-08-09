@@ -166,11 +166,11 @@ const Sidebar = () => {
           <Link
             href="/quote"
             onClick={handleClick}
-            aria-label="Request Quote"
+            aria-label="Get a Quote"
             tabIndex={active ? 0 : -1}
           >
             <RequestQuoteIcon size={20} aria-hidden="true" />
-            Request Quote
+            Get a Quote
           </Link>
           <Link
             href={PHONE_LINK}

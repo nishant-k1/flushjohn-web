@@ -54,7 +54,7 @@ const TrustSignals = () => {
             <span className={styles.badgeIcon}>
               <DollarSign size={20} />
             </span>
-            <span>Competitive Pricing</span>
+            <span>Best Price Guarantee</span>
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>

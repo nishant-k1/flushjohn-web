@@ -50,7 +50,7 @@ const howToSchema = {
     {
       "@type": "HowToStep",
       position: 1,
-      name: "Request a Free Quote",
+      name: "Request a Quote in 60 Seconds",
       text: "Fill out our simple online quote form or call us directly. Provide your event details, location, dates, and number of units needed.",
       url: `${websiteURL}/quote`,
     },
@@ -64,7 +64,7 @@ const howToSchema = {
       "@type": "HowToStep",
       position: 3,
       name: "Review Your Quote",
-      text: "Receive a transparent, competitive quote that includes delivery, setup, maintenance, and pickup. All pricing is clearly explained.",
+      text: "Receive a competitive quote that includes delivery, setup, maintenance, and pickup. We compare rates from our network to get you the best price — all costs clearly explained.",
     },
     {
       "@type": "HowToStep",
@@ -121,7 +121,7 @@ export default function HowItWorksPage() {
             <div className={styles.step}>
                 <div className={styles.stepNumber}>1</div>
                 <div className={styles.stepContent}>
-                  <h3>Request a Free Quote</h3>
+                  <h3>Request a Quote in 60 Seconds</h3>
                   <p>
                     Fill out our simple online quote form or call us directly.
                     Tell us about your event, location, dates, and requirements.
@@ -225,10 +225,11 @@ export default function HowItWorksPage() {
                 </p>
               </div>
               <div className={styles.benefitCard}>
-                <h3>Transparent Pricing</h3>
+                  <h3>Best Price Guarantee</h3>
                 <p>
-                  No hidden fees or surprises. All costs are clearly explained
-                  upfront in your quote.
+                  We compare rates across our network of local providers to
+                  ensure you get the best price. All costs are clearly explained
+                  upfront with no hidden fees.
                 </p>
               </div>
               <div className={styles.benefitCard}>
@@ -247,12 +248,12 @@ export default function HowItWorksPage() {
         <div className={styles.container}>
           <h2>Ready to Get Started?</h2>
           <p>
-            Request your free quote today and experience our simple,
+            Get a quote in 60 seconds and experience our simple,
             hassle-free process.
           </p>
           <div className={styles.ctaButtons}>
             <Link href="/quote" className={styles.primaryButton}>
-              Get Free Quote
+              Get a Quote
             </Link>
             <Link href="/contact" className={styles.secondaryButton}>
               Contact Us
