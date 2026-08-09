@@ -137,3 +137,21 @@ Next.js 16 Turbopack crashes on Vercel with "Dependency tracking is disabled" er
 - Google Analytics + Google Ads conversion tracking
 - Facebook Pixel
 - No Stripe.js client-side (payments only in CRM)
+
+## Upcoming Tasks
+
+### Cleanup
+- Delete `global-error.tsx` from project root — wrong location, never used (should be in `src/app/`)
+- Delete empty `src/config/` directory
+- Fix `src/anmations/` directory name typo ("animations")
+- Remove `next-env.d.tsx` from root — stale duplicate of `next-env.d.ts`
+
+### Product
+- Add exit-intent popup for quote capture (code exists but commented out in QuickQuoteContext)
+- Add unique OG images per city/service page instead of same image everywhere
+- Fix breadcrumbs — `path=""` is always empty string, breadcrumbs don't render
+- Add `loading.tsx` files for blog and product detail routes
+
+### SEO
+- OG image filename has typo: `og-image-flushjonn-web.png` (double "n") — fix or update CDN asset
+- Review author schema says "Customer Reviews" — not a real person, violates schema.org guidelines
